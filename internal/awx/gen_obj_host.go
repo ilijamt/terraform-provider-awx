@@ -319,7 +319,7 @@ func (o *hostDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -514,7 +514,7 @@ func (o *hostResource) Create(ctx context.Context, request resource.CreateReques
 
 	// Creates a new request for Host
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -735,7 +735,7 @@ func (o *hostObjectRolesDataSource) Read(ctx context.Context, req datasource.Rea
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for host"),
+			"Unable to create a new request for host",
 			err.Error(),
 		)
 		return
@@ -745,7 +745,7 @@ func (o *hostObjectRolesDataSource) Read(ctx context.Context, req datasource.Rea
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for host object roles "),
+			"Unable to fetch the request for host object roles",
 			err.Error(),
 		)
 		return
@@ -856,7 +856,7 @@ func (o *hostAssociateDisassociateGroup) ImportState(ctx context.Context, reques
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <host_id>/<group_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for Host association, invalid format."),
+			"Unable to import state for Host association, invalid format.",
 			err.Error(),
 		)
 		return

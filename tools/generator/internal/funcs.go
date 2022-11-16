@@ -17,12 +17,6 @@ func init() {
 	strcase.ConfigureAcronym("id", "ID")
 }
 
-func fatal(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
 func renderTemplate(tpl *template.Template, filename, template string, data any) (err error) {
 	log.Printf("Rendering %s to %s", template, filename)
 	var f *os.File
@@ -267,11 +261,11 @@ var FuncMap = template.FuncMap{
 		var val interface{}
 		for _, choice := range choices {
 			val = (choice.([]interface{}))[0]
-			switch val.(type) {
+			switch val := val.(type) {
 			case string:
-				arr = append(arr, fmt.Sprintf("\"%s\"", val.(string)))
+				arr = append(arr, fmt.Sprintf("\"%s\"", val))
 			case float64:
-				arr = append(arr, fmt.Sprintf("\"%s\"", strconv.FormatInt(int64(val.(float64)), 10)))
+				arr = append(arr, fmt.Sprintf("\"%s\"", strconv.FormatInt(int64(val), 10)))
 			}
 		}
 

@@ -218,7 +218,7 @@ func (o *groupDataSource) Read(ctx context.Context, req datasource.ReadRequest, 
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -374,7 +374,7 @@ func (o *groupResource) Create(ctx context.Context, request resource.CreateReque
 
 	// Creates a new request for Group
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)

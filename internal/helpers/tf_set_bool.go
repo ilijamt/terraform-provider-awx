@@ -10,7 +10,7 @@ func AttrValueSetBool(obj *types.Bool, data any) (d diag.Diagnostics, err error)
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err
@@ -23,7 +23,7 @@ func AttrValueSetBool(obj *types.Bool, data any) (d diag.Diagnostics, err error)
 	} else {
 		err = fmt.Errorf("invalid data type: %T", data)
 		d.AddError(
-			fmt.Sprintf("wrong data type passed requires bool"),
+			"wrong data type passed requires bool",
 			err.Error(),
 		)
 	}

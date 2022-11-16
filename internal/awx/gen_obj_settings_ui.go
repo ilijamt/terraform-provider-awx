@@ -188,8 +188,7 @@ func (o *settingsUIDataSource) GetSchema(_ context.Context) (tfsdk.Schema, diag.
 func (o *settingsUIDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsUITerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsUI
 	var r *http.Request
@@ -326,7 +325,7 @@ func (o *settingsUIResource) Create(ctx context.Context, request resource.Create
 
 	// Creates a new request for SettingsUI
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -372,7 +371,7 @@ func (o *settingsUIResource) Read(ctx context.Context, request resource.ReadRequ
 
 	// Creates a new request for SettingsUI
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for read", o.endpoint),
@@ -413,7 +412,7 @@ func (o *settingsUIResource) Update(ctx context.Context, request resource.Update
 
 	// Creates a new request for SettingsUI
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -448,5 +447,4 @@ func (o *settingsUIResource) Update(ctx context.Context, request resource.Update
 }
 
 func (o *settingsUIResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

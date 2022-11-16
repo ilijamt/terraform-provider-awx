@@ -115,7 +115,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) ImportSta
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <{{ .Name | snakeCase }}_id>/<{{ .Type | snakeCase }}_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for {{ .Name }} association, invalid format."),
+			"Unable to import state for {{ .Name }} association, invalid format.",
 			err.Error(),
 		)
 		return

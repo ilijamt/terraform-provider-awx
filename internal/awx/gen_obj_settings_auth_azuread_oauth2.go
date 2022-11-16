@@ -186,8 +186,7 @@ func (o *settingsAuthAzureADOauth2DataSource) GetSchema(_ context.Context) (tfsd
 func (o *settingsAuthAzureADOauth2DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsAuthAzureADOauth2TerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsAuthAzureADOauth2
 	var r *http.Request
@@ -219,7 +218,7 @@ func (o *settingsAuthAzureADOauth2DataSource) Read(ctx context.Context, req data
 	// Set state
 	if err = hookSettingsAuthAzureADOauth2(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthAzureADOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
 		)
 		return
@@ -334,7 +333,7 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 
 	// Creates a new request for SettingsAuthAzureADOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -364,7 +363,7 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 
 	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthAzureADOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
 		)
 		return
@@ -389,7 +388,7 @@ func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request re
 
 	// Creates a new request for SettingsAuthAzureADOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsAuthAzureADOauth2 on %s for read", o.endpoint),
@@ -416,7 +415,7 @@ func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request re
 
 	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthAzureADOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
 		)
 		return
@@ -438,7 +437,7 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 
 	// Creates a new request for SettingsAuthAzureADOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -468,7 +467,7 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 
 	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthAzureADOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
 		)
 		return
@@ -481,5 +480,4 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 }
 
 func (o *settingsAuthAzureADOauth2Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

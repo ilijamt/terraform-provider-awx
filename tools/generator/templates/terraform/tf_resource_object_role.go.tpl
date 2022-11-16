@@ -65,7 +65,7 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for {{ .Name | lowerCamelCase }}"),
+			"Unable to create a new request for {{ .Name | lowerCamelCase }}",
 			err.Error(),
 		)
 		return
@@ -75,7 +75,7 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for {{ .Name | lowerCase }} object roles "),
+			"Unable to fetch the request for {{ .Name | lowerCase }} object roles",
 			err.Error(),
 		)
 		return

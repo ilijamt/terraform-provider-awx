@@ -554,7 +554,7 @@ func (o *workflowJobTemplateDataSource) Read(ctx context.Context, req datasource
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -875,7 +875,7 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 
 	// Creates a new request for WorkflowJobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -1096,7 +1096,7 @@ func (o *workflowJobTemplateObjectRolesDataSource) Read(ctx context.Context, req
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for workflowJobTemplate"),
+			"Unable to create a new request for workflowJobTemplate",
 			err.Error(),
 		)
 		return
@@ -1106,7 +1106,7 @@ func (o *workflowJobTemplateObjectRolesDataSource) Read(ctx context.Context, req
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for workflowjobtemplate object roles "),
+			"Unable to fetch the request for workflowjobtemplate object roles",
 			err.Error(),
 		)
 		return

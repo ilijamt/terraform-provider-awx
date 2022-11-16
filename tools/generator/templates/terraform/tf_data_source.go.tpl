@@ -91,14 +91,14 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) GetSchema(_ context.Context) (t
 func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state {{ .Name | lowerCamelCase }}TerraformModel
 	var err error
-	var endpoint string
 {{- if gt (len $.Config.SearchFields) 0 }}
+    var endpoint string
     var searchDefined bool
 
     // Only one group should evaluate to True, terraform should prevent from being able to set
     // the conflicting groups
 {{- else }}
-    endpoint = o.endpoint
+    var endpoint = o.endpoint
 {{ end }}
 
 {{ range $field := $.Config.SearchFields }}
@@ -128,7 +128,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     if !searchDefined {
         var detailMessage string
         resp.Diagnostics.AddError(
-            fmt.Sprintf("missing configuration for one of the predefined search groups"),
+            "missing configuration for one of the predefined search groups",
             detailMessage,
         )
         return
@@ -173,7 +173,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
 {{- if $.Config.PreStateSetHookFunction }}
     if err = {{ $.Config.PreStateSetHookFunction }}(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
 		)
 		return

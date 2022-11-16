@@ -307,8 +307,7 @@ func (o *settingsMiscAuthenticationDataSource) GetSchema(_ context.Context) (tfs
 func (o *settingsMiscAuthenticationDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsMiscAuthenticationTerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsMiscAuthentication
 	var r *http.Request
@@ -500,7 +499,7 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 
 	// Creates a new request for SettingsMiscAuthentication
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -546,7 +545,7 @@ func (o *settingsMiscAuthenticationResource) Read(ctx context.Context, request r
 
 	// Creates a new request for SettingsMiscAuthentication
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for read", o.endpoint),
@@ -587,7 +586,7 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 
 	// Creates a new request for SettingsMiscAuthentication
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -622,5 +621,4 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 }
 
 func (o *settingsMiscAuthenticationResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

@@ -224,8 +224,7 @@ func (o *settingsAuthGithubEnterpriseDataSource) GetSchema(_ context.Context) (t
 func (o *settingsAuthGithubEnterpriseDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsAuthGithubEnterpriseTerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsAuthGithubEnterprise
 	var r *http.Request
@@ -257,7 +256,7 @@ func (o *settingsAuthGithubEnterpriseDataSource) Read(ctx context.Context, req d
 	// Set state
 	if err = hookSettingsAuthGithubEnterprise(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGithubEnterprise"),
+			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
 		)
 		return
@@ -394,7 +393,7 @@ func (o *settingsAuthGithubEnterpriseResource) Create(ctx context.Context, reque
 
 	// Creates a new request for SettingsAuthGithubEnterprise
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -424,7 +423,7 @@ func (o *settingsAuthGithubEnterpriseResource) Create(ctx context.Context, reque
 
 	if err = hookSettingsAuthGithubEnterprise(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGithubEnterprise"),
+			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
 		)
 		return
@@ -449,7 +448,7 @@ func (o *settingsAuthGithubEnterpriseResource) Read(ctx context.Context, request
 
 	// Creates a new request for SettingsAuthGithubEnterprise
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterprise on %s for read", o.endpoint),
@@ -476,7 +475,7 @@ func (o *settingsAuthGithubEnterpriseResource) Read(ctx context.Context, request
 
 	if err = hookSettingsAuthGithubEnterprise(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGithubEnterprise"),
+			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
 		)
 		return
@@ -498,7 +497,7 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 
 	// Creates a new request for SettingsAuthGithubEnterprise
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -528,7 +527,7 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 
 	if err = hookSettingsAuthGithubEnterprise(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGithubEnterprise"),
+			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
 		)
 		return
@@ -541,5 +540,4 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 }
 
 func (o *settingsAuthGithubEnterpriseResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

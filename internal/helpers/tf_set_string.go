@@ -11,7 +11,7 @@ func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnost
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err
@@ -22,19 +22,18 @@ func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnost
 		return d, nil
 	}
 
-	switch data.(type) {
+	switch data := data.(type) {
 	case string:
-		var val = data.(string)
 		if trim {
-			val = TrimAwxString(val)
+			data = TrimAwxString(data)
 		}
-		*obj = types.StringValue(val)
+		*obj = types.StringValue(data)
 	case json.Number:
-		*obj = types.StringValue(data.(json.Number).String())
+		*obj = types.StringValue(data.String())
 	default:
 		err = fmt.Errorf("invalid data type: %T", data)
 		d.AddError(
-			fmt.Sprintf("wrong data type passed requires string, json.Number, map[string]any, []any"),
+			"wrong data type passed requires string, json.Number, map[string]any, []any",
 			err.Error(),
 		)
 	}

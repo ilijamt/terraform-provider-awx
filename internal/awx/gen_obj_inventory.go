@@ -412,7 +412,7 @@ func (o *inventoryDataSource) Read(ctx context.Context, req datasource.ReadReque
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -665,7 +665,7 @@ func (o *inventoryResource) Create(ctx context.Context, request resource.CreateR
 
 	// Creates a new request for Inventory
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -886,7 +886,7 @@ func (o *inventoryObjectRolesDataSource) Read(ctx context.Context, req datasourc
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for inventory"),
+			"Unable to create a new request for inventory",
 			err.Error(),
 		)
 		return
@@ -896,7 +896,7 @@ func (o *inventoryObjectRolesDataSource) Read(ctx context.Context, req datasourc
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for inventory object roles "),
+			"Unable to fetch the request for inventory object roles",
 			err.Error(),
 		)
 		return

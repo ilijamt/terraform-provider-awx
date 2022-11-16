@@ -11,7 +11,7 @@ func AttrValueSetFloat64(obj *types.Float64, data any) (d diag.Diagnostics, err 
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err
@@ -36,7 +36,7 @@ func AttrValueSetFloat64(obj *types.Float64, data any) (d diag.Diagnostics, err 
 	} else {
 		err = fmt.Errorf("invalid data type: %T", data)
 		d.AddError(
-			fmt.Sprintf("wrong data type passed requires json.Number, float64, float32"),
+			"wrong data type passed requires json.Number, float64, float32",
 			err.Error(),
 		)
 	}

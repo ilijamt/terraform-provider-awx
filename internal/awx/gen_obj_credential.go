@@ -331,7 +331,7 @@ func (o *credentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -372,7 +372,7 @@ func (o *credentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	// Set state
 	if err = hookCredential(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Credential"),
+			"Unable to process custom hook for the state on Credential",
 			err.Error(),
 		)
 		return
@@ -537,7 +537,7 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 
 	// Creates a new request for Credential
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -567,7 +567,7 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 
 	if err = hookCredential(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Credential"),
+			"Unable to process custom hook for the state on Credential",
 			err.Error(),
 		)
 		return
@@ -620,7 +620,7 @@ func (o *credentialResource) Read(ctx context.Context, request resource.ReadRequ
 
 	if err = hookCredential(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Credential"),
+			"Unable to process custom hook for the state on Credential",
 			err.Error(),
 		)
 		return
@@ -673,7 +673,7 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 
 	if err = hookCredential(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Credential"),
+			"Unable to process custom hook for the state on Credential",
 			err.Error(),
 		)
 		return
@@ -783,7 +783,7 @@ func (o *credentialObjectRolesDataSource) Read(ctx context.Context, req datasour
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for credential"),
+			"Unable to create a new request for credential",
 			err.Error(),
 		)
 		return
@@ -793,7 +793,7 @@ func (o *credentialObjectRolesDataSource) Read(ctx context.Context, req datasour
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for credential object roles "),
+			"Unable to fetch the request for credential object roles",
 			err.Error(),
 		)
 		return

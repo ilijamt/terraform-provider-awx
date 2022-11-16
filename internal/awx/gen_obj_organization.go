@@ -250,7 +250,7 @@ func (o *organizationDataSource) Read(ctx context.Context, req datasource.ReadRe
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -411,7 +411,7 @@ func (o *organizationResource) Create(ctx context.Context, request resource.Crea
 
 	// Creates a new request for Organization
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -632,7 +632,7 @@ func (o *organizationObjectRolesDataSource) Read(ctx context.Context, req dataso
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for organization"),
+			"Unable to create a new request for organization",
 			err.Error(),
 		)
 		return
@@ -642,7 +642,7 @@ func (o *organizationObjectRolesDataSource) Read(ctx context.Context, req dataso
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for organization object roles "),
+			"Unable to fetch the request for organization object roles",
 			err.Error(),
 		)
 		return
@@ -753,7 +753,7 @@ func (o *organizationAssociateDisassociateInstanceGroup) ImportState(ctx context
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <organization_id>/<instance_group_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for Organization association, invalid format."),
+			"Unable to import state for Organization association, invalid format.",
 			err.Error(),
 		)
 		return
@@ -942,7 +942,7 @@ func (o *organizationAssociateDisassociateExecutionEnvironment) ImportState(ctx 
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <organization_id>/<execution_environment_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for Organization association, invalid format."),
+			"Unable to import state for Organization association, invalid format.",
 			err.Error(),
 		)
 		return

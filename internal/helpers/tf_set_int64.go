@@ -11,7 +11,7 @@ func AttrValueSetInt64(obj *types.Int64, data any) (d diag.Diagnostics, err erro
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err
@@ -36,7 +36,7 @@ func AttrValueSetInt64(obj *types.Int64, data any) (d diag.Diagnostics, err erro
 	} else {
 		err = fmt.Errorf("invalid data type: %T", data)
 		d.AddError(
-			fmt.Sprintf("wrong data type passed requires json.Number, int64, int"),
+			"wrong data type passed requires json.Number, int64, int",
 			err.Error(),
 		)
 	}

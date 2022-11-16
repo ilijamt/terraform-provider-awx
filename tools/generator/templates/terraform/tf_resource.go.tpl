@@ -170,7 +170,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 {{- range $key := .PropertyWriteOnlyKeys }}
@@ -212,7 +212,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 {{ if $.Config.PreStateSetHookFunction }}
     if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
 		)
 		return
@@ -240,7 +240,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
 {{- if $.Config.NoId }}
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 {{- else }}
 	var id = state.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
@@ -272,7 +272,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
 {{ if $.Config.PreStateSetHookFunction }}
     if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
 		)
 		return
@@ -295,7 +295,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
 {{- if $.Config.NoId }}
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 {{- else }}
 	var id = plan.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
@@ -341,7 +341,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{ if $.Config.PreStateSetHookFunction }}
     if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
 		)
 		return
@@ -355,7 +355,6 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 {{- if $.Config.Undeletable }}
-    return
 {{- else }}
 	var err error
 

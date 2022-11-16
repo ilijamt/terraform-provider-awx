@@ -249,8 +249,7 @@ func (o *meDataSource) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnost
 func (o *meDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state meTerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for Me
 	var r *http.Request

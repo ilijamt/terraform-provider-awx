@@ -11,7 +11,7 @@ func AttrValueSetListString(obj *types.List, data any, trim bool) (d diag.Diagno
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err
@@ -22,12 +22,12 @@ func AttrValueSetListString(obj *types.List, data any, trim bool) (d diag.Diagno
 		return nil, nil
 	}
 
-	switch data.(type) {
+	switch data := data.(type) {
 	case types.List:
-		*obj = types.ListValueMust(types.StringType, data.(types.List).Elements())
+		*obj = types.ListValueMust(types.StringType, data.Elements())
 	case []any:
 		var list []attr.Value
-		for _, v := range data.([]any) {
+		for _, v := range data {
 			if trim {
 				list = append(list, types.StringValue(TrimAwxString(v.(string))))
 			} else {
@@ -37,7 +37,7 @@ func AttrValueSetListString(obj *types.List, data any, trim bool) (d diag.Diagno
 		*obj = types.ListValueMust(types.StringType, list)
 	case []string:
 		var list []attr.Value
-		for _, v := range data.([]string) {
+		for _, v := range data {
 			if trim {
 				list = append(list, types.StringValue(TrimAwxString(v)))
 			} else {

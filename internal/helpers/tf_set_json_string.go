@@ -11,7 +11,7 @@ func AttrValueSetJsonString(obj *types.String, data any, trim bool) (d diag.Diag
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
-			fmt.Sprintf("nil pointer passed"),
+			"nil pointer passed",
 			err.Error(),
 		)
 		return d, err

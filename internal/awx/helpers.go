@@ -13,25 +13,25 @@ func extractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 	if val, ok := in["count"]; ok {
 		var count int64
 
-		switch val.(type) {
+		switch val := val.(type) {
 		case string:
-			if count, err = strconv.ParseInt(val.(string), 10, 64); err != nil {
+			if count, err = strconv.ParseInt(val, 10, 64); err != nil {
 				d.AddError(
-					fmt.Sprintf("Failed to convert count number in search result"),
+					"Failed to convert count number in search result",
 					err.Error(),
 				)
 				return
 			}
 		case json.Number:
-			if count, err = val.(json.Number).Int64(); err != nil {
+			if count, err = val.Int64(); err != nil {
 				d.AddError(
-					fmt.Sprintf("Failed to convert count number in search result"),
+					"Failed to convert count number in search result",
 					err.Error(),
 				)
 				return
 			}
 		case int:
-			count = val.(int64)
+			count = int64(val)
 		}
 
 		if count == 1 {
@@ -40,7 +40,7 @@ func extractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 			} else {
 				err = fmt.Errorf("recevied: %T instead of []any", in["results"])
 				d.AddError(
-					fmt.Sprintf("Unexpected format for the results array"),
+					"Unexpected format for the results array",
 					err.Error(),
 				)
 				return
@@ -48,14 +48,14 @@ func extractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 		} else if count > 1 {
 			err = fmt.Errorf("received %d entries, expected 1", count)
 			d.AddError(
-				fmt.Sprintf("More than one entry present, please refine your query"),
+				"More than one entry present, please refine your query",
 				err.Error(),
 			)
 			return
 		} else {
 			err = fmt.Errorf("received %d entries, expected 1", count)
 			d.AddError(
-				fmt.Sprintf("No entries found for the data source"),
+				"No entries found for the data source",
 				err.Error(),
 			)
 			return

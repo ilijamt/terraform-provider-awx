@@ -349,7 +349,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -390,7 +390,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 	// Set state
 	if err = hookApplication(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Application"),
+			"Unable to process custom hook for the state on Application",
 			err.Error(),
 		)
 		return
@@ -557,7 +557,7 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 
 	// Creates a new request for Application
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -587,7 +587,7 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 
 	if err = hookApplication(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Application"),
+			"Unable to process custom hook for the state on Application",
 			err.Error(),
 		)
 		return
@@ -640,7 +640,7 @@ func (o *applicationResource) Read(ctx context.Context, request resource.ReadReq
 
 	if err = hookApplication(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Application"),
+			"Unable to process custom hook for the state on Application",
 			err.Error(),
 		)
 		return
@@ -693,7 +693,7 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 
 	if err = hookApplication(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on Application"),
+			"Unable to process custom hook for the state on Application",
 			err.Error(),
 		)
 		return

@@ -21,7 +21,6 @@ type client struct {
 	client *http.Client
 
 	username, password, hostname string
-	insecureSkipVerify           bool
 	version                      string
 }
 

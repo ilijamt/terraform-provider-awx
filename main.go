@@ -14,7 +14,8 @@ import (
 
 var (
 	version = "dev"
-	commit  = "SNAPSHOT"
+	//nolint:deadcode,unused,varcheck
+	commit = "SNAPSHOT"
 )
 
 func main() {

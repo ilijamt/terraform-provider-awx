@@ -231,8 +231,7 @@ func (o *settingsAuthGoogleOauth2DataSource) GetSchema(_ context.Context) (tfsdk
 func (o *settingsAuthGoogleOauth2DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsAuthGoogleOauth2TerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsAuthGoogleOauth2
 	var r *http.Request
@@ -264,7 +263,7 @@ func (o *settingsAuthGoogleOauth2DataSource) Read(ctx context.Context, req datas
 	// Set state
 	if err = hookSettingsAuthGoogleOauth2(SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGoogleOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
 		)
 		return
@@ -400,7 +399,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 
 	// Creates a new request for SettingsAuthGoogleOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -430,7 +429,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 
 	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGoogleOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
 		)
 		return
@@ -455,7 +454,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 
 	// Creates a new request for SettingsAuthGoogleOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for read", o.endpoint),
@@ -482,7 +481,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 
 	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGoogleOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
 		)
 		return
@@ -504,7 +503,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 
 	// Creates a new request for SettingsAuthGoogleOauth2
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -534,7 +533,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 
 	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to process custom hook for the state on SettingsAuthGoogleOauth2"),
+			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
 		)
 		return
@@ -547,5 +546,4 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 }
 
 func (o *settingsAuthGoogleOauth2Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

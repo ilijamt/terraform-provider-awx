@@ -430,8 +430,7 @@ func (o *settingsMiscLoggingDataSource) GetSchema(_ context.Context) (tfsdk.Sche
 func (o *settingsMiscLoggingDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsMiscLoggingTerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsMiscLogging
 	var r *http.Request
@@ -704,7 +703,7 @@ func (o *settingsMiscLoggingResource) Create(ctx context.Context, request resour
 
 	// Creates a new request for SettingsMiscLogging
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -750,7 +749,7 @@ func (o *settingsMiscLoggingResource) Read(ctx context.Context, request resource
 
 	// Creates a new request for SettingsMiscLogging
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsMiscLogging on %s for read", o.endpoint),
@@ -791,7 +790,7 @@ func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resour
 
 	// Creates a new request for SettingsMiscLogging
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -826,5 +825,4 @@ func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resour
 }
 
 func (o *settingsMiscLoggingResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }

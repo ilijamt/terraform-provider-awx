@@ -1013,7 +1013,7 @@ func (o *jobTemplateDataSource) Read(ctx context.Context, req datasource.ReadReq
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -1604,7 +1604,7 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 
 	// Creates a new request for JobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -1825,7 +1825,7 @@ func (o *jobTemplateObjectRolesDataSource) Read(ctx context.Context, req datasou
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for jobTemplate"),
+			"Unable to create a new request for jobTemplate",
 			err.Error(),
 		)
 		return
@@ -1835,7 +1835,7 @@ func (o *jobTemplateObjectRolesDataSource) Read(ctx context.Context, req datasou
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for jobtemplate object roles "),
+			"Unable to fetch the request for jobtemplate object roles",
 			err.Error(),
 		)
 		return
@@ -1946,7 +1946,7 @@ func (o *jobTemplateAssociateDisassociateCredential) ImportState(ctx context.Con
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <job_template_id>/<credential_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for JobTemplate association, invalid format."),
+			"Unable to import state for JobTemplate association, invalid format.",
 			err.Error(),
 		)
 		return

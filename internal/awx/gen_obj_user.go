@@ -339,7 +339,7 @@ func (o *userDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 	if !searchDefined {
 		var detailMessage string
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("missing configuration for one of the predefined search groups"),
+			"missing configuration for one of the predefined search groups",
 			detailMessage,
 		)
 		return
@@ -554,7 +554,7 @@ func (o *userResource) Create(ctx context.Context, request resource.CreateReques
 
 	// Creates a new request for User
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	bodyRequest.Password = plan.Password.ValueString()
@@ -793,7 +793,7 @@ func (o *userAssociateDisassociateRole) ImportState(ctx context.Context, request
 	if len(parts) != 2 {
 		err = fmt.Errorf("requires the identifier to be set to <user_id>/<role_id>, currently set to %s", request.ID)
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to import state for User association, invalid format."),
+			"Unable to import state for User association, invalid format.",
 			err.Error(),
 		)
 		return

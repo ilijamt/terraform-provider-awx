@@ -2,7 +2,6 @@ package internal
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 )
 
@@ -12,7 +11,7 @@ type ApiResources struct {
 }
 
 func (c *ApiResources) Load(filename string) error {
-	var payload, err = os.ReadFile(fmt.Sprintf("%s", filename))
+	var payload, err = os.ReadFile(filename)
 	if err != nil {
 		return err
 	}

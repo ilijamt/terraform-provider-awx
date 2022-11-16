@@ -554,8 +554,7 @@ func (o *settingsJobsDataSource) GetSchema(_ context.Context) (tfsdk.Schema, dia
 func (o *settingsJobsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state settingsJobsTerraformModel
 	var err error
-	var endpoint string
-	endpoint = o.endpoint
+	var endpoint = o.endpoint
 
 	// Creates a new request for SettingsJobs
 	var r *http.Request
@@ -874,7 +873,7 @@ func (o *settingsJobsResource) Create(ctx context.Context, request resource.Crea
 
 	// Creates a new request for SettingsJobs
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -920,7 +919,7 @@ func (o *settingsJobsResource) Read(ctx context.Context, request resource.ReadRe
 
 	// Creates a new request for SettingsJobs
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for SettingsJobs on %s for read", o.endpoint),
@@ -961,7 +960,7 @@ func (o *settingsJobsResource) Update(ctx context.Context, request resource.Upda
 
 	// Creates a new request for SettingsJobs
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -996,5 +995,4 @@ func (o *settingsJobsResource) Update(ctx context.Context, request resource.Upda
 }
 
 func (o *settingsJobsResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	return
 }
