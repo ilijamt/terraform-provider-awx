@@ -47,7 +47,7 @@ resource "awx_credential" "container_registry" {
   name            = "Container Registry"
   credential_type = data.awx_credential_type.container_registry.id
   organization    = awx_organization.test.id
-  inputs          = jsonencode({
+  inputs = jsonencode({
     "host" : "quay.io",
     "verify_ssl" : true,
     "username" : "test",
@@ -81,8 +81,8 @@ data "awx_label" "test" {
 
 
 resource "awx_user" "demo" {
-  username     = "demo"
-  password     = "test"
+  username = "demo"
+  password = "test"
 }
 
 # resource "awx_job_template" "demo" {

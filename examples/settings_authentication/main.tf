@@ -43,8 +43,8 @@ resource "awx_settings_auth_saml" "default" {
   })
   social_auth_saml_organization_attr = jsonencode({})
   social_auth_saml_organization_map = jsonencode({
-    "Default": {
-      "users": true
+    "Default" : {
+      "users" : true
     }
   })
   social_auth_saml_security_config = jsonencode(

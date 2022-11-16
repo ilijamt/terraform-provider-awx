@@ -11,7 +11,7 @@ provider "awx" {}
 resource "awx_instance_group" "ig" {
   name               = "Demo Instance Group"
   is_container_group = true
-  pod_spec_override  = jsonencode({
+  pod_spec_override = jsonencode({
     "apiVersion" : "v1",
     "kind" : "Pod",
     "metadata" : {
