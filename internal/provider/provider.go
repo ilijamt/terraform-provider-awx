@@ -4,7 +4,9 @@ import (
 	"context"
 	"github.com/ilijamt/terraform-provider-awx/internal/awx"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"os"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -43,22 +45,25 @@ func (p *Provider) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostic
 	return tfsdk.Schema{
 		Attributes: map[string]tfsdk.Attribute{
 			"hostname": {
-				Description: "The AWX Host that we connect to.",
+				Description: "The AWX Host that we connect to. (defaults to TOWER_HOST env variable if set)",
 				Optional:    true,
 				Type:        types.StringType,
 			},
 			"insecure_skip_verify": {
-				Description: "Are we using a self signed certificate?",
+				Description: "Are we using a self signed certificate? [false] (defaults to a negation of TOWER_VERIFY_SSL env variable if set)",
 				Optional:    true,
 				Type:        types.BoolType,
+				PlanModifiers: []tfsdk.AttributePlanModifier{
+					helpers.DefaultValue(types.BoolValue(false)),
+				},
 			},
 			"username": {
-				Description: "The username to connect to the AWX host",
+				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME env variable if set)",
 				Optional:    true,
 				Type:        types.StringType,
 			},
 			"password": {
-				Description: "The password to connect to the AWX host",
+				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD env variable if set)",
 				Optional:    true,
 				Sensitive:   true,
 				Type:        types.StringType,
@@ -103,6 +108,15 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	}
 
+	if config.InsecureSkipVerify.IsUnknown() {
+		resp.Diagnostics.AddAttributeError(
+			path.Root("password"),
+			"Unknown AWX API password",
+			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
+				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_PASSWORD environment variable.",
+		)
+	}
+
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -110,7 +124,11 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	hostname := os.Getenv("TOWER_HOST")
 	username := os.Getenv("TOWER_USERNAME")
 	password := os.Getenv("TOWER_PASSWORD")
-	insecureSkipVerify := false
+
+	insecureSkipVerify := config.InsecureSkipVerify.ValueBool()
+	if val := os.Getenv("TOWER_VERIFY_SSL"); val != "" {
+		insecureSkipVerify = !("false" == strings.ToLower(val) || "no" == strings.ToLower(val))
+	}
 
 	if !config.Hostname.IsNull() {
 		hostname = config.Hostname.ValueString()
@@ -158,7 +176,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(username, password, hostname, insecureSkipVerify)
+	var client = c.NewClient(username, password, hostname, p.version, insecureSkipVerify)
 	resp.DataSourceData = client
 	resp.ResourceData = client
 }

@@ -22,7 +22,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 		var outApiResourceFile = args[1]
 		log.Printf("Reading configuration from %s, and storing the data in %s", configResource, outApiResourceFile)
 
-		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, farCfg.insecureSkipVerify)
+		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify)
 		var data internal.ApiResources
 		var ctx = context.Background()
 		var req *http.Request

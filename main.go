@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/ilijamt/terraform-provider-awx/config"
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
@@ -12,6 +11,11 @@ import (
 
 //go:generate terraform fmt -recursive ./examples/
 //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
+
+var (
+	version = "dev"
+	commit  = "SNAPSHOT"
+)
 
 func main() {
 	var debug bool
@@ -24,7 +28,7 @@ func main() {
 		Debug:   debug,
 	}
 
-	err := providerserver.Serve(context.Background(), provider.New(config.Version), opts)
+	err := providerserver.Serve(context.Background(), provider.New(version), opts)
 
 	if err != nil {
 		log.Fatal(err.Error())

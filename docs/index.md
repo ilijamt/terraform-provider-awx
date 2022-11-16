@@ -17,7 +17,7 @@ description: |-
 
 ### Optional
 
-- `hostname` (String) The AWX Host that we connect to.
-- `insecure_skip_verify` (Boolean) Are we using a self signed certificate?
-- `password` (String, Sensitive) The password to connect to the AWX host
-- `username` (String) The username to connect to the AWX host
+- `hostname` (String) The AWX Host that we connect to. (defaults to TOWER_HOST env variable if set)
+- `insecure_skip_verify` (Boolean) Are we using a self signed certificate? [false] (defaults to a negation of TOWER_VERIFY_SSL env variable if set)
+- `password` (String, Sensitive) The password to connect to the AWX host. (defaults to TOWER_PASSWORD env variable if set)
+- `username` (String) The username to connect to the AWX host. (defaults to TOWER_USERNAME env variable if set)
