@@ -7,6 +7,6 @@ import (
 )
 
 func TestTrimString(t *testing.T) {
-	require.EqualValues(t, "", helpers.TrimString(true, true, " \n"))
-	require.EqualValues(t, "test\ntes", helpers.TrimString(true, true, " test\ntes\n"))
+	require.EqualValues(t, "", helpers.TrimAwxString(" \n"))
+	require.EqualValues(t, "test\ntes", helpers.TrimAwxString(" test\ntes\n"))
 }

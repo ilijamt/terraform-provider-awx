@@ -12,7 +12,6 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -504,1563 +503,387 @@ func (o settingsAuthLDAPTerraformModel) BodyRequest() (req settingsAuthLDAPBodyR
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1BindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1BindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1ConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1DenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_1_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_1_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_1_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1OrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1RequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1ServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1StartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_1_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_1_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_1_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1TeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_1_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_1_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_1_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_1_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_1_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_1_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2BindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2BindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2ConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2DenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_2_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_2_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_2_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2OrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2RequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2ServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2StartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_2_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_2_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_2_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2TeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_2_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_2_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_2_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_2_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_2_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_2_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3BindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3BindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3ConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3DenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_3_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_3_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_3_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3OrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3RequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3ServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3StartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_3_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_3_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_3_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3TeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_3_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_3_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_3_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_3_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_3_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_3_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4BindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4BindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4ConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4DenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_4_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_4_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_4_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4OrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4RequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4ServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4StartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_4_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_4_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_4_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4TeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_4_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_4_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_4_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_4_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_4_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_4_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5BindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5BindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5ConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5DenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_5_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_5_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_5_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5OrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5RequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5ServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5StartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_5_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_5_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_5_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5TeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_5_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_5_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_5_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_5_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_5_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_5_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapBindDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_BIND_DN"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_BIND_DN = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_BIND_DN = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_BIND_DN = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_DN, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapBindPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_BIND_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_BIND_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_BIND_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_BIND_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_PASSWORD, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapConnectionOptions(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_CONNECTION_OPTIONS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_CONNECTION_OPTIONS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_CONNECTION_OPTIONS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_CONNECTION_OPTIONS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapDenyGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_DENY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_DENY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_DENY_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_DENY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_DENY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_GROUP_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_GROUP_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_GROUP_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_GROUP_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_GROUP_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupType(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_GROUP_TYPE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_GROUP_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_GROUP_TYPE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_GROUP_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_GROUP_TYPE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupTypeParams(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_GROUP_TYPE_PARAMS"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_GROUP_TYPE_PARAMS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_GROUP_TYPE_PARAMS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_GROUP_TYPE_PARAMS, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapRequireGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_REQUIRE_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_REQUIRE_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_REQUIRE_GROUP = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_REQUIRE_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_REQUIRE_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapServerUri(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_SERVER_URI"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_SERVER_URI = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_SERVER_URI = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_SERVER_URI = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_SERVER_URI, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapStartTls(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_START_TLS"
-	if val, ok := data.(bool); ok {
-		o.AUTH_LDAP_START_TLS = types.BoolValue(val)
-	} else {
-		o.AUTH_LDAP_START_TLS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_LDAP_START_TLS, data)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserAttrMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_USER_ATTR_MAP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_USER_ATTR_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_USER_ATTR_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_ATTR_MAP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserDnTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_USER_DN_TEMPLATE"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_USER_DN_TEMPLATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTH_LDAP_USER_DN_TEMPLATE = types.StringValue(val.String())
-	} else {
-		o.AUTH_LDAP_USER_DN_TEMPLATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTH_LDAP_USER_DN_TEMPLATE, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_USER_FLAGS_BY_GROUP"
-	if val, ok := data.(string); ok {
-		o.AUTH_LDAP_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AUTH_LDAP_USER_FLAGS_BY_GROUP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AUTH_LDAP_USER_FLAGS_BY_GROUP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_FLAGS_BY_GROUP, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserSearch(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_LDAP_USER_SEARCH"
-	if val, ok := data.(types.List); ok {
-		o.AUTH_LDAP_USER_SEARCH = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTH_LDAP_USER_SEARCH = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTH_LDAP_USER_SEARCH = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTH_LDAP_USER_SEARCH, data, false)
 }
 
 func (o *settingsAuthLDAPTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

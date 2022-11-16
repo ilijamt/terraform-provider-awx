@@ -12,7 +12,6 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -86,191 +85,47 @@ func (o settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMis
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setAllowOauth2ForExternalUsers(data any) (d diag.Diagnostics, err error) {
-	// Decode "ALLOW_OAUTH2_FOR_EXTERNAL_USERS"
-	if val, ok := data.(bool); ok {
-		o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS = types.BoolValue(val)
-	} else {
-		o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS, data)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setAuthenticationBackends(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTHENTICATION_BACKENDS"
-	if val, ok := data.(types.List); ok {
-		o.AUTHENTICATION_BACKENDS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AUTHENTICATION_BACKENDS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AUTHENTICATION_BACKENDS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AUTHENTICATION_BACKENDS, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setAuthBasicEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTH_BASIC_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.AUTH_BASIC_ENABLED = types.BoolValue(val)
-	} else {
-		o.AUTH_BASIC_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AUTH_BASIC_ENABLED, data)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setDisableLocalAuth(data any) (d diag.Diagnostics, err error) {
-	// Decode "DISABLE_LOCAL_AUTH"
-	if val, ok := data.(bool); ok {
-		o.DISABLE_LOCAL_AUTH = types.BoolValue(val)
-	} else {
-		o.DISABLE_LOCAL_AUTH = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.DISABLE_LOCAL_AUTH, data)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setLoginRedirectOverride(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOGIN_REDIRECT_OVERRIDE"
-	if val, ok := data.(string); ok {
-		o.LOGIN_REDIRECT_OVERRIDE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOGIN_REDIRECT_OVERRIDE = types.StringValue(val.String())
-	} else {
-		o.LOGIN_REDIRECT_OVERRIDE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOGIN_REDIRECT_OVERRIDE, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setOauth2Provider(data any) (d diag.Diagnostics, err error) {
-	// Decode "OAUTH2_PROVIDER"
-	if val, ok := data.(string); ok {
-		o.OAUTH2_PROVIDER = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.OAUTH2_PROVIDER = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.OAUTH2_PROVIDER = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.OAUTH2_PROVIDER, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setSessionsPerUser(data any) (d diag.Diagnostics, err error) {
-	// Decode "SESSIONS_PER_USER"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.SESSIONS_PER_USER = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.SESSIONS_PER_USER = types.Int64Value(val)
-	} else {
-		o.SESSIONS_PER_USER = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.SESSIONS_PER_USER, data)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setSessionCookieAge(data any) (d diag.Diagnostics, err error) {
-	// Decode "SESSION_COOKIE_AGE"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.SESSION_COOKIE_AGE = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.SESSION_COOKIE_AGE = types.Int64Value(val)
-	} else {
-		o.SESSION_COOKIE_AGE = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.SESSION_COOKIE_AGE, data)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_TEAM_MAP, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUserFields(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_USER_FIELDS"
-	if val, ok := data.(types.List); ok {
-		o.SOCIAL_AUTH_USER_FIELDS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.SOCIAL_AUTH_USER_FIELDS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.SOCIAL_AUTH_USER_FIELDS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_USER_FIELDS, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

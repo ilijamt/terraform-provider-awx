@@ -79,127 +79,43 @@ func (o userTerraformModel) BodyRequest() (req userBodyRequestModel) {
 }
 
 func (o *userTerraformModel) setEmail(data any) (d diag.Diagnostics, err error) {
-	// Decode "email"
-	if val, ok := data.(string); ok {
-		o.Email = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Email = types.StringValue(val.String())
-	} else {
-		o.Email = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Email, data, false)
 }
 
 func (o *userTerraformModel) setExternalAccount(data any) (d diag.Diagnostics, err error) {
-	// Decode "external_account"
-	if val, ok := data.(string); ok {
-		o.ExternalAccount = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ExternalAccount = types.StringValue(val.String())
-	} else {
-		o.ExternalAccount = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ExternalAccount, data, false)
 }
 
 func (o *userTerraformModel) setFirstName(data any) (d diag.Diagnostics, err error) {
-	// Decode "first_name"
-	if val, ok := data.(string); ok {
-		o.FirstName = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.FirstName = types.StringValue(val.String())
-	} else {
-		o.FirstName = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.FirstName, data, false)
 }
 
 func (o *userTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *userTerraformModel) setIsSuperuser(data any) (d diag.Diagnostics, err error) {
-	// Decode "is_superuser"
-	if val, ok := data.(bool); ok {
-		o.IsSuperuser = types.BoolValue(val)
-	} else {
-		o.IsSuperuser = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.IsSuperuser, data)
 }
 
 func (o *userTerraformModel) setIsSystemAuditor(data any) (d diag.Diagnostics, err error) {
-	// Decode "is_system_auditor"
-	if val, ok := data.(bool); ok {
-		o.IsSystemAuditor = types.BoolValue(val)
-	} else {
-		o.IsSystemAuditor = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.IsSystemAuditor, data)
 }
 
 func (o *userTerraformModel) setLastLogin(data any) (d diag.Diagnostics, err error) {
-	// Decode "last_login"
-	if val, ok := data.(string); ok {
-		o.LastLogin = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LastLogin = types.StringValue(val.String())
-	} else {
-		o.LastLogin = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LastLogin, data, false)
 }
 
 func (o *userTerraformModel) setLastName(data any) (d diag.Diagnostics, err error) {
-	// Decode "last_name"
-	if val, ok := data.(string); ok {
-		o.LastName = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LastName = types.StringValue(val.String())
-	} else {
-		o.LastName = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LastName, data, false)
 }
 
 func (o *userTerraformModel) setLdapDn(data any) (d diag.Diagnostics, err error) {
-	// Decode "ldap_dn"
-	if val, ok := data.(string); ok {
-		o.LdapDn = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LdapDn = types.StringValue(val.String())
-	} else {
-		o.LdapDn = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LdapDn, data, false)
 }
 
 func (o *userTerraformModel) setUsername(data any) (d diag.Diagnostics, err error) {
-	// Decode "username"
-	if val, ok := data.(string); ok {
-		o.Username = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Username = types.StringValue(val.String())
-	} else {
-		o.Username = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
 func (o *userTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

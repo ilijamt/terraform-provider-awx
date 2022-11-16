@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func AttrValueSetJsonString(obj *types.String, data any) (d diag.Diagnostics, err error) {
+func AttrValueSetJsonString(obj *types.String, data any, trim bool) (d diag.Diagnostics, err error) {
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
@@ -22,9 +22,18 @@ func AttrValueSetJsonString(obj *types.String, data any) (d diag.Diagnostics, er
 		return d, nil
 	}
 
-	var v []byte
-	v, err = json.Marshal(data)
-	*obj = types.StringValue(string(v))
+	if val, ok := data.(string); ok {
+		if trim {
+			*obj = types.StringValue(TrimAwxString(val))
+		} else {
+			*obj = types.StringValue(val)
+		}
+	} else {
+		var v []byte
+		if v, err = json.Marshal(data); err == nil {
+			*obj = types.StringValue(TrimAwxString(string(v)))
+		}
+	}
 
 	return d, err
 }

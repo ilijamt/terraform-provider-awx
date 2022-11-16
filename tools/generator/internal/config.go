@@ -11,8 +11,7 @@ type PropertyOverride struct {
 	Description string `json:"description"`
 	Sensitive   bool   `json:"sensitive"`
 	Required    bool   `json:"required"`
-	TrimNewLine bool   `json:"trim_new_line"`
-	TrimSpace   bool   `json:"trim_space"`
+	Trim        bool   `json:"trim"`
 	PostWrap    bool   `json:"post_wrap"`
 }
 

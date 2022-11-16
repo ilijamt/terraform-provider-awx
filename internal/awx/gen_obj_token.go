@@ -64,123 +64,35 @@ func (o tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
 }
 
 func (o *tokensTerraformModel) setApplication(data any) (d diag.Diagnostics, err error) {
-	// Decode "application"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Application = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Application = types.Int64Value(val)
-	} else {
-		o.Application = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Application, data)
 }
 
 func (o *tokensTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *tokensTerraformModel) setExpires(data any) (d diag.Diagnostics, err error) {
-	// Decode "expires"
-	if val, ok := data.(string); ok {
-		o.Expires = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Expires = types.StringValue(val.String())
-	} else {
-		o.Expires = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Expires, data, false)
 }
 
 func (o *tokensTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *tokensTerraformModel) setRefreshToken(data any) (d diag.Diagnostics, err error) {
-	// Decode "refresh_token"
-	if val, ok := data.(string); ok {
-		o.RefreshToken = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.RefreshToken = types.StringValue(val.String())
-	} else {
-		o.RefreshToken = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.RefreshToken, data, false)
 }
 
 func (o *tokensTerraformModel) setScope(data any) (d diag.Diagnostics, err error) {
-	// Decode "scope"
-	if val, ok := data.(string); ok {
-		o.Scope = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Scope = types.StringValue(val.String())
-	} else {
-		o.Scope = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Scope, data, false)
 }
 
 func (o *tokensTerraformModel) setToken(data any) (d diag.Diagnostics, err error) {
-	// Decode "token"
-	if val, ok := data.(string); ok {
-		o.Token = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Token = types.StringValue(val.String())
-	} else {
-		o.Token = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Token, data, false)
 }
 
 func (o *tokensTerraformModel) setUser(data any) (d diag.Diagnostics, err error) {
-	// Decode "user"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.User = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.User = types.Int64Value(val)
-	} else {
-		o.User = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.User, data)
 }
 
 func (o *tokensTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

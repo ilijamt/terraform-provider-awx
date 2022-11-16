@@ -69,121 +69,35 @@ func (o executionEnvironmentTerraformModel) BodyRequest() (req executionEnvironm
 }
 
 func (o *executionEnvironmentTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Credential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Credential = types.Int64Value(val)
-	} else {
-		o.Credential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
 func (o *executionEnvironmentTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *executionEnvironmentTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *executionEnvironmentTerraformModel) setImage(data any) (d diag.Diagnostics, err error) {
-	// Decode "image"
-	if val, ok := data.(string); ok {
-		o.Image = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Image = types.StringValue(val.String())
-	} else {
-		o.Image = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Image, data, false)
 }
 
 func (o *executionEnvironmentTerraformModel) setManaged(data any) (d diag.Diagnostics, err error) {
-	// Decode "managed"
-	if val, ok := data.(bool); ok {
-		o.Managed = types.BoolValue(val)
-	} else {
-		o.Managed = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Managed, data)
 }
 
 func (o *executionEnvironmentTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *executionEnvironmentTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
-	// Decode "organization"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Organization = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Organization = types.Int64Value(val)
-	} else {
-		o.Organization = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
 func (o *executionEnvironmentTerraformModel) setPull(data any) (d diag.Diagnostics, err error) {
-	// Decode "pull"
-	if val, ok := data.(string); ok {
-		o.Pull = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Pull = types.StringValue(val.String())
-	} else {
-		o.Pull = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Pull, data, false)
 }
 
 func (o *executionEnvironmentTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

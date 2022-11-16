@@ -128,351 +128,99 @@ func (o scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
 }
 
 func (o *scheduleTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *scheduleTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
-	// Decode "diff_mode"
-	if val, ok := data.(bool); ok {
-		o.DiffMode = types.BoolValue(val)
-	} else {
-		o.DiffMode = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
 func (o *scheduleTerraformModel) setDtend(data any) (d diag.Diagnostics, err error) {
-	// Decode "dtend"
-	if val, ok := data.(string); ok {
-		o.Dtend = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Dtend = types.StringValue(val.String())
-	} else {
-		o.Dtend = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Dtend, data, false)
 }
 
 func (o *scheduleTerraformModel) setDtstart(data any) (d diag.Diagnostics, err error) {
-	// Decode "dtstart"
-	if val, ok := data.(string); ok {
-		o.Dtstart = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Dtstart = types.StringValue(val.String())
-	} else {
-		o.Dtstart = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Dtstart, data, false)
 }
 
 func (o *scheduleTerraformModel) setEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "enabled"
-	if val, ok := data.(bool); ok {
-		o.Enabled = types.BoolValue(val)
-	} else {
-		o.Enabled = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Enabled, data)
 }
 
 func (o *scheduleTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
-	// Decode "execution_environment"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ExecutionEnvironment = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ExecutionEnvironment = types.Int64Value(val)
-	} else {
-		o.ExecutionEnvironment = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
 func (o *scheduleTerraformModel) setExtraData(data any) (d diag.Diagnostics, err error) {
-	// Decode "extra_data"
-	if val, ok := data.(string); ok {
-		o.ExtraData = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.ExtraData = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.ExtraData = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.ExtraData, data, false)
 }
 
 func (o *scheduleTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
-	// Decode "forks"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Forks = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Forks = types.Int64Value(val)
-	} else {
-		o.Forks = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
 func (o *scheduleTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *scheduleTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
-	// Decode "inventory"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Inventory = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Inventory = types.Int64Value(val)
-	} else {
-		o.Inventory = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
 func (o *scheduleTerraformModel) setJobSliceCount(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_slice_count"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.JobSliceCount = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.JobSliceCount = types.Int64Value(val)
-	} else {
-		o.JobSliceCount = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
 }
 
 func (o *scheduleTerraformModel) setJobTags(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_tags"
-	if val, ok := data.(string); ok {
-		o.JobTags = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobTags = types.StringValue(val.String())
-	} else {
-		o.JobTags = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobTags, data, false)
 }
 
 func (o *scheduleTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_type"
-	if val, ok := data.(string); ok {
-		o.JobType = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobType = types.StringValue(val.String())
-	} else {
-		o.JobType = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
 func (o *scheduleTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
-	// Decode "limit"
-	if val, ok := data.(string); ok {
-		o.Limit = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Limit = types.StringValue(val.String())
-	} else {
-		o.Limit = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
 func (o *scheduleTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *scheduleTerraformModel) setNextRun(data any) (d diag.Diagnostics, err error) {
-	// Decode "next_run"
-	if val, ok := data.(string); ok {
-		o.NextRun = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.NextRun = types.StringValue(val.String())
-	} else {
-		o.NextRun = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.NextRun, data, false)
 }
 
 func (o *scheduleTerraformModel) setRrule(data any) (d diag.Diagnostics, err error) {
-	// Decode "rrule"
-	if val, ok := data.(string); ok {
-		o.Rrule = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Rrule = types.StringValue(val.String())
-	} else {
-		o.Rrule = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Rrule, data, false)
 }
 
 func (o *scheduleTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_branch"
-	if val, ok := data.(string); ok {
-		o.ScmBranch = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmBranch = types.StringValue(val.String())
-	} else {
-		o.ScmBranch = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
 func (o *scheduleTerraformModel) setSkipTags(data any) (d diag.Diagnostics, err error) {
-	// Decode "skip_tags"
-	if val, ok := data.(string); ok {
-		o.SkipTags = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SkipTags = types.StringValue(val.String())
-	} else {
-		o.SkipTags = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SkipTags, data, false)
 }
 
 func (o *scheduleTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "timeout"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Timeout = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Timeout = types.Int64Value(val)
-	} else {
-		o.Timeout = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
 func (o *scheduleTerraformModel) setTimezone(data any) (d diag.Diagnostics, err error) {
-	// Decode "timezone"
-	if val, ok := data.(string); ok {
-		o.Timezone = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Timezone = types.StringValue(val.String())
-	} else {
-		o.Timezone = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Timezone, data, false)
 }
 
 func (o *scheduleTerraformModel) setUnifiedJobTemplate(data any) (d diag.Diagnostics, err error) {
-	// Decode "unified_job_template"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.UnifiedJobTemplate = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.UnifiedJobTemplate = types.Int64Value(val)
-	} else {
-		o.UnifiedJobTemplate = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.UnifiedJobTemplate, data)
 }
 
 func (o *scheduleTerraformModel) setUntil(data any) (d diag.Diagnostics, err error) {
-	// Decode "until"
-	if val, ok := data.(string); ok {
-		o.Until = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Until = types.StringValue(val.String())
-	} else {
-		o.Until = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Until, data, false)
 }
 
 func (o *scheduleTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
-	// Decode "verbosity"
-	if val, ok := data.(string); ok {
-		o.Verbosity = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Verbosity = types.StringValue(val.String())
-	} else {
-		o.Verbosity = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
 func (o *scheduleTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

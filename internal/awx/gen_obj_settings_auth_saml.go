@@ -11,7 +11,6 @@ import (
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -112,316 +111,75 @@ func (o settingsAuthSAMLTerraformModel) BodyRequest() (req settingsAuthSAMLBodyR
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSamlAutoCreateObjects(data any) (d diag.Diagnostics, err error) {
-	// Decode "SAML_AUTO_CREATE_OBJECTS"
-	if val, ok := data.(bool); ok {
-		o.SAML_AUTO_CREATE_OBJECTS = types.BoolValue(val)
-	} else {
-		o.SAML_AUTO_CREATE_OBJECTS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.SAML_AUTO_CREATE_OBJECTS, data)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlCallbackUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_CALLBACK_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_CALLBACK_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_SAML_CALLBACK_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_SAML_CALLBACK_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_CALLBACK_URL, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlEnabledIdps(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_ENABLED_IDPS"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_ENABLED_IDPS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_ENABLED_IDPS = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_ENABLED_IDPS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ENABLED_IDPS, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlExtraData(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_EXTRA_DATA"
-	if val, ok := data.(types.List); ok {
-		o.SOCIAL_AUTH_SAML_EXTRA_DATA = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.SOCIAL_AUTH_SAML_EXTRA_DATA = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.SOCIAL_AUTH_SAML_EXTRA_DATA = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_SAML_EXTRA_DATA, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlMetadataUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_METADATA_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_METADATA_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_SAML_METADATA_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_SAML_METADATA_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_METADATA_URL, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrgInfo(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_ORG_INFO"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_ORG_INFO = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_ORG_INFO = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_ORG_INFO = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORG_INFO, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSecurityConfig(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SECURITY_CONFIG"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SECURITY_CONFIG = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_SECURITY_CONFIG = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_SECURITY_CONFIG = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SECURITY_CONFIG, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpEntityId(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SP_ENTITY_ID"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SP_ENTITY_ID = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_SAML_SP_ENTITY_ID = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_SAML_SP_ENTITY_ID = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_ENTITY_ID, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpExtra(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SP_EXTRA"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SP_EXTRA = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_SP_EXTRA = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_SP_EXTRA = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SP_EXTRA, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = types.StringValue(helpers.TrimString(true, true, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY, data, true)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpPublicCert(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = types.StringValue(helpers.TrimString(true, true, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT, data, true)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSupportContact(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_SUPPORT_CONTACT"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTeamAttr(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_TEAM_ATTR"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_TEAM_ATTR = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_TEAM_ATTR = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_TEAM_ATTR = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_ATTR, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTechnicalContact(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data, false)
 }
 
 func (o *settingsAuthSAMLTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

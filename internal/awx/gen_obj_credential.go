@@ -76,149 +76,43 @@ func (o credentialTerraformModel) BodyRequest() (req credentialBodyRequestModel)
 }
 
 func (o *credentialTerraformModel) setCloud(data any) (d diag.Diagnostics, err error) {
-	// Decode "cloud"
-	if val, ok := data.(bool); ok {
-		o.Cloud = types.BoolValue(val)
-	} else {
-		o.Cloud = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Cloud, data)
 }
 
 func (o *credentialTerraformModel) setCredentialType(data any) (d diag.Diagnostics, err error) {
-	// Decode "credential_type"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.CredentialType = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.CredentialType = types.Int64Value(val)
-	} else {
-		o.CredentialType = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.CredentialType, data)
 }
 
 func (o *credentialTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *credentialTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *credentialTerraformModel) setInputs(data any) (d diag.Diagnostics, err error) {
-	// Decode "inputs"
-	if val, ok := data.(string); ok {
-		o.Inputs = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.Inputs = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.Inputs = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.Inputs, data, false)
 }
 
 func (o *credentialTerraformModel) setKind(data any) (d diag.Diagnostics, err error) {
-	// Decode "kind"
-	if val, ok := data.(string); ok {
-		o.Kind = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Kind = types.StringValue(val.String())
-	} else {
-		o.Kind = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Kind, data, false)
 }
 
 func (o *credentialTerraformModel) setKubernetes(data any) (d diag.Diagnostics, err error) {
-	// Decode "kubernetes"
-	if val, ok := data.(bool); ok {
-		o.Kubernetes = types.BoolValue(val)
-	} else {
-		o.Kubernetes = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Kubernetes, data)
 }
 
 func (o *credentialTerraformModel) setManaged(data any) (d diag.Diagnostics, err error) {
-	// Decode "managed"
-	if val, ok := data.(bool); ok {
-		o.Managed = types.BoolValue(val)
-	} else {
-		o.Managed = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Managed, data)
 }
 
 func (o *credentialTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *credentialTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
-	// Decode "organization"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Organization = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Organization = types.Int64Value(val)
-	} else {
-		o.Organization = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
 func (o *credentialTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

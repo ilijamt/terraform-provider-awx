@@ -53,79 +53,23 @@ func (o settingsAuthGithubTerraformModel) BodyRequest() (req settingsAuthGithubB
 }
 
 func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubCallbackUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_CALLBACK_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_CALLBACK_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_CALLBACK_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_CALLBACK_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_CALLBACK_URL, data, false)
 }
 
 func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_KEY"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_KEY = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_KEY = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_KEY = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_KEY, data, false)
 }
 
 func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubSecret(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_SECRET"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_SECRET = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_SECRET = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_SECRET = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_SECRET, data, false)
 }
 
 func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthGithubTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

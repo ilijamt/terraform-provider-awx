@@ -16,10 +16,10 @@ func AttrValueSetBool(obj *types.Bool, data any) (d diag.Diagnostics, err error)
 		return d, err
 	}
 
-	if val, ok := data.(bool); ok {
-		*obj = types.BoolValue(val)
-	} else if data == nil {
+	if data == nil {
 		*obj = types.BoolNull()
+	} else if val, ok := data.(bool); ok {
+		*obj = types.BoolValue(val)
 	} else {
 		err = fmt.Errorf("invalid data type: %T", data)
 		d.AddError(

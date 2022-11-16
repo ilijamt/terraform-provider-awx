@@ -130,365 +130,107 @@ func (o adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestMo
 }
 
 func (o *adHocCommandTerraformModel) setBecomeEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "become_enabled"
-	if val, ok := data.(bool); ok {
-		o.BecomeEnabled = types.BoolValue(val)
-	} else {
-		o.BecomeEnabled = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
 }
 
 func (o *adHocCommandTerraformModel) setCanceledOn(data any) (d diag.Diagnostics, err error) {
-	// Decode "canceled_on"
-	if val, ok := data.(string); ok {
-		o.CanceledOn = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.CanceledOn = types.StringValue(val.String())
-	} else {
-		o.CanceledOn = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.CanceledOn, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setControllerNode(data any) (d diag.Diagnostics, err error) {
-	// Decode "controller_node"
-	if val, ok := data.(string); ok {
-		o.ControllerNode = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ControllerNode = types.StringValue(val.String())
-	} else {
-		o.ControllerNode = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ControllerNode, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Credential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Credential = types.Int64Value(val)
-	} else {
-		o.Credential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
 func (o *adHocCommandTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
-	// Decode "diff_mode"
-	if val, ok := data.(bool); ok {
-		o.DiffMode = types.BoolValue(val)
-	} else {
-		o.DiffMode = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
 func (o *adHocCommandTerraformModel) setElapsed(data any) (d diag.Diagnostics, err error) {
-	// Decode "elapsed"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Float64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to float64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Elapsed = types.Float64Value(v)
-	} else if val, ok := data.(float64); ok {
-		o.Elapsed = types.Float64Value(val)
-	} else {
-		o.Elapsed = types.Float64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetFloat64(&o.Elapsed, data)
 }
 
 func (o *adHocCommandTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
-	// Decode "execution_environment"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ExecutionEnvironment = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ExecutionEnvironment = types.Int64Value(val)
-	} else {
-		o.ExecutionEnvironment = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
 func (o *adHocCommandTerraformModel) setExecutionNode(data any) (d diag.Diagnostics, err error) {
-	// Decode "execution_node"
-	if val, ok := data.(string); ok {
-		o.ExecutionNode = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ExecutionNode = types.StringValue(val.String())
-	} else {
-		o.ExecutionNode = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ExecutionNode, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
-	// Decode "extra_vars"
-	if val, ok := data.(string); ok {
-		o.ExtraVars = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ExtraVars = types.StringValue(val.String())
-	} else {
-		o.ExtraVars = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ExtraVars, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setFailed(data any) (d diag.Diagnostics, err error) {
-	// Decode "failed"
-	if val, ok := data.(bool); ok {
-		o.Failed = types.BoolValue(val)
-	} else {
-		o.Failed = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Failed, data)
 }
 
 func (o *adHocCommandTerraformModel) setFinished(data any) (d diag.Diagnostics, err error) {
-	// Decode "finished"
-	if val, ok := data.(string); ok {
-		o.Finished = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Finished = types.StringValue(val.String())
-	} else {
-		o.Finished = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Finished, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
-	// Decode "forks"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Forks = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Forks = types.Int64Value(val)
-	} else {
-		o.Forks = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
 func (o *adHocCommandTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *adHocCommandTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
-	// Decode "inventory"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Inventory = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Inventory = types.Int64Value(val)
-	} else {
-		o.Inventory = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
 func (o *adHocCommandTerraformModel) setJobExplanation(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_explanation"
-	if val, ok := data.(string); ok {
-		o.JobExplanation = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobExplanation = types.StringValue(val.String())
-	} else {
-		o.JobExplanation = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobExplanation, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_type"
-	if val, ok := data.(string); ok {
-		o.JobType = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobType = types.StringValue(val.String())
-	} else {
-		o.JobType = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setLaunchType(data any) (d diag.Diagnostics, err error) {
-	// Decode "launch_type"
-	if val, ok := data.(string); ok {
-		o.LaunchType = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LaunchType = types.StringValue(val.String())
-	} else {
-		o.LaunchType = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LaunchType, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setLaunchedBy(data any) (d diag.Diagnostics, err error) {
-	// Decode "launched_by"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LaunchedBy = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LaunchedBy = types.Int64Value(val)
-	} else {
-		o.LaunchedBy = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LaunchedBy, data)
 }
 
 func (o *adHocCommandTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
-	// Decode "limit"
-	if val, ok := data.(string); ok {
-		o.Limit = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Limit = types.StringValue(val.String())
-	} else {
-		o.Limit = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setModuleArgs(data any) (d diag.Diagnostics, err error) {
-	// Decode "module_args"
-	if val, ok := data.(string); ok {
-		o.ModuleArgs = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ModuleArgs = types.StringValue(val.String())
-	} else {
-		o.ModuleArgs = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ModuleArgs, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setModuleName(data any) (d diag.Diagnostics, err error) {
-	// Decode "module_name"
-	if val, ok := data.(string); ok {
-		o.ModuleName = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ModuleName = types.StringValue(val.String())
-	} else {
-		o.ModuleName = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ModuleName, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setStarted(data any) (d diag.Diagnostics, err error) {
-	// Decode "started"
-	if val, ok := data.(string); ok {
-		o.Started = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Started = types.StringValue(val.String())
-	} else {
-		o.Started = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Started, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setStatus(data any) (d diag.Diagnostics, err error) {
-	// Decode "status"
-	if val, ok := data.(string); ok {
-		o.Status = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Status = types.StringValue(val.String())
-	} else {
-		o.Status = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Status, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
-	// Decode "verbosity"
-	if val, ok := data.(string); ok {
-		o.Verbosity = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Verbosity = types.StringValue(val.String())
-	} else {
-		o.Verbosity = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setWorkUnitId(data any) (d diag.Diagnostics, err error) {
-	// Decode "work_unit_id"
-	if val, ok := data.(string); ok {
-		o.WorkUnitId = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.WorkUnitId = types.StringValue(val.String())
-	} else {
-		o.WorkUnitId = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.WorkUnitId, data, false)
 }
 
 func (o *adHocCommandTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

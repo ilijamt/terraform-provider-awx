@@ -88,257 +88,59 @@ func (o instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyRequest
 }
 
 func (o *instanceGroupTerraformModel) setCapacity(data any) (d diag.Diagnostics, err error) {
-	// Decode "capacity"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Capacity = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Capacity = types.Int64Value(val)
-	} else {
-		o.Capacity = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Capacity, data)
 }
 
 func (o *instanceGroupTerraformModel) setConsumedCapacity(data any) (d diag.Diagnostics, err error) {
-	// Decode "consumed_capacity"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Float64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to float64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ConsumedCapacity = types.Float64Value(v)
-	} else if val, ok := data.(float64); ok {
-		o.ConsumedCapacity = types.Float64Value(val)
-	} else {
-		o.ConsumedCapacity = types.Float64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetFloat64(&o.ConsumedCapacity, data)
 }
 
 func (o *instanceGroupTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Credential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Credential = types.Int64Value(val)
-	} else {
-		o.Credential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
 func (o *instanceGroupTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *instanceGroupTerraformModel) setInstances(data any) (d diag.Diagnostics, err error) {
-	// Decode "instances"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Instances = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Instances = types.Int64Value(val)
-	} else {
-		o.Instances = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Instances, data)
 }
 
 func (o *instanceGroupTerraformModel) setIsContainerGroup(data any) (d diag.Diagnostics, err error) {
-	// Decode "is_container_group"
-	if val, ok := data.(bool); ok {
-		o.IsContainerGroup = types.BoolValue(val)
-	} else {
-		o.IsContainerGroup = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.IsContainerGroup, data)
 }
 
 func (o *instanceGroupTerraformModel) setJobsRunning(data any) (d diag.Diagnostics, err error) {
-	// Decode "jobs_running"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.JobsRunning = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.JobsRunning = types.Int64Value(val)
-	} else {
-		o.JobsRunning = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.JobsRunning, data)
 }
 
 func (o *instanceGroupTerraformModel) setJobsTotal(data any) (d diag.Diagnostics, err error) {
-	// Decode "jobs_total"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.JobsTotal = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.JobsTotal = types.Int64Value(val)
-	} else {
-		o.JobsTotal = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.JobsTotal, data)
 }
 
 func (o *instanceGroupTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *instanceGroupTerraformModel) setPercentCapacityRemaining(data any) (d diag.Diagnostics, err error) {
-	// Decode "percent_capacity_remaining"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Float64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to float64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.PercentCapacityRemaining = types.Float64Value(v)
-	} else if val, ok := data.(float64); ok {
-		o.PercentCapacityRemaining = types.Float64Value(val)
-	} else {
-		o.PercentCapacityRemaining = types.Float64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetFloat64(&o.PercentCapacityRemaining, data)
 }
 
 func (o *instanceGroupTerraformModel) setPodSpecOverride(data any) (d diag.Diagnostics, err error) {
-	// Decode "pod_spec_override"
-	if val, ok := data.(string); ok {
-		o.PodSpecOverride = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.PodSpecOverride = types.StringValue(val.String())
-	} else {
-		o.PodSpecOverride = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.PodSpecOverride, data, false)
 }
 
 func (o *instanceGroupTerraformModel) setPolicyInstanceList(data any) (d diag.Diagnostics, err error) {
-	// Decode "policy_instance_list"
-	if val, ok := data.(string); ok {
-		o.PolicyInstanceList = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.PolicyInstanceList = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.PolicyInstanceList = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.PolicyInstanceList, data, false)
 }
 
 func (o *instanceGroupTerraformModel) setPolicyInstanceMinimum(data any) (d diag.Diagnostics, err error) {
-	// Decode "policy_instance_minimum"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.PolicyInstanceMinimum = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.PolicyInstanceMinimum = types.Int64Value(val)
-	} else {
-		o.PolicyInstanceMinimum = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.PolicyInstanceMinimum, data)
 }
 
 func (o *instanceGroupTerraformModel) setPolicyInstancePercentage(data any) (d diag.Diagnostics, err error) {
-	// Decode "policy_instance_percentage"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.PolicyInstancePercentage = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.PolicyInstancePercentage = types.Int64Value(val)
-	} else {
-		o.PolicyInstancePercentage = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.PolicyInstancePercentage, data)
 }
 
 func (o *instanceGroupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

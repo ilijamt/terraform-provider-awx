@@ -50,49 +50,19 @@ func (o settingsOpenIDConnectTerraformModel) BodyRequest() (req settingsOpenIDCo
 }
 
 func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_OIDC_KEY"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_OIDC_KEY = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_OIDC_KEY = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_OIDC_KEY = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_KEY, data, false)
 }
 
 func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT, data, false)
 }
 
 func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcSecret(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_OIDC_SECRET"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_OIDC_SECRET = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_OIDC_SECRET = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_OIDC_SECRET = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_SECRET, data, false)
 }
 
 func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_OIDC_VERIFY_SSL"
-	if val, ok := data.(bool); ok {
-		o.SOCIAL_AUTH_OIDC_VERIFY_SSL = types.BoolValue(val)
-	} else {
-		o.SOCIAL_AUTH_OIDC_VERIFY_SSL = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data)
 }
 
 func (o *settingsOpenIDConnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

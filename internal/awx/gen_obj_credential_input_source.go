@@ -61,107 +61,27 @@ func (o credentialInputSourceTerraformModel) BodyRequest() (req credentialInputS
 }
 
 func (o *credentialInputSourceTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *credentialInputSourceTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *credentialInputSourceTerraformModel) setInputFieldName(data any) (d diag.Diagnostics, err error) {
-	// Decode "input_field_name"
-	if val, ok := data.(string); ok {
-		o.InputFieldName = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.InputFieldName = types.StringValue(val.String())
-	} else {
-		o.InputFieldName = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.InputFieldName, data, false)
 }
 
 func (o *credentialInputSourceTerraformModel) setMetadata(data any) (d diag.Diagnostics, err error) {
-	// Decode "metadata"
-	if val, ok := data.(string); ok {
-		o.Metadata = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.Metadata = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.Metadata = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.Metadata, data, false)
 }
 
 func (o *credentialInputSourceTerraformModel) setSourceCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "source_credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.SourceCredential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.SourceCredential = types.Int64Value(val)
-	} else {
-		o.SourceCredential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.SourceCredential, data)
 }
 
 func (o *credentialInputSourceTerraformModel) setTargetCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "target_credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.TargetCredential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.TargetCredential = types.Int64Value(val)
-	} else {
-		o.TargetCredential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.TargetCredential, data)
 }
 
 func (o *credentialInputSourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

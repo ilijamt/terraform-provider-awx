@@ -15,21 +15,29 @@ func TestAttrValueSetString(t *testing.T) {
 
 	t.Run("set value correctly", func(t *testing.T) {
 		var state model
-		var d, err = helpers.AttrValueSetString(&state.Value, "test")
+		var d, err = helpers.AttrValueSetString(&state.Value, "test", false)
+		require.NoError(t, err)
+		require.False(t, d.HasError())
+		require.EqualValues(t, "test", state.Value.ValueString())
+	})
+
+	t.Run("set value correctly and trim", func(t *testing.T) {
+		var state model
+		var d, err = helpers.AttrValueSetString(&state.Value, " test\n", true)
 		require.NoError(t, err)
 		require.False(t, d.HasError())
 		require.EqualValues(t, "test", state.Value.ValueString())
 	})
 
 	t.Run("obj is nil error", func(t *testing.T) {
-		var d, err = helpers.AttrValueSetString(nil, "test")
+		var d, err = helpers.AttrValueSetString(nil, "test", false)
 		require.Error(t, err)
 		require.True(t, d.HasError())
 	})
 
 	t.Run("value is null", func(t *testing.T) {
 		var state model
-		var d, err = helpers.AttrValueSetString(&state.Value, nil)
+		var d, err = helpers.AttrValueSetString(&state.Value, nil, false)
 		require.NoError(t, err)
 		require.False(t, d.HasError())
 		require.True(t, state.Value.IsNull())
@@ -37,7 +45,7 @@ func TestAttrValueSetString(t *testing.T) {
 
 	t.Run("decode the number as string", func(t *testing.T) {
 		var state model
-		var d, err = helpers.AttrValueSetString(&state.Value, json.Number("10"))
+		var d, err = helpers.AttrValueSetString(&state.Value, json.Number("10"), false)
 		require.NoError(t, err)
 		require.False(t, d.HasError())
 		require.EqualValues(t, "10", state.Value.ValueString())
@@ -45,7 +53,7 @@ func TestAttrValueSetString(t *testing.T) {
 
 	t.Run("value is wrong data type", func(t *testing.T) {
 		var state model
-		var d, err = helpers.AttrValueSetString(&state.Value, 10)
+		var d, err = helpers.AttrValueSetString(&state.Value, 10, false)
 		require.Error(t, err)
 		require.True(t, d.HasError())
 	})

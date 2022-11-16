@@ -75,149 +75,39 @@ func (o hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
 }
 
 func (o *hostTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *hostTerraformModel) setEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "enabled"
-	if val, ok := data.(bool); ok {
-		o.Enabled = types.BoolValue(val)
-	} else {
-		o.Enabled = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.Enabled, data)
 }
 
 func (o *hostTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *hostTerraformModel) setInstanceId(data any) (d diag.Diagnostics, err error) {
-	// Decode "instance_id"
-	if val, ok := data.(string); ok {
-		o.InstanceId = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.InstanceId = types.StringValue(val.String())
-	} else {
-		o.InstanceId = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.InstanceId, data, false)
 }
 
 func (o *hostTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
-	// Decode "inventory"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Inventory = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Inventory = types.Int64Value(val)
-	} else {
-		o.Inventory = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
 func (o *hostTerraformModel) setLastJob(data any) (d diag.Diagnostics, err error) {
-	// Decode "last_job"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LastJob = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LastJob = types.Int64Value(val)
-	} else {
-		o.LastJob = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LastJob, data)
 }
 
 func (o *hostTerraformModel) setLastJobHostSummary(data any) (d diag.Diagnostics, err error) {
-	// Decode "last_job_host_summary"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LastJobHostSummary = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LastJobHostSummary = types.Int64Value(val)
-	} else {
-		o.LastJobHostSummary = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LastJobHostSummary, data)
 }
 
 func (o *hostTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *hostTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
-	// Decode "variables"
-	if val, ok := data.(string); ok {
-		o.Variables = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.Variables = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.Variables = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
 func (o *hostTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

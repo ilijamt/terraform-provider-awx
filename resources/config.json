@@ -843,12 +843,10 @@
       "property_overrides": {
         "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
           "sensitive": true,
-          "trim_new_line": true,
-          "trim_space": true
+          "trim": true
         },
         "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
-          "trim_new_line": true,
-          "trim_space": true
+          "trim": true
         },
         "SOCIAL_AUTH_SAML_ORG_INFO": {
           "type": "json"

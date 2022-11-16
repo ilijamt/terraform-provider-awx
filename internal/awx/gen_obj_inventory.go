@@ -95,251 +95,67 @@ func (o inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) {
 }
 
 func (o *inventoryTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *inventoryTerraformModel) setHasActiveFailures(data any) (d diag.Diagnostics, err error) {
-	// Decode "has_active_failures"
-	if val, ok := data.(bool); ok {
-		o.HasActiveFailures = types.BoolValue(val)
-	} else {
-		o.HasActiveFailures = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.HasActiveFailures, data)
 }
 
 func (o *inventoryTerraformModel) setHasInventorySources(data any) (d diag.Diagnostics, err error) {
-	// Decode "has_inventory_sources"
-	if val, ok := data.(bool); ok {
-		o.HasInventorySources = types.BoolValue(val)
-	} else {
-		o.HasInventorySources = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.HasInventorySources, data)
 }
 
 func (o *inventoryTerraformModel) setHostFilter(data any) (d diag.Diagnostics, err error) {
-	// Decode "host_filter"
-	if val, ok := data.(string); ok {
-		o.HostFilter = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.HostFilter = types.StringValue(val.String())
-	} else {
-		o.HostFilter = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.HostFilter, data, false)
 }
 
 func (o *inventoryTerraformModel) setHostsWithActiveFailures(data any) (d diag.Diagnostics, err error) {
-	// Decode "hosts_with_active_failures"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.HostsWithActiveFailures = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.HostsWithActiveFailures = types.Int64Value(val)
-	} else {
-		o.HostsWithActiveFailures = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.HostsWithActiveFailures, data)
 }
 
 func (o *inventoryTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *inventoryTerraformModel) setInventorySourcesWithFailures(data any) (d diag.Diagnostics, err error) {
-	// Decode "inventory_sources_with_failures"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.InventorySourcesWithFailures = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.InventorySourcesWithFailures = types.Int64Value(val)
-	} else {
-		o.InventorySourcesWithFailures = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.InventorySourcesWithFailures, data)
 }
 
 func (o *inventoryTerraformModel) setKind(data any) (d diag.Diagnostics, err error) {
-	// Decode "kind"
-	if val, ok := data.(string); ok {
-		o.Kind = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Kind = types.StringValue(val.String())
-	} else {
-		o.Kind = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Kind, data, false)
 }
 
 func (o *inventoryTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *inventoryTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
-	// Decode "organization"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Organization = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Organization = types.Int64Value(val)
-	} else {
-		o.Organization = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
 func (o *inventoryTerraformModel) setPendingDeletion(data any) (d diag.Diagnostics, err error) {
-	// Decode "pending_deletion"
-	if val, ok := data.(bool); ok {
-		o.PendingDeletion = types.BoolValue(val)
-	} else {
-		o.PendingDeletion = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.PendingDeletion, data)
 }
 
 func (o *inventoryTerraformModel) setPreventInstanceGroupFallback(data any) (d diag.Diagnostics, err error) {
-	// Decode "prevent_instance_group_fallback"
-	if val, ok := data.(bool); ok {
-		o.PreventInstanceGroupFallback = types.BoolValue(val)
-	} else {
-		o.PreventInstanceGroupFallback = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
 }
 
 func (o *inventoryTerraformModel) setTotalGroups(data any) (d diag.Diagnostics, err error) {
-	// Decode "total_groups"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.TotalGroups = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.TotalGroups = types.Int64Value(val)
-	} else {
-		o.TotalGroups = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.TotalGroups, data)
 }
 
 func (o *inventoryTerraformModel) setTotalHosts(data any) (d diag.Diagnostics, err error) {
-	// Decode "total_hosts"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.TotalHosts = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.TotalHosts = types.Int64Value(val)
-	} else {
-		o.TotalHosts = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.TotalHosts, data)
 }
 
 func (o *inventoryTerraformModel) setTotalInventorySources(data any) (d diag.Diagnostics, err error) {
-	// Decode "total_inventory_sources"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.TotalInventorySources = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.TotalInventorySources = types.Int64Value(val)
-	} else {
-		o.TotalInventorySources = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.TotalInventorySources, data)
 }
 
 func (o *inventoryTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
-	// Decode "variables"
-	if val, ok := data.(string); ok {
-		o.Variables = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.Variables = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.Variables = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
 func (o *inventoryTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

@@ -61,103 +61,31 @@ func (o settingsAuthGithubEnterpriseTerraformModel) BodyRequest() (req settingsA
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseApiUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseCallbackUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseSecret(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL, data, false)
 }
 
 func (o *settingsAuthGithubEnterpriseTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

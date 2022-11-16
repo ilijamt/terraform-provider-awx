@@ -35,7 +35,9 @@ data "awx_credential_object_roles" "demo_credential" {
 
 resource "awx_organization" "demo_organization" {
   name                = "Demo Organization"
-  default_environment = awx_execution_environment.demo_ee.id
+  depends_on = [
+    awx_execution_environment.demo_ee
+  ]
 }
 
 resource "awx_execution_environment" "demo_ee" {

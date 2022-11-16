@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func AttrValueSetString(obj *types.String, data any) (d diag.Diagnostics, err error) {
+func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnostics, err error) {
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(
@@ -24,7 +24,11 @@ func AttrValueSetString(obj *types.String, data any) (d diag.Diagnostics, err er
 
 	switch data.(type) {
 	case string:
-		*obj = types.StringValue(TrimString(false, false, data.(string)))
+		var val = data.(string)
+		if trim {
+			val = TrimAwxString(val)
+		}
+		*obj = types.StringValue(val)
 	case json.Number:
 		*obj = types.StringValue(data.(json.Number).String())
 	default:

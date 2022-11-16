@@ -45,8 +45,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				if override.Required {
 					value.(map[string]any)["required"] = override.Required
 				}
-				value.(map[string]any)["trim_new_line"] = override.TrimNewLine
-				value.(map[string]any)["trim_space"] = override.TrimSpace
+				value.(map[string]any)["trim"] = override.Trim
 				value.(map[string]any)["post_wrap"] = override.PostWrap
 			}
 			propertyGetKeys = append(propertyGetKeys, key)
@@ -77,8 +76,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				if override.Required {
 					value.(map[string]any)["required"] = override.Required
 				}
-				value.(map[string]any)["trim_new_line"] = override.TrimNewLine
-				value.(map[string]any)["trim_space"] = override.TrimSpace
+				value.(map[string]any)["trim"] = override.Trim
 				value.(map[string]any)["post_wrap"] = override.PostWrap
 			}
 

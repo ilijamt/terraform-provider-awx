@@ -57,91 +57,27 @@ func (o settingsAuthGithubOrgTerraformModel) BodyRequest() (req settingsAuthGith
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgCallbackUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_KEY"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_KEY = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_KEY = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_KEY = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_KEY, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgName(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_NAME"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_NAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_NAME = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_NAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_NAME, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgOrganizationMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgSecret(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_SECRET"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_SECRET = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_SECRET = types.StringValue(val.String())
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_SECRET = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_SECRET, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgTeamMap(data any) (d diag.Diagnostics, err error) {
-	// Decode "SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"
-	if val, ok := data.(string); ok {
-		o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP, data, false)
 }
 
 func (o *settingsAuthGithubOrgTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

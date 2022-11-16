@@ -122,301 +122,87 @@ func (o projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
 }
 
 func (o *projectTerraformModel) setAllowOverride(data any) (d diag.Diagnostics, err error) {
-	// Decode "allow_override"
-	if val, ok := data.(bool); ok {
-		o.AllowOverride = types.BoolValue(val)
-	} else {
-		o.AllowOverride = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AllowOverride, data)
 }
 
 func (o *projectTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Credential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Credential = types.Int64Value(val)
-	} else {
-		o.Credential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
 func (o *projectTerraformModel) setDefaultEnvironment(data any) (d diag.Diagnostics, err error) {
-	// Decode "default_environment"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DefaultEnvironment = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DefaultEnvironment = types.Int64Value(val)
-	} else {
-		o.DefaultEnvironment = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DefaultEnvironment, data)
 }
 
 func (o *projectTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *projectTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *projectTerraformModel) setLocalPath(data any) (d diag.Diagnostics, err error) {
-	// Decode "local_path"
-	if val, ok := data.(string); ok {
-		o.LocalPath = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LocalPath = types.StringValue(val.String())
-	} else {
-		o.LocalPath = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LocalPath, data, false)
 }
 
 func (o *projectTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *projectTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
-	// Decode "organization"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Organization = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Organization = types.Int64Value(val)
-	} else {
-		o.Organization = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
 func (o *projectTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_branch"
-	if val, ok := data.(string); ok {
-		o.ScmBranch = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmBranch = types.StringValue(val.String())
-	} else {
-		o.ScmBranch = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
 func (o *projectTerraformModel) setScmClean(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_clean"
-	if val, ok := data.(bool); ok {
-		o.ScmClean = types.BoolValue(val)
-	} else {
-		o.ScmClean = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ScmClean, data)
 }
 
 func (o *projectTerraformModel) setScmDeleteOnUpdate(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_delete_on_update"
-	if val, ok := data.(bool); ok {
-		o.ScmDeleteOnUpdate = types.BoolValue(val)
-	} else {
-		o.ScmDeleteOnUpdate = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ScmDeleteOnUpdate, data)
 }
 
 func (o *projectTerraformModel) setScmRefspec(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_refspec"
-	if val, ok := data.(string); ok {
-		o.ScmRefspec = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmRefspec = types.StringValue(val.String())
-	} else {
-		o.ScmRefspec = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmRefspec, data, false)
 }
 
 func (o *projectTerraformModel) setScmRevision(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_revision"
-	if val, ok := data.(string); ok {
-		o.ScmRevision = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmRevision = types.StringValue(val.String())
-	} else {
-		o.ScmRevision = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmRevision, data, false)
 }
 
 func (o *projectTerraformModel) setScmTrackSubmodules(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_track_submodules"
-	if val, ok := data.(bool); ok {
-		o.ScmTrackSubmodules = types.BoolValue(val)
-	} else {
-		o.ScmTrackSubmodules = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ScmTrackSubmodules, data)
 }
 
 func (o *projectTerraformModel) setScmType(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_type"
-	if val, ok := data.(string); ok {
-		o.ScmType = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmType = types.StringValue(val.String())
-	} else {
-		o.ScmType = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmType, data, false)
 }
 
 func (o *projectTerraformModel) setScmUpdateCacheTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_update_cache_timeout"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ScmUpdateCacheTimeout = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ScmUpdateCacheTimeout = types.Int64Value(val)
-	} else {
-		o.ScmUpdateCacheTimeout = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ScmUpdateCacheTimeout, data)
 }
 
 func (o *projectTerraformModel) setScmUpdateOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_update_on_launch"
-	if val, ok := data.(bool); ok {
-		o.ScmUpdateOnLaunch = types.BoolValue(val)
-	} else {
-		o.ScmUpdateOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ScmUpdateOnLaunch, data)
 }
 
 func (o *projectTerraformModel) setScmUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_url"
-	if val, ok := data.(string); ok {
-		o.ScmUrl = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmUrl = types.StringValue(val.String())
-	} else {
-		o.ScmUrl = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmUrl, data, false)
 }
 
 func (o *projectTerraformModel) setSignatureValidationCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "signature_validation_credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.SignatureValidationCredential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.SignatureValidationCredential = types.Int64Value(val)
-	} else {
-		o.SignatureValidationCredential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.SignatureValidationCredential, data)
 }
 
 func (o *projectTerraformModel) setStatus(data any) (d diag.Diagnostics, err error) {
-	// Decode "status"
-	if val, ok := data.(string); ok {
-		o.Status = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Status = types.StringValue(val.String())
-	} else {
-		o.Status = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Status, data, false)
 }
 
 func (o *projectTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "timeout"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Timeout = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Timeout = types.Int64Value(val)
-	} else {
-		o.Timeout = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
 func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

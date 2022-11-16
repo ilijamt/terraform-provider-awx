@@ -55,90 +55,19 @@ func (o {{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name 
 {{ range $key := .PropertyGetKeys }}
 {{- with (index $.PropertyGetData $key) }}
 func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCase }}(data any) (d diag.Diagnostics, err error) {
-    // Decode "{{ $key }}"
-    if val, ok := data.({{ awx2go_value_cast . }}); ok {
 {{- if eq (awx2go_value .) "types.Int64Value" }}
-        v, err := val.Int64()
-        if err != nil {
-            d.AddError(
-                fmt.Sprintf("failed to convert %v to int64", val),
-                err.Error(),
-            )
-            return d, err
-        }
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(v)
-    } else if val, ok := data.(int64); ok {
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(val)
+    return helpers.AttrValueSetInt64(&o.{{ property_case $key $.Config }}, data)
 {{- else if eq (awx2go_value .) "types.Float64Value" }}
-        v, err := val.Float64()
-        if err != nil {
-            d.AddError(
-                fmt.Sprintf("failed to convert %v to float64", val),
-                err.Error(),
-            )
-            return d, err
-        }
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(v)
-    } else if val, ok := data.(float64); ok {
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(val)
-{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json") }}
-		o.{{ property_case $key $.Config }} = types.StringValue(helpers.TrimString({{ default .trim_space false }}, {{ default .trim_new_line false }}, val))
-	} else if val, ok := data.(map[string]any); ok {
-	    var v []byte
-		if v, err = json.Marshal(val); err != nil {
-		    d.AddError(
-		        fmt.Sprintf("failed to decode map"),
-		        err.Error(),
-		    )
-		    return
-		}
-		o.{{ property_case $key $.Config }} = types.StringValue(helpers.TrimString({{ default .trim_space false }}, {{ default .trim_new_line false }}, string(v)))
-{{- else if eq (awx2go_value_cast .) "types.List" }}
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}
-    } else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-   			list = append(list, types.StringValue(helpers.TrimString({{ default .trim_space false }}, {{ default .trim_new_line false }}, v.(string))))
-		}
-		o.{{ property_case $key $.Config }} = types.ListValueMust(types.StringType, list)
-    } else if data == nil {
-		o.{{ property_case $key $.Config }} = types.ListValueMust(types.StringType, []attr.Value{})
-	{{- else if eq (awx2go_type .) "types.Map" }}
-        types.MapValueMust(types.StringType, val.Elements())
-    } else if val, ok := data.(map[string]any); ok {
-		var obj map[string]attr.Value
-		for k, v := range val {
-			obj[k] = types.StringValue(helpers.TrimString({{ default .trim_space false }}, {{ default .trim_new_line false }}, v.(string))))
-		}
-		o.{{ property_case $key $.Config }} = types.MapValueMust(types.StringType, obj)
-{{- else }}
-{{- if and (eq (awx2go_value .) "types.StringValue") }}
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(helpers.TrimString({{ default .trim_space false }}, {{ default .trim_new_line false }}, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.{{ property_case $key $.Config }} = types.StringValue(val.String())
-{{- else }}
-        o.{{ property_case $key $.Config }} = {{ awx2go_value . }}(val)
-{{- end }}
-{{- end }}
-    } else {
-{{- if eq (awx2go_value .) "types.Int64Value" }}
-        o.{{ property_case $key $.Config }} = types.Int64Null()
-{{- else if eq (awx2go_value .) "types.Float64Value" }}
-        o.{{ property_case $key $.Config }} = types.Float64Null()
-{{- else if eq (awx2go_value .) "types.StringValue" }}
-        o.{{ property_case $key $.Config }} = types.StringNull()
+    return helpers.AttrValueSetFloat64(&o.{{ property_case $key $.Config }}, data)
 {{- else if eq (awx2go_value .) "types.BoolValue" }}
-        o.{{ property_case $key $.Config }} = types.BoolNull()
-{{- else if or (eq (awx2go_value_cast .) "types.List") (eq (awx2go_value_cast .) "types.Map") }}
-        err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-        d.AddError(
-            fmt.Sprintf("failed to decode value of type %T for {{ awx2go_value_cast . }}", data),
-            err.Error(),
-        )
-        return d, err
+    return helpers.AttrValueSetBool(&o.{{ property_case $key $.Config }}, data)
+{{- else if eq (awx2go_value .) "types.ListValueMust(types.StringType, val.Elements())" }}
+    return helpers.AttrValueSetListString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
+{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json") }}
+    return helpers.AttrValueSetJsonString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
+{{- else if eq (awx2go_value .) "types.StringValue" }}
+    return helpers.AttrValueSetString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
 {{- end }}
-    }
-	return d, nil
 }
 {{- end }}
 {{ end }}

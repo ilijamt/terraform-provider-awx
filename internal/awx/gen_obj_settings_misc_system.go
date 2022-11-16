@@ -11,7 +11,6 @@ import (
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -133,316 +132,95 @@ func (o settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystemB
 }
 
 func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "ACTIVITY_STREAM_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.ACTIVITY_STREAM_ENABLED = types.BoolValue(val)
-	} else {
-		o.ACTIVITY_STREAM_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabledForInventorySync(data any) (d diag.Diagnostics, err error) {
-	// Decode "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC"
-	if val, ok := data.(bool); ok {
-		o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC = types.BoolValue(val)
-	} else {
-		o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsGatherInterval(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTOMATION_ANALYTICS_GATHER_INTERVAL"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.AUTOMATION_ANALYTICS_GATHER_INTERVAL = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.AUTOMATION_ANALYTICS_GATHER_INTERVAL = types.Int64Value(val)
-	} else {
-		o.AUTOMATION_ANALYTICS_GATHER_INTERVAL = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.AUTOMATION_ANALYTICS_GATHER_INTERVAL, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastEntries(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTOMATION_ANALYTICS_LAST_ENTRIES"
-	if val, ok := data.(string); ok {
-		o.AUTOMATION_ANALYTICS_LAST_ENTRIES = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTOMATION_ANALYTICS_LAST_ENTRIES = types.StringValue(val.String())
-	} else {
-		o.AUTOMATION_ANALYTICS_LAST_ENTRIES = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastGather(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTOMATION_ANALYTICS_LAST_GATHER"
-	if val, ok := data.(string); ok {
-		o.AUTOMATION_ANALYTICS_LAST_GATHER = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTOMATION_ANALYTICS_LAST_GATHER = types.StringValue(val.String())
-	} else {
-		o.AUTOMATION_ANALYTICS_LAST_GATHER = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_GATHER, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsUrl(data any) (d diag.Diagnostics, err error) {
-	// Decode "AUTOMATION_ANALYTICS_URL"
-	if val, ok := data.(string); ok {
-		o.AUTOMATION_ANALYTICS_URL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AUTOMATION_ANALYTICS_URL = types.StringValue(val.String())
-	} else {
-		o.AUTOMATION_ANALYTICS_URL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_URL, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setCustomVenvPaths(data any) (d diag.Diagnostics, err error) {
-	// Decode "CUSTOM_VENV_PATHS"
-	if val, ok := data.(types.List); ok {
-		o.CUSTOM_VENV_PATHS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.CUSTOM_VENV_PATHS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.CUSTOM_VENV_PATHS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.CUSTOM_VENV_PATHS, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setDefaultControlPlaneQueueName(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_CONTROL_PLANE_QUEUE_NAME"
-	if val, ok := data.(string); ok {
-		o.DEFAULT_CONTROL_PLANE_QUEUE_NAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.DEFAULT_CONTROL_PLANE_QUEUE_NAME = types.StringValue(val.String())
-	} else {
-		o.DEFAULT_CONTROL_PLANE_QUEUE_NAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.DEFAULT_CONTROL_PLANE_QUEUE_NAME, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setDefaultExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_EXECUTION_ENVIRONMENT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DEFAULT_EXECUTION_ENVIRONMENT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DEFAULT_EXECUTION_ENVIRONMENT = types.Int64Value(val)
-	} else {
-		o.DEFAULT_EXECUTION_ENVIRONMENT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DEFAULT_EXECUTION_ENVIRONMENT, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setDefaultExecutionQueueName(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_EXECUTION_QUEUE_NAME"
-	if val, ok := data.(string); ok {
-		o.DEFAULT_EXECUTION_QUEUE_NAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.DEFAULT_EXECUTION_QUEUE_NAME = types.StringValue(val.String())
-	} else {
-		o.DEFAULT_EXECUTION_QUEUE_NAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.DEFAULT_EXECUTION_QUEUE_NAME, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setInsightsTrackingState(data any) (d diag.Diagnostics, err error) {
-	// Decode "INSIGHTS_TRACKING_STATE"
-	if val, ok := data.(bool); ok {
-		o.INSIGHTS_TRACKING_STATE = types.BoolValue(val)
-	} else {
-		o.INSIGHTS_TRACKING_STATE = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.INSIGHTS_TRACKING_STATE, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setInstallUuid(data any) (d diag.Diagnostics, err error) {
-	// Decode "INSTALL_UUID"
-	if val, ok := data.(string); ok {
-		o.INSTALL_UUID = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.INSTALL_UUID = types.StringValue(val.String())
-	} else {
-		o.INSTALL_UUID = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.INSTALL_UUID, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setIsK8S(data any) (d diag.Diagnostics, err error) {
-	// Decode "IS_K8S"
-	if val, ok := data.(bool); ok {
-		o.IS_K8S = types.BoolValue(val)
-	} else {
-		o.IS_K8S = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.IS_K8S, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setLicense(data any) (d diag.Diagnostics, err error) {
-	// Decode "LICENSE"
-	if val, ok := data.(string); ok {
-		o.LICENSE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LICENSE = types.StringValue(val.String())
-	} else {
-		o.LICENSE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LICENSE, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setManageOrganizationAuth(data any) (d diag.Diagnostics, err error) {
-	// Decode "MANAGE_ORGANIZATION_AUTH"
-	if val, ok := data.(bool); ok {
-		o.MANAGE_ORGANIZATION_AUTH = types.BoolValue(val)
-	} else {
-		o.MANAGE_ORGANIZATION_AUTH = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.MANAGE_ORGANIZATION_AUTH, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setOrgAdminsCanSeeAllUsers(data any) (d diag.Diagnostics, err error) {
-	// Decode "ORG_ADMINS_CAN_SEE_ALL_USERS"
-	if val, ok := data.(bool); ok {
-		o.ORG_ADMINS_CAN_SEE_ALL_USERS = types.BoolValue(val)
-	} else {
-		o.ORG_ADMINS_CAN_SEE_ALL_USERS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ORG_ADMINS_CAN_SEE_ALL_USERS, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) setProxyIpAllowedList(data any) (d diag.Diagnostics, err error) {
-	// Decode "PROXY_IP_ALLOWED_LIST"
-	if val, ok := data.(types.List); ok {
-		o.PROXY_IP_ALLOWED_LIST = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.PROXY_IP_ALLOWED_LIST = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.PROXY_IP_ALLOWED_LIST = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.PROXY_IP_ALLOWED_LIST, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setRedhatPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "REDHAT_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.REDHAT_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.REDHAT_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.REDHAT_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.REDHAT_PASSWORD, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setRedhatUsername(data any) (d diag.Diagnostics, err error) {
-	// Decode "REDHAT_USERNAME"
-	if val, ok := data.(string); ok {
-		o.REDHAT_USERNAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.REDHAT_USERNAME = types.StringValue(val.String())
-	} else {
-		o.REDHAT_USERNAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.REDHAT_USERNAME, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setRemoteHostHeaders(data any) (d diag.Diagnostics, err error) {
-	// Decode "REMOTE_HOST_HEADERS"
-	if val, ok := data.(types.List); ok {
-		o.REMOTE_HOST_HEADERS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.REMOTE_HOST_HEADERS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.REMOTE_HOST_HEADERS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.REMOTE_HOST_HEADERS, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setSubscriptionsPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "SUBSCRIPTIONS_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.SUBSCRIPTIONS_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SUBSCRIPTIONS_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.SUBSCRIPTIONS_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_PASSWORD, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setSubscriptionsUsername(data any) (d diag.Diagnostics, err error) {
-	// Decode "SUBSCRIPTIONS_USERNAME"
-	if val, ok := data.(string); ok {
-		o.SUBSCRIPTIONS_USERNAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SUBSCRIPTIONS_USERNAME = types.StringValue(val.String())
-	} else {
-		o.SUBSCRIPTIONS_USERNAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_USERNAME, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setTowerUrlBase(data any) (d diag.Diagnostics, err error) {
-	// Decode "TOWER_URL_BASE"
-	if val, ok := data.(string); ok {
-		o.TOWER_URL_BASE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.TOWER_URL_BASE = types.StringValue(val.String())
-	} else {
-		o.TOWER_URL_BASE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.TOWER_URL_BASE, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

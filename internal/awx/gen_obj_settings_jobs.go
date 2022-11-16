@@ -12,7 +12,6 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -149,396 +148,95 @@ func (o settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestMo
 }
 
 func (o *settingsJobsTerraformModel) setAdHocCommands(data any) (d diag.Diagnostics, err error) {
-	// Decode "AD_HOC_COMMANDS"
-	if val, ok := data.(types.List); ok {
-		o.AD_HOC_COMMANDS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AD_HOC_COMMANDS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AD_HOC_COMMANDS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AD_HOC_COMMANDS, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setAllowJinjaInExtraVars(data any) (d diag.Diagnostics, err error) {
-	// Decode "ALLOW_JINJA_IN_EXTRA_VARS"
-	if val, ok := data.(string); ok {
-		o.ALLOW_JINJA_IN_EXTRA_VARS = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ALLOW_JINJA_IN_EXTRA_VARS = types.StringValue(val.String())
-	} else {
-		o.ALLOW_JINJA_IN_EXTRA_VARS = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ALLOW_JINJA_IN_EXTRA_VARS, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setAnsibleFactCacheTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "ANSIBLE_FACT_CACHE_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ANSIBLE_FACT_CACHE_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ANSIBLE_FACT_CACHE_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.ANSIBLE_FACT_CACHE_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ANSIBLE_FACT_CACHE_TIMEOUT, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxAnsibleCallbackPlugins(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_ANSIBLE_CALLBACK_PLUGINS"
-	if val, ok := data.(types.List); ok {
-		o.AWX_ANSIBLE_CALLBACK_PLUGINS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AWX_ANSIBLE_CALLBACK_PLUGINS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AWX_ANSIBLE_CALLBACK_PLUGINS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AWX_ANSIBLE_CALLBACK_PLUGINS, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setAwxCollectionsEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_COLLECTIONS_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.AWX_COLLECTIONS_ENABLED = types.BoolValue(val)
-	} else {
-		o.AWX_COLLECTIONS_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AWX_COLLECTIONS_ENABLED, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxIsolationBasePath(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_ISOLATION_BASE_PATH"
-	if val, ok := data.(string); ok {
-		o.AWX_ISOLATION_BASE_PATH = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.AWX_ISOLATION_BASE_PATH = types.StringValue(val.String())
-	} else {
-		o.AWX_ISOLATION_BASE_PATH = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.AWX_ISOLATION_BASE_PATH, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setAwxIsolationShowPaths(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_ISOLATION_SHOW_PATHS"
-	if val, ok := data.(types.List); ok {
-		o.AWX_ISOLATION_SHOW_PATHS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.AWX_ISOLATION_SHOW_PATHS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.AWX_ISOLATION_SHOW_PATHS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.AWX_ISOLATION_SHOW_PATHS, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setAwxMountIsolatedPathsOnK8S(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_MOUNT_ISOLATED_PATHS_ON_K8S"
-	if val, ok := data.(bool); ok {
-		o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S = types.BoolValue(val)
-	} else {
-		o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxRolesEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_ROLES_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.AWX_ROLES_ENABLED = types.BoolValue(val)
-	} else {
-		o.AWX_ROLES_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AWX_ROLES_ENABLED, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxShowPlaybookLinks(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_SHOW_PLAYBOOK_LINKS"
-	if val, ok := data.(bool); ok {
-		o.AWX_SHOW_PLAYBOOK_LINKS = types.BoolValue(val)
-	} else {
-		o.AWX_SHOW_PLAYBOOK_LINKS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AWX_SHOW_PLAYBOOK_LINKS, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxTaskEnv(data any) (d diag.Diagnostics, err error) {
-	// Decode "AWX_TASK_ENV"
-	if val, ok := data.(string); ok {
-		o.AWX_TASK_ENV = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.AWX_TASK_ENV = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.AWX_TASK_ENV = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.AWX_TASK_ENV, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setDefaultInventoryUpdateTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_INVENTORY_UPDATE_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DEFAULT_INVENTORY_UPDATE_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DEFAULT_INVENTORY_UPDATE_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.DEFAULT_INVENTORY_UPDATE_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DEFAULT_INVENTORY_UPDATE_TIMEOUT, data)
 }
 
 func (o *settingsJobsTerraformModel) setDefaultJobIdleTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_JOB_IDLE_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DEFAULT_JOB_IDLE_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DEFAULT_JOB_IDLE_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.DEFAULT_JOB_IDLE_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_IDLE_TIMEOUT, data)
 }
 
 func (o *settingsJobsTerraformModel) setDefaultJobTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_JOB_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DEFAULT_JOB_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DEFAULT_JOB_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.DEFAULT_JOB_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_TIMEOUT, data)
 }
 
 func (o *settingsJobsTerraformModel) setDefaultProjectUpdateTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "DEFAULT_PROJECT_UPDATE_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.DEFAULT_PROJECT_UPDATE_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.DEFAULT_PROJECT_UPDATE_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.DEFAULT_PROJECT_UPDATE_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.DEFAULT_PROJECT_UPDATE_TIMEOUT, data)
 }
 
 func (o *settingsJobsTerraformModel) setEventStdoutMaxBytesDisplay(data any) (d diag.Diagnostics, err error) {
-	// Decode "EVENT_STDOUT_MAX_BYTES_DISPLAY"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.EVENT_STDOUT_MAX_BYTES_DISPLAY = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.EVENT_STDOUT_MAX_BYTES_DISPLAY = types.Int64Value(val)
-	} else {
-		o.EVENT_STDOUT_MAX_BYTES_DISPLAY = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.EVENT_STDOUT_MAX_BYTES_DISPLAY, data)
 }
 
 func (o *settingsJobsTerraformModel) setGalaxyIgnoreCerts(data any) (d diag.Diagnostics, err error) {
-	// Decode "GALAXY_IGNORE_CERTS"
-	if val, ok := data.(bool); ok {
-		o.GALAXY_IGNORE_CERTS = types.BoolValue(val)
-	} else {
-		o.GALAXY_IGNORE_CERTS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.GALAXY_IGNORE_CERTS, data)
 }
 
 func (o *settingsJobsTerraformModel) setGalaxyTaskEnv(data any) (d diag.Diagnostics, err error) {
-	// Decode "GALAXY_TASK_ENV"
-	if val, ok := data.(string); ok {
-		o.GALAXY_TASK_ENV = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.GALAXY_TASK_ENV = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.GALAXY_TASK_ENV = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.GALAXY_TASK_ENV, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setMaxForks(data any) (d diag.Diagnostics, err error) {
-	// Decode "MAX_FORKS"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.MAX_FORKS = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.MAX_FORKS = types.Int64Value(val)
-	} else {
-		o.MAX_FORKS = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.MAX_FORKS, data)
 }
 
 func (o *settingsJobsTerraformModel) setMaxWebsocketEventRate(data any) (d diag.Diagnostics, err error) {
-	// Decode "MAX_WEBSOCKET_EVENT_RATE"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.MAX_WEBSOCKET_EVENT_RATE = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.MAX_WEBSOCKET_EVENT_RATE = types.Int64Value(val)
-	} else {
-		o.MAX_WEBSOCKET_EVENT_RATE = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.MAX_WEBSOCKET_EVENT_RATE, data)
 }
 
 func (o *settingsJobsTerraformModel) setProjectUpdateVvv(data any) (d diag.Diagnostics, err error) {
-	// Decode "PROJECT_UPDATE_VVV"
-	if val, ok := data.(bool); ok {
-		o.PROJECT_UPDATE_VVV = types.BoolValue(val)
-	} else {
-		o.PROJECT_UPDATE_VVV = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.PROJECT_UPDATE_VVV, data)
 }
 
 func (o *settingsJobsTerraformModel) setScheduleMaxJobs(data any) (d diag.Diagnostics, err error) {
-	// Decode "SCHEDULE_MAX_JOBS"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.SCHEDULE_MAX_JOBS = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.SCHEDULE_MAX_JOBS = types.Int64Value(val)
-	} else {
-		o.SCHEDULE_MAX_JOBS = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.SCHEDULE_MAX_JOBS, data)
 }
 
 func (o *settingsJobsTerraformModel) setStdoutMaxBytesDisplay(data any) (d diag.Diagnostics, err error) {
-	// Decode "STDOUT_MAX_BYTES_DISPLAY"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.STDOUT_MAX_BYTES_DISPLAY = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.STDOUT_MAX_BYTES_DISPLAY = types.Int64Value(val)
-	} else {
-		o.STDOUT_MAX_BYTES_DISPLAY = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.STDOUT_MAX_BYTES_DISPLAY, data)
 }
 
 func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

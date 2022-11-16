@@ -54,69 +54,23 @@ func (o settingsUITerraformModel) BodyRequest() (req settingsUIBodyRequestModel)
 }
 
 func (o *settingsUITerraformModel) setCustomLoginInfo(data any) (d diag.Diagnostics, err error) {
-	// Decode "CUSTOM_LOGIN_INFO"
-	if val, ok := data.(string); ok {
-		o.CUSTOM_LOGIN_INFO = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.CUSTOM_LOGIN_INFO = types.StringValue(val.String())
-	} else {
-		o.CUSTOM_LOGIN_INFO = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data, false)
 }
 
 func (o *settingsUITerraformModel) setCustomLogo(data any) (d diag.Diagnostics, err error) {
-	// Decode "CUSTOM_LOGO"
-	if val, ok := data.(string); ok {
-		o.CUSTOM_LOGO = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.CUSTOM_LOGO = types.StringValue(val.String())
-	} else {
-		o.CUSTOM_LOGO = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.CUSTOM_LOGO, data, false)
 }
 
 func (o *settingsUITerraformModel) setMaxUiJobEvents(data any) (d diag.Diagnostics, err error) {
-	// Decode "MAX_UI_JOB_EVENTS"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.MAX_UI_JOB_EVENTS = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.MAX_UI_JOB_EVENTS = types.Int64Value(val)
-	} else {
-		o.MAX_UI_JOB_EVENTS = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data)
 }
 
 func (o *settingsUITerraformModel) setPendoTrackingState(data any) (d diag.Diagnostics, err error) {
-	// Decode "PENDO_TRACKING_STATE"
-	if val, ok := data.(string); ok {
-		o.PENDO_TRACKING_STATE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.PENDO_TRACKING_STATE = types.StringValue(val.String())
-	} else {
-		o.PENDO_TRACKING_STATE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data, false)
 }
 
 func (o *settingsUITerraformModel) setUiLiveUpdatesEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "UI_LIVE_UPDATES_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.UI_LIVE_UPDATES_ENABLED = types.BoolValue(val)
-	} else {
-		o.UI_LIVE_UPDATES_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data)
 }
 
 func (o *settingsUITerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

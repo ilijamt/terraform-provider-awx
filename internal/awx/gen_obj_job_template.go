@@ -221,577 +221,183 @@ func (o jobTemplateTerraformModel) BodyRequest() (req jobTemplateBodyRequestMode
 }
 
 func (o *jobTemplateTerraformModel) setAllowSimultaneous(data any) (d diag.Diagnostics, err error) {
-	// Decode "allow_simultaneous"
-	if val, ok := data.(bool); ok {
-		o.AllowSimultaneous = types.BoolValue(val)
-	} else {
-		o.AllowSimultaneous = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AllowSimultaneous, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskCredentialOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_credential_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskCredentialOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskCredentialOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskCredentialOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskDiffModeOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_diff_mode_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskDiffModeOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskDiffModeOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskDiffModeOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskExecutionEnvironmentOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_execution_environment_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskExecutionEnvironmentOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskExecutionEnvironmentOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskExecutionEnvironmentOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskForksOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_forks_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskForksOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskForksOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskForksOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskInstanceGroupsOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_instance_groups_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskInstanceGroupsOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskInstanceGroupsOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskInstanceGroupsOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_inventory_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskInventoryOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskInventoryOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskJobSliceCountOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_job_slice_count_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskJobSliceCountOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskJobSliceCountOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskJobSliceCountOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskJobTypeOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_job_type_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskJobTypeOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskJobTypeOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskJobTypeOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_labels_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskLabelsOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskLabelsOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskLimitOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_limit_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskLimitOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskLimitOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_scm_branch_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskScmBranchOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskScmBranchOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_skip_tags_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskSkipTagsOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskSkipTagsOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_tags_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskTagsOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskTagsOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskTimeoutOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_timeout_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskTimeoutOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskTimeoutOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskTimeoutOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_variables_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskVariablesOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskVariablesOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setAskVerbosityOnLaunch(data any) (d diag.Diagnostics, err error) {
-	// Decode "ask_verbosity_on_launch"
-	if val, ok := data.(bool); ok {
-		o.AskVerbosityOnLaunch = types.BoolValue(val)
-	} else {
-		o.AskVerbosityOnLaunch = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.AskVerbosityOnLaunch, data)
 }
 
 func (o *jobTemplateTerraformModel) setBecomeEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "become_enabled"
-	if val, ok := data.(bool); ok {
-		o.BecomeEnabled = types.BoolValue(val)
-	} else {
-		o.BecomeEnabled = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
 }
 
 func (o *jobTemplateTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
-	// Decode "description"
-	if val, ok := data.(string); ok {
-		o.Description = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Description = types.StringValue(val.String())
-	} else {
-		o.Description = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
-	// Decode "diff_mode"
-	if val, ok := data.(bool); ok {
-		o.DiffMode = types.BoolValue(val)
-	} else {
-		o.DiffMode = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
 func (o *jobTemplateTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
-	// Decode "execution_environment"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ExecutionEnvironment = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ExecutionEnvironment = types.Int64Value(val)
-	} else {
-		o.ExecutionEnvironment = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
 func (o *jobTemplateTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
-	// Decode "extra_vars"
-	if val, ok := data.(string); ok {
-		o.ExtraVars = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(map[string]any); ok {
-		var v []byte
-		if v, err = json.Marshal(val); err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to decode map"),
-				err.Error(),
-			)
-			return
-		}
-		o.ExtraVars = types.StringValue(helpers.TrimString(false, false, string(v)))
-	} else {
-		o.ExtraVars = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setForceHandlers(data any) (d diag.Diagnostics, err error) {
-	// Decode "force_handlers"
-	if val, ok := data.(bool); ok {
-		o.ForceHandlers = types.BoolValue(val)
-	} else {
-		o.ForceHandlers = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.ForceHandlers, data)
 }
 
 func (o *jobTemplateTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
-	// Decode "forks"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Forks = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Forks = types.Int64Value(val)
-	} else {
-		o.Forks = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
 func (o *jobTemplateTerraformModel) setHostConfigKey(data any) (d diag.Diagnostics, err error) {
-	// Decode "host_config_key"
-	if val, ok := data.(string); ok {
-		o.HostConfigKey = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.HostConfigKey = types.StringValue(val.String())
-	} else {
-		o.HostConfigKey = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.HostConfigKey, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
-	// Decode "id"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.ID = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.ID = types.Int64Value(val)
-	} else {
-		o.ID = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
 func (o *jobTemplateTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
-	// Decode "inventory"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Inventory = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Inventory = types.Int64Value(val)
-	} else {
-		o.Inventory = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
 func (o *jobTemplateTerraformModel) setJobSliceCount(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_slice_count"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.JobSliceCount = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.JobSliceCount = types.Int64Value(val)
-	} else {
-		o.JobSliceCount = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
 }
 
 func (o *jobTemplateTerraformModel) setJobTags(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_tags"
-	if val, ok := data.(string); ok {
-		o.JobTags = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobTags = types.StringValue(val.String())
-	} else {
-		o.JobTags = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobTags, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
-	// Decode "job_type"
-	if val, ok := data.(string); ok {
-		o.JobType = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.JobType = types.StringValue(val.String())
-	} else {
-		o.JobType = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
-	// Decode "limit"
-	if val, ok := data.(string); ok {
-		o.Limit = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Limit = types.StringValue(val.String())
-	} else {
-		o.Limit = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
-	// Decode "name"
-	if val, ok := data.(string); ok {
-		o.Name = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Name = types.StringValue(val.String())
-	} else {
-		o.Name = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
-	// Decode "organization"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Organization = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Organization = types.Int64Value(val)
-	} else {
-		o.Organization = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
 func (o *jobTemplateTerraformModel) setPlaybook(data any) (d diag.Diagnostics, err error) {
-	// Decode "playbook"
-	if val, ok := data.(string); ok {
-		o.Playbook = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Playbook = types.StringValue(val.String())
-	} else {
-		o.Playbook = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Playbook, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setPreventInstanceGroupFallback(data any) (d diag.Diagnostics, err error) {
-	// Decode "prevent_instance_group_fallback"
-	if val, ok := data.(bool); ok {
-		o.PreventInstanceGroupFallback = types.BoolValue(val)
-	} else {
-		o.PreventInstanceGroupFallback = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
 }
 
 func (o *jobTemplateTerraformModel) setProject(data any) (d diag.Diagnostics, err error) {
-	// Decode "project"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Project = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Project = types.Int64Value(val)
-	} else {
-		o.Project = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Project, data)
 }
 
 func (o *jobTemplateTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
-	// Decode "scm_branch"
-	if val, ok := data.(string); ok {
-		o.ScmBranch = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.ScmBranch = types.StringValue(val.String())
-	} else {
-		o.ScmBranch = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setSkipTags(data any) (d diag.Diagnostics, err error) {
-	// Decode "skip_tags"
-	if val, ok := data.(string); ok {
-		o.SkipTags = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.SkipTags = types.StringValue(val.String())
-	} else {
-		o.SkipTags = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.SkipTags, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setStartAtTask(data any) (d diag.Diagnostics, err error) {
-	// Decode "start_at_task"
-	if val, ok := data.(string); ok {
-		o.StartAtTask = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.StartAtTask = types.StringValue(val.String())
-	} else {
-		o.StartAtTask = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.StartAtTask, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setSurveyEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "survey_enabled"
-	if val, ok := data.(bool); ok {
-		o.SurveyEnabled = types.BoolValue(val)
-	} else {
-		o.SurveyEnabled = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.SurveyEnabled, data)
 }
 
 func (o *jobTemplateTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "timeout"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.Timeout = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.Timeout = types.Int64Value(val)
-	} else {
-		o.Timeout = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
 func (o *jobTemplateTerraformModel) setUseFactCache(data any) (d diag.Diagnostics, err error) {
-	// Decode "use_fact_cache"
-	if val, ok := data.(bool); ok {
-		o.UseFactCache = types.BoolValue(val)
-	} else {
-		o.UseFactCache = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.UseFactCache, data)
 }
 
 func (o *jobTemplateTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
-	// Decode "verbosity"
-	if val, ok := data.(string); ok {
-		o.Verbosity = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.Verbosity = types.StringValue(val.String())
-	} else {
-		o.Verbosity = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
 func (o *jobTemplateTerraformModel) setWebhookCredential(data any) (d diag.Diagnostics, err error) {
-	// Decode "webhook_credential"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.WebhookCredential = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.WebhookCredential = types.Int64Value(val)
-	} else {
-		o.WebhookCredential = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.WebhookCredential, data)
 }
 
 func (o *jobTemplateTerraformModel) setWebhookService(data any) (d diag.Diagnostics, err error) {
-	// Decode "webhook_service"
-	if val, ok := data.(string); ok {
-		o.WebhookService = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.WebhookService = types.StringValue(val.String())
-	} else {
-		o.WebhookService = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.WebhookService, data, false)
 }
 
 func (o *jobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
@@ -2767,7 +2373,7 @@ func (o *jobTemplateSurvey) Read(ctx context.Context, request resource.ReadReque
 	}
 
 	if val, ok := data["spec"]; ok {
-		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val)
+		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val, false)
 		if dg.HasError() {
 			response.Diagnostics.Append(dg...)
 		}

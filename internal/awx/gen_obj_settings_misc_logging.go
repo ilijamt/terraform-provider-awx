@@ -12,7 +12,6 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
-	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -111,234 +110,71 @@ func (o settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggin
 }
 
 func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (d diag.Diagnostics, err error) {
-	// Decode "API_400_ERROR_LOG_FORMAT"
-	if val, ok := data.(string); ok {
-		o.API_400_ERROR_LOG_FORMAT = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.API_400_ERROR_LOG_FORMAT = types.StringValue(val.String())
-	} else {
-		o.API_400_ERROR_LOG_FORMAT = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.API_400_ERROR_LOG_FORMAT, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorEnabled(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_ENABLED"
-	if val, ok := data.(bool); ok {
-		o.LOG_AGGREGATOR_ENABLED = types.BoolValue(val)
-	} else {
-		o.LOG_AGGREGATOR_ENABLED = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_ENABLED, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorHost(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_HOST"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_HOST = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_HOST = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_HOST = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_HOST, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorIndividualFacts(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_INDIVIDUAL_FACTS"
-	if val, ok := data.(bool); ok {
-		o.LOG_AGGREGATOR_INDIVIDUAL_FACTS = types.BoolValue(val)
-	} else {
-		o.LOG_AGGREGATOR_INDIVIDUAL_FACTS = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_INDIVIDUAL_FACTS, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLevel(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_LEVEL"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_LEVEL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_LEVEL = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_LEVEL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_LEVEL, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLoggers(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_LOGGERS"
-	if val, ok := data.(types.List); ok {
-		o.LOG_AGGREGATOR_LOGGERS = types.ListValueMust(types.StringType, val.Elements())
-	} else if val, ok := data.([]any); ok {
-		var list []attr.Value
-		for _, v := range val {
-			list = append(list, types.StringValue(helpers.TrimString(false, false, v.(string))))
-		}
-		o.LOG_AGGREGATOR_LOGGERS = types.ListValueMust(types.StringType, list)
-	} else if data == nil {
-		o.LOG_AGGREGATOR_LOGGERS = types.ListValueMust(types.StringType, []attr.Value{})
-	} else {
-		err = fmt.Errorf("failed to decode and set %v of %T type", data, data)
-		d.AddError(
-			fmt.Sprintf("failed to decode value of type %T for types.List", data),
-			err.Error(),
-		)
-		return d, err
-	}
-	return d, nil
+	return helpers.AttrValueSetListString(&o.LOG_AGGREGATOR_LOGGERS, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsageGb(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_MAX_DISK_USAGE_GB"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB = types.Int64Value(val)
-	} else {
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsagePath(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPassword(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_PASSWORD"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_PASSWORD = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_PASSWORD = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_PASSWORD = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PASSWORD, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPort(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_PORT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LOG_AGGREGATOR_PORT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LOG_AGGREGATOR_PORT = types.Int64Value(val)
-	} else {
-		o.LOG_AGGREGATOR_PORT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_PORT, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorProtocol(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_PROTOCOL"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_PROTOCOL = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_PROTOCOL = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_PROTOCOL = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PROTOCOL, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorRsyslogdDebug(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_RSYSLOGD_DEBUG"
-	if val, ok := data.(bool); ok {
-		o.LOG_AGGREGATOR_RSYSLOGD_DEBUG = types.BoolValue(val)
-	} else {
-		o.LOG_AGGREGATOR_RSYSLOGD_DEBUG = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_RSYSLOGD_DEBUG, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTcpTimeout(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_TCP_TIMEOUT"
-	if val, ok := data.(json.Number); ok {
-		v, err := val.Int64()
-		if err != nil {
-			d.AddError(
-				fmt.Sprintf("failed to convert %v to int64", val),
-				err.Error(),
-			)
-			return d, err
-		}
-		o.LOG_AGGREGATOR_TCP_TIMEOUT = types.Int64Value(v)
-	} else if val, ok := data.(int64); ok {
-		o.LOG_AGGREGATOR_TCP_TIMEOUT = types.Int64Value(val)
-	} else {
-		o.LOG_AGGREGATOR_TCP_TIMEOUT = types.Int64Null()
-	}
-	return d, nil
+	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_TCP_TIMEOUT, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTowerUuid(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_TOWER_UUID"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_TOWER_UUID = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_TOWER_UUID = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_TOWER_UUID = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TOWER_UUID, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorType(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_TYPE"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_TYPE = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_TYPE = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_TYPE = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TYPE, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorUsername(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_USERNAME"
-	if val, ok := data.(string); ok {
-		o.LOG_AGGREGATOR_USERNAME = types.StringValue(helpers.TrimString(false, false, val))
-	} else if val, ok := data.(json.Number); ok {
-		o.LOG_AGGREGATOR_USERNAME = types.StringValue(val.String())
-	} else {
-		o.LOG_AGGREGATOR_USERNAME = types.StringNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_USERNAME, data, false)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorVerifyCert(data any) (d diag.Diagnostics, err error) {
-	// Decode "LOG_AGGREGATOR_VERIFY_CERT"
-	if val, ok := data.(bool); ok {
-		o.LOG_AGGREGATOR_VERIFY_CERT = types.BoolValue(val)
-	} else {
-		o.LOG_AGGREGATOR_VERIFY_CERT = types.BoolNull()
-	}
-	return d, nil
+	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_VERIFY_CERT, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
