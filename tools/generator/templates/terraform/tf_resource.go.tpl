@@ -1,0 +1,392 @@
+{{ define "tf_resource" }}
+// Ensure the implementation satisfies the expected interfaces.
+var (
+	_ resource.Resource                = &{{ .Name | lowerCamelCase }}Resource{}
+	_ resource.ResourceWithConfigure   = &{{ .Name | lowerCamelCase }}Resource{}
+{{- if not $.Config.NoId }}
+	_ resource.ResourceWithImportState = &{{ .Name | lowerCamelCase }}Resource{}
+{{- end }}
+)
+
+// New{{ .Name }}Resource is a helper function to simplify the provider implementation.
+func New{{ .Name }}Resource() resource.Resource {
+	return &{{ .Name | lowerCamelCase }}Resource{}
+}
+
+type {{ .Name | lowerCamelCase }}Resource struct {
+    client   c.Client
+    endpoint string
+}
+
+func (o *{{ .Name | lowerCamelCase }}Resource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+    if request.ProviderData == nil {
+        return
+    }
+
+    o.client = request.ProviderData.(c.Client)
+    o.endpoint = "{{ $.Endpoint }}"
+}
+
+func (o {{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+	response.TypeName = request.ProviderTypeName + "_{{ $.Config.TypeName }}"
+}
+
+func (o {{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+    return processSchema(
+        SourceResource,
+        "{{ .Name }}",
+        tfsdk.Schema{
+        Attributes: map[string]tfsdk.Attribute{
+        // Request elements
+{{- range $key := .PropertyPostKeys }}
+{{- with (index $.PropertyPostData $key) }}
+            "{{ $key | lowerCase }}": {
+                Description: {{ escape_quotes (default .help_text .label) }},
+                Type:        {{ awx2tf_type . }},
+{{- if (hasKey . "sensitive") }}
+                Sensitive:   {{ .sensitive }},
+{{- end }}
+{{- if .required }}
+                Required:    {{ .required }},
+{{- else }}
+                Optional:    true,
+                Computed:    true,
+{{- end }}
+		        PlanModifiers: []tfsdk.AttributePlanModifier{
+{{- if (hasKey . "default") }}
+{{- if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.StringValue") (ne .default nil) }}
+                    helpers.DefaultValue({{ awx2go_value . }}(`{{ convertDefaultValue .default }}`)),
+{{- else if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.Int64Value") (ne .default nil) }}
+                    helpers.DefaultValue({{ awx2go_value . }}({{ convertDefaultValue .default }})),
+{{- end }}
+{{- end }}
+{{- if not .required }}
+                    resource.UseStateForUnknown(),
+{{- end }}
+                },
+				Validators: []tfsdk.AttributeValidator{
+{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
+					stringvalidator.LengthAtMost({{ .max_length }}),
+{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
+					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+{{- else if eq .type "choice" }}
+					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+{{- end }}
+                },
+            },
+{{- end }}
+{{- end }}
+        // Write only elements
+{{- range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+            "{{ $key | lowerCase }}": {
+                Description: {{ escape_quotes (default .help_text .label) }},
+                Type:        {{ awx2tf_type . }},
+{{- if (hasKey . "sensitive") }}
+                Sensitive:   {{ .sensitive }},
+{{- end }}
+{{- if .required }}
+                Required:    {{ .required }},
+{{- else }}
+                Optional:    true,
+                Computed:    true,
+{{- end }}
+		        PlanModifiers: []tfsdk.AttributePlanModifier{
+{{- if (hasKey . "default") }}
+{{- if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.StringValue") (ne .default nil) (ne .default "") }}
+                    helpers.DefaultValue({{ awx2go_value . }}(`{{ convertDefaultValue .default }}`)),
+{{- else if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.Int64Value") (ne .default nil) }}
+                    helpers.DefaultValue({{ awx2go_value . }}({{ convertDefaultValue .default }})),
+{{- end }}
+{{- end }}
+{{- if not .required }}
+                    resource.UseStateForUnknown(),
+{{- end }}
+				},
+				Validators: []tfsdk.AttributeValidator{
+{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
+					stringvalidator.LengthAtMost({{ .max_length }}),
+{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
+					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+{{- else if eq .type "choice" }}
+					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+{{- end }}
+                },
+            },
+{{- end }}
+{{- end }}
+        // Data only elements
+{{- range $key := .PropertyGetKeys }}
+{{- if not (hasKey $.PropertyPostData $key) }}
+{{- with (index $.PropertyGetData $key) }}
+            "{{ $key | lowerCase }}": {
+                Description: {{ escape_quotes (default .help_text "") }},
+                Computed:    true,
+                Type:        {{ awx2tf_type . }},
+{{- if (hasKey . "sensitive") }}
+                Sensitive:   {{ .sensitive }},
+{{- end }}
+		        PlanModifiers: []tfsdk.AttributePlanModifier{
+                    resource.UseStateForUnknown(),
+				},
+{{- if eq .type "choice" }}
+				Validators: []tfsdk.AttributeValidator{
+					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+				},
+{{- end }}
+            },
+{{- end }}
+{{- end }}
+{{- end }}
+        },
+    }), nil
+}
+
+{{ if not $.Config.NoId }}
+func (o *{{ .Name | lowerCamelCase }}Resource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+{{- if eq (awx2go_value (index $.PropertyGetData $.Config.IdKey)) "types.Int64Value" }}
+	var id, err = strconv.ParseInt(request.ID, 10, 64)
+	if err != nil {
+		response.Diagnostics.AddError(
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ .Name }}.", request.ID),
+			err.Error(),
+		)
+		return
+	}
+	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("{{ $.Config.IdKey }}"), id)...)
+{{- else if eq (awx2go_value (index $.PropertyGetData $.Config.IdKey "type")) "types.StringValue" }}
+	resource.ImportStatePassthroughID(ctx, path.Root("{{ $.Config.IdKey }}"), request, response)
+{{- end }}
+}
+{{- end }}
+
+func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+    var err error
+	var plan, state {{ .Name | lowerCamelCase }}TerraformModel
+	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+
+	// Creates a new request for {{ .Name }}
+	var r *http.Request
+	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+	var buf bytes.Buffer
+	var bodyRequest = plan.BodyRequest()
+{{- range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
+{{- end }}
+{{- end }}
+	_ = json.NewEncoder(&buf).Encode(bodyRequest)
+	if r, err = o.client.NewRequest(ctx, {{ if $.Config.NoId }}http.MethodPatch{{ else }}http.MethodPost{{ end }}, endpoint, &buf); err != nil {
+		response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+	// Create a new {{ .Name }} resource in AWX
+    var data map[string]any
+    if data, err = o.client.Do(ctx, r); err != nil {
+        response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to create resource for {{ .Name }} on %s", o.endpoint),
+            err.Error(),
+        )
+        return
+    }
+
+    var d diag.Diagnostics
+    if d, err = state.updateFromApiData(data); err != nil {
+        response.Diagnostics.Append(d...)
+        return
+    }
+
+{{ range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+	state.{{ property_case $key $.Config }} = {{ awx2go_value . }}(plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}())
+{{- end }}
+{{- end }}
+
+{{ if $.Config.PreStateSetHookFunction }}
+    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			err.Error(),
+		)
+		return
+    }
+{{ end }}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+}
+
+func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+	var err error
+
+	// Get current state
+	var state {{ .Name | lowerCamelCase }}TerraformModel
+	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+{{- if $.Config.PreStateSetHookFunction }}
+	var orig = state.Clone()
+{{- end }}
+
+	// Creates a new request for {{ .Name }}
+	var r *http.Request
+{{- if $.Config.NoId }}
+	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+{{- else }}
+	var id = state.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
+	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
+{{- end }}
+	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
+		response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for read", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+	// Get refreshed values for {{ .Name }} from AWX
+    var data map[string]any
+    if data, err = o.client.Do(ctx, r); err != nil {
+        response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to read resource for {{ .Name }} on %s", o.endpoint),
+            err.Error(),
+        )
+        return
+    }
+
+    var d diag.Diagnostics
+    if d, err = state.updateFromApiData(data); err != nil {
+        response.Diagnostics.Append(d...)
+        return
+    }
+
+{{ if $.Config.PreStateSetHookFunction }}
+    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			err.Error(),
+		)
+		return
+    }
+{{ end }}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+}
+
+func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+    var err error
+	var plan, state {{ .Name | lowerCamelCase }}TerraformModel
+	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+
+	// Creates a new request for {{ .Name }}
+	var r *http.Request
+{{- if $.Config.NoId }}
+	var endpoint = p.Clean(fmt.Sprintf("%s", o.endpoint)) + "/"
+{{- else }}
+	var id = plan.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
+	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
+{{- end }}
+	var buf bytes.Buffer
+	var bodyRequest = plan.BodyRequest()
+{{- range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
+{{- end }}
+{{- end }}
+	_ = json.NewEncoder(&buf).Encode(bodyRequest)
+	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
+		response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for update", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+	// Create a new {{ .Name }} resource in AWX
+    var data map[string]any
+    if data, err = o.client.Do(ctx, r); err != nil {
+        response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to update resource for {{ .Name }} on %s", o.endpoint),
+            err.Error(),
+        )
+        return
+    }
+
+    var d diag.Diagnostics
+    if d, err = state.updateFromApiData(data); err != nil {
+        response.Diagnostics.Append(d...)
+        return
+    }
+
+{{ range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+	state.{{ property_case $key $.Config }} = {{ awx2go_value . }}(plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}())
+{{- end }}
+{{- end }}
+
+{{ if $.Config.PreStateSetHookFunction }}
+    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			fmt.Sprintf("Unable to process custom hook for the state on {{ .Name }}"),
+			err.Error(),
+		)
+		return
+    }
+{{ end }}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+}
+
+func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+{{- if $.Config.Undeletable }}
+    return
+{{- else }}
+	var err error
+
+	// Retrieve values from state
+	var state {{ .Name | lowerCamelCase }}TerraformModel
+	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+
+	// Creates a new request for {{ .Name }}
+	var r *http.Request
+	var id = state.{{ camelCase $.Config.IdKey }}
+	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}())) + "/"
+	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
+		response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+    // Delete existing {{ .Name }}
+    if _, err = o.client.Do(ctx, r); err != nil {
+        response.Diagnostics.AddError(
+            fmt.Sprintf("Unable to delete resource for {{ .Name }} on %s", o.endpoint),
+            err.Error(),
+        )
+        return
+    }
+{{- end }}
+}
+{{ end }}
+{{ block "tf_resource" . }}{{ end }}
