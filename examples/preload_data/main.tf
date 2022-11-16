@@ -34,20 +34,12 @@ data "awx_credential_object_roles" "demo_credential" {
 }
 
 resource "awx_organization" "demo_organization" {
-  name                = "Demo Organization"
-  depends_on = [
-    awx_execution_environment.demo_ee
-  ]
+  name = "Demo Organization"
 }
 
 resource "awx_execution_environment" "demo_ee" {
   name  = "Demo EE"
   image = "quay.io/ansible/awx-ee:latest"
-}
-
-resource "awx_organization_associate_execution_environment" "demo_org_demo_ee" {
-  organization_id          = awx_organization.demo_organization.id
-  execution_environment_id = awx_execution_environment.demo_ee.id
 }
 
 resource "awx_user" "demo_user" {

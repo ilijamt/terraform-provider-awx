@@ -78,11 +78,6 @@
           "name": "Organization",
           "type": "InstanceGroup",
           "endpoint": "/api/v2/organizations/%d/instance_groups/"
-        },
-        {
-          "name": "Organization",
-          "type": "ExecutionEnvironment",
-          "endpoint": "/api/v2/organizations/%d/execution_environments/"
         }
       ],
       "remove_fields_data_source": [

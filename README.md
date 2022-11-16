@@ -17,7 +17,6 @@ Implementation status
   * [x] Object roles
 * [x] Organization
   * [x] Object roles
-  * [x] Associate/disassociate with Execution Environment
   * [x] Associate/disassociate with Instance Group
 * [x] Team
   * [x] Object roles

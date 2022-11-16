@@ -64,7 +64,6 @@ func Resources() []func() resource.Resource {
 		NewProjectResource,
 		NewOrganizationResource,
 		NewOrganizationAssociateDisassociateInstanceGroupResource,
-		NewOrganizationAssociateDisassociateExecutionEnvironmentResource,
 		NewTeamResource,
 		NewTeamAssociateDisassociateRoleResource,
 		NewExecutionEnvironmentResource,
