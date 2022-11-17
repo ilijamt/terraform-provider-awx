@@ -20,7 +20,7 @@ build:
 
 test:
 	go test ./internal/... -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
-	go tool cover -html=coverage.out -o build/coverage.html
+	go tool cover -html=build/coverage.out -o build/coverage.html
 
 testacc:
 	TF_ACC=1 go test -count=1 -parallel=4 -timeout 10m -v ./...

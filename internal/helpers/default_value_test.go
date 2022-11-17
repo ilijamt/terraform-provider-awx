@@ -50,5 +50,4 @@ func TestDefaultValue(t *testing.T) {
 		require.NotEmpty(t, res.AttributePlan)
 		require.EqualValues(t, res.AttributePlan, types.StringValue("default"))
 	})
-
 }
