@@ -261,7 +261,7 @@ func (o *settingsAuthGoogleOauth2DataSource) Read(ctx context.Context, req datas
 	}
 
 	// Set state
-	if err = hookSettingsAuthGoogleOauth2(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -427,7 +427,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -479,7 +479,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -531,7 +531,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),

@@ -273,7 +273,7 @@ func (o *settingsAuthGithubEnterpriseTeamDataSource) Read(ctx context.Context, r
 	}
 
 	// Set state
-	if err = hookSettingsAuthGithubEnterpriseTeam(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -451,7 +451,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Create(ctx context.Context, r
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -503,7 +503,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Read(ctx context.Context, req
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -555,7 +555,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Update(ctx context.Context, r
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),

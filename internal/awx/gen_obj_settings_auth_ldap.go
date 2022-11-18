@@ -2050,7 +2050,7 @@ func (o *settingsAuthLDAPDataSource) Read(ctx context.Context, req datasource.Re
 	}
 
 	// Set state
-	if err = hookSettingsAuthLdap(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -3182,7 +3182,7 @@ func (o *settingsAuthLDAPResource) Create(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -3234,7 +3234,7 @@ func (o *settingsAuthLDAPResource) Read(ctx context.Context, request resource.Re
 		return
 	}
 
-	if err = hookSettingsAuthLdap(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -3286,7 +3286,7 @@ func (o *settingsAuthLDAPResource) Update(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),

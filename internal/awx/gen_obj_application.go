@@ -388,7 +388,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 	}
 
 	// Set state
-	if err = hookApplication(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookApplication(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -585,7 +585,7 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 		return
 	}
 
-	if err = hookApplication(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -638,7 +638,7 @@ func (o *applicationResource) Read(ctx context.Context, request resource.ReadReq
 		return
 	}
 
-	if err = hookApplication(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookApplication(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -691,7 +691,7 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 		return
 	}
 
-	if err = hookApplication(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),

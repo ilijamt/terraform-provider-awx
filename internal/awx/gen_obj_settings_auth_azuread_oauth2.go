@@ -216,7 +216,7 @@ func (o *settingsAuthAzureADOauth2DataSource) Read(ctx context.Context, req data
 	}
 
 	// Set state
-	if err = hookSettingsAuthAzureADOauth2(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -361,7 +361,7 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -413,7 +413,7 @@ func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request re
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -465,7 +465,7 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),

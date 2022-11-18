@@ -370,7 +370,7 @@ func (o *credentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	}
 
 	// Set state
-	if err = hookCredential(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookCredential(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -565,7 +565,7 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 		return
 	}
 
-	if err = hookCredential(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -618,7 +618,7 @@ func (o *credentialResource) Read(ctx context.Context, request resource.ReadRequ
 		return
 	}
 
-	if err = hookCredential(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookCredential(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -671,7 +671,7 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		return
 	}
 
-	if err = hookCredential(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),

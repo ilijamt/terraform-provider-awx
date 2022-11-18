@@ -171,7 +171,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
 
     // Set state
 {{- if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(SourceData, CalleeRead, nil, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),

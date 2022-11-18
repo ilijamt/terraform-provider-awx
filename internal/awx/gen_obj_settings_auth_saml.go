@@ -467,7 +467,7 @@ func (o *settingsAuthSAMLDataSource) Read(ctx context.Context, req datasource.Re
 	}
 
 	// Set state
-	if err = hookSettingsSaml(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsSaml(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -739,7 +739,7 @@ func (o *settingsAuthSAMLResource) Create(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsSaml(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsSaml(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -791,7 +791,7 @@ func (o *settingsAuthSAMLResource) Read(ctx context.Context, request resource.Re
 		return
 	}
 
-	if err = hookSettingsSaml(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsSaml(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -843,7 +843,7 @@ func (o *settingsAuthSAMLResource) Update(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsSaml(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsSaml(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),

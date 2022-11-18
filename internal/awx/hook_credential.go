@@ -1,14 +1,17 @@
 package awx
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"strings"
 
+	"github.com/hashicorp/terraform-plugin-log/tflog"
+
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func hookCredential(source Source, callee Callee, orig *credentialTerraformModel, state *credentialTerraformModel) (err error) {
+func hookCredential(ctx context.Context, source Source, callee Callee, orig *credentialTerraformModel, state *credentialTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && callee != CalleeDelete {
 		return fmt.Errorf("state and orig required for resource")
 	} else if source == SourceData && (state == nil) {
@@ -23,21 +26,25 @@ func hookCredential(source Source, callee Callee, orig *credentialTerraformModel
 		}
 		var inputs, origInputs map[string]string
 		if err = json.Unmarshal([]byte(state.Inputs.ValueString()), &inputs); err != nil {
-			return err
-		}
-		if err = json.Unmarshal([]byte(orig.Inputs.ValueString()), &origInputs); err != nil {
-			return err
+			tflog.Error(ctx, "Failed to decode inputs from new state", map[string]any{"inputs": inputs})
+			return fmt.Errorf("%w: inputs from new state", err)
 		}
 
-		for k, v := range inputs {
-			if strings.Contains(v, "$encrypted$") {
-				inputs[k] = origInputs[k]
-				var payload []byte
-				if payload, err = json.Marshal(inputs); err != nil {
-					return err
+		if !orig.Inputs.IsNull() {
+			if err = json.Unmarshal([]byte(orig.Inputs.ValueString()), &origInputs); err != nil {
+				tflog.Error(ctx, "Failed to decode inputs from original state", map[string]any{"inputs": inputs})
+				return fmt.Errorf("%w: inputs from original state", err)
+			}
+			for k, v := range inputs {
+				if strings.Contains(v, "$encrypted$") {
+					inputs[k] = origInputs[k]
+					var payload []byte
+					if payload, err = json.Marshal(inputs); err != nil {
+						return err
+					}
+					state.Inputs = types.StringValue(string(payload))
+					break
 				}
-				state.Inputs = types.StringValue(string(payload))
-				break
 			}
 		}
 	}

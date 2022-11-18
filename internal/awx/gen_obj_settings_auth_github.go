@@ -216,7 +216,7 @@ func (o *settingsAuthGithubDataSource) Read(ctx context.Context, req datasource.
 	}
 
 	// Set state
-	if err = hookSettingsAuthGithub(SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGithub(ctx, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithub",
 			err.Error(),
@@ -361,7 +361,7 @@ func (o *settingsAuthGithubResource) Create(ctx context.Context, request resourc
 		return
 	}
 
-	if err = hookSettingsAuthGithub(SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithub(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithub",
 			err.Error(),
@@ -413,7 +413,7 @@ func (o *settingsAuthGithubResource) Read(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthGithub(SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGithub(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithub",
 			err.Error(),
@@ -465,7 +465,7 @@ func (o *settingsAuthGithubResource) Update(ctx context.Context, request resourc
 		return
 	}
 
-	if err = hookSettingsAuthGithub(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithub(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithub",
 			err.Error(),

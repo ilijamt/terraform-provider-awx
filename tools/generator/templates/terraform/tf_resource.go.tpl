@@ -210,7 +210,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeCreate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -270,7 +270,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     }
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeRead, &orig, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -339,7 +339,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(SourceResource, CalleeUpdate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),

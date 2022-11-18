@@ -1,12 +1,13 @@
 package awx
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func hookApplication(source Source, callee Callee, orig *applicationTerraformModel, state *applicationTerraformModel) (err error) {
+func hookApplication(ctx context.Context, source Source, callee Callee, orig *applicationTerraformModel, state *applicationTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
