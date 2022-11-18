@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/terraform-plugin-log/tflog"
-
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -26,13 +24,11 @@ func hookCredential(ctx context.Context, source Source, callee Callee, orig *cre
 		}
 		var inputs, origInputs map[string]string
 		if err = json.Unmarshal([]byte(state.Inputs.ValueString()), &inputs); err != nil {
-			tflog.Error(ctx, "Failed to decode inputs from new state", map[string]any{"inputs": inputs})
 			return fmt.Errorf("%w: inputs from new state", err)
 		}
 
 		if !orig.Inputs.IsNull() {
 			if err = json.Unmarshal([]byte(orig.Inputs.ValueString()), &origInputs); err != nil {
-				tflog.Error(ctx, "Failed to decode inputs from original state", map[string]any{"inputs": inputs})
 				return fmt.Errorf("%w: inputs from original state", err)
 			}
 			for k, v := range inputs {

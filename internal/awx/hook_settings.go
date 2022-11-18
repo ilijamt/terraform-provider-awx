@@ -14,7 +14,8 @@ func hookSettingsAuthAzureADOauth2(ctx context.Context, source Source, callee Ca
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = orig.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET
 	}
 
@@ -28,7 +29,8 @@ func hookSettingsAuthGithub(ctx context.Context, source Source, callee Callee, o
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_SECRET = orig.SOCIAL_AUTH_GITHUB_SECRET
 	}
 
@@ -42,7 +44,8 @@ func hookSettingsAuthGithubEnterprise(ctx context.Context, source Source, callee
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET = orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET
 	}
 
@@ -56,7 +59,8 @@ func hookSettingsAuthGithubEnterpriseOrg(ctx context.Context, source Source, cal
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET = orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET
 	}
 
@@ -70,7 +74,8 @@ func hookSettingsAuthGithubEnterpriseTeam(ctx context.Context, source Source, ca
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET = orig.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET
 	}
 
@@ -84,7 +89,8 @@ func hookSettingsAuthGithubOrg(ctx context.Context, source Source, callee Callee
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_ORG_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_ORG_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_ORG_SECRET = orig.SOCIAL_AUTH_GITHUB_ORG_SECRET
 	}
 
@@ -98,7 +104,8 @@ func hookSettingsAuthGithubTeam(ctx context.Context, source Source, callee Calle
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GITHUB_TEAM_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GITHUB_TEAM_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GITHUB_TEAM_SECRET = orig.SOCIAL_AUTH_GITHUB_TEAM_SECRET
 	}
 
@@ -113,7 +120,8 @@ func hookSettingsSaml(ctx context.Context, source Source, callee Callee, orig *s
 	state.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = types.StringValue(state.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT.ValueString() + "\n")
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY.IsNull()) {
 		state.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = orig.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY
 	}
 
@@ -127,7 +135,8 @@ func hookSettingsAuthGoogleOauth2(ctx context.Context, source Source, callee Cal
 
 	if source == SourceResource && callee == CalleeCreate ||
 		(state.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET.Equal(types.StringValue("$encrypted$")) &&
-			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead))) {
+			(source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead)) &&
+			!orig.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET.IsNull()) {
 		state.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = orig.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
 	}
 
@@ -140,56 +149,67 @@ func hookSettingsAuthLdap(ctx context.Context, source Source, callee Callee, ori
 	}
 
 	if source == SourceResource && callee == CalleeCreate {
-		if len(state.AUTH_LDAP_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_BIND_PASSWORD = orig.AUTH_LDAP_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_1_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_1_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_1_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_1_BIND_PASSWORD = orig.AUTH_LDAP_1_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_2_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_2_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_2_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_2_BIND_PASSWORD = orig.AUTH_LDAP_2_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_3_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_3_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_3_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_3_BIND_PASSWORD = orig.AUTH_LDAP_3_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_4_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_4_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_4_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_4_BIND_PASSWORD = orig.AUTH_LDAP_4_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_5_BIND_PASSWORD.ValueString()) > 0 {
+		if len(state.AUTH_LDAP_5_BIND_PASSWORD.ValueString()) > 0 && !orig.AUTH_LDAP_5_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_5_BIND_PASSWORD = orig.AUTH_LDAP_5_BIND_PASSWORD
 		}
 
 	} else if source == SourceResource && (callee == CalleeUpdate || callee == CalleeRead) {
 
-		if len(state.AUTH_LDAP_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_BIND_PASSWORD = orig.AUTH_LDAP_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_1_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_1_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_1_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_1_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_1_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_1_BIND_PASSWORD = orig.AUTH_LDAP_1_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_2_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_2_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_2_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_2_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_2_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_2_BIND_PASSWORD = orig.AUTH_LDAP_2_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_3_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_3_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_3_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_3_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_3_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_3_BIND_PASSWORD = orig.AUTH_LDAP_3_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_4_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_4_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_4_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_4_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_4_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_4_BIND_PASSWORD = orig.AUTH_LDAP_4_BIND_PASSWORD
 		}
 
-		if len(state.AUTH_LDAP_5_BIND_PASSWORD.ValueString()) > 0 && state.AUTH_LDAP_5_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) {
+		if len(state.AUTH_LDAP_5_BIND_PASSWORD.ValueString()) > 0 &&
+			state.AUTH_LDAP_5_BIND_PASSWORD.Equal(types.StringValue("$encrypted$")) &&
+			!orig.AUTH_LDAP_5_BIND_PASSWORD.IsNull() {
 			state.AUTH_LDAP_5_BIND_PASSWORD = orig.AUTH_LDAP_5_BIND_PASSWORD
 		}
-
 	}
 
 	return nil
