@@ -59,14 +59,25 @@ type Item struct {
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource"`
 }
 
+type CredentialTypes struct {
+	Name         string         `json:"name"`
+	Description  string         `json:"description"`
+	Organization int            `json:"organization"`
+	Required     []string       `json:"inputs.required"`
+	Metadata     map[string]any `json:"inputs.metadata"`
+	Fields       map[string]any `json:"inputs.fields"`
+	Dependencies map[string]any `json:"inputs.dependencies"`
+}
+
 type Config struct {
-	DefaultRemoveApiDataSource   []string `json:"default_remove_api_data_source"`
-	DefaultRemoveApiResource     []string `json:"default_remove_api_resource"`
-	Items                        []Item   `json:"items"`
-	ApiVersion                   string   `json:"api_version"`
-	RenderApiDocs                bool     `json:"render_api_docs"`
-	GeneratedApiResources        []string `json:"-"`
-	GeneratedDataSourceResources []string `json:"-"`
+	DefaultRemoveApiDataSource   []string          `json:"default_remove_api_data_source"`
+	DefaultRemoveApiResource     []string          `json:"default_remove_api_resource"`
+	Items                        []Item            `json:"items"`
+	CredentialTypes              []CredentialTypes `json:"credential_types"`
+	ApiVersion                   string            `json:"api_version"`
+	RenderApiDocs                bool              `json:"render_api_docs"`
+	GeneratedApiResources        []string          `json:"-"`
+	GeneratedDataSourceResources []string          `json:"-"`
 }
 
 func (c *Config) Load(filename string) error {
