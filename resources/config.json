@@ -78,10 +78,25 @@
           "name": "Organization",
           "type": "InstanceGroup",
           "endpoint": "/api/v2/organizations/%d/instance_groups/"
+        },
+        {
+          "name": "Organization",
+          "type": "GalaxyCredential",
+          "endpoint": "/api/v2/organizations/%d/galaxy_credentials/"
         }
       ],
       "remove_fields_data_source": [
-        "custom_virtualenv"
+        "custom_virtualenv",
+        "has_active_failures",
+        "hosts_with_active_failures",
+        "total_groups",
+        "total_hosts"
+      ],
+      "remove_fields_resource": [
+        "has_active_failures",
+        "hosts_with_active_failures",
+        "total_groups",
+        "total_hosts"
       ],
       "search_fields": [
         {
