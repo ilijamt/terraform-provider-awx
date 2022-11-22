@@ -31,6 +31,22 @@ func renderTemplate(tpl *template.Template, filename, template string, data any)
 }
 
 var FuncMap = template.FuncMap{
+	"credAttrs": func(in string, inputs map[string]any) any {
+		switch strings.ToLower(in) {
+		case "credential", "credential_input_source":
+			return inputs["fields"]
+		}
+		return []any{}
+	},
+	"replace": func(in string, search, replace string) string {
+		return strings.ReplaceAll(in, search, replace)
+	},
+	"credentialNameStruct": func(typeName, name string) string {
+		return fmt.Sprintf("%s%s", strcase.ToLowerCamel(typeName), strcase.ToCamel(name))
+	},
+	"loop": func(in ...string) []string {
+		return in
+	},
 	"url_path_clean": func(in string) string {
 		return p.Clean(in)
 	},

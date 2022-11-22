@@ -48,3 +48,7 @@ import (
 {{ if $.Config.HasSurveySpec }}
 {{ block "tf_survey_spec" . }}{{ end }}
 {{ end }}
+
+{{ if $.Config.CredentialTypes }}
+{{ block "tf_credential" . }}{{ end }}
+{{ end }}

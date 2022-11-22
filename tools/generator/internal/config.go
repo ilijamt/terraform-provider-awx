@@ -57,27 +57,24 @@ type Item struct {
 	ApiDataOverride             map[string]map[string]any    `json:"api_data_override"`
 	RemoveFieldsDataSource      []string                     `json:"remove_fields_data_source"`
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource"`
+	CredentialTypes             []CredentialTypes            `json:"credential_types"`
 }
 
 type CredentialTypes struct {
-	Name         string         `json:"name"`
-	Description  string         `json:"description"`
-	Organization int            `json:"organization"`
-	Required     []string       `json:"inputs.required"`
-	Metadata     map[string]any `json:"inputs.metadata"`
-	Fields       map[string]any `json:"inputs.fields"`
-	Dependencies map[string]any `json:"inputs.dependencies"`
+	Name         string         `json:"name" mapstructure:"name"`
+	Description  string         `json:"description" mapstructure:"description"`
+	Organization int            `json:"organization" mapstructure:"organization"`
+	Inputs       map[string]any `json:"inputs" mapstructure:"inputs"`
 }
 
 type Config struct {
-	DefaultRemoveApiDataSource   []string          `json:"default_remove_api_data_source"`
-	DefaultRemoveApiResource     []string          `json:"default_remove_api_resource"`
-	Items                        []Item            `json:"items"`
-	CredentialTypes              []CredentialTypes `json:"credential_types"`
-	ApiVersion                   string            `json:"api_version"`
-	RenderApiDocs                bool              `json:"render_api_docs"`
-	GeneratedApiResources        []string          `json:"-"`
-	GeneratedDataSourceResources []string          `json:"-"`
+	DefaultRemoveApiDataSource   []string `json:"default_remove_api_data_source"`
+	DefaultRemoveApiResource     []string `json:"default_remove_api_resource"`
+	Items                        []Item   `json:"items"`
+	ApiVersion                   string   `json:"api_version"`
+	RenderApiDocs                bool     `json:"render_api_docs"`
+	GeneratedApiResources        []string `json:"-"`
+	GeneratedDataSourceResources []string `json:"-"`
 }
 
 func (c *Config) Load(filename string) error {

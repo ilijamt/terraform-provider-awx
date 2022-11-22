@@ -398,4 +398,3 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, reque
 {{- end }}
 }
 {{ end }}
-{{ block "tf_resource" . }}{{ end }}
