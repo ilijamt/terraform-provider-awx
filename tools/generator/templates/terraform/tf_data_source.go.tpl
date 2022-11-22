@@ -185,4 +185,3 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     }
 }
 {{ end }}
-{{ block "tf_data_source" . }}{{ end }}

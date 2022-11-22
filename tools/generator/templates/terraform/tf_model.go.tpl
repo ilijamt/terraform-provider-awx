@@ -109,4 +109,3 @@ type {{ .Name | lowerCamelCase }}ObjectRolesModel struct {
 }
 {{- end }}
 {{ end }}
-{{ block "tf_model" . }}{{ end }}
