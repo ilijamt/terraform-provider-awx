@@ -39,7 +39,6 @@ description: |-
 - `scm_update_on_launch` (Boolean) Update the project when a job is launched that uses the project.
 - `scm_url` (String) The location where the project is stored.
 - `signature_validation_credential` (Number) An optional credential used for validating files in the project against unexpected changes.
-- `status` (String) Status
 - `timeout` (Number) The amount of time (in seconds) to run before the task is canceled.
 
 

@@ -43,6 +43,5 @@ description: |-
 
 - `id` (Number) Database ID for this project.
 - `scm_revision` (String) The last revision fetched by a project update
-- `status` (String)
 
 
