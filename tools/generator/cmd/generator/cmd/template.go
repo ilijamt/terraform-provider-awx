@@ -57,6 +57,23 @@ var templateCmd = &cobra.Command{
 					}
 				}
 
+				//if item.Name == "Credential" {
+				//	var objs []map[string]any
+				//	for _, ct := range apiResource.CredentialTypes {
+				//		objs = append(objs, ct)
+				//		if !item.NoTerraformDataSource {
+				//			cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources,
+				//				fmt.Sprintf("%s%s",
+				//					strcase.ToCamel(item.TypeName),
+				//					strcase.ToCamel(ct["name"].(string)),
+				//				))
+				//		}
+				//	}
+				//	if err = mapstructure.Decode(objs, &item.CredentialTypes); err != nil {
+				//		return err
+				//	}
+				//}
+
 				if objmap, ok := apiResource.Resources[item.Name]; ok {
 					err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
 					if err != nil {
