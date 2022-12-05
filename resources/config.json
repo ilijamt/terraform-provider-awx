@@ -52,7 +52,12 @@
       "enabled": true,
       "has_object_roles": true,
       "remove_fields_data_source": [
-        "custom_virtualenv"
+        "custom_virtualenv",
+        "status"
+      ],
+      "remove_fields_resource": [
+        "custom_virtualenv",
+        "status"
       ],
       "search_fields": [
         {

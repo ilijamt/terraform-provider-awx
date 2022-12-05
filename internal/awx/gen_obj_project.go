@@ -65,8 +65,6 @@ type projectTerraformModel struct {
 	ScmUrl types.String `tfsdk:"scm_url" json:"scm_url"`
 	// SignatureValidationCredential "An optional credential used for validating files in the project against unexpected changes."
 	SignatureValidationCredential types.Int64 `tfsdk:"signature_validation_credential" json:"signature_validation_credential"`
-	// Status ""
-	Status types.String `tfsdk:"status" json:"status"`
 	// Timeout "The amount of time (in seconds) to run before the task is canceled."
 	Timeout types.Int64 `tfsdk:"timeout" json:"timeout"`
 }
@@ -93,7 +91,6 @@ func (o projectTerraformModel) Clone() projectTerraformModel {
 		ScmUpdateOnLaunch:             o.ScmUpdateOnLaunch,
 		ScmUrl:                        o.ScmUrl,
 		SignatureValidationCredential: o.SignatureValidationCredential,
-		Status:                        o.Status,
 		Timeout:                       o.Timeout,
 	}
 }
@@ -197,10 +194,6 @@ func (o *projectTerraformModel) setSignatureValidationCredential(data any) (d di
 	return helpers.AttrValueSetInt64(&o.SignatureValidationCredential, data)
 }
 
-func (o *projectTerraformModel) setStatus(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetString(&o.Status, data, false)
-}
-
 func (o *projectTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
@@ -264,9 +257,6 @@ func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags di
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setSignatureValidationCredential(data["signature_validation_credential"]); dg.HasError() {
-		diags.Append(dg...)
-	}
-	if dg, _ := o.setStatus(data["status"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setTimeout(data["timeout"]); dg.HasError() {
@@ -480,14 +470,6 @@ func (o *projectDataSource) GetSchema(_ context.Context) (tfsdk.Schema, diag.Dia
 					Type:        types.Int64Type,
 					Computed:    true,
 					Validators:  []tfsdk.AttributeValidator{},
-				},
-				"status": {
-					Description: "Status",
-					Type:        types.StringType,
-					Computed:    true,
-					Validators: []tfsdk.AttributeValidator{
-						stringvalidator.OneOf([]string{"new", "pending", "waiting", "running", "successful", "failed", "error", "canceled", "never updated", "ok", "missing"}...),
-					},
 				},
 				"timeout": {
 					Description: "The amount of time (in seconds) to run before the task is canceled.",
@@ -826,17 +808,6 @@ func (o projectResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diag
 					Type:        types.StringType,
 					PlanModifiers: []tfsdk.AttributePlanModifier{
 						resource.UseStateForUnknown(),
-					},
-				},
-				"status": {
-					Description: "",
-					Computed:    true,
-					Type:        types.StringType,
-					PlanModifiers: []tfsdk.AttributePlanModifier{
-						resource.UseStateForUnknown(),
-					},
-					Validators: []tfsdk.AttributeValidator{
-						stringvalidator.OneOf([]string{"new", "pending", "waiting", "running", "successful", "failed", "error", "canceled", "never updated", "ok", "missing"}...),
 					},
 				},
 			},
