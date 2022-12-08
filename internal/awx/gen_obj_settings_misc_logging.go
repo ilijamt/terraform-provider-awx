@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsMiscLoggingTerraformModel maps the schema for SettingsMiscLogging when using Data Source
@@ -58,7 +59,7 @@ type settingsMiscLoggingTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraformModel {
+func (o *settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraformModel {
 	return settingsMiscLoggingTerraformModel{
 		API_400_ERROR_LOG_FORMAT:           o.API_400_ERROR_LOG_FORMAT,
 		LOG_AGGREGATOR_ENABLED:             o.LOG_AGGREGATOR_ENABLED,
@@ -81,7 +82,7 @@ func (o settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraformM
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscLogging
-func (o settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggingBodyRequestModel) {
+func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggingBodyRequestModel) {
 	req.API_400_ERROR_LOG_FORMAT = o.API_400_ERROR_LOG_FORMAT.ValueString()
 	req.LOG_AGGREGATOR_ENABLED = o.LOG_AGGREGATOR_ENABLED.ValueBool()
 	req.LOG_AGGREGATOR_HOST = o.LOG_AGGREGATOR_HOST.ValueString()
@@ -491,11 +492,11 @@ func (o *settingsMiscLoggingResource) Configure(ctx context.Context, request res
 	o.endpoint = "/api/v2/settings/logging/"
 }
 
-func (o settingsMiscLoggingResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsMiscLoggingResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_misc_logging"
 }
 
-func (o settingsMiscLoggingResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsMiscLoggingResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsMiscLogging",
@@ -706,6 +707,11 @@ func (o *settingsMiscLoggingResource) Create(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscLogging/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -793,6 +799,11 @@ func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscLogging/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

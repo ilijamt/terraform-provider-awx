@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // notificationTemplateTerraformModel maps the schema for NotificationTemplate when using Data Source
@@ -42,7 +43,7 @@ type notificationTemplateTerraformModel struct {
 }
 
 // Clone the object
-func (o notificationTemplateTerraformModel) Clone() notificationTemplateTerraformModel {
+func (o *notificationTemplateTerraformModel) Clone() notificationTemplateTerraformModel {
 	return notificationTemplateTerraformModel{
 		Description:               o.Description,
 		ID:                        o.ID,
@@ -55,7 +56,7 @@ func (o notificationTemplateTerraformModel) Clone() notificationTemplateTerrafor
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for NotificationTemplate
-func (o notificationTemplateTerraformModel) BodyRequest() (req notificationTemplateBodyRequestModel) {
+func (o *notificationTemplateTerraformModel) BodyRequest() (req notificationTemplateBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.Messages = json.RawMessage(o.Messages.ValueString())
 	req.Name = o.Name.ValueString()
@@ -352,11 +353,11 @@ func (o *notificationTemplateResource) Configure(ctx context.Context, request re
 	o.endpoint = "/api/v2/notification_templates/"
 }
 
-func (o notificationTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *notificationTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_notification_template"
 }
 
-func (o notificationTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *notificationTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"NotificationTemplate",
@@ -460,6 +461,11 @@ func (o *notificationTemplateResource) Create(ctx context.Context, request resou
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[NotificationTemplate/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -549,6 +555,11 @@ func (o *notificationTemplateResource) Update(ctx context.Context, request resou
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[NotificationTemplate/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

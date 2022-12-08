@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthAzureADOauth2TerraformModel maps the schema for SettingsAuthAzureADOauth2 when using Data Source
@@ -33,7 +34,7 @@ type settingsAuthAzureADOauth2TerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthAzureADOauth2TerraformModel) Clone() settingsAuthAzureADOauth2TerraformModel {
+func (o *settingsAuthAzureADOauth2TerraformModel) Clone() settingsAuthAzureADOauth2TerraformModel {
 	return settingsAuthAzureADOauth2TerraformModel{
 		SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL:     o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL,
 		SOCIAL_AUTH_AZUREAD_OAUTH2_KEY:              o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,
@@ -44,7 +45,7 @@ func (o settingsAuthAzureADOauth2TerraformModel) Clone() settingsAuthAzureADOaut
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthAzureADOauth2
-func (o settingsAuthAzureADOauth2TerraformModel) BodyRequest() (req settingsAuthAzureADOauth2BodyRequestModel) {
+func (o *settingsAuthAzureADOauth2TerraformModel) BodyRequest() (req settingsAuthAzureADOauth2BodyRequestModel) {
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.ValueString()
@@ -216,7 +217,7 @@ func (o *settingsAuthAzureADOauth2DataSource) Read(ctx context.Context, req data
 	}
 
 	// Set state
-	if err = hookSettingsAuthAzureADOauth2(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -255,11 +256,11 @@ func (o *settingsAuthAzureADOauth2Resource) Configure(ctx context.Context, reque
 	o.endpoint = "/api/v2/settings/azuread-oauth2/"
 }
 
-func (o settingsAuthAzureADOauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthAzureADOauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_azuread_oauth2"
 }
 
-func (o settingsAuthAzureADOauth2Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthAzureADOauth2Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthAzureADOauth2",
@@ -336,6 +337,11 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -361,7 +367,7 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -413,7 +419,7 @@ func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request re
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),
@@ -440,6 +446,11 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -465,7 +476,7 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 		return
 	}
 
-	if err = hookSettingsAuthAzureADOauth2(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),

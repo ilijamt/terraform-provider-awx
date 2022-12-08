@@ -173,6 +173,11 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Create(ctx context.Context, request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[{{.Name}}/Create/Survey] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -211,6 +216,11 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Update(ctx context.Context, request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[{{.Name}}/Update/SurveySpec] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

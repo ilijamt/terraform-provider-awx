@@ -19,6 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // tokensTerraformModel maps the schema for Tokens when using Data Source
@@ -42,7 +43,7 @@ type tokensTerraformModel struct {
 }
 
 // Clone the object
-func (o tokensTerraformModel) Clone() tokensTerraformModel {
+func (o *tokensTerraformModel) Clone() tokensTerraformModel {
 	return tokensTerraformModel{
 		Application:  o.Application,
 		Description:  o.Description,
@@ -56,7 +57,7 @@ func (o tokensTerraformModel) Clone() tokensTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Tokens
-func (o tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
+func (o *tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
 	req.Application = o.Application.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Scope = o.Scope.ValueString()
@@ -333,11 +334,11 @@ func (o *tokensResource) Configure(ctx context.Context, request resource.Configu
 	o.endpoint = "/api/v2/tokens/"
 }
 
-func (o tokensResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *tokensResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_token"
 }
 
-func (o tokensResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *tokensResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Tokens",
@@ -447,6 +448,11 @@ func (o *tokensResource) Create(ctx context.Context, request resource.CreateRequ
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Tokens/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -536,6 +542,11 @@ func (o *tokensResource) Update(ctx context.Context, request resource.UpdateRequ
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Tokens/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

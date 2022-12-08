@@ -27,11 +27,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Configure(ctx context.Context, re
     o.endpoint = "{{ $.Endpoint }}"
 }
 
-func (o {{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *{{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_{{ $.Config.TypeName }}"
 }
 
-func (o {{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *{{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
     return processSchema(
         SourceResource,
         "{{ .Name }}",
@@ -173,6 +173,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
 	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
@@ -210,7 +215,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -270,7 +275,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     }
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -302,6 +307,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[{{.Name}}/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
 	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
@@ -339,7 +349,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),

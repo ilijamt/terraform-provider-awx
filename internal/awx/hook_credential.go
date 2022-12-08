@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func hookCredential(ctx context.Context, source Source, callee Callee, orig *credentialTerraformModel, state *credentialTerraformModel) (err error) {
+func hookCredential(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *credentialTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && callee != CalleeDelete {
 		return fmt.Errorf("state and orig required for resource")
 	} else if source == SourceData && (state == nil) {

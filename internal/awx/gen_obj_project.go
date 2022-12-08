@@ -23,6 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // projectTerraformModel maps the schema for Project when using Data Source
@@ -70,7 +71,7 @@ type projectTerraformModel struct {
 }
 
 // Clone the object
-func (o projectTerraformModel) Clone() projectTerraformModel {
+func (o *projectTerraformModel) Clone() projectTerraformModel {
 	return projectTerraformModel{
 		AllowOverride:                 o.AllowOverride,
 		Credential:                    o.Credential,
@@ -96,7 +97,7 @@ func (o projectTerraformModel) Clone() projectTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Project
-func (o projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
+func (o *projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
 	req.AllowOverride = o.AllowOverride.ValueBool()
 	req.Credential = o.Credential.ValueInt64()
 	req.DefaultEnvironment = o.DefaultEnvironment.ValueInt64()
@@ -581,11 +582,11 @@ func (o *projectResource) Configure(ctx context.Context, request resource.Config
 	o.endpoint = "/api/v2/projects/"
 }
 
-func (o projectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *projectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_project"
 }
 
-func (o projectResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *projectResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Project",
@@ -839,6 +840,11 @@ func (o *projectResource) Create(ctx context.Context, request resource.CreateReq
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Project/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -928,6 +934,11 @@ func (o *projectResource) Update(ctx context.Context, request resource.UpdateReq
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Project/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

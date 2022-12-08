@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsOpenIDConnectTerraformModel maps the schema for SettingsOpenIDConnect when using Data Source
@@ -31,7 +32,7 @@ type settingsOpenIDConnectTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsOpenIDConnectTerraformModel) Clone() settingsOpenIDConnectTerraformModel {
+func (o *settingsOpenIDConnectTerraformModel) Clone() settingsOpenIDConnectTerraformModel {
 	return settingsOpenIDConnectTerraformModel{
 		SOCIAL_AUTH_OIDC_KEY:           o.SOCIAL_AUTH_OIDC_KEY,
 		SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT,
@@ -41,7 +42,7 @@ func (o settingsOpenIDConnectTerraformModel) Clone() settingsOpenIDConnectTerraf
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsOpenIDConnect
-func (o settingsOpenIDConnectTerraformModel) BodyRequest() (req settingsOpenIDConnectBodyRequestModel) {
+func (o *settingsOpenIDConnectTerraformModel) BodyRequest() (req settingsOpenIDConnectBodyRequestModel) {
 	req.SOCIAL_AUTH_OIDC_KEY = o.SOCIAL_AUTH_OIDC_KEY.ValueString()
 	req.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()
 	req.SOCIAL_AUTH_OIDC_SECRET = o.SOCIAL_AUTH_OIDC_SECRET.ValueString()
@@ -230,11 +231,11 @@ func (o *settingsOpenIDConnectResource) Configure(ctx context.Context, request r
 	o.endpoint = "/api/v2/settings/oidc/"
 }
 
-func (o settingsOpenIDConnectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsOpenIDConnectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_oidc"
 }
 
-func (o settingsOpenIDConnectResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsOpenIDConnectResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsOpenIDConnect",
@@ -302,6 +303,11 @@ func (o *settingsOpenIDConnectResource) Create(ctx context.Context, request reso
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsOpenIDConnect/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -389,6 +395,11 @@ func (o *settingsOpenIDConnectResource) Update(ctx context.Context, request reso
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsOpenIDConnect/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

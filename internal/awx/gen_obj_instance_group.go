@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // instanceGroupTerraformModel maps the schema for InstanceGroup when using Data Source
@@ -56,7 +57,7 @@ type instanceGroupTerraformModel struct {
 }
 
 // Clone the object
-func (o instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
+func (o *instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
 	return instanceGroupTerraformModel{
 		Capacity:                 o.Capacity,
 		ConsumedCapacity:         o.ConsumedCapacity,
@@ -76,7 +77,7 @@ func (o instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InstanceGroup
-func (o instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyRequestModel) {
+func (o *instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyRequestModel) {
 	req.Credential = o.Credential.ValueInt64()
 	req.IsContainerGroup = o.IsContainerGroup.ValueBool()
 	req.Name = o.Name.ValueString()
@@ -443,11 +444,11 @@ func (o *instanceGroupResource) Configure(ctx context.Context, request resource.
 	o.endpoint = "/api/v2/instance_groups/"
 }
 
-func (o instanceGroupResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *instanceGroupResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_instance_group"
 }
 
-func (o instanceGroupResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *instanceGroupResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"InstanceGroup",
@@ -615,6 +616,11 @@ func (o *instanceGroupResource) Create(ctx context.Context, request resource.Cre
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[InstanceGroup/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -704,6 +710,11 @@ func (o *instanceGroupResource) Update(ctx context.Context, request resource.Upd
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[InstanceGroup/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

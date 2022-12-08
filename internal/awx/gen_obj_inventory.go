@@ -22,6 +22,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // inventoryTerraformModel maps the schema for Inventory when using Data Source
@@ -61,7 +62,7 @@ type inventoryTerraformModel struct {
 }
 
 // Clone the object
-func (o inventoryTerraformModel) Clone() inventoryTerraformModel {
+func (o *inventoryTerraformModel) Clone() inventoryTerraformModel {
 	return inventoryTerraformModel{
 		Description:                  o.Description,
 		HasActiveFailures:            o.HasActiveFailures,
@@ -83,7 +84,7 @@ func (o inventoryTerraformModel) Clone() inventoryTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Inventory
-func (o inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) {
+func (o *inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.HostFilter = o.HostFilter.ValueString()
 	req.Kind = o.Kind.ValueString()
@@ -483,11 +484,11 @@ func (o *inventoryResource) Configure(ctx context.Context, request resource.Conf
 	o.endpoint = "/api/v2/inventories/"
 }
 
-func (o inventoryResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *inventoryResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_inventory"
 }
 
-func (o inventoryResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *inventoryResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Inventory",
@@ -668,6 +669,11 @@ func (o *inventoryResource) Create(ctx context.Context, request resource.CreateR
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Inventory/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -757,6 +763,11 @@ func (o *inventoryResource) Update(ctx context.Context, request resource.UpdateR
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Inventory/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

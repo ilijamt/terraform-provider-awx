@@ -22,6 +22,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // adHocCommandTerraformModel maps the schema for AdHocCommand when using Data Source
@@ -81,7 +82,7 @@ type adHocCommandTerraformModel struct {
 }
 
 // Clone the object
-func (o adHocCommandTerraformModel) Clone() adHocCommandTerraformModel {
+func (o *adHocCommandTerraformModel) Clone() adHocCommandTerraformModel {
 	return adHocCommandTerraformModel{
 		BecomeEnabled:        o.BecomeEnabled,
 		CanceledOn:           o.CanceledOn,
@@ -113,12 +114,12 @@ func (o adHocCommandTerraformModel) Clone() adHocCommandTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for AdHocCommand
-func (o adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestModel) {
+func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestModel) {
 	req.BecomeEnabled = o.BecomeEnabled.ValueBool()
 	req.Credential = o.Credential.ValueInt64()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.ExecutionEnvironment = o.ExecutionEnvironment.ValueInt64()
-	req.ExtraVars = o.ExtraVars.ValueString()
+	req.ExtraVars = json.RawMessage(o.ExtraVars.ValueString())
 	req.Forks = o.Forks.ValueInt64()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.JobType = o.JobType.ValueString()
@@ -162,7 +163,7 @@ func (o *adHocCommandTerraformModel) setExecutionNode(data any) (d diag.Diagnost
 }
 
 func (o *adHocCommandTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetString(&o.ExtraVars, data, false)
+	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
 }
 
 func (o *adHocCommandTerraformModel) setFailed(data any) (d diag.Diagnostics, err error) {
@@ -329,7 +330,7 @@ type adHocCommandBodyRequestModel struct {
 	// ExecutionEnvironment "The container image to be used for execution."
 	ExecutionEnvironment int64 `json:"execution_environment,omitempty"`
 	// ExtraVars ""
-	ExtraVars string `json:"extra_vars,omitempty"`
+	ExtraVars json.RawMessage `json:"extra_vars,omitempty"`
 	// Forks ""
 	Forks int64 `json:"forks,omitempty"`
 	// Inventory ""
@@ -651,6 +652,14 @@ func (o *adHocCommandDataSource) Read(ctx context.Context, req datasource.ReadRe
 	}
 
 	// Set state
+	if err = hookAdHocCommand(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on AdHocCommand",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
@@ -683,11 +692,11 @@ func (o *adHocCommandResource) Configure(ctx context.Context, request resource.C
 	o.endpoint = "/api/v2/ad_hoc_commands/"
 }
 
-func (o adHocCommandResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *adHocCommandResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_ad_hoc_command"
 }
 
-func (o adHocCommandResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *adHocCommandResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"AdHocCommand",
@@ -978,6 +987,11 @@ func (o *adHocCommandResource) Create(ctx context.Context, request resource.Crea
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[AdHocCommand/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1003,6 +1017,14 @@ func (o *adHocCommandResource) Create(ctx context.Context, request resource.Crea
 		return
 	}
 
+	if err = hookAdHocCommand(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on AdHocCommand",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1018,6 +1040,7 @@ func (o *adHocCommandResource) Read(ctx context.Context, request resource.ReadRe
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for AdHocCommand
 	var r *http.Request
@@ -1047,6 +1070,14 @@ func (o *adHocCommandResource) Read(ctx context.Context, request resource.ReadRe
 		return
 	}
 
+	if err = hookAdHocCommand(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on AdHocCommand",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1067,6 +1098,11 @@ func (o *adHocCommandResource) Update(ctx context.Context, request resource.Upda
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[AdHocCommand/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1089,6 +1125,14 @@ func (o *adHocCommandResource) Update(ctx context.Context, request resource.Upda
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookAdHocCommand(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on AdHocCommand",
+			err.Error(),
+		)
 		return
 	}
 

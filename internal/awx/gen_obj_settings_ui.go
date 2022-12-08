@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsUITerraformModel maps the schema for SettingsUI when using Data Source
@@ -34,7 +35,7 @@ type settingsUITerraformModel struct {
 }
 
 // Clone the object
-func (o settingsUITerraformModel) Clone() settingsUITerraformModel {
+func (o *settingsUITerraformModel) Clone() settingsUITerraformModel {
 	return settingsUITerraformModel{
 		CUSTOM_LOGIN_INFO:       o.CUSTOM_LOGIN_INFO,
 		CUSTOM_LOGO:             o.CUSTOM_LOGO,
@@ -45,7 +46,7 @@ func (o settingsUITerraformModel) Clone() settingsUITerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsUI
-func (o settingsUITerraformModel) BodyRequest() (req settingsUIBodyRequestModel) {
+func (o *settingsUITerraformModel) BodyRequest() (req settingsUIBodyRequestModel) {
 	req.CUSTOM_LOGIN_INFO = o.CUSTOM_LOGIN_INFO.ValueString()
 	req.CUSTOM_LOGO = o.CUSTOM_LOGO.ValueString()
 	req.MAX_UI_JOB_EVENTS = o.MAX_UI_JOB_EVENTS.ValueInt64()
@@ -249,11 +250,11 @@ func (o *settingsUIResource) Configure(ctx context.Context, request resource.Con
 	o.endpoint = "/api/v2/settings/ui/"
 }
 
-func (o settingsUIResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsUIResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_ui"
 }
 
-func (o settingsUIResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsUIResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsUI",
@@ -328,6 +329,11 @@ func (o *settingsUIResource) Create(ctx context.Context, request resource.Create
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsUI/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -415,6 +421,11 @@ func (o *settingsUIResource) Update(ctx context.Context, request resource.Update
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsUI/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

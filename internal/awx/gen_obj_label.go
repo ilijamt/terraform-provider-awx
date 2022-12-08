@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // labelTerraformModel maps the schema for Label when using Data Source
@@ -34,7 +35,7 @@ type labelTerraformModel struct {
 }
 
 // Clone the object
-func (o labelTerraformModel) Clone() labelTerraformModel {
+func (o *labelTerraformModel) Clone() labelTerraformModel {
 	return labelTerraformModel{
 		ID:           o.ID,
 		Name:         o.Name,
@@ -43,7 +44,7 @@ func (o labelTerraformModel) Clone() labelTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Label
-func (o labelTerraformModel) BodyRequest() (req labelBodyRequestModel) {
+func (o *labelTerraformModel) BodyRequest() (req labelBodyRequestModel) {
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
 	return
@@ -288,11 +289,11 @@ func (o *labelResource) Configure(ctx context.Context, request resource.Configur
 	o.endpoint = "/api/v2/labels/"
 }
 
-func (o labelResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *labelResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_label"
 }
 
-func (o labelResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *labelResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Label",
@@ -354,6 +355,11 @@ func (o *labelResource) Create(ctx context.Context, request resource.CreateReque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Label/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -443,6 +449,11 @@ func (o *labelResource) Update(ctx context.Context, request resource.UpdateReque
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Label/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

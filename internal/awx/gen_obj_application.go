@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // applicationTerraformModel maps the schema for Application when using Data Source
@@ -48,7 +49,7 @@ type applicationTerraformModel struct {
 }
 
 // Clone the object
-func (o applicationTerraformModel) Clone() applicationTerraformModel {
+func (o *applicationTerraformModel) Clone() applicationTerraformModel {
 	return applicationTerraformModel{
 		AuthorizationGrantType: o.AuthorizationGrantType,
 		ClientId:               o.ClientId,
@@ -64,7 +65,7 @@ func (o applicationTerraformModel) Clone() applicationTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Application
-func (o applicationTerraformModel) BodyRequest() (req applicationBodyRequestModel) {
+func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestModel) {
 	req.AuthorizationGrantType = o.AuthorizationGrantType.ValueString()
 	req.ClientType = o.ClientType.ValueString()
 	req.Description = o.Description.ValueString()
@@ -388,7 +389,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 	}
 
 	// Set state
-	if err = hookApplication(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -428,11 +429,11 @@ func (o *applicationResource) Configure(ctx context.Context, request resource.Co
 	o.endpoint = "/api/v2/applications/"
 }
 
-func (o applicationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *applicationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_application"
 }
 
-func (o applicationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *applicationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Application",
@@ -560,6 +561,11 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Application/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -585,7 +591,7 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 		return
 	}
 
-	if err = hookApplication(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -638,7 +644,7 @@ func (o *applicationResource) Read(ctx context.Context, request resource.ReadReq
 		return
 	}
 
-	if err = hookApplication(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -666,6 +672,11 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Application/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -691,7 +702,7 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 		return
 	}
 
-	if err = hookApplication(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),

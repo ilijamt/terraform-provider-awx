@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthGithubEnterpriseTeamTerraformModel maps the schema for SettingsAuthGithubEnterpriseTeam when using Data Source
@@ -39,7 +40,7 @@ type settingsAuthGithubEnterpriseTeamTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthGithubEnterpriseTeamTerraformModel) Clone() settingsAuthGithubEnterpriseTeamTerraformModel {
+func (o *settingsAuthGithubEnterpriseTeamTerraformModel) Clone() settingsAuthGithubEnterpriseTeamTerraformModel {
 	return settingsAuthGithubEnterpriseTeamTerraformModel{
 		SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL:          o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL,
 		SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL:     o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL,
@@ -53,7 +54,7 @@ func (o settingsAuthGithubEnterpriseTeamTerraformModel) Clone() settingsAuthGith
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubEnterpriseTeam
-func (o settingsAuthGithubEnterpriseTeamTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseTeamBodyRequestModel) {
+func (o *settingsAuthGithubEnterpriseTeamTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseTeamBodyRequestModel) {
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY.ValueString()
@@ -273,7 +274,7 @@ func (o *settingsAuthGithubEnterpriseTeamDataSource) Read(ctx context.Context, r
 	}
 
 	// Set state
-	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -312,11 +313,11 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Configure(ctx context.Context
 	o.endpoint = "/api/v2/settings/github-enterprise-team/"
 }
 
-func (o settingsAuthGithubEnterpriseTeamResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthGithubEnterpriseTeamResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_github_enterprise_team"
 }
 
-func (o settingsAuthGithubEnterpriseTeamResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthGithubEnterpriseTeamResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthGithubEnterpriseTeam",
@@ -426,6 +427,11 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Create(ctx context.Context, r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterpriseTeam/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -451,7 +457,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Create(ctx context.Context, r
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -503,7 +509,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Read(ctx context.Context, req
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),
@@ -530,6 +536,11 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Update(ctx context.Context, r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterpriseTeam/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -555,7 +566,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Update(ctx context.Context, r
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterpriseTeam(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterpriseTeam",
 			err.Error(),

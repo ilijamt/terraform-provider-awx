@@ -25,6 +25,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // jobTemplateTerraformModel maps the schema for JobTemplate when using Data Source
@@ -122,7 +123,7 @@ type jobTemplateTerraformModel struct {
 }
 
 // Clone the object
-func (o jobTemplateTerraformModel) Clone() jobTemplateTerraformModel {
+func (o *jobTemplateTerraformModel) Clone() jobTemplateTerraformModel {
 	return jobTemplateTerraformModel{
 		AllowSimultaneous:               o.AllowSimultaneous,
 		AskCredentialOnLaunch:           o.AskCredentialOnLaunch,
@@ -173,7 +174,7 @@ func (o jobTemplateTerraformModel) Clone() jobTemplateTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for JobTemplate
-func (o jobTemplateTerraformModel) BodyRequest() (req jobTemplateBodyRequestModel) {
+func (o *jobTemplateTerraformModel) BodyRequest() (req jobTemplateBodyRequestModel) {
 	req.AllowSimultaneous = o.AllowSimultaneous.ValueBool()
 	req.AskCredentialOnLaunch = o.AskCredentialOnLaunch.ValueBool()
 	req.AskDiffModeOnLaunch = o.AskDiffModeOnLaunch.ValueBool()
@@ -1052,6 +1053,14 @@ func (o *jobTemplateDataSource) Read(ctx context.Context, req datasource.ReadReq
 	}
 
 	// Set state
+	if err = hookJobTemplate(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on JobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
@@ -1084,11 +1093,11 @@ func (o *jobTemplateResource) Configure(ctx context.Context, request resource.Co
 	o.endpoint = "/api/v2/job_templates/"
 }
 
-func (o jobTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *jobTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_job_template"
 }
 
-func (o jobTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *jobTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"JobTemplate",
@@ -1607,6 +1616,11 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[JobTemplate/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1632,6 +1646,14 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 		return
 	}
 
+	if err = hookJobTemplate(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on JobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1647,6 +1669,7 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for JobTemplate
 	var r *http.Request
@@ -1676,6 +1699,14 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 		return
 	}
 
+	if err = hookJobTemplate(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on JobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1696,6 +1727,11 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[JobTemplate/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1718,6 +1754,14 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookJobTemplate(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on JobTemplate",
+			err.Error(),
+		)
 		return
 	}
 
@@ -1992,6 +2036,11 @@ func (o *jobTemplateAssociateDisassociateCredential) Create(ctx context.Context,
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.CredentialID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -2033,6 +2082,11 @@ func (o *jobTemplateAssociateDisassociateCredential) Delete(ctx context.Context,
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.CredentialID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -2159,6 +2213,11 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -2201,6 +2260,11 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Delete(ctx contex
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -2398,6 +2462,11 @@ func (o *jobTemplateSurvey) Create(ctx context.Context, request resource.CreateR
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[JobTemplate/Create/Survey] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -2436,6 +2505,11 @@ func (o *jobTemplateSurvey) Update(ctx context.Context, request resource.UpdateR
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[JobTemplate/Update/SurveySpec] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

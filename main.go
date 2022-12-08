@@ -9,29 +9,21 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 )
 
-//go:generate terraform fmt -recursive ./examples/
-//go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
-
-var (
-	version = "dev"
-	//nolint:deadcode,unused,varcheck
-	commit = "SNAPSHOT"
-)
-
 func main() {
 	var debug bool
+	var err error
 
 	flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like delve")
 	flag.Parse()
 
-	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/ilijamt/awx",
-		Debug:   debug,
-	}
-
-	err := providerserver.Serve(context.Background(), provider.New(version), opts)
-
-	if err != nil {
+	if err = providerserver.Serve(
+		context.Background(),
+		provider.New(Version),
+		providerserver.ServeOpts{
+			Address: "registry.terraform.io/ilijamt/awx",
+			Debug:   debug,
+		},
+	); err != nil {
 		log.Fatal(err.Error())
 	}
 }

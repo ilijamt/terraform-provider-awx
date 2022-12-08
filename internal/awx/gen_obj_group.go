@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // groupTerraformModel maps the schema for Group when using Data Source
@@ -37,7 +38,7 @@ type groupTerraformModel struct {
 }
 
 // Clone the object
-func (o groupTerraformModel) Clone() groupTerraformModel {
+func (o *groupTerraformModel) Clone() groupTerraformModel {
 	return groupTerraformModel{
 		Description: o.Description,
 		ID:          o.ID,
@@ -48,7 +49,7 @@ func (o groupTerraformModel) Clone() groupTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Group
-func (o groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
+func (o *groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
@@ -289,11 +290,11 @@ func (o *groupResource) Configure(ctx context.Context, request resource.Configur
 	o.endpoint = "/api/v2/groups/"
 }
 
-func (o groupResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *groupResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_group"
 }
 
-func (o groupResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *groupResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Group",
@@ -377,6 +378,11 @@ func (o *groupResource) Create(ctx context.Context, request resource.CreateReque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Group/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -466,6 +472,11 @@ func (o *groupResource) Update(ctx context.Context, request resource.UpdateReque
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Group/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

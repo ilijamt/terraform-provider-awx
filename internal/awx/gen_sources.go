@@ -5,6 +5,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
+const (
+	ApiVersion string = "21.8.0"
+)
+
 // DataSources is a helper function to return all defined data sources
 func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{

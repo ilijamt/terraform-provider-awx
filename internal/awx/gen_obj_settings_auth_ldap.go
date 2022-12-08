@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthLDAPTerraformModel maps the schema for SettingsAuthLDAP when using Data Source
@@ -216,7 +217,7 @@ type settingsAuthLDAPTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthLDAPTerraformModel) Clone() settingsAuthLDAPTerraformModel {
+func (o *settingsAuthLDAPTerraformModel) Clone() settingsAuthLDAPTerraformModel {
 	return settingsAuthLDAPTerraformModel{
 		AUTH_LDAP_1_BIND_DN:             o.AUTH_LDAP_1_BIND_DN,
 		AUTH_LDAP_1_BIND_PASSWORD:       o.AUTH_LDAP_1_BIND_PASSWORD,
@@ -318,7 +319,7 @@ func (o settingsAuthLDAPTerraformModel) Clone() settingsAuthLDAPTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthLDAP
-func (o settingsAuthLDAPTerraformModel) BodyRequest() (req settingsAuthLDAPBodyRequestModel) {
+func (o *settingsAuthLDAPTerraformModel) BodyRequest() (req settingsAuthLDAPBodyRequestModel) {
 	req.AUTH_LDAP_1_BIND_DN = o.AUTH_LDAP_1_BIND_DN.ValueString()
 	req.AUTH_LDAP_1_BIND_PASSWORD = o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_1_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())
@@ -2050,7 +2051,7 @@ func (o *settingsAuthLDAPDataSource) Read(ctx context.Context, req datasource.Re
 	}
 
 	// Set state
-	if err = hookSettingsAuthLdap(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -2089,11 +2090,11 @@ func (o *settingsAuthLDAPResource) Configure(ctx context.Context, request resour
 	o.endpoint = "/api/v2/settings/ldap/"
 }
 
-func (o settingsAuthLDAPResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthLDAPResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_ldap"
 }
 
-func (o settingsAuthLDAPResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthLDAPResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthLDAP",
@@ -3157,6 +3158,11 @@ func (o *settingsAuthLDAPResource) Create(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthLDAP/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -3182,7 +3188,7 @@ func (o *settingsAuthLDAPResource) Create(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -3234,7 +3240,7 @@ func (o *settingsAuthLDAPResource) Read(ctx context.Context, request resource.Re
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -3261,6 +3267,11 @@ func (o *settingsAuthLDAPResource) Update(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthLDAP/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -3286,7 +3297,7 @@ func (o *settingsAuthLDAPResource) Update(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),

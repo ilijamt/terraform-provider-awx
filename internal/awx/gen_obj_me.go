@@ -39,7 +39,7 @@ type meTerraformModel struct {
 }
 
 // Clone the object
-func (o meTerraformModel) Clone() meTerraformModel {
+func (o *meTerraformModel) Clone() meTerraformModel {
 	return meTerraformModel{
 		Email:           o.Email,
 		ExternalAccount: o.ExternalAccount,
@@ -55,7 +55,7 @@ func (o meTerraformModel) Clone() meTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Me
-func (o meTerraformModel) BodyRequest() (req meBodyRequestModel) {
+func (o *meTerraformModel) BodyRequest() (req meBodyRequestModel) {
 	return
 }
 

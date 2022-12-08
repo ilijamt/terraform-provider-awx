@@ -16,7 +16,7 @@ type {{ .Name | lowerCamelCase }}TerraformModel struct {
 }
 
 // Clone the object
-func (o {{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCamelCase }}TerraformModel {
+func (o *{{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCamelCase }}TerraformModel {
     return {{ .Name | lowerCamelCase }}TerraformModel{
     {{- range $key := .PropertyGetKeys }}
     {{- with (index $.PropertyGetData $key) }}
@@ -32,7 +32,7 @@ func (o {{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCame
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for {{ .Name }}
-func (o {{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name | lowerCamelCase }}BodyRequestModel) {
+func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name | lowerCamelCase }}BodyRequestModel) {
 {{- range $key := .PropertyPostKeys }}
 {{- with (index $.PropertyPostData $key) }}
 {{- if eq (awx2go_type .) "types.List" }}

@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsMiscSystemTerraformModel maps the schema for SettingsMiscSystem when using Data Source
@@ -69,7 +70,7 @@ type settingsMiscSystemTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformModel {
+func (o *settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformModel {
 	return settingsMiscSystemTerraformModel{
 		ACTIVITY_STREAM_ENABLED:                    o.ACTIVITY_STREAM_ENABLED,
 		ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC: o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC,
@@ -98,7 +99,7 @@ func (o settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformMod
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscSystem
-func (o settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystemBodyRequestModel) {
+func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystemBodyRequestModel) {
 	req.ACTIVITY_STREAM_ENABLED = o.ACTIVITY_STREAM_ENABLED.ValueBool()
 	req.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC = o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC.ValueBool()
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
@@ -581,11 +582,11 @@ func (o *settingsMiscSystemResource) Configure(ctx context.Context, request reso
 	o.endpoint = "/api/v2/settings/system/"
 }
 
-func (o settingsMiscSystemResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsMiscSystemResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_misc_system"
 }
 
-func (o settingsMiscSystemResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsMiscSystemResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsMiscSystem",
@@ -814,6 +815,11 @@ func (o *settingsMiscSystemResource) Create(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscSystem/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -901,6 +907,11 @@ func (o *settingsMiscSystemResource) Update(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscSystem/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

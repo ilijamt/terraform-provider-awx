@@ -22,6 +22,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // inventorySourceTerraformModel maps the schema for InventorySource when using Data Source
@@ -67,7 +68,7 @@ type inventorySourceTerraformModel struct {
 }
 
 // Clone the object
-func (o inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
+func (o *inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
 	return inventorySourceTerraformModel{
 		Credential:           o.Credential,
 		Description:          o.Description,
@@ -92,7 +93,7 @@ func (o inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InventorySource
-func (o inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRequestModel) {
+func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRequestModel) {
 	req.Credential = o.Credential.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.EnabledValue = o.EnabledValue.ValueString()
@@ -106,7 +107,7 @@ func (o inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyReq
 	req.Source = o.Source.ValueString()
 	req.SourcePath = o.SourcePath.ValueString()
 	req.SourceProject = o.SourceProject.ValueInt64()
-	req.SourceVars = json.RawMessage(o.SourceVars.ValueString())
+	req.SourceVars = json.RawMessage(o.SourceVars.String())
 	req.Timeout = o.Timeout.ValueInt64()
 	req.UpdateCacheTimeout = o.UpdateCacheTimeout.ValueInt64()
 	req.UpdateOnLaunch = o.UpdateOnLaunch.ValueBool()
@@ -551,6 +552,14 @@ func (o *inventorySourceDataSource) Read(ctx context.Context, req datasource.Rea
 	}
 
 	// Set state
+	if err = hookInventorySource(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on InventorySource",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
@@ -583,11 +592,11 @@ func (o *inventorySourceResource) Configure(ctx context.Context, request resourc
 	o.endpoint = "/api/v2/inventory_sources/"
 }
 
-func (o inventorySourceResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *inventorySourceResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_inventory_source"
 }
 
-func (o inventorySourceResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *inventorySourceResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"InventorySource",
@@ -828,6 +837,11 @@ func (o *inventorySourceResource) Create(ctx context.Context, request resource.C
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[InventorySource/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -853,6 +867,14 @@ func (o *inventorySourceResource) Create(ctx context.Context, request resource.C
 		return
 	}
 
+	if err = hookInventorySource(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on InventorySource",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -868,6 +890,7 @@ func (o *inventorySourceResource) Read(ctx context.Context, request resource.Rea
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for InventorySource
 	var r *http.Request
@@ -897,6 +920,14 @@ func (o *inventorySourceResource) Read(ctx context.Context, request resource.Rea
 		return
 	}
 
+	if err = hookInventorySource(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on InventorySource",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -917,6 +948,11 @@ func (o *inventorySourceResource) Update(ctx context.Context, request resource.U
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[InventorySource/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -939,6 +975,14 @@ func (o *inventorySourceResource) Update(ctx context.Context, request resource.U
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookInventorySource(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on InventorySource",
+			err.Error(),
+		)
 		return
 	}
 

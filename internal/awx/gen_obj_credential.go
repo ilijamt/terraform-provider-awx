@@ -23,6 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // credentialTerraformModel maps the schema for Credential when using Data Source
@@ -50,7 +51,7 @@ type credentialTerraformModel struct {
 }
 
 // Clone the object
-func (o credentialTerraformModel) Clone() credentialTerraformModel {
+func (o *credentialTerraformModel) Clone() credentialTerraformModel {
 	return credentialTerraformModel{
 		Cloud:          o.Cloud,
 		CredentialType: o.CredentialType,
@@ -66,7 +67,7 @@ func (o credentialTerraformModel) Clone() credentialTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Credential
-func (o credentialTerraformModel) BodyRequest() (req credentialBodyRequestModel) {
+func (o *credentialTerraformModel) BodyRequest() (req credentialBodyRequestModel) {
 	req.CredentialType = o.CredentialType.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Inputs = json.RawMessage(o.Inputs.ValueString())
@@ -370,7 +371,7 @@ func (o *credentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	}
 
 	// Set state
-	if err = hookCredential(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -410,11 +411,11 @@ func (o *credentialResource) Configure(ctx context.Context, request resource.Con
 	o.endpoint = "/api/v2/credentials/"
 }
 
-func (o credentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *credentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential"
 }
 
-func (o credentialResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *credentialResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Credential",
@@ -540,6 +541,11 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Credential/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -565,7 +571,7 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 		return
 	}
 
-	if err = hookCredential(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -618,7 +624,7 @@ func (o *credentialResource) Read(ctx context.Context, request resource.ReadRequ
 		return
 	}
 
-	if err = hookCredential(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -646,6 +652,11 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Credential/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -671,7 +682,7 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		return
 	}
 
-	if err = hookCredential(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),

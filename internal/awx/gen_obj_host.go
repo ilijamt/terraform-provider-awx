@@ -24,6 +24,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // hostTerraformModel maps the schema for Host when using Data Source
@@ -49,7 +50,7 @@ type hostTerraformModel struct {
 }
 
 // Clone the object
-func (o hostTerraformModel) Clone() hostTerraformModel {
+func (o *hostTerraformModel) Clone() hostTerraformModel {
 	return hostTerraformModel{
 		Description:        o.Description,
 		Enabled:            o.Enabled,
@@ -64,7 +65,7 @@ func (o hostTerraformModel) Clone() hostTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Host
-func (o hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
+func (o *hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.Enabled = o.Enabled.ValueBool()
 	req.InstanceId = o.InstanceId.ValueString()
@@ -390,11 +391,11 @@ func (o *hostResource) Configure(ctx context.Context, request resource.Configure
 	o.endpoint = "/api/v2/hosts/"
 }
 
-func (o hostResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *hostResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_host"
 }
 
-func (o hostResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *hostResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Host",
@@ -457,7 +458,7 @@ func (o hostResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnos
 					Optional:    true,
 					Computed:    true,
 					PlanModifiers: []tfsdk.AttributePlanModifier{
-						helpers.DefaultValue(types.StringValue(``)),
+						helpers.DefaultValue(types.StringValue(`{}`)),
 						resource.UseStateForUnknown(),
 					},
 					Validators: []tfsdk.AttributeValidator{},
@@ -517,6 +518,11 @@ func (o *hostResource) Create(ctx context.Context, request resource.CreateReques
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Host/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -606,6 +612,11 @@ func (o *hostResource) Update(ctx context.Context, request resource.UpdateReques
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Host/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -902,6 +913,11 @@ func (o *hostAssociateDisassociateGroup) Create(ctx context.Context, request res
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.HostID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.GroupID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[Host/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -943,6 +959,11 @@ func (o *hostAssociateDisassociateGroup) Delete(ctx context.Context, request res
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.HostID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.GroupID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[Host/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

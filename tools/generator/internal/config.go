@@ -6,12 +6,13 @@ import (
 )
 
 type PropertyOverride struct {
-	Type        string `json:"type"`
-	Description string `json:"description"`
-	Sensitive   bool   `json:"sensitive"`
-	Required    bool   `json:"required"`
-	Trim        bool   `json:"trim"`
-	PostWrap    bool   `json:"post_wrap"`
+	Type         string `json:"type"`
+	Description  string `json:"description"`
+	Sensitive    bool   `json:"sensitive"`
+	Required     bool   `json:"required"`
+	Trim         bool   `json:"trim"`
+	PostWrap     bool   `json:"post_wrap"`
+	DefaultValue string `json:"default_value"`
 }
 
 type SearchField struct {

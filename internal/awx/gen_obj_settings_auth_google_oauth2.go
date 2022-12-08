@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthGoogleOauth2TerraformModel maps the schema for SettingsAuthGoogleOauth2 when using Data Source
@@ -37,7 +38,7 @@ type settingsAuthGoogleOauth2TerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthGoogleOauth2TerraformModel) Clone() settingsAuthGoogleOauth2TerraformModel {
+func (o *settingsAuthGoogleOauth2TerraformModel) Clone() settingsAuthGoogleOauth2TerraformModel {
 	return settingsAuthGoogleOauth2TerraformModel{
 		SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS: o.SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS,
 		SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL:         o.SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL,
@@ -50,7 +51,7 @@ func (o settingsAuthGoogleOauth2TerraformModel) Clone() settingsAuthGoogleOauth2
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGoogleOauth2
-func (o settingsAuthGoogleOauth2TerraformModel) BodyRequest() (req settingsAuthGoogleOauth2BodyRequestModel) {
+func (o *settingsAuthGoogleOauth2TerraformModel) BodyRequest() (req settingsAuthGoogleOauth2BodyRequestModel) {
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = json.RawMessage(o.SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS.ValueString())
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = o.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP.ValueString())
@@ -261,7 +262,7 @@ func (o *settingsAuthGoogleOauth2DataSource) Read(ctx context.Context, req datas
 	}
 
 	// Set state
-	if err = hookSettingsAuthGoogleOauth2(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -300,11 +301,11 @@ func (o *settingsAuthGoogleOauth2Resource) Configure(ctx context.Context, reques
 	o.endpoint = "/api/v2/settings/google-oauth2/"
 }
 
-func (o settingsAuthGoogleOauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthGoogleOauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_google_oauth2"
 }
 
-func (o settingsAuthGoogleOauth2Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthGoogleOauth2Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthGoogleOauth2",
@@ -402,6 +403,11 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -427,7 +433,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -479,7 +485,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),
@@ -506,6 +512,11 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -531,7 +542,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 		return
 	}
 
-	if err = hookSettingsAuthGoogleOauth2(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGoogleOauth2(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGoogleOauth2",
 			err.Error(),

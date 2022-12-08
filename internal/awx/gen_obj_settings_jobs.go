@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsJobsTerraformModel maps the schema for SettingsJobs when using Data Source
@@ -70,7 +71,7 @@ type settingsJobsTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
+func (o *settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
 	return settingsJobsTerraformModel{
 		AD_HOC_COMMANDS:                  o.AD_HOC_COMMANDS,
 		ALLOW_JINJA_IN_EXTRA_VARS:        o.ALLOW_JINJA_IN_EXTRA_VARS,
@@ -99,7 +100,7 @@ func (o settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsJobs
-func (o settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestModel) {
+func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestModel) {
 	req.AD_HOC_COMMANDS = []string{}
 	for _, val := range o.AD_HOC_COMMANDS.Elements() {
 		if _, ok := val.(types.String); ok {
@@ -615,11 +616,11 @@ func (o *settingsJobsResource) Configure(ctx context.Context, request resource.C
 	o.endpoint = "/api/v2/settings/jobs/"
 }
 
-func (o settingsJobsResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsJobsResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_jobs"
 }
 
-func (o settingsJobsResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsJobsResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsJobs",
@@ -876,6 +877,11 @@ func (o *settingsJobsResource) Create(ctx context.Context, request resource.Crea
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsJobs/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -963,6 +969,11 @@ func (o *settingsJobsResource) Update(ctx context.Context, request resource.Upda
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsJobs/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

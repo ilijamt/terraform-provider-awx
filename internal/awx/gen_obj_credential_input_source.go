@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // credentialInputSourceTerraformModel maps the schema for CredentialInputSource when using Data Source
@@ -39,7 +40,7 @@ type credentialInputSourceTerraformModel struct {
 }
 
 // Clone the object
-func (o credentialInputSourceTerraformModel) Clone() credentialInputSourceTerraformModel {
+func (o *credentialInputSourceTerraformModel) Clone() credentialInputSourceTerraformModel {
 	return credentialInputSourceTerraformModel{
 		Description:      o.Description,
 		ID:               o.ID,
@@ -51,7 +52,7 @@ func (o credentialInputSourceTerraformModel) Clone() credentialInputSourceTerraf
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for CredentialInputSource
-func (o credentialInputSourceTerraformModel) BodyRequest() (req credentialInputSourceBodyRequestModel) {
+func (o *credentialInputSourceTerraformModel) BodyRequest() (req credentialInputSourceBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.InputFieldName = o.InputFieldName.ValueString()
 	req.Metadata = json.RawMessage(o.Metadata.ValueString())
@@ -308,11 +309,11 @@ func (o *credentialInputSourceResource) Configure(ctx context.Context, request r
 	o.endpoint = "/api/v2/credential_input_sources/"
 }
 
-func (o credentialInputSourceResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *credentialInputSourceResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential_input_source"
 }
 
-func (o credentialInputSourceResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *credentialInputSourceResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"CredentialInputSource",
@@ -403,6 +404,11 @@ func (o *credentialInputSourceResource) Create(ctx context.Context, request reso
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[CredentialInputSource/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -492,6 +498,11 @@ func (o *credentialInputSourceResource) Update(ctx context.Context, request reso
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[CredentialInputSource/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

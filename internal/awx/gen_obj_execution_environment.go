@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // executionEnvironmentTerraformModel maps the schema for ExecutionEnvironment when using Data Source
@@ -44,7 +45,7 @@ type executionEnvironmentTerraformModel struct {
 }
 
 // Clone the object
-func (o executionEnvironmentTerraformModel) Clone() executionEnvironmentTerraformModel {
+func (o *executionEnvironmentTerraformModel) Clone() executionEnvironmentTerraformModel {
 	return executionEnvironmentTerraformModel{
 		Credential:   o.Credential,
 		Description:  o.Description,
@@ -58,7 +59,7 @@ func (o executionEnvironmentTerraformModel) Clone() executionEnvironmentTerrafor
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for ExecutionEnvironment
-func (o executionEnvironmentTerraformModel) BodyRequest() (req executionEnvironmentBodyRequestModel) {
+func (o *executionEnvironmentTerraformModel) BodyRequest() (req executionEnvironmentBodyRequestModel) {
 	req.Credential = o.Credential.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Image = o.Image.ValueString()
@@ -368,11 +369,11 @@ func (o *executionEnvironmentResource) Configure(ctx context.Context, request re
 	o.endpoint = "/api/v2/execution_environments/"
 }
 
-func (o executionEnvironmentResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *executionEnvironmentResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_execution_environment"
 }
 
-func (o executionEnvironmentResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *executionEnvironmentResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"ExecutionEnvironment",
@@ -488,6 +489,11 @@ func (o *executionEnvironmentResource) Create(ctx context.Context, request resou
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[ExecutionEnvironment/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -577,6 +583,11 @@ func (o *executionEnvironmentResource) Update(ctx context.Context, request resou
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[ExecutionEnvironment/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

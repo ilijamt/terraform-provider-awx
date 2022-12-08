@@ -25,6 +25,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // organizationTerraformModel maps the schema for Organization when using Data Source
@@ -42,7 +43,7 @@ type organizationTerraformModel struct {
 }
 
 // Clone the object
-func (o organizationTerraformModel) Clone() organizationTerraformModel {
+func (o *organizationTerraformModel) Clone() organizationTerraformModel {
 	return organizationTerraformModel{
 		DefaultEnvironment: o.DefaultEnvironment,
 		Description:        o.Description,
@@ -53,7 +54,7 @@ func (o organizationTerraformModel) Clone() organizationTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Organization
-func (o organizationTerraformModel) BodyRequest() (req organizationBodyRequestModel) {
+func (o *organizationTerraformModel) BodyRequest() (req organizationBodyRequestModel) {
 	req.DefaultEnvironment = o.DefaultEnvironment.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.MaxHosts = o.MaxHosts.ValueInt64()
@@ -321,11 +322,11 @@ func (o *organizationResource) Configure(ctx context.Context, request resource.C
 	o.endpoint = "/api/v2/organizations/"
 }
 
-func (o organizationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *organizationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_organization"
 }
 
-func (o organizationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *organizationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Organization",
@@ -414,6 +415,11 @@ func (o *organizationResource) Create(ctx context.Context, request resource.Crea
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Organization/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -503,6 +509,11 @@ func (o *organizationResource) Update(ctx context.Context, request resource.Upda
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Organization/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -799,6 +810,11 @@ func (o *organizationAssociateDisassociateInstanceGroup) Create(ctx context.Cont
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.InstanceGroupID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[Organization/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -840,6 +856,11 @@ func (o *organizationAssociateDisassociateInstanceGroup) Delete(ctx context.Cont
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.InstanceGroupID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[Organization/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -988,6 +1009,11 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Create(ctx context.C
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.GalaxyCredentialID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[Organization/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1029,6 +1055,11 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Delete(ctx context.C
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.GalaxyCredentialID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[Organization/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

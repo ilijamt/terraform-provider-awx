@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // scheduleTerraformModel maps the schema for Schedule when using Data Source
@@ -75,7 +76,7 @@ type scheduleTerraformModel struct {
 }
 
 // Clone the object
-func (o scheduleTerraformModel) Clone() scheduleTerraformModel {
+func (o *scheduleTerraformModel) Clone() scheduleTerraformModel {
 	return scheduleTerraformModel{
 		Description:          o.Description,
 		DiffMode:             o.DiffMode,
@@ -105,7 +106,7 @@ func (o scheduleTerraformModel) Clone() scheduleTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Schedule
-func (o scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
+func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.Enabled = o.Enabled.ValueBool()
@@ -639,11 +640,11 @@ func (o *scheduleResource) Configure(ctx context.Context, request resource.Confi
 	o.endpoint = "/api/v2/schedules/"
 }
 
-func (o scheduleResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *scheduleResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_schedule"
 }
 
-func (o scheduleResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *scheduleResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"Schedule",
@@ -908,6 +909,11 @@ func (o *scheduleResource) Create(ctx context.Context, request resource.CreateRe
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Schedule/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -997,6 +1003,11 @@ func (o *scheduleResource) Update(ctx context.Context, request resource.UpdateRe
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[Schedule/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

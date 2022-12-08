@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthGithubEnterpriseTerraformModel maps the schema for SettingsAuthGithubEnterprise when using Data Source
@@ -37,7 +38,7 @@ type settingsAuthGithubEnterpriseTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthGithubEnterpriseTerraformModel) Clone() settingsAuthGithubEnterpriseTerraformModel {
+func (o *settingsAuthGithubEnterpriseTerraformModel) Clone() settingsAuthGithubEnterpriseTerraformModel {
 	return settingsAuthGithubEnterpriseTerraformModel{
 		SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL:          o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL,
 		SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL:     o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL,
@@ -50,7 +51,7 @@ func (o settingsAuthGithubEnterpriseTerraformModel) Clone() settingsAuthGithubEn
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubEnterprise
-func (o settingsAuthGithubEnterpriseTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseBodyRequestModel) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseBodyRequestModel) {
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP.ValueString())
@@ -254,7 +255,7 @@ func (o *settingsAuthGithubEnterpriseDataSource) Read(ctx context.Context, req d
 	}
 
 	// Set state
-	if err = hookSettingsAuthGithubEnterprise(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterprise(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
@@ -293,11 +294,11 @@ func (o *settingsAuthGithubEnterpriseResource) Configure(ctx context.Context, re
 	o.endpoint = "/api/v2/settings/github-enterprise/"
 }
 
-func (o settingsAuthGithubEnterpriseResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthGithubEnterpriseResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_github_enterprise"
 }
 
-func (o settingsAuthGithubEnterpriseResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthGithubEnterpriseResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthGithubEnterprise",
@@ -396,6 +397,11 @@ func (o *settingsAuthGithubEnterpriseResource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -421,7 +427,7 @@ func (o *settingsAuthGithubEnterpriseResource) Create(ctx context.Context, reque
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterprise(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterprise(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
@@ -473,7 +479,7 @@ func (o *settingsAuthGithubEnterpriseResource) Read(ctx context.Context, request
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterprise(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterprise(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),
@@ -500,6 +506,11 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -525,7 +536,7 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 		return
 	}
 
-	if err = hookSettingsAuthGithubEnterprise(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthGithubEnterprise(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthGithubEnterprise",
 			err.Error(),

@@ -23,6 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // workflowJobTemplateTerraformModel maps the schema for WorkflowJobTemplate when using Data Source
@@ -72,7 +73,7 @@ type workflowJobTemplateTerraformModel struct {
 }
 
 // Clone the object
-func (o workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraformModel {
+func (o *workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraformModel {
 	return workflowJobTemplateTerraformModel{
 		AllowSimultaneous:    o.AllowSimultaneous,
 		AskInventoryOnLaunch: o.AskInventoryOnLaunch,
@@ -99,7 +100,7 @@ func (o workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraformM
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for WorkflowJobTemplate
-func (o workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTemplateBodyRequestModel) {
+func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTemplateBodyRequestModel) {
 	req.AllowSimultaneous = o.AllowSimultaneous.ValueBool()
 	req.AskInventoryOnLaunch = o.AskInventoryOnLaunch.ValueBool()
 	req.AskLabelsOnLaunch = o.AskLabelsOnLaunch.ValueBool()
@@ -593,6 +594,14 @@ func (o *workflowJobTemplateDataSource) Read(ctx context.Context, req datasource
 	}
 
 	// Set state
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on WorkflowJobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
@@ -625,11 +634,11 @@ func (o *workflowJobTemplateResource) Configure(ctx context.Context, request res
 	o.endpoint = "/api/v2/workflow_job_templates/"
 }
 
-func (o workflowJobTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *workflowJobTemplateResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_workflow_job_template"
 }
 
-func (o workflowJobTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *workflowJobTemplateResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"WorkflowJobTemplate",
@@ -878,6 +887,11 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -903,6 +917,14 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 		return
 	}
 
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on WorkflowJobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -918,6 +940,7 @@ func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for WorkflowJobTemplate
 	var r *http.Request
@@ -947,6 +970,14 @@ func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource
 		return
 	}
 
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on WorkflowJobTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -967,6 +998,11 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -989,6 +1025,14 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on WorkflowJobTemplate",
+			err.Error(),
+		)
 		return
 	}
 
@@ -1241,6 +1285,11 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Create(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1283,6 +1332,11 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Delete(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1480,6 +1534,11 @@ func (o *workflowJobTemplateSurvey) Create(ctx context.Context, request resource
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Survey] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -1518,6 +1577,11 @@ func (o *workflowJobTemplateSurvey) Update(ctx context.Context, request resource
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Update/SurveySpec] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

@@ -22,6 +22,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // userTerraformModel maps the schema for User when using Data Source
@@ -51,7 +52,7 @@ type userTerraformModel struct {
 }
 
 // Clone the object
-func (o userTerraformModel) Clone() userTerraformModel {
+func (o *userTerraformModel) Clone() userTerraformModel {
 	return userTerraformModel{
 		Email:           o.Email,
 		ExternalAccount: o.ExternalAccount,
@@ -68,7 +69,7 @@ func (o userTerraformModel) Clone() userTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for User
-func (o userTerraformModel) BodyRequest() (req userBodyRequestModel) {
+func (o *userTerraformModel) BodyRequest() (req userBodyRequestModel) {
 	req.Email = o.Email.ValueString()
 	req.FirstName = o.FirstName.ValueString()
 	req.IsSuperuser = o.IsSuperuser.ValueBool()
@@ -410,11 +411,11 @@ func (o *userResource) Configure(ctx context.Context, request resource.Configure
 	o.endpoint = "/api/v2/users/"
 }
 
-func (o userResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *userResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_user"
 }
 
-func (o userResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *userResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"User",
@@ -557,6 +558,11 @@ func (o *userResource) Create(ctx context.Context, request resource.CreateReques
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[User/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	bodyRequest.Password = plan.Password.ValueString()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
@@ -649,6 +655,11 @@ func (o *userResource) Update(ctx context.Context, request resource.UpdateReques
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[User/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	bodyRequest.Password = plan.Password.ValueString()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
@@ -839,6 +850,11 @@ func (o *userAssociateDisassociateRole) Create(ctx context.Context, request reso
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.UserID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.RoleID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[User/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -880,6 +896,11 @@ func (o *userAssociateDisassociateRole) Delete(ctx context.Context, request reso
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.UserID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.RoleID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[User/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsAuthSAMLTerraformModel maps the schema for SettingsAuthSAML when using Data Source
@@ -59,7 +60,7 @@ type settingsAuthSAMLTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsAuthSAMLTerraformModel) Clone() settingsAuthSAMLTerraformModel {
+func (o *settingsAuthSAMLTerraformModel) Clone() settingsAuthSAMLTerraformModel {
 	return settingsAuthSAMLTerraformModel{
 		SAML_AUTO_CREATE_OBJECTS:            o.SAML_AUTO_CREATE_OBJECTS,
 		SOCIAL_AUTH_SAML_CALLBACK_URL:       o.SOCIAL_AUTH_SAML_CALLBACK_URL,
@@ -83,7 +84,7 @@ func (o settingsAuthSAMLTerraformModel) Clone() settingsAuthSAMLTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthSAML
-func (o settingsAuthSAMLTerraformModel) BodyRequest() (req settingsAuthSAMLBodyRequestModel) {
+func (o *settingsAuthSAMLTerraformModel) BodyRequest() (req settingsAuthSAMLBodyRequestModel) {
 	req.SAML_AUTO_CREATE_OBJECTS = o.SAML_AUTO_CREATE_OBJECTS.ValueBool()
 	req.SOCIAL_AUTH_SAML_ENABLED_IDPS = json.RawMessage(o.SOCIAL_AUTH_SAML_ENABLED_IDPS.ValueString())
 	req.SOCIAL_AUTH_SAML_EXTRA_DATA = []string{}
@@ -467,7 +468,7 @@ func (o *settingsAuthSAMLDataSource) Read(ctx context.Context, req datasource.Re
 	}
 
 	// Set state
-	if err = hookSettingsSaml(ctx, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsSaml(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -506,11 +507,11 @@ func (o *settingsAuthSAMLResource) Configure(ctx context.Context, request resour
 	o.endpoint = "/api/v2/settings/saml/"
 }
 
-func (o settingsAuthSAMLResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthSAMLResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_saml"
 }
 
-func (o settingsAuthSAMLResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsAuthSAMLResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsAuthSAML",
@@ -714,6 +715,11 @@ func (o *settingsAuthSAMLResource) Create(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthSAML/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -739,7 +745,7 @@ func (o *settingsAuthSAMLResource) Create(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsSaml(ctx, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsSaml(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -791,7 +797,7 @@ func (o *settingsAuthSAMLResource) Read(ctx context.Context, request resource.Re
 		return
 	}
 
-	if err = hookSettingsSaml(ctx, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsSaml(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),
@@ -818,6 +824,11 @@ func (o *settingsAuthSAMLResource) Update(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsAuthSAML/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -843,7 +854,7 @@ func (o *settingsAuthSAMLResource) Update(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsSaml(ctx, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsSaml(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),

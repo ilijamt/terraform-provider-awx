@@ -17,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // settingsMiscAuthenticationTerraformModel maps the schema for SettingsMiscAuthentication when using Data Source
@@ -46,7 +47,7 @@ type settingsMiscAuthenticationTerraformModel struct {
 }
 
 // Clone the object
-func (o settingsMiscAuthenticationTerraformModel) Clone() settingsMiscAuthenticationTerraformModel {
+func (o *settingsMiscAuthenticationTerraformModel) Clone() settingsMiscAuthenticationTerraformModel {
 	return settingsMiscAuthenticationTerraformModel{
 		ALLOW_OAUTH2_FOR_EXTERNAL_USERS: o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS,
 		AUTHENTICATION_BACKENDS:         o.AUTHENTICATION_BACKENDS,
@@ -63,7 +64,7 @@ func (o settingsMiscAuthenticationTerraformModel) Clone() settingsMiscAuthentica
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscAuthentication
-func (o settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMiscAuthenticationBodyRequestModel) {
+func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMiscAuthenticationBodyRequestModel) {
 	req.ALLOW_OAUTH2_FOR_EXTERNAL_USERS = o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()
 	req.AUTH_BASIC_ENABLED = o.AUTH_BASIC_ENABLED.ValueBool()
 	req.DISABLE_LOCAL_AUTH = o.DISABLE_LOCAL_AUTH.ValueBool()
@@ -368,11 +369,11 @@ func (o *settingsMiscAuthenticationResource) Configure(ctx context.Context, requ
 	o.endpoint = "/api/v2/settings/authentication/"
 }
 
-func (o settingsMiscAuthenticationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsMiscAuthenticationResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_misc_authentication"
 }
 
-func (o settingsMiscAuthenticationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *settingsMiscAuthenticationResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"SettingsMiscAuthentication",
@@ -502,6 +503,11 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscAuthentication/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -589,6 +595,11 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[SettingsMiscAuthentication/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

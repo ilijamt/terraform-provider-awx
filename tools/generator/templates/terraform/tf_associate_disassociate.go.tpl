@@ -166,6 +166,11 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: plan.{{ .Type }}ID.ValueInt64(), Disassociate: false}
+	tflog.Debug(ctx, "[{{.Name}}/Create/Associate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -214,6 +219,11 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Delete(ct
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = associateDisassociateRequestModel{ID: state.{{ .Type | camelCase }}ID.ValueInt64(), Disassociate: true}
+	tflog.Debug(ctx, "[{{.Name}}/Delete/Disassociate] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

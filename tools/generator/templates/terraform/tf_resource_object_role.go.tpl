@@ -108,4 +108,3 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
     }
 }
 {{ end }}
-{{ block "tf_resource_object_role" . }}{{ end }}

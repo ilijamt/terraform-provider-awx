@@ -518,9 +518,13 @@
       "type_name": "ad_hoc_command",
       "id_key": "id",
       "enabled": true,
+      "pre_state_set_hook_function": "hookAdHocCommand",
       "property_overrides": {
         "launched_by": {
           "type": "id"
+        },
+        "extra_vars": {
+          "type": "json"
         }
       },
       "search_fields": [
@@ -1075,6 +1079,12 @@
       "enabled": true,
       "has_object_roles": true,
       "has_survey_spec": true,
+      "pre_state_set_hook_function": "hookWorkflowJobTemplate",
+      "property_overrides": {
+        "extra_vars": {
+          "type": "json"
+        }
+      },
       "associate_disassociate_groups": [
         {
           "name": "WorkflowJobTemplate",
@@ -1117,11 +1127,13 @@
     {
       "endpoint": "/api/v2/inventory_sources/",
       "name": "InventorySource",
+      "pre_state_set_hook_function": "hookInventorySource",
       "type_name": "inventory_source",
       "id_key": "id",
       "enabled": true,
       "property_overrides": {
         "source_vars": {
+          "post_wrap": true,
           "type": "json"
         }
       },
@@ -1164,6 +1176,7 @@
       "enabled": true,
       "has_object_roles": true,
       "has_survey_spec": true,
+      "pre_state_set_hook_function": "hookJobTemplate",
       "associate_disassociate_groups": [
         {
           "name": "JobTemplate",
@@ -1188,6 +1201,9 @@
       "property_overrides": {
         "name": {
           "required": true
+        },
+        "extra_vars": {
+          "type": "json"
         }
       },
       "search_fields": [
@@ -1229,7 +1245,8 @@
       ],
       "property_overrides": {
         "variables": {
-          "post_wrap": true
+          "post_wrap": true,
+          "default_value": "{}"
         }
       },
       "remove_fields_data_source": [

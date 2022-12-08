@@ -67,6 +67,9 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				if "" != override.Type {
 					value.(map[string]any)["type"] = override.Type
 				}
+				if "" != override.DefaultValue {
+					value.(map[string]any)["default"] = override.DefaultValue
+				}
 				if "" != override.Description {
 					value.(map[string]any)["help_text"] = override.Description
 				}
@@ -100,6 +103,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	// ---------------------
 
 	var data = map[string]any{
+		"ApiVersion":            config.ApiVersion,
 		"PackageName":           "awx",
 		"Name":                  name,
 		"Endpoint":              val.Endpoint,

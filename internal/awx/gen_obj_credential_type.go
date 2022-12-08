@@ -21,6 +21,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // credentialTypeTerraformModel maps the schema for CredentialType when using Data Source
@@ -44,7 +45,7 @@ type credentialTypeTerraformModel struct {
 }
 
 // Clone the object
-func (o credentialTypeTerraformModel) Clone() credentialTypeTerraformModel {
+func (o *credentialTypeTerraformModel) Clone() credentialTypeTerraformModel {
 	return credentialTypeTerraformModel{
 		Description: o.Description,
 		ID:          o.ID,
@@ -58,7 +59,7 @@ func (o credentialTypeTerraformModel) Clone() credentialTypeTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for CredentialType
-func (o credentialTypeTerraformModel) BodyRequest() (req credentialTypeBodyRequestModel) {
+func (o *credentialTypeTerraformModel) BodyRequest() (req credentialTypeBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.Injectors = json.RawMessage(o.Injectors.ValueString())
 	req.Inputs = json.RawMessage(o.Inputs.ValueString())
@@ -365,11 +366,11 @@ func (o *credentialTypeResource) Configure(ctx context.Context, request resource
 	o.endpoint = "/api/v2/credential_types/"
 }
 
-func (o credentialTypeResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *credentialTypeResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential_type"
 }
 
-func (o credentialTypeResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+func (o *credentialTypeResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return processSchema(
 		SourceResource,
 		"CredentialType",
@@ -482,6 +483,11 @@ func (o *credentialTypeResource) Create(ctx context.Context, request resource.Cr
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[CredentialType/Create] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -571,6 +577,11 @@ func (o *credentialTypeResource) Update(ctx context.Context, request resource.Up
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	tflog.Debug(ctx, "[CredentialType/Update] Making a request", map[string]interface{}{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(

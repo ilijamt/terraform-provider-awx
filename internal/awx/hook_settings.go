@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func hookSettingsAuthAzureADOauth2(ctx context.Context, source Source, callee Callee, orig *settingsAuthAzureADOauth2TerraformModel, state *settingsAuthAzureADOauth2TerraformModel) (err error) {
+func hookSettingsAuthAzureADOauth2(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthAzureADOauth2TerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -22,7 +22,7 @@ func hookSettingsAuthAzureADOauth2(ctx context.Context, source Source, callee Ca
 	return nil
 }
 
-func hookSettingsAuthGithub(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubTerraformModel, state *settingsAuthGithubTerraformModel) (err error) {
+func hookSettingsAuthGithub(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -37,7 +37,7 @@ func hookSettingsAuthGithub(ctx context.Context, source Source, callee Callee, o
 	return nil
 }
 
-func hookSettingsAuthGithubEnterprise(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubEnterpriseTerraformModel, state *settingsAuthGithubEnterpriseTerraformModel) (err error) {
+func hookSettingsAuthGithubEnterprise(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubEnterpriseTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -52,7 +52,7 @@ func hookSettingsAuthGithubEnterprise(ctx context.Context, source Source, callee
 	return nil
 }
 
-func hookSettingsAuthGithubEnterpriseOrg(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubEnterpriseOrgTerraformModel, state *settingsAuthGithubEnterpriseOrgTerraformModel) (err error) {
+func hookSettingsAuthGithubEnterpriseOrg(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubEnterpriseOrgTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -67,7 +67,7 @@ func hookSettingsAuthGithubEnterpriseOrg(ctx context.Context, source Source, cal
 	return nil
 }
 
-func hookSettingsAuthGithubEnterpriseTeam(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubEnterpriseTeamTerraformModel, state *settingsAuthGithubEnterpriseTeamTerraformModel) (err error) {
+func hookSettingsAuthGithubEnterpriseTeam(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubEnterpriseTeamTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -82,7 +82,7 @@ func hookSettingsAuthGithubEnterpriseTeam(ctx context.Context, source Source, ca
 	return nil
 }
 
-func hookSettingsAuthGithubOrg(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubOrgTerraformModel, state *settingsAuthGithubOrgTerraformModel) (err error) {
+func hookSettingsAuthGithubOrg(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubOrgTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -97,7 +97,7 @@ func hookSettingsAuthGithubOrg(ctx context.Context, source Source, callee Callee
 	return nil
 }
 
-func hookSettingsAuthGithubTeam(ctx context.Context, source Source, callee Callee, orig *settingsAuthGithubTeamTerraformModel, state *settingsAuthGithubTeamTerraformModel) (err error) {
+func hookSettingsAuthGithubTeam(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGithubTeamTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -112,7 +112,7 @@ func hookSettingsAuthGithubTeam(ctx context.Context, source Source, callee Calle
 	return nil
 }
 
-func hookSettingsSaml(ctx context.Context, source Source, callee Callee, orig *settingsAuthSAMLTerraformModel, state *settingsAuthSAMLTerraformModel) (err error) {
+func hookSettingsSaml(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthSAMLTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -128,7 +128,7 @@ func hookSettingsSaml(ctx context.Context, source Source, callee Callee, orig *s
 	return nil
 }
 
-func hookSettingsAuthGoogleOauth2(ctx context.Context, source Source, callee Callee, orig *settingsAuthGoogleOauth2TerraformModel, state *settingsAuthGoogleOauth2TerraformModel) (err error) {
+func hookSettingsAuthGoogleOauth2(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthGoogleOauth2TerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -143,7 +143,7 @@ func hookSettingsAuthGoogleOauth2(ctx context.Context, source Source, callee Cal
 	return nil
 }
 
-func hookSettingsAuthLdap(ctx context.Context, source Source, callee Callee, orig *settingsAuthLDAPTerraformModel, state *settingsAuthLDAPTerraformModel) (err error) {
+func hookSettingsAuthLdap(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthLDAPTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
