@@ -8,7 +8,9 @@ const (
 	CalleeUpdate
 	CalleeRead
 	CalleeDelete
+)
 
+const (
 	SourceData Source = iota
 	SourceResource
 )
