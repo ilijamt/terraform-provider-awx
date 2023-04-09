@@ -54,67 +54,83 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 			// Data only elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"has_active_failures": schema.BoolAttribute{
 				Description: "This field is deprecated and will be removed in a future release. Flag indicating whether any hosts in this inventory have failed.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"has_inventory_sources": schema.BoolAttribute{
 				Description: "This field is deprecated and will be removed in a future release. Flag indicating whether this inventory has any external inventory sources.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"host_filter": schema.StringAttribute{
 				Description: "Filter that will be applied to the hosts of this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"hosts_with_active_failures": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this inventory.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inventory_sources_with_failures": schema.Int64Attribute{
 				Description: "Number of external inventory sources in this inventory with failures.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"kind": schema.StringAttribute{
 				Description: "Kind of inventory being represented.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization containing this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"pending_deletion": schema.BoolAttribute{
 				Description: "Flag indicating the inventory is being deleted.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"prevent_instance_group_fallback": schema.BoolAttribute{
 				Description: "If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"total_groups": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Total number of groups in this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"total_hosts": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Total number of hosts in this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"total_inventory_sources": schema.Int64Attribute{
 				Description: "Total number of external inventory sources configured within this inventory.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"variables": schema.StringAttribute{
 				Description: "Inventory variables in JSON or YAML format.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

@@ -54,23 +54,28 @@ func (o *groupDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 			// Data only elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this group.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this group.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this group.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"variables": schema.StringAttribute{
 				Description: "Group variables in JSON or YAML format.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

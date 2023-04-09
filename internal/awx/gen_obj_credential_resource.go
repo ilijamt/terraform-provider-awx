@@ -62,13 +62,16 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 			// Request elements
 			"credential_type": schema.Int64Attribute{
 				Description:   "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this credential.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -80,6 +83,7 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 			},
 			"inputs": schema.StringAttribute{
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -91,8 +95,10 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this credential.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -100,6 +106,7 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Inherit permissions from organization roles. If provided on creation, do not give either user or team.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -112,35 +119,50 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 			// Data only elements
 			"cloud": schema.BoolAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"kind": schema.StringAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"kubernetes": schema.BoolAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},

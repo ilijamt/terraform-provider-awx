@@ -55,32 +55,39 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 			// Data only elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this notification template.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this notification template.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"messages": schema.StringAttribute{
 				Description: "Optional custom messages for notification template.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this notification template.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"notification_configuration": schema.StringAttribute{
 				Description: "Notification configuration",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"notification_type": schema.StringAttribute{
 				Description: "Notification type",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

@@ -56,6 +56,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			// Request elements
 			"social_auth_github_enterprise_team_api_url": schema.StringAttribute{
 				Description: "The API URL for your GitHub Enterprise instance, e.g.: http(s)://hostname/api/v3/. Refer to Github Enterprise documentation for more details.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -67,6 +68,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			},
 			"social_auth_github_enterprise_team_id": schema.StringAttribute{
 				Description: "Find the numeric team ID using the Github Enterprise API: http://fabian-kostadinov.github.io/2015/01/16/how-to-find-a-github-team-id/.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -78,6 +80,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			},
 			"social_auth_github_enterprise_team_key": schema.StringAttribute{
 				Description: "The OAuth2 key (Client ID) from your GitHub Enterprise organization application.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -89,6 +92,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			},
 			"social_auth_github_enterprise_team_organization_map": schema.StringAttribute{
 				Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -111,6 +115,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			},
 			"social_auth_github_enterprise_team_team_map": schema.StringAttribute{
 				Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -121,6 +126,7 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			},
 			"social_auth_github_enterprise_team_url": schema.StringAttribute{
 				Description: "The URL for your Github Enterprise instance, e.g.: http(s)://hostname/. Refer to Github Enterprise documentation for more details.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -134,7 +140,10 @@ func (o *settingsAuthGithubEnterpriseTeamResource) Schema(ctx context.Context, r
 			// Data only elements
 			"social_auth_github_enterprise_team_callback_url": schema.StringAttribute{
 				Description: "Create an organization-owned application at https://github.com/organizations/<yourorg>/settings/applications and obtain an OAuth2 key (Client ID) and secret (Client Secret). Provide this URL as the callback URL for your application.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

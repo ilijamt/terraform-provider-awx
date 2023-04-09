@@ -62,6 +62,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			// Request elements
 			"allow_simultaneous": schema.BoolAttribute{
 				Description: "Allow simultaneous",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -72,6 +73,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_inventory_on_launch": schema.BoolAttribute{
 				Description: "Ask inventory on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -82,6 +84,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_labels_on_launch": schema.BoolAttribute{
 				Description: "Ask labels on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -92,6 +95,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_limit_on_launch": schema.BoolAttribute{
 				Description: "Ask limit on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -102,6 +106,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_scm_branch_on_launch": schema.BoolAttribute{
 				Description: "Ask scm branch on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -112,6 +117,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_skip_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask skip tags on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -122,6 +128,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask tags on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -132,6 +139,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"ask_variables_on_launch": schema.BoolAttribute{
 				Description: "Ask variables on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -142,6 +150,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this workflow job template.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -153,6 +162,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"extra_vars": schema.StringAttribute{
 				Description: "Extra vars",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -164,6 +174,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -174,6 +185,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"job_tags": schema.StringAttribute{
 				Description: "Job tags",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -184,6 +196,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -194,8 +207,10 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this workflow job template.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -203,6 +218,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"organization": schema.Int64Attribute{
 				Description: "The organization used to determine access to this template.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -213,6 +229,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Scm branch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -223,6 +240,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"skip_tags": schema.StringAttribute{
 				Description: "Skip tags",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -233,6 +251,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"survey_enabled": schema.BoolAttribute{
 				Description: "Survey enabled",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -243,6 +262,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"webhook_credential": schema.Int64Attribute{
 				Description: "Personal Access Token for posting back the status to the service API",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -253,6 +273,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			},
 			"webhook_service": schema.StringAttribute{
 				Description: "Service that webhook requests will be accepted from",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -267,7 +288,10 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this workflow job template.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

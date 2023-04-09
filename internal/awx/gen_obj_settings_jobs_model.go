@@ -311,7 +311,7 @@ type settingsJobsBodyRequestModel struct {
 	// AD_HOC_COMMANDS "List of modules allowed to be used by ad-hoc jobs."
 	AD_HOC_COMMANDS []string `json:"AD_HOC_COMMANDS,omitempty"`
 	// ALLOW_JINJA_IN_EXTRA_VARS "Ansible allows variable substitution via the Jinja2 templating language for --extra-vars. This poses a potential security risk where users with the ability to specify extra vars at job launch time can use Jinja2 templates to run arbitrary Python.  It is recommended that this value be set to \"template\" or \"never\"."
-	ALLOW_JINJA_IN_EXTRA_VARS string `json:"ALLOW_JINJA_IN_EXTRA_VARS"`
+	ALLOW_JINJA_IN_EXTRA_VARS string `json:"ALLOW_JINJA_IN_EXTRA_VARS,omitempty"`
 	// ANSIBLE_FACT_CACHE_TIMEOUT "Maximum time, in seconds, that stored Ansible facts are considered valid since the last time they were modified. Only valid, non-stale, facts will be accessible by a playbook. Note, this does not influence the deletion of ansible_facts from the database. Use a value of 0 to indicate that no timeout should be imposed."
 	ANSIBLE_FACT_CACHE_TIMEOUT int64 `json:"ANSIBLE_FACT_CACHE_TIMEOUT,omitempty"`
 	// AWX_ANSIBLE_CALLBACK_PLUGINS "List of paths to search for extra callback plugins to be used when running jobs. Enter one path per line."
@@ -319,7 +319,7 @@ type settingsJobsBodyRequestModel struct {
 	// AWX_COLLECTIONS_ENABLED "Allows collections to be dynamically downloaded from a requirements.yml file for SCM projects."
 	AWX_COLLECTIONS_ENABLED bool `json:"AWX_COLLECTIONS_ENABLED"`
 	// AWX_ISOLATION_BASE_PATH "The directory in which the service will create new temporary directories for job execution and isolation (such as credential files)."
-	AWX_ISOLATION_BASE_PATH string `json:"AWX_ISOLATION_BASE_PATH"`
+	AWX_ISOLATION_BASE_PATH string `json:"AWX_ISOLATION_BASE_PATH,omitempty"`
 	// AWX_ISOLATION_SHOW_PATHS "List of paths that would otherwise be hidden to expose to isolated jobs. Enter one path per line. Volumes will be mounted from the execution node to the container. The supported format is HOST-DIR[:CONTAINER-DIR[:OPTIONS]]. "
 	AWX_ISOLATION_SHOW_PATHS []string `json:"AWX_ISOLATION_SHOW_PATHS,omitempty"`
 	// AWX_MOUNT_ISOLATED_PATHS_ON_K8S "Expose paths via hostPath for the Pods created by a Container Group. HostPath volumes present many security risks, and it is a best practice to avoid the use of HostPaths when possible. "
@@ -339,11 +339,11 @@ type settingsJobsBodyRequestModel struct {
 	// DEFAULT_PROJECT_UPDATE_TIMEOUT "Maximum time in seconds to allow project updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual project will override this."
 	DEFAULT_PROJECT_UPDATE_TIMEOUT int64 `json:"DEFAULT_PROJECT_UPDATE_TIMEOUT,omitempty"`
 	// EVENT_STDOUT_MAX_BYTES_DISPLAY "Maximum Size of Standard Output in bytes to display for a single job or ad hoc command event. `stdout` will end with `…` when truncated."
-	EVENT_STDOUT_MAX_BYTES_DISPLAY int64 `json:"EVENT_STDOUT_MAX_BYTES_DISPLAY"`
+	EVENT_STDOUT_MAX_BYTES_DISPLAY int64 `json:"EVENT_STDOUT_MAX_BYTES_DISPLAY,omitempty"`
 	// GALAXY_IGNORE_CERTS "If set to true, certificate validation will not be done when installing content from any Galaxy server."
 	GALAXY_IGNORE_CERTS bool `json:"GALAXY_IGNORE_CERTS"`
 	// GALAXY_TASK_ENV "Additional environment variables set for invocations of ansible-galaxy within project updates. Useful if you must use a proxy server for ansible-galaxy but not git."
-	GALAXY_TASK_ENV json.RawMessage `json:"GALAXY_TASK_ENV"`
+	GALAXY_TASK_ENV json.RawMessage `json:"GALAXY_TASK_ENV,omitempty"`
 	// MAX_FORKS "Saving a Job Template with more than this number of forks will result in an error. When set to 0, no limit is applied."
 	MAX_FORKS int64 `json:"MAX_FORKS,omitempty"`
 	// MAX_WEBSOCKET_EVENT_RATE "Maximum number of messages to update the UI live job output with per second. Value of 0 means no limit."
@@ -351,7 +351,7 @@ type settingsJobsBodyRequestModel struct {
 	// PROJECT_UPDATE_VVV "Adds the CLI -vvv flag to ansible-playbook runs of project_update.yml used for project updates."
 	PROJECT_UPDATE_VVV bool `json:"PROJECT_UPDATE_VVV"`
 	// SCHEDULE_MAX_JOBS "Maximum number of the same job template that can be waiting to run when launching from a schedule before no more are created."
-	SCHEDULE_MAX_JOBS int64 `json:"SCHEDULE_MAX_JOBS"`
+	SCHEDULE_MAX_JOBS int64 `json:"SCHEDULE_MAX_JOBS,omitempty"`
 	// STDOUT_MAX_BYTES_DISPLAY "Maximum Size of Standard Output in bytes to display before requiring the output be downloaded."
-	STDOUT_MAX_BYTES_DISPLAY int64 `json:"STDOUT_MAX_BYTES_DISPLAY"`
+	STDOUT_MAX_BYTES_DISPLAY int64 `json:"STDOUT_MAX_BYTES_DISPLAY,omitempty"`
 }

@@ -62,6 +62,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this schedule.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -73,6 +74,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"diff_mode": schema.BoolAttribute{
 				Description: "Diff mode",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -83,6 +85,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"enabled": schema.BoolAttribute{
 				Description: "Enables processing of this schedule.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -93,6 +96,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"execution_environment": schema.Int64Attribute{
 				Description: "The container image to be used for execution.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -103,6 +107,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"extra_data": schema.StringAttribute{
 				Description: "Extra data",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -114,6 +119,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"forks": schema.Int64Attribute{
 				Description: "Forks",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -124,6 +130,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -134,6 +141,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"job_slice_count": schema.Int64Attribute{
 				Description: "Job slice count",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -144,6 +152,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"job_tags": schema.StringAttribute{
 				Description: "Job tags",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -154,6 +163,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"job_type": schema.StringAttribute{
 				Description: "Job type",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -166,6 +176,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -176,8 +187,10 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this schedule.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -185,13 +198,16 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"rrule": schema.StringAttribute{
 				Description:   "A value representing the schedules iCal recurrence rule.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators:    []validator.String{},
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Scm branch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -202,6 +218,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"skip_tags": schema.StringAttribute{
 				Description: "Skip tags",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -212,6 +229,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"timeout": schema.Int64Attribute{
 				Description: "Timeout",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -222,13 +240,16 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"unified_job_template": schema.Int64Attribute{
 				Description:   "Unified job template",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"verbosity": schema.StringAttribute{
 				Description: "Verbosity",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -243,42 +264,60 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 			// Data only elements
 			"dtend": schema.StringAttribute{
 				Description: "The last occurrence of the schedule occurs before this time, aftewards the schedule expires.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"dtstart": schema.StringAttribute{
 				Description: "The first occurrence of the schedule occurs on or after this time.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this schedule.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"next_run": schema.StringAttribute{
 				Description: "The next time that the scheduled action will run.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"timezone": schema.StringAttribute{
 				Description: "The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"until": schema.StringAttribute{
 				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

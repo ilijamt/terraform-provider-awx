@@ -14,6 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -62,6 +63,7 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			// Request elements
 			"email": schema.StringAttribute{
 				Description: "Email address",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -74,6 +76,7 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"first_name": schema.StringAttribute{
 				Description: "First name",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -86,6 +89,7 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"is_superuser": schema.BoolAttribute{
 				Description: "Designates that this user has all permissions without explicitly assigning them.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -96,6 +100,7 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"is_system_auditor": schema.BoolAttribute{
 				Description: "Is system auditor",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -106,6 +111,7 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"last_name": schema.StringAttribute{
 				Description: "Last name",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -118,8 +124,10 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"username": schema.StringAttribute{
 				Description:   "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(150),
@@ -127,38 +135,54 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			// Write only elements
 			"password": schema.StringAttribute{
-				Description:   "Write-only field used to change the password.",
-				Sensitive:     true,
-				Required:      true,
-				Optional:      false,
-				PlanModifiers: []planmodifier.String{},
-				Validators:    []validator.String{},
+				Description: "Write-only field used to change the password.",
+				Sensitive:   true,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				Default:     stringdefault.StaticString(``),
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.String{},
 			},
 			// Data only elements
 			"external_account": schema.StringAttribute{
 				Description: "Set if the account is managed by an external service",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this user.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"last_login": schema.StringAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"ldap_dn": schema.StringAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

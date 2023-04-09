@@ -63,6 +63,7 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 			// Request elements
 			"default_environment": schema.Int64Attribute{
 				Description: "The default execution environment for jobs run by this organization.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -73,6 +74,7 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this organization.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -84,6 +86,7 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 			},
 			"max_hosts": schema.Int64Attribute{
 				Description: "Maximum number of hosts allowed to be managed by this organization.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -97,8 +100,10 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this organization.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -108,7 +113,10 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this organization.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

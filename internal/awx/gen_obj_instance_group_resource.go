@@ -65,6 +65,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			// Request elements
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -75,6 +76,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"is_container_group": schema.BoolAttribute{
 				Description: "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -85,8 +87,10 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this instance group.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(250),
@@ -94,6 +98,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"pod_spec_override": schema.StringAttribute{
 				Description: "Pod spec override",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -105,6 +110,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"policy_instance_list": schema.StringAttribute{
 				Description: "List of exact-match Instances that will be assigned to this group",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -115,6 +121,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"policy_instance_minimum": schema.Int64Attribute{
 				Description: "Static minimum number of Instances that will be automatically assign to this group when new instances come online.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -126,6 +133,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"policy_instance_percentage": schema.Int64Attribute{
 				Description: "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -141,49 +149,70 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 			// Data only elements
 			"capacity": schema.Int64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"consumed_capacity": schema.Float64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Float64{
 					float64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this instance group.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"instances": schema.Int64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"jobs_running": schema.Int64Attribute{
 				Description: "Count of jobs in the running or waiting state that are targeted for this instance group",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"jobs_total": schema.Int64Attribute{
 				Description: "Count of all jobs that target this instance group",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"percent_capacity_remaining": schema.Float64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Float64{
 					float64planmodifier.UseStateForUnknown(),
 				},

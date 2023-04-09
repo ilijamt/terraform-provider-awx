@@ -55,16 +55,19 @@ func (o *labelDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this label.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this label.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization this label belongs to.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},

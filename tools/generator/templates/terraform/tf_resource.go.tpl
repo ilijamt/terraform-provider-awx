@@ -69,20 +69,12 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-{{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
-{{- end }}
                 Required:    {{ .required }},
                 Optional:    {{ not .required }},
-{{- if not .required }}
-                Computed:    true,
-{{- end }}
-{{- if (hasKey . "default") }}
-{{- if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.StringValue") (ne .default nil) }}
-				Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}(`{{ convertDefaultValue .default }}`),
-{{- else if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.Int64Value") (ne .default nil) }}
-				Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}({{ convertDefaultValue .default }}),
-{{- end }}
+                Computed:    {{ .computed }},
+{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
+                Default:     {{ .default_value }},
 {{- end }}
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
 {{- if not .required }}
@@ -109,20 +101,12 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-{{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
-{{- end }}
                 Required:    {{ .required }},
                 Optional:    {{ not .required }},
-{{- if not .required }}
-                Computed:    true,
-{{- end }}
-{{- if (hasKey . "default") }}
-{{- if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.StringValue") (ne .default nil) (ne .default "") }}
-				Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}(`{{ convertDefaultValue .default }}`),
-{{- else if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.Int64Value") (ne .default nil) }}
-				Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}({{ convertDefaultValue .default }}),
-{{- end }}
+                Computed:    {{ .computed }},
+{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
+                Default:     {{ .default_value }},
 {{- end }}
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
 {{- if not .required }}
@@ -150,10 +134,10 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text "") }},
+                Required:    false,
+                Optional:    false,
                 Computed:    true,
-{{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
-{{- end }}
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
                     {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 				},

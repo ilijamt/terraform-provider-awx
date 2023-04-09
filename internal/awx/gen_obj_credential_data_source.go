@@ -55,44 +55,54 @@ func (o *credentialDataSource) Schema(ctx context.Context, req datasource.Schema
 			// Data only elements
 			"cloud": schema.BoolAttribute{
 				Description: "Cloud",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"credential_type": schema.Int64Attribute{
 				Description: "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this credential.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inputs": schema.StringAttribute{
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"kind": schema.StringAttribute{
 				Description: "Kind",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"kubernetes": schema.BoolAttribute{
 				Description: "Kubernetes",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"managed": schema.BoolAttribute{
 				Description: "Managed",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this credential.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Inherit permissions from organization roles. If provided on creation, do not give either user or team.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

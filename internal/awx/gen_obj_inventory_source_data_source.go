@@ -55,80 +55,99 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 			// Data only elements
 			"credential": schema.Int64Attribute{
 				Description: "Cloud credential to use for inventory updates.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this inventory source.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"enabled_value": schema.StringAttribute{
 				Description: "Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var=\"status.power_state\"and enabled_value=\"powered_on\" with host variables:{   \"status\": {     \"power_state\": \"powered_on\",     \"created\": \"2020-08-04T18:13:04+00:00\",     \"healthy\": true    },    \"name\": \"foobar\",    \"ip_address\": \"192.168.2.1\"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"enabled_var": schema.StringAttribute{
 				Description: "Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as \"foo.bar\", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get(\"foo\", {}).get(\"bar\", default)",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"execution_environment": schema.Int64Attribute{
 				Description: "The container image to be used for execution.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"host_filter": schema.StringAttribute{
 				Description: "Regex where only matching hosts will be imported.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this inventory source.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this inventory source.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"overwrite": schema.BoolAttribute{
 				Description: "Overwrite local groups and hosts from remote inventory source.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"overwrite_vars": schema.BoolAttribute{
 				Description: "Overwrite local variables from remote inventory source.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"source": schema.StringAttribute{
 				Description: "Source",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"source_path": schema.StringAttribute{
 				Description: "Source path",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"source_project": schema.Int64Attribute{
 				Description: "Project containing inventory file used as source.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"source_vars": schema.StringAttribute{
 				Description: "Inventory source variables in YAML or JSON format.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"timeout": schema.Int64Attribute{
 				Description: "The amount of time (in seconds) to run before the task is canceled.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"update_cache_timeout": schema.Int64Attribute{
 				Description: "Update cache timeout",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"update_on_launch": schema.BoolAttribute{
 				Description: "Update on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"verbosity": schema.StringAttribute{
 				Description: "Verbosity",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

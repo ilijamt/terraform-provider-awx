@@ -311,13 +311,13 @@ type settingsMiscSystemBodyRequestModel struct {
 	// ORG_ADMINS_CAN_SEE_ALL_USERS "Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization."
 	ORG_ADMINS_CAN_SEE_ALL_USERS bool `json:"ORG_ADMINS_CAN_SEE_ALL_USERS"`
 	// PROXY_IP_ALLOWED_LIST "If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally')"
-	PROXY_IP_ALLOWED_LIST []string `json:"PROXY_IP_ALLOWED_LIST"`
+	PROXY_IP_ALLOWED_LIST []string `json:"PROXY_IP_ALLOWED_LIST,omitempty"`
 	// REDHAT_PASSWORD "This password is used to send data to Automation Analytics"
 	REDHAT_PASSWORD string `json:"REDHAT_PASSWORD,omitempty"`
 	// REDHAT_USERNAME "This username is used to send data to Automation Analytics"
 	REDHAT_USERNAME string `json:"REDHAT_USERNAME,omitempty"`
 	// REMOTE_HOST_HEADERS "HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as \"HTTP_X_FORWARDED_FOR\", if behind a reverse proxy. See the \"Proxy Support\" section of the AAP Installation guide for more details."
-	REMOTE_HOST_HEADERS []string `json:"REMOTE_HOST_HEADERS"`
+	REMOTE_HOST_HEADERS []string `json:"REMOTE_HOST_HEADERS,omitempty"`
 	// SUBSCRIPTIONS_PASSWORD "This password is used to retrieve subscription and content information"
 	SUBSCRIPTIONS_PASSWORD string `json:"SUBSCRIPTIONS_PASSWORD,omitempty"`
 	// SUBSCRIPTIONS_USERNAME "This username is used to retrieve subscription and content information"

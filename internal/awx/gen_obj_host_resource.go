@@ -62,6 +62,7 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this host.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -73,6 +74,7 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"enabled": schema.BoolAttribute{
 				Description: "Is this host online and available for running jobs?",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -83,6 +85,7 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"instance_id": schema.StringAttribute{
 				Description: "The value used by the remote inventory source to uniquely identify the host",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -96,15 +99,19 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"inventory": schema.Int64Attribute{
 				Description:   "Inventory",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this host.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -112,6 +119,7 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"variables": schema.StringAttribute{
 				Description: "Host variables in JSON or YAML format.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -125,21 +133,30 @@ func (o *hostResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this host.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"last_job": schema.Int64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"last_job_host_summary": schema.Int64Attribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

@@ -172,9 +172,9 @@ type settingsMiscAuthenticationBodyRequestModel struct {
 	// OAUTH2_PROVIDER "Dictionary for customizing OAuth 2 timeouts, available items are `ACCESS_TOKEN_EXPIRE_SECONDS`, the duration of access tokens in the number of seconds, `AUTHORIZATION_CODE_EXPIRE_SECONDS`, the duration of authorization codes in the number of seconds, and `REFRESH_TOKEN_EXPIRE_SECONDS`, the duration of refresh tokens, after expired access tokens, in the number of seconds."
 	OAUTH2_PROVIDER json.RawMessage `json:"OAUTH2_PROVIDER,omitempty"`
 	// SESSIONS_PER_USER "Maximum number of simultaneous logged in sessions a user may have. To disable enter -1."
-	SESSIONS_PER_USER int64 `json:"SESSIONS_PER_USER"`
+	SESSIONS_PER_USER int64 `json:"SESSIONS_PER_USER,omitempty"`
 	// SESSION_COOKIE_AGE "Number of seconds that a user is inactive before they will need to login again."
-	SESSION_COOKIE_AGE int64 `json:"SESSION_COOKIE_AGE"`
+	SESSION_COOKIE_AGE int64 `json:"SESSION_COOKIE_AGE,omitempty"`
 	// SOCIAL_AUTH_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
 	SOCIAL_AUTH_ORGANIZATION_MAP json.RawMessage `json:"SOCIAL_AUTH_ORGANIZATION_MAP,omitempty"`
 	// SOCIAL_AUTH_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."

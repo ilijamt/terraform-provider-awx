@@ -92,7 +92,7 @@ type settingsUIBodyRequestModel struct {
 	// CUSTOM_LOGO "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported."
 	CUSTOM_LOGO string `json:"CUSTOM_LOGO,omitempty"`
 	// MAX_UI_JOB_EVENTS "Maximum number of job events for the UI to retrieve within a single request."
-	MAX_UI_JOB_EVENTS int64 `json:"MAX_UI_JOB_EVENTS"`
+	MAX_UI_JOB_EVENTS int64 `json:"MAX_UI_JOB_EVENTS,omitempty"`
 	// UI_LIVE_UPDATES_ENABLED "If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details."
 	UI_LIVE_UPDATES_ENABLED bool `json:"UI_LIVE_UPDATES_ENABLED"`
 }

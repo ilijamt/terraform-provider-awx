@@ -55,108 +55,134 @@ func (o *adHocCommandDataSource) Schema(ctx context.Context, req datasource.Sche
 			// Data only elements
 			"become_enabled": schema.BoolAttribute{
 				Description: "Become enabled",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"canceled_on": schema.StringAttribute{
 				Description: "The date and time when the cancel request was sent.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"controller_node": schema.StringAttribute{
 				Description: "The instance that managed the execution environment.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"diff_mode": schema.BoolAttribute{
 				Description: "Diff mode",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"elapsed": schema.Float64Attribute{
 				Description: "Elapsed time in seconds that the job ran.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"execution_environment": schema.Int64Attribute{
 				Description: "The container image to be used for execution.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"execution_node": schema.StringAttribute{
 				Description: "The node the job executed on.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"extra_vars": schema.StringAttribute{
 				Description: "Extra vars",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"failed": schema.BoolAttribute{
 				Description: "Failed",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"finished": schema.StringAttribute{
 				Description: "The date and time the job finished execution.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"forks": schema.Int64Attribute{
 				Description: "Forks",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this ad hoc command.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"job_explanation": schema.StringAttribute{
 				Description: "A status field to indicate the state of the job if it wasn't able to run and capture stdout",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"job_type": schema.StringAttribute{
 				Description: "Job type",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"launch_type": schema.StringAttribute{
 				Description: "Launch type",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"launched_by": schema.Int64Attribute{
 				Description: "Launched by",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"module_args": schema.StringAttribute{
 				Description: "Module args",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"module_name": schema.StringAttribute{
 				Description: "Module name",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this ad hoc command.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"started": schema.StringAttribute{
 				Description: "The date and time the job was queued for starting.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"status": schema.StringAttribute{
 				Description: "Status",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"verbosity": schema.StringAttribute{
 				Description: "Verbosity",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"work_unit_id": schema.StringAttribute{
 				Description: "The Receptor work unit ID associated with this job.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

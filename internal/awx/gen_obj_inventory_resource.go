@@ -62,6 +62,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this inventory.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -73,6 +74,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			},
 			"host_filter": schema.StringAttribute{
 				Description: "Filter that will be applied to the hosts of this inventory.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -83,6 +85,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			},
 			"kind": schema.StringAttribute{
 				Description: "Kind of inventory being represented.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -96,8 +99,10 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this inventory.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -105,13 +110,16 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			},
 			"organization": schema.Int64Attribute{
 				Description:   "Organization containing this inventory.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"prevent_instance_group_fallback": schema.BoolAttribute{
 				Description: "If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -122,6 +130,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			},
 			"variables": schema.StringAttribute{
 				Description: "Inventory variables in JSON or YAML format.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -135,63 +144,90 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 			// Data only elements
 			"has_active_failures": schema.BoolAttribute{
 				Description: "This field is deprecated and will be removed in a future release. Flag indicating whether any hosts in this inventory have failed.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"has_inventory_sources": schema.BoolAttribute{
 				Description: "This field is deprecated and will be removed in a future release. Flag indicating whether this inventory has any external inventory sources.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"hosts_with_active_failures": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this inventory.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"inventory_sources_with_failures": schema.Int64Attribute{
 				Description: "Number of external inventory sources in this inventory with failures.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"pending_deletion": schema.BoolAttribute{
 				Description: "Flag indicating the inventory is being deleted.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"total_groups": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Total number of groups in this inventory.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"total_hosts": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Total number of hosts in this inventory.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"total_inventory_sources": schema.Int64Attribute{
 				Description: "Total number of external inventory sources configured within this inventory.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

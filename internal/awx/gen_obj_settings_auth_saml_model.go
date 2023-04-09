@@ -248,7 +248,7 @@ type settingsAuthSAMLBodyRequestModel struct {
 	// SOCIAL_AUTH_SAML_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
 	SOCIAL_AUTH_SAML_ORGANIZATION_MAP json.RawMessage `json:"SOCIAL_AUTH_SAML_ORGANIZATION_MAP,omitempty"`
 	// SOCIAL_AUTH_SAML_ORG_INFO "Provide the URL, display name, and the name of your app. Refer to the documentation for example syntax."
-	SOCIAL_AUTH_SAML_ORG_INFO json.RawMessage `json:"SOCIAL_AUTH_SAML_ORG_INFO"`
+	SOCIAL_AUTH_SAML_ORG_INFO json.RawMessage `json:"SOCIAL_AUTH_SAML_ORG_INFO,omitempty"`
 	// SOCIAL_AUTH_SAML_SECURITY_CONFIG "A dict of key value pairs that are passed to the underlying python-saml security setting https://github.com/onelogin/python-saml#settings"
 	SOCIAL_AUTH_SAML_SECURITY_CONFIG json.RawMessage `json:"SOCIAL_AUTH_SAML_SECURITY_CONFIG,omitempty"`
 	// SOCIAL_AUTH_SAML_SP_ENTITY_ID "The application-defined unique identifier used as the audience of the SAML service provider (SP) configuration. This is usually the URL for the service."
@@ -256,17 +256,17 @@ type settingsAuthSAMLBodyRequestModel struct {
 	// SOCIAL_AUTH_SAML_SP_EXTRA "A dict of key value pairs to be passed to the underlying python-saml Service Provider configuration setting."
 	SOCIAL_AUTH_SAML_SP_EXTRA json.RawMessage `json:"SOCIAL_AUTH_SAML_SP_EXTRA,omitempty"`
 	// SOCIAL_AUTH_SAML_SP_PRIVATE_KEY "Create a keypair to use as a service provider (SP) and include the private key content here."
-	SOCIAL_AUTH_SAML_SP_PRIVATE_KEY string `json:"SOCIAL_AUTH_SAML_SP_PRIVATE_KEY"`
+	SOCIAL_AUTH_SAML_SP_PRIVATE_KEY string `json:"SOCIAL_AUTH_SAML_SP_PRIVATE_KEY,omitempty"`
 	// SOCIAL_AUTH_SAML_SP_PUBLIC_CERT "Create a keypair to use as a service provider (SP) and include the certificate content here."
-	SOCIAL_AUTH_SAML_SP_PUBLIC_CERT string `json:"SOCIAL_AUTH_SAML_SP_PUBLIC_CERT"`
+	SOCIAL_AUTH_SAML_SP_PUBLIC_CERT string `json:"SOCIAL_AUTH_SAML_SP_PUBLIC_CERT,omitempty"`
 	// SOCIAL_AUTH_SAML_SUPPORT_CONTACT "Provide the name and email address of the support contact for your service provider. Refer to the documentation for example syntax."
-	SOCIAL_AUTH_SAML_SUPPORT_CONTACT json.RawMessage `json:"SOCIAL_AUTH_SAML_SUPPORT_CONTACT"`
+	SOCIAL_AUTH_SAML_SUPPORT_CONTACT json.RawMessage `json:"SOCIAL_AUTH_SAML_SUPPORT_CONTACT,omitempty"`
 	// SOCIAL_AUTH_SAML_TEAM_ATTR "Used to translate user team membership."
 	SOCIAL_AUTH_SAML_TEAM_ATTR json.RawMessage `json:"SOCIAL_AUTH_SAML_TEAM_ATTR,omitempty"`
 	// SOCIAL_AUTH_SAML_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
 	SOCIAL_AUTH_SAML_TEAM_MAP json.RawMessage `json:"SOCIAL_AUTH_SAML_TEAM_MAP,omitempty"`
 	// SOCIAL_AUTH_SAML_TECHNICAL_CONTACT "Provide the name and email address of the technical contact for your service provider. Refer to the documentation for example syntax."
-	SOCIAL_AUTH_SAML_TECHNICAL_CONTACT json.RawMessage `json:"SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"`
+	SOCIAL_AUTH_SAML_TECHNICAL_CONTACT json.RawMessage `json:"SOCIAL_AUTH_SAML_TECHNICAL_CONTACT,omitempty"`
 	// SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR "Used to map super users and system auditors from SAML."
 	SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR json.RawMessage `json:"SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR,omitempty"`
 }

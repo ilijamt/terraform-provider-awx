@@ -54,27 +54,33 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 			// Data only elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this credential input source.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential input source.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"input_field_name": schema.StringAttribute{
 				Description: "Input field name",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"metadata": schema.StringAttribute{
 				Description: "Metadata",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"source_credential": schema.Int64Attribute{
 				Description: "Source credential",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"target_credential": schema.Int64Attribute{
 				Description: "Target credential",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

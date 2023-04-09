@@ -55,10 +55,12 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 			// Data only elements
 			"authorization_grant_type": schema.StringAttribute{
 				Description: "The Grant type the user must use for acquire tokens for this application.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"client_id": schema.StringAttribute{
 				Description: "Client id",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"client_secret": schema.StringAttribute{
@@ -68,33 +70,40 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 			},
 			"client_type": schema.StringAttribute{
 				Description: "Set to Public or Confidential depending on how secure the client device is.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this application.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this application.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this application.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization containing this application.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"redirect_uris": schema.StringAttribute{
 				Description: "Allowed URIs list, space separated",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"skip_authorization": schema.BoolAttribute{
 				Description: "Set True to skip authorization step for completely trusted applications.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

@@ -64,6 +64,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			// Request elements
 			"credential": schema.Int64Attribute{
 				Description: "Cloud credential to use for inventory updates.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -74,6 +75,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this inventory source.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -85,6 +87,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"enabled_value": schema.StringAttribute{
 				Description: "Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var=\"status.power_state\"and enabled_value=\"powered_on\" with host variables:{   \"status\": {     \"power_state\": \"powered_on\",     \"created\": \"2020-08-04T18:13:04+00:00\",     \"healthy\": true    },    \"name\": \"foobar\",    \"ip_address\": \"192.168.2.1\"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -96,6 +99,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"enabled_var": schema.StringAttribute{
 				Description: "Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as \"foo.bar\", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get(\"foo\", {}).get(\"bar\", default)",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -107,6 +111,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"execution_environment": schema.Int64Attribute{
 				Description: "The container image to be used for execution.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -117,6 +122,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"host_filter": schema.StringAttribute{
 				Description: "Regex where only matching hosts will be imported.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -128,15 +134,19 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"inventory": schema.Int64Attribute{
 				Description:   "Inventory",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this inventory source.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -144,6 +154,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"overwrite": schema.BoolAttribute{
 				Description: "Overwrite local groups and hosts from remote inventory source.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -154,6 +165,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"overwrite_vars": schema.BoolAttribute{
 				Description: "Overwrite local variables from remote inventory source.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -164,6 +176,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"source": schema.StringAttribute{
 				Description: "Source",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -176,6 +189,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"source_path": schema.StringAttribute{
 				Description: "Source path",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -189,6 +203,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"source_project": schema.Int64Attribute{
 				Description: "Project containing inventory file used as source.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -199,6 +214,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"source_vars": schema.StringAttribute{
 				Description: "Inventory source variables in YAML or JSON format.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -210,6 +226,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"timeout": schema.Int64Attribute{
 				Description: "The amount of time (in seconds) to run before the task is canceled.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -223,6 +240,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"update_cache_timeout": schema.Int64Attribute{
 				Description: "Update cache timeout",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -236,6 +254,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"update_on_launch": schema.BoolAttribute{
 				Description: "Update on launch",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -246,10 +265,11 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			},
 			"verbosity": schema.StringAttribute{
 				Description: "Verbosity",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
-				Default:     stringdefault.StaticString(`1`),
+				Default:     stringdefault.StaticString(`%!s(float64=1)`),
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
@@ -261,7 +281,10 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this inventory source.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

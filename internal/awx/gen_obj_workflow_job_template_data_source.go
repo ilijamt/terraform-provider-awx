@@ -55,88 +55,109 @@ func (o *workflowJobTemplateDataSource) Schema(ctx context.Context, req datasour
 			// Data only elements
 			"allow_simultaneous": schema.BoolAttribute{
 				Description: "Allow simultaneous",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_inventory_on_launch": schema.BoolAttribute{
 				Description: "Ask inventory on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_labels_on_launch": schema.BoolAttribute{
 				Description: "Ask labels on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_limit_on_launch": schema.BoolAttribute{
 				Description: "Ask limit on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_scm_branch_on_launch": schema.BoolAttribute{
 				Description: "Ask scm branch on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_skip_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask skip tags on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask tags on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"ask_variables_on_launch": schema.BoolAttribute{
 				Description: "Ask variables on launch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this workflow job template.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"extra_vars": schema.StringAttribute{
 				Description: "Extra vars",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this workflow job template.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"job_tags": schema.StringAttribute{
 				Description: "Job tags",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this workflow job template.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "The organization used to determine access to this template.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Scm branch",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"skip_tags": schema.StringAttribute{
 				Description: "Skip tags",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"survey_enabled": schema.BoolAttribute{
 				Description: "Survey enabled",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"webhook_credential": schema.Int64Attribute{
 				Description: "Personal Access Token for posting back the status to the service API",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"webhook_service": schema.StringAttribute{
 				Description: "Service that webhook requests will be accepted from",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

@@ -55,23 +55,28 @@ func (o *organizationDataSource) Schema(ctx context.Context, req datasource.Sche
 			// Data only elements
 			"default_environment": schema.Int64Attribute{
 				Description: "The default execution environment for jobs run by this organization.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this organization.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this organization.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"max_hosts": schema.Int64Attribute{
 				Description: "Maximum number of hosts allowed to be managed by this organization.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this organization.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},

@@ -62,8 +62,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			// Request elements
 			"authorization_grant_type": schema.StringAttribute{
 				Description:   "The Grant type the user must use for acquire tokens for this application.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.OneOf([]string{"authorization-code", "password"}...),
@@ -71,8 +73,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"client_type": schema.StringAttribute{
 				Description:   "Set to Public or Confidential depending on how secure the client device is.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.OneOf([]string{"confidential", "public"}...),
@@ -80,6 +84,7 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this application.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -91,8 +96,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this application.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(255),
@@ -100,13 +107,16 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"organization": schema.Int64Attribute{
 				Description:   "Organization containing this application.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"redirect_uris": schema.StringAttribute{
 				Description: "Allowed URIs list, space separated",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -117,6 +127,7 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"skip_authorization": schema.BoolAttribute{
 				Description: "Set True to skip authorization step for completely trusted applications.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -129,13 +140,18 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			// Data only elements
 			"client_id": schema.StringAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"client_secret": schema.StringAttribute{
 				Description: "Used for more stringent verification of access to an application when creating a token.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
 				Sensitive:   true,
 				PlanModifiers: []planmodifier.String{
@@ -144,7 +160,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this application.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

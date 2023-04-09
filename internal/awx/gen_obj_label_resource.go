@@ -59,8 +59,10 @@ func (o *labelResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			// Request elements
 			"name": schema.StringAttribute{
 				Description:   "Name of this label.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -68,8 +70,10 @@ func (o *labelResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			},
 			"organization": schema.Int64Attribute{
 				Description:   "Organization this label belongs to.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
@@ -77,7 +81,10 @@ func (o *labelResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this label.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

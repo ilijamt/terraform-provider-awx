@@ -62,6 +62,7 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			// Request elements
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -72,6 +73,7 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this execution environment.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -83,8 +85,10 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			},
 			"image": schema.StringAttribute{
 				Description:   "The full image location, including the container registry, image name, and version tag.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(1024),
@@ -92,8 +96,10 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this execution environment.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -101,6 +107,7 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			},
 			"organization": schema.Int64Attribute{
 				Description: "The organization used to determine access to this execution environment.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -111,6 +118,7 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			},
 			"pull": schema.StringAttribute{
 				Description: "Pull image before running?",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -126,14 +134,20 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this execution environment.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},

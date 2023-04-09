@@ -54,35 +54,43 @@ func (o *tokensDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 			// Data only elements
 			"application": schema.Int64Attribute{
 				Description: "Application",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this access token.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"expires": schema.StringAttribute{
 				Description: "Expires",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this access token.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"refresh_token": schema.StringAttribute{
 				Description: "Refresh token",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"scope": schema.StringAttribute{
 				Description: "Allowed scopes, further restricts user's permissions. Must be a simple space-separated string with allowed scopes ['read', 'write'].",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"token": schema.StringAttribute{
 				Description: "Token",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"user": schema.Int64Attribute{
 				Description: "The user representing the token owner",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

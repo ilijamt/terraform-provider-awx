@@ -62,6 +62,7 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this credential type.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -73,6 +74,7 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			},
 			"injectors": schema.StringAttribute{
 				Description: "Enter injectors using either JSON or YAML syntax. Refer to the documentation for example syntax.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -84,6 +86,7 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			},
 			"inputs": schema.StringAttribute{
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -95,8 +98,10 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			},
 			"kind": schema.StringAttribute{
 				Description:   "The credential type",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.OneOf([]string{"net", "cloud"}...),
@@ -104,8 +109,10 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this credential type.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -115,21 +122,30 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential type.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "Is the resource managed",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"namespace": schema.StringAttribute{
 				Description: "The namespace to which the resource belongs to",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

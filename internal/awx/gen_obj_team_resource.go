@@ -61,6 +61,7 @@ func (o *teamResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this team.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -72,8 +73,10 @@ func (o *teamResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this team.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -81,8 +84,10 @@ func (o *teamResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			},
 			"organization": schema.Int64Attribute{
 				Description:   "Organization",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
@@ -90,7 +95,10 @@ func (o *teamResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this team.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

@@ -61,6 +61,7 @@ func (o *groupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			// Request elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this group.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -72,15 +73,19 @@ func (o *groupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			},
 			"inventory": schema.Int64Attribute{
 				Description:   "Inventory",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this group.",
+				Sensitive:     false,
 				Required:      true,
 				Optional:      false,
+				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.LengthAtMost(512),
@@ -88,6 +93,7 @@ func (o *groupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			},
 			"variables": schema.StringAttribute{
 				Description: "Group variables in JSON or YAML format.",
+				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -101,7 +107,10 @@ func (o *groupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 			// Data only elements
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this group.",
+				Required:    false,
+				Optional:    false,
 				Computed:    true,
+				Sensitive:   false,
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},

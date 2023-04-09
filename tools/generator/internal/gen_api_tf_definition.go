@@ -38,40 +38,9 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	var propertyWriteOnlyData = make(map[string]any)
 	var propertyWriteOnlyKeys []string
 
-	/*
-		{{- range $key := .PropertyPostKeys }}
-		{{- with (index $.PropertyPostData $key) }}
-		            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-		{{- if eq (tf_attribute_type .) "List" }}
-						ElementType: types.{{ camelCase .element_type }}Type,
-		{{- end }}
-		                Description: {{ escape_quotes (default .help_text .label) }},
-		{{- if (hasKey . "sensitive") }}
-		                Sensitive:   {{ .sensitive }},
-		{{- end }}
-		                Required:    {{ .required }},
-		                Optional:    {{ not .required }},
-		{{- if not .required }}
-		                Computed:    true,
-		{{- end }}
-		{{- if (hasKey . "default") }}
-		{{- if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.StringValue") (ne .default nil) }}
-						Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}(`{{ convertDefaultValue .default }}`),
-		{{- else if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.Int64Value") (ne .default nil) }}
-						Default:     {{ tf_attribute_type . | lowerCase }}default.Static{{ tf_attribute_type . }}({{ convertDefaultValue .default }}),
-		{{- end }}
-		{{- end }}
-				        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-		{{- if not .required }}
-		                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
-		{{- end }}
-		                },
-	*/
-
 	var processOverride = func(
 		value map[string]any,
 		key string,
-		override PropertyOverride,
 	) {
 		value["name"] = key
 		if v, err := getItemElementListType(value); err == nil {
@@ -102,48 +71,60 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 	}
 
+	var processValues = func(
+		value map[string]any,
+		key string,
+	) {
+		// sensitive
+		if val, ok := value["sensitive"].(bool); ok {
+			value["sensitive"] = val
+		} else {
+			value["sensitive"] = false
+		}
+
+		var required bool
+		if val, ok := value["required"].(bool); ok {
+			required = val
+		} else {
+			required = false
+			value["required"] = required
+		}
+
+		var hasDefault bool
+		if _, ok := value["default"]; ok {
+			hasDefault = fn_default(value["default"], nil) != nil
+		}
+
+		// computed
+		value["computed"] = !required || hasDefault
+
+		// If a property has a default then we need to mark the property as not required,
+		// so we can have a default value
+		if hasDefault {
+			value["required"] = false
+			value["computed"] = true
+			attrType := tf_attribute_type(value)
+			defValue := convertDefaultValue(value["default"])
+			switch awx2go_value(value) {
+			case "types.StringValue":
+				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%s`)", lowerCase(attrType), attrType, defValue)
+			case "types.Int64Value":
+				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(%v)", lowerCase(attrType), attrType, defValue)
+			}
+		}
+	}
+
 	// ---------------------
 	var propertyGetData = make(map[string]any)
 	var propertyGetKeys []string
 	if props, ok := objmap["actions"].(map[string]any)[val.ApiPropertyDataKey].(map[string]any); ok {
-
 		for _, field := range append(config.DefaultRemoveApiDataSource, val.RemoveFieldsDataSource...) {
 			delete(props, field)
 		}
 
 		for key, value := range props {
-			var override PropertyOverride
-			if val, ok := val.PropertyOverrides[key]; ok {
-				override = val
-			}
-			processOverride(value.(map[string]any), key, override)
-			//value.(map[string]any)["name"] = key
-			//if v, err := getItemElementListType(value.(map[string]any)); err == nil {
-			//	value.(map[string]any)["element_type"] = v
-			//}
-			//
-			//if override, ok := val.PropertyOverrides[key]; ok {
-			//	if "" != override.Type {
-			//		value.(map[string]any)["type"] = override.Type
-			//	}
-			//	if "" != override.DefaultValue {
-			//		value.(map[string]any)["default"] = override.DefaultValue
-			//	}
-			//	if "" != override.Description {
-			//		value.(map[string]any)["help_text"] = override.Description
-			//	}
-			//	if override.Sensitive {
-			//		value.(map[string]any)["sensitive"] = override.Sensitive
-			//	}
-			//	if override.Required {
-			//		value.(map[string]any)["required"] = override.Required
-			//	}
-			//	if "" != override.ElementType {
-			//		value.(map[string]any)["element_type"] = override.ElementType
-			//	}
-			//	value.(map[string]any)["trim"] = override.Trim
-			//	value.(map[string]any)["post_wrap"] = override.PostWrap
-			//}
+			processOverride(value.(map[string]any), key)
+			processValues(value.(map[string]any), key)
 			propertyGetKeys = append(propertyGetKeys, key)
 			propertyGetData[key] = value
 		}
@@ -158,34 +139,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 
 		for key, value := range props {
-			if v, err := getItemElementListType(value.(map[string]any)); err == nil {
-				value.(map[string]any)["element_type"] = v
-			}
-
-			value.(map[string]any)["name"] = key
-			if override, ok := val.PropertyOverrides[key]; ok {
-				if "" != override.Type {
-					value.(map[string]any)["type"] = override.Type
-				}
-				if "" != override.DefaultValue {
-					value.(map[string]any)["default"] = override.DefaultValue
-				}
-				if "" != override.Description {
-					value.(map[string]any)["help_text"] = override.Description
-				}
-				if override.Sensitive {
-					value.(map[string]any)["sensitive"] = override.Sensitive
-				}
-				if override.Required {
-					value.(map[string]any)["required"] = override.Required
-				}
-				if "" != override.ElementType {
-					value.(map[string]any)["element_type"] = override.ElementType
-				}
-				value.(map[string]any)["trim"] = override.Trim
-				value.(map[string]any)["post_wrap"] = override.PostWrap
-			}
-
+			processOverride(value.(map[string]any), key)
+			processValues(value.(map[string]any), key)
 			if writeOnly, ok := value.(map[string]any)["write_only"].(bool); ok && writeOnly {
 				if val.SkipWriteOnly {
 					continue

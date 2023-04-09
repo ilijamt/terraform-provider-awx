@@ -51,14 +51,17 @@ func (o *settingsAuthGithubDataSource) Schema(ctx context.Context, req datasourc
 			// Data only elements
 			"social_auth_github_callback_url": schema.StringAttribute{
 				Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"social_auth_github_key": schema.StringAttribute{
 				Description: "The OAuth2 key (Client ID) from your GitHub developer application.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"social_auth_github_organization_map": schema.StringAttribute{
 				Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"social_auth_github_secret": schema.StringAttribute{
@@ -68,6 +71,7 @@ func (o *settingsAuthGithubDataSource) Schema(ctx context.Context, req datasourc
 			},
 			"social_auth_github_team_map": schema.StringAttribute{
 				Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements

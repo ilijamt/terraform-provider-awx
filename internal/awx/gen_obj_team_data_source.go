@@ -55,20 +55,24 @@ func (o *teamDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 			// Data only elements
 			"description": schema.StringAttribute{
 				Description: "Optional description of this team.",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this team.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this team.",
+				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization",
+				Sensitive:   false,
 				Computed:    true,
 			},
 			// Write only elements
