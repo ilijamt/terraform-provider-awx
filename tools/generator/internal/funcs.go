@@ -18,7 +18,7 @@ func init() {
 }
 
 func renderTemplate(tpl *template.Template, filename, template string, data any) (err error) {
-	log.Printf("Rendering %s to %s", template, filename)
+	log.Printf("Rendering of %s into %s.", template, filename)
 	var f *os.File
 	if f, err = os.Create(filename); err != nil {
 		return err
@@ -179,6 +179,25 @@ var FuncMap = template.FuncMap{
 			return "ValueBool"
 		case "list":
 			return "Elements"
+		}
+		return t
+	},
+	"tf_attribute_type": func(item map[string]any) string {
+		var t string
+		if val, ok := item["type"]; ok {
+			t = val.(string)
+		}
+		switch t {
+		case "integer", "id":
+			return "Int64"
+		case "float", "decimal":
+			return "Float64"
+		case "string", "choice", "datetime", "json":
+			return "String"
+		case "boolean", "bool":
+			return "Bool"
+		case "list":
+			return "List"
 		}
 		return t
 	},

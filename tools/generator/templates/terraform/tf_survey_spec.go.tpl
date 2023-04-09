@@ -1,4 +1,24 @@
-{{ define "tf_survey_spec" }}
+package {{ .PackageName }}
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	p "path"
+	"strconv"
+
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+)
 
 var (
 	_ resource.Resource                  = &{{ .Name | lowerCamelCase }}Survey{}
@@ -49,32 +69,26 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Configure(ctx context.Context, requ
     o.endpoint = "{{ .Endpoint | url_path_clean }}/%d/survey_spec/"
 }
 
-func (o {{ .Name | lowerCamelCase }}Survey) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *{{ .Name | lowerCamelCase }}Survey) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
     response.TypeName = request.ProviderTypeName + "_{{ .Name | snakeCase }}_survey_spec"
 }
 
-func (o {{ .Name | lowerCamelCase }}Survey) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
-    return processSchema(
-        SourceResource,
-        "{{ .Name }}/Survey",
-        tfsdk.Schema{
-            Version: helpers.SchemaVersion,
-            Attributes: map[string]tfsdk.Attribute{
-				"{{ .Name | snakeCase }}_id": {
+func (o *{{ .Name | lowerCamelCase }}Survey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+    resp.Schema = schema.Schema{
+            Attributes: map[string]schema.Attribute{
+				"{{ .Name | snakeCase }}_id": schema.Int64Attribute{
 					Description: "Database ID for this {{ .Name }}.",
 					Required:    true,
-					Type:        types.Int64Type,
-					PlanModifiers: []tfsdk.AttributePlanModifier{
-						resource.RequiresReplace(),
-					},
+                    PlanModifiers: []planmodifier.Int64{
+                        int64planmodifier.RequiresReplace(),
+                    },
 				},
-				"spec": {
+				"spec": schema.StringAttribute{
 					Description: "The survey spec for this {{ .Name }}.",
 					Required:    true,
-					Type:        types.StringType,
 				},
             },
-	    }), nil
+	    }
 }
 
 // ImportState imports the survey spec for {{ .Name }}
@@ -245,4 +259,3 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Update(ctx context.Context, request
 		return
 	}
 }
-{{ end }}

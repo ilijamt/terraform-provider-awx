@@ -13,6 +13,7 @@ type PropertyOverride struct {
 	Trim         bool   `json:"trim"`
 	PostWrap     bool   `json:"post_wrap"`
 	DefaultValue string `json:"default_value"`
+	ElementType  string `json:"element_type"`
 }
 
 type SearchField struct {
@@ -32,6 +33,15 @@ type AssociateDisassociateGroup struct {
 	Endpoint      string `json:"endpoint"`
 	Type          string `json:"type"`
 	AssociateType string `json:"associate_type"`
+}
+
+func (a AssociateDisassociateGroup) Map() map[string]any {
+	return map[string]any{
+		"Name":          a.Name,
+		"Endpoint":      a.Endpoint,
+		"Type":          a.Type,
+		"AssociateType": a.AssociateType,
+	}
 }
 
 type Item struct {

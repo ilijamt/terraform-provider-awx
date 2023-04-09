@@ -1,0 +1,184 @@
+package awx
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+
+	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+)
+
+var (
+	_ datasource.DataSource              = &settingsAuthSAMLDataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsAuthSAMLDataSource{}
+)
+
+// NewSettingsAuthSAMLDataSource is a helper function to instantiate the SettingsAuthSAML data source.
+func NewSettingsAuthSAMLDataSource() datasource.DataSource {
+	return &settingsAuthSAMLDataSource{}
+}
+
+// settingsAuthSAMLDataSource is the data source implementation.
+type settingsAuthSAMLDataSource struct {
+	client   c.Client
+	endpoint string
+}
+
+// Configure adds the provider configured client to the data source.
+func (o *settingsAuthSAMLDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+	if req.ProviderData == nil {
+		return
+	}
+
+	o.client = req.ProviderData.(c.Client)
+	o.endpoint = "/api/v2/settings/saml/"
+}
+
+// Metadata returns the data source type name.
+func (o *settingsAuthSAMLDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_settings_auth_saml"
+}
+
+// Schema defines the schema for the data source.
+func (o *settingsAuthSAMLDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+	resp.Schema = schema.Schema{
+		Attributes: map[string]schema.Attribute{
+			// Data only elements
+			"saml_auto_create_objects": schema.BoolAttribute{
+				Description: "When enabled (the default), mapped Organizations and Teams will be created automatically on successful SAML login.",
+				Computed:    true,
+			},
+			"social_auth_saml_callback_url": schema.StringAttribute{
+				Description: "Register the service as a service provider (SP) with each identity provider (IdP) you have configured. Provide your SP Entity ID and this ACS URL for your application.",
+				Computed:    true,
+			},
+			"social_auth_saml_enabled_idps": schema.StringAttribute{
+				Description: "Configure the Entity ID, SSO URL and certificate for each identity provider (IdP) in use. Multiple SAML IdPs are supported. Some IdPs may provide user data using attribute names that differ from the default OIDs. Attribute names may be overridden for each IdP. Refer to the Ansible documentation for additional details and syntax.",
+				Computed:    true,
+			},
+			"social_auth_saml_extra_data": schema.ListAttribute{
+				ElementType: types.StringType,
+				Description: "A list of tuples that maps IDP attributes to extra_attributes. Each attribute will be a list of values, even if only 1 value.",
+				Computed:    true,
+			},
+			"social_auth_saml_metadata_url": schema.StringAttribute{
+				Description: "If your identity provider (IdP) allows uploading an XML metadata file, you can download one from this URL.",
+				Computed:    true,
+			},
+			"social_auth_saml_organization_attr": schema.StringAttribute{
+				Description: "Used to translate user organization membership.",
+				Computed:    true,
+			},
+			"social_auth_saml_organization_map": schema.StringAttribute{
+				Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
+				Computed:    true,
+			},
+			"social_auth_saml_org_info": schema.StringAttribute{
+				Description: "Provide the URL, display name, and the name of your app. Refer to the documentation for example syntax.",
+				Computed:    true,
+			},
+			"social_auth_saml_security_config": schema.StringAttribute{
+				Description: "A dict of key value pairs that are passed to the underlying python-saml security setting https://github.com/onelogin/python-saml#settings",
+				Computed:    true,
+			},
+			"social_auth_saml_sp_entity_id": schema.StringAttribute{
+				Description: "The application-defined unique identifier used as the audience of the SAML service provider (SP) configuration. This is usually the URL for the service.",
+				Computed:    true,
+			},
+			"social_auth_saml_sp_extra": schema.StringAttribute{
+				Description: "A dict of key value pairs to be passed to the underlying python-saml Service Provider configuration setting.",
+				Computed:    true,
+			},
+			"social_auth_saml_sp_private_key": schema.StringAttribute{
+				Description: "Create a keypair to use as a service provider (SP) and include the private key content here.",
+				Sensitive:   true,
+				Computed:    true,
+			},
+			"social_auth_saml_sp_public_cert": schema.StringAttribute{
+				Description: "Create a keypair to use as a service provider (SP) and include the certificate content here.",
+				Computed:    true,
+			},
+			"social_auth_saml_support_contact": schema.StringAttribute{
+				Description: "Provide the name and email address of the support contact for your service provider. Refer to the documentation for example syntax.",
+				Computed:    true,
+			},
+			"social_auth_saml_team_attr": schema.StringAttribute{
+				Description: "Used to translate user team membership.",
+				Computed:    true,
+			},
+			"social_auth_saml_team_map": schema.StringAttribute{
+				Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
+				Computed:    true,
+			},
+			"social_auth_saml_technical_contact": schema.StringAttribute{
+				Description: "Provide the name and email address of the technical contact for your service provider. Refer to the documentation for example syntax.",
+				Computed:    true,
+			},
+			"social_auth_saml_user_flags_by_attr": schema.StringAttribute{
+				Description: "Used to map super users and system auditors from SAML.",
+				Computed:    true,
+			},
+			// Write only elements
+		},
+	}
+}
+
+func (o *settingsAuthSAMLDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+	return []datasource.ConfigValidator{
+		datasourcevalidator.ExactlyOneOf(),
+	}
+}
+
+// Read refreshes the Terraform state with the latest data.
+func (o *settingsAuthSAMLDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsAuthSAMLTerraformModel
+	var err error
+	var endpoint = o.endpoint
+
+	// Creates a new request for SettingsAuthSAML
+	var r *http.Request
+	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for read", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+	// Try and actually fetch the data for SettingsAuthSAML
+	var data map[string]any
+	if data, err = o.client.Do(ctx, r); err != nil {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("Unable to read resource for SettingsAuthSAML on %s", o.endpoint),
+			err.Error(),
+		)
+		return
+	}
+
+	var d diag.Diagnostics
+
+	if d, err = state.updateFromApiData(data); err != nil {
+		resp.Diagnostics.Append(d...)
+		return
+	}
+
+	// Set state
+	if err = hookSettingsSaml(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on SettingsAuthSAML",
+			err.Error(),
+		)
+		return
+	}
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+}

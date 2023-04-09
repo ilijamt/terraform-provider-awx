@@ -1,4 +1,20 @@
-{{ define "tf_resource_object_role" }}
+package {{ .PackageName }}
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+
+	"github.com/hashicorp/terraform-plugin-framework/attr"
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/mitchellh/mapstructure"
+)
+
 var (
     _ datasource.DataSource                     = &{{ .Name | lowerCamelCase }}ObjectRolesDataSource{}
     _ datasource.DataSourceWithConfigure        = &{{ .Name | lowerCamelCase }}ObjectRolesDataSource{}
@@ -30,23 +46,21 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Metadata(_ context.C
     resp.TypeName = req.ProviderTypeName + "_{{ $.Config.TypeName }}_object_roles"
 }
 
-// GetSchema defines the schema for the data source.
-func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnostics) {
-    return tfsdk.Schema{
-		Version: helpers.SchemaVersion,
-        Attributes: map[string]tfsdk.Attribute{
-			"id": {
+// Schema defines the schema for the data source.
+func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+    resp.Schema = schema.Schema{
+        Attributes: map[string]schema.Attribute{
+            "id": schema.Int64Attribute{
 				Description: "{{ .Name }} ID",
-				Type:        types.Int64Type,
 				Required:    true,
 			},
-			"roles": {
-				Description: "Roles for {{ .Name | lowerCase }}",
-				Type:        types.MapType{ElemType: types.Int64Type},
+			"roles": schema.MapAttribute{
+				Description: "Roles for {{ $.Config.TypeName }}",
+				ElementType: types.Int64Type,
 				Computed:    true,
 			},
 		},
-	}, nil
+	}
 }
 
 // Read refreshes the Terraform state with the latest data.
@@ -107,4 +121,3 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
         return
     }
 }
-{{ end }}
