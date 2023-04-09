@@ -293,16 +293,6 @@ func (o *projectResource) Schema(ctx context.Context, req resource.SchemaRequest
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
-			"scm_revision": schema.StringAttribute{
-				Description: "The last revision fetched by a project update",
-				Required:    false,
-				Optional:    false,
-				Computed:    true,
-				Sensitive:   false,
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-			},
 		},
 	}
 }

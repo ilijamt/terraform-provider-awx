@@ -32,7 +32,6 @@ description: |-
 - `scm_clean` (Boolean) Discard any local changes before syncing the project.
 - `scm_delete_on_update` (Boolean) Delete the project before syncing.
 - `scm_refspec` (String) For git projects, an additional refspec to fetch.
-- `scm_revision` (String) The last revision fetched by a project update
 - `scm_track_submodules` (Boolean) Track submodules latest commits on defined branch.
 - `scm_type` (String) Specifies the source control system used to store the project.
 - `scm_update_cache_timeout` (Number) The number of seconds after the last project update ran that a new project update will be launched as a job dependency.

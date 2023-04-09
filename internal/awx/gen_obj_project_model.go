@@ -35,8 +35,6 @@ type projectTerraformModel struct {
 	ScmDeleteOnUpdate types.Bool `tfsdk:"scm_delete_on_update" json:"scm_delete_on_update"`
 	// ScmRefspec "For git projects, an additional refspec to fetch."
 	ScmRefspec types.String `tfsdk:"scm_refspec" json:"scm_refspec"`
-	// ScmRevision "The last revision fetched by a project update"
-	ScmRevision types.String `tfsdk:"scm_revision" json:"scm_revision"`
 	// ScmTrackSubmodules "Track submodules latest commits on defined branch."
 	ScmTrackSubmodules types.Bool `tfsdk:"scm_track_submodules" json:"scm_track_submodules"`
 	// ScmType "Specifies the source control system used to store the project."
@@ -68,7 +66,6 @@ func (o *projectTerraformModel) Clone() projectTerraformModel {
 		ScmClean:                      o.ScmClean,
 		ScmDeleteOnUpdate:             o.ScmDeleteOnUpdate,
 		ScmRefspec:                    o.ScmRefspec,
-		ScmRevision:                   o.ScmRevision,
 		ScmTrackSubmodules:            o.ScmTrackSubmodules,
 		ScmType:                       o.ScmType,
 		ScmUpdateCacheTimeout:         o.ScmUpdateCacheTimeout,
@@ -150,10 +147,6 @@ func (o *projectTerraformModel) setScmRefspec(data any) (d diag.Diagnostics, err
 	return helpers.AttrValueSetString(&o.ScmRefspec, data, false)
 }
 
-func (o *projectTerraformModel) setScmRevision(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetString(&o.ScmRevision, data, false)
-}
-
 func (o *projectTerraformModel) setScmTrackSubmodules(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.ScmTrackSubmodules, data)
 }
@@ -220,9 +213,6 @@ func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags di
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setScmRefspec(data["scm_refspec"]); dg.HasError() {
-		diags.Append(dg...)
-	}
-	if dg, _ := o.setScmRevision(data["scm_revision"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setScmTrackSubmodules(data["scm_track_submodules"]); dg.HasError() {

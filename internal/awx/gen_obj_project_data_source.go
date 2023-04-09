@@ -113,11 +113,6 @@ func (o *projectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Sensitive:   false,
 				Computed:    true,
 			},
-			"scm_revision": schema.StringAttribute{
-				Description: "The last revision fetched by a project update",
-				Sensitive:   false,
-				Computed:    true,
-			},
 			"scm_track_submodules": schema.BoolAttribute{
 				Description: "Track submodules latest commits on defined branch.",
 				Sensitive:   false,
