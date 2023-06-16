@@ -35,5 +35,3 @@ details are available in the documentation.
 ### Read-Only
 
 - `authentication_backends` (List of String) List of authentication backends that are enabled based on license features and other authentication settings.
-
-

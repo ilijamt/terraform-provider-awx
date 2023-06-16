@@ -44,5 +44,3 @@ description: |-
 ### Read-Only
 
 - `id` (Number) Database ID for this workflow job template.
-
-

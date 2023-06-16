@@ -30,5 +30,3 @@ description: |-
 ### Read-Only
 
 - `id` (Number) Database ID for this notification template.
-
-

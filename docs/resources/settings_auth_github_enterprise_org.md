@@ -32,5 +32,3 @@ details are available in the documentation.
 ### Read-Only
 
 - `social_auth_github_enterprise_org_callback_url` (String) Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.
-
-

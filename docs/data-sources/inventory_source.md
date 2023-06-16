@@ -39,5 +39,3 @@ description: |-
 - `update_cache_timeout` (Number) Update cache timeout
 - `update_on_launch` (Boolean) Update on launch
 - `verbosity` (String) Verbosity
-
-

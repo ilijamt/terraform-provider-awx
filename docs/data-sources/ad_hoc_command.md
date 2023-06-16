@@ -46,5 +46,3 @@ description: |-
 - `status` (String) Status
 - `verbosity` (String) Verbosity
 - `work_unit_id` (String) The Receptor work unit ID associated with this job.
-
-

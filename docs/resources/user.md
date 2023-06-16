@@ -34,5 +34,3 @@ description: |-
 - `id` (Number) Database ID for this user.
 - `last_login` (String)
 - `ldap_dn` (String)
-
-

@@ -46,5 +46,3 @@ description: |-
 - `started` (String) The date and time the job was queued for starting.
 - `status` (String)
 - `work_unit_id` (String) The Receptor work unit ID associated with this job.
-
-

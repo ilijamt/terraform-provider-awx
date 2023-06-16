@@ -68,5 +68,3 @@ description: |-
 
 - `id` (Number) Database ID for this job template.
 - `organization` (Number) The organization used to determine access to this template.
-
-

@@ -32,5 +32,3 @@ description: |-
 - `id` (Number) Database ID for this host.
 - `last_job` (Number)
 - `last_job_host_summary` (Number)
-
-

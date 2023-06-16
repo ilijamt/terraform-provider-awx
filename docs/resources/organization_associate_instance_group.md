@@ -19,5 +19,3 @@ description: |-
 
 - `instance_group_id` (Number) Database ID of the instancegroup to assign.
 - `organization_id` (Number) Database ID for this Organization.
-
-

@@ -24,5 +24,3 @@ description: |-
 
 - `description` (String) Optional description of this team.
 - `organization` (Number) Organization
-
-

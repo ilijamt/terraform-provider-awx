@@ -42,5 +42,3 @@ description: |-
 ### Read-Only
 
 - `id` (Number) Database ID for this project.
-
-

@@ -28,5 +28,3 @@ description: |-
 - `scope` (String) Allowed scopes, further restricts user's permissions. Must be a simple space-separated string with allowed scopes ['read', 'write'].
 - `token` (String) Token
 - `user` (Number) The user representing the token owner
-
-

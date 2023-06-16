@@ -25,5 +25,3 @@ description: |-
 - `inventory` (Number) Inventory
 - `name` (String) Name of this group.
 - `variables` (String) Group variables in JSON or YAML format.
-
-

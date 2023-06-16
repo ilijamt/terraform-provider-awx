@@ -19,5 +19,3 @@ description: |-
 
 - `spec` (String) The survey spec for this WorkflowJobTemplate.
 - `workflow_job_template_id` (Number) Database ID for this WorkflowJobTemplate.
-
-

@@ -40,5 +40,3 @@ description: |-
 - `project_update_vvv` (Boolean) Adds the CLI -vvv flag to ansible-playbook runs of project_update.yml used for project updates.
 - `schedule_max_jobs` (Number) Maximum number of the same job template that can be waiting to run when launching from a schedule before no more are created.
 - `stdout_max_bytes_display` (Number) Maximum Size of Standard Output in bytes to display before requiring the output be downloaded.
-
-

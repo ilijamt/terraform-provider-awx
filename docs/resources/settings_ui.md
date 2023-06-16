@@ -25,5 +25,3 @@ description: |-
 ### Read-Only
 
 - `pendo_tracking_state` (String) Enable or Disable User Analytics Tracking.
-
-

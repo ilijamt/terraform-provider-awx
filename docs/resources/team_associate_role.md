@@ -19,5 +19,3 @@ description: |-
 
 - `role_id` (Number) Database ID of the role to assign.
 - `team_id` (Number) Database ID for this Team.
-
-

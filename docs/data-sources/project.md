@@ -39,5 +39,3 @@ description: |-
 - `scm_url` (String) The location where the project is stored.
 - `signature_validation_credential` (Number) An optional credential used for validating files in the project against unexpected changes.
 - `timeout` (Number) The amount of time (in seconds) to run before the task is canceled.
-
-

@@ -28,5 +28,3 @@ description: |-
 - `managed` (Boolean) Managed
 - `organization` (Number) The organization used to determine access to this execution environment.
 - `pull` (String) Pull image before running?
-
-

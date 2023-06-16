@@ -44,5 +44,3 @@ system_tracking - facts gathered from scan jobs.
 - `log_aggregator_type` (String) Format messages for the chosen log aggregator.
 - `log_aggregator_username` (String) Username for external log aggregator (if required; HTTP/s only).
 - `log_aggregator_verify_cert` (Boolean) Flag to control enable/disable of certificate verification when LOG_AGGREGATOR_PROTOCOL is "https". If enabled, the log handler will verify certificate sent by external log aggregator before establishing connection.
-
-

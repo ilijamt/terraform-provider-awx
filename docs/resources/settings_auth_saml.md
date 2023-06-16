@@ -42,5 +42,3 @@ details are available in the documentation.
 
 - `social_auth_saml_callback_url` (String) Register the service as a service provider (SP) with each identity provider (IdP) you have configured. Provide your SP Entity ID and this ACS URL for your application.
 - `social_auth_saml_metadata_url` (String) If your identity provider (IdP) allows uploading an XML metadata file, you can download one from this URL.
-
-

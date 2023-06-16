@@ -45,5 +45,3 @@ description: |-
 - `tower_url_base` (String) This value has been set manually in a settings file.
 
 This setting is used by services like notifications to render a valid url to the service.
-
-

@@ -20,5 +20,3 @@ description: |-
 - `id` (Number) Database ID for this label.
 - `name` (String) Name of this label.
 - `organization` (Number) Organization this label belongs to.
-
-

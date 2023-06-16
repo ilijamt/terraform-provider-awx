@@ -28,5 +28,3 @@ description: |-
 - `refresh_token` (String)
 - `token` (String)
 - `user` (Number) The user representing the token owner
-
-

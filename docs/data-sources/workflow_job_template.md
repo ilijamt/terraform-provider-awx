@@ -41,5 +41,3 @@ description: |-
 - `survey_enabled` (Boolean) Survey enabled
 - `webhook_credential` (Number) Personal Access Token for posting back the status to the service API
 - `webhook_service` (String) Service that webhook requests will be accepted from
-
-

@@ -20,5 +20,3 @@ description: |-
 - `job_template_id` (Number) Database ID for this JobTemplate.
 - `notification_template_id` (Number) Database ID of the notificationtemplate to assign.
 - `option` (String) Notification Option
-
-
