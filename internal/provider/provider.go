@@ -2,11 +2,12 @@ package provider
 
 import (
 	"context"
+	"os"
+	"strings"
+
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/ilijamt/terraform-provider-awx/internal/awx"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
-	"os"
-	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -152,8 +153,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	}
 
-	var insecureSkipVerify = false
-	insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
+	var insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
 	if val := os.Getenv("TOWER_VERIFY_SSL"); val != "" {
 		insecureSkipVerify = !("false" == strings.ToLower(val) || "no" == strings.ToLower(val))
 	}
