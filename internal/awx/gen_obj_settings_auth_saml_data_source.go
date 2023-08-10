@@ -15,23 +15,23 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &settingsAuthSAMLDataSource{}
-	_ datasource.DataSourceWithConfigure = &settingsAuthSAMLDataSource{}
+	_ datasource.DataSource              = &settingsAuthSamlDataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsAuthSamlDataSource{}
 )
 
 // NewSettingsAuthSAMLDataSource is a helper function to instantiate the SettingsAuthSAML data source.
 func NewSettingsAuthSAMLDataSource() datasource.DataSource {
-	return &settingsAuthSAMLDataSource{}
+	return &settingsAuthSamlDataSource{}
 }
 
-// settingsAuthSAMLDataSource is the data source implementation.
-type settingsAuthSAMLDataSource struct {
+// settingsAuthSamlDataSource is the data source implementation.
+type settingsAuthSamlDataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *settingsAuthSAMLDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *settingsAuthSamlDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -41,12 +41,12 @@ func (o *settingsAuthSAMLDataSource) Configure(_ context.Context, req datasource
 }
 
 // Metadata returns the data source type name.
-func (o *settingsAuthSAMLDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (o *settingsAuthSamlDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_settings_auth_saml"
 }
 
 // Schema defines the schema for the data source.
-func (o *settingsAuthSAMLDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *settingsAuthSamlDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -146,15 +146,15 @@ func (o *settingsAuthSAMLDataSource) Schema(ctx context.Context, req datasource.
 	}
 }
 
-func (o *settingsAuthSAMLDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *settingsAuthSamlDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{
 		datasourcevalidator.ExactlyOneOf(),
 	}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *settingsAuthSAMLDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state settingsAuthSAMLTerraformModel
+func (o *settingsAuthSamlDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsAuthSamlTerraformModel
 	var err error
 	var endpoint = o.endpoint
 

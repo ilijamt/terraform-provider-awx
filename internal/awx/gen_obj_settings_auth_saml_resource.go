@@ -26,21 +26,21 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &settingsAuthSAMLResource{}
-	_ resource.ResourceWithConfigure = &settingsAuthSAMLResource{}
+	_ resource.Resource              = &settingsAuthSamlResource{}
+	_ resource.ResourceWithConfigure = &settingsAuthSamlResource{}
 )
 
 // NewSettingsAuthSAMLResource is a helper function to simplify the provider implementation.
 func NewSettingsAuthSAMLResource() resource.Resource {
-	return &settingsAuthSAMLResource{}
+	return &settingsAuthSamlResource{}
 }
 
-type settingsAuthSAMLResource struct {
+type settingsAuthSamlResource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *settingsAuthSAMLResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *settingsAuthSamlResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -49,11 +49,11 @@ func (o *settingsAuthSAMLResource) Configure(ctx context.Context, request resour
 	o.endpoint = "/api/v2/settings/saml/"
 }
 
-func (o *settingsAuthSAMLResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthSamlResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_saml"
 }
 
-func (o *settingsAuthSAMLResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *settingsAuthSamlResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -271,9 +271,9 @@ func (o *settingsAuthSAMLResource) Schema(ctx context.Context, req resource.Sche
 	}
 }
 
-func (o *settingsAuthSAMLResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *settingsAuthSamlResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state settingsAuthSAMLTerraformModel
+	var plan, state settingsAuthSamlTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -328,11 +328,11 @@ func (o *settingsAuthSAMLResource) Create(ctx context.Context, request resource.
 	}
 }
 
-func (o *settingsAuthSAMLResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *settingsAuthSamlResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state settingsAuthSAMLTerraformModel
+	var state settingsAuthSamlTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -380,9 +380,9 @@ func (o *settingsAuthSAMLResource) Read(ctx context.Context, request resource.Re
 	}
 }
 
-func (o *settingsAuthSAMLResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *settingsAuthSamlResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state settingsAuthSAMLTerraformModel
+	var plan, state settingsAuthSamlTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -437,5 +437,5 @@ func (o *settingsAuthSAMLResource) Update(ctx context.Context, request resource.
 	}
 }
 
-func (o *settingsAuthSAMLResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *settingsAuthSamlResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 }

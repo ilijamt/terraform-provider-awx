@@ -27,21 +27,21 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &settingsAuthLDAPResource{}
-	_ resource.ResourceWithConfigure = &settingsAuthLDAPResource{}
+	_ resource.Resource              = &settingsAuthLdapResource{}
+	_ resource.ResourceWithConfigure = &settingsAuthLdapResource{}
 )
 
 // NewSettingsAuthLDAPResource is a helper function to simplify the provider implementation.
 func NewSettingsAuthLDAPResource() resource.Resource {
-	return &settingsAuthLDAPResource{}
+	return &settingsAuthLdapResource{}
 }
 
-type settingsAuthLDAPResource struct {
+type settingsAuthLdapResource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *settingsAuthLDAPResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *settingsAuthLdapResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -50,11 +50,11 @@ func (o *settingsAuthLDAPResource) Configure(ctx context.Context, request resour
 	o.endpoint = "/api/v2/settings/ldap/"
 }
 
-func (o *settingsAuthLDAPResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthLdapResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_ldap"
 }
 
-func (o *settingsAuthLDAPResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *settingsAuthLdapResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -1204,9 +1204,9 @@ func (o *settingsAuthLDAPResource) Schema(ctx context.Context, req resource.Sche
 	}
 }
 
-func (o *settingsAuthLDAPResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *settingsAuthLdapResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state settingsAuthLDAPTerraformModel
+	var plan, state settingsAuthLdapTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1261,11 +1261,11 @@ func (o *settingsAuthLDAPResource) Create(ctx context.Context, request resource.
 	}
 }
 
-func (o *settingsAuthLDAPResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *settingsAuthLdapResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state settingsAuthLDAPTerraformModel
+	var state settingsAuthLdapTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1313,9 +1313,9 @@ func (o *settingsAuthLDAPResource) Read(ctx context.Context, request resource.Re
 	}
 }
 
-func (o *settingsAuthLDAPResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *settingsAuthLdapResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state settingsAuthLDAPTerraformModel
+	var plan, state settingsAuthLdapTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -1370,5 +1370,5 @@ func (o *settingsAuthLDAPResource) Update(ctx context.Context, request resource.
 	}
 }
 
-func (o *settingsAuthLDAPResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *settingsAuthLdapResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 }

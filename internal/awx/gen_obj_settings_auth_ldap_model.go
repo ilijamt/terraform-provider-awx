@@ -10,8 +10,8 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthLDAPTerraformModel maps the schema for SettingsAuthLDAP when using Data Source
-type settingsAuthLDAPTerraformModel struct {
+// settingsAuthLdapTerraformModel maps the schema for SettingsAuthLDAP when using Data Source
+type settingsAuthLdapTerraformModel struct {
 	// AUTH_LDAP_1_BIND_DN "DN (Distinguished Name) of user to bind for all search queries. This is the system user account we will use to login to query LDAP for other user information. Refer to the documentation for example syntax."
 	AUTH_LDAP_1_BIND_DN types.String `tfsdk:"auth_ldap_1_bind_dn" json:"AUTH_LDAP_1_BIND_DN"`
 	// AUTH_LDAP_1_BIND_PASSWORD "Password used to bind LDAP user account."
@@ -207,8 +207,8 @@ type settingsAuthLDAPTerraformModel struct {
 }
 
 // Clone the object
-func (o *settingsAuthLDAPTerraformModel) Clone() settingsAuthLDAPTerraformModel {
-	return settingsAuthLDAPTerraformModel{
+func (o *settingsAuthLdapTerraformModel) Clone() settingsAuthLdapTerraformModel {
+	return settingsAuthLdapTerraformModel{
 		AUTH_LDAP_1_BIND_DN:             o.AUTH_LDAP_1_BIND_DN,
 		AUTH_LDAP_1_BIND_PASSWORD:       o.AUTH_LDAP_1_BIND_PASSWORD,
 		AUTH_LDAP_1_CONNECTION_OPTIONS:  o.AUTH_LDAP_1_CONNECTION_OPTIONS,
@@ -309,7 +309,7 @@ func (o *settingsAuthLDAPTerraformModel) Clone() settingsAuthLDAPTerraformModel 
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthLDAP
-func (o *settingsAuthLDAPTerraformModel) BodyRequest() (req settingsAuthLDAPBodyRequestModel) {
+func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBodyRequestModel) {
 	req.AUTH_LDAP_1_BIND_DN = o.AUTH_LDAP_1_BIND_DN.ValueString()
 	req.AUTH_LDAP_1_BIND_PASSWORD = o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_1_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())
@@ -493,391 +493,391 @@ func (o *settingsAuthLDAPTerraformModel) BodyRequest() (req settingsAuthLDAPBody
 	return
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1BindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1BindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1BindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1BindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1ConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1ConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1DenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1DenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1GroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1RequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1RequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1ServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1ServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1StartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1StartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_1_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap1UserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2BindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2BindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2BindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2BindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2ConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2ConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2DenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2DenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2GroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2RequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2RequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2ServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2ServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2StartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2StartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_2_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap2UserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3BindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3BindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3BindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3BindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3ConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3ConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3DenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3DenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3GroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3RequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3RequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3ServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3ServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3StartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3StartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_3_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap3UserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4BindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4BindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4BindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4BindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4ConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4ConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4DenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4DenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4GroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4RequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4RequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4ServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4ServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4StartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4StartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_4_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap4UserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5BindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5BindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5BindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5BindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5ConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5ConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5DenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5DenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5GroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5RequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5RequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5ServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5ServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5StartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5StartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_5_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdap5UserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapBindDn(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapBindDn(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_DN, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapBindPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapBindPassword(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_PASSWORD, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapConnectionOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapConnectionOptions(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_CONNECTION_OPTIONS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapDenyGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapDenyGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_DENY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_GROUP_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupType(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_GROUP_TYPE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapGroupTypeParams(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupTypeParams(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_GROUP_TYPE_PARAMS, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapOrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapRequireGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapRequireGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_REQUIRE_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapServerUri(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapServerUri(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_SERVER_URI, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapStartTls(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapStartTls(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AUTH_LDAP_START_TLS, data)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapTeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserAttrMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapUserAttrMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_ATTR_MAP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserDnTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapUserDnTemplate(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.AUTH_LDAP_USER_DN_TEMPLATE, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapUserFlagsByGroup(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_FLAGS_BY_GROUP, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) setAuthLdapUserSearch(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) setAuthLdapUserSearch(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLDAPTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthLdapTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
@@ -1172,8 +1172,8 @@ func (o *settingsAuthLDAPTerraformModel) updateFromApiData(data map[string]any) 
 	return diags, nil
 }
 
-// settingsAuthLDAPBodyRequestModel maps the schema for SettingsAuthLDAP for creating and updating the data
-type settingsAuthLDAPBodyRequestModel struct {
+// settingsAuthLdapBodyRequestModel maps the schema for SettingsAuthLDAP for creating and updating the data
+type settingsAuthLdapBodyRequestModel struct {
 	// AUTH_LDAP_1_BIND_DN "DN (Distinguished Name) of user to bind for all search queries. This is the system user account we will use to login to query LDAP for other user information. Refer to the documentation for example syntax."
 	AUTH_LDAP_1_BIND_DN string `json:"AUTH_LDAP_1_BIND_DN,omitempty"`
 	// AUTH_LDAP_1_BIND_PASSWORD "Password used to bind LDAP user account."

@@ -24,21 +24,21 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &settingsOpenIDConnectResource{}
-	_ resource.ResourceWithConfigure = &settingsOpenIDConnectResource{}
+	_ resource.Resource              = &settingsOpenIdconnectResource{}
+	_ resource.ResourceWithConfigure = &settingsOpenIdconnectResource{}
 )
 
 // NewSettingsOpenIDConnectResource is a helper function to simplify the provider implementation.
 func NewSettingsOpenIDConnectResource() resource.Resource {
-	return &settingsOpenIDConnectResource{}
+	return &settingsOpenIdconnectResource{}
 }
 
-type settingsOpenIDConnectResource struct {
+type settingsOpenIdconnectResource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *settingsOpenIDConnectResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *settingsOpenIdconnectResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -47,11 +47,11 @@ func (o *settingsOpenIDConnectResource) Configure(ctx context.Context, request r
 	o.endpoint = "/api/v2/settings/oidc/"
 }
 
-func (o *settingsOpenIDConnectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsOpenIdconnectResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_oidc"
 }
 
-func (o *settingsOpenIDConnectResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *settingsOpenIdconnectResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -107,9 +107,9 @@ func (o *settingsOpenIDConnectResource) Schema(ctx context.Context, req resource
 	}
 }
 
-func (o *settingsOpenIDConnectResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *settingsOpenIdconnectResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state settingsOpenIDConnectTerraformModel
+	var plan, state settingsOpenIdconnectTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -156,11 +156,11 @@ func (o *settingsOpenIDConnectResource) Create(ctx context.Context, request reso
 	}
 }
 
-func (o *settingsOpenIDConnectResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *settingsOpenIdconnectResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state settingsOpenIDConnectTerraformModel
+	var state settingsOpenIdconnectTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -199,9 +199,9 @@ func (o *settingsOpenIDConnectResource) Read(ctx context.Context, request resour
 	}
 }
 
-func (o *settingsOpenIDConnectResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *settingsOpenIdconnectResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state settingsOpenIDConnectTerraformModel
+	var plan, state settingsOpenIdconnectTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -248,5 +248,5 @@ func (o *settingsOpenIDConnectResource) Update(ctx context.Context, request reso
 	}
 }
 
-func (o *settingsOpenIDConnectResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *settingsOpenIdconnectResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 }

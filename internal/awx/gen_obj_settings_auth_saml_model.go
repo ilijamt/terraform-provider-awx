@@ -10,8 +10,8 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthSAMLTerraformModel maps the schema for SettingsAuthSAML when using Data Source
-type settingsAuthSAMLTerraformModel struct {
+// settingsAuthSamlTerraformModel maps the schema for SettingsAuthSAML when using Data Source
+type settingsAuthSamlTerraformModel struct {
 	// SAML_AUTO_CREATE_OBJECTS "When enabled (the default), mapped Organizations and Teams will be created automatically on successful SAML login."
 	SAML_AUTO_CREATE_OBJECTS types.Bool `tfsdk:"saml_auto_create_objects" json:"SAML_AUTO_CREATE_OBJECTS"`
 	// SOCIAL_AUTH_SAML_CALLBACK_URL "Register the service as a service provider (SP) with each identity provider (IdP) you have configured. Provide your SP Entity ID and this ACS URL for your application."
@@ -51,8 +51,8 @@ type settingsAuthSAMLTerraformModel struct {
 }
 
 // Clone the object
-func (o *settingsAuthSAMLTerraformModel) Clone() settingsAuthSAMLTerraformModel {
-	return settingsAuthSAMLTerraformModel{
+func (o *settingsAuthSamlTerraformModel) Clone() settingsAuthSamlTerraformModel {
+	return settingsAuthSamlTerraformModel{
 		SAML_AUTO_CREATE_OBJECTS:            o.SAML_AUTO_CREATE_OBJECTS,
 		SOCIAL_AUTH_SAML_CALLBACK_URL:       o.SOCIAL_AUTH_SAML_CALLBACK_URL,
 		SOCIAL_AUTH_SAML_ENABLED_IDPS:       o.SOCIAL_AUTH_SAML_ENABLED_IDPS,
@@ -75,7 +75,7 @@ func (o *settingsAuthSAMLTerraformModel) Clone() settingsAuthSAMLTerraformModel 
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthSAML
-func (o *settingsAuthSAMLTerraformModel) BodyRequest() (req settingsAuthSAMLBodyRequestModel) {
+func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBodyRequestModel) {
 	req.SAML_AUTO_CREATE_OBJECTS = o.SAML_AUTO_CREATE_OBJECTS.ValueBool()
 	req.SOCIAL_AUTH_SAML_ENABLED_IDPS = json.RawMessage(o.SOCIAL_AUTH_SAML_ENABLED_IDPS.ValueString())
 	req.SOCIAL_AUTH_SAML_EXTRA_DATA = []string{}
@@ -102,79 +102,79 @@ func (o *settingsAuthSAMLTerraformModel) BodyRequest() (req settingsAuthSAMLBody
 	return
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSamlAutoCreateObjects(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSamlAutoCreateObjects(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.SAML_AUTO_CREATE_OBJECTS, data)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlCallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlCallbackUrl(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlEnabledIdps(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlEnabledIdps(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ENABLED_IDPS, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlExtraData(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlExtraData(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_SAML_EXTRA_DATA, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlMetadataUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlMetadataUrl(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_METADATA_URL, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlOrgInfo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrgInfo(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORG_INFO, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSecurityConfig(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSecurityConfig(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SECURITY_CONFIG, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpEntityId(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpEntityId(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_ENTITY_ID, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpExtra(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpExtra(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SP_EXTRA, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY, data, true)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSpPublicCert(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPublicCert(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT, data, true)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlSupportContact(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSupportContact(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTeamAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamAttr(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_ATTR, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlTechnicalContact(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTechnicalContact(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data, false)
 }
 
-func (o *settingsAuthSAMLTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
@@ -235,8 +235,8 @@ func (o *settingsAuthSAMLTerraformModel) updateFromApiData(data map[string]any) 
 	return diags, nil
 }
 
-// settingsAuthSAMLBodyRequestModel maps the schema for SettingsAuthSAML for creating and updating the data
-type settingsAuthSAMLBodyRequestModel struct {
+// settingsAuthSamlBodyRequestModel maps the schema for SettingsAuthSAML for creating and updating the data
+type settingsAuthSamlBodyRequestModel struct {
 	// SAML_AUTO_CREATE_OBJECTS "When enabled (the default), mapped Organizations and Teams will be created automatically on successful SAML login."
 	SAML_AUTO_CREATE_OBJECTS bool `json:"SAML_AUTO_CREATE_OBJECTS"`
 	// SOCIAL_AUTH_SAML_ENABLED_IDPS "Configure the Entity ID, SSO URL and certificate for each identity provider (IdP) in use. Multiple SAML IdPs are supported. Some IdPs may provide user data using attribute names that differ from the default OIDs. Attribute names may be overridden for each IdP. Refer to the Ansible documentation for additional details and syntax."

@@ -9,8 +9,8 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsUITerraformModel maps the schema for SettingsUI when using Data Source
-type settingsUITerraformModel struct {
+// settingsUiTerraformModel maps the schema for SettingsUI when using Data Source
+type settingsUiTerraformModel struct {
 	// CUSTOM_LOGIN_INFO "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported."
 	CUSTOM_LOGIN_INFO types.String `tfsdk:"custom_login_info" json:"CUSTOM_LOGIN_INFO"`
 	// CUSTOM_LOGO "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported."
@@ -24,8 +24,8 @@ type settingsUITerraformModel struct {
 }
 
 // Clone the object
-func (o *settingsUITerraformModel) Clone() settingsUITerraformModel {
-	return settingsUITerraformModel{
+func (o *settingsUiTerraformModel) Clone() settingsUiTerraformModel {
+	return settingsUiTerraformModel{
 		CUSTOM_LOGIN_INFO:       o.CUSTOM_LOGIN_INFO,
 		CUSTOM_LOGO:             o.CUSTOM_LOGO,
 		MAX_UI_JOB_EVENTS:       o.MAX_UI_JOB_EVENTS,
@@ -35,7 +35,7 @@ func (o *settingsUITerraformModel) Clone() settingsUITerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsUI
-func (o *settingsUITerraformModel) BodyRequest() (req settingsUIBodyRequestModel) {
+func (o *settingsUiTerraformModel) BodyRequest() (req settingsUiBodyRequestModel) {
 	req.CUSTOM_LOGIN_INFO = o.CUSTOM_LOGIN_INFO.ValueString()
 	req.CUSTOM_LOGO = o.CUSTOM_LOGO.ValueString()
 	req.MAX_UI_JOB_EVENTS = o.MAX_UI_JOB_EVENTS.ValueInt64()
@@ -43,27 +43,27 @@ func (o *settingsUITerraformModel) BodyRequest() (req settingsUIBodyRequestModel
 	return
 }
 
-func (o *settingsUITerraformModel) setCustomLoginInfo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setCustomLoginInfo(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data, false)
 }
 
-func (o *settingsUITerraformModel) setCustomLogo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setCustomLogo(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.CUSTOM_LOGO, data, false)
 }
 
-func (o *settingsUITerraformModel) setMaxUiJobEvents(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setMaxUiJobEvents(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data)
 }
 
-func (o *settingsUITerraformModel) setPendoTrackingState(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setPendoTrackingState(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data, false)
 }
 
-func (o *settingsUITerraformModel) setUiLiveUpdatesEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setUiLiveUpdatesEnabled(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data)
 }
 
-func (o *settingsUITerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
@@ -85,8 +85,8 @@ func (o *settingsUITerraformModel) updateFromApiData(data map[string]any) (diags
 	return diags, nil
 }
 
-// settingsUIBodyRequestModel maps the schema for SettingsUI for creating and updating the data
-type settingsUIBodyRequestModel struct {
+// settingsUiBodyRequestModel maps the schema for SettingsUI for creating and updating the data
+type settingsUiBodyRequestModel struct {
 	// CUSTOM_LOGIN_INFO "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported."
 	CUSTOM_LOGIN_INFO string `json:"CUSTOM_LOGIN_INFO,omitempty"`
 	// CUSTOM_LOGO "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported."

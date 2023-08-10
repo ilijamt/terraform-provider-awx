@@ -14,23 +14,23 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &settingsAuthAzureADOauth2DataSource{}
-	_ datasource.DataSourceWithConfigure = &settingsAuthAzureADOauth2DataSource{}
+	_ datasource.DataSource              = &settingsAuthAzureAdoauth2DataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsAuthAzureAdoauth2DataSource{}
 )
 
 // NewSettingsAuthAzureADOauth2DataSource is a helper function to instantiate the SettingsAuthAzureADOauth2 data source.
 func NewSettingsAuthAzureADOauth2DataSource() datasource.DataSource {
-	return &settingsAuthAzureADOauth2DataSource{}
+	return &settingsAuthAzureAdoauth2DataSource{}
 }
 
-// settingsAuthAzureADOauth2DataSource is the data source implementation.
-type settingsAuthAzureADOauth2DataSource struct {
+// settingsAuthAzureAdoauth2DataSource is the data source implementation.
+type settingsAuthAzureAdoauth2DataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *settingsAuthAzureADOauth2DataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *settingsAuthAzureAdoauth2DataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -40,12 +40,12 @@ func (o *settingsAuthAzureADOauth2DataSource) Configure(_ context.Context, req d
 }
 
 // Metadata returns the data source type name.
-func (o *settingsAuthAzureADOauth2DataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (o *settingsAuthAzureAdoauth2DataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_settings_auth_azuread_oauth2"
 }
 
 // Schema defines the schema for the data source.
-func (o *settingsAuthAzureADOauth2DataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *settingsAuthAzureAdoauth2DataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -79,15 +79,15 @@ func (o *settingsAuthAzureADOauth2DataSource) Schema(ctx context.Context, req da
 	}
 }
 
-func (o *settingsAuthAzureADOauth2DataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *settingsAuthAzureAdoauth2DataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{
 		datasourcevalidator.ExactlyOneOf(),
 	}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *settingsAuthAzureADOauth2DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state settingsAuthAzureADOauth2TerraformModel
+func (o *settingsAuthAzureAdoauth2DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsAuthAzureAdoauth2TerraformModel
 	var err error
 	var endpoint = o.endpoint
 

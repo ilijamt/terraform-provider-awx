@@ -10,8 +10,8 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthAzureADOauth2TerraformModel maps the schema for SettingsAuthAzureADOauth2 when using Data Source
-type settingsAuthAzureADOauth2TerraformModel struct {
+// settingsAuthAzureAdoauth2TerraformModel maps the schema for SettingsAuthAzureADOauth2 when using Data Source
+type settingsAuthAzureAdoauth2TerraformModel struct {
 	// SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail. "
 	SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL types.String `tfsdk:"social_auth_azuread_oauth2_callback_url" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"`
 	// SOCIAL_AUTH_AZUREAD_OAUTH2_KEY "The OAuth2 key (Client ID) from your Azure AD application."
@@ -25,8 +25,8 @@ type settingsAuthAzureADOauth2TerraformModel struct {
 }
 
 // Clone the object
-func (o *settingsAuthAzureADOauth2TerraformModel) Clone() settingsAuthAzureADOauth2TerraformModel {
-	return settingsAuthAzureADOauth2TerraformModel{
+func (o *settingsAuthAzureAdoauth2TerraformModel) Clone() settingsAuthAzureAdoauth2TerraformModel {
+	return settingsAuthAzureAdoauth2TerraformModel{
 		SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL:     o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL,
 		SOCIAL_AUTH_AZUREAD_OAUTH2_KEY:              o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,
 		SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP: o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP,
@@ -36,7 +36,7 @@ func (o *settingsAuthAzureADOauth2TerraformModel) Clone() settingsAuthAzureADOau
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthAzureADOauth2
-func (o *settingsAuthAzureADOauth2TerraformModel) BodyRequest() (req settingsAuthAzureADOauth2BodyRequestModel) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() (req settingsAuthAzureAdoauth2BodyRequestModel) {
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.ValueString()
@@ -44,27 +44,27 @@ func (o *settingsAuthAzureADOauth2TerraformModel) BodyRequest() (req settingsAut
 	return
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) setSocialAuthAzureadOauth2CallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2CallbackUrl(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) setSocialAuthAzureadOauth2Key(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2Key(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY, data, false)
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) setSocialAuthAzureadOauth2OrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2OrganizationMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) setSocialAuthAzureadOauth2Secret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2Secret(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET, data, false)
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) setSocialAuthAzureadOauth2TeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2TeamMap(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthAzureADOauth2TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
@@ -86,8 +86,8 @@ func (o *settingsAuthAzureADOauth2TerraformModel) updateFromApiData(data map[str
 	return diags, nil
 }
 
-// settingsAuthAzureADOauth2BodyRequestModel maps the schema for SettingsAuthAzureADOauth2 for creating and updating the data
-type settingsAuthAzureADOauth2BodyRequestModel struct {
+// settingsAuthAzureAdoauth2BodyRequestModel maps the schema for SettingsAuthAzureADOauth2 for creating and updating the data
+type settingsAuthAzureAdoauth2BodyRequestModel struct {
 	// SOCIAL_AUTH_AZUREAD_OAUTH2_KEY "The OAuth2 key (Client ID) from your Azure AD application."
 	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY string `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,omitempty"`
 	// SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."

@@ -23,21 +23,21 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &settingsAuthAzureADOauth2Resource{}
-	_ resource.ResourceWithConfigure = &settingsAuthAzureADOauth2Resource{}
+	_ resource.Resource              = &settingsAuthAzureAdoauth2Resource{}
+	_ resource.ResourceWithConfigure = &settingsAuthAzureAdoauth2Resource{}
 )
 
 // NewSettingsAuthAzureADOauth2Resource is a helper function to simplify the provider implementation.
 func NewSettingsAuthAzureADOauth2Resource() resource.Resource {
-	return &settingsAuthAzureADOauth2Resource{}
+	return &settingsAuthAzureAdoauth2Resource{}
 }
 
-type settingsAuthAzureADOauth2Resource struct {
+type settingsAuthAzureAdoauth2Resource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -46,11 +46,11 @@ func (o *settingsAuthAzureADOauth2Resource) Configure(ctx context.Context, reque
 	o.endpoint = "/api/v2/settings/azuread-oauth2/"
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_auth_azuread_oauth2"
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -116,9 +116,9 @@ func (o *settingsAuthAzureADOauth2Resource) Schema(ctx context.Context, req reso
 	}
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state settingsAuthAzureADOauth2TerraformModel
+	var plan, state settingsAuthAzureAdoauth2TerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -173,11 +173,11 @@ func (o *settingsAuthAzureADOauth2Resource) Create(ctx context.Context, request 
 	}
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state settingsAuthAzureADOauth2TerraformModel
+	var state settingsAuthAzureAdoauth2TerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -225,9 +225,9 @@ func (o *settingsAuthAzureADOauth2Resource) Read(ctx context.Context, request re
 	}
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state settingsAuthAzureADOauth2TerraformModel
+	var plan, state settingsAuthAzureAdoauth2TerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -282,5 +282,5 @@ func (o *settingsAuthAzureADOauth2Resource) Update(ctx context.Context, request 
 	}
 }
 
-func (o *settingsAuthAzureADOauth2Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *settingsAuthAzureAdoauth2Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 }

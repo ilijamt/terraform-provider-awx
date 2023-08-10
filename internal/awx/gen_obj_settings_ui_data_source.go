@@ -14,23 +14,23 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &settingsUIDataSource{}
-	_ datasource.DataSourceWithConfigure = &settingsUIDataSource{}
+	_ datasource.DataSource              = &settingsUiDataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsUiDataSource{}
 )
 
 // NewSettingsUIDataSource is a helper function to instantiate the SettingsUI data source.
 func NewSettingsUIDataSource() datasource.DataSource {
-	return &settingsUIDataSource{}
+	return &settingsUiDataSource{}
 }
 
-// settingsUIDataSource is the data source implementation.
-type settingsUIDataSource struct {
+// settingsUiDataSource is the data source implementation.
+type settingsUiDataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *settingsUIDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *settingsUiDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -40,12 +40,12 @@ func (o *settingsUIDataSource) Configure(_ context.Context, req datasource.Confi
 }
 
 // Metadata returns the data source type name.
-func (o *settingsUIDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (o *settingsUiDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_settings_ui"
 }
 
 // Schema defines the schema for the data source.
-func (o *settingsUIDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *settingsUiDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -79,15 +79,15 @@ func (o *settingsUIDataSource) Schema(ctx context.Context, req datasource.Schema
 	}
 }
 
-func (o *settingsUIDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *settingsUiDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{
 		datasourcevalidator.ExactlyOneOf(),
 	}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *settingsUIDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state settingsUITerraformModel
+func (o *settingsUiDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsUiTerraformModel
 	var err error
 	var endpoint = o.endpoint
 

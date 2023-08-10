@@ -14,23 +14,23 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &settingsOpenIDConnectDataSource{}
-	_ datasource.DataSourceWithConfigure = &settingsOpenIDConnectDataSource{}
+	_ datasource.DataSource              = &settingsOpenIdconnectDataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsOpenIdconnectDataSource{}
 )
 
 // NewSettingsOpenIDConnectDataSource is a helper function to instantiate the SettingsOpenIDConnect data source.
 func NewSettingsOpenIDConnectDataSource() datasource.DataSource {
-	return &settingsOpenIDConnectDataSource{}
+	return &settingsOpenIdconnectDataSource{}
 }
 
-// settingsOpenIDConnectDataSource is the data source implementation.
-type settingsOpenIDConnectDataSource struct {
+// settingsOpenIdconnectDataSource is the data source implementation.
+type settingsOpenIdconnectDataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *settingsOpenIDConnectDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *settingsOpenIdconnectDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -40,12 +40,12 @@ func (o *settingsOpenIDConnectDataSource) Configure(_ context.Context, req datas
 }
 
 // Metadata returns the data source type name.
-func (o *settingsOpenIDConnectDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (o *settingsOpenIdconnectDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_settings_oidc"
 }
 
 // Schema defines the schema for the data source.
-func (o *settingsOpenIDConnectDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *settingsOpenIdconnectDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -74,15 +74,15 @@ func (o *settingsOpenIDConnectDataSource) Schema(ctx context.Context, req dataso
 	}
 }
 
-func (o *settingsOpenIDConnectDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *settingsOpenIdconnectDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{
 		datasourcevalidator.ExactlyOneOf(),
 	}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *settingsOpenIDConnectDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state settingsOpenIDConnectTerraformModel
+func (o *settingsOpenIdconnectDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsOpenIdconnectTerraformModel
 	var err error
 	var endpoint = o.endpoint
 

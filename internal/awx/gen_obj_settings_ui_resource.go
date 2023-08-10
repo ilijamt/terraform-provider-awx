@@ -27,21 +27,21 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &settingsUIResource{}
-	_ resource.ResourceWithConfigure = &settingsUIResource{}
+	_ resource.Resource              = &settingsUiResource{}
+	_ resource.ResourceWithConfigure = &settingsUiResource{}
 )
 
 // NewSettingsUIResource is a helper function to simplify the provider implementation.
 func NewSettingsUIResource() resource.Resource {
-	return &settingsUIResource{}
+	return &settingsUiResource{}
 }
 
-type settingsUIResource struct {
+type settingsUiResource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *settingsUIResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *settingsUiResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -50,11 +50,11 @@ func (o *settingsUIResource) Configure(ctx context.Context, request resource.Con
 	o.endpoint = "/api/v2/settings/ui/"
 }
 
-func (o *settingsUIResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *settingsUiResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_settings_ui"
 }
 
-func (o *settingsUIResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *settingsUiResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -124,9 +124,9 @@ func (o *settingsUIResource) Schema(ctx context.Context, req resource.SchemaRequ
 	}
 }
 
-func (o *settingsUIResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *settingsUiResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state settingsUITerraformModel
+	var plan, state settingsUiTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -173,11 +173,11 @@ func (o *settingsUIResource) Create(ctx context.Context, request resource.Create
 	}
 }
 
-func (o *settingsUIResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *settingsUiResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state settingsUITerraformModel
+	var state settingsUiTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -216,9 +216,9 @@ func (o *settingsUIResource) Read(ctx context.Context, request resource.ReadRequ
 	}
 }
 
-func (o *settingsUIResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *settingsUiResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state settingsUITerraformModel
+	var plan, state settingsUiTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -265,5 +265,5 @@ func (o *settingsUIResource) Update(ctx context.Context, request resource.Update
 	}
 }
 
-func (o *settingsUIResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *settingsUiResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 }

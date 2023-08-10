@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func hookSettingsAuthAzureADOauth2(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthAzureADOauth2TerraformModel) (err error) {
+func hookSettingsAuthAzureADOauth2(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthAzureAdoauth2TerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -112,7 +112,7 @@ func hookSettingsAuthGithubTeam(ctx context.Context, apiVersion string, source S
 	return nil
 }
 
-func hookSettingsSaml(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthSAMLTerraformModel) (err error) {
+func hookSettingsSaml(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthSamlTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}
@@ -143,7 +143,7 @@ func hookSettingsAuthGoogleOauth2(ctx context.Context, apiVersion string, source
 	return nil
 }
 
-func hookSettingsAuthLdap(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthLDAPTerraformModel) (err error) {
+func hookSettingsAuthLdap(ctx context.Context, apiVersion string, source Source, callee Callee, orig, state *settingsAuthLdapTerraformModel) (err error) {
 	if source == SourceResource && (state == nil || orig == nil) && (callee == CalleeUpdate || callee == CalleeCreate || callee == CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
 	}

@@ -9,8 +9,8 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsOpenIDConnectTerraformModel maps the schema for SettingsOpenIDConnect when using Data Source
-type settingsOpenIDConnectTerraformModel struct {
+// settingsOpenIdconnectTerraformModel maps the schema for SettingsOpenIDConnect when using Data Source
+type settingsOpenIdconnectTerraformModel struct {
 	// SOCIAL_AUTH_OIDC_KEY "The OIDC key (Client ID) from your IDP."
 	SOCIAL_AUTH_OIDC_KEY types.String `tfsdk:"social_auth_oidc_key" json:"SOCIAL_AUTH_OIDC_KEY"`
 	// SOCIAL_AUTH_OIDC_OIDC_ENDPOINT "The URL for your OIDC provider including the path up to /.well-known/openid-configuration"
@@ -22,8 +22,8 @@ type settingsOpenIDConnectTerraformModel struct {
 }
 
 // Clone the object
-func (o *settingsOpenIDConnectTerraformModel) Clone() settingsOpenIDConnectTerraformModel {
-	return settingsOpenIDConnectTerraformModel{
+func (o *settingsOpenIdconnectTerraformModel) Clone() settingsOpenIdconnectTerraformModel {
+	return settingsOpenIdconnectTerraformModel{
 		SOCIAL_AUTH_OIDC_KEY:           o.SOCIAL_AUTH_OIDC_KEY,
 		SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT,
 		SOCIAL_AUTH_OIDC_SECRET:        o.SOCIAL_AUTH_OIDC_SECRET,
@@ -32,7 +32,7 @@ func (o *settingsOpenIDConnectTerraformModel) Clone() settingsOpenIDConnectTerra
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsOpenIDConnect
-func (o *settingsOpenIDConnectTerraformModel) BodyRequest() (req settingsOpenIDConnectBodyRequestModel) {
+func (o *settingsOpenIdconnectTerraformModel) BodyRequest() (req settingsOpenIdconnectBodyRequestModel) {
 	req.SOCIAL_AUTH_OIDC_KEY = o.SOCIAL_AUTH_OIDC_KEY.ValueString()
 	req.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()
 	req.SOCIAL_AUTH_OIDC_SECRET = o.SOCIAL_AUTH_OIDC_SECRET.ValueString()
@@ -40,23 +40,23 @@ func (o *settingsOpenIDConnectTerraformModel) BodyRequest() (req settingsOpenIDC
 	return
 }
 
-func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcKey(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_KEY, data, false)
 }
 
-func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT, data, false)
 }
 
-func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcSecret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcSecret(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_SECRET, data, false)
 }
 
-func (o *settingsOpenIDConnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data)
 }
 
-func (o *settingsOpenIDConnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
@@ -75,8 +75,8 @@ func (o *settingsOpenIDConnectTerraformModel) updateFromApiData(data map[string]
 	return diags, nil
 }
 
-// settingsOpenIDConnectBodyRequestModel maps the schema for SettingsOpenIDConnect for creating and updating the data
-type settingsOpenIDConnectBodyRequestModel struct {
+// settingsOpenIdconnectBodyRequestModel maps the schema for SettingsOpenIDConnect for creating and updating the data
+type settingsOpenIdconnectBodyRequestModel struct {
 	// SOCIAL_AUTH_OIDC_KEY "The OIDC key (Client ID) from your IDP."
 	SOCIAL_AUTH_OIDC_KEY string `json:"SOCIAL_AUTH_OIDC_KEY,omitempty"`
 	// SOCIAL_AUTH_OIDC_OIDC_ENDPOINT "The URL for your OIDC provider including the path up to /.well-known/openid-configuration"

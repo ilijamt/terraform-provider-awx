@@ -15,23 +15,23 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &settingsAuthLDAPDataSource{}
-	_ datasource.DataSourceWithConfigure = &settingsAuthLDAPDataSource{}
+	_ datasource.DataSource              = &settingsAuthLdapDataSource{}
+	_ datasource.DataSourceWithConfigure = &settingsAuthLdapDataSource{}
 )
 
 // NewSettingsAuthLDAPDataSource is a helper function to instantiate the SettingsAuthLDAP data source.
 func NewSettingsAuthLDAPDataSource() datasource.DataSource {
-	return &settingsAuthLDAPDataSource{}
+	return &settingsAuthLdapDataSource{}
 }
 
-// settingsAuthLDAPDataSource is the data source implementation.
-type settingsAuthLDAPDataSource struct {
+// settingsAuthLdapDataSource is the data source implementation.
+type settingsAuthLdapDataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *settingsAuthLDAPDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *settingsAuthLdapDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -41,12 +41,12 @@ func (o *settingsAuthLDAPDataSource) Configure(_ context.Context, req datasource
 }
 
 // Metadata returns the data source type name.
-func (o *settingsAuthLDAPDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (o *settingsAuthLdapDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_settings_auth_ldap"
 }
 
 // Schema defines the schema for the data source.
-func (o *settingsAuthLDAPDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *settingsAuthLdapDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -547,15 +547,15 @@ func (o *settingsAuthLDAPDataSource) Schema(ctx context.Context, req datasource.
 	}
 }
 
-func (o *settingsAuthLDAPDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *settingsAuthLdapDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{
 		datasourcevalidator.ExactlyOneOf(),
 	}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *settingsAuthLDAPDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state settingsAuthLDAPTerraformModel
+func (o *settingsAuthLdapDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state settingsAuthLdapTerraformModel
 	var err error
 	var endpoint = o.endpoint
 
