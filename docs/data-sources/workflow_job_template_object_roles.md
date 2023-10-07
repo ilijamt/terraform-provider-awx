@@ -21,6 +21,4 @@ description: |-
 
 ### Read-Only
 
-- `roles` (Map of Number) Roles for workflowjobtemplate
-
-
+- `roles` (Map of Number) Roles for workflow_job_template

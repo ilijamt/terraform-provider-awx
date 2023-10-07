@@ -19,5 +19,3 @@ description: |-
 
 - `job_template_id` (Number) Database ID for this JobTemplate.
 - `spec` (String) The survey spec for this JobTemplate.
-
-

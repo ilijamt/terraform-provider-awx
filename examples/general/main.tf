@@ -79,6 +79,10 @@ data "awx_label" "test" {
   depends_on   = [awx_label.test]
 }
 
+data "awx_label" "test_by_id" {
+  id         = awx_label.test.id
+  depends_on = [awx_label.test]
+}
 
 resource "awx_user" "demo" {
   username = "demo"

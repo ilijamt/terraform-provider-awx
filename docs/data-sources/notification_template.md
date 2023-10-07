@@ -27,5 +27,3 @@ description: |-
 - `notification_configuration` (String) Notification configuration
 - `notification_type` (String) Notification type
 - `organization` (Number) Organization
-
-

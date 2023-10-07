@@ -36,5 +36,3 @@ description: |-
 - `total_hosts` (Number) This field is deprecated and will be removed in a future release. Total number of hosts in this inventory.
 - `total_inventory_sources` (Number) Total number of external inventory sources configured within this inventory.
 - `variables` (String) Inventory variables in JSON or YAML format.
-
-

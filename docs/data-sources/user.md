@@ -31,5 +31,3 @@ description: |-
 - `last_name` (String) Last name
 - `ldap_dn` (String) Ldap dn
 - `password` (String, Sensitive) Write-only field used to change the password.
-
-

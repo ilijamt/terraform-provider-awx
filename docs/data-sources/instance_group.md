@@ -34,5 +34,3 @@ description: |-
 - `policy_instance_list` (String) List of exact-match Instances that will be assigned to this group
 - `policy_instance_minimum` (Number) Static minimum number of Instances that will be automatically assign to this group when new instances come online.
 - `policy_instance_percentage` (Number) Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.
-
-

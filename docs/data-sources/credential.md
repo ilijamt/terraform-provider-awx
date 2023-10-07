@@ -30,5 +30,3 @@ description: |-
 - `kubernetes` (Boolean) Kubernetes
 - `managed` (Boolean) Managed
 - `organization` (Number) Inherit permissions from organization roles. If provided on creation, do not give either user or team.
-
-

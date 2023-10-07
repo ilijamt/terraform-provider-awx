@@ -28,5 +28,3 @@ documentation.
 - `social_auth_github_enterprise_team_map` (String) Mapping of team members (users) from social auth accounts. Configuration
 details are available in the documentation.
 - `social_auth_github_enterprise_url` (String) The URL for your Github Enterprise instance, e.g.: http(s)://hostname/. Refer to Github Enterprise documentation for more details.
-
-

@@ -21,6 +21,4 @@ description: |-
 
 ### Read-Only
 
-- `roles` (Map of Number) Roles for jobtemplate
-
-
+- `roles` (Map of Number) Roles for job_template

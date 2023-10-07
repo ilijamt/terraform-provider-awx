@@ -29,5 +29,3 @@ description: |-
 - `last_job` (Number) Last job
 - `last_job_host_summary` (Number) Last job host summary
 - `variables` (String) Host variables in JSON or YAML format.
-
-

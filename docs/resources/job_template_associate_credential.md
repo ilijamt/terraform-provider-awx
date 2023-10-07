@@ -19,5 +19,3 @@ description: |-
 
 - `credential_id` (Number) Database ID of the credential to assign.
 - `job_template_id` (Number) Database ID for this JobTemplate.
-
-

@@ -19,5 +19,3 @@ description: |-
 
 - `group_id` (Number) Database ID of the group to assign.
 - `host_id` (Number) Database ID for this Host.
-
-

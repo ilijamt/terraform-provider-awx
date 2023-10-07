@@ -32,5 +32,3 @@ documentation.
 - `social_auth_team_map` (String) Mapping of team members (users) from social auth accounts. Configuration
 details are available in the documentation.
 - `social_auth_user_fields` (List of String) When set to an empty list `[]`, this setting prevents new user accounts from being created. Only users who have previously logged in using social auth or have a user account with a matching email address will be able to login.
-
-

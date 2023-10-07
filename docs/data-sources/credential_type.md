@@ -28,5 +28,3 @@ description: |-
 - `kind` (String) The credential type
 - `managed` (Boolean) Is the resource managed
 - `namespace` (String) The namespace to which the resource belongs to
-
-

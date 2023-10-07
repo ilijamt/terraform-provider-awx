@@ -2,23 +2,20 @@ package provider
 
 import (
 	"context"
-	"github.com/ilijamt/terraform-provider-awx/internal/awx"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
-	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"os"
 	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
-	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 var _ provider.Provider = &Provider{}
-var _ provider.ProviderWithMetadata = &Provider{}
 
 // Provider defines the provider implementation.
 type Provider struct {
@@ -26,6 +23,9 @@ type Provider struct {
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
+
+	fnResources   []func() resource.Resource
+	fnDataSources []func() datasource.DataSource
 }
 
 // Model describes the provider data model.
@@ -41,42 +41,34 @@ func (p *Provider) Metadata(ctx context.Context, req provider.MetadataRequest, r
 	resp.Version = p.version
 }
 
-func (p *Provider) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
-	return tfsdk.Schema{
-		Attributes: map[string]tfsdk.Attribute{
-			"hostname": {
+func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+	resp.Schema = schema.Schema{
+		Attributes: map[string]schema.Attribute{
+			"hostname": schema.StringAttribute{
 				Description: "The AWX Host that we connect to. (defaults to TOWER_HOST env variable if set)",
 				Optional:    true,
-				Type:        types.StringType,
 			},
-			"insecure_skip_verify": {
+			"insecure_skip_verify": schema.BoolAttribute{
 				Description: "Are we using a self signed certificate? [false] (defaults to a negation of TOWER_VERIFY_SSL env variable if set)",
 				Optional:    true,
-				Type:        types.BoolType,
-				PlanModifiers: []tfsdk.AttributePlanModifier{
-					helpers.DefaultValue(types.BoolValue(false)),
-				},
 			},
-			"username": {
+			"username": schema.StringAttribute{
 				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME env variable if set)",
 				Optional:    true,
-				Type:        types.StringType,
 			},
-			"password": {
+			"password": schema.StringAttribute{
 				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD env variable if set)",
 				Optional:    true,
 				Sensitive:   true,
-				Type:        types.StringType,
 			},
 		},
-	}, nil
+	}
 }
 
 func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	var config Model
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &config)...)
-
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -110,10 +102,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 
 	if config.InsecureSkipVerify.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(
-			path.Root("password"),
-			"Unknown AWX API password",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_PASSWORD environment variable.",
+			path.Root("insecure_skip_verify"),
+			"Unknown value for InsecureSkipVerify",
+			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX Insecure Skip Verify. "+
+				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_VERIFY_SSL environment variable.",
 		)
 	}
 
@@ -121,27 +113,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	hostname := os.Getenv("TOWER_HOST")
-	username := os.Getenv("TOWER_USERNAME")
-	password := os.Getenv("TOWER_PASSWORD")
-
-	insecureSkipVerify := config.InsecureSkipVerify.ValueBool()
-	if val := os.Getenv("TOWER_VERIFY_SSL"); val != "" {
-		insecureSkipVerify = !("false" == strings.ToLower(val) || "no" == strings.ToLower(val))
-	}
-
+	var hostname = os.Getenv("TOWER_HOST")
 	if !config.Hostname.IsNull() {
 		hostname = config.Hostname.ValueString()
 	}
-
-	if !config.Username.IsNull() {
-		username = config.Username.ValueString()
-	}
-
-	if !config.Password.IsNull() {
-		password = config.Password.ValueString()
-	}
-
 	if "" == hostname {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("host"),
@@ -152,6 +127,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	}
 
+	var username = os.Getenv("TOWER_USERNAME")
+	if !config.Username.IsNull() {
+		username = config.Username.ValueString()
+	}
 	if "" == username {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("username"),
@@ -162,6 +141,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	}
 
+	var password = os.Getenv("TOWER_PASSWORD")
+	if !config.Password.IsNull() {
+		password = config.Password.ValueString()
+	}
 	if "" == password {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("password"),
@@ -170,6 +153,14 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 				"Set the host value in the configuration or use the TOWER_PASSWORD environment variable."+
 				"If either is already set, ensure the value is not empty.",
 		)
+	}
+
+	var insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
+	if val := os.Getenv("TOWER_VERIFY_SSL"); val != "" {
+		insecureSkipVerify = !("false" == strings.ToLower(val) || "no" == strings.ToLower(val))
+	}
+	if !config.InsecureSkipVerify.IsNull() {
+		insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
 	}
 
 	if resp.Diagnostics.HasError() {
@@ -182,17 +173,19 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 }
 
 func (p *Provider) Resources(ctx context.Context) []func() resource.Resource {
-	return awx.Resources()
+	return p.fnResources
 }
 
 func (p *Provider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return awx.DataSources()
+	return p.fnDataSources
 }
 
-func New(version string) func() provider.Provider {
+func New(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
 	return func() provider.Provider {
 		return &Provider{
-			version: version,
+			version:       version,
+			fnResources:   fnResources,
+			fnDataSources: fnDataSources,
 		}
 	}
 }

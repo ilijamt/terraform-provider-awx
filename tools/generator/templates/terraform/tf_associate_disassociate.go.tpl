@@ -1,4 +1,25 @@
-{{ define "tf_associate_disassociate" }}
+package {{ .PackageName }}
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework-validators/schemavalidator"
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"net/http"
+	p "path"
+	"strconv"
+	"strings"
+)
 
 var (
 	_ resource.Resource                  = &{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}{}
@@ -36,46 +57,35 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Configure
     o.endpoint = "{{ .Endpoint }}"
 }
 
-func (o {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
     response.TypeName = request.ProviderTypeName + "_{{ .Name | snakeCase }}_associate_{{ .Type | snakeCase }}"
 }
 
-func (o {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
-    return processSchema(
-        SourceResource,
-        "{{ .Name }}/Associate",
-		tfsdk.Schema{
-			Attributes: map[string]tfsdk.Attribute{
-			    "{{ .Name | snakeCase }}_id": {
+func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+    resp.Schema = schema.Schema{
+			Attributes: map[string]schema.Attribute{
+			    "{{ .Name | snakeCase }}_id": schema.Int64Attribute{
 					Description: "Database ID for this {{ .Name }}.",
 					Required:    true,
-					Type:        types.Int64Type,
-					PlanModifiers: []tfsdk.AttributePlanModifier{
-						resource.RequiresReplace(),
-					},
-					Validators: []tfsdk.AttributeValidator{
-						schemavalidator.AlsoRequires(
-{{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
-							path.MatchRoot("option"),
-							path.MatchRoot("{{ .Type | snakeCase }}_id"),
-{{- else }}
-							path.MatchRoot("{{ .Type | snakeCase }}_id"),
-{{- end }}
-						),
-					},
+                    PlanModifiers: []planmodifier.Int64{
+                        int64planmodifier.RequiresReplace(),
+                    },
 			    },
+				"{{ .Type | snakeCase }}_id": schema.Int64Attribute{
+					Description: "Database ID of the {{ .Type | lowerCase }} to assign.",
+					Required:    true,
+                    PlanModifiers: []planmodifier.Int64{
+                        int64planmodifier.RequiresReplace(),
+                    },
+				},
 {{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
-				"option": {
+				"option": schema.StringAttribute{
 					Description: "Notification Option",
 					Required:    true,
-					Type:        types.StringType,
-					PlanModifiers: []tfsdk.AttributePlanModifier{
-						resource.RequiresReplace(),
-					},
-					Validators: []tfsdk.AttributeValidator{
-						schemavalidator.AlsoRequires(
-							path.MatchRoot("{{ .Name | snakeCase }}_id"),
-						),
+                    PlanModifiers: []planmodifier.String{
+                        stringplanmodifier.RequiresReplace(),
+                    },
+					Validators: []validator.String{
 {{- if eq .AssociateType "notification_job_template" }}
 						stringvalidator.OneOf([]string{"started", "success", "error"}...),
 {{- else if  (eq .AssociateType "notification_job_workflow_template") }}
@@ -85,25 +95,20 @@ func (o {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) GetSchema(
 					},
 				},
 {{- end }}
-				"{{ .Type | snakeCase }}_id": {
-					Description: "Database ID of the {{ .Type | lowerCase }} to assign.",
-					Required:    true,
-					Type:        types.Int64Type,
-					PlanModifiers: []tfsdk.AttributePlanModifier{
-						resource.RequiresReplace(),
-					},
-					Validators: []tfsdk.AttributeValidator{
-						schemavalidator.AlsoRequires(
-{{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
-							path.MatchRoot("option"),
-{{- end }}
-							path.MatchRoot("{{ .Name | snakeCase }}_id"),
-						),
-					},
-				},
 			},
-		},
-	), nil
+		}
+}
+
+func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
+	return []resource.ConfigValidator{
+		resourcevalidator.RequiredTogether(
+			path.MatchRoot("{{ .Name | snakeCase }}_id"),
+			path.MatchRoot("{{ .Type | snakeCase }}_id"),
+{{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
+			path.MatchRoot("option"),
+{{- end }}
+		),
+	}
 }
 
 {{ if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
@@ -247,4 +252,3 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Read(ctx 
 
 func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 }
-{{ end }}

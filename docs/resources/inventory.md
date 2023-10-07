@@ -39,5 +39,3 @@ description: |-
 - `total_groups` (Number) This field is deprecated and will be removed in a future release. Total number of groups in this inventory.
 - `total_hosts` (Number) This field is deprecated and will be removed in a future release. Total number of hosts in this inventory.
 - `total_inventory_sources` (Number) Total number of external inventory sources configured within this inventory.
-
-

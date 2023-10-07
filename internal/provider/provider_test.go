@@ -1,7 +1,10 @@
-package provider
+package provider_test
 
 import (
 	"context"
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 	"github.com/stretchr/testify/require"
 	"testing"
 
@@ -9,12 +12,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 )
 
+func resources() []func() resource.Resource {
+	return []func() resource.Resource{}
+}
+
+func dataSources() []func() datasource.DataSource {
+	return []func() datasource.DataSource{}
+}
+
 // testAccProtoV6ProviderFactories are used to instantiate a provider during
 // acceptance testing. The factory function will be invoked for every Terraform
 // CLI command executed to create a provider server to which the CLI can
 // reattach.
 var testAccProtoV6ProviderFactories = map[string]func() (tfprotov6.ProviderServer, error){
-	"awx": providerserver.NewProtocol6WithError(New("test")()),
+	"awx": providerserver.NewProtocol6WithError(provider.New("test", resources(), dataSources())()),
 }
 
 const (

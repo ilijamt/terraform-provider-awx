@@ -30,5 +30,3 @@ details are available in the documentation.
 ### Read-Only
 
 - `social_auth_github_team_callback_url` (String) Create an organization-owned application at https://github.com/organizations/<yourorg>/settings/applications and obtain an OAuth2 key (Client ID) and secret (Client Secret). Provide this URL as the callback URL for your application.
-
-

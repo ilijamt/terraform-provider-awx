@@ -39,5 +39,3 @@ documentation.
 details are available in the documentation.
 - `social_auth_saml_technical_contact` (String) Provide the name and email address of the technical contact for your service provider. Refer to the documentation for example syntax.
 - `social_auth_saml_user_flags_by_attr` (String) Used to map super users and system auditors from SAML.
-
-

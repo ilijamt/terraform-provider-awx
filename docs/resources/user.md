@@ -17,7 +17,6 @@ description: |-
 
 ### Required
 
-- `password` (String, Sensitive) Write-only field used to change the password.
 - `username` (String) Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 
 ### Optional
@@ -27,6 +26,7 @@ description: |-
 - `is_superuser` (Boolean) Designates that this user has all permissions without explicitly assigning them.
 - `is_system_auditor` (Boolean) Is system auditor
 - `last_name` (String) Last name
+- `password` (String, Sensitive) Write-only field used to change the password.
 
 ### Read-Only
 
@@ -34,5 +34,3 @@ description: |-
 - `id` (Number) Database ID for this user.
 - `last_login` (String)
 - `ldap_dn` (String)
-
-

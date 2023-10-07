@@ -30,5 +30,3 @@ description: |-
 - `description` (String) Optional description of this application.
 - `redirect_uris` (String) Allowed URIs list, space separated
 - `skip_authorization` (Boolean) Set True to skip authorization step for completely trusted applications.
-
-

@@ -3,13 +3,13 @@ default: build
 .PHONY: generate-awx
 generate-awx:
 	rm -f internal/awx/gen_*.go resources/docs/*.md
-	go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0.json
+	go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0/api.json
 	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
-	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
+	tfplugindocs
 
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs

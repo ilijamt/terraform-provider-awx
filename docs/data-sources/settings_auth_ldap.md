@@ -113,5 +113,3 @@ description: |-
 - `auth_ldap_user_dn_template` (String) Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.
 - `auth_ldap_user_flags_by_group` (String) Retrieve users from a given group. At this time, superuser and system auditors are the only groups supported. Refer to the documentation for more detail.
 - `auth_ldap_user_search` (List of String) LDAP search query to find users.  Any user that matches the given pattern will be able to login to the service.  The user should also be mapped into an organization (as defined in the AUTH_LDAP_ORGANIZATION_MAP setting).  If multiple search queries need to be supported use of "LDAPUnion" is possible. See the documentation for details.
-
-

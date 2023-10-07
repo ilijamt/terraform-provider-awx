@@ -18,7 +18,7 @@ func init() {
 }
 
 func renderTemplate(tpl *template.Template, filename, template string, data any) (err error) {
-	log.Printf("Rendering %s to %s", template, filename)
+	log.Printf("Rendering of %s into %s.", template, filename)
 	var f *os.File
 	if f, err = os.Create(filename); err != nil {
 		return err
@@ -30,7 +30,99 @@ func renderTemplate(tpl *template.Template, filename, template string, data any)
 	return nil
 }
 
+var tf_attribute_type = func(item map[string]any) string {
+	var t string
+	if val, ok := item["type"]; ok {
+		t = val.(string)
+	}
+	switch t {
+	case "integer", "id":
+		return "Int64"
+	case "float", "decimal":
+		return "Float64"
+	case "string", "choice", "datetime", "json":
+		return "String"
+	case "boolean", "bool":
+		return "Bool"
+	case "list":
+		return "List"
+	}
+	return t
+}
+
+var awx2tf_type = func(item map[string]any) string {
+	var t string
+	if val, ok := item["type"]; ok {
+		t = val.(string)
+	}
+	switch t {
+	case "integer", "id":
+		return types.Int64Type.String()
+	case "float", "decimal":
+		return types.Float64Type.String()
+	case "string", "choice", "datetime", "json":
+		return types.StringType.String()
+	case "boolean", "bool":
+		return types.BoolType.String()
+	case "list":
+		return "types.ListType{ElemType: types.StringType}"
+	}
+	return t
+}
+
+var awx2go_value = func(item map[string]any) string {
+	var t string
+	if val, ok := item["type"]; ok {
+		t = val.(string)
+	}
+	switch t {
+	case "integer", "id":
+		return "types.Int64Value"
+	case "float", "decimal":
+		return "types.Float64Value"
+	case "string", "choice", "datetime", "json":
+		return "types.StringValue"
+	case "boolean", "bool":
+		return "types.BoolValue"
+	case "list":
+		return "types.ListValueMust(types.StringType, val.Elements())"
+	}
+	return t
+}
+
+var lowerCase = func(in string) string {
+	return strings.ToLower(in)
+}
+
+var convertDefaultValue = func(in any) any {
+	switch in.(type) {
+	case map[string]any:
+		payload, err := json.Marshal(in)
+		if err != nil {
+			return "{}"
+		}
+		return string(payload)
+	}
+	return in
+}
+
+var fn_default = func(in any, def any) any {
+	if in == nil {
+		return def
+	}
+	return in
+}
+
 var FuncMap = template.FuncMap{
+	"format_number": func(in any) any {
+		switch v := in.(type) {
+		case float32:
+			return int64(v)
+		case float64:
+			return int64(v)
+		}
+		return in
+	},
 	"url_path_clean": func(in string) string {
 		return p.Clean(in)
 	},
@@ -43,31 +135,14 @@ var FuncMap = template.FuncMap{
 		}
 		return strcase.ToCamel(in)
 	},
-	"convertDefaultValue": func(in any) any {
-		switch in.(type) {
-		case map[string]any:
-			payload, err := json.Marshal(in)
-			if err != nil {
-				return "{}"
-			}
-			return string(payload)
-		}
-		return in
-	},
-	"default": func(in any, def any) any {
-		if in == nil {
-			return def
-		}
-		return in
-	},
-	"snakeCase": strcase.ToSnake,
-	"camelCase": strcase.ToCamel,
+	"convertDefaultValue": convertDefaultValue,
+	"default":             fn_default,
+	"snakeCase":           strcase.ToSnake,
+	"camelCase":           strcase.ToCamel,
 	"setPropertyCase": func(in string) string {
 		return strcase.ToCamel(strcase.ToSnake(in))
 	},
-	"lowerCase": func(in string) string {
-		return strings.ToLower(in)
-	},
+	"lowerCase":      lowerCase,
 	"lowerCamelCase": strcase.ToLowerCamel,
 	"hasKey": func(d map[string]any, key string) bool {
 		_, ok := d[key]
@@ -182,25 +257,8 @@ var FuncMap = template.FuncMap{
 		}
 		return t
 	},
-	"awx2tf_type": func(item map[string]any) string {
-		var t string
-		if val, ok := item["type"]; ok {
-			t = val.(string)
-		}
-		switch t {
-		case "integer", "id":
-			return types.Int64Type.String()
-		case "float", "decimal":
-			return types.Float64Type.String()
-		case "string", "choice", "datetime", "json":
-			return types.StringType.String()
-		case "boolean", "bool":
-			return types.BoolType.String()
-		case "list":
-			return "types.ListType{ElemType: types.StringType}"
-		}
-		return t
-	},
+	"tf_attribute_type": tf_attribute_type,
+	"awx2tf_type":       awx2tf_type,
 	"awx2go_type": func(item map[string]any) string {
 		var t string
 		if val, ok := item["type"]; ok {
@@ -220,25 +278,7 @@ var FuncMap = template.FuncMap{
 		}
 		return t
 	},
-	"awx2go_value": func(item map[string]any) string {
-		var t string
-		if val, ok := item["type"]; ok {
-			t = val.(string)
-		}
-		switch t {
-		case "integer", "id":
-			return "types.Int64Value"
-		case "float", "decimal":
-			return "types.Float64Value"
-		case "string", "choice", "datetime", "json":
-			return "types.StringValue"
-		case "boolean", "bool":
-			return "types.BoolValue"
-		case "list":
-			return "types.ListValueMust(types.StringType, val.Elements())"
-		}
-		return t
-	},
+	"awx2go_value": awx2go_value,
 	"awx2go_value_cast": func(item map[string]any) string {
 		var t string
 		if val, ok := item["type"]; ok {

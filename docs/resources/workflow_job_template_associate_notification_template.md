@@ -20,5 +20,3 @@ description: |-
 - `notification_template_id` (Number) Database ID of the notificationtemplate to assign.
 - `option` (String) Notification Option
 - `workflow_job_template_id` (Number) Database ID for this WorkflowJobTemplate.
-
-

@@ -33,5 +33,3 @@ description: |-
 - `kind` (String)
 - `kubernetes` (Boolean)
 - `managed` (Boolean)
-
-

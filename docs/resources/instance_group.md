@@ -37,5 +37,3 @@ description: |-
 - `jobs_running` (Number) Count of jobs in the running or waiting state that are targeted for this instance group
 - `jobs_total` (Number) Count of all jobs that target this instance group
 - `percent_capacity_remaining` (Number)
-
-

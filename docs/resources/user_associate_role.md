@@ -19,5 +19,3 @@ description: |-
 
 - `role_id` (Number) Database ID of the role to assign.
 - `user_id` (Number) Database ID for this User.
-
-

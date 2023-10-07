@@ -26,5 +26,3 @@ description: |-
 - `metadata` (String) Metadata
 - `source_credential` (Number) Source credential
 - `target_credential` (Number) Target credential
-
-

@@ -25,5 +25,3 @@ description: |-
 - `default_environment` (Number) The default execution environment for jobs run by this organization.
 - `description` (String) Optional description of this organization.
 - `max_hosts` (Number) Maximum number of hosts allowed to be managed by this organization.
-
-

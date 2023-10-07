@@ -1,4 +1,32 @@
-{{ define "tf_resource" }}
+package {{ .PackageName }}
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	p "path"
+	"strconv"
+
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+)
+
 // Ensure the implementation satisfies the expected interfaces.
 var (
 	_ resource.Resource                = &{{ .Name | lowerCamelCase }}Resource{}
@@ -31,44 +59,34 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, req
 	response.TypeName = request.ProviderTypeName + "_{{ $.Config.TypeName }}"
 }
 
-func (o *{{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
-    return processSchema(
-        SourceResource,
-        "{{ .Name }}",
-        tfsdk.Schema{
-        Attributes: map[string]tfsdk.Attribute{
+func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+    resp.Schema = schema.Schema{
+        Attributes: map[string]schema.Attribute{
         // Request elements
 {{- range $key := .PropertyPostKeys }}
 {{- with (index $.PropertyPostData $key) }}
-            "{{ $key | lowerCase }}": {
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.{{ camelCase .element_type }}Type,
+{{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Type:        {{ awx2tf_type . }},
-{{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
-{{- end }}
-{{- if .required }}
                 Required:    {{ .required }},
-{{- else }}
-                Optional:    true,
-                Computed:    true,
+                Optional:    {{ not .required }},
+                Computed:    {{ .computed }},
+{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
+                Default:     {{ .default_value }},
 {{- end }}
-		        PlanModifiers: []tfsdk.AttributePlanModifier{
-{{- if (hasKey . "default") }}
-{{- if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.StringValue") (ne .default nil) }}
-                    helpers.DefaultValue({{ awx2go_value . }}(`{{ convertDefaultValue .default }}`)),
-{{- else if and (hasKey $.PropertyPostData $key) (eq (awx2go_value (index $.PropertyPostData $key)) "types.Int64Value") (ne .default nil) }}
-                    helpers.DefaultValue({{ awx2go_value . }}({{ convertDefaultValue .default }})),
-{{- end }}
-{{- end }}
+		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
 {{- if not .required }}
-                    resource.UseStateForUnknown(),
+                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
                 },
-				Validators: []tfsdk.AttributeValidator{
+				Validators: []validator.{{ tf_attribute_type . }}{
 {{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
 					stringvalidator.LengthAtMost({{ .max_length }}),
 {{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}
@@ -79,35 +97,28 @@ func (o *{{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (t
         // Write only elements
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
-            "{{ $key | lowerCase }}": {
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.{{ camelCase .element_type }}Type,
+{{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Type:        {{ awx2tf_type . }},
-{{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
-{{- end }}
-{{- if .required }}
                 Required:    {{ .required }},
-{{- else }}
-                Optional:    true,
-                Computed:    true,
+                Optional:    {{ not .required }},
+                Computed:    {{ .computed }},
+{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
+                Default:     {{ .default_value }},
 {{- end }}
-		        PlanModifiers: []tfsdk.AttributePlanModifier{
-{{- if (hasKey . "default") }}
-{{- if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.StringValue") (ne .default nil) (ne .default "") }}
-                    helpers.DefaultValue({{ awx2go_value . }}(`{{ convertDefaultValue .default }}`)),
-{{- else if and (hasKey $.PropertyWriteOnlyData $key) (eq (awx2go_value (index $.PropertyWriteOnlyData $key)) "types.Int64Value") (ne .default nil) }}
-                    helpers.DefaultValue({{ awx2go_value . }}({{ convertDefaultValue .default }})),
-{{- end }}
-{{- end }}
+		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
 {{- if not .required }}
-                    resource.UseStateForUnknown(),
+                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
 				},
-				Validators: []tfsdk.AttributeValidator{
+				Validators: []validator.{{ tf_attribute_type . }}{
 {{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
 					stringvalidator.LengthAtMost({{ .max_length }}),
 {{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}
@@ -119,18 +130,20 @@ func (o *{{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (t
 {{- range $key := .PropertyGetKeys }}
 {{- if not (hasKey $.PropertyPostData $key) }}
 {{- with (index $.PropertyGetData $key) }}
-            "{{ $key | lowerCase }}": {
-                Description: {{ escape_quotes (default .help_text "") }},
-                Computed:    true,
-                Type:        {{ awx2tf_type . }},
-{{- if (hasKey . "sensitive") }}
-                Sensitive:   {{ .sensitive }},
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
-		        PlanModifiers: []tfsdk.AttributePlanModifier{
-                    resource.UseStateForUnknown(),
+                Description: {{ escape_quotes (default .help_text "") }},
+                Required:    false,
+                Optional:    false,
+                Computed:    true,
+                Sensitive:   {{ .sensitive }},
+		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
+                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 				},
 {{- if eq .type "choice" }}
-				Validators: []tfsdk.AttributeValidator{
+				Validators: []validator.{{ tf_attribute_type . }}{
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 				},
 {{- end }}
@@ -139,7 +152,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) GetSchema(ctx context.Context) (t
 {{- end }}
 {{- end }}
         },
-    }), nil
+    }
 }
 
 {{ if not $.Config.NoId }}
@@ -215,7 +228,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -275,7 +288,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     }
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -349,7 +362,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -397,5 +410,3 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, reque
     }
 {{- end }}
 }
-{{ end }}
-{{ block "tf_resource" . }}{{ end }}

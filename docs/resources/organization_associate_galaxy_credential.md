@@ -19,5 +19,3 @@ description: |-
 
 - `galaxy_credential_id` (Number) Database ID of the galaxycredential to assign.
 - `organization_id` (Number) Database ID for this Organization.
-
-

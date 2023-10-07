@@ -22,5 +22,3 @@ description: |-
 ### Read-Only
 
 - `roles` (Map of Number) Roles for credential
-
-

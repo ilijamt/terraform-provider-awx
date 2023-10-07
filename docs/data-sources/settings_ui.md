@@ -22,5 +22,3 @@ description: |-
 - `max_ui_job_events` (Number) Maximum number of job events for the UI to retrieve within a single request.
 - `pendo_tracking_state` (String) Enable or Disable User Analytics Tracking.
 - `ui_live_updates_enabled` (Boolean) If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details.
-
-

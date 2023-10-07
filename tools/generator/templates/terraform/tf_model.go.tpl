@@ -1,4 +1,13 @@
-{{ define "tf_model" }}
+package {{ .PackageName }}
+
+import (
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+)
+
 // {{ .Name | lowerCamelCase }}TerraformModel maps the schema for {{ .Name }} when using Data Source
 type {{ .Name | lowerCamelCase }}TerraformModel struct {
 {{- range $key := .PropertyGetKeys }}
@@ -108,5 +117,3 @@ type {{ .Name | lowerCamelCase }}ObjectRolesModel struct {
 	Roles  types.Map   `tfsdk:"roles"`
 }
 {{- end }}
-{{ end }}
-{{ block "tf_model" . }}{{ end }}

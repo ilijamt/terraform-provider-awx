@@ -31,5 +31,3 @@ description: |-
 - `id` (Number) Database ID for this credential type.
 - `managed` (Boolean) Is the resource managed
 - `namespace` (String) The namespace to which the resource belongs to
-
-

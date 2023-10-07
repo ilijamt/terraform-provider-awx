@@ -28,5 +28,3 @@ documentation.
 - `social_auth_google_oauth2_team_map` (String) Mapping of team members (users) from social auth accounts. Configuration
 details are available in the documentation.
 - `social_auth_google_oauth2_whitelisted_domains` (List of String) Update this setting to restrict the domains who are allowed to login using Google OAuth2.
-
-

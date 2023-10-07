@@ -26,5 +26,3 @@ documentation.
 - `social_auth_github_secret` (String, Sensitive) The OAuth2 secret (Client Secret) from your GitHub developer application.
 - `social_auth_github_team_map` (String) Mapping of team members (users) from social auth accounts. Configuration
 details are available in the documentation.
-
-

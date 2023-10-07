@@ -1,4 +1,20 @@
-{{ define "tf_data_source" }}
+package {{ .PackageName }}
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+	p "path"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+)
+
 var (
     _ datasource.DataSource                     = &{{ .Name | lowerCamelCase }}DataSource{}
     _ datasource.DataSourceWithConfigure        = &{{ .Name | lowerCamelCase }}DataSource{}
@@ -30,20 +46,18 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Metadata(_ context.Context, req
     resp.TypeName = req.ProviderTypeName + "_{{ $.Config.TypeName }}"
 }
 
-// GetSchema defines the schema for the data source.
-func (o *{{ .Name | lowerCamelCase }}DataSource) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnostics) {
-    return processSchema(
-        SourceData,
-        "{{ .Name }}",
-        tfsdk.Schema{
-		Version: helpers.SchemaVersion,
-        Attributes: map[string]tfsdk.Attribute{
+// Schema defines the schema for the data source.
+func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+    resp.Schema = schema.Schema{
+        Attributes: map[string]schema.Attribute{
 			// Data only elements
 {{- range $key := .PropertyGetKeys }}
 {{- with (index $.PropertyGetData $key) }}
-            "{{ $key | lowerCase }}": {
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.StringType,
+{{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Type:        {{ awx2tf_type . }},
 {{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
 {{- end }}
@@ -53,17 +67,22 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) GetSchema(_ context.Context) (t
 {{- else }}
                 Computed:    true,
 {{- end }}
-				Validators: []tfsdk.AttributeValidator{
-{{- if eq .type "choice" }}
+				Validators: []validator.{{ tf_attribute_type . }}{
+{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
+					stringvalidator.LengthAtMost({{ .max_length }}),
+{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
+{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "choice") }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}
 {{- if awx_is_property_searchable $.Config.SearchFields $key }}
+{{- $tftype := tf_attribute_type . | lowerCase }}
 {{- range $key, $attrs := awx_generate_attribute_validator $.Config.SearchFields $key }}
-					schemavalidator.{{ $key }}(
+                    {{ $tftype }}validator.{{ $key }}(
 {{- range $attr := $attrs }}
 						path.MatchRoot("{{ $attr }}"),
 {{- end }}
-					),
+                    ),
 {{- end }}
 {{- end }}
 				},
@@ -73,9 +92,11 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) GetSchema(_ context.Context) (t
             // Write only elements
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
-            "{{ $key | lowerCase }}": {
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.StringType,
+{{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Type:        {{ awx2tf_type . }},
                 Computed:    true,
 {{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
@@ -84,7 +105,11 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) GetSchema(_ context.Context) (t
             },
 {{- end }}
 		},
-	}), nil
+	}
+}
+
+func (o *{{ .Name | lowerCamelCase }}DataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+    return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.
@@ -171,7 +196,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
 
     // Set state
 {{- if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -184,5 +209,3 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
         return
     }
 }
-{{ end }}
-{{ block "tf_data_source" . }}{{ end }}

@@ -27,5 +27,3 @@ description: |-
 - `last_name` (String) Last name
 - `ldap_dn` (String) Ldap dn
 - `username` (String) Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-
-
