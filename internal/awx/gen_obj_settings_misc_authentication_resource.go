@@ -140,7 +140,7 @@ func (o *settingsMiscAuthenticationResource) Schema(ctx context.Context, req res
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(60, 3e+10),
+					int64validator.Between(60, 30000000000),
 				},
 			},
 			"social_auth_organization_map": schema.StringAttribute{

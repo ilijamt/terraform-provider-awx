@@ -8,11 +8,12 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -56,32 +57,42 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 				Description: "Optional description of this credential input source.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential input source.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"input_field_name": schema.StringAttribute{
 				Description: "Input field name",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"metadata": schema.StringAttribute{
 				Description: "Metadata",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"source_credential": schema.Int64Attribute{
 				Description: "Source credential",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"target_credential": schema.Int64Attribute{
 				Description: "Target credential",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			// Write only elements
 		},
@@ -89,11 +100,7 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 }
 
 func (o *credentialInputSourceDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

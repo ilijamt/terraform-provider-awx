@@ -9,11 +9,13 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -57,53 +59,73 @@ func (o *userDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "Email address",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"external_account": schema.StringAttribute{
 				Description: "Set if the account is managed by an external service",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"first_name": schema.StringAttribute{
 				Description: "First name",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this user.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("username"),
+					),
+				},
 			},
 			"is_superuser": schema.BoolAttribute{
 				Description: "Designates that this user has all permissions without explicitly assigning them.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"is_system_auditor": schema.BoolAttribute{
 				Description: "Is system auditor",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"last_login": schema.StringAttribute{
 				Description: "Last login",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"last_name": schema.StringAttribute{
 				Description: "Last name",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"ldap_dn": schema.StringAttribute{
 				Description: "Ldap dn",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"username": schema.StringAttribute{
 				Description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("username"),
+					),
+				},
 			},
 			// Write only elements
 			"password": schema.StringAttribute{
@@ -116,12 +138,7 @@ func (o *userDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 }
 
 func (o *userDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("username"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

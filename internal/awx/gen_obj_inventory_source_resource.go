@@ -236,7 +236,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(-2.147483648e+09, 2.147483647e+09),
+					int64validator.Between(-2147483648, 2147483647),
 				},
 			},
 			"update_cache_timeout": schema.Int64Attribute{
@@ -250,7 +250,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(0, 2.147483647e+09),
+					int64validator.Between(0, 2147483647),
 				},
 			},
 			"update_on_launch": schema.BoolAttribute{

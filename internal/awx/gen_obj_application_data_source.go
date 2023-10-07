@@ -10,11 +10,13 @@ import (
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -58,54 +60,87 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Description: "The Grant type the user must use for acquire tokens for this application.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"authorization-code", "password"}...),
+				},
 			},
 			"client_id": schema.StringAttribute{
 				Description: "Client id",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"client_secret": schema.StringAttribute{
 				Description: "Used for more stringent verification of access to an application when creating a token.",
 				Sensitive:   true,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"client_type": schema.StringAttribute{
 				Description: "Set to Public or Confidential depending on how secure the client device is.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"confidential", "public"}...),
+				},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this application.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this application.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ConflictsWith(
+						path.MatchRoot("name"),
+						path.MatchRoot("organization"),
+					),
+				},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this application.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.AlsoRequires(
+						path.MatchRoot("organization"),
+					),
+					stringvalidator.ConflictsWith(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization containing this application.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.AlsoRequires(
+						path.MatchRoot("name"),
+					),
+					int64validator.ConflictsWith(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"redirect_uris": schema.StringAttribute{
 				Description: "Allowed URIs list, space separated",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"skip_authorization": schema.BoolAttribute{
 				Description: "Set True to skip authorization step for completely trusted applications.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			// Write only elements
 		},
@@ -113,13 +148,7 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 }
 
 func (o *applicationDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("name"),
-			path.MatchRoot("organization"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

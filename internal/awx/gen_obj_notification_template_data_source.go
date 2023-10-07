@@ -9,11 +9,13 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -57,38 +59,57 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Description: "Optional description of this notification template.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this notification template.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"messages": schema.StringAttribute{
 				Description: "Optional custom messages for notification template.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this notification template.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"notification_configuration": schema.StringAttribute{
 				Description: "Notification configuration",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"notification_type": schema.StringAttribute{
 				Description: "Notification type",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"email", "grafana", "irc", "mattermost", "pagerduty", "rocketchat", "slack", "twilio", "webhook"}...),
+				},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			// Write only elements
 		},
@@ -96,12 +117,7 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 }
 
 func (o *notificationTemplateDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("name"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

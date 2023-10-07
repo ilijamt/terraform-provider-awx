@@ -7,10 +7,11 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )
 
 var (
@@ -53,26 +54,33 @@ func (o *settingsUiDataSource) Schema(ctx context.Context, req datasource.Schema
 				Description: "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"custom_logo": schema.StringAttribute{
 				Description: "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"max_ui_job_events": schema.Int64Attribute{
 				Description: "Maximum number of job events for the UI to retrieve within a single request.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"pendo_tracking_state": schema.StringAttribute{
 				Description: "Enable or Disable User Analytics Tracking.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"off", "anonymous", "detailed"}...),
+				},
 			},
 			"ui_live_updates_enabled": schema.BoolAttribute{
 				Description: "If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			// Write only elements
 		},
@@ -80,9 +88,7 @@ func (o *settingsUiDataSource) Schema(ctx context.Context, req datasource.Schema
 }
 
 func (o *settingsUiDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

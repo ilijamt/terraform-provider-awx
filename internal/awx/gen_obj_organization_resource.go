@@ -95,7 +95,7 @@ func (o *organizationResource) Schema(ctx context.Context, req resource.SchemaRe
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(0, 2.147483647e+09),
+					int64validator.Between(0, 2147483647),
 				},
 			},
 			"name": schema.StringAttribute{

@@ -8,10 +8,10 @@ import (
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )
 
 var (
@@ -54,31 +54,37 @@ func (o *settingsAuthGithubOrgDataSource) Schema(ctx context.Context, req dataso
 				Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_github_org_key": schema.StringAttribute{
 				Description: "The OAuth2 key (Client ID) from your GitHub organization application.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_github_org_name": schema.StringAttribute{
 				Description: "The name of your GitHub organization, as used in your organization's URL: https://github.com/<yourorg>/.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_github_org_organization_map": schema.StringAttribute{
 				Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_github_org_secret": schema.StringAttribute{
 				Description: "The OAuth2 secret (Client Secret) from your GitHub organization application.",
 				Sensitive:   true,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_github_org_team_map": schema.StringAttribute{
 				Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			// Write only elements
 		},
@@ -86,9 +92,7 @@ func (o *settingsAuthGithubOrgDataSource) Schema(ctx context.Context, req dataso
 }
 
 func (o *settingsAuthGithubOrgDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

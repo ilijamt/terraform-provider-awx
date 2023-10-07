@@ -9,11 +9,13 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -57,43 +59,63 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Description: "Optional description of this credential type.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential type.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"injectors": schema.StringAttribute{
 				Description: "Enter injectors using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"inputs": schema.StringAttribute{
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"kind": schema.StringAttribute{
 				Description: "The credential type",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"ssh", "vault", "net", "scm", "cloud", "registry", "token", "insights", "external", "kubernetes", "galaxy", "cryptography"}...),
+				},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "Is the resource managed",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this credential type.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"namespace": schema.StringAttribute{
 				Description: "The namespace to which the resource belongs to",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			// Write only elements
 		},
@@ -101,12 +123,7 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 }
 
 func (o *credentialTypeDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("name"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

@@ -9,11 +9,13 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -58,18 +60,40 @@ func (o *labelDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ConflictsWith(
+						path.MatchRoot("name"),
+						path.MatchRoot("organization"),
+					),
+				},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this label.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.AlsoRequires(
+						path.MatchRoot("organization"),
+					),
+					stringvalidator.ConflictsWith(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization this label belongs to.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.AlsoRequires(
+						path.MatchRoot("name"),
+					),
+					int64validator.ConflictsWith(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			// Write only elements
 		},
@@ -77,13 +101,7 @@ func (o *labelDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 }
 
 func (o *labelDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("name"),
-			path.MatchRoot("organization"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

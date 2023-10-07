@@ -8,11 +8,12 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -56,72 +57,92 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Description: "Capacity",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"consumed_capacity": schema.Float64Attribute{
 				Description: "Consumed capacity",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Float64{},
 			},
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this instance group.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"instances": schema.Int64Attribute{
 				Description: "Instances",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"is_container_group": schema.BoolAttribute{
 				Description: "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"jobs_running": schema.Int64Attribute{
 				Description: "Count of jobs in the running or waiting state that are targeted for this instance group",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"jobs_total": schema.Int64Attribute{
 				Description: "Count of all jobs that target this instance group",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this instance group.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"percent_capacity_remaining": schema.Float64Attribute{
 				Description: "Percent capacity remaining",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Float64{},
 			},
 			"pod_spec_override": schema.StringAttribute{
 				Description: "Pod spec override",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"policy_instance_list": schema.StringAttribute{
 				Description: "List of exact-match Instances that will be assigned to this group",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"policy_instance_minimum": schema.Int64Attribute{
 				Description: "Static minimum number of Instances that will be automatically assign to this group when new instances come online.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"policy_instance_percentage": schema.Int64Attribute{
 				Description: "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(0, 100),
+				},
 			},
 			// Write only elements
 		},
@@ -129,11 +150,7 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 }
 
 func (o *instanceGroupDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

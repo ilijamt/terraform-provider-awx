@@ -114,6 +114,15 @@ var fn_default = func(in any, def any) any {
 }
 
 var FuncMap = template.FuncMap{
+	"format_number": func(in any) any {
+		switch v := in.(type) {
+		case float32:
+			return int64(v)
+		case float64:
+			return int64(v)
+		}
+		return in
+	},
 	"url_path_clean": func(in string) string {
 		return p.Clean(in)
 	},

@@ -10,11 +10,13 @@ import (
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -58,108 +60,141 @@ func (o *workflowJobTemplateDataSource) Schema(ctx context.Context, req datasour
 				Description: "Allow simultaneous",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_inventory_on_launch": schema.BoolAttribute{
 				Description: "Ask inventory on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_labels_on_launch": schema.BoolAttribute{
 				Description: "Ask labels on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_limit_on_launch": schema.BoolAttribute{
 				Description: "Ask limit on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_scm_branch_on_launch": schema.BoolAttribute{
 				Description: "Ask scm branch on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_skip_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask skip tags on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_tags_on_launch": schema.BoolAttribute{
 				Description: "Ask tags on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"ask_variables_on_launch": schema.BoolAttribute{
 				Description: "Ask variables on launch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this workflow job template.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"extra_vars": schema.StringAttribute{
 				Description: "Extra vars",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this workflow job template.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"job_tags": schema.StringAttribute{
 				Description: "Job tags",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this workflow job template.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "The organization used to determine access to this template.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Scm branch",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"skip_tags": schema.StringAttribute{
 				Description: "Skip tags",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"survey_enabled": schema.BoolAttribute{
 				Description: "Survey enabled",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"webhook_credential": schema.Int64Attribute{
 				Description: "Personal Access Token for posting back the status to the service API",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"webhook_service": schema.StringAttribute{
 				Description: "Service that webhook requests will be accepted from",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"", "github", "gitlab"}...),
+				},
 			},
 			// Write only elements
 		},
@@ -167,12 +202,7 @@ func (o *workflowJobTemplateDataSource) Schema(ctx context.Context, req datasour
 }
 
 func (o *workflowJobTemplateDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-			path.MatchRoot("name"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

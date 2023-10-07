@@ -86,7 +86,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
 					stringvalidator.LengthAtMost({{ .max_length }}),
 {{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}
@@ -118,7 +118,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
 					stringvalidator.LengthAtMost({{ .max_length }}),
 {{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ .min_value }}, {{ .max_value }}),
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}

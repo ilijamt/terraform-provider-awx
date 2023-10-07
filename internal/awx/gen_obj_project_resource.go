@@ -228,7 +228,7 @@ func (o *projectResource) Schema(ctx context.Context, req resource.SchemaRequest
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(0, 2.147483647e+09),
+					int64validator.Between(0, 2147483647),
 				},
 			},
 			"scm_update_on_launch": schema.BoolAttribute{
@@ -278,7 +278,7 @@ func (o *projectResource) Schema(ctx context.Context, req resource.SchemaRequest
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(-2.147483648e+09, 2.147483647e+09),
+					int64validator.Between(-2147483648, 2147483647),
 				},
 			},
 			// Write only elements

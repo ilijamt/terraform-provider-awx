@@ -67,6 +67,25 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 {{- else }}
                 Computed:    true,
 {{- end }}
+				Validators: []validator.{{ tf_attribute_type . }}{
+{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
+					stringvalidator.LengthAtMost({{ .max_length }}),
+{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
+					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
+{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "choice") }}
+					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+{{- end }}
+{{- if awx_is_property_searchable $.Config.SearchFields $key }}
+{{- $tftype := tf_attribute_type . | lowerCase }}
+{{- range $key, $attrs := awx_generate_attribute_validator $.Config.SearchFields $key }}
+                    {{ $tftype }}validator.{{ $key }}(
+{{- range $attr := $attrs }}
+						path.MatchRoot("{{ $attr }}"),
+{{- end }}
+                    ),
+{{- end }}
+{{- end }}
+				},
             },
 {{- end }}
 {{- end }}
@@ -90,17 +109,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 }
 
 func (o *{{ .Name | lowerCamelCase }}DataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-    return []datasource.ConfigValidator{
-        datasourcevalidator.ExactlyOneOf(
-{{- range $key := .PropertyGetKeys }}
-{{- with (index $.PropertyGetData $key) }}
-{{- if awx_is_property_searchable $.Config.SearchFields $key }}
-			path.MatchRoot("{{ $key }}"),
-{{- end }}
-{{- end }}
-{{- end }}
-        ),
-    }
+    return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

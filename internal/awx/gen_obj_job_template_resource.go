@@ -329,7 +329,7 @@ func (o *jobTemplateResource) Schema(ctx context.Context, req resource.SchemaReq
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(0, 2.147483647e+09),
+					int64validator.Between(0, 2147483647),
 				},
 			},
 			"host_config_key": schema.StringAttribute{
@@ -368,7 +368,7 @@ func (o *jobTemplateResource) Schema(ctx context.Context, req resource.SchemaReq
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(0, 2.147483647e+09),
+					int64validator.Between(0, 2147483647),
 				},
 			},
 			"job_tags": schema.StringAttribute{
@@ -520,7 +520,7 @@ func (o *jobTemplateResource) Schema(ctx context.Context, req resource.SchemaReq
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{
-					int64validator.Between(-2.147483648e+09, 2.147483647e+09),
+					int64validator.Between(-2147483648, 2147483647),
 				},
 			},
 			"use_fact_cache": schema.BoolAttribute{

@@ -7,10 +7,10 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )
 
 var (
@@ -53,21 +53,25 @@ func (o *settingsOpenIdconnectDataSource) Schema(ctx context.Context, req dataso
 				Description: "The OIDC key (Client ID) from your IDP.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_oidc_oidc_endpoint": schema.StringAttribute{
 				Description: "The URL for your OIDC provider including the path up to /.well-known/openid-configuration",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_oidc_secret": schema.StringAttribute{
 				Description: "The OIDC secret (Client Secret) from your IDP.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"social_auth_oidc_verify_ssl": schema.BoolAttribute{
 				Description: "Verify the OIDV provider ssl certificate.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			// Write only elements
 		},
@@ -75,9 +79,7 @@ func (o *settingsOpenIdconnectDataSource) Schema(ctx context.Context, req dataso
 }
 
 func (o *settingsOpenIdconnectDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.

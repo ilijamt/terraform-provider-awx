@@ -8,11 +8,13 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -56,97 +58,126 @@ func (o *projectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Description: "Allow changing the SCM branch or revision in a job template that uses this project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"default_environment": schema.Int64Attribute{
 				Description: "The default execution environment for jobs run using this project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this project.",
 				Sensitive:   false,
 				Optional:    true,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("id"),
+					),
+				},
 			},
 			"local_path": schema.StringAttribute{
 				Description: "Local path (relative to PROJECTS_ROOT) containing playbooks and related files for this project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "The organization used to determine access to this template.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Specific branch, tag or commit to checkout.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"scm_clean": schema.BoolAttribute{
 				Description: "Discard any local changes before syncing the project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"scm_delete_on_update": schema.BoolAttribute{
 				Description: "Delete the project before syncing.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"scm_refspec": schema.StringAttribute{
 				Description: "For git projects, an additional refspec to fetch.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"scm_track_submodules": schema.BoolAttribute{
 				Description: "Track submodules latest commits on defined branch.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"scm_type": schema.StringAttribute{
 				Description: "Specifies the source control system used to store the project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"", "git", "svn", "insights", "archive"}...),
+				},
 			},
 			"scm_update_cache_timeout": schema.Int64Attribute{
 				Description: "The number of seconds after the last project update ran that a new project update will be launched as a job dependency.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(0, 2147483647),
+				},
 			},
 			"scm_update_on_launch": schema.BoolAttribute{
 				Description: "Update the project when a job is launched that uses the project.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"scm_url": schema.StringAttribute{
 				Description: "The location where the project is stored.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.String{},
 			},
 			"signature_validation_credential": schema.Int64Attribute{
 				Description: "An optional credential used for validating files in the project against unexpected changes.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"timeout": schema.Int64Attribute{
 				Description: "The amount of time (in seconds) to run before the task is canceled.",
 				Sensitive:   false,
 				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(-2147483648, 2147483647),
+				},
 			},
 			// Write only elements
 		},
@@ -154,11 +185,7 @@ func (o *projectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 }
 
 func (o *projectDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
-	return []datasource.ConfigValidator{
-		datasourcevalidator.ExactlyOneOf(
-			path.MatchRoot("id"),
-		),
-	}
+	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.
