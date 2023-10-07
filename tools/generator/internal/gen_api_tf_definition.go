@@ -207,8 +207,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			Render:   val.HasSurveySpec,
 		},
 		{
-			Filename: fmt.Sprintf("resources/api/docs/%s.md", strings.ToLower(val.TypeName)),
-			Template: "tf_api_description.go.tpl",
+			Filename: fmt.Sprintf("resources/api/%s/docs/%s.md", config.ApiVersion, strings.ToLower(val.TypeName)),
+			Template: "tf_api_description.md.tpl",
 			Render:   config.RenderApiDocs,
 		},
 	}
