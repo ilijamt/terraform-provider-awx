@@ -9,7 +9,7 @@ generate-awx:
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
-	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
+	tfplugindocs
 
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs
