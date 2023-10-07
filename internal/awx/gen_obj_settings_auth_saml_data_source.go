@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -186,7 +187,7 @@ func (o *settingsAuthSamlDataSource) Read(ctx context.Context, req datasource.Re
 	}
 
 	// Set state
-	if err = hookSettingsSaml(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsSaml(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthSAML",
 			err.Error(),

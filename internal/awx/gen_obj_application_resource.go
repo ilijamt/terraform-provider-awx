@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -227,7 +228,7 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 		return
 	}
 
-	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -280,7 +281,7 @@ func (o *applicationResource) Read(ctx context.Context, request resource.ReadReq
 		return
 	}
 
-	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),
@@ -338,7 +339,7 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 		return
 	}
 
-	if err = hookApplication(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookApplication(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Application",
 			err.Error(),

@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -355,7 +356,7 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),
@@ -408,7 +409,7 @@ func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),
@@ -466,7 +467,7 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),

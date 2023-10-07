@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -227,7 +228,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -287,7 +288,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     }
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -361,7 +362,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 
 {{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),

@@ -19,6 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -1247,7 +1248,7 @@ func (o *settingsAuthLdapResource) Create(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -1299,7 +1300,7 @@ func (o *settingsAuthLdapResource) Read(ctx context.Context, request resource.Re
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),
@@ -1356,7 +1357,7 @@ func (o *settingsAuthLdapResource) Update(ctx context.Context, request resource.
 		return
 	}
 
-	if err = hookSettingsAuthLdap(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookSettingsAuthLdap(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthLDAP",
 			err.Error(),

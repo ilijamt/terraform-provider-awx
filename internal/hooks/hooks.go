@@ -1,4 +1,4 @@
-package awx
+package hooks
 
 type Callee uint8
 type Source uint8

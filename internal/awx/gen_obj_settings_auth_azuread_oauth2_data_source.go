@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -119,7 +120,7 @@ func (o *settingsAuthAzureAdoauth2DataSource) Read(ctx context.Context, req data
 	}
 
 	// Set state
-	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookSettingsAuthAzureADOauth2(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on SettingsAuthAzureADOauth2",
 			err.Error(),

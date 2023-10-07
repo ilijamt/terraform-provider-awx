@@ -8,6 +8,7 @@ import (
 	p "path"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/datasourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -201,7 +202,7 @@ func (o *credentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	}
 
 	// Set state
-	if err = hookCredential(ctx, ApiVersion, SourceData, CalleeRead, nil, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),

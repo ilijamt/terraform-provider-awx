@@ -20,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -226,7 +227,7 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 		return
 	}
 
-	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeCreate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -279,7 +280,7 @@ func (o *credentialResource) Read(ctx context.Context, request resource.ReadRequ
 		return
 	}
 
-	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeRead, &orig, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
@@ -337,7 +338,7 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		return
 	}
 
-	if err = hookCredential(ctx, ApiVersion, SourceResource, CalleeUpdate, &plan, &state); err != nil {
+	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on Credential",
 			err.Error(),
