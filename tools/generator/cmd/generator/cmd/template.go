@@ -6,6 +6,7 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 	"github.com/spf13/cobra"
 	"log"
+	"os"
 	"text/template"
 )
 
@@ -26,8 +27,15 @@ var templateCmd = &cobra.Command{
 			return err
 		}
 
-		var apiResource internal.ApiResources
-		if err = apiResource.Load(apiResourcePath); err != nil {
+		_ = os.Mkdir(fmt.Sprintf("%s/docs", apiResourcePath), os.ModePerm)
+
+		var apiResourceInfo = &internal.ApiResourcesInfo{}
+		if err = apiResourceInfo.Load(fmt.Sprintf("%s/info.json", apiResourcePath)); err != nil {
+			return err
+		}
+
+		var apiResource = &internal.ApiResources{}
+		if err = apiResource.Load(apiResourcePath, *apiResourceInfo); err != nil {
 			return err
 		}
 
