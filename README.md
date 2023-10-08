@@ -23,3 +23,9 @@ Older version of AWX report incorrect API spec. So manual changes may be require
 go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/config.json resources/api/21.8.0 \
        --host $TOWER_HOST --password $TOWER_PASSWORD --username $TOWER_USERNAME --insecure-skip-verify
 ```
+
+Build a new version of the specified API
+----------------------------------------
+```shell
+go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0
+```
