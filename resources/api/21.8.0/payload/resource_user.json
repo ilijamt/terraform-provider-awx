@@ -160,15 +160,15 @@
     "application/json"
   ],
   "related_search_fields": [
-    "roles__search",
+    "main_oauth2application__search",
     "oauth2_provider_refreshtoken__search",
-    "profile__search",
-    "main_oauth2accesstoken__search",
-    "enterprise_auth__search",
     "social_auth__search",
+    "main_oauth2accesstoken__search",
+    "profile__search",
     "activity_stream__search",
+    "enterprise_auth__search",
     "oauth2_provider_grant__search",
-    "main_oauth2application__search"
+    "roles__search"
   ],
   "renders": [
     "application/json",

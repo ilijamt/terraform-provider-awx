@@ -154,7 +154,7 @@
           "apiVersion": "v1",
           "kind": "Pod",
           "metadata": {
-            "namespace": "awx"
+            "namespace": "default"
           },
           "spec": {
             "automountServiceAccountToken": false,
@@ -223,13 +223,13 @@
     "application/json"
   ],
   "related_search_fields": [
-    "schedule_instance_groups__search",
-    "workflow_job_instance_groups__search",
-    "workflow_job_template_node_instance_groups__search",
-    "instances__search",
     "joblaunchconfigs__search",
+    "workflow_job_instance_groups__search",
+    "workflow_job_node_instance_groups__search",
+    "instances__search",
+    "schedule_instance_groups__search",
     "credential__search",
-    "workflow_job_node_instance_groups__search"
+    "workflow_job_template_node_instance_groups__search"
   ],
   "renders": [
     "application/json",
