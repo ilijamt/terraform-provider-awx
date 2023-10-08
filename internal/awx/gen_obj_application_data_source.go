@@ -7,6 +7,8 @@ import (
 	"net/url"
 	p "path"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
@@ -226,7 +228,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 
 	var d diag.Diagnostics
 
-	if data, d, err = extractDataIfSearchResult(data); err != nil {
+	if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
 		resp.Diagnostics.Append(d...)
 		return
 	}

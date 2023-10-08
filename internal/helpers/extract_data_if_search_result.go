@@ -1,4 +1,4 @@
-package awx
+package helpers
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 )
 
-func extractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Diagnostics, err error) {
+func ExtractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Diagnostics, err error) {
 	// check data to see if it's a search result or not
 	if val, ok := in["count"]; ok {
 		var count int64

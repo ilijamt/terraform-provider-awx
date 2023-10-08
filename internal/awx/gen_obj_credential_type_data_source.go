@@ -7,6 +7,8 @@ import (
 	"net/url"
 	p "path"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
@@ -197,7 +199,7 @@ func (o *credentialTypeDataSource) Read(ctx context.Context, req datasource.Read
 
 	var d diag.Diagnostics
 
-	if data, d, err = extractDataIfSearchResult(data); err != nil {
+	if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
 		resp.Diagnostics.Append(d...)
 		return
 	}
