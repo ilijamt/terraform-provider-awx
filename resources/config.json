@@ -1,6 +1,7 @@
 {
   "api_version": "21.8.0",
   "render_api_docs": true,
+  "process_credential_types": false,
   "default_remove_api_resource": [
     "url",
     "created",

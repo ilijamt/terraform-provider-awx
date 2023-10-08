@@ -6,8 +6,15 @@ import (
 )
 
 type ApiResources struct {
-	Version   string                    `json:"version"`
-	Resources map[string]map[string]any `json:"resources"`
+	Version         string                    `json:"version"`
+	Resources       map[string]map[string]any `json:"resources"`
+	CredentialTypes map[string]map[string]any `json:"credential_types"`
+}
+
+type ApiResourcesInfo struct {
+	Version         string            `json:"version"`
+	Resources       map[string]string `json:"resources"`
+	CredentialTypes map[string]string `json:"credential_types"`
 }
 
 func (c *ApiResources) Load(filename string) error {

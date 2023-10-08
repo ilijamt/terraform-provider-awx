@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
+	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/cobra"
 	"log"
 	"net/http"
@@ -28,6 +29,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 		var req *http.Request
 
 		data.Resources = make(map[string]map[string]any)
+		data.CredentialTypes = make(map[string]map[string]any)
 
 		// fetch the version of the system
 		if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2/ping", nil); err != nil {
@@ -64,6 +66,41 @@ var fetchApiResourcesCmd = &cobra.Command{
 				data.Resources[item.Name], err = internal.ResourceProcessor(item.Name, payload)
 				if err != nil {
 					return err
+				}
+			}
+			return nil
+		}(); err != nil {
+			return err
+		}
+
+		// fetch all the defined credential types
+		if err = func() error {
+			if !cfg.ProcessCredentialTypes {
+				return nil
+			}
+			if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2/credential_types?managed=true&page_size=200", nil); err != nil {
+				return err
+			}
+
+			var payload, err = client.Do(ctx, req)
+			if err != nil {
+				return err
+			}
+
+			var sr internal.SearchResults
+			if err = mapstructure.Decode(payload, &sr); err != nil {
+				return err
+			}
+
+			log.Printf("Fetched %d managed credential types", sr.Count)
+			if sr.Count == 0 {
+				log.Printf("No managed credential types to fetch")
+				return nil
+			}
+
+			for _, ct := range sr.Results {
+				if val, ok := ct["namespace"].(string); ok {
+					data.CredentialTypes[val] = ct
 				}
 			}
 			return nil
