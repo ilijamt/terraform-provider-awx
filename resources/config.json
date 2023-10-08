@@ -517,7 +517,7 @@
     {
       "endpoint": "/api/v2/ad_hoc_commands/",
       "name": "AdHocCommand",
-      "type_name": "ad_hoc_commands",
+      "type_name": "ad_hoc_command",
       "id_key": "id",
       "enabled": true,
       "pre_state_set_hook_function": "hookAdHocCommand",
