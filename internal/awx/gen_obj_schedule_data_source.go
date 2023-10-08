@@ -6,9 +6,8 @@ import (
 	"net/http"
 	p "path"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
-
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
