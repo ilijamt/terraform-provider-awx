@@ -1,13 +1,14 @@
 builds:
-  - env:
+  - main: ./cmd/provider_21_8_0/main.go
+    env:
       - CGO_ENABLED=0
     mod_timestamp: '{{ .CommitTimestamp }}'
     flags:
       - -trimpath
     ldflags:
       - '-s -w'
-      - '-X "main.version={{.Version}}"'
-      - '-X "main.commit={{.Commit}}"'
+      - '-X "version.Version={{.Version}}"'
+      - '-X "version.Commit={{.Commit}}"'
     goos:
       - freebsd
       - windows

@@ -12,8 +12,8 @@ import (
 
 // templateCmd represents the base command when called without any subcommands
 var templateCmd = &cobra.Command{
-	Use:   "template [config-resource] [api-resource-path] [generate_code_output]",
-	Args:  cobra.ExactArgs(2),
+	Use:   "template [config-resource] [api-resource-path] [destination]",
+	Args:  cobra.ExactArgs(3),
 	Short: "Template all the resources for the terraform provider",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var tpl *template.Template
@@ -21,6 +21,7 @@ var templateCmd = &cobra.Command{
 		var configResource, apiResourcePath, resourcePath string
 		configResource = args[0]
 		apiResourcePath = args[1]
+		tCfg.generatePath = args[2]
 		resourcePath = tCfg.generatePath
 
 		if err = cfg.Load(configResource); err != nil {
@@ -87,6 +88,5 @@ var tCfg struct {
 }
 
 func init() {
-	templateCmd.Flags().StringVar(&tCfg.generatePath, "generate-path", "internal/awx", "Where to generate the resources for the AWX provider")
 	rootCmd.AddCommand(templateCmd)
 }

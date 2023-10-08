@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/ilijamt/terraform-provider-awx/internal/awx"
+	awx "github.com/ilijamt/terraform-provider-awx/internal/awx_21_8_0"
+	"github.com/ilijamt/terraform-provider-awx/version"
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
@@ -19,7 +20,7 @@ func main() {
 
 	if err = providerserver.Serve(
 		context.Background(),
-		provider.New(Version, awx.Resources(), awx.DataSources()),
+		provider.New(version.Version, awx.Resources(), awx.DataSources()),
 		providerserver.ServeOpts{
 			Address: "registry.terraform.io/ilijamt/awx",
 			Debug:   debug,

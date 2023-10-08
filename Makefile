@@ -2,11 +2,11 @@ default: build
 
 .PHONY: generate-awx
 generate-awx:
-	rm -f internal/awx/gen_*.go
+	rm -f internal/awx_21_8_0/gen_*.go
 	find resources -type d -name "docs" -print0 | xargs -I {} rm -rf {}
-	go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0
-	goimports -w internal/awx/*.go
-	gofmt -s -w internal/awx/*.go
+	go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0 internal/awx_21_8_0
+	goimports -w internal/awx_21_8_0/*.go
+	gofmt -s -w internal/awx_21_8_0/*.go
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
@@ -17,7 +17,7 @@ generate: generate-awx generate-tfplugindocs
 
 .PHONY: build
 build:
-	go build -trimpath -o ./build/terraform-provider-awx -ldflags "-s -w" .
+	go build -trimpath -o ./build/terraform-provider-awx -ldflags "-s -w" ./cmd/provider_21_8_0
 
 test:
 	go test ./internal/... -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
