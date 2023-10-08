@@ -8,6 +8,7 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
     "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -183,7 +184,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     var d diag.Diagnostics
 
 {{ if gt (len $.Config.SearchFields) 0 }}
-	if data, d, err = extractDataIfSearchResult(data); err != nil {
+	if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
         resp.Diagnostics.Append(d...)
         return
 	}

@@ -12,7 +12,7 @@ import (
 
 // templateCmd represents the base command when called without any subcommands
 var templateCmd = &cobra.Command{
-	Use:   "template [config-resource] [api-resource-path]",
+	Use:   "template [config-resource] [api-resource-path] [generate_code_output]",
 	Args:  cobra.ExactArgs(2),
 	Short: "Template all the resources for the terraform provider",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
