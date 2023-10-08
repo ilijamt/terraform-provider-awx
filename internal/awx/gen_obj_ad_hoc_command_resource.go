@@ -418,7 +418,7 @@ func (o *adHocCommandResource) Create(ctx context.Context, request resource.Crea
 		return
 	}
 
-	if err = hookAdHocCommand(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on AdHocCommand",
 			err.Error(),
@@ -471,7 +471,7 @@ func (o *adHocCommandResource) Read(ctx context.Context, request resource.ReadRe
 		return
 	}
 
-	if err = hookAdHocCommand(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on AdHocCommand",
 			err.Error(),
@@ -529,7 +529,7 @@ func (o *adHocCommandResource) Update(ctx context.Context, request resource.Upda
 		return
 	}
 
-	if err = hookAdHocCommand(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on AdHocCommand",
 			err.Error(),

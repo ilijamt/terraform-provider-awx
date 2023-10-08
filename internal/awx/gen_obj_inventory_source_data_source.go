@@ -282,7 +282,7 @@ func (o *inventorySourceDataSource) Read(ctx context.Context, req datasource.Rea
 	}
 
 	// Set state
-	if err = hookInventorySource(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on InventorySource",
 			err.Error(),

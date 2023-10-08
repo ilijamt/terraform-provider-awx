@@ -653,7 +653,7 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 		return
 	}
 
-	if err = hookJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on JobTemplate",
 			err.Error(),
@@ -706,7 +706,7 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 		return
 	}
 
-	if err = hookJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on JobTemplate",
 			err.Error(),
@@ -764,7 +764,7 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 		return
 	}
 
-	if err = hookJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on JobTemplate",
 			err.Error(),

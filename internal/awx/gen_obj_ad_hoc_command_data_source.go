@@ -328,7 +328,7 @@ func (o *adHocCommandDataSource) Read(ctx context.Context, req datasource.ReadRe
 	}
 
 	// Set state
-	if err = hookAdHocCommand(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on AdHocCommand",
 			err.Error(),

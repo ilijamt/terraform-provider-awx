@@ -520,7 +520,7 @@
       "type_name": "ad_hoc_command",
       "id_key": "id",
       "enabled": true,
-      "pre_state_set_hook_function": "hookAdHocCommand",
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "property_overrides": {
         "launched_by": {
           "type": "id"
@@ -1081,7 +1081,7 @@
       "enabled": true,
       "has_object_roles": true,
       "has_survey_spec": true,
-      "pre_state_set_hook_function": "hookWorkflowJobTemplate",
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "property_overrides": {
         "extra_vars": {
           "type": "json"
@@ -1129,7 +1129,7 @@
     {
       "endpoint": "/api/v2/inventory_sources/",
       "name": "InventorySource",
-      "pre_state_set_hook_function": "hookInventorySource",
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "type_name": "inventory_source",
       "id_key": "id",
       "enabled": true,
@@ -1178,7 +1178,7 @@
       "enabled": true,
       "has_object_roles": true,
       "has_survey_spec": true,
-      "pre_state_set_hook_function": "hookJobTemplate",
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "associate_disassociate_groups": [
         {
           "name": "JobTemplate",

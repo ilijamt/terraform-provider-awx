@@ -349,7 +349,7 @@ func (o *inventorySourceResource) Create(ctx context.Context, request resource.C
 		return
 	}
 
-	if err = hookInventorySource(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on InventorySource",
 			err.Error(),
@@ -402,7 +402,7 @@ func (o *inventorySourceResource) Read(ctx context.Context, request resource.Rea
 		return
 	}
 
-	if err = hookInventorySource(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on InventorySource",
 			err.Error(),
@@ -460,7 +460,7 @@ func (o *inventorySourceResource) Update(ctx context.Context, request resource.U
 		return
 	}
 
-	if err = hookInventorySource(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on InventorySource",
 			err.Error(),

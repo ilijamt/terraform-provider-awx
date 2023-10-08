@@ -356,7 +356,7 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),
@@ -409,7 +409,7 @@ func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),
@@ -467,7 +467,7 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 		return
 	}
 
-	if err = hookWorkflowJobTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on WorkflowJobTemplate",
 			err.Error(),

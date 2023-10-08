@@ -442,7 +442,7 @@ func (o *jobTemplateDataSource) Read(ctx context.Context, req datasource.ReadReq
 	}
 
 	// Set state
-	if err = hookJobTemplate(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+	if err = hooks.RequireResourceStateOrOrig(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on JobTemplate",
 			err.Error(),
