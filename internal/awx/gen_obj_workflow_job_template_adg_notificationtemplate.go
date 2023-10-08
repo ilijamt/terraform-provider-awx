@@ -8,6 +8,8 @@ import (
 	"net/http"
 	p "path"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
+
 	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -111,7 +113,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Create(ct
 	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Associate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
@@ -158,7 +160,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Delete(ct
 	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[WorkflowJobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,

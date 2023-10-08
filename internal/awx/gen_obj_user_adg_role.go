@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
+
 	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -137,7 +139,7 @@ func (o *userAssociateDisassociateRole) Create(ctx context.Context, request reso
 	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.UserID.ValueInt64())) + "/"
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: plan.RoleID.ValueInt64(), Disassociate: false}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.RoleID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[User/Create/Associate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
@@ -183,7 +185,7 @@ func (o *userAssociateDisassociateRole) Delete(ctx context.Context, request reso
 	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.UserID.ValueInt64())) + "/"
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: state.RoleID.ValueInt64(), Disassociate: true}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.RoleID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[User/Delete/Disassociate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,

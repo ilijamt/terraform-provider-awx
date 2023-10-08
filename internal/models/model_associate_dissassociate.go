@@ -1,6 +1,6 @@
-package awx
+package models
 
-type associateDisassociateRequestModel struct {
+type AssociateDisassociateRequestModel struct {
 	ID           int64 `json:"id"`
 	Disassociate bool  `json:"disassociate,omitempty"`
 }
