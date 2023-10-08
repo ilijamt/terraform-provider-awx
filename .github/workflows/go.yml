@@ -22,7 +22,7 @@ jobs:
       - name: Display Go version
         run: go version
       - name: Build
-        run: go build -v ./cmd/{{ matrix.provider }}
+        run: go build -v ./cmd/${{ matrix.provider }}
       - name: Test
         run: go test -cover -coverprofile=coverage.out -v ./...
       - name: Upload coverage reports to Codecov
