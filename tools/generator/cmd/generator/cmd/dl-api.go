@@ -16,14 +16,14 @@ import (
 )
 
 var fetchApiResourcesCmd = &cobra.Command{
-	Use:   "fetch-api-resources [config-resource] [out-api-resource-directory]",
+	Use:   "fetch-api-resources [out-api-resource-directory]",
 	Args:  cobra.ExactArgs(2),
 	Short: "Generate the API resource for the AWX target",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		log.Printf("Connecting to '%s' with the username '%s'", farCfg.towerHost, farCfg.towerUsername)
 		var configResource = args[0]
 		var outApiResourceDir = args[1]
-		log.Printf("Reading configuration from %s, and storing the data in %s directory", configResource, outApiResourceDir)
+		log.Printf("Storing the data in %s directory", outApiResourceDir)
 
 		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify)
 		var data internal.ApiResources
@@ -63,28 +63,35 @@ var fetchApiResourcesCmd = &cobra.Command{
 		}
 
 		// fetch the api endpoint
-		if err = func(cfg internal.Config) error {
+		var api internal.Api
+		if api, err = func() (internal.Api, error) {
+			var api = make(internal.Api)
 			if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2", nil); err != nil {
-				return err
+				return nil, err
 			}
 			log.Printf("Processing %s endpoint", req.RequestURI)
 			payload, err := client.Do(ctx, req)
 			if err != nil {
-				return err
+				return api, err
 			}
 
 			var buf bytes.Buffer
 			var enc = json.NewEncoder(&buf)
 			enc.SetIndent("", "  ")
 			if err = enc.Encode(payload); err != nil {
-				return err
+				return api, err
 			}
 			var apiFile = fmt.Sprintf("%s/api.json", outApiResourceDir)
+			if err = json.Unmarshal(buf.Bytes(), &api); err != nil {
+				return api, err
+			}
 			log.Printf("Storing api endpoint data in %s", apiFile)
-			return os.WriteFile(apiFile, buf.Bytes(), os.ModePerm)
-		}(cfg); err != nil {
+			return api, os.WriteFile(apiFile, buf.Bytes(), os.ModePerm)
+		}(); err != nil {
 			return err
 		}
+
+		log.Printf("Found %d api endpoints", len(api))
 
 		// fetch all the defined endpoints in the config resource file
 		if err = func(cfg internal.Config) error {
@@ -109,9 +116,6 @@ var fetchApiResourcesCmd = &cobra.Command{
 
 		// fetch all the defined credential types
 		if err = func(cfg internal.Config) error {
-			if !cfg.ProcessCredentialTypes {
-				return nil
-			}
 			if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2/credential_types?managed=true&page_size=200", nil); err != nil {
 				return err
 			}
@@ -146,33 +150,37 @@ var fetchApiResourcesCmd = &cobra.Command{
 		var buf bytes.Buffer
 		var enc = json.NewEncoder(&buf)
 		enc.SetIndent("", "  ")
+
+		// Store the information regarding the payloads and defined resources/credential types
+		var infoFile = fmt.Sprintf("%s/info.json", outApiResourceDir)
 		if err = enc.Encode(dataInfo); err != nil {
 			return err
 		}
-		var infoFile = fmt.Sprintf("%s/info.json", outApiResourceDir)
 		log.Printf("Storing information data in %s", infoFile)
 		if err = os.WriteFile(infoFile, buf.Bytes(), os.ModePerm); err != nil {
 			return err
 		}
 
-		//var storeData = func() error {
-		//
-		//	// store the resources
-		//	for k, v := range dataInfo.Resources {
-		//		var outApiResourceInfoFile =
-		//		var buf bytes.Buffer
-		//		var enc = json.NewEncoder(&buf)
-		//		enc.SetIndent("", "  ")
-		//		if err = enc.Encode(dataInfo); err != nil {
-		//			return err
-		//		}
-		//		return os.WriteFile(outApiResourceInfoFile, buf.Bytes(), os.ModePerm)
-		//	}
-		//
-		//	// store the credential types
-		//	return nil
-		//
-		//}
+		// store all the data regarding the resources
+		for k, v := range dataInfo.Resources {
+			var infoFile = fmt.Sprintf("%s/%s", outApiResourceDir, v)
+			log.Printf("Storing resources payload data for %s in %s", k, infoFile)
+
+			buf.Reset()
+		}
+
+		// store all the data regarding the credential types
+		for k, v := range dataInfo.CredentialTypes {
+			var infoFile = fmt.Sprintf("%s/%s", outApiResourceDir, v)
+			buf.Reset()
+			if err = enc.Encode(data.CredentialTypes[k]); err != nil {
+				return err
+			}
+			log.Printf("Storing credential types payload data for %s in %s", k, infoFile)
+			if err = os.WriteFile(infoFile, buf.Bytes(), os.ModePerm); err != nil {
+				return err
+			}
+		}
 
 		return nil
 

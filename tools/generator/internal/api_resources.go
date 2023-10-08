@@ -2,8 +2,26 @@ package internal
 
 import (
 	"encoding/json"
+	"fmt"
+	"golang.org/x/exp/maps"
 	"os"
+	"slices"
 )
+
+type Api map[string]string
+
+func (a Api) List() []string {
+	var keys = maps.Keys(a)
+	slices.Sort(keys)
+	return keys
+}
+
+func (a Api) Endpoint(key string) (string, error) {
+	if val, ok := a[key]; ok {
+		return val, nil
+	}
+	return "", fmt.Errorf("key not found: %s", key)
+}
 
 type ApiResources struct {
 	Version         string                    `json:"version"`

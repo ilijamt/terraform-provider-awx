@@ -83,7 +83,6 @@ type Config struct {
 	Items                        []Item   `json:"items"`
 	ApiVersion                   string   `json:"api_version"`
 	RenderApiDocs                bool     `json:"render_api_docs"`
-	ProcessCredentialTypes       bool     `json:"process_credential_types"`
 	GeneratedApiResources        []string `json:"-"`
 	GeneratedDataSourceResources []string `json:"-"`
 }

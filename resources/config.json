@@ -1,7 +1,6 @@
 {
   "api_version": "21.8.0",
   "render_api_docs": true,
-  "process_credential_types": true,
   "default_remove_api_resource": [
     "url",
     "created",
@@ -518,7 +517,7 @@
     {
       "endpoint": "/api/v2/ad_hoc_commands/",
       "name": "AdHocCommand",
-      "type_name": "ad_hoc_command",
+      "type_name": "ad_hoc_commands",
       "id_key": "id",
       "enabled": true,
       "pre_state_set_hook_function": "hookAdHocCommand",
