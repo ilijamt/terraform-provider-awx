@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
+
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -95,7 +97,7 @@ func (o *jobTemplateObjectRolesDataSource) Read(ctx context.Context, req datasou
 		return
 	}
 
-	var sr searchResultObjectRole
+	var sr models.SearchResultObjectRole
 	if err = mapstructure.Decode(data, &sr); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to decode the search result data for jobtemplate",
