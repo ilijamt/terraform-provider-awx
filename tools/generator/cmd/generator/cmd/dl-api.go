@@ -167,6 +167,13 @@ var fetchApiResourcesCmd = &cobra.Command{
 			log.Printf("Storing resources payload data for %s in %s", k, infoFile)
 
 			buf.Reset()
+			if err = enc.Encode(data.Resources[k]); err != nil {
+				return err
+			}
+			log.Printf("Storing resource payload data for %s in %s", k, infoFile)
+			if err = os.WriteFile(infoFile, buf.Bytes(), os.ModePerm); err != nil {
+				return err
+			}
 		}
 
 		// store all the data regarding the credential types
