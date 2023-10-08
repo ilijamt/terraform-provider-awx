@@ -10,8 +10,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/models"
-
 	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -21,6 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
 var (

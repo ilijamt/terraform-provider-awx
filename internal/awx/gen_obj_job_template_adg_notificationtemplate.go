@@ -8,8 +8,6 @@ import (
 	"net/http"
 	p "path"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/models"
-
 	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -22,6 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
 var (
