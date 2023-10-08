@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 	"github.com/mitchellh/mapstructure"
@@ -11,25 +12,32 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 var fetchApiResourcesCmd = &cobra.Command{
-	Use:   "fetch-api-resources [config-resource] [out-api-resource-file]",
+	Use:   "fetch-api-resources [config-resource] [out-api-resource-directory]",
 	Args:  cobra.ExactArgs(2),
 	Short: "Generate the API resource for the AWX target",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		log.Printf("Connecting to '%s' with the username '%s'", farCfg.towerHost, farCfg.towerUsername)
 		var configResource = args[0]
-		var outApiResourceFile = args[1]
-		log.Printf("Reading configuration from %s, and storing the data in %s", configResource, outApiResourceFile)
+		var outApiResourceDir = args[1]
+		log.Printf("Reading configuration from %s, and storing the data in %s directory", configResource, outApiResourceDir)
 
 		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify)
 		var data internal.ApiResources
+		var dataInfo internal.ApiResourcesInfo
 		var ctx = context.Background()
 		var req *http.Request
 
+		_ = os.Mkdir(outApiResourceDir, os.ModePerm)
+		_ = os.Mkdir(fmt.Sprintf("%s/payload", outApiResourceDir), os.ModePerm)
+
 		data.Resources = make(map[string]map[string]any)
+		dataInfo.Resources = make(map[string]string)
 		data.CredentialTypes = make(map[string]map[string]any)
+		dataInfo.CredentialTypes = make(map[string]string)
 
 		// fetch the version of the system
 		if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2/ping", nil); err != nil {
@@ -42,19 +50,44 @@ var fetchApiResourcesCmd = &cobra.Command{
 			}
 			if val, ok := payload["version"].(string); ok {
 				data.Version = val
+				dataInfo.Version = val
 			}
 			return nil
 		}(); err != nil {
 			return err
 		}
 
-		// fetch all the defined endpoints in the config resource file
-		if err = func() error {
-			var cfg internal.Config
-			if err = cfg.Load(configResource); err != nil {
+		var cfg internal.Config
+		if err = cfg.Load(configResource); err != nil {
+			return err
+		}
+
+		// fetch the api endpoint
+		if err = func(cfg internal.Config) error {
+			if req, err = client.NewRequest(ctx, http.MethodGet, "/api/v2", nil); err != nil {
+				return err
+			}
+			log.Printf("Processing %s endpoint", req.RequestURI)
+			payload, err := client.Do(ctx, req)
+			if err != nil {
 				return err
 			}
 
+			var buf bytes.Buffer
+			var enc = json.NewEncoder(&buf)
+			enc.SetIndent("", "  ")
+			if err = enc.Encode(payload); err != nil {
+				return err
+			}
+			var apiFile = fmt.Sprintf("%s/api.json", outApiResourceDir)
+			log.Printf("Storing api endpoint data in %s", apiFile)
+			return os.WriteFile(apiFile, buf.Bytes(), os.ModePerm)
+		}(cfg); err != nil {
+			return err
+		}
+
+		// fetch all the defined endpoints in the config resource file
+		if err = func(cfg internal.Config) error {
 			log.Printf("Fetching %d items", len(cfg.Items))
 			for _, item := range cfg.Items {
 				req, _ = client.NewRequest(ctx, http.MethodOptions, item.Endpoint, nil)
@@ -64,17 +97,18 @@ var fetchApiResourcesCmd = &cobra.Command{
 					return err
 				}
 				data.Resources[item.Name], err = internal.ResourceProcessor(item.Name, payload)
+				dataInfo.Resources[item.Name] = strings.ToLower(fmt.Sprintf("payload/resource_%s.json", item.Name))
 				if err != nil {
 					return err
 				}
 			}
 			return nil
-		}(); err != nil {
+		}(cfg); err != nil {
 			return err
 		}
 
 		// fetch all the defined credential types
-		if err = func() error {
+		if err = func(cfg internal.Config) error {
 			if !cfg.ProcessCredentialTypes {
 				return nil
 			}
@@ -101,21 +135,47 @@ var fetchApiResourcesCmd = &cobra.Command{
 			for _, ct := range sr.Results {
 				if val, ok := ct["namespace"].(string); ok {
 					data.CredentialTypes[val] = ct
+					dataInfo.CredentialTypes[val] = strings.ToLower(fmt.Sprintf("payload/credential_type_%s.json", val))
 				}
 			}
 			return nil
-		}(); err != nil {
+		}(cfg); err != nil {
 			return err
 		}
 
 		var buf bytes.Buffer
 		var enc = json.NewEncoder(&buf)
 		enc.SetIndent("", "  ")
-		if err = enc.Encode(data); err != nil {
+		if err = enc.Encode(dataInfo); err != nil {
+			return err
+		}
+		var infoFile = fmt.Sprintf("%s/info.json", outApiResourceDir)
+		log.Printf("Storing information data in %s", infoFile)
+		if err = os.WriteFile(infoFile, buf.Bytes(), os.ModePerm); err != nil {
 			return err
 		}
 
-		return os.WriteFile(outApiResourceFile, buf.Bytes(), os.ModePerm)
+		//var storeData = func() error {
+		//
+		//	// store the resources
+		//	for k, v := range dataInfo.Resources {
+		//		var outApiResourceInfoFile =
+		//		var buf bytes.Buffer
+		//		var enc = json.NewEncoder(&buf)
+		//		enc.SetIndent("", "  ")
+		//		if err = enc.Encode(dataInfo); err != nil {
+		//			return err
+		//		}
+		//		return os.WriteFile(outApiResourceInfoFile, buf.Bytes(), os.ModePerm)
+		//	}
+		//
+		//	// store the credential types
+		//	return nil
+		//
+		//}
+
+		return nil
+
 	},
 }
 

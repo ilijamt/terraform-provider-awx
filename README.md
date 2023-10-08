@@ -20,5 +20,6 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/config.json resources/api/21.8.0/api.json --host $TOWER_HOST --password $TOWER_PASSWORD --username $TOWER_USERNAME --insecure-skip-verify
+go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/config.json resources/api/21.8.0 \
+       --host $TOWER_HOST --password $TOWER_PASSWORD --username $TOWER_USERNAME --insecure-skip-verify
 ```
