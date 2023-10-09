@@ -215,7 +215,7 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -225,7 +225,7 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for SettingsMiscAuthentication on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for SettingsMiscAuthentication on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -258,7 +258,7 @@ func (o *settingsMiscAuthenticationResource) Read(ctx context.Context, request r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -268,7 +268,7 @@ func (o *settingsMiscAuthenticationResource) Read(ctx context.Context, request r
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsMiscAuthentication on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsMiscAuthentication on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -307,7 +307,7 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsMiscAuthentication on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -317,7 +317,7 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for SettingsMiscAuthentication on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for SettingsMiscAuthentication on %s", endpoint),
 			err.Error(),
 		)
 		return

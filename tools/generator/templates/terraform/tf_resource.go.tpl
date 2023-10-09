@@ -199,7 +199,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, {{ if $.Config.NoId }}http.MethodPatch{{ else }}http.MethodPost{{ end }}, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -209,7 +209,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
     var data map[string]any
     if data, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create resource for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to create resource for {{ .Name }} on %s", endpoint),
             err.Error(),
         )
         return
@@ -265,7 +265,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
 {{- end }}
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for read", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -275,7 +275,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     var data map[string]any
     if data, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to read resource for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to read resource for {{ .Name }} on %s", endpoint),
             err.Error(),
         )
         return
@@ -333,7 +333,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for update", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -343,7 +343,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
     var data map[string]any
     if data, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to update resource for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to update resource for {{ .Name }} on %s", endpoint),
             err.Error(),
         )
         return
@@ -394,7 +394,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, reque
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -403,7 +403,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, reque
     // Delete existing {{ .Name }}
     if _, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to delete resource for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to delete resource for {{ .Name }} on %s", endpoint),
             err.Error(),
         )
         return

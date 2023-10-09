@@ -254,7 +254,7 @@ func (o *instanceGroupResource) Create(ctx context.Context, request resource.Cre
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -264,7 +264,7 @@ func (o *instanceGroupResource) Create(ctx context.Context, request resource.Cre
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for InstanceGroup on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for InstanceGroup on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -298,7 +298,7 @@ func (o *instanceGroupResource) Read(ctx context.Context, request resource.ReadR
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -308,7 +308,7 @@ func (o *instanceGroupResource) Read(ctx context.Context, request resource.ReadR
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for InstanceGroup on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for InstanceGroup on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -348,7 +348,7 @@ func (o *instanceGroupResource) Update(ctx context.Context, request resource.Upd
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -358,7 +358,7 @@ func (o *instanceGroupResource) Update(ctx context.Context, request resource.Upd
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for InstanceGroup on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for InstanceGroup on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -392,7 +392,7 @@ func (o *instanceGroupResource) Delete(ctx context.Context, request resource.Del
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for InstanceGroup on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -401,7 +401,7 @@ func (o *instanceGroupResource) Delete(ctx context.Context, request resource.Del
 	// Delete existing InstanceGroup
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for InstanceGroup on %s", o.endpoint),
+			fmt.Sprintf("Unable to delete resource for InstanceGroup on %s", endpoint),
 			err.Error(),
 		)
 		return

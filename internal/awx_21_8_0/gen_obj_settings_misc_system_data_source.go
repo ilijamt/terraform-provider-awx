@@ -220,7 +220,7 @@ func (o *settingsMiscSystemDataSource) Read(ctx context.Context, req datasource.
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsMiscSystem on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsMiscSystem on %s", endpoint),
 			err.Error(),
 		)
 		return

@@ -180,7 +180,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create of type {{ default .AssociateType "default" }}", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create of type {{ default .AssociateType "default" }}", endpoint),
 			err.Error(),
 		)
 		return
@@ -188,7 +188,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 
     if _, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to associate for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to associate for {{ .Name }} on %s with a payload of %#v", endpoint, bodyRequest),
             err.Error(),
         )
         return

@@ -293,7 +293,7 @@ func (o *settingsAuthSamlResource) Create(ctx context.Context, request resource.
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -303,7 +303,7 @@ func (o *settingsAuthSamlResource) Create(ctx context.Context, request resource.
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for SettingsAuthSAML on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for SettingsAuthSAML on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -345,7 +345,7 @@ func (o *settingsAuthSamlResource) Read(ctx context.Context, request resource.Re
 	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -355,7 +355,7 @@ func (o *settingsAuthSamlResource) Read(ctx context.Context, request resource.Re
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsAuthSAML on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsAuthSAML on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -402,7 +402,7 @@ func (o *settingsAuthSamlResource) Update(ctx context.Context, request resource.
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthSAML on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -412,7 +412,7 @@ func (o *settingsAuthSamlResource) Update(ctx context.Context, request resource.
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for SettingsAuthSAML on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for SettingsAuthSAML on %s", endpoint),
 			err.Error(),
 		)
 		return

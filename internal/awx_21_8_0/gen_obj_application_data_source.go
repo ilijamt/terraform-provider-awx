@@ -219,7 +219,7 @@ func (o *applicationDataSource) Read(ctx context.Context, req datasource.ReadReq
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Application on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Application on %s", endpoint),
 			err.Error(),
 		)
 		return

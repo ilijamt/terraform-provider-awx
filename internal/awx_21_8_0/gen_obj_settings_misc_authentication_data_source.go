@@ -150,7 +150,7 @@ func (o *settingsMiscAuthenticationDataSource) Read(ctx context.Context, req dat
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsMiscAuthentication on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsMiscAuthentication on %s", endpoint),
 			err.Error(),
 		)
 		return

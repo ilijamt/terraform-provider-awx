@@ -164,7 +164,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -174,7 +174,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for SettingsAuthGoogleOauth2 on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for SettingsAuthGoogleOauth2 on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -216,7 +216,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -226,7 +226,7 @@ func (o *settingsAuthGoogleOauth2Resource) Read(ctx context.Context, request res
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsAuthGoogleOauth2 on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsAuthGoogleOauth2 on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -273,7 +273,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGoogleOauth2 on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -283,7 +283,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for SettingsAuthGoogleOauth2 on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for SettingsAuthGoogleOauth2 on %s", endpoint),
 			err.Error(),
 		)
 		return

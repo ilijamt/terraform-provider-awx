@@ -127,7 +127,7 @@ func (o *settingsAuthGithubEnterpriseOrgDataSource) Read(ctx context.Context, re
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsAuthGithubEnterpriseOrg on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsAuthGithubEnterpriseOrg on %s", endpoint),
 			err.Error(),
 		)
 		return

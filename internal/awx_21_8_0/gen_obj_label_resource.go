@@ -126,7 +126,7 @@ func (o *labelResource) Create(ctx context.Context, request resource.CreateReque
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Label on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Label on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -136,7 +136,7 @@ func (o *labelResource) Create(ctx context.Context, request resource.CreateReque
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for Label on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for Label on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -170,7 +170,7 @@ func (o *labelResource) Read(ctx context.Context, request resource.ReadRequest, 
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Label on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Label on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -180,7 +180,7 @@ func (o *labelResource) Read(ctx context.Context, request resource.ReadRequest, 
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Label on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Label on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -220,7 +220,7 @@ func (o *labelResource) Update(ctx context.Context, request resource.UpdateReque
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Label on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Label on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -230,7 +230,7 @@ func (o *labelResource) Update(ctx context.Context, request resource.UpdateReque
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for Label on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for Label on %s", endpoint),
 			err.Error(),
 		)
 		return

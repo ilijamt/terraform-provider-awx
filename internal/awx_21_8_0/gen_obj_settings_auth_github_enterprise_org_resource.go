@@ -174,7 +174,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Create(ctx context.Context, re
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -184,7 +184,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Create(ctx context.Context, re
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for SettingsAuthGithubEnterpriseOrg on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for SettingsAuthGithubEnterpriseOrg on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -226,7 +226,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Read(ctx context.Context, requ
 	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -236,7 +236,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Read(ctx context.Context, requ
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsAuthGithubEnterpriseOrg on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsAuthGithubEnterpriseOrg on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -283,7 +283,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Update(ctx context.Context, re
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsAuthGithubEnterpriseOrg on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -293,7 +293,7 @@ func (o *settingsAuthGithubEnterpriseOrgResource) Update(ctx context.Context, re
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for SettingsAuthGithubEnterpriseOrg on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for SettingsAuthGithubEnterpriseOrg on %s", endpoint),
 			err.Error(),
 		)
 		return

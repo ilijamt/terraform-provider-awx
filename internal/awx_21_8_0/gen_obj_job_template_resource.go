@@ -631,7 +631,7 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -641,7 +641,7 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for JobTemplate on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -684,7 +684,7 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -694,7 +694,7 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for JobTemplate on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -742,7 +742,7 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -752,7 +752,7 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for JobTemplate on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -794,7 +794,7 @@ func (o *jobTemplateResource) Delete(ctx context.Context, request resource.Delet
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -803,7 +803,7 @@ func (o *jobTemplateResource) Delete(ctx context.Context, request resource.Delet
 	// Delete existing JobTemplate
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to delete resource for JobTemplate on %s", endpoint),
 			err.Error(),
 		)
 		return

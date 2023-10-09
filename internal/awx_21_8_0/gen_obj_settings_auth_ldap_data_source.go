@@ -681,7 +681,7 @@ func (o *settingsAuthLdapDataSource) Read(ctx context.Context, req datasource.Re
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsAuthLDAP on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsAuthLDAP on %s", endpoint),
 			err.Error(),
 		)
 		return

@@ -423,7 +423,7 @@ func (o *jobTemplateDataSource) Read(ctx context.Context, req datasource.ReadReq
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for JobTemplate on %s", endpoint),
 			err.Error(),
 		)
 		return

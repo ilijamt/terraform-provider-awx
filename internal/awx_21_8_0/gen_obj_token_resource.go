@@ -182,7 +182,7 @@ func (o *tokensResource) Create(ctx context.Context, request resource.CreateRequ
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Tokens on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Tokens on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -192,7 +192,7 @@ func (o *tokensResource) Create(ctx context.Context, request resource.CreateRequ
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for Tokens on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for Tokens on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -226,7 +226,7 @@ func (o *tokensResource) Read(ctx context.Context, request resource.ReadRequest,
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Tokens on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Tokens on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -236,7 +236,7 @@ func (o *tokensResource) Read(ctx context.Context, request resource.ReadRequest,
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Tokens on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Tokens on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -276,7 +276,7 @@ func (o *tokensResource) Update(ctx context.Context, request resource.UpdateRequ
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Tokens on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Tokens on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -286,7 +286,7 @@ func (o *tokensResource) Update(ctx context.Context, request resource.UpdateRequ
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for Tokens on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for Tokens on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -320,7 +320,7 @@ func (o *tokensResource) Delete(ctx context.Context, request resource.DeleteRequ
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Tokens on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Tokens on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -329,7 +329,7 @@ func (o *tokensResource) Delete(ctx context.Context, request resource.DeleteRequ
 	// Delete existing Tokens
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for Tokens on %s", o.endpoint),
+			fmt.Sprintf("Unable to delete resource for Tokens on %s", endpoint),
 			err.Error(),
 		)
 		return

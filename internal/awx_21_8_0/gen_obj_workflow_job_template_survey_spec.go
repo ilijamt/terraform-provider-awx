@@ -118,7 +118,7 @@ func (o *workflowJobTemplateSurvey) Delete(ctx context.Context, request resource
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -126,7 +126,7 @@ func (o *workflowJobTemplateSurvey) Delete(ctx context.Context, request resource
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for WorkflowJobTemplate/Survey on %s", o.endpoint),
+			fmt.Sprintf("Unable to delete resource for WorkflowJobTemplate/Survey on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -146,7 +146,7 @@ func (o *workflowJobTemplateSurvey) Read(ctx context.Context, request resource.R
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -155,7 +155,7 @@ func (o *workflowJobTemplateSurvey) Read(ctx context.Context, request resource.R
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -195,7 +195,7 @@ func (o *workflowJobTemplateSurvey) Create(ctx context.Context, request resource
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -203,7 +203,7 @@ func (o *workflowJobTemplateSurvey) Create(ctx context.Context, request resource
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -238,7 +238,7 @@ func (o *workflowJobTemplateSurvey) Update(ctx context.Context, request resource
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
@@ -246,7 +246,7 @@ func (o *workflowJobTemplateSurvey) Update(ctx context.Context, request resource
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
 			err.Error(),
 		)
 		return

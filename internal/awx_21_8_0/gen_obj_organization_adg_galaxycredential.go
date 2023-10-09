@@ -147,7 +147,7 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Create(ctx context.C
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Organization on %s for create of type ", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Organization on %s for create of type ", endpoint),
 			err.Error(),
 		)
 		return
@@ -155,7 +155,7 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Create(ctx context.C
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to associate for Organization on %s", o.endpoint),
+			fmt.Sprintf("Unable to associate for Organization on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
 		)
 		return

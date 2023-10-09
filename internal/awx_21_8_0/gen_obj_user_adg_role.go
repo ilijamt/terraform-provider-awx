@@ -147,7 +147,7 @@ func (o *userAssociateDisassociateRole) Create(ctx context.Context, request reso
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for User on %s for create of type ", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for User on %s for create of type ", endpoint),
 			err.Error(),
 		)
 		return
@@ -155,7 +155,7 @@ func (o *userAssociateDisassociateRole) Create(ctx context.Context, request reso
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to associate for User on %s", o.endpoint),
+			fmt.Sprintf("Unable to associate for User on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
 		)
 		return

@@ -152,7 +152,7 @@ func (o *credentialInputSourceDataSource) Read(ctx context.Context, req datasour
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for CredentialInputSource on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for CredentialInputSource on %s", endpoint),
 			err.Error(),
 		)
 		return

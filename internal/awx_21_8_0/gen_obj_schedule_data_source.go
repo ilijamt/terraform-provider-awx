@@ -265,7 +265,7 @@ func (o *scheduleDataSource) Read(ctx context.Context, req datasource.ReadReques
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Schedule on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Schedule on %s", endpoint),
 			err.Error(),
 		)
 		return

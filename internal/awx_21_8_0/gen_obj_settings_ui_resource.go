@@ -145,7 +145,7 @@ func (o *settingsUiResource) Create(ctx context.Context, request resource.Create
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for create", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for create", endpoint),
 			err.Error(),
 		)
 		return
@@ -155,7 +155,7 @@ func (o *settingsUiResource) Create(ctx context.Context, request resource.Create
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for SettingsUI on %s", o.endpoint),
+			fmt.Sprintf("Unable to create resource for SettingsUI on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -188,7 +188,7 @@ func (o *settingsUiResource) Read(ctx context.Context, request resource.ReadRequ
 	var endpoint = p.Clean(o.endpoint) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for read", endpoint),
 			err.Error(),
 		)
 		return
@@ -198,7 +198,7 @@ func (o *settingsUiResource) Read(ctx context.Context, request resource.ReadRequ
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsUI on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsUI on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -237,7 +237,7 @@ func (o *settingsUiResource) Update(ctx context.Context, request resource.Update
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for update", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for SettingsUI on %s for update", endpoint),
 			err.Error(),
 		)
 		return
@@ -247,7 +247,7 @@ func (o *settingsUiResource) Update(ctx context.Context, request resource.Update
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for SettingsUI on %s", o.endpoint),
+			fmt.Sprintf("Unable to update resource for SettingsUI on %s", endpoint),
 			err.Error(),
 		)
 		return

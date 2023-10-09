@@ -172,7 +172,7 @@ func (o *organizationDataSource) Read(ctx context.Context, req datasource.ReadRe
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Organization on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Organization on %s", endpoint),
 			err.Error(),
 		)
 		return

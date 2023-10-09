@@ -121,7 +121,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Create(ct
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for create of type notification_job_workflow_template", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for create of type notification_job_workflow_template", endpoint),
 			err.Error(),
 		)
 		return
@@ -129,7 +129,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Create(ct
 
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to associate for WorkflowJobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to associate for WorkflowJobTemplate on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
 		)
 		return

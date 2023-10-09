@@ -79,7 +79,8 @@ func (o *workflowJobTemplateObjectRolesDataSource) Read(ctx context.Context, req
 
 	// Creates a new request for Credential
 	var r *http.Request
-	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
+	var endpoint = fmt.Sprintf(o.endpoint, id.ValueInt64())
+	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to create a new request for workflowJobTemplate",
 			err.Error(),
@@ -91,7 +92,7 @@ func (o *workflowJobTemplateObjectRolesDataSource) Read(ctx context.Context, req
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			"Unable to fetch the request for workflowjobtemplate object roles",
+			fmt.Sprintf("Unable to fetch the request for workflowjobtemplate object roles on %s", endpoint),
 			err.Error(),
 		)
 		return

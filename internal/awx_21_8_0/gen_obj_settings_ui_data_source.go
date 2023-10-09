@@ -111,7 +111,7 @@ func (o *settingsUiDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for SettingsUI on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for SettingsUI on %s", endpoint),
 			err.Error(),
 		)
 		return

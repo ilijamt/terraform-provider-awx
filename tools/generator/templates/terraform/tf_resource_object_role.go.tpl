@@ -79,7 +79,8 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
 
 	// Creates a new request for Credential
 	var r *http.Request
-	if r, err = o.client.NewRequest(ctx, http.MethodGet, fmt.Sprintf(o.endpoint, id.ValueInt64()), nil); err != nil {
+	var endpoint = fmt.Sprintf(o.endpoint, id.ValueInt64())
+	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to create a new request for {{ .Name | lowerCamelCase }}",
 			err.Error(),
@@ -91,7 +92,7 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Read(ctx context.Con
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			"Unable to fetch the request for {{ .Name | lowerCase }} object roles",
+            fmt.Sprintf("Unable to fetch the request for {{ .Name | lowerCase }} object roles on %s", endpoint),
 			err.Error(),
 		)
 		return

@@ -138,7 +138,7 @@ func (o *meDataSource) Read(ctx context.Context, req datasource.ReadRequest, res
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Me on %s", o.endpoint),
+			fmt.Sprintf("Unable to read resource for Me on %s", endpoint),
 			err.Error(),
 		)
 		return
