@@ -16,9 +16,11 @@ func TestExtractDataIfSearchResult(t *testing.T) {
 		require.Empty(t, result)
 	})
 
-	for _, val := range []any{"0", int(0), int8(0), int16(0), int32(0), int64(0),
+	for _, val := range []any{
+		int(0), int8(0), int16(0), int32(0), int64(0),
 		uint(0), uint8(0), uint16(0), uint32(0), uint64(0),
 		json.Number("0"), json.Number("NaN"),
+		string("0"), string("NaN"),
 	} {
 		t.Run(fmt.Sprintf("count is %[1]v as %[1]T", val), func(t *testing.T) {
 			result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
