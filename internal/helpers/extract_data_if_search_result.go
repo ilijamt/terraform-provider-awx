@@ -32,6 +32,24 @@ func ExtractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 			}
 		case int:
 			count = int64(val)
+		case int8:
+			count = int64(val)
+		case int16:
+			count = int64(val)
+		case int32:
+			count = int64(val)
+		case int64:
+			count = val
+		case uint:
+			count = int64(val)
+		case uint8:
+			count = int64(val)
+		case uint16:
+			count = int64(val)
+		case uint32:
+			count = int64(val)
+		case uint64:
+			count = int64(val)
 		}
 
 		if count == 1 {
