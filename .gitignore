@@ -69,3 +69,4 @@ fabric.properties
 
 /.envrc*
 /resources/run.sh
+/.terraformrc
