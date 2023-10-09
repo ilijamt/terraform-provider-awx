@@ -64,6 +64,13 @@ func ExtractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 					)
 					return
 				}
+			} else if ok && len(res) == 0 {
+				err = fmt.Errorf("expected %d results, got 0", count)
+				d.AddError(
+					"No data in the results array",
+					err.Error(),
+				)
+				return
 			} else {
 				err = fmt.Errorf("received: %T instead of []any", in["results"])
 				d.AddError(

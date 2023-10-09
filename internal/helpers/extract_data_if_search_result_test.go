@@ -33,12 +33,23 @@ func TestExtractDataIfSearchResult(t *testing.T) {
 		})
 	}
 
-	t.Run("results array is empty should error out", func(t *testing.T) {
+	t.Run("results array is []map[string]any{} should error out", func(t *testing.T) {
 		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
 			"count":   1,
 			"results": []map[string]any{},
 		})
-		require.Error(t, err)
+		require.ErrorContains(t, err, "[]map[string]interface {} instead of []any")
+		require.True(t, d.HasError())
+		require.Equal(t, 1, d.ErrorsCount())
+		require.Empty(t, result)
+	})
+
+	t.Run("results array is []any{} should error out", func(t *testing.T) {
+		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
+			"count":   1,
+			"results": []any{},
+		})
+		require.ErrorContains(t, err, "expected 1 results, got 0")
 		require.True(t, d.HasError())
 		require.Equal(t, 1, d.ErrorsCount())
 		require.Empty(t, result)
@@ -57,6 +68,20 @@ func TestExtractDataIfSearchResult(t *testing.T) {
 		require.EqualValues(t, map[string]any{"id": 1}, result)
 	})
 
+	t.Run("results array has multiple entries", func(t *testing.T) {
+		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
+			"count": 2,
+			"results": []any{
+				map[string]any{"id": 1},
+				map[string]any{"id": 2},
+			},
+		})
+		require.ErrorContains(t, err, "received 2 entries, expected 1")
+		require.True(t, d.HasError())
+		require.Equal(t, 1, d.ErrorsCount())
+		require.Empty(t, result)
+	})
+
 	t.Run("results array has one entry but data is not map[string]any", func(t *testing.T) {
 		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
 			"count": 1,
@@ -64,7 +89,7 @@ func TestExtractDataIfSearchResult(t *testing.T) {
 				string("id"),
 			},
 		})
-		require.Error(t, err)
+		require.ErrorContains(t, err, "received: map[string]interface {} instead of map[string]any")
 		require.True(t, d.HasError())
 		require.Equal(t, 1, d.ErrorsCount())
 		require.Empty(t, result)
