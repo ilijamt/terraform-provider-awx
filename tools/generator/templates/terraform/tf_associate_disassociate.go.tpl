@@ -15,6 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 	"net/http"
 	p "path"
 	"strconv"
@@ -170,7 +171,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 {{- end }}
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: plan.{{ .Type }}ID.ValueInt64(), Disassociate: false}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.{{ .Type }}ID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[{{.Name}}/Create/Associate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
@@ -179,7 +180,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create of type {{ default .AssociateType "default" }}", o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create of type {{ default .AssociateType "default" }}", endpoint),
 			err.Error(),
 		)
 		return
@@ -187,7 +188,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 
     if _, err = o.client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to associate for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to associate for {{ .Name }} on %s with a payload of %#v", endpoint, bodyRequest),
             err.Error(),
         )
         return
@@ -223,7 +224,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Delete(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
 {{- end }}
 	var buf bytes.Buffer
-	var bodyRequest = associateDisassociateRequestModel{ID: state.{{ .Type | camelCase }}ID.ValueInt64(), Disassociate: true}
+	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.{{ .Type | camelCase }}ID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[{{.Name}}/Delete/Disassociate] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,

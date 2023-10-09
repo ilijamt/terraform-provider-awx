@@ -8,6 +8,7 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
     "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -174,7 +175,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-            fmt.Sprintf("Unable to read resource for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to read resource for {{ .Name }} on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -183,7 +184,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     var d diag.Diagnostics
 
 {{ if gt (len $.Config.SearchFields) 0 }}
-	if data, d, err = extractDataIfSearchResult(data); err != nil {
+	if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
         resp.Diagnostics.Append(d...)
         return
 	}

@@ -37,6 +37,11 @@ resource "awx_organization" "demo_organization" {
   name = "Demo Organization"
 }
 
+resource "awx_organization_associate_galaxy_credential" "default_demo_organization" {
+  galaxy_credential_id = data.awx_credential.ansible_galaxy.id
+  organization_id      = awx_organization.demo_organization.id
+}
+
 resource "awx_execution_environment" "demo_ee" {
   name  = "Demo EE"
   image = "quay.io/ansible/awx-ee:latest"

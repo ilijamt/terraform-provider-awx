@@ -6,13 +6,14 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 	"github.com/spf13/cobra"
 	"log"
+	"os"
 	"text/template"
 )
 
 // templateCmd represents the base command when called without any subcommands
 var templateCmd = &cobra.Command{
-	Use:   "template [config-resource] [api-resource-path]",
-	Args:  cobra.ExactArgs(2),
+	Use:   "template [config-resource] [api-resource-path] [destination]",
+	Args:  cobra.ExactArgs(3),
 	Short: "Template all the resources for the terraform provider",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var tpl *template.Template
@@ -20,14 +21,22 @@ var templateCmd = &cobra.Command{
 		var configResource, apiResourcePath, resourcePath string
 		configResource = args[0]
 		apiResourcePath = args[1]
+		tCfg.generatePath = args[2]
 		resourcePath = tCfg.generatePath
 
 		if err = cfg.Load(configResource); err != nil {
 			return err
 		}
 
-		var apiResource internal.ApiResources
-		if err = apiResource.Load(apiResourcePath); err != nil {
+		_ = os.Mkdir(fmt.Sprintf("%s/docs", apiResourcePath), os.ModePerm)
+
+		var apiResourceInfo = &internal.ApiResourcesInfo{}
+		if err = apiResourceInfo.Load(fmt.Sprintf("%s/info.json", apiResourcePath)); err != nil {
+			return err
+		}
+
+		var apiResource = &internal.ApiResources{}
+		if err = apiResource.Load(apiResourcePath, *apiResourceInfo); err != nil {
 			return err
 		}
 
@@ -79,6 +88,5 @@ var tCfg struct {
 }
 
 func init() {
-	templateCmd.Flags().StringVar(&tCfg.generatePath, "generate-path", "internal/awx", "Where to generate the resources for the AWX provider")
 	rootCmd.AddCommand(templateCmd)
 }

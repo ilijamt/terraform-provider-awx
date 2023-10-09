@@ -67,6 +67,14 @@ type Item struct {
 	ApiDataOverride             map[string]map[string]any    `json:"api_data_override"`
 	RemoveFieldsDataSource      []string                     `json:"remove_fields_data_source"`
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource"`
+	CredentialTypes             []CredentialTypes            `json:"credential_types"`
+}
+
+type CredentialTypes struct {
+	Name         string         `json:"name" mapstructure:"name"`
+	Description  string         `json:"description" mapstructure:"description"`
+	Organization int            `json:"organization" mapstructure:"organization"`
+	Inputs       map[string]any `json:"inputs" mapstructure:"inputs"`
 }
 
 type Config struct {

@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,8 +18,6 @@ jobs:
           cache: true
       - name: Display Go version
         run: go version
-      - name: Build
-        run: go build -v
       - name: Test
         run: go test -cover -coverprofile=coverage.out -v ./...
       - name: Upload coverage reports to Codecov
@@ -29,3 +27,19 @@ jobs:
         with:
           files: ./coverage.out
           flags: unittests
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        provider: [ 'provider_21_8_0' ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+      - name: Display Go version
+        run: go version
+      - name: Build
+        run: go build -v ./cmd/${{ matrix.provider }}

@@ -1,13 +1,14 @@
 builds:
-  - env:
+  - main: ./cmd/provider_21_8_0/main.go
+    env:
       - CGO_ENABLED=0
     mod_timestamp: '{{ .CommitTimestamp }}'
     flags:
       - -trimpath
     ldflags:
       - '-s -w'
-      - '-X "main.version={{.Version}}"'
-      - '-X "main.commit={{.Commit}}"'
+      - '-X "version.Version={{.Version}}"'
+      - '-X "version.Commit={{.Commit}}"'
     goos:
       - freebsd
       - windows
@@ -21,7 +22,7 @@ builds:
     ignore:
       - goos: darwin
         goarch: '386'
-    binary: '{{ .ProjectName }}_v{{ .Version }}'
+    binary: '{{ .ProjectName }}_v21.8.0-{{ .ShortCommit }}'
 archives:
   - format: zip
     name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
