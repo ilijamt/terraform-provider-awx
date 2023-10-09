@@ -32,4 +32,42 @@ func TestExtractDataIfSearchResult(t *testing.T) {
 			require.Empty(t, result)
 		})
 	}
+
+	t.Run("results array is empty should error out", func(t *testing.T) {
+		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
+			"count":   1,
+			"results": []map[string]any{},
+		})
+		require.Error(t, err)
+		require.True(t, d.HasError())
+		require.Equal(t, 1, d.ErrorsCount())
+		require.Empty(t, result)
+	})
+
+	t.Run("results array has one entry", func(t *testing.T) {
+		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
+			"count": 1,
+			"results": []any{
+				map[string]any{"id": 1},
+			},
+		})
+		require.NoError(t, err)
+		require.False(t, d.HasError())
+		require.Equal(t, 0, d.ErrorsCount())
+		require.EqualValues(t, map[string]any{"id": 1}, result)
+	})
+
+	t.Run("results array has one entry but data is not map[string]any", func(t *testing.T) {
+		result, d, err := helpers.ExtractDataIfSearchResult(map[string]any{
+			"count": 1,
+			"results": []any{
+				string("id"),
+			},
+		})
+		require.Error(t, err)
+		require.True(t, d.HasError())
+		require.Equal(t, 1, d.ErrorsCount())
+		require.Empty(t, result)
+	})
+
 }

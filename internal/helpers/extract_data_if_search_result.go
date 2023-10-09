@@ -53,10 +53,19 @@ func ExtractDataIfSearchResult(in map[string]any) (out map[string]any, d diag.Di
 		}
 
 		if count == 1 {
-			if res, ok := in["results"].([]any); ok {
-				out = res[0].(map[string]any)
+			if res, ok := in["results"].([]any); ok && len(res) == 1 {
+				if val, ok := res[0].(map[string]any); ok {
+					out = val
+				} else {
+					err = fmt.Errorf("received: %T instead of map[string]any", val)
+					d.AddError(
+						"Unexpected format for the results array",
+						err.Error(),
+					)
+					return
+				}
 			} else {
-				err = fmt.Errorf("recevied: %T instead of []any", in["results"])
+				err = fmt.Errorf("received: %T instead of []any", in["results"])
 				d.AddError(
 					"Unexpected format for the results array",
 					err.Error(),
