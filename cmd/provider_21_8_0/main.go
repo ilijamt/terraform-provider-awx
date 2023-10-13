@@ -20,7 +20,7 @@ func main() {
 
 	if err = providerserver.Serve(
 		context.Background(),
-		provider.New(version.Version, awx.Resources(), awx.DataSources()),
+		provider.NewFuncProvider(version.Version, awx.Resources(), awx.DataSources()),
 		providerserver.ServeOpts{
 			Address: "registry.terraform.io/ilijamt/awx",
 			Debug:   debug,

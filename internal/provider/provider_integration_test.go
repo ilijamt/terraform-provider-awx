@@ -24,7 +24,7 @@ func testAccProtoV6ProviderFactoriesUnique() map[string]func() (tfprotov6.Provid
 	}
 
 	return map[string]func() (tfprotov6.ProviderServer, error){
-		"awx": providerserver.NewProtocol6WithError(provider.New(version.Version, resources(), dataSources())()),
+		"awx": providerserver.NewProtocol6WithError(provider.NewFuncProvider(version.Version, resources(), dataSources())()),
 	}
 }
 
@@ -47,9 +47,7 @@ provider "awx" {
 )
 
 func TestProviderIntegration(t *testing.T) {
-	resource.Test(t, resource.TestCase{
-		IsUnitTest:               true,
-		PreCheck:                 func() { testAccPreCheck(t) },
+	resource.UnitTest(t, resource.TestCase{
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactoriesUnique(),
 		ExternalProviders:        map[string]resource.ExternalProvider{},
 		Steps: []resource.TestStep{

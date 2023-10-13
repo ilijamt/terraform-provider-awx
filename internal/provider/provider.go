@@ -2,11 +2,11 @@ package provider
 
 import (
 	"context"
-	"os"
-	"strings"
-
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-var _ provider.Provider = &Provider{}
+var _ provider.Provider = (*Provider)(nil)
 
 // Provider defines the provider implementation.
 type Provider struct {
@@ -23,6 +23,7 @@ type Provider struct {
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
+	config  Model
 
 	fnResources   []func() resource.Resource
 	fnDataSources []func() datasource.DataSource
@@ -65,111 +66,80 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 	}
 }
 
+func configureFromEnvironment(ctx context.Context, data *Model) {
+	var envConfig = make(map[string]interface{})
+
+	if val := helpers.GetFirstSetEnvVar("TOWER_HOST", "AWX_HOST"); val != "" && data.Hostname.IsNull() {
+		data.Hostname = types.StringValue(val)
+		envConfig["Hostname"] = data.Hostname.String()
+	}
+
+	if val := helpers.GetFirstSetEnvVar("TOWER_USERNAME", "AWX_USERNAME"); val != "" && data.Username.IsNull() {
+		data.Username = types.StringValue(val)
+		envConfig["Username"] = data.Username.String()
+	}
+
+	if val := helpers.GetFirstSetEnvVar("TOWER_PASSWORD", "AWX_PASSWORD"); val != "" && data.Password.IsNull() {
+		data.Password = types.StringValue(val)
+		envConfig["Password"] = types.StringValue(strings.Repeat("*", len(val)))
+	}
+
+	if val := helpers.GetFirstSetEnvVar("TOWER_VERIFY_SSL", "AWX_VERIFY_SSL"); val != "" && data.InsecureSkipVerify.IsNull() {
+		data.InsecureSkipVerify = types.BoolValue(helpers.Str2Bool(val))
+		envConfig["InsecureSkipVerify"] = data.InsecureSkipVerify.String()
+	}
+
+	tflog.Debug(ctx, "Provider configuration from the environment", envConfig)
+}
+
+func configureDefaults(ctx context.Context, data *Model) {
+	var defaults = make(map[string]interface{})
+	if data.InsecureSkipVerify.IsNull() {
+		data.InsecureSkipVerify = types.BoolValue(false)
+		defaults["InsecureSkipVerify"] = data.InsecureSkipVerify.ValueBool()
+	}
+	tflog.Debug(ctx, "Defaults configured for provider", defaults)
+}
+
 func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	var config Model
+	tflog.Debug(ctx, "Provider configuration started")
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &config)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	if config.Hostname.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("hostname"),
-			"Unknown AWX API Host",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
-				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_HOST environment variable.",
-		)
+	configureFromEnvironment(ctx, &config)
+	configureDefaults(ctx, &config)
+
+	if "" == config.Hostname.String() {
+		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
+			"Set the host value in the configuration or use the TOWER_HOST or AWX_HOST environment variable."+
+			"If either is already set, ensure the value is not empty.")
 	}
 
-	if config.Username.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("username"),
-			"Unknown AWX API username",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
-				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_USERNAME environment variable.",
-		)
+	if "" == config.Username.String() {
+		resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
+			"Set the host value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
+			"If either is already set, ensure the value is not empty.")
 	}
 
-	if config.Password.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("password"),
-			"Unknown AWX API password",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_PASSWORD environment variable.",
-		)
-	}
-
-	if config.InsecureSkipVerify.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("insecure_skip_verify"),
-			"Unknown value for InsecureSkipVerify",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX Insecure Skip Verify. "+
-				"Either target apply the source of the value first, set the value statically in the configuration, or use the TOWER_VERIFY_SSL environment variable.",
-		)
+	if "" == config.Username.String() {
+		resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
+			"Set the host value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
+			"If either is already set, ensure the value is not empty.")
 	}
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	var hostname = os.Getenv("TOWER_HOST")
-	if !config.Hostname.IsNull() {
-		hostname = config.Hostname.ValueString()
-	}
-	if "" == hostname {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("host"),
-			"Unknown AWX API Host",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
-				"Set the host value in the configuration or use the TOWER_HOST environment variable."+
-				"If either is already set, ensure the value is not empty.",
-		)
-	}
-
-	var username = os.Getenv("TOWER_USERNAME")
-	if !config.Username.IsNull() {
-		username = config.Username.ValueString()
-	}
-	if "" == username {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("username"),
-			"Unknown AWX API Username",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
-				"Set the host value in the configuration or use the TOWER_USERNAME environment variable."+
-				"If either is already set, ensure the value is not empty.",
-		)
-	}
-
-	var password = os.Getenv("TOWER_PASSWORD")
-	if !config.Password.IsNull() {
-		password = config.Password.ValueString()
-	}
-	if "" == password {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("password"),
-			"Unknown AWX API Password",
-			"The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-				"Set the host value in the configuration or use the TOWER_PASSWORD environment variable."+
-				"If either is already set, ensure the value is not empty.",
-		)
-	}
-
-	var insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
-	if val := os.Getenv("TOWER_VERIFY_SSL"); val != "" {
-		insecureSkipVerify = !("false" == strings.ToLower(val) || "no" == strings.ToLower(val))
-	}
-	if !config.InsecureSkipVerify.IsNull() {
-		insecureSkipVerify = config.InsecureSkipVerify.ValueBool()
-	}
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	var client = c.NewClient(username, password, hostname, p.version, insecureSkipVerify)
+	var client = c.NewClient(config.Username.String(), config.Password.String(), config.Hostname.String(), p.version, config.InsecureSkipVerify.ValueBool())
 	resp.DataSourceData = client
 	resp.ResourceData = client
+	p.config = config
+	tflog.Debug(ctx, "Provider configuration finished")
 }
 
 func (p *Provider) Resources(ctx context.Context) []func() resource.Resource {
@@ -180,12 +150,16 @@ func (p *Provider) DataSources(ctx context.Context) []func() datasource.DataSour
 	return p.fnDataSources
 }
 
-func New(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
+func NewFuncProvider(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
 	return func() provider.Provider {
-		return &Provider{
-			version:       version,
-			fnResources:   fnResources,
-			fnDataSources: fnDataSources,
-		}
+		return New(version, fnResources, fnDataSources)
+	}
+}
+
+func New(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
+	return &Provider{
+		version:       version,
+		fnResources:   fnResources,
+		fnDataSources: fnDataSources,
 	}
 }
