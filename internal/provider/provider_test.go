@@ -61,6 +61,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"password":             tftypes.NewValue(tftypes.String, "password"),
 			"insecure_skip_verify": tftypes.NewValue(tftypes.Bool, true),
 		}))
+		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
 			Config: &config,
 		})
