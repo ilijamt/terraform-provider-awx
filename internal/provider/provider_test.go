@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-go/tftypes"
 	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -12,41 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 )
 
-func resources() []func() resource.Resource {
-	return []func() resource.Resource{}
-}
-
-func dataSources() []func() datasource.DataSource {
-	return []func() datasource.DataSource{}
-}
-
-// testAccProtoV6ProviderFactories are used to instantiate a provider during
-// acceptance testing. The factory function will be invoked for every Terraform
-// CLI command executed to create a provider server to which the CLI can
-// reattach.
-var testAccProtoV6ProviderFactories = map[string]func() (tfprotov6.ProviderServer, error){
-	"awx": providerserver.NewProtocol6WithError(provider.New("test", resources(), dataSources())()),
-}
-
-const (
-	providerConfig = `
-provider "awx" {
-  username             = "admin"
-  password             = "admin"
-  host     			   = "http://localhost"
-  insecure_skip_verify = true"
-}
-`
-)
-
-func testAccPreCheck(t *testing.T) {
-	// You can add code here to run prior to any test case execution, for example assertions
-	// about the appropriate environment variables being set are common to see in a pre-check
-	// function.
-}
-
 func TestProvider(t *testing.T) {
-	awxProvider := testAccProtoV6ProviderFactories["awx"]
+	var resources = func() []func() resource.Resource {
+		return []func() resource.Resource{}
+	}
+	var dataSources = func() []func() datasource.DataSource {
+		return []func() datasource.DataSource{}
+	}
+	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", resources(), dataSources())())
 	require.NotNil(t, awxProvider)
 	frameworkServer, err := awxProvider()
 	require.NoError(t, err)
@@ -54,4 +28,45 @@ func TestProvider(t *testing.T) {
 	schema, err := frameworkServer.GetProviderSchema(context.Background(), &tfprotov6.GetProviderSchemaRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, schema)
+	_, err = frameworkServer.ValidateProviderConfig(context.Background(), &tfprotov6.ValidateProviderConfigRequest{})
+	require.NoError(t, err)
+}
+
+func TestProviderConfiguration(t *testing.T) {
+	var resources = func() []func() resource.Resource {
+		return []func() resource.Resource{}
+	}
+	var dataSources = func() []func() datasource.DataSource {
+		return []func() datasource.DataSource{}
+	}
+
+	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", resources(), dataSources())())
+	require.NotNil(t, awxProvider)
+	frameworkServer, err := awxProvider()
+	require.NoError(t, err)
+	require.NotNil(t, frameworkServer)
+
+	t.Run("valid configuration", func(t *testing.T) {
+		var ConfigDataType = tftypes.Object{
+			AttributeTypes: map[string]tftypes.Type{
+				"hostname":             tftypes.String,
+				"username":             tftypes.String,
+				"password":             tftypes.String,
+				"insecure_skip_verify": tftypes.Bool,
+			},
+		}
+		config, err := tfprotov6.NewDynamicValue(ConfigDataType, tftypes.NewValue(ConfigDataType, map[string]tftypes.Value{
+			"hostname":             tftypes.NewValue(tftypes.String, "host"),
+			"username":             tftypes.NewValue(tftypes.String, "username"),
+			"password":             tftypes.NewValue(tftypes.String, "password"),
+			"insecure_skip_verify": tftypes.NewValue(tftypes.Bool, true),
+		}))
+		require.NoError(t, err)
+		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
+			Config: &config,
+		})
+		require.NoError(t, err)
+		require.NotNil(t, response)
+		require.Empty(t, response.Diagnostics)
+	})
 }
