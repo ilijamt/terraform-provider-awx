@@ -31,10 +31,10 @@ type Provider struct {
 
 // Model describes the provider data model.
 type Model struct {
-	Hostname           types.String `tfsdk:"hostname"`
-	Username           types.String `tfsdk:"username"`
-	Password           types.String `tfsdk:"password"`
-	InsecureSkipVerify types.Bool   `tfsdk:"insecure_skip_verify"`
+	Hostname  types.String `tfsdk:"hostname"`
+	Username  types.String `tfsdk:"username"`
+	Password  types.String `tfsdk:"password"`
+	VerifySSL types.Bool   `tfsdk:"verify_ssl"`
 }
 
 func (p *Provider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -46,19 +46,19 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"hostname": schema.StringAttribute{
-				Description: "The AWX Host that we connect to. (defaults to TOWER_HOST env variable if set)",
+				Description: "The AWX Host that we connect to. (defaults to TOWER_HOST/AWX_HOST env variable if set)",
 				Optional:    true,
 			},
-			"insecure_skip_verify": schema.BoolAttribute{
-				Description: "Are we using a self signed certificate? [false] (defaults to a negation of TOWER_VERIFY_SSL env variable if set)",
+			"verify_ssl": schema.BoolAttribute{
+				Description: "If you are using a self signed certificate this should be set to false (defaults to TOWER_VERIFY_SSL/VERIFY_SSL env variable if set) [default is true]",
 				Optional:    true,
 			},
 			"username": schema.StringAttribute{
-				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME env variable if set)",
+				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME/AWX_USERNAME env variable if set)",
 				Optional:    true,
 			},
 			"password": schema.StringAttribute{
-				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD env variable if set)",
+				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD/AWX_PASSWORD env variable if set)",
 				Optional:    true,
 				Sensitive:   true,
 			},
@@ -84,9 +84,9 @@ func configureFromEnvironment(ctx context.Context, data *Model) {
 		envConfig["Password"] = types.StringValue(strings.Repeat("*", len(val)))
 	}
 
-	if val := helpers.GetFirstSetEnvVar("TOWER_VERIFY_SSL", "AWX_VERIFY_SSL"); val != "" && data.InsecureSkipVerify.IsNull() {
-		data.InsecureSkipVerify = types.BoolValue(helpers.Str2Bool(val))
-		envConfig["InsecureSkipVerify"] = data.InsecureSkipVerify.String()
+	if val := helpers.GetFirstSetEnvVar("TOWER_VERIFY_SSL", "AWX_VERIFY_SSL"); val != "" && data.VerifySSL.IsNull() {
+		data.VerifySSL = types.BoolValue(helpers.Str2Bool(val))
+		envConfig["VerifySSL"] = data.VerifySSL.String()
 	}
 
 	tflog.Debug(ctx, "Provider configuration from the environment", envConfig)
@@ -94,9 +94,9 @@ func configureFromEnvironment(ctx context.Context, data *Model) {
 
 func configureDefaults(ctx context.Context, data *Model) {
 	var defaults = make(map[string]interface{})
-	if data.InsecureSkipVerify.IsNull() {
-		data.InsecureSkipVerify = types.BoolValue(false)
-		defaults["InsecureSkipVerify"] = data.InsecureSkipVerify.ValueBool()
+	if data.VerifySSL.IsNull() {
+		data.VerifySSL = types.BoolValue(true)
+		defaults["VerifySSL"] = data.VerifySSL.ValueBool()
 	}
 	tflog.Debug(ctx, "Defaults configured for provider", defaults)
 }
@@ -135,7 +135,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(config.Username.String(), config.Password.String(), config.Hostname.String(), p.version, config.InsecureSkipVerify.ValueBool())
+	var client = c.NewClient(config.Username.String(), config.Password.String(), config.Hostname.String(), p.version, config.VerifySSL.ValueBool())
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config

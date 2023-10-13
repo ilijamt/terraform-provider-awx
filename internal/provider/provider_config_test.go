@@ -44,7 +44,7 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 		},
 		{
 			in:   map[string]string{"TOWER_VERIFY_SSL": "true", "AWX_VERIFY_SSL": "false"},
-			out:  Model{InsecureSkipVerify: types.BoolValue(true)},
+			out:  Model{VerifySSL: types.BoolValue(true)},
 			null: []string{"hostname", "username", "password"},
 		},
 	}
@@ -74,7 +74,7 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 				case "password":
 					assert.True(t, config.Password.IsNull())
 				case "insecure_skip_verify":
-					assert.True(t, config.InsecureSkipVerify.IsNull())
+					assert.True(t, config.VerifySSL.IsNull())
 				}
 			}
 
@@ -85,16 +85,16 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 
 func TestConfigureDefaults(t *testing.T) {
 	t.Run("value already set should not override it", func(t *testing.T) {
-		var config = &Model{InsecureSkipVerify: types.BoolValue(false)}
-		require.False(t, config.InsecureSkipVerify.IsNull())
+		var config = &Model{VerifySSL: types.BoolValue(false)}
+		require.False(t, config.VerifySSL.IsNull())
 		configureDefaults(context.Background(), config)
-		require.False(t, config.InsecureSkipVerify.ValueBool())
+		require.False(t, config.VerifySSL.ValueBool())
 	})
 
 	t.Run("value is set should not override it", func(t *testing.T) {
 		var config = &Model{}
-		require.True(t, config.InsecureSkipVerify.IsNull())
+		require.True(t, config.VerifySSL.IsNull())
 		configureDefaults(context.Background(), config)
-		require.False(t, config.InsecureSkipVerify.ValueBool())
+		require.True(t, config.VerifySSL.ValueBool())
 	})
 }

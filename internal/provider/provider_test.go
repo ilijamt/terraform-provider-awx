@@ -49,17 +49,17 @@ func TestProviderConfiguration(t *testing.T) {
 	t.Run("valid configuration", func(t *testing.T) {
 		var ConfigDataType = tftypes.Object{
 			AttributeTypes: map[string]tftypes.Type{
-				"hostname":             tftypes.String,
-				"username":             tftypes.String,
-				"password":             tftypes.String,
-				"insecure_skip_verify": tftypes.Bool,
+				"hostname":   tftypes.String,
+				"username":   tftypes.String,
+				"password":   tftypes.String,
+				"verify_ssl": tftypes.Bool,
 			},
 		}
 		config, err := tfprotov6.NewDynamicValue(ConfigDataType, tftypes.NewValue(ConfigDataType, map[string]tftypes.Value{
-			"hostname":             tftypes.NewValue(tftypes.String, "host"),
-			"username":             tftypes.NewValue(tftypes.String, "username"),
-			"password":             tftypes.NewValue(tftypes.String, "password"),
-			"insecure_skip_verify": tftypes.NewValue(tftypes.Bool, true),
+			"hostname":   tftypes.NewValue(tftypes.String, "host"),
+			"username":   tftypes.NewValue(tftypes.String, "username"),
+			"password":   tftypes.NewValue(tftypes.String, "password"),
+			"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 		}))
 		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
