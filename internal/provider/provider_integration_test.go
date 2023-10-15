@@ -24,7 +24,7 @@ func testAccProtoV6ProviderFactoriesUnique() map[string]func() (tfprotov6.Provid
 	}
 
 	return map[string]func() (tfprotov6.ProviderServer, error){
-		"awx": providerserver.NewProtocol6WithError(provider.NewFuncProvider(version.Version, resources(), dataSources())()),
+		"awx": providerserver.NewProtocol6WithError(provider.NewFuncProvider(version.Version, nil, resources(), dataSources())()),
 	}
 }
 
