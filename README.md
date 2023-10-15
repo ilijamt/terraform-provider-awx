@@ -17,13 +17,14 @@ Currently, built provider versions for AWX.
 
 TODO:
 -----
+
 * Unit tests
 * Integration tests
 
 Download a new version of the API
 ---------------------------------
 
-You need to spin up a version of AWX you want to download the API spec from. 
+You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
@@ -33,6 +34,14 @@ go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/con
 
 Build a new version of the specified API
 ----------------------------------------
+
 ```shell
 go run ./tools/generator/cmd/generator/main.go template resources/config.json resources/api/21.8.0
+```
+
+Create empty tests for the provider
+-----------------------------------
+
+```shell
+go run ./tools/generator/cmd/generator/main.go gen-tests resources/config.json resources/api/21.8.0 testdata/21.8.0
 ```
