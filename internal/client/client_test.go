@@ -29,7 +29,7 @@ func TestAuthenticationClient(t *testing.T) {
 		{method: http.MethodPatch, err: client.ErrInvalidStatusCode},
 	}
 
-	c := client.NewClient("username", "password", server.URL, "test", true)
+	c := client.NewClient("username", "password", server.URL, "test", true, nil)
 
 	for _, tst := range tests {
 		t.Run(tst.method, func(t *testing.T) {
@@ -64,7 +64,7 @@ func TestBody(t *testing.T) {
 		}
 	}))
 
-	c := client.NewClient("username", "password", server.URL, "test", true)
+	c := client.NewClient("username", "password", server.URL, "test", true, nil)
 	for _, tst := range tests {
 		t.Run(fmt.Sprintf("%s - %s", tst.name, tst.method), func(t *testing.T) {
 			req, err := c.NewRequest(context.Background(), http.MethodGet, "/api/v2/request", nil)

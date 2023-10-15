@@ -6,6 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"net/http"
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -22,8 +23,9 @@ type Provider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
-	version string
-	config  Model
+	version    string
+	config     Model
+	httpClient *http.Client
 
 	fnResources   []func() resource.Resource
 	fnDataSources []func() datasource.DataSource
@@ -135,7 +137,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, config.VerifySSL.ValueBool())
+	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, config.VerifySSL.ValueBool(), p.httpClient)
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config
@@ -150,16 +152,17 @@ func (p *Provider) DataSources(ctx context.Context) []func() datasource.DataSour
 	return p.fnDataSources
 }
 
-func NewFuncProvider(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
+func NewFuncProvider(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
 	return func() provider.Provider {
-		return New(version, fnResources, fnDataSources)
+		return New(version, httpClient, fnResources, fnDataSources)
 	}
 }
 
-func New(version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
+func New(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
 	return &Provider{
 		version:       version,
 		fnResources:   fnResources,
 		fnDataSources: fnDataSources,
+		httpClient:    httpClient,
 	}
 }

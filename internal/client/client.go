@@ -31,16 +31,20 @@ type Client interface {
 	Do(ctx context.Context, req *http.Request) (data map[string]any, err error)
 }
 
-func NewClient(username, password, hostname string, version string, insecureSkipVerify bool) Client {
+func NewClient(username, password, hostname string, version string, insecureSkipVerify bool, httpClient *http.Client) Client {
 	tr := http.DefaultTransport.(*http.Transport).Clone()
 	tr.TLSClientConfig = &tls.Config{
 		InsecureSkipVerify: insecureSkipVerify,
 	}
 
-	return &client{
-		client: &http.Client{
+	if httpClient == nil {
+		httpClient = &http.Client{
 			Transport: tr,
-		},
+		}
+	}
+
+	return &client{
+		client:   httpClient,
 		hostname: hostname,
 		username: username,
 		password: password,
