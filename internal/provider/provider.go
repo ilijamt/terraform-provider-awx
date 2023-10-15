@@ -71,22 +71,22 @@ func configureFromEnvironment(ctx context.Context, data *Model) {
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_HOST", "AWX_HOST"); val != "" && data.Hostname.IsNull() {
 		data.Hostname = types.StringValue(val)
-		envConfig["Hostname"] = data.Hostname.String()
+		envConfig["Hostname"] = val
 	}
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_USERNAME", "AWX_USERNAME"); val != "" && data.Username.IsNull() {
 		data.Username = types.StringValue(val)
-		envConfig["Username"] = data.Username.String()
+		envConfig["Username"] = val
 	}
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_PASSWORD", "AWX_PASSWORD"); val != "" && data.Password.IsNull() {
 		data.Password = types.StringValue(val)
-		envConfig["Password"] = types.StringValue(strings.Repeat("*", len(val)))
+		envConfig["Password"] = strings.Repeat("*", len(val))
 	}
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_VERIFY_SSL", "AWX_VERIFY_SSL"); val != "" && data.VerifySSL.IsNull() {
 		data.VerifySSL = types.BoolValue(helpers.Str2Bool(val))
-		envConfig["VerifySSL"] = data.VerifySSL.String()
+		envConfig["VerifySSL"] = val
 	}
 
 	tflog.Debug(ctx, "Provider configuration from the environment", envConfig)
@@ -113,19 +113,19 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	configureFromEnvironment(ctx, &config)
 	configureDefaults(ctx, &config)
 
-	if "" == config.Hostname.String() {
+	if "" == config.Hostname.ValueString() || config.Hostname.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
 			"Set the host value in the configuration or use the TOWER_HOST or AWX_HOST environment variable."+
 			"If either is already set, ensure the value is not empty.")
 	}
 
-	if "" == config.Username.String() {
+	if "" == config.Username.ValueString() || config.Username.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
 			"Set the host value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
 			"If either is already set, ensure the value is not empty.")
 	}
 
-	if "" == config.Username.String() {
+	if "" == config.Password.ValueString() || config.Password.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
 			"Set the host value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
 			"If either is already set, ensure the value is not empty.")
@@ -135,7 +135,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(config.Username.String(), config.Password.String(), config.Hostname.String(), p.version, config.VerifySSL.ValueBool())
+	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, config.VerifySSL.ValueBool())
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config
