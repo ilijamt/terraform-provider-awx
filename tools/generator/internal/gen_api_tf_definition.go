@@ -162,7 +162,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 
 	var data = map[string]any{
 		"ApiVersion":            config.ApiVersion,
-		"PackageName":           "awx",
+		"PackageName":           config.PackageName("awx"),
 		"Name":                  name,
 		"Endpoint":              val.Endpoint,
 		"Description":           objmap["description"],

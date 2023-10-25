@@ -1,4 +1,4 @@
-package awx
+package awx_21_8_0
 
 import (
 	"context"

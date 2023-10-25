@@ -18,7 +18,7 @@ func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resour
 
 	return tpl.ExecuteTemplate(f, "sources.go.tpl", map[string]any{
 		"ApiVersion":  config.ApiVersion,
-		"PackageName": "awx",
+		"PackageName": config.PackageName("awx"),
 		"Resources":   resources,
 		"DataSources": dataSources,
 	})
