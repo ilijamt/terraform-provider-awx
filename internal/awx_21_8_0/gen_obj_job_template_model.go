@@ -178,7 +178,7 @@ func (o *jobTemplateTerraformModel) BodyRequest() (req jobTemplateBodyRequestMod
 	req.Description = o.Description.ValueString()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.ExecutionEnvironment = o.ExecutionEnvironment.ValueInt64()
-	req.ExtraVars = json.RawMessage(o.ExtraVars.ValueString())
+	req.ExtraVars = json.RawMessage(o.ExtraVars.String())
 	req.ForceHandlers = o.ForceHandlers.ValueBool()
 	req.Forks = o.Forks.ValueInt64()
 	req.HostConfigKey = o.HostConfigKey.ValueString()

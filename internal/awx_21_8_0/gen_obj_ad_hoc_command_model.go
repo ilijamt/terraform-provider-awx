@@ -104,7 +104,7 @@ func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestM
 	req.Credential = o.Credential.ValueInt64()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.ExecutionEnvironment = o.ExecutionEnvironment.ValueInt64()
-	req.ExtraVars = json.RawMessage(o.ExtraVars.ValueString())
+	req.ExtraVars = json.RawMessage(o.ExtraVars.String())
 	req.Forks = o.Forks.ValueInt64()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.JobType = o.JobType.ValueString()
