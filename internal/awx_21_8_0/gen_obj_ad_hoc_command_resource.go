@@ -203,7 +203,7 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
-				Default:     stringdefault.StaticString(`%!s(float64=0)`),
+				Default:     stringdefault.StaticString(`0`),
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

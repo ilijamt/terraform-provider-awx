@@ -270,7 +270,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
-				Default:     stringdefault.StaticString(`%!s(float64=1)`),
+				Default:     stringdefault.StaticString(`1`),
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

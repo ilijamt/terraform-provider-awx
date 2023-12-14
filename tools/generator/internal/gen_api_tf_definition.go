@@ -107,7 +107,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			defValue := convertDefaultValue(value["default"])
 			switch awx2go_value(value) {
 			case "types.StringValue":
-				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%s`)", lowerCase(attrType), attrType, defValue)
+				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
 			case "types.Int64Value":
 				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(%v)", lowerCase(attrType), attrType, defValue)
 			}
