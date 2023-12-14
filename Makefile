@@ -10,8 +10,10 @@ generate-awx:
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
-	mkdir -p docs/21.8.0
+	rm -rf docs
+	mkdir -p cmd/provider_21_8_0/docs
 	tfplugindocs generate --examples-dir examples --provider-name awx --provider-dir ./cmd/provider_21_8_0
+	mv cmd/provider_21_8_0/docs .
 
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs
