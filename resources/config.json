@@ -526,7 +526,8 @@
           "type": "id"
         },
         "extra_vars": {
-          "type": "json"
+          "type": "json",
+          "post_wrap": true
         }
       },
       "search_fields": [
@@ -1084,7 +1085,8 @@
       "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "property_overrides": {
         "extra_vars": {
-          "type": "json"
+          "type": "json",
+          "post_wrap": true
         }
       },
       "associate_disassociate_groups": [
@@ -1205,7 +1207,8 @@
           "required": true
         },
         "extra_vars": {
-          "type": "json"
+          "type": "json",
+          "post_wrap": true
         }
       },
       "search_fields": [

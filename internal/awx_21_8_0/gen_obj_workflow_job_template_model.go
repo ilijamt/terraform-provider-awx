@@ -94,7 +94,7 @@ func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTempla
 	req.AskTagsOnLaunch = o.AskTagsOnLaunch.ValueBool()
 	req.AskVariablesOnLaunch = o.AskVariablesOnLaunch.ValueBool()
 	req.Description = o.Description.ValueString()
-	req.ExtraVars = json.RawMessage(o.ExtraVars.ValueString())
+	req.ExtraVars = json.RawMessage(o.ExtraVars.String())
 	req.Inventory = o.Inventory.ValueInt64()
 	req.JobTags = o.JobTags.ValueString()
 	req.Limit = o.Limit.ValueString()
