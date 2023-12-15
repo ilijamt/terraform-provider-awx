@@ -38,12 +38,12 @@ Build a new version of the specified API
 ----------------------------------------
 
 ```shell
-go run ./tools/generator/cmd/generator/main.go template resources/api/21.8.0
+go run ./tools/generator/cmd/generator/main.go template resources/api/23.5.1
 ```
 
 Create empty tests for the provider
 -----------------------------------
 
 ```shell
-go run ./tools/generator/cmd/generator/main.go gen-tests resources/api/21.8.0 testdata/21.8.0
+go run ./tools/generator/cmd/generator/main.go gen-tests resources/api/23.5.1 testdata/23.5.1
 ```
