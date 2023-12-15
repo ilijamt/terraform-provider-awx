@@ -1,0 +1,38 @@
+{
+  "endpoint": "/api/v2/applications/",
+  "name": "Application",
+  "type_name": "application",
+  "id_key": "id",
+  "enabled": true,
+  "pre_state_set_hook_function": "hookApplication",
+  "property_overrides": {
+    "client_secret": {
+      "sensitive": true
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name_organization",
+      "url_suffix": "?name__exact=%s&organization=%d",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        },
+        {
+          "name": "organization"
+        }
+      ]
+    }
+  ]
+}

@@ -2,9 +2,7 @@ package internal
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
-	"strings"
 )
 
 type PropertyOverride struct {
@@ -90,7 +88,8 @@ type Config struct {
 }
 
 func (c *Config) PackageName(name string) string {
-	return fmt.Sprintf("%s_%s", name, strings.ReplaceAll(c.ApiVersion, ".", "_"))
+	// return fmt.Sprintf("%s_%s", name, strings.ReplaceAll(c.ApiVersion, ".", "_"))
+	return name
 }
 
 func (c *Config) Load(filename string) error {

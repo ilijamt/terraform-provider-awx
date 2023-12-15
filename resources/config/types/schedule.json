@@ -1,0 +1,26 @@
+{
+  "endpoint": "/api/v2/schedules/",
+  "name": "Schedule",
+  "type_name": "schedule",
+  "id_key": "id",
+  "property_overrides": {
+    "timezone": {
+      "type": "string"
+    },
+    "until": {
+      "type": "string"
+    }
+  },
+  "enabled": true,
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+  ]
+}

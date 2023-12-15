@@ -1,0 +1,115 @@
+package awx
+
+import (
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
+)
+
+const (
+	ApiVersion string = "21.8.0"
+)
+
+// DataSources is a helper function to return all defined data sources
+func DataSources() []func() datasource.DataSource {
+	return []func() datasource.DataSource{
+		NewAdHocCommandDataSource,
+		NewApplicationDataSource,
+		NewCredentialDataSource,
+		NewCredentialObjectRolesDataSource,
+		NewCredentialInputSourceDataSource,
+		NewCredentialTypeDataSource,
+		NewExecutionEnvironmentDataSource,
+		NewGroupDataSource,
+		NewHostDataSource,
+		NewHostObjectRolesDataSource,
+		NewInstanceGroupDataSource,
+		NewInventoryDataSource,
+		NewInventoryObjectRolesDataSource,
+		NewInventorySourceDataSource,
+		NewJobTemplateDataSource,
+		NewJobTemplateObjectRolesDataSource,
+		NewLabelDataSource,
+		NewMeDataSource,
+		NewNotificationTemplateDataSource,
+		NewOrganizationDataSource,
+		NewOrganizationObjectRolesDataSource,
+		NewProjectDataSource,
+		NewProjectObjectRolesDataSource,
+		NewScheduleDataSource,
+		NewSettingsAuthAzureADOauth2DataSource,
+		NewSettingsAuthGithubDataSource,
+		NewSettingsAuthGithubEnterpriseDataSource,
+		NewSettingsAuthGithubEnterpriseOrgDataSource,
+		NewSettingsAuthGithubEnterpriseTeamDataSource,
+		NewSettingsAuthGithubOrgDataSource,
+		NewSettingsAuthGithubTeamDataSource,
+		NewSettingsAuthGoogleOauth2DataSource,
+		NewSettingsAuthLDAPDataSource,
+		NewSettingsAuthSAMLDataSource,
+		NewSettingsJobsDataSource,
+		NewSettingsMiscAuthenticationDataSource,
+		NewSettingsMiscLoggingDataSource,
+		NewSettingsMiscSystemDataSource,
+		NewSettingsOpenIDConnectDataSource,
+		NewSettingsUIDataSource,
+		NewTeamDataSource,
+		NewTeamObjectRolesDataSource,
+		NewTokensDataSource,
+		NewUserDataSource,
+		NewWorkflowJobTemplateDataSource,
+		NewWorkflowJobTemplateObjectRolesDataSource,
+	}
+}
+
+// Resources is a helper function to return all defined resources
+func Resources() []func() resource.Resource {
+	return []func() resource.Resource{
+		NewAdHocCommandResource,
+		NewApplicationResource,
+		NewCredentialResource,
+		NewCredentialInputSourceResource,
+		NewCredentialTypeResource,
+		NewExecutionEnvironmentResource,
+		NewGroupResource,
+		NewHostResource,
+		NewHostAssociateDisassociateGroupResource,
+		NewInstanceGroupResource,
+		NewInventoryResource,
+		NewInventorySourceResource,
+		NewJobTemplateResource,
+		NewJobTemplateAssociateDisassociateCredentialResource,
+		NewJobTemplateAssociateDisassociateNotificationTemplateResource,
+		NewJobTemplateSurveyResource,
+		NewLabelResource,
+		NewNotificationTemplateResource,
+		NewOrganizationResource,
+		NewOrganizationAssociateDisassociateInstanceGroupResource,
+		NewOrganizationAssociateDisassociateGalaxyCredentialResource,
+		NewProjectResource,
+		NewScheduleResource,
+		NewSettingsAuthAzureADOauth2Resource,
+		NewSettingsAuthGithubResource,
+		NewSettingsAuthGithubEnterpriseResource,
+		NewSettingsAuthGithubEnterpriseOrgResource,
+		NewSettingsAuthGithubEnterpriseTeamResource,
+		NewSettingsAuthGithubOrgResource,
+		NewSettingsAuthGithubTeamResource,
+		NewSettingsAuthGoogleOauth2Resource,
+		NewSettingsAuthLDAPResource,
+		NewSettingsAuthSAMLResource,
+		NewSettingsJobsResource,
+		NewSettingsMiscAuthenticationResource,
+		NewSettingsMiscLoggingResource,
+		NewSettingsMiscSystemResource,
+		NewSettingsOpenIDConnectResource,
+		NewSettingsUIResource,
+		NewTeamResource,
+		NewTeamAssociateDisassociateRoleResource,
+		NewTokensResource,
+		NewUserResource,
+		NewUserAssociateDisassociateRoleResource,
+		NewWorkflowJobTemplateResource,
+		NewWorkflowJobTemplateAssociateDisassociateNotificationTemplateResource,
+		NewWorkflowJobTemplateSurveyResource,
+	}
+}

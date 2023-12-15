@@ -1,0 +1,33 @@
+{
+  "endpoint": "/api/v2/labels/",
+  "name": "Label",
+  "type_name": "label",
+  "id_key": "id",
+  "enabled": true,
+  "undeletable": true,
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name_organization",
+      "url_suffix": "?name__exact=%s&organization=%d",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        },
+        {
+          "name": "organization"
+        }
+      ]
+    }
+  ]
+}

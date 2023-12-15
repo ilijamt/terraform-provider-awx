@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        provider: [ 'provider_21_8_0' ]
+        provider: [ 'provider' ]
     steps:
       - uses: actions/checkout@v4
       - name: Setup Go

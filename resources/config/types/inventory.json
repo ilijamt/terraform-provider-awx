@@ -1,0 +1,30 @@
+{
+  "endpoint": "/api/v2/inventories/",
+  "name": "Inventory",
+  "type_name": "inventory",
+  "id_key": "id",
+  "enabled": true,
+  "has_object_roles": true,
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

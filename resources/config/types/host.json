@@ -1,0 +1,53 @@
+{
+  "endpoint": "/api/v2/hosts/",
+  "name": "Host",
+  "type_name": "host",
+  "id_key": "id",
+  "enabled": true,
+  "has_object_roles": true,
+  "associate_disassociate_groups": [
+    {
+      "name": "Host",
+      "type": "Group",
+      "endpoint": "/api/v2/hosts/%d/groups/"
+    }
+  ],
+  "property_overrides": {
+    "variables": {
+      "post_wrap": true,
+      "default_value": "{}"
+    }
+  },
+  "remove_fields_data_source": [
+    "ansible_facts_modified",
+    "has_active_failures",
+    "has_inventory_sources"
+  ],
+  "remove_fields_resource": [
+    "ansible_facts_modified",
+    "last_job",
+    "last_job_host_summary"
+  ],
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

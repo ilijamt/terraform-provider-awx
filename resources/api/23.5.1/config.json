@@ -1,0 +1,1332 @@
+{
+  "api_version": "23.5.1",
+  "render_api_docs": true,
+  "default_remove_api_resource": [
+    "url",
+    "created",
+    "modified",
+    "last_job_failed",
+    "last_job_run",
+    "next_job_run",
+    "last_update_failed",
+    "last_updated"
+  ],
+  "default_remove_api_data_source": [
+    "related",
+    "summary_fields",
+    "url",
+    "type",
+    "created",
+    "modified",
+    "last_job_failed",
+    "last_job_run",
+    "next_job_run",
+    "last_update_failed",
+    "last_updated"
+  ],
+  "items": [
+    {
+      "endpoint": "/api/v2/ad_hoc_commands/",
+      "name": "AdHocCommand",
+      "type_name": "ad_hoc_command",
+      "id_key": "id",
+      "enabled": true,
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+      "property_overrides": {
+        "launched_by": {
+          "type": "id"
+        },
+        "extra_vars": {
+          "type": "json",
+          "post_wrap": true
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/applications/",
+      "name": "Application",
+      "type_name": "application",
+      "id_key": "id",
+      "enabled": true,
+      "pre_state_set_hook_function": "hookApplication",
+      "property_overrides": {
+        "client_secret": {
+          "sensitive": true
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name_organization",
+          "url_suffix": "?name__exact=%s&organization=%d",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            },
+            {
+              "name": "organization"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "Credential",
+      "type_name": "credential",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "skip_write_only": true,
+      "pre_state_set_hook_function": "hookCredential",
+      "property_overrides": {
+        "kind": {
+          "type": "string"
+        },
+        "cloud": {
+          "type": "boolean"
+        },
+        "kubernetes": {
+          "type": "boolean"
+        },
+        "inputs": {
+          "type": "json"
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "/?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/credential_input_sources/",
+      "name": "CredentialInputSource",
+      "type_name": "credential_input_source",
+      "id_key": "id",
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/credential_types/",
+      "name": "CredentialType",
+      "type_name": "credential_type",
+      "id_key": "id",
+      "enabled": true,
+      "property_overrides": {
+        "kind": {
+          "description": "The credential type"
+        },
+        "managed": {
+          "description": "Is the resource managed"
+        },
+        "namespace": {
+          "description": "The namespace to which the resource belongs to"
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/execution_environments/",
+      "name": "ExecutionEnvironment",
+      "type_name": "execution_environment",
+      "id_key": "id",
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/groups/",
+      "name": "Group",
+      "type_name": "group",
+      "id_key": "id",
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/hosts/",
+      "name": "Host",
+      "type_name": "host",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "associate_disassociate_groups": [
+        {
+          "name": "Host",
+          "type": "Group",
+          "endpoint": "/api/v2/hosts/%d/groups/"
+        }
+      ],
+      "property_overrides": {
+        "variables": {
+          "post_wrap": true,
+          "default_value": "{}"
+        }
+      },
+      "remove_fields_data_source": [
+        "ansible_facts_modified",
+        "has_active_failures",
+        "has_inventory_sources"
+      ],
+      "remove_fields_resource": [
+        "ansible_facts_modified",
+        "last_job",
+        "last_job_host_summary"
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/instance_groups/",
+      "name": "InstanceGroup",
+      "type_name": "instance_group",
+      "id_key": "id",
+      "property_overrides": {
+        "capacity": {
+          "type": "integer"
+        },
+        "consumed_capacity": {
+          "type": "float"
+        },
+        "percent_capacity_remaining": {
+          "type": "float"
+        },
+        "instances": {
+          "type": "integer"
+        }
+      },
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/inventories/",
+      "name": "Inventory",
+      "type_name": "inventory",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/inventory_sources/",
+      "name": "InventorySource",
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+      "type_name": "inventory_source",
+      "id_key": "id",
+      "enabled": true,
+      "property_overrides": {
+        "source_vars": {
+          "post_wrap": true,
+          "type": "json"
+        }
+      },
+      "remove_fields_data_source": [
+        "custom_virtualenv",
+        "status"
+      ],
+      "remove_fields_resource": [
+        "custom_virtualenv",
+        "status"
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/job_templates/",
+      "name": "JobTemplate",
+      "type_name": "job_template",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "has_survey_spec": true,
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+      "associate_disassociate_groups": [
+        {
+          "name": "JobTemplate",
+          "type": "Credential",
+          "endpoint": "/api/v2/job_templates/%d/credentials/"
+        },
+        {
+          "name": "JobTemplate",
+          "type": "NotificationTemplate",
+          "endpoint": "/api/v2/job_templates/%d/notification_templates_%s/",
+          "associate_type": "notification_job_template"
+        }
+      ],
+      "remove_fields_data_source": [
+        "custom_virtualenv",
+        "status"
+      ],
+      "remove_fields_resource": [
+        "custom_virtualenv",
+        "status"
+      ],
+      "property_overrides": {
+        "name": {
+          "required": true
+        },
+        "extra_vars": {
+          "type": "json",
+          "post_wrap": true
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/labels/",
+      "name": "Label",
+      "type_name": "label",
+      "id_key": "id",
+      "enabled": true,
+      "undeletable": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name_organization",
+          "url_suffix": "?name__exact=%s&organization=%d",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            },
+            {
+              "name": "organization"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/me/",
+      "name": "Me",
+      "type_name": "me",
+      "no_id": true,
+      "enabled": true,
+      "undeletable": true,
+      "no_terraform_resource": true,
+      "property_overrides": {
+        "external_account": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplate",
+      "type_name": "notification_template",
+      "id_key": "id",
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/organizations/",
+      "name": "Organization",
+      "type_name": "organization",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "associate_disassociate_groups": [
+        {
+          "name": "Organization",
+          "type": "InstanceGroup",
+          "endpoint": "/api/v2/organizations/%d/instance_groups/"
+        },
+        {
+          "name": "Organization",
+          "type": "GalaxyCredential",
+          "endpoint": "/api/v2/organizations/%d/galaxy_credentials/"
+        }
+      ],
+      "remove_fields_data_source": [
+        "custom_virtualenv",
+        "has_active_failures",
+        "hosts_with_active_failures",
+        "total_groups",
+        "total_hosts"
+      ],
+      "remove_fields_resource": [
+        "has_active_failures",
+        "hosts_with_active_failures",
+        "total_groups",
+        "total_hosts"
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/projects/",
+      "name": "Project",
+      "type_name": "project",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "remove_fields_data_source": [
+        "custom_virtualenv",
+        "status",
+        "scm_revision"
+      ],
+      "remove_fields_resource": [
+        "custom_virtualenv",
+        "status",
+        "scm_revision"
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/schedules/",
+      "name": "Schedule",
+      "type_name": "schedule",
+      "id_key": "id",
+      "property_overrides": {
+        "timezone": {
+          "type": "string"
+        },
+        "until": {
+          "type": "string"
+        }
+      },
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/settings/azuread-oauth2/",
+      "name": "SettingsAuthAzureADOauth2",
+      "type_name": "settings_auth_azuread_oauth2",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthAzureADOauth2",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github/",
+      "name": "SettingsAuthGithub",
+      "type_name": "settings_auth_github",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithub",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github-enterprise/",
+      "name": "SettingsAuthGithubEnterprise",
+      "type_name": "settings_auth_github_enterprise",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithubEnterprise",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github-enterprise-org/",
+      "name": "SettingsAuthGithubEnterpriseOrg",
+      "type_name": "settings_auth_github_enterprise_org",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithubEnterpriseOrg",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github-enterprise-team/",
+      "name": "SettingsAuthGithubEnterpriseTeam",
+      "type_name": "settings_auth_github_enterprise_team",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithubEnterpriseTeam",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github-org/",
+      "name": "SettingsAuthGithubOrg",
+      "type_name": "settings_auth_github_org",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithubOrg",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_ORG_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/github-team/",
+      "name": "SettingsAuthGithubTeam",
+      "type_name": "settings_auth_github_team",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGithubTeam",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/google-oauth2/",
+      "name": "SettingsAuthGoogleOauth2",
+      "type_name": "settings_auth_google_oauth2",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthGoogleOauth2",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+          "sensitive": true
+        },
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/ldap/",
+      "name": "SettingsAuthLDAP",
+      "type_name": "settings_auth_ldap",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthLdap",
+      "undeletable": true,
+      "property_overrides": {
+        "AUTH_LDAP_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_1_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_2_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_3_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_4_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_BIND_PASSWORD": {
+          "sensitive": true
+        },
+        "AUTH_LDAP_5_CONNECTION_OPTIONS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_TEAM_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_USER_ATTR_MAP": {
+          "type": "json"
+        },
+        "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/saml/",
+      "name": "SettingsAuthSAML",
+      "type_name": "settings_auth_saml",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsSaml",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
+          "sensitive": true,
+          "trim": true
+        },
+        "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
+          "trim": true
+        },
+        "SOCIAL_AUTH_SAML_ORG_INFO": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_SP_EXTRA": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_TEAM_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_TEAM_ATTR": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/jobs/",
+      "name": "SettingsJobs",
+      "type_name": "settings_jobs",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true,
+      "property_overrides": {
+        "AWX_TASK_ENV": {
+          "type": "json"
+        },
+        "GALAXY_TASK_ENV": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/authentication/",
+      "name": "SettingsMiscAuthentication",
+      "type_name": "settings_misc_authentication",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true,
+      "property_overrides": {
+        "OAUTH2_PROVIDER": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_TEAM_MAP": {
+          "type": "json"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/logging/",
+      "name": "SettingsMiscLogging",
+      "type_name": "settings_misc_logging",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true
+    },
+    {
+      "endpoint": "/api/v2/settings/system/",
+      "name": "SettingsMiscSystem",
+      "type_name": "settings_misc_system",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true,
+      "remove_fields_resource": [
+        "AUTOMATION_ANALYTICS_LAST_GATHER",
+        "CUSTOM_VENV_PATHS"
+      ],
+      "property_overrides": {
+        "LICENSE": {
+          "type": "string"
+        },
+        "DEFAULT_EXECUTION_ENVIRONMENT": {
+          "type": "id"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/oidc/",
+      "name": "SettingsOpenIDConnect",
+      "type_name": "settings_oidc",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true
+    },
+    {
+      "endpoint": "/api/v2/settings/ui/",
+      "name": "SettingsUI",
+      "type_name": "settings_ui",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true
+    },
+    {
+      "endpoint": "/api/v2/teams/",
+      "name": "Team",
+      "type_name": "team",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "associate_disassociate_groups": [
+        {
+          "name": "Team",
+          "type": "Role",
+          "endpoint": "/api/v2/teams/%d/roles/"
+        }
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/tokens/",
+      "name": "Tokens",
+      "type_name": "token",
+      "id_key": "id",
+      "enabled": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ],
+      "property_overrides": {
+        "refresh_token": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/users/",
+      "name": "User",
+      "type_name": "user",
+      "id_key": "id",
+      "has_object_roles": false,
+      "enabled": true,
+      "associate_disassociate_groups": [
+        {
+          "name": "User",
+          "type": "Role",
+          "endpoint": "/api/v2/users/%d/roles/"
+        }
+      ],
+      "property_overrides": {
+        "external_account": {
+          "type": "string"
+        },
+        "password": {
+          "sensitive": true,
+          "required": true
+        }
+      },
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_username",
+          "url_suffix": "?username__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "username",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/v2/workflow_job_templates/",
+      "name": "WorkflowJobTemplate",
+      "type_name": "workflow_job_template",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "has_survey_spec": true,
+      "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+      "property_overrides": {
+        "extra_vars": {
+          "type": "json",
+          "post_wrap": true
+        }
+      },
+      "associate_disassociate_groups": [
+        {
+          "name": "WorkflowJobTemplate",
+          "type": "NotificationTemplate",
+          "endpoint": "/api/v2/workflow_job_templates/%d/notification_templates_%s/",
+          "associate_type": "notification_job_workflow_template"
+        }
+      ],
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ],
+      "remove_fields_data_source": [
+        "custom_virtualenv",
+        "status"
+      ],
+      "remove_fields_resource": [
+        "custom_virtualenv",
+        "status"
+      ]
+    },
+    {
+      "endpoint": "/api/v2/constructed_inventories/",
+      "name": "ConstructedInventories",
+      "type_name": "constructed_inventories",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

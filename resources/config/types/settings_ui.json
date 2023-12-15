@@ -1,0 +1,11 @@
+{
+  "endpoint": "/api/v2/settings/ui/",
+  "name": "SettingsUI",
+  "type_name": "settings_ui",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "undeletable": true
+}

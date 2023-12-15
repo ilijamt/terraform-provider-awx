@@ -1,0 +1,37 @@
+{
+  "endpoint": "/api/v2/teams/",
+  "name": "Team",
+  "type_name": "team",
+  "id_key": "id",
+  "enabled": true,
+  "has_object_roles": true,
+  "associate_disassociate_groups": [
+    {
+      "name": "Team",
+      "type": "Role",
+      "endpoint": "/api/v2/teams/%d/roles/"
+    }
+  ],
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "endpoint": "/api/v2/inventory_sources/",
+  "name": "InventorySource",
+  "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+  "type_name": "inventory_source",
+  "id_key": "id",
+  "enabled": true,
+  "property_overrides": {
+    "source_vars": {
+      "post_wrap": true,
+      "type": "json"
+    }
+  },
+  "remove_fields_data_source": [
+    "custom_virtualenv",
+    "status"
+  ],
+  "remove_fields_resource": [
+    "custom_virtualenv",
+    "status"
+  ],
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "endpoint": "/api/v2/settings/google-oauth2/",
+  "name": "SettingsAuthGoogleOauth2",
+  "type_name": "settings_auth_google_oauth2",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "pre_state_set_hook_function": "hookSettingsAuthGoogleOauth2",
+  "undeletable": true,
+  "property_overrides": {
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+      "sensitive": true
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
+      "type": "json"
+    }
+  }
+}
