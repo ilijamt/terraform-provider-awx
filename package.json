@@ -1,0 +1,7 @@
+{
+  "name": "terraform-provider-awx",
+  "license": "MIT",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
