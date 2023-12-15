@@ -1,10 +1,13 @@
 default: build
 
+VERSION=23.5.1
+
 .PHONY: generate-awx
 generate-awx:
+	node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/resources/api/$(VERSION)
 	rm -f internal/awx/gen_*.go
 	rm -rf cmd/provider/docs/*
-	go run ./tools/generator/cmd/generator/main.go template resources/api/21.8.0 internal/awx
+	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
 	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go
 

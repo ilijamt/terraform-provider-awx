@@ -21,38 +21,38 @@ import (
 )
 
 var (
-	_ datasource.DataSource              = &inventoryDataSource{}
-	_ datasource.DataSourceWithConfigure = &inventoryDataSource{}
+	_ datasource.DataSource              = &constructedInventoriesDataSource{}
+	_ datasource.DataSourceWithConfigure = &constructedInventoriesDataSource{}
 )
 
-// NewInventoryDataSource is a helper function to instantiate the Inventory data source.
-func NewInventoryDataSource() datasource.DataSource {
-	return &inventoryDataSource{}
+// NewConstructedInventoriesDataSource is a helper function to instantiate the ConstructedInventories data source.
+func NewConstructedInventoriesDataSource() datasource.DataSource {
+	return &constructedInventoriesDataSource{}
 }
 
-// inventoryDataSource is the data source implementation.
-type inventoryDataSource struct {
+// constructedInventoriesDataSource is the data source implementation.
+type constructedInventoriesDataSource struct {
 	client   c.Client
 	endpoint string
 }
 
 // Configure adds the provider configured client to the data source.
-func (o *inventoryDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
+func (o *constructedInventoriesDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
 
 	o.client = req.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/inventories/"
+	o.endpoint = "/api/v2/constructed_inventories/"
 }
 
 // Metadata returns the data source type name.
-func (o *inventoryDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_inventory"
+func (o *constructedInventoriesDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_constructed_inventories"
 }
 
 // Schema defines the schema for the data source.
-func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (o *constructedInventoriesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
@@ -73,12 +73,6 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.Bool{},
-			},
-			"host_filter": schema.StringAttribute{
-				Description: "Filter that will be applied to the hosts of this inventory.",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"hosts_with_active_failures": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures.",
@@ -112,6 +106,12 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
 				},
 			},
+			"limit": schema.StringAttribute{
+				Description: "The limit to restrict the returned hosts for the related auto-created inventory source, special to constructed inventory.",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.String{},
+			},
 			"name": schema.StringAttribute{
 				Description: "Name of this inventory.",
 				Sensitive:   false,
@@ -142,6 +142,12 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
+			"source_vars": schema.StringAttribute{
+				Description: "The source_vars for the related auto-created inventory source, special to constructed inventory.",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.String{},
+			},
 			"total_groups": schema.Int64Attribute{
 				Description: "This field is deprecated and will be removed in a future release. Total number of groups in this inventory.",
 				Sensitive:   false,
@@ -160,24 +166,38 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
+			"update_cache_timeout": schema.Int64Attribute{
+				Description: "The cache timeout for the related auto-created inventory source, special to constructed inventory",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
 			"variables": schema.StringAttribute{
 				Description: "Inventory variables in JSON or YAML format.",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
+			"verbosity": schema.Int64Attribute{
+				Description: "The verbosity level for the related auto-created inventory source, special to constructed inventory",
+				Sensitive:   false,
+				Computed:    true,
+				Validators: []validator.Int64{
+					int64validator.Between(0, 2),
+				},
+			},
 			// Write only elements
 		},
 	}
 }
 
-func (o *inventoryDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
+func (o *constructedInventoriesDataSource) ConfigValidators(ctx context.Context) []datasource.ConfigValidator {
 	return []datasource.ConfigValidator{}
 }
 
 // Read refreshes the Terraform state with the latest data.
-func (o *inventoryDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state inventoryTerraformModel
+func (o *constructedInventoriesDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var state constructedInventoriesTerraformModel
 	var err error
 	var endpoint string
 	var searchDefined bool
@@ -224,21 +244,21 @@ func (o *inventoryDataSource) Read(ctx context.Context, req datasource.ReadReque
 		return
 	}
 
-	// Creates a new request for Inventory
+	// Creates a new request for ConstructedInventories
 	var r *http.Request
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Inventory on %s for read", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for ConstructedInventories on %s for read", o.endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	// Try and actually fetch the data for Inventory
+	// Try and actually fetch the data for ConstructedInventories
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Inventory on %s", endpoint),
+			fmt.Sprintf("Unable to read resource for ConstructedInventories on %s", endpoint),
 			err.Error(),
 		)
 		return

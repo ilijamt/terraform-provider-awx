@@ -57,6 +57,18 @@ func (o *settingsMiscLoggingDataSource) Schema(ctx context.Context, req datasour
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
+			"log_aggregator_action_max_disk_usage_gb": schema.Int64Attribute{
+				Description: "Amount of data to store (in gigabytes) if an rsyslog action takes time to process an incoming message (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting on the action (e.g. omhttp). It stores files in the directory specified by LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
+			"log_aggregator_action_queue_size": schema.Int64Attribute{
+				Description: "Defines how large the rsyslog action queue can grow in number of messages stored. This can have an impact on memory utilization. When the queue reaches 75% of this number, the queue will start writing to disk (queue.highWatermark in rsyslog). When it reaches 90%, NOTICE, INFO, and DEBUG messages will start to be discarded (queue.discardMark with queue.discardSeverity=5).",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
 			"log_aggregator_enabled": schema.BoolAttribute{
 				Description: "Enable sending logs to external log aggregator.",
 				Sensitive:   false,
@@ -85,16 +97,10 @@ func (o *settingsMiscLoggingDataSource) Schema(ctx context.Context, req datasour
 			},
 			"log_aggregator_loggers": schema.ListAttribute{
 				ElementType: types.StringType,
-				Description: "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs.",
+				Description: "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs\nbroadcast_websocket - errors pertaining to websockets broadcast metrics\n",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.List{},
-			},
-			"log_aggregator_max_disk_usage_gb": schema.Int64Attribute{
-				Description: "Amount of data to store (in gigabytes) during an outage of the external log aggregator (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting.",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"log_aggregator_max_disk_usage_path": schema.StringAttribute{
 				Description: "Location to persist logs that should be retried after an outage of the external log aggregator (defaults to /var/lib/awx). Equivalent to the rsyslogd queue.spoolDirectory setting.",

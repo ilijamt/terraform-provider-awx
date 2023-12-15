@@ -46,4 +46,4 @@ description: |-
 - `id` (Number) Database ID for this schedule.
 - `next_run` (String) The next time that the scheduled action will run.
 - `timezone` (String) The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.
-- `until` (String) The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned
+- `until` (String) The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned

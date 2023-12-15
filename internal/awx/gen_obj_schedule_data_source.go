@@ -195,7 +195,7 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Validators:  []validator.Int64{},
 			},
 			"until": schema.StringAttribute{
-				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned",
+				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},

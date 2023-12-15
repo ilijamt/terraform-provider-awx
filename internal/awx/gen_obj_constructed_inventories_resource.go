@@ -9,6 +9,7 @@ import (
 	p "path"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
@@ -28,35 +29,35 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource                = &inventoryResource{}
-	_ resource.ResourceWithConfigure   = &inventoryResource{}
-	_ resource.ResourceWithImportState = &inventoryResource{}
+	_ resource.Resource                = &constructedInventoriesResource{}
+	_ resource.ResourceWithConfigure   = &constructedInventoriesResource{}
+	_ resource.ResourceWithImportState = &constructedInventoriesResource{}
 )
 
-// NewInventoryResource is a helper function to simplify the provider implementation.
-func NewInventoryResource() resource.Resource {
-	return &inventoryResource{}
+// NewConstructedInventoriesResource is a helper function to simplify the provider implementation.
+func NewConstructedInventoriesResource() resource.Resource {
+	return &constructedInventoriesResource{}
 }
 
-type inventoryResource struct {
+type constructedInventoriesResource struct {
 	client   c.Client
 	endpoint string
 }
 
-func (o *inventoryResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *constructedInventoriesResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
 
 	o.client = request.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/inventories/"
+	o.endpoint = "/api/v2/constructed_inventories/"
 }
 
-func (o *inventoryResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_inventory"
+func (o *constructedInventoriesResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+	response.TypeName = request.ProviderTypeName + "_constructed_inventories"
 }
 
-func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *constructedInventoriesResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Request elements
@@ -72,8 +73,8 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 				},
 				Validators: []validator.String{},
 			},
-			"host_filter": schema.StringAttribute{
-				Description: "Filter that will be applied to the hosts of this inventory.",
+			"limit": schema.StringAttribute{
+				Description: "The limit to restrict the returned hosts for the related auto-created inventory source, special to constructed inventory.",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
@@ -82,20 +83,6 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{},
-			},
-			"kind": schema.StringAttribute{
-				Description: "Kind of inventory being represented.",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(``),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
-				},
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this inventory.",
@@ -128,6 +115,28 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 				},
 				Validators: []validator.Bool{},
 			},
+			"source_vars": schema.StringAttribute{
+				Description: "The source_vars for the related auto-created inventory source, special to constructed inventory.",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.String{},
+			},
+			"update_cache_timeout": schema.Int64Attribute{
+				Description: "The cache timeout for the related auto-created inventory source, special to constructed inventory",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{},
+			},
 			"variables": schema.StringAttribute{
 				Description: "Inventory variables in JSON or YAML format.",
 				Sensitive:   false,
@@ -139,6 +148,19 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{},
+			},
+			"verbosity": schema.Int64Attribute{
+				Description: "The verbosity level for the related auto-created inventory source, special to constructed inventory",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{
+					int64validator.Between(0, 2),
+				},
 			},
 			// Write only elements
 			// Data only elements
@@ -192,6 +214,19 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 					int64planmodifier.UseStateForUnknown(),
 				},
 			},
+			"kind": schema.StringAttribute{
+				Description: "Kind of inventory being represented.",
+				Required:    false,
+				Optional:    false,
+				Computed:    true,
+				Sensitive:   false,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.String{
+					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
+				},
+			},
 			"pending_deletion": schema.BoolAttribute{
 				Description: "Flag indicating the inventory is being deleted.",
 				Required:    false,
@@ -236,11 +271,11 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 	}
 }
 
-func (o *inventoryResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+func (o *constructedInventoriesResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the Inventory.", request.ID),
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the ConstructedInventories.", request.ID),
 			err.Error(),
 		)
 		return
@@ -248,20 +283,20 @@ func (o *inventoryResource) ImportState(ctx context.Context, request resource.Im
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), id)...)
 }
 
-func (o *inventoryResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *constructedInventoriesResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var err error
-	var plan, state inventoryTerraformModel
+	var plan, state constructedInventoriesTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
 
-	// Creates a new request for Inventory
+	// Creates a new request for ConstructedInventories
 	var r *http.Request
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Inventory/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ConstructedInventories/Create] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -269,17 +304,17 @@ func (o *inventoryResource) Create(ctx context.Context, request resource.CreateR
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Inventory on %s for create", endpoint),
+			fmt.Sprintf("Unable to create a new request for ConstructedInventories on %s for create", endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	// Create a new Inventory resource in AWX
+	// Create a new ConstructedInventories resource in AWX
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create resource for Inventory on %s", endpoint),
+			fmt.Sprintf("Unable to create resource for ConstructedInventories on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -297,33 +332,33 @@ func (o *inventoryResource) Create(ctx context.Context, request resource.CreateR
 	}
 }
 
-func (o *inventoryResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *constructedInventoriesResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var err error
 
 	// Get current state
-	var state inventoryTerraformModel
+	var state constructedInventoriesTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
 
-	// Creates a new request for Inventory
+	// Creates a new request for ConstructedInventories
 	var r *http.Request
 	var id = state.ID.ValueInt64()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Inventory on %s for read", endpoint),
+			fmt.Sprintf("Unable to create a new request for ConstructedInventories on %s for read", endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	// Get refreshed values for Inventory from AWX
+	// Get refreshed values for ConstructedInventories from AWX
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for Inventory on %s", endpoint),
+			fmt.Sprintf("Unable to read resource for ConstructedInventories on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -341,21 +376,21 @@ func (o *inventoryResource) Read(ctx context.Context, request resource.ReadReque
 	}
 }
 
-func (o *inventoryResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *constructedInventoriesResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var err error
-	var plan, state inventoryTerraformModel
+	var plan, state constructedInventoriesTerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
 
-	// Creates a new request for Inventory
+	// Creates a new request for ConstructedInventories
 	var r *http.Request
 	var id = plan.ID.ValueInt64()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Inventory/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ConstructedInventories/Update] Making a request", map[string]interface{}{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -363,17 +398,17 @@ func (o *inventoryResource) Update(ctx context.Context, request resource.UpdateR
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Inventory on %s for update", endpoint),
+			fmt.Sprintf("Unable to create a new request for ConstructedInventories on %s for update", endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	// Create a new Inventory resource in AWX
+	// Create a new ConstructedInventories resource in AWX
 	var data map[string]any
 	if data, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to update resource for Inventory on %s", endpoint),
+			fmt.Sprintf("Unable to update resource for ConstructedInventories on %s", endpoint),
 			err.Error(),
 		)
 		return
@@ -391,32 +426,32 @@ func (o *inventoryResource) Update(ctx context.Context, request resource.UpdateR
 	}
 }
 
-func (o *inventoryResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *constructedInventoriesResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	var err error
 
 	// Retrieve values from state
-	var state inventoryTerraformModel
+	var state constructedInventoriesTerraformModel
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
 
-	// Creates a new request for Inventory
+	// Creates a new request for ConstructedInventories
 	var r *http.Request
 	var id = state.ID
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.ValueInt64())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Inventory on %s for delete", endpoint),
+			fmt.Sprintf("Unable to create a new request for ConstructedInventories on %s for delete", endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	// Delete existing Inventory
+	// Delete existing ConstructedInventories
 	if _, err = o.client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for Inventory on %s", endpoint),
+			fmt.Sprintf("Unable to delete resource for ConstructedInventories on %s", endpoint),
 			err.Error(),
 		)
 		return

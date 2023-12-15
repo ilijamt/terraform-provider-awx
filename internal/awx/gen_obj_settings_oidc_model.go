@@ -17,7 +17,7 @@ type settingsOpenIdconnectTerraformModel struct {
 	SOCIAL_AUTH_OIDC_OIDC_ENDPOINT types.String `tfsdk:"social_auth_oidc_oidc_endpoint" json:"SOCIAL_AUTH_OIDC_OIDC_ENDPOINT"`
 	// SOCIAL_AUTH_OIDC_SECRET "The OIDC secret (Client Secret) from your IDP."
 	SOCIAL_AUTH_OIDC_SECRET types.String `tfsdk:"social_auth_oidc_secret" json:"SOCIAL_AUTH_OIDC_SECRET"`
-	// SOCIAL_AUTH_OIDC_VERIFY_SSL "Verify the OIDV provider ssl certificate."
+	// SOCIAL_AUTH_OIDC_VERIFY_SSL "Verify the OIDC provider ssl certificate."
 	SOCIAL_AUTH_OIDC_VERIFY_SSL types.Bool `tfsdk:"social_auth_oidc_verify_ssl" json:"SOCIAL_AUTH_OIDC_VERIFY_SSL"`
 }
 
@@ -83,6 +83,6 @@ type settingsOpenIdconnectBodyRequestModel struct {
 	SOCIAL_AUTH_OIDC_OIDC_ENDPOINT string `json:"SOCIAL_AUTH_OIDC_OIDC_ENDPOINT,omitempty"`
 	// SOCIAL_AUTH_OIDC_SECRET "The OIDC secret (Client Secret) from your IDP."
 	SOCIAL_AUTH_OIDC_SECRET string `json:"SOCIAL_AUTH_OIDC_SECRET,omitempty"`
-	// SOCIAL_AUTH_OIDC_VERIFY_SSL "Verify the OIDV provider ssl certificate."
+	// SOCIAL_AUTH_OIDC_VERIFY_SSL "Verify the OIDC provider ssl certificate."
 	SOCIAL_AUTH_OIDC_VERIFY_SSL bool `json:"SOCIAL_AUTH_OIDC_VERIFY_SSL"`
 }

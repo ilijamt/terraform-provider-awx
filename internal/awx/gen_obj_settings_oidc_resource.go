@@ -91,7 +91,7 @@ func (o *settingsOpenIdconnectResource) Schema(ctx context.Context, req resource
 				Validators: []validator.String{},
 			},
 			"social_auth_oidc_verify_ssl": schema.BoolAttribute{
-				Description: "Verify the OIDV provider ssl certificate.",
+				Description: "Verify the OIDC provider ssl certificate.",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,

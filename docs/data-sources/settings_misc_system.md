@@ -23,10 +23,13 @@ description: |-
 - `automation_analytics_last_entries` (String) Last gathered entries from the data collection service of Automation Analytics
 - `automation_analytics_last_gather` (String) Last gather date for Automation Analytics.
 - `automation_analytics_url` (String) This setting is used to to configure the upload URL for data collection for Automation Analytics.
+- `cleanup_host_metrics_last_ts` (String) Last cleanup date for HostMetrics
+- `csrf_trusted_origins` (List of String) If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.
 - `custom_venv_paths` (List of String) Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line.
 - `default_control_plane_queue_name` (String) The instance group where control plane tasks run
 - `default_execution_environment` (Number) The Execution Environment to be used when one has not been configured for a job template.
 - `default_execution_queue_name` (String) The instance group where user jobs run (currently only on non-VM installs)
+- `host_metric_summary_task_last_ts` (String) Last computing date of HostMetricSummaryMonthly
 - `insights_tracking_state` (Boolean) Enables the service to gather data on automation and send it to Automation Analytics.
 - `install_uuid` (String) Unique identifier for an installation
 - `is_k8s` (Boolean) Indicates whether the instance is part of a kubernetes-based deployment.
@@ -37,8 +40,8 @@ description: |-
 - `redhat_password` (String) This password is used to send data to Automation Analytics
 - `redhat_username` (String) This username is used to send data to Automation Analytics
 - `remote_host_headers` (List of String) HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as "HTTP_X_FORWARDED_FOR", if behind a reverse proxy. See the "Proxy Support" section of the AAP Installation guide for more details.
+- `subscription_usage_model` (String) Defines subscription usage model and shows Host Metrics
 - `subscriptions_password` (String) This password is used to retrieve subscription and content information
 - `subscriptions_username` (String) This username is used to retrieve subscription and content information
-- `tower_url_base` (String) This value has been set manually in a settings file.
-
-This setting is used by services like notifications to render a valid url to the service.
+- `tower_url_base` (String) This setting is used by services like notifications to render a valid url to the service.
+- `ui_next` (Boolean) Enable preview of new user interface.

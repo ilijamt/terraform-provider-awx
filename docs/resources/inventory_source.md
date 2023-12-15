@@ -27,9 +27,11 @@ description: |-
 - `enabled_value` (String) Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var="status.power_state"and enabled_value="powered_on" with host variables:{   "status": {     "power_state": "powered_on",     "created": "2020-08-04T18:13:04+00:00",     "healthy": true    },    "name": "foobar",    "ip_address": "192.168.2.1"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled
 - `enabled_var` (String) Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as "foo.bar", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get("foo", {}).get("bar", default)
 - `execution_environment` (Number) The container image to be used for execution.
-- `host_filter` (String) Regex where only matching hosts will be imported.
+- `host_filter` (String) This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.
+- `limit` (String) Enter host, group or pattern match
 - `overwrite` (Boolean) Overwrite local groups and hosts from remote inventory source.
 - `overwrite_vars` (Boolean) Overwrite local variables from remote inventory source.
+- `scm_branch` (String) Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true.
 - `source` (String) Source
 - `source_path` (String) Source path
 - `source_project` (Number) Project containing inventory file used as source.

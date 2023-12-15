@@ -17,10 +17,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
-	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -122,6 +122,18 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 					stringvalidator.LengthAtMost(150),
 				},
 			},
+			"password": schema.StringAttribute{
+				Description: "Field used to change the password.",
+				Sensitive:   true,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				Default:     stringdefault.StaticString(``),
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.String{},
+			},
 			"username": schema.StringAttribute{
 				Description:   "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
 				Sensitive:     false,
@@ -134,18 +146,6 @@ func (o *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 				},
 			},
 			// Write only elements
-			"password": schema.StringAttribute{
-				Description: "Write-only field used to change the password.",
-				Sensitive:   true,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(``),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{},
-			},
 			// Data only elements
 			"external_account": schema.StringAttribute{
 				Description: "Set if the account is managed by an external service",
@@ -221,7 +221,6 @@ func (o *userResource) Create(ctx context.Context, request resource.CreateReques
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
 	})
-	bodyRequest.Password = plan.Password.ValueString()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -247,7 +246,13 @@ func (o *userResource) Create(ctx context.Context, request resource.CreateReques
 		return
 	}
 
-	state.Password = types.StringValue(plan.Password.ValueString())
+	if err = hookUser(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on User",
+			err.Error(),
+		)
+		return
+	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
@@ -264,6 +269,7 @@ func (o *userResource) Read(ctx context.Context, request resource.ReadRequest, r
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for User
 	var r *http.Request
@@ -293,6 +299,14 @@ func (o *userResource) Read(ctx context.Context, request resource.ReadRequest, r
 		return
 	}
 
+	if err = hookUser(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on User",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -318,7 +332,6 @@ func (o *userResource) Update(ctx context.Context, request resource.UpdateReques
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
 	})
-	bodyRequest.Password = plan.Password.ValueString()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -344,7 +357,13 @@ func (o *userResource) Update(ctx context.Context, request resource.UpdateReques
 		return
 	}
 
-	state.Password = types.StringValue(plan.Password.ValueString())
+	if err = hookUser(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on User",
+			err.Error(),
+		)
+		return
+	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {

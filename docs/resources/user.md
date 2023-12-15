@@ -26,7 +26,7 @@ description: |-
 - `is_superuser` (Boolean) Designates that this user has all permissions without explicitly assigning them.
 - `is_system_auditor` (Boolean) Is system auditor
 - `last_name` (String) Last name
-- `password` (String, Sensitive) Write-only field used to change the password.
+- `password` (String, Sensitive) Field used to change the password.
 
 ### Read-Only
 

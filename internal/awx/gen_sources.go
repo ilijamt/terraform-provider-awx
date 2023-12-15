@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	ApiVersion string = "21.8.0"
+	ApiVersion string = "23.5.1"
 )
 
 // DataSources is a helper function to return all defined data sources
@@ -14,9 +14,11 @@ func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewAdHocCommandDataSource,
 		NewApplicationDataSource,
+		NewConstructedInventoriesDataSource,
+		NewConstructedInventoriesObjectRolesDataSource,
 		NewCredentialDataSource,
-		NewCredentialObjectRolesDataSource,
 		NewCredentialInputSourceDataSource,
+		NewCredentialObjectRolesDataSource,
 		NewCredentialTypeDataSource,
 		NewExecutionEnvironmentDataSource,
 		NewGroupDataSource,
@@ -66,6 +68,7 @@ func Resources() []func() resource.Resource {
 	return []func() resource.Resource{
 		NewAdHocCommandResource,
 		NewApplicationResource,
+		NewConstructedInventoriesResource,
 		NewCredentialResource,
 		NewCredentialInputSourceResource,
 		NewCredentialTypeResource,
@@ -83,8 +86,8 @@ func Resources() []func() resource.Resource {
 		NewLabelResource,
 		NewNotificationTemplateResource,
 		NewOrganizationResource,
-		NewOrganizationAssociateDisassociateInstanceGroupResource,
 		NewOrganizationAssociateDisassociateGalaxyCredentialResource,
+		NewOrganizationAssociateDisassociateInstanceGroupResource,
 		NewProjectResource,
 		NewScheduleResource,
 		NewSettingsAuthAzureADOauth2Resource,

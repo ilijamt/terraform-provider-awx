@@ -24,6 +24,8 @@ url_path - The URL path to the API endpoint called
 remote_addr - The remote address seen for the user
 error - The error set by the api endpoint
 Variables need to be in the format {<variable name>}.
+- `log_aggregator_action_max_disk_usage_gb` (Number) Amount of data to store (in gigabytes) if an rsyslog action takes time to process an incoming message (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting on the action (e.g. omhttp). It stores files in the directory specified by LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.
+- `log_aggregator_action_queue_size` (Number) Defines how large the rsyslog action queue can grow in number of messages stored. This can have an impact on memory utilization. When the queue reaches 75% of this number, the queue will start writing to disk (queue.highWatermark in rsyslog). When it reaches 90%, NOTICE, INFO, and DEBUG messages will start to be discarded (queue.discardMark with queue.discardSeverity=5).
 - `log_aggregator_enabled` (Boolean) Enable sending logs to external log aggregator.
 - `log_aggregator_host` (String) Hostname/IP where external logs will be sent to.
 - `log_aggregator_individual_facts` (Boolean) If set, system tracking facts will be sent for each package, service, or other item found in a scan, allowing for greater search query granularity. If unset, facts will be sent as a single dictionary, allowing for greater efficiency in fact processing.
@@ -32,8 +34,8 @@ Variables need to be in the format {<variable name>}.
 awx - service logs
 activity_stream - activity stream records
 job_events - callback data from Ansible job events
-system_tracking - facts gathered from scan jobs.
-- `log_aggregator_max_disk_usage_gb` (Number) Amount of data to store (in gigabytes) during an outage of the external log aggregator (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting.
+system_tracking - facts gathered from scan jobs
+broadcast_websocket - errors pertaining to websockets broadcast metrics
 - `log_aggregator_max_disk_usage_path` (String) Location to persist logs that should be retried after an outage of the external log aggregator (defaults to /var/lib/awx). Equivalent to the rsyslogd queue.spoolDirectory setting.
 - `log_aggregator_password` (String) Password or authentication token for external log aggregator (if required; HTTP/s only).
 - `log_aggregator_port` (Number) Port on Logging Aggregator to send logs to (if required and not provided in Logging Aggregator).

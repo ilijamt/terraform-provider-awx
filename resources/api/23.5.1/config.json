@@ -323,6 +323,9 @@
         },
         "instances": {
           "type": "integer"
+        },
+        "jobs_running": {
+          "type": "integer"
         }
       },
       "enabled": true,
@@ -519,7 +522,10 @@
         "external_account": {
           "type": "string"
         }
-      }
+      },
+      "remove_fields_data_source": [
+        "password"
+      ]
     },
     {
       "endpoint": "/api/v2/notification_templates/",
@@ -1242,7 +1248,8 @@
             }
           ]
         }
-      ]
+      ],
+      "pre_state_set_hook_function": "hookUser"
     },
     {
       "endpoint": "/api/v2/workflow_job_templates/",
@@ -1296,6 +1303,36 @@
       "remove_fields_resource": [
         "custom_virtualenv",
         "status"
+      ]
+    },
+    {
+      "endpoint": "/api/v2/constructed_inventories/",
+      "name": "ConstructedInventories",
+      "type_name": "constructed_inventories",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
       ]
     }
   ]
