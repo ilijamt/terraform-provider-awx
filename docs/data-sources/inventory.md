@@ -18,6 +18,7 @@ description: |-
 ### Optional
 
 - `id` (Number) Database ID for this inventory.
+- `name` (String) Name of this inventory.
 
 ### Read-Only
 
@@ -28,7 +29,6 @@ description: |-
 - `hosts_with_active_failures` (Number) This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures.
 - `inventory_sources_with_failures` (Number) Number of external inventory sources in this inventory with failures.
 - `kind` (String) Kind of inventory being represented.
-- `name` (String) Name of this inventory.
 - `organization` (Number) Organization containing this inventory.
 - `pending_deletion` (Boolean) Flag indicating the inventory is being deleted.
 - `prevent_instance_group_fallback` (Boolean) If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.

@@ -5,24 +5,27 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
-	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
-	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/cobra"
 	"log"
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/cobra"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 )
 
 var fetchApiResourcesCmd = &cobra.Command{
-	Use:   "fetch-api-resources [out-api-resource-directory]",
-	Args:  cobra.ExactArgs(2),
+	Use:   "fetch-api-resources [api-resource-directory]",
+	Args:  cobra.ExactArgs(1),
 	Short: "Generate the API resource for the AWX target",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		log.Printf("Connecting to '%s' with the username '%s'", farCfg.towerHost, farCfg.towerUsername)
-		var configResource = args[0]
-		var outApiResourceDir = args[1]
+		var outApiResourceDir = args[0]
+		var configResource = fmt.Sprintf("%s/config.json", outApiResourceDir)
+
 		log.Printf("Storing the data in %s directory", outApiResourceDir)
 
 		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify, nil)

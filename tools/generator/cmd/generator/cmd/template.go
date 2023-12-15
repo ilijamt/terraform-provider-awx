@@ -2,27 +2,29 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ilijamt/terraform-provider-awx/tools/generator"
-	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
-	"github.com/spf13/cobra"
 	"log"
 	"os"
 	"text/template"
+
+	"github.com/spf13/cobra"
+
+	"github.com/ilijamt/terraform-provider-awx/tools/generator"
+	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 )
 
 // templateCmd represents the base command when called without any subcommands
 var templateCmd = &cobra.Command{
-	Use:   "template [config-resource] [api-resource-path] [destination]",
-	Args:  cobra.ExactArgs(3),
+	Use:   "template [api-resource-path] [destination]",
+	Args:  cobra.ExactArgs(2),
 	Short: "Template all the resources for the terraform provider",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var tpl *template.Template
 
 		var configResource, apiResourcePath, resourcePath string
-		configResource = args[0]
-		apiResourcePath = args[1]
-		tCfg.generatePath = args[2]
+		apiResourcePath = args[0]
+		tCfg.generatePath = args[1]
 		resourcePath = tCfg.generatePath
+		configResource = fmt.Sprintf("%s/config.json", apiResourcePath)
 
 		if err = cfg.Load(configResource); err != nil {
 			return err
