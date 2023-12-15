@@ -413,14 +413,14 @@
     "application/json"
   ],
   "related_search_fields": [
-    "inventory__search",
-    "created_by__search",
-    "instance_groups__search",
-    "unified_job_template__search",
+    "modified_by__search",
     "credentials__search",
     "labels__search",
-    "modified_by__search",
-    "execution_environment__search"
+    "execution_environment__search",
+    "unified_job_template__search",
+    "inventory__search",
+    "instance_groups__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",

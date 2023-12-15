@@ -112,13 +112,13 @@
     "application/json"
   ],
   "related_search_fields": [
-    "inventory__search",
-    "created_by__search",
+    "modified_by__search",
     "hosts__search",
     "parents__search",
-    "modified_by__search",
+    "inventory__search",
     "inventory_sources__search",
-    "children__search"
+    "children__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",
