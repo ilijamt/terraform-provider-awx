@@ -1,0 +1,23 @@
+{
+  "endpoint": "/api/v2/settings/azuread-oauth2/",
+  "name": "SettingsAuthAzureADOauth2",
+  "type_name": "settings_auth_azuread_oauth2",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "pre_state_set_hook_function": "hookSettingsAuthAzureADOauth2",
+  "undeletable": true,
+  "property_overrides": {
+    "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
+      "sensitive": true
+    },
+    "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "endpoint": "/api/v2/users/",
+  "name": "User",
+  "type_name": "user",
+  "id_key": "id",
+  "has_object_roles": false,
+  "enabled": true,
+  "associate_disassociate_groups": [
+    {
+      "name": "User",
+      "type": "Role",
+      "endpoint": "/api/v2/users/%d/roles/"
+    }
+  ],
+  "property_overrides": {
+    "external_account": {
+      "type": "string"
+    },
+    "password": {
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_username",
+      "url_suffix": "?username__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "username",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "endpoint": "/api/v2/instance_groups/",
+  "name": "InstanceGroup",
+  "type_name": "instance_group",
+  "id_key": "id",
+  "property_overrides": {
+    "capacity": {
+      "type": "integer"
+    },
+    "consumed_capacity": {
+      "type": "float"
+    },
+    "percent_capacity_remaining": {
+      "type": "float"
+    },
+    "instances": {
+      "type": "integer"
+    }
+  },
+  "enabled": true,
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+  ]
+}

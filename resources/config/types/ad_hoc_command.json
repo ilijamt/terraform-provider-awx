@@ -1,0 +1,39 @@
+{
+  "endpoint": "/api/v2/ad_hoc_commands/",
+  "name": "AdHocCommand",
+  "type_name": "ad_hoc_command",
+  "id_key": "id",
+  "enabled": true,
+  "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+  "property_overrides": {
+    "launched_by": {
+      "type": "id"
+    },
+    "extra_vars": {
+      "type": "json",
+      "post_wrap": true
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

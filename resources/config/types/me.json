@@ -1,0 +1,14 @@
+{
+  "endpoint": "/api/v2/me/",
+  "name": "Me",
+  "type_name": "me",
+  "no_id": true,
+  "enabled": true,
+  "undeletable": true,
+  "no_terraform_resource": true,
+  "property_overrides": {
+    "external_account": {
+      "type": "string"
+    }
+  }
+}

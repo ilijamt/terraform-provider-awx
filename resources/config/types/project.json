@@ -1,0 +1,29 @@
+{
+  "endpoint": "/api/v2/projects/",
+  "name": "Project",
+  "type_name": "project",
+  "id_key": "id",
+  "enabled": true,
+  "has_object_roles": true,
+  "remove_fields_data_source": [
+    "custom_virtualenv",
+    "status",
+    "scm_revision"
+  ],
+  "remove_fields_resource": [
+    "custom_virtualenv",
+    "status",
+    "scm_revision"
+  ],
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+  ]
+}

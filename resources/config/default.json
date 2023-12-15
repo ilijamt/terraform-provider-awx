@@ -1,0 +1,27 @@
+{
+  "api_version": "0.0.0",
+  "render_api_docs": true,
+  "default_remove_api_resource": [
+    "url",
+    "created",
+    "modified",
+    "last_job_failed",
+    "last_job_run",
+    "next_job_run",
+    "last_update_failed",
+    "last_updated"
+  ],
+  "default_remove_api_data_source": [
+    "related",
+    "summary_fields",
+    "url",
+    "type",
+    "created",
+    "modified",
+    "last_job_failed",
+    "last_job_run",
+    "next_job_run",
+    "last_update_failed",
+    "last_updated"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "endpoint": "/api/v2/settings/github-enterprise-org/",
+  "name": "SettingsAuthGithubEnterpriseOrg",
+  "type_name": "settings_auth_github_enterprise_org",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "pre_state_set_hook_function": "hookSettingsAuthGithubEnterpriseOrg",
+  "undeletable": true,
+  "property_overrides": {
+    "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
+      "sensitive": true
+    },
+    "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "endpoint": "/api/v2/job_templates/",
+  "name": "JobTemplate",
+  "type_name": "job_template",
+  "id_key": "id",
+  "enabled": true,
+  "has_object_roles": true,
+  "has_survey_spec": true,
+  "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+  "associate_disassociate_groups": [
+    {
+      "name": "JobTemplate",
+      "type": "Credential",
+      "endpoint": "/api/v2/job_templates/%d/credentials/"
+    },
+    {
+      "name": "JobTemplate",
+      "type": "NotificationTemplate",
+      "endpoint": "/api/v2/job_templates/%d/notification_templates_%s/",
+      "associate_type": "notification_job_template"
+    }
+  ],
+  "remove_fields_data_source": [
+    "custom_virtualenv",
+    "status"
+  ],
+  "remove_fields_resource": [
+    "custom_virtualenv",
+    "status"
+  ],
+  "property_overrides": {
+    "name": {
+      "required": true
+    },
+    "extra_vars": {
+      "type": "json",
+      "post_wrap": true
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}
