@@ -1,5 +1,5 @@
 builds:
-  - main: ./cmd/provider_21_8_0/main.go
+  - main: ./cmd/provider/main.go
     env:
       - CGO_ENABLED=0
     mod_timestamp: '{{ .CommitTimestamp }}'
