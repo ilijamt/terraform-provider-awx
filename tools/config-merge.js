@@ -11,6 +11,7 @@ console.log(`API directory: ${apiDir}`);
 
 const fs = require('fs');
 const path = require('path');
+const _ = require('lodash');
 
 function readJSONFiles(directoryPath) {
     let files = fs.readdirSync(directoryPath);
@@ -51,7 +52,12 @@ try {
 }
 
 apiCustomConfigTypes.forEach(function (value, key, map) {
-    configTypes.set(key, Object.assign({}, configTypes.get(key), value));
+    if (!configTypes.has(key)) {
+        configTypes.set(key, value)
+    } else {
+        const data = _.merge(configTypes.get(key), value)
+        configTypes.set(key, data);
+    }
 })
 
 const generatedConfig = Object.assign({}, configDefault,  targetDefault, { items: Array.from(configTypes.values())} )

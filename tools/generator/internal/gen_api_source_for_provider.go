@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"text/template"
 )
 
@@ -15,6 +16,9 @@ func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resour
 	if f, err = os.Create(filename); err != nil {
 		return err
 	}
+
+	sort.Strings(resources)
+	sort.Strings(dataSources)
 
 	return tpl.ExecuteTemplate(f, "sources.go.tpl", map[string]any{
 		"ApiVersion":  config.ApiVersion,

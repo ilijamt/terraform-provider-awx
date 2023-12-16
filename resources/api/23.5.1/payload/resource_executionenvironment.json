@@ -180,16 +180,16 @@
     "application/json"
   ],
   "related_search_fields": [
-    "created_by__search",
-    "credential__search",
-    "workflowjobnode_as_prompt__search",
-    "schedule_as_prompt__search",
-    "unifiedjobtemplates__search",
+    "modified_by__search",
+    "organization__search",
     "unifiedjobs__search",
     "workflowjobtemplatenode_as_prompt__search",
-    "modified_by__search",
+    "credential__search",
     "joblaunchconfig_as_prompt__search",
-    "organization__search"
+    "schedule_as_prompt__search",
+    "workflowjobnode_as_prompt__search",
+    "unifiedjobtemplates__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",

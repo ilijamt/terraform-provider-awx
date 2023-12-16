@@ -1120,18 +1120,18 @@
     "application/json"
   ],
   "related_search_fields": [
-    "created_by__search",
-    "organization_notification_templates_for_errors__search",
-    "unifiedjobtemplate_notification_templates_for_started__search",
-    "unifiedjobtemplate_notification_templates_for_errors__search",
-    "notifications__search",
-    "modified_by__search",
-    "workflowjobtemplate_notification_templates_for_approvals__search",
-    "organization_notification_templates_for_started__search",
-    "organization__search",
-    "organization_notification_templates_for_approvals__search",
     "organization_notification_templates_for_success__search",
-    "unifiedjobtemplate_notification_templates_for_success__search"
+    "modified_by__search",
+    "organization__search",
+    "unifiedjobtemplate_notification_templates_for_errors__search",
+    "organization_notification_templates_for_errors__search",
+    "notifications__search",
+    "organization_notification_templates_for_started__search",
+    "workflowjobtemplate_notification_templates_for_approvals__search",
+    "organization_notification_templates_for_approvals__search",
+    "unifiedjobtemplate_notification_templates_for_started__search",
+    "unifiedjobtemplate_notification_templates_for_success__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",

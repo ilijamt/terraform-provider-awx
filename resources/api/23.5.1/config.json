@@ -323,6 +323,9 @@
         },
         "instances": {
           "type": "integer"
+        },
+        "jobs_running": {
+          "type": "integer"
         }
       },
       "enabled": true,
@@ -519,7 +522,10 @@
         "external_account": {
           "type": "string"
         }
-      }
+      },
+      "remove_fields_data_source": [
+        "password"
+      ]
     },
     {
       "endpoint": "/api/v2/notification_templates/",
@@ -1242,7 +1248,8 @@
             }
           ]
         }
-      ]
+      ],
+      "pre_state_set_hook_function": "hookUser"
     },
     {
       "endpoint": "/api/v2/workflow_job_templates/",
