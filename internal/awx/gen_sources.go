@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	ApiVersion string = "23.5.1"
+	ApiVersion string = "21.8.0"
 )
 
 // DataSources is a helper function to return all defined data sources
@@ -14,8 +14,6 @@ func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewAdHocCommandDataSource,
 		NewApplicationDataSource,
-		NewConstructedInventoriesDataSource,
-		NewConstructedInventoriesObjectRolesDataSource,
 		NewCredentialDataSource,
 		NewCredentialInputSourceDataSource,
 		NewCredentialObjectRolesDataSource,
@@ -68,7 +66,6 @@ func Resources() []func() resource.Resource {
 	return []func() resource.Resource{
 		NewAdHocCommandResource,
 		NewApplicationResource,
-		NewConstructedInventoriesResource,
 		NewCredentialResource,
 		NewCredentialInputSourceResource,
 		NewCredentialTypeResource,

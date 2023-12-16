@@ -42,5 +42,5 @@ description: |-
 - `timeout` (Number) Timeout
 - `timezone` (String) The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.
 - `unified_job_template` (Number) Unified job template
-- `until` (String) The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned
+- `until` (String) The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned
 - `verbosity` (String) Verbosity

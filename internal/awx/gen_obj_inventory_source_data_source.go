@@ -88,7 +88,7 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Validators:  []validator.Int64{},
 			},
 			"host_filter": schema.StringAttribute{
-				Description: "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.",
+				Description: "Regex where only matching hosts will be imported.",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},
@@ -110,12 +110,6 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.Int64{},
-			},
-			"limit": schema.StringAttribute{
-				Description: "Enter host, group or pattern match",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this inventory source.",
@@ -141,18 +135,12 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			"scm_branch": schema.StringAttribute{
-				Description: "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true.",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.String{},
-			},
 			"source": schema.StringAttribute{
 				Description: "Source",
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"file", "constructed", "scm", "ec2", "gce", "azure_rm", "vmware", "satellite6", "openstack", "rhv", "controller", "insights"}...),
+					stringvalidator.OneOf([]string{"file", "scm", "ec2", "gce", "azure_rm", "vmware", "satellite6", "openstack", "rhv", "controller", "insights"}...),
 				},
 			},
 			"source_path": schema.StringAttribute{

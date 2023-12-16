@@ -94,7 +94,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
+					stringvalidator.OneOf([]string{"", "smart"}...),
 				},
 			},
 			"name": schema.StringAttribute{

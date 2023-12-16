@@ -8,7 +8,6 @@ import (
 	"net/http"
 	p "path"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -118,27 +117,6 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 				},
 				Validators: []validator.String{},
 			},
-			"cleanup_host_metrics_last_ts": schema.StringAttribute{
-				Description:   "Last cleanup date for HostMetrics",
-				Sensitive:     false,
-				Required:      true,
-				Optional:      false,
-				Computed:      false,
-				PlanModifiers: []planmodifier.String{},
-				Validators:    []validator.String{},
-			},
-			"csrf_trusted_origins": schema.ListAttribute{
-				ElementType: types.StringType,
-				Description: "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. ",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				PlanModifiers: []planmodifier.List{
-					listplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.List{},
-			},
 			"default_execution_environment": schema.Int64Attribute{
 				Description: "The Execution Environment to be used when one has not been configured for a job template.",
 				Sensitive:   false,
@@ -149,15 +127,6 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{},
-			},
-			"host_metric_summary_task_last_ts": schema.StringAttribute{
-				Description:   "Last computing date of HostMetricSummaryMonthly",
-				Sensitive:     false,
-				Required:      true,
-				Optional:      false,
-				Computed:      false,
-				PlanModifiers: []planmodifier.String{},
-				Validators:    []validator.String{},
 			},
 			"insights_tracking_state": schema.BoolAttribute{
 				Description: "Enables the service to gather data on automation and send it to Automation Analytics.",
@@ -264,43 +233,6 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 				},
 				Validators: []validator.String{},
 			},
-			"subscription_usage_model": schema.StringAttribute{
-				Description: "Defines subscription usage model and shows Host Metrics",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(``),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "unique_managed_hosts"}...),
-				},
-			},
-			"tower_url_base": schema.StringAttribute{
-				Description: "This setting is used by services like notifications to render a valid url to the service.",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(`https://localhost:8043`),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{},
-			},
-			"ui_next": schema.BoolAttribute{
-				Description: "Enable preview of new user interface.",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.Bool{},
-			},
 			// Write only elements
 			// Data only elements
 			"automation_analytics_last_gather": schema.StringAttribute{
@@ -366,6 +298,16 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 			},
 			"license": schema.StringAttribute{
 				Description: "The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license.",
+				Required:    false,
+				Optional:    false,
+				Computed:    true,
+				Sensitive:   false,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+			},
+			"tower_url_base": schema.StringAttribute{
+				Description: "This value has been set manually in a settings file.\n\nThis setting is used by services like notifications to render a valid url to the service.",
 				Required:    false,
 				Optional:    false,
 				Computed:    true,

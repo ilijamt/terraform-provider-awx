@@ -7,7 +7,6 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -87,19 +86,6 @@ func (o *settingsMiscSystemDataSource) Schema(ctx context.Context, req datasourc
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			"cleanup_host_metrics_last_ts": schema.StringAttribute{
-				Description: "Last cleanup date for HostMetrics",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.String{},
-			},
-			"csrf_trusted_origins": schema.ListAttribute{
-				ElementType: types.StringType,
-				Description: "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. ",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.List{},
-			},
 			"custom_venv_paths": schema.ListAttribute{
 				ElementType: types.StringType,
 				Description: "Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line.",
@@ -121,12 +107,6 @@ func (o *settingsMiscSystemDataSource) Schema(ctx context.Context, req datasourc
 			},
 			"default_execution_queue_name": schema.StringAttribute{
 				Description: "The instance group where user jobs run (currently only on non-VM installs)",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.String{},
-			},
-			"host_metric_summary_task_last_ts": schema.StringAttribute{
-				Description: "Last computing date of HostMetricSummaryMonthly",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},
@@ -205,25 +185,11 @@ func (o *settingsMiscSystemDataSource) Schema(ctx context.Context, req datasourc
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			"subscription_usage_model": schema.StringAttribute{
-				Description: "Defines subscription usage model and shows Host Metrics",
-				Sensitive:   false,
-				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "unique_managed_hosts"}...),
-				},
-			},
 			"tower_url_base": schema.StringAttribute{
-				Description: "This setting is used by services like notifications to render a valid url to the service.",
+				Description: "This value has been set manually in a settings file.\n\nThis setting is used by services like notifications to render a valid url to the service.",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},
-			},
-			"ui_next": schema.BoolAttribute{
-				Description: "Enable preview of new user interface.",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			// Write only elements
 		},

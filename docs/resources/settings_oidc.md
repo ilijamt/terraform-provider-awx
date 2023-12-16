@@ -20,4 +20,4 @@ description: |-
 - `social_auth_oidc_key` (String) The OIDC key (Client ID) from your IDP.
 - `social_auth_oidc_oidc_endpoint` (String) The URL for your OIDC provider including the path up to /.well-known/openid-configuration
 - `social_auth_oidc_secret` (String) The OIDC secret (Client Secret) from your IDP.
-- `social_auth_oidc_verify_ssl` (Boolean) Verify the OIDC provider ssl certificate.
+- `social_auth_oidc_verify_ssl` (Boolean) Verify the OIDV provider ssl certificate.

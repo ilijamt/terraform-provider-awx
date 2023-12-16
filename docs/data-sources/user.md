@@ -30,4 +30,4 @@ description: |-
 - `last_login` (String) Last login
 - `last_name` (String) Last name
 - `ldap_dn` (String) Ldap dn
-- `password` (String, Sensitive) Field used to change the password.
+- `password` (String, Sensitive) Write-only field used to change the password.

@@ -9,7 +9,6 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
-	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
@@ -117,12 +116,6 @@ func (o *userDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			"password": schema.StringAttribute{
-				Description: "Field used to change the password.",
-				Sensitive:   true,
-				Computed:    true,
-				Validators:  []validator.String{},
-			},
 			"username": schema.StringAttribute{
 				Description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
 				Sensitive:   false,
@@ -136,6 +129,11 @@ func (o *userDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				},
 			},
 			// Write only elements
+			"password": schema.StringAttribute{
+				Description: "Write-only field used to change the password.",
+				Computed:    true,
+				Sensitive:   true,
+			},
 		},
 	}
 }
@@ -226,14 +224,6 @@ func (o *userDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 	}
 
 	// Set state
-	if err = hookUser(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
-		resp.Diagnostics.AddError(
-			"Unable to process custom hook for the state on User",
-			err.Error(),
-		)
-		return
-	}
-
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return

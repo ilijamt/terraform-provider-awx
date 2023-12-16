@@ -167,18 +167,6 @@ func (o *settingsJobsResource) Schema(ctx context.Context, req resource.SchemaRe
 				},
 				Validators: []validator.Bool{},
 			},
-			"awx_runner_keepalive_seconds": schema.Int64Attribute{
-				Description: "Only applies to jobs running in a Container Group. If not 0, send a message every so-many seconds to keep connection open.",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     int64default.StaticInt64(0),
-				PlanModifiers: []planmodifier.Int64{
-					int64planmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.Int64{},
-			},
 			"awx_show_playbook_links": schema.BoolAttribute{
 				Description: "Follow symbolic links when scanning for playbooks. Be aware that setting this to True can lead to infinite recursion if a link points to a parent directory of itself.",
 				Sensitive:   false,
@@ -201,18 +189,6 @@ func (o *settingsJobsResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{},
-			},
-			"default_container_run_options": schema.ListAttribute{
-				ElementType: types.StringType,
-				Description: "List of options to pass to podman run example: ['--network', 'slirp4netns:enable_ipv6=true', '--log-level', 'debug']",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				PlanModifiers: []planmodifier.List{
-					listplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.List{},
 			},
 			"default_inventory_update_timeout": schema.Int64Attribute{
 				Description: "Maximum time in seconds to allow inventory updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual inventory source will override this.",

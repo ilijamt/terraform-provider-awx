@@ -96,25 +96,13 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Validators:  []validator.Bool{},
 			},
 			"jobs_running": schema.Int64Attribute{
-				Description: "Jobs running",
+				Description: "Count of jobs in the running or waiting state that are targeted for this instance group",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
 			"jobs_total": schema.Int64Attribute{
 				Description: "Count of all jobs that target this instance group",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.Int64{},
-			},
-			"max_concurrent_jobs": schema.Int64Attribute{
-				Description: "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.",
-				Sensitive:   false,
-				Computed:    true,
-				Validators:  []validator.Int64{},
-			},
-			"max_forks": schema.Int64Attribute{
-				Description: "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.Int64{},

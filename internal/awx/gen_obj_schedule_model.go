@@ -56,7 +56,7 @@ type scheduleTerraformModel struct {
 	Timezone types.String `tfsdk:"timezone" json:"timezone"`
 	// UnifiedJobTemplate ""
 	UnifiedJobTemplate types.Int64 `tfsdk:"unified_job_template" json:"unified_job_template"`
-	// Until "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned"
+	// Until "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned"
 	Until types.String `tfsdk:"until" json:"until"`
 	// Verbosity ""
 	Verbosity types.String `tfsdk:"verbosity" json:"verbosity"`

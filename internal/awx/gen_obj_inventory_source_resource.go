@@ -122,7 +122,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 				Validators: []validator.Int64{},
 			},
 			"host_filter": schema.StringAttribute{
-				Description: "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.",
+				Description: "Regex where only matching hosts will be imported.",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
@@ -141,18 +141,6 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 				Computed:      false,
 				PlanModifiers: []planmodifier.Int64{},
 				Validators:    []validator.Int64{},
-			},
-			"limit": schema.StringAttribute{
-				Description: "Enter host, group or pattern match",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(``),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this inventory source.",
@@ -187,20 +175,6 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 				},
 				Validators: []validator.Bool{},
 			},
-			"scm_branch": schema.StringAttribute{
-				Description: "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true.",
-				Sensitive:   false,
-				Required:    false,
-				Optional:    true,
-				Computed:    true,
-				Default:     stringdefault.StaticString(``),
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-				Validators: []validator.String{
-					stringvalidator.LengthAtMost(1024),
-				},
-			},
 			"source": schema.StringAttribute{
 				Description: "Source",
 				Sensitive:   false,
@@ -211,7 +185,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"file", "constructed", "scm", "ec2", "gce", "azure_rm", "vmware", "satellite6", "openstack", "rhv", "controller", "insights"}...),
+					stringvalidator.OneOf([]string{"file", "scm", "ec2", "gce", "azure_rm", "vmware", "satellite6", "openstack", "rhv", "controller", "insights"}...),
 				},
 			},
 			"source_path": schema.StringAttribute{
