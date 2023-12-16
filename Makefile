@@ -21,6 +21,10 @@ generate-tfplugindocs:
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs
 
+.PHONY: build-cover
+build-cover:
+	go build -cover -o ./build/terraform-provider-awx ./cmd/provider
+
 .PHONY: build
 build:
 	go build -trimpath -o ./build/terraform-provider-awx -ldflags "-s -w" ./cmd/provider
