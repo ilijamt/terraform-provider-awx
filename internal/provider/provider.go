@@ -2,12 +2,14 @@ package provider
 
 import (
 	"context"
-	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
-	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"net/http"
 	"strings"
+
+	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -137,7 +139,7 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, config.VerifySSL.ValueBool(), p.httpClient)
+	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config
