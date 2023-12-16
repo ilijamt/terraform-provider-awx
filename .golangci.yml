@@ -11,6 +11,3 @@ issues:
         - deadcode
         - unused
         - varcheck
-    - path: internal/awx/hook_*.go
-      linters:
-        - unused
