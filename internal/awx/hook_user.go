@@ -14,10 +14,10 @@ func hookUser(ctx context.Context, apiVersion string, source hooks.Source, calle
 		return fmt.Errorf("state and orig required for resource")
 	}
 
-	if state.Password.Equal(types.StringValue("confidential")) &&
-		source == hooks.SourceResource &&
-		(callee == hooks.CalleeUpdate || callee == hooks.CalleeRead) &&
-		!orig.Password.IsNull() {
+	if source == hooks.SourceResource && callee == hooks.CalleeCreate ||
+		(state.Password.Equal(types.StringValue("$encrypted$")) &&
+			(source == hooks.SourceResource && (callee == hooks.CalleeUpdate || callee == hooks.CalleeRead)) &&
+			!orig.Password.IsNull()) {
 		state.Password = orig.Password
 	}
 
