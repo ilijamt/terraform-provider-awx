@@ -89,38 +89,66 @@ resource "awx_user" "demo" {
   password = "test"
 }
 
-# resource "awx_job_template" "demo" {
-#     allow_simultaneous                  = false
-#     ask_credential_on_launch            = false
-#     ask_diff_mode_on_launch             = false
-#     ask_execution_environment_on_launch = false
-#     ask_forks_on_launch                 = false
-#     ask_instance_groups_on_launch       = false
-#     ask_inventory_on_launch             = true
-#     ask_job_slice_count_on_launch       = false
-#     ask_job_type_on_launch              = false
-#     ask_labels_on_launch                = false
-#     ask_limit_on_launch                 = true
-#     ask_scm_branch_on_launch            = false
-#     ask_skip_tags_on_launch             = true
-#     ask_tags_on_launch                  = true
-#     ask_timeout_on_launch               = false
-#     ask_variables_on_launch             = true
-#     ask_verbosity_on_launch             = false
-#     become_enabled                      = false
-#     diff_mode                           = true
-#     execution_environment               = awx_execution_environment.default_environment.id
-#     extra_vars                          = jsonencode({})
-#     force_handlers                      = false
-#     forks                               = 0
-#     job_slice_count                     = 1
-#     job_type                            = "run"
-#     name                                = "demo"
-#     organization                        = awx_organization.test.id
-#     playbook                            = "demo.yml"
-#     prevent_instance_group_fallback     = false
-#     project                             = 11
-#     survey_enabled                      = false
-#     timeout                             = 0
-#     use_fact_cache                      = true
-# }
+resource "awx_instance_group" "ig" {
+  name               = "Demo Instance Group"
+  is_container_group = true
+  pod_spec_override = jsonencode({
+    "apiVersion" : "v1",
+    "kind" : "Pod",
+    "metadata" : {
+      "namespace" : "awx"
+    },
+    "spec" : {
+      "serviceAccountName" : "default",
+      "automountServiceAccountToken" : false,
+      "containers" : [
+        {
+          "image" : "quay.io/ansible/awx-ee:latest",
+          "name" : "worker",
+          "args" : [
+            "ansible-runner",
+            "worker",
+            "--private-data-dir=/runner"
+          ],
+          "resources" : {
+            "requests" : {
+              "cpu" : "250m",
+              "memory" : "100Mi"
+            }
+          }
+        }
+      ]
+    }
+  })
+}
+
+resource "awx_project" "demo_project" {
+  name         = "Job Demo Project"
+  organization = awx_organization.test.id
+  scm_url      = "https://github.com/ansible/ansible-tower-samples"
+  scm_type     = "git"
+  scm_clean    = false
+}
+
+resource "awx_inventory" "demo_inventory" {
+  name         = "Job Demo Inventory"
+  organization = awx_organization.test.id
+}
+
+
+resource "awx_job_template" "instance_group" {
+  name               = "Job Demo Instance Group"
+  inventory          = awx_inventory.demo_inventory.id
+  verbosity          = 0
+  job_type           = "run"
+  playbook           = "hello_world.yml"
+  project            = awx_project.demo_project.id
+  scm_branch         = ""
+  job_slice_count    = 2
+  allow_simultaneous = true
+}
+
+resource "awx_job_template_associate_instance_group" "ig" {
+  instance_group_id = awx_instance_group.ig.id
+  job_template_id   = awx_job_template.instance_group.id
+}
