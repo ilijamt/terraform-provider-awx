@@ -432,6 +432,11 @@
           "type": "NotificationTemplate",
           "endpoint": "/api/v2/job_templates/%d/notification_templates_%s/",
           "associate_type": "notification_job_template"
+        },
+        {
+          "name": "JobTemplate",
+          "type": "InstanceGroup",
+          "endpoint": "/api/v2/job_templates/%d/instance_groups/"
         }
       ],
       "remove_fields_data_source": [

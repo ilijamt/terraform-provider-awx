@@ -48,18 +48,26 @@ let apiCustomConfigTypes = new Map();
 try {
     apiCustomConfigTypes = readJSONFiles(`${apiDir}/config/types`);
 } catch (e) {
- // nothing to do here
+    // nothing to do here
 }
 
 apiCustomConfigTypes.forEach(function (value, key, map) {
     if (!configTypes.has(key)) {
         configTypes.set(key, value)
     } else {
-        const data = _.merge(configTypes.get(key), value)
+        const data = _.mergeWith(
+            configTypes.get(key),
+            value,
+            function (o, i) {
+                if (_.isArray(o)) {
+                    return o.concat(i);
+                }
+            }
+        );
         configTypes.set(key, data);
     }
 })
 
-const generatedConfig = Object.assign({}, configDefault,  targetDefault, { items: Array.from(configTypes.values())} )
+const generatedConfig = Object.assign({}, configDefault, targetDefault, { items: Array.from(configTypes.values()) })
 
 fs.writeFileSync(`${apiDir}/config.json`, JSON.stringify(generatedConfig, null, 2));

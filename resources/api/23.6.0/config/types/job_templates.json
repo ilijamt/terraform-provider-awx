@@ -1,0 +1,10 @@
+{
+    "type_name": "job_template",
+    "associate_disassociate_groups": [
+        {
+            "name": "JobTemplate",
+            "type": "InstanceGroup",
+            "endpoint": "/api/v2/job_templates/%d/instance_groups/"
+        }
+    ]
+}
