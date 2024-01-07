@@ -78,6 +78,7 @@ func Resources() []func() resource.Resource {
 		NewInventorySourceResource,
 		NewJobTemplateResource,
 		NewJobTemplateAssociateDisassociateCredentialResource,
+		NewJobTemplateAssociateDisassociateInstanceGroupResource,
 		NewJobTemplateAssociateDisassociateNotificationTemplateResource,
 		NewJobTemplateSurveyResource,
 		NewLabelResource,
