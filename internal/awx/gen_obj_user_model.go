@@ -29,10 +29,10 @@ type userTerraformModel struct {
 	LastName types.String `tfsdk:"last_name" json:"last_name"`
 	// LdapDn ""
 	LdapDn types.String `tfsdk:"ldap_dn" json:"ldap_dn"`
+	// Password "Field used to change the password."
+	Password types.String `tfsdk:"password" json:"password"`
 	// Username "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 	Username types.String `tfsdk:"username" json:"username"`
-	// Password "Write-only field used to change the password."
-	Password types.String `tfsdk:"password" json:"password"`
 }
 
 // Clone the object
@@ -47,8 +47,8 @@ func (o *userTerraformModel) Clone() userTerraformModel {
 		LastLogin:       o.LastLogin,
 		LastName:        o.LastName,
 		LdapDn:          o.LdapDn,
-		Username:        o.Username,
 		Password:        o.Password,
+		Username:        o.Username,
 	}
 }
 
@@ -59,6 +59,7 @@ func (o *userTerraformModel) BodyRequest() (req userBodyRequestModel) {
 	req.IsSuperuser = o.IsSuperuser.ValueBool()
 	req.IsSystemAuditor = o.IsSystemAuditor.ValueBool()
 	req.LastName = o.LastName.ValueString()
+	req.Password = o.Password.ValueString()
 	req.Username = o.Username.ValueString()
 	return
 }
@@ -99,6 +100,10 @@ func (o *userTerraformModel) setLdapDn(data any) (d diag.Diagnostics, err error)
 	return helpers.AttrValueSetString(&o.LdapDn, data, false)
 }
 
+func (o *userTerraformModel) setPassword(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.Password, data, false)
+}
+
 func (o *userTerraformModel) setUsername(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
@@ -134,6 +139,9 @@ func (o *userTerraformModel) updateFromApiData(data map[string]any) (diags diag.
 	if dg, _ := o.setLdapDn(data["ldap_dn"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setPassword(data["password"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setUsername(data["username"]); dg.HasError() {
 		diags.Append(dg...)
 	}
@@ -152,8 +160,8 @@ type userBodyRequestModel struct {
 	IsSystemAuditor bool `json:"is_system_auditor"`
 	// LastName ""
 	LastName string `json:"last_name,omitempty"`
+	// Password "Field used to change the password."
+	Password string `json:"password,omitempty"`
 	// Username "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 	Username string `json:"username"`
-	// Password "Write-only field used to change the password."
-	Password string `json:"password,omitempty"`
 }

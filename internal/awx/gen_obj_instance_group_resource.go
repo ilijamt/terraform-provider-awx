@@ -85,6 +85,30 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 				Validators: []validator.Bool{},
 			},
+			"max_concurrent_jobs": schema.Int64Attribute{
+				Description: "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				Default:     int64default.StaticInt64(0),
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{},
+			},
+			"max_forks": schema.Int64Attribute{
+				Description: "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				Default:     int64default.StaticInt64(0),
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{},
+			},
 			"name": schema.StringAttribute{
 				Description:   "Name of this instance group.",
 				Sensitive:     false,
@@ -188,7 +212,7 @@ func (o *instanceGroupResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"jobs_running": schema.Int64Attribute{
-				Description: "Count of jobs in the running or waiting state that are targeted for this instance group",
+				Description: "",
 				Required:    false,
 				Optional:    false,
 				Computed:    true,

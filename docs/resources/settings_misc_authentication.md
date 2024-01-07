@@ -17,9 +17,14 @@ description: |-
 
 ### Optional
 
+- `allow_metrics_for_anonymous_users` (Boolean) If true, anonymous users are allowed to poll metrics.
 - `allow_oauth2_for_external_users` (Boolean) For security reasons, users from external auth providers (LDAP, SAML, SSO, Radius, and others) are not allowed to create OAuth2 tokens. To change this behavior, enable this setting. Existing tokens will not be deleted when this setting is toggled off.
 - `auth_basic_enabled` (Boolean) Enable HTTP Basic Auth for the API Browser.
 - `disable_local_auth` (Boolean) Controls whether users are prevented from using the built-in authentication system. You probably want to do this if you are using an LDAP or SAML integration.
+- `local_password_min_digits` (Number) Minimum number of digit characters required in a local password. 0 means no minimum
+- `local_password_min_length` (Number) Minimum number of characters required in a local password. 0 means no minimum
+- `local_password_min_special` (Number) Minimum number of special characters required in a local password. 0 means no minimum
+- `local_password_min_upper` (Number) Minimum number of uppercase characters required in a local password. 0 means no minimum
 - `login_redirect_override` (String) URL to which unauthorized users will be redirected to log in.  If blank, users will be sent to the login page.
 - `oauth2_provider` (String) Dictionary for customizing OAuth 2 timeouts, available items are `ACCESS_TOKEN_EXPIRE_SECONDS`, the duration of access tokens in the number of seconds, `AUTHORIZATION_CODE_EXPIRE_SECONDS`, the duration of authorization codes in the number of seconds, and `REFRESH_TOKEN_EXPIRE_SECONDS`, the duration of refresh tokens, after expired access tokens, in the number of seconds.
 - `session_cookie_age` (Number) Number of seconds that a user is inactive before they will need to login again.
@@ -31,6 +36,7 @@ documentation.
 - `social_auth_team_map` (String) Mapping of team members (users) from social auth accounts. Configuration
 details are available in the documentation.
 - `social_auth_user_fields` (List of String) When set to an empty list `[]`, this setting prevents new user accounts from being created. Only users who have previously logged in using social auth or have a user account with a matching email address will be able to login.
+- `social_auth_username_is_full_email` (Boolean) Enabling this setting will tell social auth to use the full Email as username instead of the full name
 
 ### Read-Only
 

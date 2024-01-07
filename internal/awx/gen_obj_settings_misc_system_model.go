@@ -23,6 +23,10 @@ type settingsMiscSystemTerraformModel struct {
 	AUTOMATION_ANALYTICS_LAST_GATHER types.String `tfsdk:"automation_analytics_last_gather" json:"AUTOMATION_ANALYTICS_LAST_GATHER"`
 	// AUTOMATION_ANALYTICS_URL "This setting is used to to configure the upload URL for data collection for Automation Analytics."
 	AUTOMATION_ANALYTICS_URL types.String `tfsdk:"automation_analytics_url" json:"AUTOMATION_ANALYTICS_URL"`
+	// CLEANUP_HOST_METRICS_LAST_TS ""
+	CLEANUP_HOST_METRICS_LAST_TS types.String `tfsdk:"cleanup_host_metrics_last_ts" json:"CLEANUP_HOST_METRICS_LAST_TS"`
+	// CSRF_TRUSTED_ORIGINS "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. "
+	CSRF_TRUSTED_ORIGINS types.List `tfsdk:"csrf_trusted_origins" json:"CSRF_TRUSTED_ORIGINS"`
 	// CUSTOM_VENV_PATHS "Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line."
 	CUSTOM_VENV_PATHS types.List `tfsdk:"custom_venv_paths" json:"CUSTOM_VENV_PATHS"`
 	// DEFAULT_CONTROL_PLANE_QUEUE_NAME ""
@@ -31,6 +35,8 @@ type settingsMiscSystemTerraformModel struct {
 	DEFAULT_EXECUTION_ENVIRONMENT types.Int64 `tfsdk:"default_execution_environment" json:"DEFAULT_EXECUTION_ENVIRONMENT"`
 	// DEFAULT_EXECUTION_QUEUE_NAME ""
 	DEFAULT_EXECUTION_QUEUE_NAME types.String `tfsdk:"default_execution_queue_name" json:"DEFAULT_EXECUTION_QUEUE_NAME"`
+	// HOST_METRIC_SUMMARY_TASK_LAST_TS ""
+	HOST_METRIC_SUMMARY_TASK_LAST_TS types.String `tfsdk:"host_metric_summary_task_last_ts" json:"HOST_METRIC_SUMMARY_TASK_LAST_TS"`
 	// INSIGHTS_TRACKING_STATE "Enables the service to gather data on automation and send it to Automation Analytics."
 	INSIGHTS_TRACKING_STATE types.Bool `tfsdk:"insights_tracking_state" json:"INSIGHTS_TRACKING_STATE"`
 	// INSTALL_UUID ""
@@ -55,8 +61,12 @@ type settingsMiscSystemTerraformModel struct {
 	SUBSCRIPTIONS_PASSWORD types.String `tfsdk:"subscriptions_password" json:"SUBSCRIPTIONS_PASSWORD"`
 	// SUBSCRIPTIONS_USERNAME "This username is used to retrieve subscription and content information"
 	SUBSCRIPTIONS_USERNAME types.String `tfsdk:"subscriptions_username" json:"SUBSCRIPTIONS_USERNAME"`
-	// TOWER_URL_BASE "This value has been set manually in a settings file.\n\nThis setting is used by services like notifications to render a valid url to the service."
+	// SUBSCRIPTION_USAGE_MODEL ""
+	SUBSCRIPTION_USAGE_MODEL types.String `tfsdk:"subscription_usage_model" json:"SUBSCRIPTION_USAGE_MODEL"`
+	// TOWER_URL_BASE "This setting is used by services like notifications to render a valid url to the service."
 	TOWER_URL_BASE types.String `tfsdk:"tower_url_base" json:"TOWER_URL_BASE"`
+	// UI_NEXT "Enable preview of new user interface."
+	UI_NEXT types.Bool `tfsdk:"ui_next" json:"UI_NEXT"`
 }
 
 // Clone the object
@@ -68,10 +78,13 @@ func (o *settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformMo
 		AUTOMATION_ANALYTICS_LAST_ENTRIES:          o.AUTOMATION_ANALYTICS_LAST_ENTRIES,
 		AUTOMATION_ANALYTICS_LAST_GATHER:           o.AUTOMATION_ANALYTICS_LAST_GATHER,
 		AUTOMATION_ANALYTICS_URL:                   o.AUTOMATION_ANALYTICS_URL,
+		CLEANUP_HOST_METRICS_LAST_TS:               o.CLEANUP_HOST_METRICS_LAST_TS,
+		CSRF_TRUSTED_ORIGINS:                       o.CSRF_TRUSTED_ORIGINS,
 		CUSTOM_VENV_PATHS:                          o.CUSTOM_VENV_PATHS,
 		DEFAULT_CONTROL_PLANE_QUEUE_NAME:           o.DEFAULT_CONTROL_PLANE_QUEUE_NAME,
 		DEFAULT_EXECUTION_ENVIRONMENT:              o.DEFAULT_EXECUTION_ENVIRONMENT,
 		DEFAULT_EXECUTION_QUEUE_NAME:               o.DEFAULT_EXECUTION_QUEUE_NAME,
+		HOST_METRIC_SUMMARY_TASK_LAST_TS:           o.HOST_METRIC_SUMMARY_TASK_LAST_TS,
 		INSIGHTS_TRACKING_STATE:                    o.INSIGHTS_TRACKING_STATE,
 		INSTALL_UUID:                               o.INSTALL_UUID,
 		IS_K8S:                                     o.IS_K8S,
@@ -84,7 +97,9 @@ func (o *settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformMo
 		REMOTE_HOST_HEADERS:                        o.REMOTE_HOST_HEADERS,
 		SUBSCRIPTIONS_PASSWORD:                     o.SUBSCRIPTIONS_PASSWORD,
 		SUBSCRIPTIONS_USERNAME:                     o.SUBSCRIPTIONS_USERNAME,
+		SUBSCRIPTION_USAGE_MODEL:                   o.SUBSCRIPTION_USAGE_MODEL,
 		TOWER_URL_BASE:                             o.TOWER_URL_BASE,
+		UI_NEXT:                                    o.UI_NEXT,
 	}
 }
 
@@ -95,7 +110,17 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
 	req.AUTOMATION_ANALYTICS_LAST_ENTRIES = o.AUTOMATION_ANALYTICS_LAST_ENTRIES.ValueString()
 	req.AUTOMATION_ANALYTICS_URL = o.AUTOMATION_ANALYTICS_URL.ValueString()
+	req.CLEANUP_HOST_METRICS_LAST_TS = o.CLEANUP_HOST_METRICS_LAST_TS.ValueString()
+	req.CSRF_TRUSTED_ORIGINS = []string{}
+	for _, val := range o.CSRF_TRUSTED_ORIGINS.Elements() {
+		if _, ok := val.(types.String); ok {
+			req.CSRF_TRUSTED_ORIGINS = append(req.CSRF_TRUSTED_ORIGINS, val.(types.String).ValueString())
+		} else {
+			req.CSRF_TRUSTED_ORIGINS = append(req.CSRF_TRUSTED_ORIGINS, val.String())
+		}
+	}
 	req.DEFAULT_EXECUTION_ENVIRONMENT = o.DEFAULT_EXECUTION_ENVIRONMENT.ValueInt64()
+	req.HOST_METRIC_SUMMARY_TASK_LAST_TS = o.HOST_METRIC_SUMMARY_TASK_LAST_TS.ValueString()
 	req.INSIGHTS_TRACKING_STATE = o.INSIGHTS_TRACKING_STATE.ValueBool()
 	req.MANAGE_ORGANIZATION_AUTH = o.MANAGE_ORGANIZATION_AUTH.ValueBool()
 	req.ORG_ADMINS_CAN_SEE_ALL_USERS = o.ORG_ADMINS_CAN_SEE_ALL_USERS.ValueBool()
@@ -119,6 +144,9 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 	}
 	req.SUBSCRIPTIONS_PASSWORD = o.SUBSCRIPTIONS_PASSWORD.ValueString()
 	req.SUBSCRIPTIONS_USERNAME = o.SUBSCRIPTIONS_USERNAME.ValueString()
+	req.SUBSCRIPTION_USAGE_MODEL = o.SUBSCRIPTION_USAGE_MODEL.ValueString()
+	req.TOWER_URL_BASE = o.TOWER_URL_BASE.ValueString()
+	req.UI_NEXT = o.UI_NEXT.ValueBool()
 	return
 }
 
@@ -146,6 +174,14 @@ func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsUrl(data any) (
 	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_URL, data, false)
 }
 
+func (o *settingsMiscSystemTerraformModel) setCleanupHostMetricsLastTs(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.CLEANUP_HOST_METRICS_LAST_TS, data, false)
+}
+
+func (o *settingsMiscSystemTerraformModel) setCsrfTrustedOrigins(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetListString(&o.CSRF_TRUSTED_ORIGINS, data, false)
+}
+
 func (o *settingsMiscSystemTerraformModel) setCustomVenvPaths(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.CUSTOM_VENV_PATHS, data, false)
 }
@@ -160,6 +196,10 @@ func (o *settingsMiscSystemTerraformModel) setDefaultExecutionEnvironment(data a
 
 func (o *settingsMiscSystemTerraformModel) setDefaultExecutionQueueName(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.DEFAULT_EXECUTION_QUEUE_NAME, data, false)
+}
+
+func (o *settingsMiscSystemTerraformModel) setHostMetricSummaryTaskLastTs(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.HOST_METRIC_SUMMARY_TASK_LAST_TS, data, false)
 }
 
 func (o *settingsMiscSystemTerraformModel) setInsightsTrackingState(data any) (d diag.Diagnostics, err error) {
@@ -210,8 +250,16 @@ func (o *settingsMiscSystemTerraformModel) setSubscriptionsUsername(data any) (d
 	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_USERNAME, data, false)
 }
 
+func (o *settingsMiscSystemTerraformModel) setSubscriptionUsageModel(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.SUBSCRIPTION_USAGE_MODEL, data, false)
+}
+
 func (o *settingsMiscSystemTerraformModel) setTowerUrlBase(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.TOWER_URL_BASE, data, false)
+}
+
+func (o *settingsMiscSystemTerraformModel) setUiNext(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetBool(&o.UI_NEXT, data)
 }
 
 func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
@@ -236,6 +284,12 @@ func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any
 	if dg, _ := o.setAutomationAnalyticsUrl(data["AUTOMATION_ANALYTICS_URL"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setCleanupHostMetricsLastTs(data["CLEANUP_HOST_METRICS_LAST_TS"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setCsrfTrustedOrigins(data["CSRF_TRUSTED_ORIGINS"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setCustomVenvPaths(data["CUSTOM_VENV_PATHS"]); dg.HasError() {
 		diags.Append(dg...)
 	}
@@ -246,6 +300,9 @@ func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setDefaultExecutionQueueName(data["DEFAULT_EXECUTION_QUEUE_NAME"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setHostMetricSummaryTaskLastTs(data["HOST_METRIC_SUMMARY_TASK_LAST_TS"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setInsightsTrackingState(data["INSIGHTS_TRACKING_STATE"]); dg.HasError() {
@@ -284,7 +341,13 @@ func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any
 	if dg, _ := o.setSubscriptionsUsername(data["SUBSCRIPTIONS_USERNAME"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setSubscriptionUsageModel(data["SUBSCRIPTION_USAGE_MODEL"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setTowerUrlBase(data["TOWER_URL_BASE"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setUiNext(data["UI_NEXT"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	return diags, nil
@@ -302,8 +365,14 @@ type settingsMiscSystemBodyRequestModel struct {
 	AUTOMATION_ANALYTICS_LAST_ENTRIES string `json:"AUTOMATION_ANALYTICS_LAST_ENTRIES,omitempty"`
 	// AUTOMATION_ANALYTICS_URL "This setting is used to to configure the upload URL for data collection for Automation Analytics."
 	AUTOMATION_ANALYTICS_URL string `json:"AUTOMATION_ANALYTICS_URL,omitempty"`
+	// CLEANUP_HOST_METRICS_LAST_TS ""
+	CLEANUP_HOST_METRICS_LAST_TS string `json:"CLEANUP_HOST_METRICS_LAST_TS"`
+	// CSRF_TRUSTED_ORIGINS "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. "
+	CSRF_TRUSTED_ORIGINS []string `json:"CSRF_TRUSTED_ORIGINS,omitempty"`
 	// DEFAULT_EXECUTION_ENVIRONMENT "The Execution Environment to be used when one has not been configured for a job template."
 	DEFAULT_EXECUTION_ENVIRONMENT int64 `json:"DEFAULT_EXECUTION_ENVIRONMENT,omitempty"`
+	// HOST_METRIC_SUMMARY_TASK_LAST_TS ""
+	HOST_METRIC_SUMMARY_TASK_LAST_TS string `json:"HOST_METRIC_SUMMARY_TASK_LAST_TS"`
 	// INSIGHTS_TRACKING_STATE "Enables the service to gather data on automation and send it to Automation Analytics."
 	INSIGHTS_TRACKING_STATE bool `json:"INSIGHTS_TRACKING_STATE"`
 	// MANAGE_ORGANIZATION_AUTH "Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration."
@@ -322,4 +391,10 @@ type settingsMiscSystemBodyRequestModel struct {
 	SUBSCRIPTIONS_PASSWORD string `json:"SUBSCRIPTIONS_PASSWORD,omitempty"`
 	// SUBSCRIPTIONS_USERNAME "This username is used to retrieve subscription and content information"
 	SUBSCRIPTIONS_USERNAME string `json:"SUBSCRIPTIONS_USERNAME,omitempty"`
+	// SUBSCRIPTION_USAGE_MODEL ""
+	SUBSCRIPTION_USAGE_MODEL string `json:"SUBSCRIPTION_USAGE_MODEL,omitempty"`
+	// TOWER_URL_BASE "This setting is used by services like notifications to render a valid url to the service."
+	TOWER_URL_BASE string `json:"TOWER_URL_BASE,omitempty"`
+	// UI_NEXT "Enable preview of new user interface."
+	UI_NEXT bool `json:"UI_NEXT"`
 }

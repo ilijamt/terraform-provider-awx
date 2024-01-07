@@ -51,6 +51,12 @@ func (o *settingsMiscAuthenticationDataSource) Schema(ctx context.Context, req d
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			// Data only elements
+			"allow_metrics_for_anonymous_users": schema.BoolAttribute{
+				Description: "If true, anonymous users are allowed to poll metrics.",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Bool{},
+			},
 			"allow_oauth2_for_external_users": schema.BoolAttribute{
 				Description: "For security reasons, users from external auth providers (LDAP, SAML, SSO, Radius, and others) are not allowed to create OAuth2 tokens. To change this behavior, enable this setting. Existing tokens will not be deleted when this setting is toggled off.",
 				Sensitive:   false,
@@ -75,6 +81,30 @@ func (o *settingsMiscAuthenticationDataSource) Schema(ctx context.Context, req d
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.Bool{},
+			},
+			"local_password_min_digits": schema.Int64Attribute{
+				Description: "Minimum number of digit characters required in a local password. 0 means no minimum",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
+			"local_password_min_length": schema.Int64Attribute{
+				Description: "Minimum number of characters required in a local password. 0 means no minimum",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
+			"local_password_min_special": schema.Int64Attribute{
+				Description: "Minimum number of special characters required in a local password. 0 means no minimum",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
+			},
+			"local_password_min_upper": schema.Int64Attribute{
+				Description: "Minimum number of uppercase characters required in a local password. 0 means no minimum",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Int64{},
 			},
 			"login_redirect_override": schema.StringAttribute{
 				Description: "URL to which unauthorized users will be redirected to log in.  If blank, users will be sent to the login page.",
@@ -113,6 +143,12 @@ func (o *settingsMiscAuthenticationDataSource) Schema(ctx context.Context, req d
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},
+			},
+			"social_auth_username_is_full_email": schema.BoolAttribute{
+				Description: "Enabling this setting will tell social auth to use the full Email as username instead of the full name",
+				Sensitive:   false,
+				Computed:    true,
+				Validators:  []validator.Bool{},
 			},
 			"social_auth_user_fields": schema.ListAttribute{
 				ElementType: types.StringType,

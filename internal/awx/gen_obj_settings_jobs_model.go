@@ -30,10 +30,14 @@ type settingsJobsTerraformModel struct {
 	AWX_MOUNT_ISOLATED_PATHS_ON_K8S types.Bool `tfsdk:"awx_mount_isolated_paths_on_k8s" json:"AWX_MOUNT_ISOLATED_PATHS_ON_K8S"`
 	// AWX_ROLES_ENABLED "Allows roles to be dynamically downloaded from a requirements.yml file for SCM projects."
 	AWX_ROLES_ENABLED types.Bool `tfsdk:"awx_roles_enabled" json:"AWX_ROLES_ENABLED"`
+	// AWX_RUNNER_KEEPALIVE_SECONDS "Only applies to jobs running in a Container Group. If not 0, send a message every so-many seconds to keep connection open."
+	AWX_RUNNER_KEEPALIVE_SECONDS types.Int64 `tfsdk:"awx_runner_keepalive_seconds" json:"AWX_RUNNER_KEEPALIVE_SECONDS"`
 	// AWX_SHOW_PLAYBOOK_LINKS "Follow symbolic links when scanning for playbooks. Be aware that setting this to True can lead to infinite recursion if a link points to a parent directory of itself."
 	AWX_SHOW_PLAYBOOK_LINKS types.Bool `tfsdk:"awx_show_playbook_links" json:"AWX_SHOW_PLAYBOOK_LINKS"`
 	// AWX_TASK_ENV "Additional environment variables set for playbook runs, inventory updates, project updates, and notification sending."
 	AWX_TASK_ENV types.String `tfsdk:"awx_task_env" json:"AWX_TASK_ENV"`
+	// DEFAULT_CONTAINER_RUN_OPTIONS "List of options to pass to podman run example: ['--network', 'slirp4netns:enable_ipv6=true', '--log-level', 'debug']"
+	DEFAULT_CONTAINER_RUN_OPTIONS types.List `tfsdk:"default_container_run_options" json:"DEFAULT_CONTAINER_RUN_OPTIONS"`
 	// DEFAULT_INVENTORY_UPDATE_TIMEOUT "Maximum time in seconds to allow inventory updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual inventory source will override this."
 	DEFAULT_INVENTORY_UPDATE_TIMEOUT types.Int64 `tfsdk:"default_inventory_update_timeout" json:"DEFAULT_INVENTORY_UPDATE_TIMEOUT"`
 	// DEFAULT_JOB_IDLE_TIMEOUT "If no output is detected from ansible in this number of seconds the execution will be terminated. Use value of 0 to indicate that no idle timeout should be imposed."
@@ -72,8 +76,10 @@ func (o *settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
 		AWX_ISOLATION_SHOW_PATHS:         o.AWX_ISOLATION_SHOW_PATHS,
 		AWX_MOUNT_ISOLATED_PATHS_ON_K8S:  o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S,
 		AWX_ROLES_ENABLED:                o.AWX_ROLES_ENABLED,
+		AWX_RUNNER_KEEPALIVE_SECONDS:     o.AWX_RUNNER_KEEPALIVE_SECONDS,
 		AWX_SHOW_PLAYBOOK_LINKS:          o.AWX_SHOW_PLAYBOOK_LINKS,
 		AWX_TASK_ENV:                     o.AWX_TASK_ENV,
+		DEFAULT_CONTAINER_RUN_OPTIONS:    o.DEFAULT_CONTAINER_RUN_OPTIONS,
 		DEFAULT_INVENTORY_UPDATE_TIMEOUT: o.DEFAULT_INVENTORY_UPDATE_TIMEOUT,
 		DEFAULT_JOB_IDLE_TIMEOUT:         o.DEFAULT_JOB_IDLE_TIMEOUT,
 		DEFAULT_JOB_TIMEOUT:              o.DEFAULT_JOB_TIMEOUT,
@@ -121,8 +127,17 @@ func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestM
 	}
 	req.AWX_MOUNT_ISOLATED_PATHS_ON_K8S = o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S.ValueBool()
 	req.AWX_ROLES_ENABLED = o.AWX_ROLES_ENABLED.ValueBool()
+	req.AWX_RUNNER_KEEPALIVE_SECONDS = o.AWX_RUNNER_KEEPALIVE_SECONDS.ValueInt64()
 	req.AWX_SHOW_PLAYBOOK_LINKS = o.AWX_SHOW_PLAYBOOK_LINKS.ValueBool()
 	req.AWX_TASK_ENV = json.RawMessage(o.AWX_TASK_ENV.ValueString())
+	req.DEFAULT_CONTAINER_RUN_OPTIONS = []string{}
+	for _, val := range o.DEFAULT_CONTAINER_RUN_OPTIONS.Elements() {
+		if _, ok := val.(types.String); ok {
+			req.DEFAULT_CONTAINER_RUN_OPTIONS = append(req.DEFAULT_CONTAINER_RUN_OPTIONS, val.(types.String).ValueString())
+		} else {
+			req.DEFAULT_CONTAINER_RUN_OPTIONS = append(req.DEFAULT_CONTAINER_RUN_OPTIONS, val.String())
+		}
+	}
 	req.DEFAULT_INVENTORY_UPDATE_TIMEOUT = o.DEFAULT_INVENTORY_UPDATE_TIMEOUT.ValueInt64()
 	req.DEFAULT_JOB_IDLE_TIMEOUT = o.DEFAULT_JOB_IDLE_TIMEOUT.ValueInt64()
 	req.DEFAULT_JOB_TIMEOUT = o.DEFAULT_JOB_TIMEOUT.ValueInt64()
@@ -174,12 +189,20 @@ func (o *settingsJobsTerraformModel) setAwxRolesEnabled(data any) (d diag.Diagno
 	return helpers.AttrValueSetBool(&o.AWX_ROLES_ENABLED, data)
 }
 
+func (o *settingsJobsTerraformModel) setAwxRunnerKeepaliveSeconds(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetInt64(&o.AWX_RUNNER_KEEPALIVE_SECONDS, data)
+}
+
 func (o *settingsJobsTerraformModel) setAwxShowPlaybookLinks(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.AWX_SHOW_PLAYBOOK_LINKS, data)
 }
 
 func (o *settingsJobsTerraformModel) setAwxTaskEnv(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetJsonString(&o.AWX_TASK_ENV, data, false)
+}
+
+func (o *settingsJobsTerraformModel) setDefaultContainerRunOptions(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetListString(&o.DEFAULT_CONTAINER_RUN_OPTIONS, data, false)
 }
 
 func (o *settingsJobsTerraformModel) setDefaultInventoryUpdateTimeout(data any) (d diag.Diagnostics, err error) {
@@ -261,10 +284,16 @@ func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (dia
 	if dg, _ := o.setAwxRolesEnabled(data["AWX_ROLES_ENABLED"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setAwxRunnerKeepaliveSeconds(data["AWX_RUNNER_KEEPALIVE_SECONDS"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setAwxShowPlaybookLinks(data["AWX_SHOW_PLAYBOOK_LINKS"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setAwxTaskEnv(data["AWX_TASK_ENV"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setDefaultContainerRunOptions(data["DEFAULT_CONTAINER_RUN_OPTIONS"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setDefaultInventoryUpdateTimeout(data["DEFAULT_INVENTORY_UPDATE_TIMEOUT"]); dg.HasError() {
@@ -326,10 +355,14 @@ type settingsJobsBodyRequestModel struct {
 	AWX_MOUNT_ISOLATED_PATHS_ON_K8S bool `json:"AWX_MOUNT_ISOLATED_PATHS_ON_K8S"`
 	// AWX_ROLES_ENABLED "Allows roles to be dynamically downloaded from a requirements.yml file for SCM projects."
 	AWX_ROLES_ENABLED bool `json:"AWX_ROLES_ENABLED"`
+	// AWX_RUNNER_KEEPALIVE_SECONDS "Only applies to jobs running in a Container Group. If not 0, send a message every so-many seconds to keep connection open."
+	AWX_RUNNER_KEEPALIVE_SECONDS int64 `json:"AWX_RUNNER_KEEPALIVE_SECONDS,omitempty"`
 	// AWX_SHOW_PLAYBOOK_LINKS "Follow symbolic links when scanning for playbooks. Be aware that setting this to True can lead to infinite recursion if a link points to a parent directory of itself."
 	AWX_SHOW_PLAYBOOK_LINKS bool `json:"AWX_SHOW_PLAYBOOK_LINKS"`
 	// AWX_TASK_ENV "Additional environment variables set for playbook runs, inventory updates, project updates, and notification sending."
 	AWX_TASK_ENV json.RawMessage `json:"AWX_TASK_ENV,omitempty"`
+	// DEFAULT_CONTAINER_RUN_OPTIONS "List of options to pass to podman run example: ['--network', 'slirp4netns:enable_ipv6=true', '--log-level', 'debug']"
+	DEFAULT_CONTAINER_RUN_OPTIONS []string `json:"DEFAULT_CONTAINER_RUN_OPTIONS,omitempty"`
 	// DEFAULT_INVENTORY_UPDATE_TIMEOUT "Maximum time in seconds to allow inventory updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual inventory source will override this."
 	DEFAULT_INVENTORY_UPDATE_TIMEOUT int64 `json:"DEFAULT_INVENTORY_UPDATE_TIMEOUT,omitempty"`
 	// DEFAULT_JOB_IDLE_TIMEOUT "If no output is detected from ansible in this number of seconds the execution will be terminated. Use value of 0 to indicate that no idle timeout should be imposed."

@@ -13,6 +13,10 @@ import (
 type settingsMiscLoggingTerraformModel struct {
 	// API_400_ERROR_LOG_FORMAT "The format of logged messages when an API 4XX error occurs, the following variables will be substituted: \nstatus_code - The HTTP status code of the error\nuser_name - The user name attempting to use the API\nurl_path - The URL path to the API endpoint called\nremote_addr - The remote address seen for the user\nerror - The error set by the api endpoint\nVariables need to be in the format {<variable name>}."
 	API_400_ERROR_LOG_FORMAT types.String `tfsdk:"api_400_error_log_format" json:"API_400_ERROR_LOG_FORMAT"`
+	// LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB "Amount of data to store (in gigabytes) if an rsyslog action takes time to process an incoming message (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting on the action (e.g. omhttp). It stores files in the directory specified by LOG_AGGREGATOR_MAX_DISK_USAGE_PATH."
+	LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB types.Int64 `tfsdk:"log_aggregator_action_max_disk_usage_gb" json:"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB"`
+	// LOG_AGGREGATOR_ACTION_QUEUE_SIZE "Defines how large the rsyslog action queue can grow in number of messages stored. This can have an impact on memory utilization. When the queue reaches 75% of this number, the queue will start writing to disk (queue.highWatermark in rsyslog). When it reaches 90%, NOTICE, INFO, and DEBUG messages will start to be discarded (queue.discardMark with queue.discardSeverity=5)."
+	LOG_AGGREGATOR_ACTION_QUEUE_SIZE types.Int64 `tfsdk:"log_aggregator_action_queue_size" json:"LOG_AGGREGATOR_ACTION_QUEUE_SIZE"`
 	// LOG_AGGREGATOR_ENABLED "Enable sending logs to external log aggregator."
 	LOG_AGGREGATOR_ENABLED types.Bool `tfsdk:"log_aggregator_enabled" json:"LOG_AGGREGATOR_ENABLED"`
 	// LOG_AGGREGATOR_HOST "Hostname/IP where external logs will be sent to."
@@ -21,10 +25,8 @@ type settingsMiscLoggingTerraformModel struct {
 	LOG_AGGREGATOR_INDIVIDUAL_FACTS types.Bool `tfsdk:"log_aggregator_individual_facts" json:"LOG_AGGREGATOR_INDIVIDUAL_FACTS"`
 	// LOG_AGGREGATOR_LEVEL "Level threshold used by log handler. Severities from lowest to highest are DEBUG, INFO, WARNING, ERROR, CRITICAL. Messages less severe than the threshold will be ignored by log handler. (messages under category awx.anlytics ignore this setting)"
 	LOG_AGGREGATOR_LEVEL types.String `tfsdk:"log_aggregator_level" json:"LOG_AGGREGATOR_LEVEL"`
-	// LOG_AGGREGATOR_LOGGERS "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs."
+	// LOG_AGGREGATOR_LOGGERS "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs\nbroadcast_websocket - errors pertaining to websockets broadcast metrics\n"
 	LOG_AGGREGATOR_LOGGERS types.List `tfsdk:"log_aggregator_loggers" json:"LOG_AGGREGATOR_LOGGERS"`
-	// LOG_AGGREGATOR_MAX_DISK_USAGE_GB "Amount of data to store (in gigabytes) during an outage of the external log aggregator (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting."
-	LOG_AGGREGATOR_MAX_DISK_USAGE_GB types.Int64 `tfsdk:"log_aggregator_max_disk_usage_gb" json:"LOG_AGGREGATOR_MAX_DISK_USAGE_GB"`
 	// LOG_AGGREGATOR_MAX_DISK_USAGE_PATH "Location to persist logs that should be retried after an outage of the external log aggregator (defaults to /var/lib/awx). Equivalent to the rsyslogd queue.spoolDirectory setting."
 	LOG_AGGREGATOR_MAX_DISK_USAGE_PATH types.String `tfsdk:"log_aggregator_max_disk_usage_path" json:"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH"`
 	// LOG_AGGREGATOR_PASSWORD "Password or authentication token for external log aggregator (if required; HTTP/s only)."
@@ -50,29 +52,32 @@ type settingsMiscLoggingTerraformModel struct {
 // Clone the object
 func (o *settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraformModel {
 	return settingsMiscLoggingTerraformModel{
-		API_400_ERROR_LOG_FORMAT:           o.API_400_ERROR_LOG_FORMAT,
-		LOG_AGGREGATOR_ENABLED:             o.LOG_AGGREGATOR_ENABLED,
-		LOG_AGGREGATOR_HOST:                o.LOG_AGGREGATOR_HOST,
-		LOG_AGGREGATOR_INDIVIDUAL_FACTS:    o.LOG_AGGREGATOR_INDIVIDUAL_FACTS,
-		LOG_AGGREGATOR_LEVEL:               o.LOG_AGGREGATOR_LEVEL,
-		LOG_AGGREGATOR_LOGGERS:             o.LOG_AGGREGATOR_LOGGERS,
-		LOG_AGGREGATOR_MAX_DISK_USAGE_GB:   o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB,
-		LOG_AGGREGATOR_MAX_DISK_USAGE_PATH: o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH,
-		LOG_AGGREGATOR_PASSWORD:            o.LOG_AGGREGATOR_PASSWORD,
-		LOG_AGGREGATOR_PORT:                o.LOG_AGGREGATOR_PORT,
-		LOG_AGGREGATOR_PROTOCOL:            o.LOG_AGGREGATOR_PROTOCOL,
-		LOG_AGGREGATOR_RSYSLOGD_DEBUG:      o.LOG_AGGREGATOR_RSYSLOGD_DEBUG,
-		LOG_AGGREGATOR_TCP_TIMEOUT:         o.LOG_AGGREGATOR_TCP_TIMEOUT,
-		LOG_AGGREGATOR_TOWER_UUID:          o.LOG_AGGREGATOR_TOWER_UUID,
-		LOG_AGGREGATOR_TYPE:                o.LOG_AGGREGATOR_TYPE,
-		LOG_AGGREGATOR_USERNAME:            o.LOG_AGGREGATOR_USERNAME,
-		LOG_AGGREGATOR_VERIFY_CERT:         o.LOG_AGGREGATOR_VERIFY_CERT,
+		API_400_ERROR_LOG_FORMAT:                o.API_400_ERROR_LOG_FORMAT,
+		LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB: o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB,
+		LOG_AGGREGATOR_ACTION_QUEUE_SIZE:        o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE,
+		LOG_AGGREGATOR_ENABLED:                  o.LOG_AGGREGATOR_ENABLED,
+		LOG_AGGREGATOR_HOST:                     o.LOG_AGGREGATOR_HOST,
+		LOG_AGGREGATOR_INDIVIDUAL_FACTS:         o.LOG_AGGREGATOR_INDIVIDUAL_FACTS,
+		LOG_AGGREGATOR_LEVEL:                    o.LOG_AGGREGATOR_LEVEL,
+		LOG_AGGREGATOR_LOGGERS:                  o.LOG_AGGREGATOR_LOGGERS,
+		LOG_AGGREGATOR_MAX_DISK_USAGE_PATH:      o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH,
+		LOG_AGGREGATOR_PASSWORD:                 o.LOG_AGGREGATOR_PASSWORD,
+		LOG_AGGREGATOR_PORT:                     o.LOG_AGGREGATOR_PORT,
+		LOG_AGGREGATOR_PROTOCOL:                 o.LOG_AGGREGATOR_PROTOCOL,
+		LOG_AGGREGATOR_RSYSLOGD_DEBUG:           o.LOG_AGGREGATOR_RSYSLOGD_DEBUG,
+		LOG_AGGREGATOR_TCP_TIMEOUT:              o.LOG_AGGREGATOR_TCP_TIMEOUT,
+		LOG_AGGREGATOR_TOWER_UUID:               o.LOG_AGGREGATOR_TOWER_UUID,
+		LOG_AGGREGATOR_TYPE:                     o.LOG_AGGREGATOR_TYPE,
+		LOG_AGGREGATOR_USERNAME:                 o.LOG_AGGREGATOR_USERNAME,
+		LOG_AGGREGATOR_VERIFY_CERT:              o.LOG_AGGREGATOR_VERIFY_CERT,
 	}
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscLogging
 func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggingBodyRequestModel) {
 	req.API_400_ERROR_LOG_FORMAT = o.API_400_ERROR_LOG_FORMAT.ValueString()
+	req.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB = o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()
+	req.LOG_AGGREGATOR_ACTION_QUEUE_SIZE = o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()
 	req.LOG_AGGREGATOR_ENABLED = o.LOG_AGGREGATOR_ENABLED.ValueBool()
 	req.LOG_AGGREGATOR_HOST = o.LOG_AGGREGATOR_HOST.ValueString()
 	req.LOG_AGGREGATOR_INDIVIDUAL_FACTS = o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()
@@ -85,7 +90,6 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 			req.LOG_AGGREGATOR_LOGGERS = append(req.LOG_AGGREGATOR_LOGGERS, val.String())
 		}
 	}
-	req.LOG_AGGREGATOR_MAX_DISK_USAGE_GB = o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB.ValueInt64()
 	req.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH = o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()
 	req.LOG_AGGREGATOR_PASSWORD = o.LOG_AGGREGATOR_PASSWORD.ValueString()
 	req.LOG_AGGREGATOR_PORT = o.LOG_AGGREGATOR_PORT.ValueInt64()
@@ -101,6 +105,14 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 
 func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.API_400_ERROR_LOG_FORMAT, data, false)
+}
+
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionMaxDiskUsageGb(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB, data)
+}
+
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionQueueSize(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorEnabled(data any) (d diag.Diagnostics, err error) {
@@ -121,10 +133,6 @@ func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLevel(data any) (d d
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLoggers(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetListString(&o.LOG_AGGREGATOR_LOGGERS, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsageGb(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_GB, data)
 }
 
 func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsagePath(data any) (d diag.Diagnostics, err error) {
@@ -174,6 +182,12 @@ func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]an
 	if dg, _ := o.setApi400ErrorLogFormat(data["API_400_ERROR_LOG_FORMAT"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setLogAggregatorActionMaxDiskUsageGb(data["LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setLogAggregatorActionQueueSize(data["LOG_AGGREGATOR_ACTION_QUEUE_SIZE"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setLogAggregatorEnabled(data["LOG_AGGREGATOR_ENABLED"]); dg.HasError() {
 		diags.Append(dg...)
 	}
@@ -187,9 +201,6 @@ func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]an
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setLogAggregatorLoggers(data["LOG_AGGREGATOR_LOGGERS"]); dg.HasError() {
-		diags.Append(dg...)
-	}
-	if dg, _ := o.setLogAggregatorMaxDiskUsageGb(data["LOG_AGGREGATOR_MAX_DISK_USAGE_GB"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setLogAggregatorMaxDiskUsagePath(data["LOG_AGGREGATOR_MAX_DISK_USAGE_PATH"]); dg.HasError() {
@@ -229,6 +240,10 @@ func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]an
 type settingsMiscLoggingBodyRequestModel struct {
 	// API_400_ERROR_LOG_FORMAT "The format of logged messages when an API 4XX error occurs, the following variables will be substituted: \nstatus_code - The HTTP status code of the error\nuser_name - The user name attempting to use the API\nurl_path - The URL path to the API endpoint called\nremote_addr - The remote address seen for the user\nerror - The error set by the api endpoint\nVariables need to be in the format {<variable name>}."
 	API_400_ERROR_LOG_FORMAT string `json:"API_400_ERROR_LOG_FORMAT,omitempty"`
+	// LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB "Amount of data to store (in gigabytes) if an rsyslog action takes time to process an incoming message (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting on the action (e.g. omhttp). It stores files in the directory specified by LOG_AGGREGATOR_MAX_DISK_USAGE_PATH."
+	LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB int64 `json:"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB,omitempty"`
+	// LOG_AGGREGATOR_ACTION_QUEUE_SIZE "Defines how large the rsyslog action queue can grow in number of messages stored. This can have an impact on memory utilization. When the queue reaches 75% of this number, the queue will start writing to disk (queue.highWatermark in rsyslog). When it reaches 90%, NOTICE, INFO, and DEBUG messages will start to be discarded (queue.discardMark with queue.discardSeverity=5)."
+	LOG_AGGREGATOR_ACTION_QUEUE_SIZE int64 `json:"LOG_AGGREGATOR_ACTION_QUEUE_SIZE,omitempty"`
 	// LOG_AGGREGATOR_ENABLED "Enable sending logs to external log aggregator."
 	LOG_AGGREGATOR_ENABLED bool `json:"LOG_AGGREGATOR_ENABLED"`
 	// LOG_AGGREGATOR_HOST "Hostname/IP where external logs will be sent to."
@@ -237,10 +252,8 @@ type settingsMiscLoggingBodyRequestModel struct {
 	LOG_AGGREGATOR_INDIVIDUAL_FACTS bool `json:"LOG_AGGREGATOR_INDIVIDUAL_FACTS"`
 	// LOG_AGGREGATOR_LEVEL "Level threshold used by log handler. Severities from lowest to highest are DEBUG, INFO, WARNING, ERROR, CRITICAL. Messages less severe than the threshold will be ignored by log handler. (messages under category awx.anlytics ignore this setting)"
 	LOG_AGGREGATOR_LEVEL string `json:"LOG_AGGREGATOR_LEVEL,omitempty"`
-	// LOG_AGGREGATOR_LOGGERS "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs."
+	// LOG_AGGREGATOR_LOGGERS "List of loggers that will send HTTP logs to the collector, these can include any or all of: \nawx - service logs\nactivity_stream - activity stream records\njob_events - callback data from Ansible job events\nsystem_tracking - facts gathered from scan jobs\nbroadcast_websocket - errors pertaining to websockets broadcast metrics\n"
 	LOG_AGGREGATOR_LOGGERS []string `json:"LOG_AGGREGATOR_LOGGERS,omitempty"`
-	// LOG_AGGREGATOR_MAX_DISK_USAGE_GB "Amount of data to store (in gigabytes) during an outage of the external log aggregator (defaults to 1). Equivalent to the rsyslogd queue.maxdiskspace setting."
-	LOG_AGGREGATOR_MAX_DISK_USAGE_GB int64 `json:"LOG_AGGREGATOR_MAX_DISK_USAGE_GB,omitempty"`
 	// LOG_AGGREGATOR_MAX_DISK_USAGE_PATH "Location to persist logs that should be retried after an outage of the external log aggregator (defaults to /var/lib/awx). Equivalent to the rsyslogd queue.spoolDirectory setting."
 	LOG_AGGREGATOR_MAX_DISK_USAGE_PATH string `json:"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH,omitempty"`
 	// LOG_AGGREGATOR_PASSWORD "Password or authentication token for external log aggregator (if required; HTTP/s only)."

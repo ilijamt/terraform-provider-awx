@@ -24,10 +24,14 @@ type instanceGroupTerraformModel struct {
 	Instances types.Int64 `tfsdk:"instances" json:"instances"`
 	// IsContainerGroup "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster."
 	IsContainerGroup types.Bool `tfsdk:"is_container_group" json:"is_container_group"`
-	// JobsRunning "Count of jobs in the running or waiting state that are targeted for this instance group"
+	// JobsRunning ""
 	JobsRunning types.Int64 `tfsdk:"jobs_running" json:"jobs_running"`
 	// JobsTotal "Count of all jobs that target this instance group"
 	JobsTotal types.Int64 `tfsdk:"jobs_total" json:"jobs_total"`
+	// MaxConcurrentJobs "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced."
+	MaxConcurrentJobs types.Int64 `tfsdk:"max_concurrent_jobs" json:"max_concurrent_jobs"`
+	// MaxForks "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced."
+	MaxForks types.Int64 `tfsdk:"max_forks" json:"max_forks"`
 	// Name "Name of this instance group."
 	Name types.String `tfsdk:"name" json:"name"`
 	// PercentCapacityRemaining ""
@@ -53,6 +57,8 @@ func (o *instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
 		IsContainerGroup:         o.IsContainerGroup,
 		JobsRunning:              o.JobsRunning,
 		JobsTotal:                o.JobsTotal,
+		MaxConcurrentJobs:        o.MaxConcurrentJobs,
+		MaxForks:                 o.MaxForks,
 		Name:                     o.Name,
 		PercentCapacityRemaining: o.PercentCapacityRemaining,
 		PodSpecOverride:          o.PodSpecOverride,
@@ -66,6 +72,8 @@ func (o *instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
 func (o *instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyRequestModel) {
 	req.Credential = o.Credential.ValueInt64()
 	req.IsContainerGroup = o.IsContainerGroup.ValueBool()
+	req.MaxConcurrentJobs = o.MaxConcurrentJobs.ValueInt64()
+	req.MaxForks = o.MaxForks.ValueInt64()
 	req.Name = o.Name.ValueString()
 	req.PodSpecOverride = o.PodSpecOverride.ValueString()
 	req.PolicyInstanceList = json.RawMessage(o.PolicyInstanceList.ValueString())
@@ -104,6 +112,14 @@ func (o *instanceGroupTerraformModel) setJobsRunning(data any) (d diag.Diagnosti
 
 func (o *instanceGroupTerraformModel) setJobsTotal(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetInt64(&o.JobsTotal, data)
+}
+
+func (o *instanceGroupTerraformModel) setMaxConcurrentJobs(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetInt64(&o.MaxConcurrentJobs, data)
+}
+
+func (o *instanceGroupTerraformModel) setMaxForks(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetInt64(&o.MaxForks, data)
 }
 
 func (o *instanceGroupTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
@@ -158,6 +174,12 @@ func (o *instanceGroupTerraformModel) updateFromApiData(data map[string]any) (di
 	if dg, _ := o.setJobsTotal(data["jobs_total"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setMaxConcurrentJobs(data["max_concurrent_jobs"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setMaxForks(data["max_forks"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setName(data["name"]); dg.HasError() {
 		diags.Append(dg...)
 	}
@@ -185,6 +207,10 @@ type instanceGroupBodyRequestModel struct {
 	Credential int64 `json:"credential,omitempty"`
 	// IsContainerGroup "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster."
 	IsContainerGroup bool `json:"is_container_group"`
+	// MaxConcurrentJobs "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced."
+	MaxConcurrentJobs int64 `json:"max_concurrent_jobs,omitempty"`
+	// MaxForks "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced."
+	MaxForks int64 `json:"max_forks,omitempty"`
 	// Name "Name of this instance group."
 	Name string `json:"name"`
 	// PodSpecOverride ""

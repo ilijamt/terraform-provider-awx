@@ -22,18 +22,22 @@ type inventorySourceTerraformModel struct {
 	EnabledVar types.String `tfsdk:"enabled_var" json:"enabled_var"`
 	// ExecutionEnvironment "The container image to be used for execution."
 	ExecutionEnvironment types.Int64 `tfsdk:"execution_environment" json:"execution_environment"`
-	// HostFilter "Regex where only matching hosts will be imported."
+	// HostFilter "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported."
 	HostFilter types.String `tfsdk:"host_filter" json:"host_filter"`
 	// ID "Database ID for this inventory source."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 	// Inventory ""
 	Inventory types.Int64 `tfsdk:"inventory" json:"inventory"`
+	// Limit "Enter host, group or pattern match"
+	Limit types.String `tfsdk:"limit" json:"limit"`
 	// Name "Name of this inventory source."
 	Name types.String `tfsdk:"name" json:"name"`
 	// Overwrite "Overwrite local groups and hosts from remote inventory source."
 	Overwrite types.Bool `tfsdk:"overwrite" json:"overwrite"`
 	// OverwriteVars "Overwrite local variables from remote inventory source."
 	OverwriteVars types.Bool `tfsdk:"overwrite_vars" json:"overwrite_vars"`
+	// ScmBranch "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true."
+	ScmBranch types.String `tfsdk:"scm_branch" json:"scm_branch"`
 	// Source ""
 	Source types.String `tfsdk:"source" json:"source"`
 	// SourcePath ""
@@ -63,9 +67,11 @@ func (o *inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
 		HostFilter:           o.HostFilter,
 		ID:                   o.ID,
 		Inventory:            o.Inventory,
+		Limit:                o.Limit,
 		Name:                 o.Name,
 		Overwrite:            o.Overwrite,
 		OverwriteVars:        o.OverwriteVars,
+		ScmBranch:            o.ScmBranch,
 		Source:               o.Source,
 		SourcePath:           o.SourcePath,
 		SourceProject:        o.SourceProject,
@@ -86,9 +92,11 @@ func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRe
 	req.ExecutionEnvironment = o.ExecutionEnvironment.ValueInt64()
 	req.HostFilter = o.HostFilter.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
+	req.Limit = o.Limit.ValueString()
 	req.Name = o.Name.ValueString()
 	req.Overwrite = o.Overwrite.ValueBool()
 	req.OverwriteVars = o.OverwriteVars.ValueBool()
+	req.ScmBranch = o.ScmBranch.ValueString()
 	req.Source = o.Source.ValueString()
 	req.SourcePath = o.SourcePath.ValueString()
 	req.SourceProject = o.SourceProject.ValueInt64()
@@ -132,6 +140,10 @@ func (o *inventorySourceTerraformModel) setInventory(data any) (d diag.Diagnosti
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
+func (o *inventorySourceTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.Limit, data, false)
+}
+
 func (o *inventorySourceTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
@@ -142,6 +154,10 @@ func (o *inventorySourceTerraformModel) setOverwrite(data any) (d diag.Diagnosti
 
 func (o *inventorySourceTerraformModel) setOverwriteVars(data any) (d diag.Diagnostics, err error) {
 	return helpers.AttrValueSetBool(&o.OverwriteVars, data)
+}
+
+func (o *inventorySourceTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
 func (o *inventorySourceTerraformModel) setSource(data any) (d diag.Diagnostics, err error) {
@@ -204,6 +220,9 @@ func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (
 	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
 		diags.Append(dg...)
 	}
+	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+		diags.Append(dg...)
+	}
 	if dg, _ := o.setName(data["name"]); dg.HasError() {
 		diags.Append(dg...)
 	}
@@ -211,6 +230,9 @@ func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setOverwriteVars(data["overwrite_vars"]); dg.HasError() {
+		diags.Append(dg...)
+	}
+	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
 		diags.Append(dg...)
 	}
 	if dg, _ := o.setSource(data["source"]); dg.HasError() {
@@ -252,16 +274,20 @@ type inventorySourceBodyRequestModel struct {
 	EnabledVar string `json:"enabled_var,omitempty"`
 	// ExecutionEnvironment "The container image to be used for execution."
 	ExecutionEnvironment int64 `json:"execution_environment,omitempty"`
-	// HostFilter "Regex where only matching hosts will be imported."
+	// HostFilter "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported."
 	HostFilter string `json:"host_filter,omitempty"`
 	// Inventory ""
 	Inventory int64 `json:"inventory"`
+	// Limit "Enter host, group or pattern match"
+	Limit string `json:"limit,omitempty"`
 	// Name "Name of this inventory source."
 	Name string `json:"name"`
 	// Overwrite "Overwrite local groups and hosts from remote inventory source."
 	Overwrite bool `json:"overwrite"`
 	// OverwriteVars "Overwrite local variables from remote inventory source."
 	OverwriteVars bool `json:"overwrite_vars"`
+	// ScmBranch "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true."
+	ScmBranch string `json:"scm_branch,omitempty"`
 	// Source ""
 	Source string `json:"source,omitempty"`
 	// SourcePath ""

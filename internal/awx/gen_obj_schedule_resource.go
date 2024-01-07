@@ -313,7 +313,7 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 				},
 			},
 			"until": schema.StringAttribute{
-				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an emptry string will be returned",
+				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned",
 				Required:    false,
 				Optional:    false,
 				Computed:    true,

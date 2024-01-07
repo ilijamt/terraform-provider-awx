@@ -26,8 +26,10 @@ description: |-
 - `credential` (Number) Credential
 - `instances` (Number) Instances
 - `is_container_group` (Boolean) Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster.
-- `jobs_running` (Number) Count of jobs in the running or waiting state that are targeted for this instance group
+- `jobs_running` (Number) Jobs running
 - `jobs_total` (Number) Count of all jobs that target this instance group
+- `max_concurrent_jobs` (Number) Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.
+- `max_forks` (Number) Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.
 - `name` (String) Name of this instance group.
 - `percent_capacity_remaining` (Number) Percent capacity remaining
 - `pod_spec_override` (String) Pod spec override
