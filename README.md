@@ -14,6 +14,8 @@ AWX Versions
 Currently, built provider versions for AWX.
 
 * 21.8.0
+* 23.5.1 (only resources)
+* 23.6.0 (only resources)
 
 TODO:
 -----
@@ -28,22 +30,26 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-mkdir -p resource/api/21.8.0
-node ./tools/config-merge.js $(pwd)/resources/config $(pwd)/resources/api/21.8.0
-go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/api/21.8.0 \
+export AWX_VERSION=23.6.0
+mkdir -p resources/api/$AWX_VERSION/config
+cat <<EOF > resources/api/$AWX_VERSION/config/default.json
+{
+  "api_version": "$AWX_VERSION"
+}
+EOF
+node ./tools/config-merge.js $(pwd)/resources/config $(pwd)/resources/api/$AWX_VERSION
+go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/api/$AWX_VERSION \
        --host $TOWER_HOST --password $TOWER_PASSWORD --username $TOWER_USERNAME --insecure-skip-verify
 ```
 
-Build a new version of the specified API
-----------------------------------------
+Build the version of the current API
+-------------------------------------
 
 ```shell
-go run ./tools/generator/cmd/generator/main.go template resources/api/21.8.0
+make generate
 ```
 
-Create empty tests for the provider
------------------------------------
-
+If you want to build an API for a 23.6.0 just run
 ```shell
-go run ./tools/generator/cmd/generator/main.go gen-tests resources/api/21.8.0 testdata/21.8.0
+make generate VERSION=23.6.0
 ```
