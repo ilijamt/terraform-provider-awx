@@ -6,6 +6,13 @@ VERSION=23.8.1
 generate-config:
 	node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/resources/api/$(VERSION)
 
+.PHONY: generate-configs
+generate-configs: resources/api/*
+	@for file in $^ ; do \
+		node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/$${file} ; \
+	done
+
+
 .PHONY: generate-awx
 generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
