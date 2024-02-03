@@ -16,6 +16,7 @@ Currently, built provider versions for AWX.
 * 21.8.0
 * 23.5.1
 * 23.6.0
+* 23.7.0
 
 TODO:
 -----
@@ -30,7 +31,7 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-export AWX_VERSION=23.6.0
+export AWX_VERSION=23.7.0
 mkdir -p resources/api/$AWX_VERSION/config
 cat <<EOF > resources/api/$AWX_VERSION/config/default.json
 {
@@ -49,7 +50,7 @@ Build the version of the current API
 make generate
 ```
 
-If you want to build an API for a 23.6.0 just run
+If you want to build an API for a 23.7.0 just run
 ```shell
-make generate VERSION=23.6.0
+make generate VERSION=23.7.0
 ```
