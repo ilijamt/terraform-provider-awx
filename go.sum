@@ -96,8 +96,8 @@ github.com/hashicorp/yamux v0.1.1 h1:yrQxtgseBDrq9Y652vSRDvsKCJKOUD+GzTS4Y0Y8pvE
 github.com/hashicorp/yamux v0.1.1/go.mod h1:CtWFDAQgb7dxtzFs4tWbplKIe2jSi3+5vKbgIO0SLnQ=
 github.com/iancoleman/strcase v0.3.0 h1:nTXanmYxhfFAMjZL34Ov6gkzEsSJZ5DbhxWjvSASxEI=
 github.com/iancoleman/strcase v0.3.0/go.mod h1:iwCmte+B7n89clKwxIoIXy/HfoL7AsD47ZCWhYzw7ho=
-github.com/ilijamt/envwrap v1.0.0 h1:GylcdKcr6z4ceBdB3mE5BXTMCzJ35DTIMB2dDzshjCY=
-github.com/ilijamt/envwrap v1.0.0/go.mod h1:lIxcTtUF9DOjt5Yyo6mPHVfY9CBtF0/76c0IZHdv8+Q=
+github.com/ilijamt/envwrap v1.1.0 h1:NkUqciHatwocbTL9kF93yS9oewl/pjD2h9wvPaVtVE0=
+github.com/ilijamt/envwrap v1.1.0/go.mod h1:2vGRbFqw64dw/DHWJ95MsxZoxIZBgpY6f3QtP3oaoRw=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 h1:BQSFePA1RWJOlocH6Fxy8MmwDt+yVQYULKfN0RoTN8A=
