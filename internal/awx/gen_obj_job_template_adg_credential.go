@@ -139,7 +139,7 @@ func (o *jobTemplateAssociateDisassociateCredential) Create(ctx context.Context,
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.CredentialID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -185,7 +185,7 @@ func (o *jobTemplateAssociateDisassociateCredential) Delete(ctx context.Context,
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.CredentialID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

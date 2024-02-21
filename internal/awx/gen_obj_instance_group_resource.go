@@ -270,7 +270,7 @@ func (o *instanceGroupResource) Create(ctx context.Context, request resource.Cre
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[InstanceGroup/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[InstanceGroup/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -364,7 +364,7 @@ func (o *instanceGroupResource) Update(ctx context.Context, request resource.Upd
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[InstanceGroup/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[InstanceGroup/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

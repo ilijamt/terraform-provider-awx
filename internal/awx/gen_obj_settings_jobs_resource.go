@@ -375,7 +375,7 @@ func (o *settingsJobsResource) Create(ctx context.Context, request resource.Crea
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsJobs/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsJobs/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -467,7 +467,7 @@ func (o *settingsJobsResource) Update(ctx context.Context, request resource.Upda
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsJobs/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsJobs/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

@@ -113,7 +113,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Create(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -160,7 +160,7 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Delete(ct
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

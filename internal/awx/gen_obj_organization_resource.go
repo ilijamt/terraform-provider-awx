@@ -150,7 +150,7 @@ func (o *organizationResource) Create(ctx context.Context, request resource.Crea
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Organization/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Organization/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -244,7 +244,7 @@ func (o *organizationResource) Update(ctx context.Context, request resource.Upda
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Organization/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Organization/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

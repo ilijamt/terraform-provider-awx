@@ -351,7 +351,7 @@ func (o *scheduleResource) Create(ctx context.Context, request resource.CreateRe
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Schedule/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Schedule/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -445,7 +445,7 @@ func (o *scheduleResource) Update(ctx context.Context, request resource.UpdateRe
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Schedule/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Schedule/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

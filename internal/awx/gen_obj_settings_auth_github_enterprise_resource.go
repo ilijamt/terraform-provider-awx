@@ -154,7 +154,7 @@ func (o *settingsAuthGithubEnterpriseResource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -263,7 +263,7 @@ func (o *settingsAuthGithubEnterpriseResource) Update(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGithubEnterprise/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

@@ -277,7 +277,7 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscAuthentication/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscAuthentication/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -369,7 +369,7 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscAuthentication/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscAuthentication/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

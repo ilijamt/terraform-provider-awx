@@ -71,7 +71,7 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 }
 
 func configureFromEnvironment(ctx context.Context, data *Model) {
-	var envConfig = make(map[string]interface{})
+	var envConfig = make(map[string]any)
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_HOST", "AWX_HOST"); val != "" && data.Hostname.IsNull() {
 		data.Hostname = types.StringValue(val)
@@ -97,7 +97,7 @@ func configureFromEnvironment(ctx context.Context, data *Model) {
 }
 
 func configureDefaults(ctx context.Context, data *Model) {
-	var defaults = make(map[string]interface{})
+	var defaults = make(map[string]any)
 	if data.VerifySSL.IsNull() {
 		data.VerifySSL = types.BoolValue(true)
 		defaults["VerifySSL"] = data.VerifySSL.ValueBool()

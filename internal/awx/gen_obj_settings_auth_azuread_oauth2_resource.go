@@ -130,7 +130,7 @@ func (o *settingsAuthAzureAdoauth2Resource) Create(ctx context.Context, request 
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -239,7 +239,7 @@ func (o *settingsAuthAzureAdoauth2Resource) Update(ctx context.Context, request 
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthAzureADOauth2/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

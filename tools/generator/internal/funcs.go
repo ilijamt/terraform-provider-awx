@@ -296,11 +296,11 @@ var FuncMap = template.FuncMap{
 		}
 		return t
 	},
-	"awx_type_choice_data": func(choices []interface{}) (ret string) {
+	"awx_type_choice_data": func(choices []any) (ret string) {
 		var arr []string
-		var val interface{}
+		var val any
 		for _, choice := range choices {
-			val = (choice.([]interface{}))[0]
+			val = (choice.([]any))[0]
 			switch val := val.(type) {
 			case string:
 				arr = append(arr, fmt.Sprintf("\"%s\"", val))

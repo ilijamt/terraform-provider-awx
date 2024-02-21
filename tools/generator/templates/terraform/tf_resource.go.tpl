@@ -186,7 +186,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -320,7 +320,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[{{.Name}}/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[{{.Name}}/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

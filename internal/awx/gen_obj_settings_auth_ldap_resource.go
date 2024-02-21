@@ -1218,7 +1218,7 @@ func (o *settingsAuthLdapResource) Create(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthLDAP/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthLDAP/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -1327,7 +1327,7 @@ func (o *settingsAuthLdapResource) Update(ctx context.Context, request resource.
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthLDAP/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthLDAP/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

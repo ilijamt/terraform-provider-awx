@@ -187,7 +187,7 @@ func (o *jobTemplateSurvey) Create(ctx context.Context, request resource.CreateR
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[JobTemplate/Create/Survey] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Create/Survey] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -230,7 +230,7 @@ func (o *jobTemplateSurvey) Update(ctx context.Context, request resource.UpdateR
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[JobTemplate/Update/SurveySpec] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Update/SurveySpec] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

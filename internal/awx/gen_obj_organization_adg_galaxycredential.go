@@ -139,7 +139,7 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Create(ctx context.C
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.GalaxyCredentialID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[Organization/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Organization/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -185,7 +185,7 @@ func (o *organizationAssociateDisassociateGalaxyCredential) Delete(ctx context.C
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.OrganizationID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.GalaxyCredentialID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[Organization/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Organization/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

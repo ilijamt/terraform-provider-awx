@@ -391,7 +391,7 @@ func (o *settingsMiscSystemResource) Create(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscSystem/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscSystem/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -483,7 +483,7 @@ func (o *settingsMiscSystemResource) Update(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscSystem/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscSystem/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

@@ -139,7 +139,7 @@ func (o *hostAssociateDisassociateGroup) Create(ctx context.Context, request res
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.HostID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.GroupID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[Host/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Host/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -185,7 +185,7 @@ func (o *hostAssociateDisassociateGroup) Delete(ctx context.Context, request res
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.HostID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.GroupID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[Host/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Host/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

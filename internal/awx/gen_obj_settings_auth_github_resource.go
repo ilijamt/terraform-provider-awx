@@ -130,7 +130,7 @@ func (o *settingsAuthGithubResource) Create(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGithub/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGithub/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -239,7 +239,7 @@ func (o *settingsAuthGithubResource) Update(ctx context.Context, request resourc
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGithub/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGithub/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

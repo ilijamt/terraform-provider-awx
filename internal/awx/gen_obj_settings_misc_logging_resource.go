@@ -294,7 +294,7 @@ func (o *settingsMiscLoggingResource) Create(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscLogging/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscLogging/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -386,7 +386,7 @@ func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsMiscLogging/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsMiscLogging/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

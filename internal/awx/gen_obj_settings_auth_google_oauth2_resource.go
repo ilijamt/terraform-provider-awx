@@ -156,7 +156,7 @@ func (o *settingsAuthGoogleOauth2Resource) Create(ctx context.Context, request r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -265,7 +265,7 @@ func (o *settingsAuthGoogleOauth2Resource) Update(ctx context.Context, request r
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[SettingsAuthGoogleOauth2/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

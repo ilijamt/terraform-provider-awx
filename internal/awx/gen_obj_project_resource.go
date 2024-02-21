@@ -322,7 +322,7 @@ func (o *projectResource) Create(ctx context.Context, request resource.CreateReq
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Project/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Project/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -416,7 +416,7 @@ func (o *projectResource) Update(ctx context.Context, request resource.UpdateReq
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[Project/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Project/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

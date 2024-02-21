@@ -113,7 +113,7 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -160,7 +160,7 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Delete(ctx contex
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

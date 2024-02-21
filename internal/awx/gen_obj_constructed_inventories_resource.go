@@ -296,7 +296,7 @@ func (o *constructedInventoriesResource) Create(ctx context.Context, request res
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[ConstructedInventories/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ConstructedInventories/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -390,7 +390,7 @@ func (o *constructedInventoriesResource) Update(ctx context.Context, request res
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[ConstructedInventories/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ConstructedInventories/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

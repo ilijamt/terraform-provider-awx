@@ -179,7 +179,7 @@ func (o *credentialTypeResource) Create(ctx context.Context, request resource.Cr
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[CredentialType/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[CredentialType/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -273,7 +273,7 @@ func (o *credentialTypeResource) Update(ctx context.Context, request resource.Up
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[CredentialType/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[CredentialType/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

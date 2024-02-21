@@ -326,7 +326,7 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -437,7 +437,7 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

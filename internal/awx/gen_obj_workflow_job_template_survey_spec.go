@@ -187,7 +187,7 @@ func (o *workflowJobTemplateSurvey) Create(ctx context.Context, request resource
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Survey] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Survey] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -230,7 +230,7 @@ func (o *workflowJobTemplateSurvey) Update(ctx context.Context, request resource
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Update/SurveySpec] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[WorkflowJobTemplate/Update/SurveySpec] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

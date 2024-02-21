@@ -139,7 +139,7 @@ func (o *teamAssociateDisassociateRole) Create(ctx context.Context, request reso
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.TeamID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.RoleID.ValueInt64(), Disassociate: false}
-	tflog.Debug(ctx, "[Team/Create/Associate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Team/Create/Associate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -185,7 +185,7 @@ func (o *teamAssociateDisassociateRole) Delete(ctx context.Context, request reso
 	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.TeamID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.RoleID.ValueInt64(), Disassociate: true}
-	tflog.Debug(ctx, "[Team/Delete/Disassociate] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[Team/Delete/Disassociate] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,

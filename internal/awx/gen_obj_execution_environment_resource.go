@@ -181,7 +181,7 @@ func (o *executionEnvironmentResource) Create(ctx context.Context, request resou
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[ExecutionEnvironment/Create] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ExecutionEnvironment/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
@@ -275,7 +275,7 @@ func (o *executionEnvironmentResource) Update(ctx context.Context, request resou
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[ExecutionEnvironment/Update] Making a request", map[string]interface{}{
+	tflog.Debug(ctx, "[ExecutionEnvironment/Update] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
