@@ -1,0 +1,6 @@
+{
+  "type_name": "me",
+  "remove_fields_data_source": [
+    "password"
+  ]
+}
