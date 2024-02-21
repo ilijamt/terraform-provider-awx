@@ -22,7 +22,7 @@ builds:
     ignore:
       - goos: darwin
         goarch: '386'
-    binary: '{{ .ProjectName }}_v21.8.0-{{ .ShortCommit }}'
+    binary: '{{ .ProjectName }}_v{{ .Version }}-{{ .ShortCommit }}'
 archives:
   - format: zip
     name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
