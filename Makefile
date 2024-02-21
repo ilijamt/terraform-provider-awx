@@ -1,6 +1,6 @@
 default: build
 
-VERSION=23.7.0
+VERSION=23.8.1
 
 .PHONY: generate-awx
 generate-awx:
