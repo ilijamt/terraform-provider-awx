@@ -26,7 +26,7 @@ description: |-
 - `host_filter` (String) Filter that will be applied to the hosts of this inventory.
 - `kind` (String) Kind of inventory being represented.
 - `prevent_instance_group_fallback` (Boolean) If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.
-- `variables` (String) Inventory variables in JSON or YAML format.
+- `variables` (String) Inventory variables in JSON format
 
 ### Read-Only
 

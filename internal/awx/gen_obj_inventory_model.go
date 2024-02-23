@@ -42,7 +42,7 @@ type inventoryTerraformModel struct {
 	TotalHosts types.Int64 `tfsdk:"total_hosts" json:"total_hosts"`
 	// TotalInventorySources "Total number of external inventory sources configured within this inventory."
 	TotalInventorySources types.Int64 `tfsdk:"total_inventory_sources" json:"total_inventory_sources"`
-	// Variables "Inventory variables in JSON or YAML format."
+	// Variables "Inventory variables in JSON format"
 	Variables types.String `tfsdk:"variables" json:"variables"`
 }
 
@@ -213,7 +213,7 @@ type inventoryBodyRequestModel struct {
 	Organization int64 `json:"organization"`
 	// PreventInstanceGroupFallback "If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied."
 	PreventInstanceGroupFallback bool `json:"prevent_instance_group_fallback"`
-	// Variables "Inventory variables in JSON or YAML format."
+	// Variables "Inventory variables in JSON format"
 	Variables json.RawMessage `json:"variables,omitempty"`
 }
 

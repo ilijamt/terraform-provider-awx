@@ -31,7 +31,8 @@
     "variables": {
       "type": "json-yaml",
       "default_value": "{}",
-      "post_wrap": true
+      "post_wrap": true,
+      "description": "Inventory variables in JSON format"
     }
   }
 }

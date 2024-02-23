@@ -129,7 +129,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 				Validators: []validator.Bool{},
 			},
 			"variables": schema.StringAttribute{
-				Description: "Inventory variables in JSON or YAML format.",
+				Description: "Inventory variables in JSON format",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
