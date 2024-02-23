@@ -38,6 +38,7 @@ type Model struct {
 	Hostname  types.String `tfsdk:"hostname"`
 	Username  types.String `tfsdk:"username"`
 	Password  types.String `tfsdk:"password"`
+	Token     types.String `tfsdk:"token"`
 	VerifySSL types.Bool   `tfsdk:"verify_ssl"`
 }
 
@@ -52,19 +53,29 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 			"hostname": schema.StringAttribute{
 				Description: "The AWX Host that we connect to. (defaults to TOWER_HOST/AWX_HOST env variable if set)",
 				Optional:    true,
+				Required:    false,
 			},
 			"verify_ssl": schema.BoolAttribute{
 				Description: "If you are using a self signed certificate this should be set to false (defaults to TOWER_VERIFY_SSL/VERIFY_SSL env variable if set) [default is true]",
 				Optional:    true,
+				Required:    false,
 			},
 			"username": schema.StringAttribute{
 				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME/AWX_USERNAME env variable if set)",
 				Optional:    true,
+				Required:    false,
 			},
 			"password": schema.StringAttribute{
 				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD/AWX_PASSWORD env variable if set)",
 				Optional:    true,
 				Sensitive:   true,
+				Required:    false,
+			},
+			"token": schema.StringAttribute{
+				Required:    false,
+				Optional:    true,
+				Sensitive:   true,
+				Description: "The token to use to connect to the AWX host. (defaults to TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN env variable if set)",
 			},
 		},
 	}
@@ -86,6 +97,11 @@ func configureFromEnvironment(ctx context.Context, data *Model) {
 	if val := helpers.GetFirstSetEnvVar("TOWER_PASSWORD", "AWX_PASSWORD"); val != "" && data.Password.IsNull() {
 		data.Password = types.StringValue(val)
 		envConfig["Password"] = strings.Repeat("*", len(val))
+	}
+
+	if val := helpers.GetFirstSetEnvVar("TOWER_AUTH_TOKEN", "AWX_AUTH_TOKEN"); val != "" && data.Token.IsNull() {
+		data.Token = types.StringValue(val)
+		envConfig["AuthToken"] = strings.Repeat("*", len(val))
 	}
 
 	if val := helpers.GetFirstSetEnvVar("TOWER_VERIFY_SSL", "AWX_VERIFY_SSL"); val != "" && data.VerifySSL.IsNull() {
@@ -123,6 +139,9 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 			"If either is already set, ensure the value is not empty.")
 	}
 
+	// var authTokenExists = !helpers.IsEmptyValue(config.Token)
+	// var authUsernamePasswordExists = !helpers.IsEmptyValue(config.Username) && !helpers.IsEmptyValue(config.Password)
+
 	if "" == config.Username.ValueString() || config.Username.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
 			"Set the host value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
@@ -139,7 +158,9 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client = c.NewClient(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	var client c.Client
+
+	client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config

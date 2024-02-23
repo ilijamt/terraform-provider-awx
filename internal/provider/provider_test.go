@@ -3,12 +3,15 @@ package provider_test
 import (
 	"context"
 	"fmt"
+	"testing"
+
+	"github.com/davecgh/go-spew/spew"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
-	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 	"github.com/stretchr/testify/require"
-	"testing"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
@@ -53,6 +56,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"username":   tftypes.String,
 			"password":   tftypes.String,
 			"verify_ssl": tftypes.Bool,
+			"token":      tftypes.String,
 		},
 	}
 
@@ -62,6 +66,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"username":   tftypes.NewValue(tftypes.String, "username"),
 			"password":   tftypes.NewValue(tftypes.String, "password"),
 			"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 		}))
 		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
@@ -69,6 +74,7 @@ func TestProviderConfiguration(t *testing.T) {
 		})
 		require.NoError(t, err)
 		require.NotNil(t, response)
+		spew.Dump(response.Diagnostics)
 		require.Empty(t, response.Diagnostics)
 	})
 
@@ -78,6 +84,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"username":   tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 			"password":   tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 			"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 		}))
 		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
@@ -94,6 +101,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"username":   tftypes.NewValue(tftypes.String, ""),
 			"password":   tftypes.NewValue(tftypes.String, ""),
 			"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 		}))
 		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
@@ -115,6 +123,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, "username"),
 					"password":   tftypes.NewValue(tftypes.String, "password"),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 1,
 			},
@@ -124,6 +133,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, ""),
 					"password":   tftypes.NewValue(tftypes.String, "password"),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 1,
 			},
@@ -133,6 +143,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, "username"),
 					"password":   tftypes.NewValue(tftypes.String, ""),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 1,
 			},
@@ -142,6 +153,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, ""),
 					"password":   tftypes.NewValue(tftypes.String, ""),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 2,
 			},
@@ -151,6 +163,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, "username"),
 					"password":   tftypes.NewValue(tftypes.String, ""),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 2,
 			},
@@ -160,6 +173,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"username":   tftypes.NewValue(tftypes.String, ""),
 					"password":   tftypes.NewValue(tftypes.String, ""),
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
 				errLen: 3,
 			},

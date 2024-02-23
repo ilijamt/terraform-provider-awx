@@ -19,5 +19,6 @@ description: |-
 
 - `hostname` (String) The AWX Host that we connect to. (defaults to TOWER_HOST/AWX_HOST env variable if set)
 - `password` (String, Sensitive) The password to connect to the AWX host. (defaults to TOWER_PASSWORD/AWX_PASSWORD env variable if set)
+- `token` (String, Sensitive) The token to use to connect to the AWX host. (defaults to TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN env variable if set)
 - `username` (String) The username to connect to the AWX host. (defaults to TOWER_USERNAME/AWX_USERNAME env variable if set)
 - `verify_ssl` (Boolean) If you are using a self signed certificate this should be set to false (defaults to TOWER_VERIFY_SSL/VERIFY_SSL env variable if set) [default is true]

@@ -3,15 +3,16 @@ package provider
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/ilijamt/envwrap"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestProviderConfigureFromEnvironment(t *testing.T) {
-	var defaultEnvs = []string{"AWX_HOST", "AWX_USERNAME", "AWX_PASSWORD", "TOWER_HOST", "TOWER_PASSWORD", "TOWER_USERNAME"}
+	var defaultEnvs = []string{"AWX_HOST", "AWX_USERNAME", "AWX_PASSWORD", "TOWER_HOST", "TOWER_PASSWORD", "TOWER_USERNAME", "TOWER_AUTH_TOKEN", "AWX_AUTH_TOKEN"}
 	var tests = []struct {
 		in   map[string]string
 		null []string
@@ -20,31 +21,36 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 		{
 			in:   map[string]string{"AWX_HOST": "host"},
 			out:  Model{Hostname: types.StringValue("host")},
-			null: []string{"username", "password", "insecure_skip_verify"},
+			null: []string{"username", "password", "insecure_skip_verify", "token"},
 		},
 		{
 			in:   map[string]string{"TOWER_HOST": "tower-host", "AWX_HOST": "awx-host"},
 			out:  Model{Hostname: types.StringValue("tower-host")},
-			null: []string{"username", "password", "insecure_skip_verify"},
+			null: []string{"username", "password", "insecure_skip_verify", "token"},
 		},
 		{
 			in:   map[string]string{"TOWER_USERNAME": "tower-username"},
 			out:  Model{Username: types.StringValue("tower-username")},
-			null: []string{"hostname", "password", "insecure_skip_verify"},
+			null: []string{"hostname", "password", "insecure_skip_verify", "token"},
 		},
 		{
 			in:   map[string]string{"TOWER_HOST": "tower-host", "AWX_HOST": "awx-host"},
 			out:  Model{Hostname: types.StringValue("tower-host")},
-			null: []string{"username", "password", "insecure_skip_verify"},
+			null: []string{"username", "password", "insecure_skip_verify", "token"},
 		},
 		{
 			in:   map[string]string{"AWX_PASSWORD": "password"},
 			out:  Model{Password: types.StringValue("password")},
-			null: []string{"hostname", "username", "insecure_skip_verify"},
+			null: []string{"hostname", "username", "insecure_skip_verify", "token"},
 		},
 		{
 			in:   map[string]string{"TOWER_VERIFY_SSL": "true", "AWX_VERIFY_SSL": "false"},
 			out:  Model{VerifySSL: types.BoolValue(true)},
+			null: []string{"hostname", "username", "password", "token"},
+		},
+		{
+			in:   map[string]string{"AWX_AUTH_TOKEN": "awx-auth-token"},
+			out:  Model{Token: types.StringValue("awx-auth-token")},
 			null: []string{"hostname", "username", "password"},
 		},
 	}
@@ -73,6 +79,8 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 					assert.True(t, config.Username.IsNull())
 				case "password":
 					assert.True(t, config.Password.IsNull())
+				case "token":
+					assert.True(t, config.Token.IsNull())
 				case "insecure_skip_verify":
 					assert.True(t, config.VerifySSL.IsNull())
 				}
