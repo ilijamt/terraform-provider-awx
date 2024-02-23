@@ -54,7 +54,7 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name
         }
     }
 {{- else }}
-    req.{{ property_case $key $.Config }} = {{ if eq .type "json" }}json.RawMessage(o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()){{ else }}o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}(){{ end }}
+    req.{{ property_case $key $.Config }} = {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage(o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()){{ else }}o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}(){{ end }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -74,6 +74,8 @@ func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCa
     return helpers.AttrValueSetListString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
 {{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json") }}
     return helpers.AttrValueSetJsonString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
+{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json-yaml") }}
+    return helpers.AttrValueSetJsonYamlString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
 {{- else if eq (awx2go_value .) "types.StringValue" }}
     return helpers.AttrValueSetString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
 {{- end }}
@@ -100,13 +102,13 @@ type {{ .Name | lowerCamelCase }}BodyRequestModel struct {
 {{- range $key := .PropertyPostKeys }}
 {{- with (index $.PropertyPostData $key) }}
     // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ if eq .type "json" }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }}{{if and (not .required) (not (eq (awx2go_primitive_type .) "bool"))}},omitempty{{end}}"`
+    {{ property_case $key $.Config }} {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }}{{if and (not .required) (not (eq (awx2go_primitive_type .) "bool"))}},omitempty{{end}}"`
 {{- end }}
 {{- end }}
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
     // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ if eq .type "json" }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }},omitempty"`
+    {{ property_case $key $.Config }} {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }},omitempty"`
 {{- end }}
 {{- end }}
 }

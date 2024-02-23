@@ -76,7 +76,7 @@ func (o *inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) 
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
 	req.PreventInstanceGroupFallback = o.PreventInstanceGroupFallback.ValueBool()
-	req.Variables = json.RawMessage(o.Variables.ValueString())
+	req.Variables = json.RawMessage(o.Variables.String())
 	return
 }
 
@@ -141,7 +141,7 @@ func (o *inventoryTerraformModel) setTotalInventorySources(data any) (d diag.Dia
 }
 
 func (o *inventoryTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
+	return helpers.AttrValueSetJsonYamlString(&o.Variables, data, false)
 }
 
 func (o *inventoryTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {

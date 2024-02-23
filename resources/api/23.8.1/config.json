@@ -369,7 +369,14 @@
             }
           ]
         }
-      ]
+      ],
+      "property_overrides": {
+        "variables": {
+          "type": "json-yaml",
+          "default_value": "{}",
+          "post_wrap": true
+        }
+      }
     },
     {
       "endpoint": "/api/v2/inventory_sources/",

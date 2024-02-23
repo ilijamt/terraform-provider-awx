@@ -3,14 +3,15 @@ package internal
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/iancoleman/strcase"
 	"log"
 	"os"
 	p "path"
 	"strconv"
 	"strings"
 	"text/template"
+
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/iancoleman/strcase"
 )
 
 func init() {
@@ -40,7 +41,7 @@ var tf_attribute_type = func(item map[string]any) string {
 		return "Int64"
 	case "float", "decimal":
 		return "Float64"
-	case "string", "choice", "datetime", "json":
+	case "string", "choice", "datetime", "json", "json-yaml":
 		return "String"
 	case "boolean", "bool":
 		return "Bool"
@@ -60,7 +61,7 @@ var awx2tf_type = func(item map[string]any) string {
 		return types.Int64Type.String()
 	case "float", "decimal":
 		return types.Float64Type.String()
-	case "string", "choice", "datetime", "json":
+	case "string", "choice", "datetime", "json", "json-yaml":
 		return types.StringType.String()
 	case "boolean", "bool":
 		return types.BoolType.String()
@@ -80,7 +81,7 @@ var awx2go_value = func(item map[string]any) string {
 		return "types.Int64Value"
 	case "float", "decimal":
 		return "types.Float64Value"
-	case "string", "choice", "datetime", "json":
+	case "string", "choice", "datetime", "json", "json-yaml":
 		return "types.StringValue"
 	case "boolean", "bool":
 		return "types.BoolValue"
@@ -220,7 +221,7 @@ var FuncMap = template.FuncMap{
 			return "int64"
 		case "float", "decimal":
 			return "float64"
-		case "string", "choice", "datetime", "json":
+		case "string", "choice", "datetime", "json", "json-yaml":
 			return "string"
 		case "boolean", "bool":
 			return "bool"
@@ -245,7 +246,7 @@ var FuncMap = template.FuncMap{
 			return "ValueInt64"
 		case "float", "decimal":
 			return "ValueFloat64"
-		case "string", "choice", "datetime", "json":
+		case "string", "choice", "datetime", "json", "json-yaml":
 			if post_wrap {
 				return "String"
 			}
@@ -269,7 +270,7 @@ var FuncMap = template.FuncMap{
 			return "types.Int64"
 		case "float", "decimal":
 			return "types.Float64"
-		case "string", "choice", "datetime", "json":
+		case "string", "choice", "datetime", "json", "json-yaml":
 			return "types.String"
 		case "boolean", "bool":
 			return "types.Bool"
@@ -287,7 +288,7 @@ var FuncMap = template.FuncMap{
 		switch t {
 		case "integer", "id", "float", "decimal":
 			return "json.Number"
-		case "string", "choice", "datetime", "json":
+		case "string", "choice", "datetime", "json", "json-yaml":
 			return "string"
 		case "boolean", "bool":
 			return "bool"

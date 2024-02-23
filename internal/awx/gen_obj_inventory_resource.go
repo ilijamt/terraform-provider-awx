@@ -134,7 +134,7 @@ func (o *inventoryResource) Schema(ctx context.Context, req resource.SchemaReque
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
-				Default:     stringdefault.StaticString(``),
+				Default:     stringdefault.StaticString(`{}`),
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
