@@ -14,13 +14,13 @@ import (
 
 func TestDoRequest(t *testing.T) {
 
-	t.Run("nil client should error out", func(t *testing.T) {
+	t.Run("nil clientWithBasicAuth should error out", func(t *testing.T) {
 		req, err := http.NewRequest(http.MethodGet, "url", nil)
 		require.NoError(t, err)
 		require.NotNil(t, req)
 		data, err := doRequest(nil, context.Background(), req)
 		require.Error(t, err)
-		require.ErrorContains(t, err, "nil http client")
+		require.ErrorContains(t, err, "nil http clientWithBasicAuth")
 		require.Empty(t, data)
 	})
 

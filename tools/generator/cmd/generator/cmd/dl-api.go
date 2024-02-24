@@ -28,7 +28,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 
 		log.Printf("Storing the data in %s directory", outApiResourceDir)
 
-		var client = c.NewClient(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify, nil)
+		var client = c.NewClientWithBasicAuth(farCfg.towerUsername, farCfg.towerPassword, farCfg.towerHost, "generator", farCfg.insecureSkipVerify, nil)
 		var data internal.ApiResources
 		var dataInfo internal.ApiResourcesInfo
 		var ctx = context.Background()

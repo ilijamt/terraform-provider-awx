@@ -12,7 +12,7 @@ import (
 
 func doRequest(client *http.Client, ctx context.Context, req *http.Request) (data map[string]any, err error) {
 	if client == nil {
-		return data, fmt.Errorf("nil http client")
+		return data, fmt.Errorf("nil http clientWithBasicAuth")
 	}
 
 	var resp *http.Response

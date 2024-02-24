@@ -3,14 +3,16 @@ package client_test
 import (
 	"context"
 	"fmt"
-	"github.com/ilijamt/terraform-provider-awx/internal/client"
-	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/client"
 )
 
-func TestAuthenticationClient(t *testing.T) {
+func TestNewClientWithTokenAuth(t *testing.T) {
 	t.Parallel()
 
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
@@ -29,7 +31,7 @@ func TestAuthenticationClient(t *testing.T) {
 		{method: http.MethodPatch, err: client.ErrInvalidStatusCode},
 	}
 
-	c := client.NewClient("username", "password", server.URL, "test", true, nil)
+	c := client.NewClientWithTokenAuth("token", server.URL, "test", true, nil)
 
 	for _, tst := range tests {
 		t.Run(tst.method, func(t *testing.T) {
@@ -43,7 +45,7 @@ func TestAuthenticationClient(t *testing.T) {
 	}
 }
 
-func TestBody(t *testing.T) {
+func TestNewClientWithTokenAuthBody(t *testing.T) {
 	t.Parallel()
 
 	type test struct {
@@ -64,7 +66,7 @@ func TestBody(t *testing.T) {
 		}
 	}))
 
-	c := client.NewClient("username", "password", server.URL, "test", true, nil)
+	c := client.NewClientWithTokenAuth("token", server.URL, "test", true, nil)
 	for _, tst := range tests {
 		t.Run(fmt.Sprintf("%s - %s", tst.name, tst.method), func(t *testing.T) {
 			req, err := c.NewRequest(context.Background(), http.MethodGet, "/api/v2/request", nil)
