@@ -1,9 +1,10 @@
 package helpers_test
 
 import (
+	"testing"
+
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestTrimString(t *testing.T) {

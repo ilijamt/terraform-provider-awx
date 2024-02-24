@@ -3,9 +3,10 @@ package helpers_test
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
+
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestExtractDataIfSearchResult(t *testing.T) {

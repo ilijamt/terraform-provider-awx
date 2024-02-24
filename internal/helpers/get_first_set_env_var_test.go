@@ -2,10 +2,11 @@ package helpers_test
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/ilijamt/envwrap"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestGetFirstSetEnvVar(t *testing.T) {

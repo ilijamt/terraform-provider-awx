@@ -2,10 +2,11 @@ package helpers_test
 
 import (
 	"encoding/json"
+	"testing"
+
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestAttrValueSetFloat64(t *testing.T) {

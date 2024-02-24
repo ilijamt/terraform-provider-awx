@@ -2,9 +2,10 @@ package helpers_test
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestStr2Bool(t *testing.T) {

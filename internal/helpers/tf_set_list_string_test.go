@@ -1,11 +1,12 @@
 package helpers_test
 
 import (
+	"testing"
+
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestAttrValueSetListString(t *testing.T) {

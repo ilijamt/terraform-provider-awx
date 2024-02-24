@@ -2,10 +2,11 @@ package hooks_test
 
 import (
 	"context"
-	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
-	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
+	"github.com/stretchr/testify/require"
 )
 
 func TestRequireResourceStateOrOrig(t *testing.T) {

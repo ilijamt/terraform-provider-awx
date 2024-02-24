@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/ilijamt/terraform-provider-awx/tools/generator/cmd/generator/cmd"
 	"os"
+
+	"github.com/ilijamt/terraform-provider-awx/tools/generator/cmd/generator/cmd"
 )
 
 func main() {

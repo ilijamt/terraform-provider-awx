@@ -2,11 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"log"
+	"text/template"
+
 	"github.com/ilijamt/terraform-provider-awx/tools/generator"
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
 	"github.com/spf13/cobra"
-	"log"
-	"text/template"
 )
 
 // genTestsCmd represents the base command when called without any subcommands
