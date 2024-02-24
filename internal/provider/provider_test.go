@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-go/tftypes"
@@ -74,7 +73,6 @@ func TestProviderConfiguration(t *testing.T) {
 		})
 		require.NoError(t, err)
 		require.NotNil(t, response)
-		spew.Dump(response.Diagnostics)
 		require.Empty(t, response.Diagnostics)
 	})
 
@@ -92,7 +90,7 @@ func TestProviderConfiguration(t *testing.T) {
 		})
 		require.NoError(t, err)
 		require.NotNil(t, response)
-		require.Len(t, response.Diagnostics, 3)
+		require.Len(t, response.Diagnostics, 2)
 	})
 
 	t.Run("empty values for configuration", func(t *testing.T) {
@@ -101,7 +99,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"username":   tftypes.NewValue(tftypes.String, ""),
 			"password":   tftypes.NewValue(tftypes.String, ""),
 			"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
-			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
+			"token":      tftypes.NewValue(tftypes.String, ""),
 		}))
 		require.NoError(t, err)
 		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
@@ -109,13 +107,14 @@ func TestProviderConfiguration(t *testing.T) {
 		})
 		require.NoError(t, err)
 		require.NotNil(t, response)
-		require.Len(t, response.Diagnostics, 3)
+		require.Len(t, response.Diagnostics, 2)
 	})
 
 	t.Run("configuration", func(t *testing.T) {
 		var tests = []struct {
-			in     map[string]tftypes.Value
-			errLen int
+			in         map[string]tftypes.Value
+			errLen     int
+			errSummary []string
 		}{
 			{
 				in: map[string]tftypes.Value{
@@ -125,7 +124,8 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 1,
+				errLen:     1,
+				errSummary: []string{"Unknown AWX API Host"},
 			},
 			{
 				in: map[string]tftypes.Value{
@@ -135,7 +135,8 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 1,
+				errLen:     1,
+				errSummary: []string{"Unknown AWX API Username"},
 			},
 			{
 				in: map[string]tftypes.Value{
@@ -145,7 +146,8 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 1,
+				errLen:     1,
+				errSummary: []string{"Unknown AWX API Password"},
 			},
 			{
 				in: map[string]tftypes.Value{
@@ -155,7 +157,8 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 2,
+				errLen:     1,
+				errSummary: []string{`must provide one of ["username", "password"] or "token".`},
 			},
 			{
 				in: map[string]tftypes.Value{
@@ -165,7 +168,8 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 2,
+				errLen:     2,
+				errSummary: []string{"Unknown AWX API Host", "Unknown AWX API Password"},
 			},
 			{
 				in: map[string]tftypes.Value{
@@ -175,7 +179,59 @@ func TestProviderConfiguration(t *testing.T) {
 					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
 					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 				},
-				errLen: 3,
+				errLen:     2,
+				errSummary: []string{"Unknown AWX API Host", `must provide one of ["username", "password"] or "token".`},
+			},
+			{
+				in: map[string]tftypes.Value{
+					"hostname":   tftypes.NewValue(tftypes.String, "hostname"),
+					"username":   tftypes.NewValue(tftypes.String, ""),
+					"password":   tftypes.NewValue(tftypes.String, ""),
+					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, "token"),
+				},
+				errLen: 0,
+			},
+			{
+				in: map[string]tftypes.Value{
+					"hostname":   tftypes.NewValue(tftypes.String, "hostname"),
+					"username":   tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
+					"password":   tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
+					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, "token"),
+				},
+				errLen: 0,
+			},
+			{
+				in: map[string]tftypes.Value{
+					"hostname":   tftypes.NewValue(tftypes.String, "hostname"),
+					"username":   tftypes.NewValue(tftypes.String, "username"),
+					"password":   tftypes.NewValue(tftypes.String, "password"),
+					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, ""),
+				},
+				errLen: 0,
+			},
+			{
+				in: map[string]tftypes.Value{
+					"hostname":   tftypes.NewValue(tftypes.String, "hostname"),
+					"username":   tftypes.NewValue(tftypes.String, "username"),
+					"password":   tftypes.NewValue(tftypes.String, "password"),
+					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
+				},
+				errLen: 0,
+			},
+			{
+				in: map[string]tftypes.Value{
+					"hostname":   tftypes.NewValue(tftypes.String, "hostname"),
+					"username":   tftypes.NewValue(tftypes.String, "username"),
+					"password":   tftypes.NewValue(tftypes.String, "password"),
+					"verify_ssl": tftypes.NewValue(tftypes.Bool, true),
+					"token":      tftypes.NewValue(tftypes.String, "token"),
+				},
+				errLen:     1,
+				errSummary: []string{`must provide one of ["username", "password"] or "token".`},
 			},
 		}
 
@@ -190,6 +246,11 @@ func TestProviderConfiguration(t *testing.T) {
 				require.NoError(t, err)
 				require.NotNil(t, response)
 				require.Len(t, response.Diagnostics, test.errLen)
+				var summary []string
+				for _, d := range response.Diagnostics {
+					summary = append(summary, d.Summary)
+				}
+				require.EqualValues(t, summary, test.errSummary)
 			})
 		}
 	})

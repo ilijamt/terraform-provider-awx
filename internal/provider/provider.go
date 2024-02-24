@@ -2,10 +2,13 @@ package provider
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strings"
 
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
@@ -70,6 +73,13 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 				Optional:    true,
 				Sensitive:   true,
 				Required:    false,
+				Validators: []validator.String{
+					stringvalidator.AlsoRequires(
+						path.Expressions{
+							path.MatchRoot("username"),
+						}...,
+					),
+				},
 			},
 			"token": schema.StringAttribute{
 				Required:    false,
@@ -133,25 +143,42 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	configureFromEnvironment(ctx, &config)
 	configureDefaults(ctx, &config)
 
-	if "" == config.Hostname.ValueString() || config.Hostname.IsUnknown() {
+	var missingHostname = "" == config.Hostname.ValueString() || config.Hostname.IsUnknown()
+	var noTokenAuth = "" == config.Token.ValueString() || config.Token.IsUnknown()
+	var noBasicAuth = ("" == config.Username.ValueString() || config.Username.IsUnknown()) &&
+		("" == config.Password.ValueString() || config.Password.IsUnknown())
+
+	if missingHostname {
 		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
 			"Set the host value in the configuration or use the TOWER_HOST or AWX_HOST environment variable."+
 			"If either is already set, ensure the value is not empty.")
 	}
 
-	// var authTokenExists = !helpers.IsEmptyValue(config.Token)
-	// var authUsernamePasswordExists = !helpers.IsEmptyValue(config.Username) && !helpers.IsEmptyValue(config.Password)
+	if (noTokenAuth && noBasicAuth) || (!noTokenAuth && !noBasicAuth) {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("must provide one of [%q, %q] or %q.", "username", "password", "token"),
+			fmt.Sprintf("must provide one of [%q, %q] or %q.", "username", "password", "token"),
+		)
+	} else {
+		if !noBasicAuth && noTokenAuth {
+			if "" == config.Username.ValueString() || config.Username.IsUnknown() {
+				resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
+					"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
+					"If either is already set, ensure the value is not empty.")
+			}
 
-	if "" == config.Username.ValueString() || config.Username.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
-			"Set the host value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
-			"If either is already set, ensure the value is not empty.")
-	}
-
-	if "" == config.Password.ValueString() || config.Password.IsUnknown() {
-		resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-			"Set the host value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
-			"If either is already set, ensure the value is not empty.")
+			if "" == config.Password.ValueString() || config.Password.IsUnknown() {
+				resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
+					"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
+					"If either is already set, ensure the value is not empty.")
+			}
+			// } else {
+			// 	if "" == config.Token.ValueString() || config.Token.IsUnknown() {
+			// 		resp.Diagnostics.AddAttributeError(path.Root("token"), "Unknown AWX Auth Token", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX auth token. "+
+			// 			"Set the token value in the configuration or use the TOWER_AUTH_TOKEN or AWX_AUTH_TOKEN environment variable."+
+			// 			"If either is already set, ensure the value is not empty.")
+			// 	}
+		}
 	}
 
 	if resp.Diagnostics.HasError() {
@@ -159,8 +186,11 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	}
 
 	var client c.Client
-
-	client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	if !noBasicAuth && noTokenAuth {
+		client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	} else {
+		client = c.NewClientWithTokenAuth(config.Token.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	}
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	p.config = config
