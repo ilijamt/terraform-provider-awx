@@ -19,10 +19,6 @@ Currently, built provider versions for AWX.
 * 23.7.0
 * 23.8.1
 
-Provider
---------
-
-
 TODO:
 -----
 
