@@ -2,10 +2,12 @@ package helpers_test
 
 import (
 	"encoding/json"
-	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/stretchr/testify/require"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
 func TestAttrValueSetJsonString(t *testing.T) {
@@ -19,7 +21,7 @@ func TestAttrValueSetJsonString(t *testing.T) {
 		require.True(t, d.HasError())
 	})
 
-	t.Run("value is null", func(t *testing.T) {
+	t.Run("value is nil", func(t *testing.T) {
 		var state model
 		var d, err = helpers.AttrValueSetJsonString(&state.Value, nil, false)
 		require.NoError(t, err)

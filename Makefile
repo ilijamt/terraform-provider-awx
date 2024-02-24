@@ -2,9 +2,12 @@ default: build
 
 VERSION=23.8.1
 
-.PHONY: generate-awx
-generate-awx:
+.PHONY: generate-config
+generate-config:
 	node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/resources/api/$(VERSION)
+
+.PHONY: generate-awx
+generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
 	rm -rf cmd/provider/docs/*
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx

@@ -161,7 +161,7 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				Validators:  []validator.Int64{},
 			},
 			"variables": schema.StringAttribute{
-				Description: "Inventory variables in JSON or YAML format.",
+				Description: "Inventory variables in JSON format",
 				Sensitive:   false,
 				Computed:    true,
 				Validators:  []validator.String{},

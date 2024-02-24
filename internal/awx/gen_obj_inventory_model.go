@@ -42,7 +42,7 @@ type inventoryTerraformModel struct {
 	TotalHosts types.Int64 `tfsdk:"total_hosts" json:"total_hosts"`
 	// TotalInventorySources "Total number of external inventory sources configured within this inventory."
 	TotalInventorySources types.Int64 `tfsdk:"total_inventory_sources" json:"total_inventory_sources"`
-	// Variables "Inventory variables in JSON or YAML format."
+	// Variables "Inventory variables in JSON format"
 	Variables types.String `tfsdk:"variables" json:"variables"`
 }
 
@@ -76,7 +76,7 @@ func (o *inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) 
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
 	req.PreventInstanceGroupFallback = o.PreventInstanceGroupFallback.ValueBool()
-	req.Variables = json.RawMessage(o.Variables.ValueString())
+	req.Variables = json.RawMessage(o.Variables.String())
 	return
 }
 
@@ -141,7 +141,7 @@ func (o *inventoryTerraformModel) setTotalInventorySources(data any) (d diag.Dia
 }
 
 func (o *inventoryTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
-	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
+	return helpers.AttrValueSetJsonYamlString(&o.Variables, data, false)
 }
 
 func (o *inventoryTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
@@ -213,7 +213,7 @@ type inventoryBodyRequestModel struct {
 	Organization int64 `json:"organization"`
 	// PreventInstanceGroupFallback "If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied."
 	PreventInstanceGroupFallback bool `json:"prevent_instance_group_fallback"`
-	// Variables "Inventory variables in JSON or YAML format."
+	// Variables "Inventory variables in JSON format"
 	Variables json.RawMessage `json:"variables,omitempty"`
 }
 
