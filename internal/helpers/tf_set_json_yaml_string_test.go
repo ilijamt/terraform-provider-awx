@@ -79,7 +79,7 @@ func TestAttrValueSetJsonYamlString(t *testing.T) {
 		for _, trim := range []bool{true, false} {
 			t.Run(fmt.Sprintf("trim:%t", trim), func(t *testing.T) {
 				var state model
-				var d, err = helpers.AttrValueSetJsonYamlString(&state.Value, fmt.Sprint("a: 1\nb: 2\n"), trim)
+				var d, err = helpers.AttrValueSetJsonYamlString(&state.Value, "a: 1\nb: 2\n", trim)
 				require.NoError(t, err)
 				require.False(t, d.HasError())
 				require.False(t, state.Value.IsNull())
@@ -92,7 +92,7 @@ func TestAttrValueSetJsonYamlString(t *testing.T) {
 		for _, trim := range []bool{true, false} {
 			t.Run(fmt.Sprintf("trim:%t", trim), func(t *testing.T) {
 				var state model
-				var d, err = helpers.AttrValueSetJsonYamlString(&state.Value, fmt.Sprint(`{"a":1,"b":2}`), trim)
+				var d, err = helpers.AttrValueSetJsonYamlString(&state.Value, `{"a":1,"b":2}`, trim)
 				require.NoError(t, err)
 				require.False(t, d.HasError())
 				require.False(t, state.Value.IsNull())
