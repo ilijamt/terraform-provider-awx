@@ -1,0 +1,11 @@
+{
+  "type_name": "project",
+  "wait_on_property_value": {
+    "property_name": "wait_on_status_successful",
+    "name": "status",
+    "value": "successful",
+    "actions": [
+      "create"
+    ]
+  }
+}

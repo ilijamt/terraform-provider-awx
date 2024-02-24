@@ -44,6 +44,13 @@ func (a AssociateDisassociateGroup) Map() map[string]any {
 	}
 }
 
+type WaitOnPropertyValue struct {
+	PropertyName string   `json:"property_name"`
+	Name         string   `json:"name"`
+	Value        string   `json:"value"`
+	Actions      []string `json:"actions"`
+}
+
 type Item struct {
 	Endpoint                    string                       `json:"endpoint"`
 	Name                        string                       `json:"name"`
@@ -68,6 +75,7 @@ type Item struct {
 	RemoveFieldsDataSource      []string                     `json:"remove_fields_data_source"`
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource"`
 	CredentialTypes             []CredentialTypes            `json:"credential_types"`
+	WaitOnPropertyValue         WaitOnPropertyValue          `json:"wait_on_property_value"`
 }
 
 type CredentialTypes struct {
