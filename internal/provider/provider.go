@@ -64,12 +64,12 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 				Required:    false,
 			},
 			"username": schema.StringAttribute{
-				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME/AWX_USERNAME env variable if set)",
+				Description: "The username to connect to the AWX host. (defaults to TOWER_USERNAME/AWX_USERNAME env variable if set) [must be used with password]",
 				Optional:    true,
 				Required:    false,
 			},
 			"password": schema.StringAttribute{
-				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD/AWX_PASSWORD env variable if set)",
+				Description: "The password to connect to the AWX host. (defaults to TOWER_PASSWORD/AWX_PASSWORD env variable if set) [must be used with username]",
 				Optional:    true,
 				Sensitive:   true,
 				Required:    false,
@@ -85,7 +85,7 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 				Required:    false,
 				Optional:    true,
 				Sensitive:   true,
-				Description: "The token to use to connect to the AWX host. (defaults to TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN env variable if set)",
+				Description: "The token to use to connect to the AWX host. (defaults to TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN env variable if set) [conflicts with username/password]",
 			},
 		},
 	}
