@@ -32,17 +32,19 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-export AWX_VERSION=23.8.1
+export AWX_VERSION=24.1.0
 mkdir -p resources/api/$AWX_VERSION/config
 cat <<EOF > resources/api/$AWX_VERSION/config/default.json
 {
   "api_version": "$AWX_VERSION"
 }
 EOF
-node ./tools/config-merge.js $(pwd)/resources/config $(pwd)/resources/api/$AWX_VERSION
-go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/api/$AWX_VERSION \
-       --host $TOWER_HOST --password $TOWER_PASSWORD --username $TOWER_USERNAME --insecure-skip-verify
+make generate-config VERSION=$AWX_VERSION
+make download-api VERSION=$AWX_VERSION
+make generate-config VERSION=$AWX_VERSION
 ```
+
+Check the previous version of the APIs inside the `config/types` folder to see about customization.
 
 Build the version of the current API
 -------------------------------------
