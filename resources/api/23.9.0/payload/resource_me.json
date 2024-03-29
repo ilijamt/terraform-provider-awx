@@ -1,0 +1,138 @@
+{
+  "actions": {
+    "GET": {
+      "created": {
+        "filterable": false,
+        "help_text": "Timestamp when this user was created.",
+        "label": "Created",
+        "type": "datetime"
+      },
+      "email": {
+        "filterable": true,
+        "label": "Email address",
+        "type": "string"
+      },
+      "external_account": {
+        "filterable": false,
+        "help_text": "Set if the account is managed by an external service",
+        "label": "External account",
+        "type": "field"
+      },
+      "first_name": {
+        "filterable": true,
+        "label": "First name",
+        "type": "string"
+      },
+      "id": {
+        "filterable": true,
+        "help_text": "Database ID for this user.",
+        "label": "ID",
+        "type": "integer"
+      },
+      "is_superuser": {
+        "filterable": true,
+        "help_text": "Designates that this user has all permissions without explicitly assigning them.",
+        "label": "Superuser status",
+        "type": "boolean"
+      },
+      "is_system_auditor": {
+        "filterable": false,
+        "label": "Is system auditor",
+        "type": "boolean"
+      },
+      "last_login": {
+        "filterable": true,
+        "label": "Last login",
+        "type": "datetime"
+      },
+      "last_name": {
+        "filterable": true,
+        "label": "Last name",
+        "type": "string"
+      },
+      "ldap_dn": {
+        "filterable": false,
+        "label": "Ldap dn",
+        "type": "string"
+      },
+      "modified": {
+        "filterable": false,
+        "help_text": "Timestamp when this user was last modified.",
+        "label": "Modified",
+        "type": "datetime"
+      },
+      "password": {
+        "filterable": true,
+        "help_text": "Field used to change the password.",
+        "label": "Password",
+        "type": "string"
+      },
+      "related": {
+        "filterable": false,
+        "help_text": "Data structure with URLs of related resources.",
+        "label": "Related",
+        "type": "object"
+      },
+      "summary_fields": {
+        "filterable": false,
+        "help_text": "Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons.",
+        "label": "Summary fields",
+        "type": "object"
+      },
+      "type": {
+        "choices": [
+          [
+            "user",
+            "User"
+          ]
+        ],
+        "help_text": "Data type for this user.",
+        "label": "Type",
+        "type": "choice"
+      },
+      "url": {
+        "filterable": false,
+        "help_text": "URL for this user.",
+        "label": "Url",
+        "type": "string"
+      },
+      "username": {
+        "filterable": true,
+        "help_text": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+        "label": "Username",
+        "type": "string"
+      }
+    }
+  },
+  "description": "# Retrieve Information about the current User\n\nMake a GET request to retrieve user information about the current user.\n\nOne result should be returned containing the following fields:\n\n* `id`: Database ID for this user. (integer)\n* `type`: Data type for this user. (choice)\n* `url`: URL for this user. (string)\n* `related`: Data structure with URLs of related resources. (object)\n* `summary_fields`: Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons. (object)\n* `created`: Timestamp when this user was created. (datetime)\n* `modified`: Timestamp when this user was last modified. (datetime)\n* `username`: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. (string)\n* `first_name`:  (string)\n* `last_name`:  (string)\n* `email`:  (string)\n* `is_superuser`: Designates that this user has all permissions without explicitly assigning them. (boolean)\n* `is_system_auditor`:  (boolean)\n* `password`: Field used to change the password. (string)\n* `ldap_dn`:  (string)\n* `last_login`:  (datetime)\n* `external_account`: Set if the account is managed by an external service (field)\n\n\n\nUse the primary URL for the user (/api/v2/users/N/) to modify the user.",
+  "max_page_size": 200,
+  "name": "Me",
+  "parses": [
+    "application/json"
+  ],
+  "related_search_fields": [
+    "activity_stream__search",
+    "main_oauth2accesstoken__search",
+    "oauth2_provider_refreshtoken__search",
+    "roles__search",
+    "main_oauth2application__search",
+    "profile__search",
+    "enterprise_auth__search",
+    "social_auth__search",
+    "oauth2_provider_idtoken__search",
+    "oauth2_provider_grant__search"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ],
+  "search_fields": [
+    "username",
+    "first_name",
+    "last_name",
+    "email"
+  ],
+  "types": [
+    "user"
+  ]
+}
