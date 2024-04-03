@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"net/url"
 	p "path"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -80,6 +82,7 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Validators: []validator.Int64{
 					int64validator.ExactlyOneOf(
 						path.MatchRoot("id"),
+						path.MatchRoot("name"),
 					),
 				},
 			},
@@ -122,8 +125,14 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 			"name": schema.StringAttribute{
 				Description: "Name of this instance group.",
 				Sensitive:   false,
+				Optional:    true,
 				Computed:    true,
-				Validators:  []validator.String{},
+				Validators: []validator.String{
+					stringvalidator.ExactlyOneOf(
+						path.MatchRoot("id"),
+						path.MatchRoot("name"),
+					),
+				},
 			},
 			"percent_capacity_remaining": schema.Float64Attribute{
 				Description: "Percent capacity remaining",
@@ -190,6 +199,21 @@ func (o *instanceGroupDataSource) Read(ctx context.Context, req datasource.ReadR
 		return groupByIdExists
 	}()
 	searchDefined = searchDefined || groupByIdExists
+
+	// Evaluate group 'by_name' based on the schema definition
+	var groupByNameExists = func() bool {
+		var groupByNameExists = true
+		var paramsByName = []any{o.endpoint}
+		var attrName types.String
+		req.Config.GetAttribute(ctx, path.Root("name"), &attrName)
+		groupByNameExists = groupByNameExists && (!attrName.IsNull() && !attrName.IsUnknown())
+		paramsByName = append(paramsByName, url.PathEscape(attrName.ValueString()))
+		if groupByNameExists {
+			endpoint = p.Clean(fmt.Sprintf("%s/?name__exact=%s", paramsByName...))
+		}
+		return groupByNameExists
+	}()
+	searchDefined = searchDefined || groupByNameExists
 
 	if !searchDefined {
 		var detailMessage string

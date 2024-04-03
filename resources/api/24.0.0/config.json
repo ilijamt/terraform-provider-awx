@@ -103,6 +103,36 @@
       ]
     },
     {
+      "endpoint": "/api/v2/constructed_inventories/",
+      "name": "ConstructedInventories",
+      "type_name": "constructed_inventories",
+      "id_key": "id",
+      "enabled": true,
+      "has_object_roles": true,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "endpoint": "/api/v2/credentials/",
       "name": "Credential",
       "type_name": "credential",
@@ -311,6 +341,7 @@
       "name": "InstanceGroup",
       "type_name": "instance_group",
       "id_key": "id",
+      "has_object_roles": true,
       "property_overrides": {
         "capacity": {
           "type": "integer"
@@ -336,6 +367,17 @@
           "fields": [
             {
               "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "by_name",
+          "url_suffix": "?name__exact=%s",
+          "multiple_results": true,
+          "fields": [
+            {
+              "name": "name",
+              "url_escape_value": true
             }
           ]
         }
@@ -1224,6 +1266,7 @@
       "id_key": "id",
       "has_object_roles": false,
       "enabled": true,
+      "pre_state_set_hook_function": "hookUser",
       "associate_disassociate_groups": [
         {
           "name": "User",
@@ -1261,8 +1304,7 @@
             }
           ]
         }
-      ],
-      "pre_state_set_hook_function": "hookUser"
+      ]
     },
     {
       "endpoint": "/api/v2/workflow_job_templates/",
@@ -1316,36 +1358,6 @@
       "remove_fields_resource": [
         "custom_virtualenv",
         "status"
-      ]
-    },
-    {
-      "endpoint": "/api/v2/constructed_inventories/",
-      "name": "ConstructedInventories",
-      "type_name": "constructed_inventories",
-      "id_key": "id",
-      "enabled": true,
-      "has_object_roles": true,
-      "search_fields": [
-        {
-          "url_suffix": "%d/",
-          "name": "by_id",
-          "fields": [
-            {
-              "name": "id"
-            }
-          ]
-        },
-        {
-          "name": "by_name",
-          "url_suffix": "?name__exact=%s",
-          "multiple_results": true,
-          "fields": [
-            {
-              "name": "name",
-              "url_escape_value": true
-            }
-          ]
-        }
       ]
     }
   ]

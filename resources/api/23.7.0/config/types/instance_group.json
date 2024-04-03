@@ -1,8 +1,0 @@
-{
-  "type_name": "instance_group",
-  "property_overrides": {
-    "jobs_running": {
-      "type": "integer"
-    }
-  }
-}

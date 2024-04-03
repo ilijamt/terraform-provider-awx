@@ -25,6 +25,7 @@ func DataSources() []func() datasource.DataSource {
 		NewHostDataSource,
 		NewHostObjectRolesDataSource,
 		NewInstanceGroupDataSource,
+		NewInstanceGroupObjectRolesDataSource,
 		NewInventoryDataSource,
 		NewInventoryObjectRolesDataSource,
 		NewInventorySourceDataSource,

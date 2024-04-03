@@ -222,3 +222,8 @@ type instanceGroupBodyRequestModel struct {
 	// PolicyInstancePercentage "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online."
 	PolicyInstancePercentage int64 `json:"policy_instance_percentage,omitempty"`
 }
+
+type instanceGroupObjectRolesModel struct {
+	ID    types.Int64 `tfsdk:"id"`
+	Roles types.Map   `tfsdk:"roles"`
+}

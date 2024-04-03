@@ -116,9 +116,9 @@
     "application/json"
   ],
   "related_search_fields": [
-    "created_by__search",
     "modified_by__search",
-    "organization__search"
+    "organization__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",

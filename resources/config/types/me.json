@@ -10,5 +10,8 @@
     "external_account": {
       "type": "string"
     }
-  }
+  },
+  "remove_fields_data_source": [
+    "password"
+  ]
 }
