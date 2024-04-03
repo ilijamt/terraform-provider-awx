@@ -128,12 +128,12 @@
   ],
   "related_search_fields": [
     "hosts__search",
-    "inventory_sources__search",
-    "children__search",
     "inventory__search",
-    "created_by__search",
+    "inventory_sources__search",
     "modified_by__search",
-    "parents__search"
+    "children__search",
+    "parents__search",
+    "created_by__search"
   ],
   "renders": [
     "application/json",

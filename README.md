@@ -13,7 +13,6 @@ AWX Versions
 
 Currently, built provider versions for AWX.
 
-* 21.8.0
 * 23.5.1
 * 23.6.0
 * 23.7.0
@@ -53,7 +52,22 @@ Build the version of the current API
 make generate
 ```
 
-If you want to build an API for a 23.7.0 just run
+If you want to build an API for the `23.7.0` version just run
+
 ```shell
 make generate VERSION=23.7.0
+```
+
+Setup AWX for local testing
+---------------------------
+
+Make sure you checkout the AWX project locally, and have basic requirements setup, like `docker`, `docker-compose`, `python`, `ansible`, `ansible-builder`.
+
+```shell
+export AWX_VERSION=24.1.0
+git checkout $AWX_VERSION
+make clean
+make ui-devel
+make docker-compose-build
+make docker-compose
 ```

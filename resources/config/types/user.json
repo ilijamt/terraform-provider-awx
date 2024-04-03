@@ -5,6 +5,7 @@
   "id_key": "id",
   "has_object_roles": false,
   "enabled": true,
+  "pre_state_set_hook_function": "hookUser",
   "associate_disassociate_groups": [
     {
       "name": "User",

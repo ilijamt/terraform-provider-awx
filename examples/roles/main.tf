@@ -63,3 +63,17 @@ resource "awx_team_associate_role" "team_access_demo_credential" {
   team_id = awx_team.team_role.id
   role_id = data.awx_credential_object_roles.demo_credential_machine.roles["Use"]
 }
+
+
+data "awx_instance_group" "instance_group" {
+  name = "default"
+}
+
+data "awx_instance_group_object_roles" "instance_group_groups" {
+  id = data.awx_instance_group.instance_group.id
+}
+
+resource "awx_team_associate_role" "team_access_instance_groups" {
+  team_id = awx_team.team_role.id
+  role_id = data.awx_instance_group_object_roles.instance_group_groups.roles["Use"]
+}

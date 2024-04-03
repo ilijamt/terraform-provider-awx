@@ -3,6 +3,7 @@
   "name": "InstanceGroup",
   "type_name": "instance_group",
   "id_key": "id",
+  "has_object_roles": true,
   "property_overrides": {
     "capacity": {
       "type": "integer"
@@ -15,6 +16,9 @@
     },
     "instances": {
       "type": "integer"
+    },
+    "jobs_running": {
+      "type": "integer"
     }
   },
   "enabled": true,
@@ -25,6 +29,17 @@
       "fields": [
         {
           "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
         }
       ]
     }

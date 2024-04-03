@@ -18,6 +18,7 @@ description: |-
 ### Optional
 
 - `id` (Number) Database ID for this instance group.
+- `name` (String) Name of this instance group.
 
 ### Read-Only
 
@@ -30,7 +31,6 @@ description: |-
 - `jobs_total` (Number) Count of all jobs that target this instance group
 - `max_concurrent_jobs` (Number) Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.
 - `max_forks` (Number) Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.
-- `name` (String) Name of this instance group.
 - `percent_capacity_remaining` (Number) Percent capacity remaining
 - `pod_spec_override` (String) Pod spec override
 - `policy_instance_list` (String) List of exact-match Instances that will be assigned to this group

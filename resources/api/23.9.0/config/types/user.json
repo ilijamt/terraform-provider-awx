@@ -1,4 +1,0 @@
-{
-  "type_name": "user",
-  "pre_state_set_hook_function": "hookUser"
-}
