@@ -49,6 +49,7 @@ var genBuilds = &cobra.Command{
 		cmds = append(cmds,
 			"git add versions.yaml",
 			"git commit -m'chore: updated versions.yaml'",
+			"git push",
 		)
 
 		_, _ = fmt.Fprintln(cmd.OutOrStdout(), strings.Join(cmds, "\n"))
