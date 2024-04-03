@@ -348,7 +348,7 @@ func (o *jobTemplateDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "github", "gitlab", "bitbucket_dc"}...),
+					stringvalidator.OneOf([]string{"", "github", "gitlab"}...),
 				},
 			},
 			// Write only elements

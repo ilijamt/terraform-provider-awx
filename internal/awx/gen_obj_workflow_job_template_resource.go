@@ -282,7 +282,7 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "github", "gitlab", "bitbucket_dc"}...),
+					stringvalidator.OneOf([]string{"", "github", "gitlab"}...),
 				},
 			},
 			// Write only elements
