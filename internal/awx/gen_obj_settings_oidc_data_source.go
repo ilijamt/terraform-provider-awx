@@ -73,7 +73,6 @@ func (o *settingsOpenIdconnectDataSource) Schema(ctx context.Context, req dataso
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			// Write only elements
 		},
 	}
 }

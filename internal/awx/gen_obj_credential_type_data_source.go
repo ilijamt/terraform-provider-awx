@@ -118,7 +118,6 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

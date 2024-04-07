@@ -89,7 +89,6 @@ func (o *groupDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

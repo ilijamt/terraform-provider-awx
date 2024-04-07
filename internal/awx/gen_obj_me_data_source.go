@@ -109,7 +109,6 @@ func (o *meDataSource) Schema(ctx context.Context, req datasource.SchemaRequest,
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

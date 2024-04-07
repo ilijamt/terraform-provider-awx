@@ -122,7 +122,6 @@ func (o *hostDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

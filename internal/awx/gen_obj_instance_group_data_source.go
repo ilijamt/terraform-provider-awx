@@ -166,7 +166,6 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 					int64validator.Between(0, 100),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

@@ -143,7 +143,6 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			// Write only elements
 		},
 	}
 }

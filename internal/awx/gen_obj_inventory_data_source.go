@@ -166,7 +166,6 @@ func (o *inventoryDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

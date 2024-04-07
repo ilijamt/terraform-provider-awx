@@ -95,7 +95,6 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
 		},
 	}
 }

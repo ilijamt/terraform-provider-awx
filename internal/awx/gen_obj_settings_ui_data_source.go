@@ -82,7 +82,6 @@ func (o *settingsUiDataSource) Schema(ctx context.Context, req datasource.Schema
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			// Write only elements
 		},
 	}
 }

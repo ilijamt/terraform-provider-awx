@@ -100,7 +100,6 @@ func (o *organizationDataSource) Schema(ctx context.Context, req datasource.Sche
 					),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

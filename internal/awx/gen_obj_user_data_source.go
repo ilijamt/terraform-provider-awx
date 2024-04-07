@@ -135,7 +135,6 @@ func (o *userDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 					),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

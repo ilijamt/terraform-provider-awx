@@ -225,7 +225,6 @@ func (o *settingsMiscSystemDataSource) Schema(ctx context.Context, req datasourc
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			// Write only elements
 		},
 	}
 }

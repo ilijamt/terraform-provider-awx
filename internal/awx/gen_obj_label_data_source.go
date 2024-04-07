@@ -96,7 +96,6 @@ func (o *labelDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 					),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

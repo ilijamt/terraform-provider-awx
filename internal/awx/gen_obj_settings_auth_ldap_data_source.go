@@ -652,7 +652,6 @@ func (o *settingsAuthLdapDataSource) Schema(ctx context.Context, req datasource.
 				Computed:    true,
 				Validators:  []validator.List{},
 			},
-			// Write only elements
 		},
 	}
 }

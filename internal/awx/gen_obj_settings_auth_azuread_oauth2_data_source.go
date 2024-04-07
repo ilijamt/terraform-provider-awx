@@ -80,7 +80,6 @@ func (o *settingsAuthAzureAdoauth2DataSource) Schema(ctx context.Context, req da
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

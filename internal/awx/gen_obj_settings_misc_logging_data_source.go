@@ -166,7 +166,6 @@ func (o *settingsMiscLoggingDataSource) Schema(ctx context.Context, req datasour
 				Computed:    true,
 				Validators:  []validator.Bool{},
 			},
-			// Write only elements
 		},
 	}
 }

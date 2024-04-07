@@ -107,7 +107,6 @@ func (o *tokensDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
 		},
 	}
 }

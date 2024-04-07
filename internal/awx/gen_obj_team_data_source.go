@@ -92,7 +92,6 @@ func (o *teamDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
 		},
 	}
 }

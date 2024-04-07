@@ -237,7 +237,6 @@ func (o *adHocCommandDataSource) Schema(ctx context.Context, req datasource.Sche
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

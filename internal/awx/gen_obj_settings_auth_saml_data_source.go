@@ -160,7 +160,6 @@ func (o *settingsAuthSamlDataSource) Schema(ctx context.Context, req datasource.
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

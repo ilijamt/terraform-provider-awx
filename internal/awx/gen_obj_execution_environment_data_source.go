@@ -118,7 +118,6 @@ func (o *executionEnvironmentDataSource) Schema(ctx context.Context, req datasou
 					stringvalidator.OneOf([]string{"", "always", "missing", "never"}...),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

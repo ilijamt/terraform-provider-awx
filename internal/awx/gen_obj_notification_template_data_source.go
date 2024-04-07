@@ -112,7 +112,6 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
 		},
 	}
 }

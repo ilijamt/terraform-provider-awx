@@ -186,7 +186,6 @@ func (o *constructedInventoriesDataSource) Schema(ctx context.Context, req datas
 					int64validator.Between(0, 2),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

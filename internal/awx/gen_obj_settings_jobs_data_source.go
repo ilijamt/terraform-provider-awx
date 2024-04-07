@@ -207,7 +207,6 @@ func (o *settingsJobsDataSource) Schema(ctx context.Context, req datasource.Sche
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
 		},
 	}
 }

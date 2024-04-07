@@ -157,7 +157,6 @@ func (o *settingsMiscAuthenticationDataSource) Schema(ctx context.Context, req d
 				Computed:    true,
 				Validators:  []validator.List{},
 			},
-			// Write only elements
 		},
 	}
 }

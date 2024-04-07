@@ -94,7 +94,6 @@ func (o *settingsAuthGoogleOauth2DataSource) Schema(ctx context.Context, req dat
 				Computed:    true,
 				Validators:  []validator.List{},
 			},
-			// Write only elements
 		},
 	}
 }

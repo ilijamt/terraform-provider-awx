@@ -180,7 +180,6 @@ func (o *projectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 					int64validator.Between(-2147483648, 2147483647),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

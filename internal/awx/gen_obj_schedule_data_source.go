@@ -208,7 +208,6 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 					stringvalidator.OneOf([]string{"0", "1", "2", "3", "4", "5"}...),
 				},
 			},
-			// Write only elements
 		},
 	}
 }

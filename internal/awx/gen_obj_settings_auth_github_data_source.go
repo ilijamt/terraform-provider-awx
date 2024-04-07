@@ -80,7 +80,6 @@ func (o *settingsAuthGithubDataSource) Schema(ctx context.Context, req datasourc
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
-			// Write only elements
 		},
 	}
 }

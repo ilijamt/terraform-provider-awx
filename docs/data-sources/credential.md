@@ -30,5 +30,3 @@ description: |-
 - `kubernetes` (Boolean) Kubernetes
 - `managed` (Boolean) Managed
 - `organization` (Number) Inherit permissions from organization roles. If provided on creation, do not give either user or team.
-- `team` (Number) Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.
-- `user` (Number) Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.

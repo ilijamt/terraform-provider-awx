@@ -129,17 +129,6 @@ func (o *credentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				Computed:    true,
 				Validators:  []validator.Int64{},
 			},
-			// Write only elements
-			"team": schema.Int64Attribute{
-				Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
-				Computed:    true,
-				Sensitive:   false,
-			},
-			"user": schema.Int64Attribute{
-				Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
-				Computed:    true,
-				Sensitive:   false,
-			},
 		},
 	}
 }
