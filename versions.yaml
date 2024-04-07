@@ -1,8 +1,8 @@
-- version: 23.8.1
-  build: 2
-- version: 23.7.0
+- version: 23.5.1
   build: 2
 - version: 23.6.0
   build: 2
-- version: 23.5.1
+- version: 23.7.0
+  build: 2
+- version: 23.8.1
   build: 2
