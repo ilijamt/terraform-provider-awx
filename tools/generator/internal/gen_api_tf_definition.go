@@ -157,6 +157,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 
 	sort.Strings(propertyGetKeys)
 	sort.Strings(propertyPostKeys)
+	sort.Strings(propertyWriteOnlyKeys)
 
 	// ---------------------
 
