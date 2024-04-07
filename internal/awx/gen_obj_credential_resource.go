@@ -126,8 +126,8 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 				},
 			},
 			// Write only elements
-			"team": schema.Int64Attribute{
-				Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
+			"user": schema.Int64Attribute{
+				Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
@@ -144,8 +144,8 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 					),
 				},
 			},
-			"user": schema.Int64Attribute{
-				Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
+			"team": schema.Int64Attribute{
+				Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
 				Sensitive:   false,
 				Required:    false,
 				Optional:    true,
@@ -242,8 +242,8 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	bodyRequest.Team = plan.Team.ValueInt64()
 	bodyRequest.User = plan.User.ValueInt64()
+	bodyRequest.Team = plan.Team.ValueInt64()
 	tflog.Debug(ctx, "[Credential/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
@@ -274,8 +274,8 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 		return
 	}
 
-	state.Team = types.Int64Value(plan.Team.ValueInt64())
 	state.User = types.Int64Value(plan.User.ValueInt64())
+	state.Team = types.Int64Value(plan.Team.ValueInt64())
 
 	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
@@ -363,8 +363,8 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
 	})
-	bodyRequest.Team = plan.Team.ValueInt64()
 	bodyRequest.User = plan.User.ValueInt64()
+	bodyRequest.Team = plan.Team.ValueInt64()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -390,8 +390,8 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		return
 	}
 
-	state.Team = types.Int64Value(plan.Team.ValueInt64())
 	state.User = types.Int64Value(plan.User.ValueInt64())
+	state.Team = types.Int64Value(plan.Team.ValueInt64())
 
 	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
