@@ -20,7 +20,12 @@ var genBuilds = &cobra.Command{
 			return err
 		}
 		var dryRun, _ = cmd.Flags().GetBool("dry-run")
-		var cmds []string
+		var cmds = []string{
+			"git add versions.yaml",
+			"git commit -m'chore: updated versions.yaml'",
+			"git push",
+		}
+
 		for _, b := range *buildConfig {
 			func(b *internal.BuildConfigVersion) {
 				defer func() {
@@ -31,7 +36,7 @@ var genBuilds = &cobra.Command{
 				v := b.GetBuildVersion()
 				cmds = append(cmds,
 					fmt.Sprintf("make generate build VERSION=%s", b.Version),
-					"git add internal docs",
+					fmt.Sprintf("git add internal docs resources/api/%s", b.Version),
 					fmt.Sprintf("git commit -m'chore: generated version %s with tag v%s'", b.Version, b.GetBuildVersion()),
 					fmt.Sprintf("git tag v%s", v),
 					fmt.Sprintf("git push origin refs/tags/v%s", v),
@@ -47,8 +52,6 @@ var genBuilds = &cobra.Command{
 		}
 
 		cmds = append(cmds,
-			"git add versions.yaml",
-			"git commit -m'chore: updated versions.yaml'",
 			"git push",
 		)
 
