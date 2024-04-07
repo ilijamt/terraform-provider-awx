@@ -86,16 +86,16 @@
     "application/json"
   ],
   "related_search_fields": [
-    "created_by__search",
     "joblaunchconfig_labels__search",
-    "workflowjobnode_labels__search",
-    "workflowjobtemplatenode_labels__search",
+    "unifiedjobtemplate_labels__search",
     "organization__search",
+    "workflowjobnode_labels__search",
+    "created_by__search",
+    "workflowjobtemplatenode_labels__search",
     "inventory_labels__search",
     "modified_by__search",
-    "unifiedjob_labels__search",
-    "unifiedjobtemplate_labels__search",
-    "schedule_labels__search"
+    "schedule_labels__search",
+    "unifiedjob_labels__search"
   ],
   "renders": [
     "application/json",
