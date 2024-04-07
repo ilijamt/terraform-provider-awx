@@ -90,21 +90,6 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
             },
 {{- end }}
 {{- end }}
-            // Write only elements
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
-				ElementType: types.StringType,
-{{- end }}
-                Description: {{ escape_quotes (default .help_text .label) }},
-                Computed:    true,
-{{- if (hasKey . "sensitive") }}
-                Sensitive:   {{ .sensitive }},
-{{- end }}
-{{- end }}
-            },
-{{- end }}
 		},
 	}
 }
