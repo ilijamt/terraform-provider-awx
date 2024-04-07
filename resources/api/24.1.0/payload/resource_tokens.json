@@ -136,11 +136,11 @@
     "application/json"
   ],
   "related_search_fields": [
-    "id_token__search",
-    "refresh_token__search",
-    "application__search",
     "source_refresh_token__search",
-    "user__search"
+    "application__search",
+    "user__search",
+    "refresh_token__search",
+    "id_token__search"
   ],
   "renders": [
     "application/json",
