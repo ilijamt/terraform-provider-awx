@@ -145,6 +145,14 @@ var FuncMap = template.FuncMap{
 	},
 	"lowerCase":      lowerCase,
 	"lowerCamelCase": strcase.ToLowerCamel,
+	"in_string_slice": func(d []string, val string) bool {
+		for _, v := range d {
+			if v == val {
+				return true
+			}
+		}
+		return false
+	},
 	"hasKey": func(d map[string]any, key string) bool {
 		_, ok := d[key]
 		return ok

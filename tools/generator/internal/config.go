@@ -44,6 +44,12 @@ func (a AssociateDisassociateGroup) Map() map[string]any {
 	}
 }
 
+type FieldConstraint struct {
+	Id         string   `json:"id"`
+	Constraint string   `json:"constraint"`
+	Fields     []string `json:"fields"`
+}
+
 type Item struct {
 	Endpoint                    string                       `json:"endpoint"`
 	Name                        string                       `json:"name"`
@@ -55,6 +61,7 @@ type Item struct {
 	HasObjectRoles              bool                         `json:"has_object_roles"`
 	HasSurveySpec               bool                         `json:"has_survey_spec"`
 	AssociateDisassociateGroups []AssociateDisassociateGroup `json:"associate_disassociate_groups"`
+	FieldConstraints            []FieldConstraint            `json:"field_constraints"`
 	SkipWriteOnly               bool                         `json:"skip_write_only"`
 	Undeletable                 bool                         `json:"undeletable"`
 	PreStateSetHookFunction     string                       `json:"pre_state_set_hook_function"`

@@ -9,6 +9,7 @@ import (
 	p "path"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
@@ -17,6 +18,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
@@ -114,9 +116,52 @@ func (o *credentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 				PlanModifiers: []planmodifier.Int64{
 					int64planmodifier.UseStateForUnknown(),
 				},
-				Validators: []validator.Int64{},
+				Validators: []validator.Int64{
+					// exactly_one_of_org_user_team
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("organization"),
+						path.MatchRoot("team"),
+						path.MatchRoot("user"),
+					),
+				},
 			},
 			// Write only elements
+			"team": schema.Int64Attribute{
+				Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{
+					// exactly_one_of_org_user_team
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("organization"),
+						path.MatchRoot("team"),
+						path.MatchRoot("user"),
+					),
+				},
+			},
+			"user": schema.Int64Attribute{
+				Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
+				Sensitive:   false,
+				Required:    false,
+				Optional:    true,
+				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
+				Validators: []validator.Int64{
+					// exactly_one_of_org_user_team
+					int64validator.ExactlyOneOf(
+						path.MatchRoot("organization"),
+						path.MatchRoot("team"),
+						path.MatchRoot("user"),
+					),
+				},
+			},
 			// Data only elements
 			"cloud": schema.BoolAttribute{
 				Description: "",
@@ -197,6 +242,8 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
+	bodyRequest.Team = plan.Team.ValueInt64()
+	bodyRequest.User = plan.User.ValueInt64()
 	tflog.Debug(ctx, "[Credential/Create] Making a request", map[string]any{
 		"payload":  bodyRequest,
 		"method":   http.MethodPost,
@@ -226,6 +273,9 @@ func (o *credentialResource) Create(ctx context.Context, request resource.Create
 		response.Diagnostics.Append(d...)
 		return
 	}
+
+	state.Team = types.Int64Value(plan.Team.ValueInt64())
+	state.User = types.Int64Value(plan.User.ValueInt64())
 
 	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
@@ -313,6 +363,8 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
 	})
+	bodyRequest.Team = plan.Team.ValueInt64()
+	bodyRequest.User = plan.User.ValueInt64()
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPatch, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
@@ -337,6 +389,9 @@ func (o *credentialResource) Update(ctx context.Context, request resource.Update
 		response.Diagnostics.Append(d...)
 		return
 	}
+
+	state.Team = types.Int64Value(plan.Team.ValueInt64())
+	state.User = types.Int64Value(plan.User.ValueInt64())
 
 	if err = hookCredential(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(

@@ -90,6 +90,16 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
 {{- end }}
+{{- range $constraint := $.Config.FieldConstraints }}
+{{- if in_string_slice $constraint.Fields $key }}
+                    // {{ $constraint.Id }}
+                    {{ $constraint.Constraint }}(
+{{- range $k := $constraint.Fields }}
+                        path.MatchRoot("{{ $k }}"),
+{{- end }}
+                    ),
+{{- end }}
+{{- end }}
                 },
             },
 {{- end }}
@@ -121,6 +131,16 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
 {{- else if eq .type "choice" }}
 					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+{{- end }}
+{{- range $constraint := $.Config.FieldConstraints }}
+{{- if in_string_slice $constraint.Fields $key }}
+                    // {{ $constraint.Id }}
+                    {{ $constraint.Constraint }}(
+{{- range $k := $constraint.Fields }}
+                        path.MatchRoot("{{ $k }}"),
+{{- end }}
+                    ),
+{{- end }}
 {{- end }}
                 },
             },
@@ -186,16 +206,16 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]any{
-		"payload":  bodyRequest,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
 {{- range $key := .PropertyWriteOnlyKeys }}
 {{- with (index $.PropertyWriteOnlyData $key) }}
 	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
 {{- end }}
 {{- end }}
+	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]any{
+		"payload":  bodyRequest,
+		"method":   http.MethodPost,
+		"endpoint": endpoint,
+	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, {{ if $.Config.NoId }}http.MethodPatch{{ else }}http.MethodPost{{ end }}, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
