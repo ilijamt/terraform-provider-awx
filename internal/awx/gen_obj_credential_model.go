@@ -32,10 +32,10 @@ type credentialTerraformModel struct {
 	Name types.String `tfsdk:"name" json:"name"`
 	// Organization "Inherit permissions from organization roles. If provided on creation, do not give either user or team."
 	Organization types.Int64 `tfsdk:"organization" json:"organization"`
-	// User "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation."
-	User types.Int64 `tfsdk:"user" json:"user"`
 	// Team "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation."
 	Team types.Int64 `tfsdk:"team" json:"team"`
+	// User "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation."
+	User types.Int64 `tfsdk:"user" json:"user"`
 }
 
 // Clone the object
@@ -51,8 +51,8 @@ func (o *credentialTerraformModel) Clone() credentialTerraformModel {
 		Managed:        o.Managed,
 		Name:           o.Name,
 		Organization:   o.Organization,
-		User:           o.User,
 		Team:           o.Team,
+		User:           o.User,
 	}
 }
 
@@ -155,10 +155,10 @@ type credentialBodyRequestModel struct {
 	Name string `json:"name"`
 	// Organization "Inherit permissions from organization roles. If provided on creation, do not give either user or team."
 	Organization int64 `json:"organization,omitempty"`
-	// User "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation."
-	User int64 `json:"user,omitempty"`
 	// Team "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation."
 	Team int64 `json:"team,omitempty"`
+	// User "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation."
+	User int64 `json:"user,omitempty"`
 }
 
 type credentialObjectRolesModel struct {
