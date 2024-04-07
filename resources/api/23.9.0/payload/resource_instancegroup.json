@@ -259,13 +259,13 @@
     "application/json"
   ],
   "related_search_fields": [
-    "instances__search",
-    "credential__search",
-    "workflow_job_node_instance_groups__search",
-    "workflow_job_instance_groups__search",
-    "joblaunchconfigs__search",
     "schedule_instance_groups__search",
-    "workflow_job_template_node_instance_groups__search"
+    "workflow_job_template_node_instance_groups__search",
+    "workflow_job_instance_groups__search",
+    "workflow_job_node_instance_groups__search",
+    "joblaunchconfigs__search",
+    "instances__search",
+    "credential__search"
   ],
   "renders": [
     "application/json",

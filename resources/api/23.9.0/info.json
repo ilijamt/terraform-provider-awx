@@ -1,8 +1,9 @@
 {
-  "version": "23.8.1",
+  "version": "23.9.0",
   "resources": {
     "AdHocCommand": "payload/resource_adhoccommand.json",
     "Application": "payload/resource_application.json",
+    "ConstructedInventories": "payload/resource_constructedinventories.json",
     "Credential": "payload/resource_credential.json",
     "CredentialInputSource": "payload/resource_credentialinputsource.json",
     "CredentialType": "payload/resource_credentialtype.json",
