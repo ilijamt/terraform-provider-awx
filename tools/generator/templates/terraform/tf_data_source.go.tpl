@@ -90,6 +90,19 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
             },
 {{- end }}
 {{- end }}
+{{- range $key := .PropertyWriteOnlyKeys }}
+{{- with (index $.PropertyWriteOnlyData $key) }}
+            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
+{{- if eq (tf_attribute_type .) "List" }}
+				ElementType: types.{{ camelCase .element_type }}Type,
+{{- end }}
+                Description: {{ escape_quotes (default .help_text .label) }},
+                Sensitive:   {{ .sensitive }},
+                Optional:    true,
+                Computed:    true,
+            },
+{{- end }}
+{{- end }}
 		},
 	}
 }
