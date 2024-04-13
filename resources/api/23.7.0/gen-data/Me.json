@@ -1,0 +1,159 @@
+{
+  "ApiVersion": "23.7.0",
+  "Config": {
+    "endpoint": "/api/v2/me/",
+    "name": "Me",
+    "type_name": "me",
+    "id_key": "",
+    "property_overrides": {
+      "external_account": {
+        "type": "string",
+        "description": "",
+        "sensitive": false,
+        "required": false,
+        "trim": false,
+        "post_wrap": false,
+        "default_value": "",
+        "element_type": ""
+      }
+    },
+    "enabled": true,
+    "has_object_roles": false,
+    "has_survey_spec": false,
+    "associate_disassociate_groups": null,
+    "field_constraints": null,
+    "skip_write_only": false,
+    "undeletable": true,
+    "pre_state_set_hook_function": "",
+    "no_id": true,
+    "no_terraform_data_source": false,
+    "no_terraform_resource": true,
+    "api_property_resource_key": "POST",
+    "api_property_data_key": "GET",
+    "property_name_leave_as_is": false,
+    "api_data_override": null,
+    "remove_fields_data_source": [
+      "password"
+    ],
+    "remove_fields_resource": null,
+    "credential_types": null
+  },
+  "Description": "# Retrieve Information about the current User\n\nMake a GET request to retrieve user information about the current user.\n\nOne result should be returned containing the following fields:\n\n* `id`: Database ID for this user. (integer)\n* `type`: Data type for this user. (choice)\n* `url`: URL for this user. (string)\n* `related`: Data structure with URLs of related resources. (object)\n* `summary_fields`: Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons. (object)\n* `created`: Timestamp when this user was created. (datetime)\n* `modified`: Timestamp when this user was last modified. (datetime)\n* `username`: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. (string)\n* `first_name`:  (string)\n* `last_name`:  (string)\n* `email`:  (string)\n* `is_superuser`: Designates that this user has all permissions without explicitly assigning them. (boolean)\n* `is_system_auditor`:  (boolean)\n* `password`: Field used to change the password. (string)\n* `ldap_dn`:  (string)\n* `last_login`:  (datetime)\n* `external_account`: Set if the account is managed by an external service (field)\n\n\n\nUse the primary URL for the user (/api/v2/users/N/) to modify the user.",
+  "Endpoint": "/api/v2/me/",
+  "Name": "Me",
+  "PackageName": "awx",
+  "PropertyGetData": {
+    "email": {
+      "computed": true,
+      "filterable": true,
+      "label": "Email address",
+      "name": "email",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "external_account": {
+      "computed": true,
+      "filterable": false,
+      "help_text": "Set if the account is managed by an external service",
+      "label": "External account",
+      "name": "external_account",
+      "post_wrap": false,
+      "required": false,
+      "sensitive": false,
+      "trim": false,
+      "type": "string"
+    },
+    "first_name": {
+      "computed": true,
+      "filterable": true,
+      "label": "First name",
+      "name": "first_name",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "id": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Database ID for this user.",
+      "label": "ID",
+      "name": "id",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "is_superuser": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Designates that this user has all permissions without explicitly assigning them.",
+      "label": "Superuser status",
+      "name": "is_superuser",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "is_system_auditor": {
+      "computed": true,
+      "filterable": false,
+      "label": "Is system auditor",
+      "name": "is_system_auditor",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "last_login": {
+      "computed": true,
+      "filterable": true,
+      "label": "Last login",
+      "name": "last_login",
+      "required": false,
+      "sensitive": false,
+      "type": "datetime"
+    },
+    "last_name": {
+      "computed": true,
+      "filterable": true,
+      "label": "Last name",
+      "name": "last_name",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "ldap_dn": {
+      "computed": true,
+      "filterable": false,
+      "label": "Ldap dn",
+      "name": "ldap_dn",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "username": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+      "label": "Username",
+      "name": "username",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    }
+  },
+  "PropertyGetKeys": [
+    "email",
+    "external_account",
+    "first_name",
+    "id",
+    "is_superuser",
+    "is_system_auditor",
+    "last_login",
+    "last_name",
+    "ldap_dn",
+    "username"
+  ],
+  "PropertyPostData": {},
+  "PropertyPostKeys": null,
+  "PropertyWriteOnlyData": {},
+  "PropertyWriteOnlyKeys": null
+}
