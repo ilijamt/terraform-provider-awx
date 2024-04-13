@@ -110,7 +110,6 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
 	req.AUTOMATION_ANALYTICS_LAST_ENTRIES = o.AUTOMATION_ANALYTICS_LAST_ENTRIES.ValueString()
 	req.AUTOMATION_ANALYTICS_URL = o.AUTOMATION_ANALYTICS_URL.ValueString()
-	req.CLEANUP_HOST_METRICS_LAST_TS = o.CLEANUP_HOST_METRICS_LAST_TS.ValueString()
 	req.CSRF_TRUSTED_ORIGINS = []string{}
 	for _, val := range o.CSRF_TRUSTED_ORIGINS.Elements() {
 		if _, ok := val.(types.String); ok {
@@ -120,7 +119,6 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 		}
 	}
 	req.DEFAULT_EXECUTION_ENVIRONMENT = o.DEFAULT_EXECUTION_ENVIRONMENT.ValueInt64()
-	req.HOST_METRIC_SUMMARY_TASK_LAST_TS = o.HOST_METRIC_SUMMARY_TASK_LAST_TS.ValueString()
 	req.INSIGHTS_TRACKING_STATE = o.INSIGHTS_TRACKING_STATE.ValueBool()
 	req.MANAGE_ORGANIZATION_AUTH = o.MANAGE_ORGANIZATION_AUTH.ValueBool()
 	req.ORG_ADMINS_CAN_SEE_ALL_USERS = o.ORG_ADMINS_CAN_SEE_ALL_USERS.ValueBool()
@@ -365,14 +363,10 @@ type settingsMiscSystemBodyRequestModel struct {
 	AUTOMATION_ANALYTICS_LAST_ENTRIES string `json:"AUTOMATION_ANALYTICS_LAST_ENTRIES,omitempty"`
 	// AUTOMATION_ANALYTICS_URL "This setting is used to to configure the upload URL for data collection for Automation Analytics."
 	AUTOMATION_ANALYTICS_URL string `json:"AUTOMATION_ANALYTICS_URL,omitempty"`
-	// CLEANUP_HOST_METRICS_LAST_TS ""
-	CLEANUP_HOST_METRICS_LAST_TS string `json:"CLEANUP_HOST_METRICS_LAST_TS"`
 	// CSRF_TRUSTED_ORIGINS "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. "
 	CSRF_TRUSTED_ORIGINS []string `json:"CSRF_TRUSTED_ORIGINS,omitempty"`
 	// DEFAULT_EXECUTION_ENVIRONMENT "The Execution Environment to be used when one has not been configured for a job template."
 	DEFAULT_EXECUTION_ENVIRONMENT int64 `json:"DEFAULT_EXECUTION_ENVIRONMENT,omitempty"`
-	// HOST_METRIC_SUMMARY_TASK_LAST_TS ""
-	HOST_METRIC_SUMMARY_TASK_LAST_TS string `json:"HOST_METRIC_SUMMARY_TASK_LAST_TS"`
 	// INSIGHTS_TRACKING_STATE "Enables the service to gather data on automation and send it to Automation Analytics."
 	INSIGHTS_TRACKING_STATE bool `json:"INSIGHTS_TRACKING_STATE"`
 	// MANAGE_ORGANIZATION_AUTH "Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration."

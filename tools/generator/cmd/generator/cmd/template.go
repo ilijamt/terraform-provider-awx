@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -69,10 +70,15 @@ var templateCmd = &cobra.Command{
 				}
 
 				if objmap, ok := apiResource.Resources[item.Name]; ok {
-					err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
+					var data map[string]any
+					data, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
 					if err != nil {
 						return err
 					}
+					payload, _ := json.MarshalIndent(data, "", "  ")
+					genDataFile := fmt.Sprintf("%s/gen-data/%s.json", apiResourcePath, item.Name)
+					log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
+					_ = os.WriteFile(genDataFile, payload, os.ModePerm)
 				} else {
 					log.Printf("Missing definition for %s, skipping ...", item.Name)
 				}

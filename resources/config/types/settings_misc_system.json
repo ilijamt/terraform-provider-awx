@@ -9,6 +9,8 @@
   "property_name_leave_as_is": true,
   "undeletable": true,
   "remove_fields_resource": [
+    "CLEANUP_HOST_METRICS_LAST_TS",
+    "HOST_METRIC_SUMMARY_TASK_LAST_TS",
     "AUTOMATION_ANALYTICS_LAST_GATHER",
     "CUSTOM_VENV_PATHS"
   ],

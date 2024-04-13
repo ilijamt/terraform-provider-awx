@@ -1,0 +1,1287 @@
+{
+  "ApiVersion": "24.1.0",
+  "Config": {
+    "endpoint": "/api/v2/job_templates/",
+    "name": "JobTemplate",
+    "type_name": "job_template",
+    "id_key": "id",
+    "property_overrides": {
+      "extra_vars": {
+        "type": "json",
+        "description": "",
+        "sensitive": false,
+        "required": false,
+        "trim": false,
+        "post_wrap": true,
+        "default_value": "",
+        "element_type": ""
+      },
+      "name": {
+        "type": "",
+        "description": "",
+        "sensitive": false,
+        "required": true,
+        "trim": false,
+        "post_wrap": false,
+        "default_value": "",
+        "element_type": ""
+      }
+    },
+    "search_fields": [
+      {
+        "url_suffix": "%d/",
+        "name": "by_id",
+        "fields": [
+          {
+            "name": "id"
+          }
+        ]
+      },
+      {
+        "url_suffix": "?name__exact=%s",
+        "name": "by_name",
+        "fields": [
+          {
+            "name": "name",
+            "url_escape_value": true
+          }
+        ],
+        "multiple_results": true
+      }
+    ],
+    "enabled": true,
+    "has_object_roles": true,
+    "has_survey_spec": true,
+    "associate_disassociate_groups": [
+      {
+        "name": "JobTemplate",
+        "endpoint": "/api/v2/job_templates/%d/credentials/",
+        "type": "Credential",
+        "associate_type": ""
+      },
+      {
+        "name": "JobTemplate",
+        "endpoint": "/api/v2/job_templates/%d/notification_templates_%s/",
+        "type": "NotificationTemplate",
+        "associate_type": "notification_job_template"
+      },
+      {
+        "name": "JobTemplate",
+        "endpoint": "/api/v2/job_templates/%d/instance_groups/",
+        "type": "InstanceGroup",
+        "associate_type": ""
+      }
+    ],
+    "field_constraints": null,
+    "skip_write_only": false,
+    "undeletable": false,
+    "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
+    "no_id": false,
+    "no_terraform_data_source": false,
+    "no_terraform_resource": false,
+    "api_property_resource_key": "POST",
+    "api_property_data_key": "GET",
+    "property_name_leave_as_is": false,
+    "api_data_override": null,
+    "remove_fields_data_source": [
+      "custom_virtualenv",
+      "status"
+    ],
+    "remove_fields_resource": [
+      "custom_virtualenv",
+      "status"
+    ],
+    "credential_types": null
+  },
+  "Description": "# List Job Templates:\n\nMake a GET request to this resource to retrieve the list of\njob templates.\n\nThe resulting data structure contains:\n\n    {\n        \"count\": 99,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            ...\n        ]\n    }\n\nThe `count` field indicates the total number of job templates\nfound for the given query.  The `next` and `previous` fields provides links to\nadditional results if there are more than will fit on a single page.  The\n`results` list contains zero or more job template records.  \n\n## Results\n\nEach job template data structure includes the following fields:\n\n* `id`: Database ID for this job template. (integer)\n* `type`: Data type for this job template. (choice)\n* `url`: URL for this job template. (string)\n* `related`: Data structure with URLs of related resources. (object)\n* `summary_fields`: Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons. (object)\n* `created`: Timestamp when this job template was created. (datetime)\n* `modified`: Timestamp when this job template was last modified. (datetime)\n* `name`: Name of this job template. (string)\n* `description`: Optional description of this job template. (string)\n* `job_type`:  (choice)\n    - `run`: Run\n    - `check`: Check\n* `inventory`:  (id)\n* `project`:  (id)\n* `playbook`:  (string)\n* `scm_branch`: Branch to use in job run. Project default used if blank. Only allowed if project allow_override field is set to true. (string)\n* `forks`:  (integer)\n* `limit`:  (string)\n* `verbosity`:  (choice)\n    - `0`: 0 (Normal)\n    - `1`: 1 (Verbose)\n    - `2`: 2 (More Verbose)\n    - `3`: 3 (Debug)\n    - `4`: 4 (Connection Debug)\n    - `5`: 5 (WinRM Debug)\n* `extra_vars`:  (json)\n* `job_tags`:  (string)\n* `force_handlers`:  (boolean)\n* `skip_tags`:  (string)\n* `start_at_task`:  (string)\n* `timeout`: The amount of time (in seconds) to run before the task is canceled. (integer)\n* `use_fact_cache`: If enabled, the service will act as an Ansible Fact Cache Plugin; persisting facts at the end of a playbook run to the database and caching facts for use by Ansible. (boolean)\n* `organization`: The organization used to determine access to this template. (id)\n* `last_job_run`:  (datetime)\n* `last_job_failed`:  (boolean)\n* `next_job_run`:  (datetime)\n* `status`:  (choice)\n    - `new`: New\n    - `pending`: Pending\n    - `waiting`: Waiting\n    - `running`: Running\n    - `successful`: Successful\n    - `failed`: Failed\n    - `error`: Error\n    - `canceled`: Canceled\n    - `never updated`: Never Updated\n* `execution_environment`: The container image to be used for execution. (id)\n* `host_config_key`:  (string)\n* `ask_scm_branch_on_launch`:  (boolean)\n* `ask_diff_mode_on_launch`:  (boolean)\n* `ask_variables_on_launch`:  (boolean)\n* `ask_limit_on_launch`:  (boolean)\n* `ask_tags_on_launch`:  (boolean)\n* `ask_skip_tags_on_launch`:  (boolean)\n* `ask_job_type_on_launch`:  (boolean)\n* `ask_verbosity_on_launch`:  (boolean)\n* `ask_inventory_on_launch`:  (boolean)\n* `ask_credential_on_launch`:  (boolean)\n* `ask_execution_environment_on_launch`:  (boolean)\n* `ask_labels_on_launch`:  (boolean)\n* `ask_forks_on_launch`:  (boolean)\n* `ask_job_slice_count_on_launch`:  (boolean)\n* `ask_timeout_on_launch`:  (boolean)\n* `ask_instance_groups_on_launch`:  (boolean)\n* `survey_enabled`:  (boolean)\n* `become_enabled`:  (boolean)\n* `diff_mode`: If enabled, textual changes made to any templated files on the host are shown in the standard output (boolean)\n* `allow_simultaneous`:  (boolean)\n* `custom_virtualenv`: Local absolute file path containing a custom Python virtualenv to use (string)\n* `job_slice_count`: The number of jobs to slice into at runtime. Will cause the Job Template to launch a workflow if value is greater than 1. (integer)\n* `webhook_service`: Service that webhook requests will be accepted from (choice)\n    - `\"\"`: ---------\n    - `github`: GitHub\n    - `gitlab`: GitLab\n    - `bitbucket_dc`: BitBucket DataCenter\n* `webhook_credential`: Personal Access Token for posting back the status to the service API (id)\n* `prevent_instance_group_fallback`: If enabled, the job template will prevent adding any inventory or organization instance groups to the list of preferred instances groups to run on.If this setting is enabled and you provided an empty list, the global instance groups will be applied. (boolean)\n\n\n\n## Sorting\n\nTo specify that job templates are returned in a particular\norder, use the `order_by` query string parameter on the GET request.\n\n    ?order_by=name\n\nPrefix the field name with a dash `-` to sort in reverse:\n\n    ?order_by=-name\n\nMultiple sorting fields may be specified by separating the field names with a\ncomma `,`:\n\n    ?order_by=name,some_other_field\n\n## Pagination\n\nUse the `page_size` query string parameter to change the number of results\nreturned for each request.  Use the `page` query string parameter to retrieve\na particular page of results.\n\n    ?page_size=100\u0026page=2\n\nThe `previous` and `next` links returned with the results will set these query\nstring parameters automatically.\n\n## Searching\n\nUse the `search` query string parameter to perform a case-insensitive search\nwithin all designated text fields of a model.\n\n    ?search=findme\n\n(_Added in Ansible Tower 3.1.0_) Search across related fields:\n\n    ?related__search=findme\n\nNote: If you want to provide more than one search term, multiple\nsearch fields with the same key, like `?related__search=foo\u0026related__search=bar`,\nwill be ORed together. Terms separated by commas, like `?related__search=foo,bar`\nwill be ANDed together.\n\n## Filtering\n\nAny additional query string parameters may be used to filter the list of\nresults returned to those matching a given value.  Only fields and relations\nthat exist in the database may be used for filtering.  Any special characters\nin the specified value should be url-encoded. For example:\n\n    ?field=value%20xyz\n\nFields may also span relations, only for fields and relationships defined in\nthe database:\n\n    ?other__field=value\n\nTo exclude results matching certain criteria, prefix the field parameter with\n`not__`:\n\n    ?not__field=value\n\nBy default, all query string filters are AND'ed together, so\nonly the results matching *all* filters will be returned.  To combine results\nmatching *any* one of multiple criteria, prefix each query string parameter\nwith `or__`:\n\n    ?or__field=value\u0026or__field=othervalue\n    ?or__not__field=value\u0026or__field=othervalue\n\n(_Added in Ansible Tower 1.4.5_) The default AND filtering applies all filters\nsimultaneously to each related object being filtered across database\nrelationships.  The chain filter instead applies filters separately for each\nrelated object. To use, prefix the query string parameter with `chain__`:\n\n    ?chain__related__field=value\u0026chain__related__field2=othervalue\n    ?chain__not__related__field=value\u0026chain__related__field2=othervalue\n\nIf the first query above were written as\n`?related__field=value\u0026related__field2=othervalue`, it would return only the\nprimary objects where the *same* related object satisfied both conditions.  As\nwritten using the chain filter, it would return the intersection of primary\nobjects matching each condition.\n\nField lookups may also be used for more advanced queries, by appending the\nlookup to the field name:\n\n    ?field__lookup=value\n\nThe following field lookups are supported:\n\n* `exact`: Exact match (default lookup if not specified).\n* `iexact`: Case-insensitive version of `exact`.\n* `contains`: Field contains value.\n* `icontains`: Case-insensitive version of `contains`.\n* `startswith`: Field starts with value.\n* `istartswith`: Case-insensitive version of `startswith`.\n* `endswith`: Field ends with value.\n* `iendswith`: Case-insensitive version of `endswith`.\n* `regex`: Field matches the given regular expression.\n* `iregex`: Case-insensitive version of `regex`.\n* `gt`: Greater than comparison.\n* `gte`: Greater than or equal to comparison.\n* `lt`: Less than comparison.\n* `lte`: Less than or equal to comparison.\n* `isnull`: Check whether the given field or related object is null; expects a\n  boolean value.\n* `in`: Check whether the given field's value is present in the list provided;\n  expects a list of items.\n\nBoolean values may be specified as `True` or `1` for true, `False` or `0` for\nfalse (both case-insensitive).\n\nNull values may be specified as `None` or `Null` (both case-insensitive),\nthough it is preferred to use the `isnull` lookup to explicitly check for null\nvalues.\n\nLists (for the `in` lookup) may be specified as a comma-separated list of\nvalues.\n\n(_Added in Ansible Tower 3.1.0_) Filtering based on the requesting user's\nlevel of access by query string parameter.\n\n* `role_level`: Level of role to filter on, such as `admin_role`\n\n\n\n\n# Create a Job Template:\n\nMake a POST request to this resource with the following job template\nfields to create a new job template:\n\n\n\n\n\n\n\n\n\n* `name`: Name of this job template. (string, required)\n* `description`: Optional description of this job template. (string, default=`\"\"`)\n* `job_type`:  (choice)\n    - `run`: Run (default)\n    - `check`: Check\n* `inventory`:  (id, default=``)\n* `project`:  (id, default=``)\n* `playbook`:  (string, default=`\"\"`)\n* `scm_branch`: Branch to use in job run. Project default used if blank. Only allowed if project allow_override field is set to true. (string, default=`\"\"`)\n* `forks`:  (integer, default=`0`)\n* `limit`:  (string, default=`\"\"`)\n* `verbosity`:  (choice)\n    - `0`: 0 (Normal) (default)\n    - `1`: 1 (Verbose)\n    - `2`: 2 (More Verbose)\n    - `3`: 3 (Debug)\n    - `4`: 4 (Connection Debug)\n    - `5`: 5 (WinRM Debug)\n* `extra_vars`:  (json, default=``)\n* `job_tags`:  (string, default=`\"\"`)\n* `force_handlers`:  (boolean, default=`False`)\n* `skip_tags`:  (string, default=`\"\"`)\n* `start_at_task`:  (string, default=`\"\"`)\n* `timeout`: The amount of time (in seconds) to run before the task is canceled. (integer, default=`0`)\n* `use_fact_cache`: If enabled, the service will act as an Ansible Fact Cache Plugin; persisting facts at the end of a playbook run to the database and caching facts for use by Ansible. (boolean, default=`False`)\n\n\n\n\n\n* `execution_environment`: The container image to be used for execution. (id, default=``)\n* `host_config_key`:  (string, default=`\"\"`)\n* `ask_scm_branch_on_launch`:  (boolean, default=`False`)\n* `ask_diff_mode_on_launch`:  (boolean, default=`False`)\n* `ask_variables_on_launch`:  (boolean, default=`False`)\n* `ask_limit_on_launch`:  (boolean, default=`False`)\n* `ask_tags_on_launch`:  (boolean, default=`False`)\n* `ask_skip_tags_on_launch`:  (boolean, default=`False`)\n* `ask_job_type_on_launch`:  (boolean, default=`False`)\n* `ask_verbosity_on_launch`:  (boolean, default=`False`)\n* `ask_inventory_on_launch`:  (boolean, default=`False`)\n* `ask_credential_on_launch`:  (boolean, default=`False`)\n* `ask_execution_environment_on_launch`:  (boolean, default=`False`)\n* `ask_labels_on_launch`:  (boolean, default=`False`)\n* `ask_forks_on_launch`:  (boolean, default=`False`)\n* `ask_job_slice_count_on_launch`:  (boolean, default=`False`)\n* `ask_timeout_on_launch`:  (boolean, default=`False`)\n* `ask_instance_groups_on_launch`:  (boolean, default=`False`)\n* `survey_enabled`:  (boolean, default=`False`)\n* `become_enabled`:  (boolean, default=`False`)\n* `diff_mode`: If enabled, textual changes made to any templated files on the host are shown in the standard output (boolean, default=`False`)\n* `allow_simultaneous`:  (boolean, default=`False`)\n\n* `job_slice_count`: The number of jobs to slice into at runtime. Will cause the Job Template to launch a workflow if value is greater than 1. (integer, default=`1`)\n* `webhook_service`: Service that webhook requests will be accepted from (choice)\n    - `\"\"`: ---------\n    - `github`: GitHub\n    - `gitlab`: GitLab\n    - `bitbucket_dc`: BitBucket DataCenter\n* `webhook_credential`: Personal Access Token for posting back the status to the service API (id, default=``)\n* `prevent_instance_group_fallback`: If enabled, the job template will prevent adding any inventory or organization instance groups to the list of preferred instances groups to run on.If this setting is enabled and you provided an empty list, the global instance groups will be applied. (boolean, default=`False`)",
+  "Endpoint": "/api/v2/job_templates/",
+  "Name": "JobTemplate",
+  "PackageName": "awx",
+  "PropertyGetData": {
+    "allow_simultaneous": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Allow simultaneous",
+      "name": "allow_simultaneous",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_credential_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask credential on launch",
+      "name": "ask_credential_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_diff_mode_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask diff mode on launch",
+      "name": "ask_diff_mode_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_execution_environment_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask execution environment on launch",
+      "name": "ask_execution_environment_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_forks_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask forks on launch",
+      "name": "ask_forks_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_instance_groups_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask instance groups on launch",
+      "name": "ask_instance_groups_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_inventory_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask inventory on launch",
+      "name": "ask_inventory_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_job_slice_count_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask job slice count on launch",
+      "name": "ask_job_slice_count_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_job_type_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask job type on launch",
+      "name": "ask_job_type_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_labels_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask labels on launch",
+      "name": "ask_labels_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_limit_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask limit on launch",
+      "name": "ask_limit_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_scm_branch_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask scm branch on launch",
+      "name": "ask_scm_branch_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_skip_tags_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask skip tags on launch",
+      "name": "ask_skip_tags_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_tags_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask tags on launch",
+      "name": "ask_tags_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_timeout_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask timeout on launch",
+      "name": "ask_timeout_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_variables_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask variables on launch",
+      "name": "ask_variables_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_verbosity_on_launch": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask verbosity on launch",
+      "name": "ask_verbosity_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "become_enabled": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Become enabled",
+      "name": "become_enabled",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "description": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Optional description of this job template.",
+      "hidden": false,
+      "label": "Description",
+      "name": "description",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "diff_mode": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "If enabled, textual changes made to any templated files on the host are shown in the standard output",
+      "hidden": false,
+      "label": "Diff mode",
+      "name": "diff_mode",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "execution_environment": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "The container image to be used for execution.",
+      "hidden": false,
+      "label": "Execution environment",
+      "name": "execution_environment",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "extra_vars": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Extra vars",
+      "name": "extra_vars",
+      "post_wrap": true,
+      "required": false,
+      "sensitive": false,
+      "trim": false,
+      "type": "json"
+    },
+    "force_handlers": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Force handlers",
+      "name": "force_handlers",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "forks": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Forks",
+      "max_value": 2147483647,
+      "min_value": 0,
+      "name": "forks",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "host_config_key": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Host config key",
+      "name": "host_config_key",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "id": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Database ID for this job template.",
+      "hidden": false,
+      "label": "ID",
+      "name": "id",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "inventory": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Inventory",
+      "name": "inventory",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "job_slice_count": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "The number of jobs to slice into at runtime. Will cause the Job Template to launch a workflow if value is greater than 1.",
+      "hidden": false,
+      "label": "Job slice count",
+      "max_value": 2147483647,
+      "min_value": 0,
+      "name": "job_slice_count",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "job_tags": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Job tags",
+      "name": "job_tags",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "job_type": {
+      "choices": [
+        [
+          "run",
+          "Run"
+        ],
+        [
+          "check",
+          "Check"
+        ]
+      ],
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Job type",
+      "name": "job_type",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    },
+    "limit": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Limit",
+      "name": "limit",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "name": {
+      "computed": false,
+      "filterable": true,
+      "help_text": "Name of this job template.",
+      "hidden": false,
+      "label": "Name",
+      "name": "name",
+      "post_wrap": false,
+      "required": true,
+      "sensitive": false,
+      "trim": false,
+      "type": "string"
+    },
+    "organization": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "The organization used to determine access to this template.",
+      "hidden": false,
+      "label": "Organization",
+      "name": "organization",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "playbook": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Playbook",
+      "name": "playbook",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "prevent_instance_group_fallback": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "If enabled, the job template will prevent adding any inventory or organization instance groups to the list of preferred instances groups to run on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
+      "hidden": false,
+      "label": "Prevent instance group fallback",
+      "name": "prevent_instance_group_fallback",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "project": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Project",
+      "name": "project",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "scm_branch": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Branch to use in job run. Project default used if blank. Only allowed if project allow_override field is set to true.",
+      "hidden": false,
+      "label": "Scm branch",
+      "name": "scm_branch",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "skip_tags": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Skip tags",
+      "name": "skip_tags",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "start_at_task": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Start at task",
+      "name": "start_at_task",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "survey_enabled": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Survey enabled",
+      "name": "survey_enabled",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "timeout": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "The amount of time (in seconds) to run before the task is canceled.",
+      "hidden": false,
+      "label": "Timeout",
+      "max_value": 2147483647,
+      "min_value": -2147483648,
+      "name": "timeout",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "use_fact_cache": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "If enabled, the service will act as an Ansible Fact Cache Plugin; persisting facts at the end of a playbook run to the database and caching facts for use by Ansible.",
+      "hidden": false,
+      "label": "Use fact cache",
+      "name": "use_fact_cache",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "verbosity": {
+      "choices": [
+        [
+          0,
+          "0 (Normal)"
+        ],
+        [
+          1,
+          "1 (Verbose)"
+        ],
+        [
+          2,
+          "2 (More Verbose)"
+        ],
+        [
+          3,
+          "3 (Debug)"
+        ],
+        [
+          4,
+          "4 (Connection Debug)"
+        ],
+        [
+          5,
+          "5 (WinRM Debug)"
+        ]
+      ],
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Verbosity",
+      "name": "verbosity",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    },
+    "webhook_credential": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Personal Access Token for posting back the status to the service API",
+      "hidden": false,
+      "label": "Webhook credential",
+      "name": "webhook_credential",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "webhook_service": {
+      "choices": [
+        [
+          "",
+          "---------"
+        ],
+        [
+          "github",
+          "GitHub"
+        ],
+        [
+          "gitlab",
+          "GitLab"
+        ],
+        [
+          "bitbucket_dc",
+          "BitBucket DataCenter"
+        ]
+      ],
+      "computed": true,
+      "filterable": true,
+      "help_text": "Service that webhook requests will be accepted from",
+      "hidden": false,
+      "label": "Webhook service",
+      "name": "webhook_service",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    }
+  },
+  "PropertyGetKeys": [
+    "allow_simultaneous",
+    "ask_credential_on_launch",
+    "ask_diff_mode_on_launch",
+    "ask_execution_environment_on_launch",
+    "ask_forks_on_launch",
+    "ask_instance_groups_on_launch",
+    "ask_inventory_on_launch",
+    "ask_job_slice_count_on_launch",
+    "ask_job_type_on_launch",
+    "ask_labels_on_launch",
+    "ask_limit_on_launch",
+    "ask_scm_branch_on_launch",
+    "ask_skip_tags_on_launch",
+    "ask_tags_on_launch",
+    "ask_timeout_on_launch",
+    "ask_variables_on_launch",
+    "ask_verbosity_on_launch",
+    "become_enabled",
+    "description",
+    "diff_mode",
+    "execution_environment",
+    "extra_vars",
+    "force_handlers",
+    "forks",
+    "host_config_key",
+    "id",
+    "inventory",
+    "job_slice_count",
+    "job_tags",
+    "job_type",
+    "limit",
+    "name",
+    "organization",
+    "playbook",
+    "prevent_instance_group_fallback",
+    "project",
+    "scm_branch",
+    "skip_tags",
+    "start_at_task",
+    "survey_enabled",
+    "timeout",
+    "use_fact_cache",
+    "verbosity",
+    "webhook_credential",
+    "webhook_service"
+  ],
+  "PropertyPostData": {
+    "allow_simultaneous": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Allow simultaneous",
+      "name": "allow_simultaneous",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_credential_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask credential on launch",
+      "name": "ask_credential_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_diff_mode_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask diff mode on launch",
+      "name": "ask_diff_mode_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_execution_environment_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask execution environment on launch",
+      "name": "ask_execution_environment_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_forks_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask forks on launch",
+      "name": "ask_forks_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_instance_groups_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask instance groups on launch",
+      "name": "ask_instance_groups_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_inventory_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask inventory on launch",
+      "name": "ask_inventory_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_job_slice_count_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask job slice count on launch",
+      "name": "ask_job_slice_count_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_job_type_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask job type on launch",
+      "name": "ask_job_type_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_labels_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask labels on launch",
+      "name": "ask_labels_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_limit_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask limit on launch",
+      "name": "ask_limit_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_scm_branch_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask scm branch on launch",
+      "name": "ask_scm_branch_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_skip_tags_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask skip tags on launch",
+      "name": "ask_skip_tags_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_tags_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask tags on launch",
+      "name": "ask_tags_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_timeout_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask timeout on launch",
+      "name": "ask_timeout_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_variables_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask variables on launch",
+      "name": "ask_variables_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "ask_verbosity_on_launch": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Ask verbosity on launch",
+      "name": "ask_verbosity_on_launch",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "become_enabled": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Become enabled",
+      "name": "become_enabled",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "description": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "help_text": "Optional description of this job template.",
+      "hidden": false,
+      "label": "Description",
+      "name": "description",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "diff_mode": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "help_text": "If enabled, textual changes made to any templated files on the host are shown in the standard output",
+      "hidden": false,
+      "label": "Diff mode",
+      "name": "diff_mode",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "execution_environment": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "The container image to be used for execution.",
+      "hidden": false,
+      "label": "Execution environment",
+      "name": "execution_environment",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "extra_vars": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Extra vars",
+      "name": "extra_vars",
+      "post_wrap": true,
+      "required": false,
+      "sensitive": false,
+      "trim": false,
+      "type": "json"
+    },
+    "force_handlers": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Force handlers",
+      "name": "force_handlers",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "forks": {
+      "computed": true,
+      "default": 0,
+      "default_value": "int64default.StaticInt64(0)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Forks",
+      "max_value": 2147483647,
+      "min_value": 0,
+      "name": "forks",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "host_config_key": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Host config key",
+      "max_length": 1024,
+      "name": "host_config_key",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "inventory": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Inventory",
+      "name": "inventory",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "job_slice_count": {
+      "computed": true,
+      "default": 1,
+      "default_value": "int64default.StaticInt64(1)",
+      "filterable": true,
+      "help_text": "The number of jobs to slice into at runtime. Will cause the Job Template to launch a workflow if value is greater than 1.",
+      "hidden": false,
+      "label": "Job slice count",
+      "max_value": 2147483647,
+      "min_value": 0,
+      "name": "job_slice_count",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "job_tags": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Job tags",
+      "name": "job_tags",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "job_type": {
+      "choices": [
+        [
+          "run",
+          "Run"
+        ],
+        [
+          "check",
+          "Check"
+        ]
+      ],
+      "computed": true,
+      "default": "run",
+      "default_value": "stringdefault.StaticString(`run`)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Job type",
+      "name": "job_type",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    },
+    "limit": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Limit",
+      "name": "limit",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "name": {
+      "computed": false,
+      "filterable": true,
+      "help_text": "Name of this job template.",
+      "hidden": false,
+      "label": "Name",
+      "max_length": 512,
+      "name": "name",
+      "post_wrap": false,
+      "required": true,
+      "sensitive": false,
+      "trim": false,
+      "type": "string"
+    },
+    "playbook": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Playbook",
+      "max_length": 1024,
+      "name": "playbook",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "prevent_instance_group_fallback": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "help_text": "If enabled, the job template will prevent adding any inventory or organization instance groups to the list of preferred instances groups to run on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
+      "hidden": false,
+      "label": "Prevent instance group fallback",
+      "name": "prevent_instance_group_fallback",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "project": {
+      "computed": true,
+      "filterable": true,
+      "hidden": false,
+      "label": "Project",
+      "name": "project",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "scm_branch": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "help_text": "Branch to use in job run. Project default used if blank. Only allowed if project allow_override field is set to true.",
+      "hidden": false,
+      "label": "Scm branch",
+      "max_length": 1024,
+      "name": "scm_branch",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "skip_tags": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Skip tags",
+      "max_length": 1024,
+      "name": "skip_tags",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "start_at_task": {
+      "computed": true,
+      "default": "",
+      "default_value": "stringdefault.StaticString(``)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Start at task",
+      "max_length": 1024,
+      "name": "start_at_task",
+      "required": false,
+      "sensitive": false,
+      "type": "string"
+    },
+    "survey_enabled": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "hidden": false,
+      "label": "Survey enabled",
+      "name": "survey_enabled",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "timeout": {
+      "computed": true,
+      "default": 0,
+      "default_value": "int64default.StaticInt64(0)",
+      "filterable": true,
+      "help_text": "The amount of time (in seconds) to run before the task is canceled.",
+      "hidden": false,
+      "label": "Timeout",
+      "max_value": 2147483647,
+      "min_value": -2147483648,
+      "name": "timeout",
+      "required": false,
+      "sensitive": false,
+      "type": "integer"
+    },
+    "use_fact_cache": {
+      "computed": true,
+      "default": false,
+      "filterable": true,
+      "help_text": "If enabled, the service will act as an Ansible Fact Cache Plugin; persisting facts at the end of a playbook run to the database and caching facts for use by Ansible.",
+      "hidden": false,
+      "label": "Use fact cache",
+      "name": "use_fact_cache",
+      "required": false,
+      "sensitive": false,
+      "type": "boolean"
+    },
+    "verbosity": {
+      "choices": [
+        [
+          0,
+          "0 (Normal)"
+        ],
+        [
+          1,
+          "1 (Verbose)"
+        ],
+        [
+          2,
+          "2 (More Verbose)"
+        ],
+        [
+          3,
+          "3 (Debug)"
+        ],
+        [
+          4,
+          "4 (Connection Debug)"
+        ],
+        [
+          5,
+          "5 (WinRM Debug)"
+        ]
+      ],
+      "computed": true,
+      "default": 0,
+      "default_value": "stringdefault.StaticString(`0`)",
+      "filterable": true,
+      "hidden": false,
+      "label": "Verbosity",
+      "name": "verbosity",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    },
+    "webhook_credential": {
+      "computed": true,
+      "filterable": true,
+      "help_text": "Personal Access Token for posting back the status to the service API",
+      "hidden": false,
+      "label": "Webhook credential",
+      "name": "webhook_credential",
+      "required": false,
+      "sensitive": false,
+      "type": "id"
+    },
+    "webhook_service": {
+      "choices": [
+        [
+          "",
+          "---------"
+        ],
+        [
+          "github",
+          "GitHub"
+        ],
+        [
+          "gitlab",
+          "GitLab"
+        ],
+        [
+          "bitbucket_dc",
+          "BitBucket DataCenter"
+        ]
+      ],
+      "computed": true,
+      "filterable": true,
+      "help_text": "Service that webhook requests will be accepted from",
+      "hidden": false,
+      "label": "Webhook service",
+      "name": "webhook_service",
+      "required": false,
+      "sensitive": false,
+      "type": "choice"
+    }
+  },
+  "PropertyPostKeys": [
+    "allow_simultaneous",
+    "ask_credential_on_launch",
+    "ask_diff_mode_on_launch",
+    "ask_execution_environment_on_launch",
+    "ask_forks_on_launch",
+    "ask_instance_groups_on_launch",
+    "ask_inventory_on_launch",
+    "ask_job_slice_count_on_launch",
+    "ask_job_type_on_launch",
+    "ask_labels_on_launch",
+    "ask_limit_on_launch",
+    "ask_scm_branch_on_launch",
+    "ask_skip_tags_on_launch",
+    "ask_tags_on_launch",
+    "ask_timeout_on_launch",
+    "ask_variables_on_launch",
+    "ask_verbosity_on_launch",
+    "become_enabled",
+    "description",
+    "diff_mode",
+    "execution_environment",
+    "extra_vars",
+    "force_handlers",
+    "forks",
+    "host_config_key",
+    "inventory",
+    "job_slice_count",
+    "job_tags",
+    "job_type",
+    "limit",
+    "name",
+    "playbook",
+    "prevent_instance_group_fallback",
+    "project",
+    "scm_branch",
+    "skip_tags",
+    "start_at_task",
+    "survey_enabled",
+    "timeout",
+    "use_fact_cache",
+    "verbosity",
+    "webhook_credential",
+    "webhook_service"
+  ],
+  "PropertyWriteOnlyData": {},
+  "PropertyWriteOnlyKeys": null
+}

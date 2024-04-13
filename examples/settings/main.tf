@@ -34,13 +34,15 @@ resource "awx_settings_misc_logging" "default" {
     "job_events",
     "system_tracking",
   ]
-  log_aggregator_max_disk_usage_gb   = 1
+  log_aggregator_action_max_disk_usage_gb   = 1
   log_aggregator_max_disk_usage_path = "/var/lib/awx"
   log_aggregator_protocol            = "https"
   log_aggregator_rsyslogd_debug      = false
   log_aggregator_tcp_timeout         = 5
   log_aggregator_verify_cert         = true
 }
+
+data "awx_settings_misc_system" "default" {}
 
 resource "awx_settings_misc_system" "default" {
   default_execution_environment              = data.awx_execution_environment.latest.id

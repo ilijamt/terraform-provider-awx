@@ -118,15 +118,6 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 				},
 				Validators: []validator.String{},
 			},
-			"cleanup_host_metrics_last_ts": schema.StringAttribute{
-				Description:   "Last cleanup date for HostMetrics",
-				Sensitive:     false,
-				Required:      true,
-				Optional:      false,
-				Computed:      false,
-				PlanModifiers: []planmodifier.String{},
-				Validators:    []validator.String{},
-			},
 			"csrf_trusted_origins": schema.ListAttribute{
 				ElementType: types.StringType,
 				Description: "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. ",
@@ -149,15 +140,6 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 					int64planmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.Int64{},
-			},
-			"host_metric_summary_task_last_ts": schema.StringAttribute{
-				Description:   "Last computing date of HostMetricSummaryMonthly",
-				Sensitive:     false,
-				Required:      true,
-				Optional:      false,
-				Computed:      false,
-				PlanModifiers: []planmodifier.String{},
-				Validators:    []validator.String{},
 			},
 			"insights_tracking_state": schema.BoolAttribute{
 				Description: "Enables the service to gather data on automation and send it to Automation Analytics.",
@@ -313,6 +295,16 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
+			"cleanup_host_metrics_last_ts": schema.StringAttribute{
+				Description: "",
+				Required:    false,
+				Optional:    false,
+				Computed:    true,
+				Sensitive:   false,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+			},
 			"custom_venv_paths": schema.ListAttribute{
 				ElementType: types.StringType,
 				Description: "Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line.",
@@ -335,6 +327,16 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 				},
 			},
 			"default_execution_queue_name": schema.StringAttribute{
+				Description: "",
+				Required:    false,
+				Optional:    false,
+				Computed:    true,
+				Sensitive:   false,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
+			},
+			"host_metric_summary_task_last_ts": schema.StringAttribute{
 				Description: "",
 				Required:    false,
 				Optional:    false,

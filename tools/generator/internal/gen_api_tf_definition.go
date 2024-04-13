@@ -24,14 +24,12 @@ func getItemElementListType(value map[string]any) (any, error) {
 	return "", fmt.Errorf("no list element type found")
 }
 
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) error {
-	var err error
-
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
 		log.Printf("No actions for %s, skipping ....", name)
-		return nil
+		return nil, nil
 	}
 
 	// ---------------------
@@ -39,6 +37,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	var propertyWriteOnlyKeys []string
 
 	var processOverride = func(
+		source string,
 		value map[string]any,
 		key string,
 	) {
@@ -72,6 +71,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	}
 
 	var processValues = func(
+		source string,
 		value map[string]any,
 		key string,
 	) {
@@ -86,7 +86,6 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		if val, ok := value["required"].(bool); ok {
 			required = val
 		} else {
-			required = false
 			value["required"] = required
 		}
 
@@ -123,8 +122,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 
 		for key, value := range props {
-			processOverride(value.(map[string]any), key)
-			processValues(value.(map[string]any), key)
+			processOverride(val.ApiPropertyDataKey, value.(map[string]any), key)
+			processValues(val.ApiPropertyDataKey, value.(map[string]any), key)
 			propertyGetKeys = append(propertyGetKeys, key)
 			propertyGetData[key] = value
 		}
@@ -139,8 +138,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 
 		for key, value := range props {
-			processOverride(value.(map[string]any), key)
-			processValues(value.(map[string]any), key)
+			processOverride(val.ApiPropertyResourceKey, value.(map[string]any), key)
+			processValues(val.ApiPropertyResourceKey, value.(map[string]any), key)
 			if writeOnly, ok := value.(map[string]any)["write_only"].(bool); ok && writeOnly {
 				if val.SkipWriteOnly {
 					continue
@@ -161,7 +160,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 
 	// ---------------------
 
-	var data = map[string]any{
+	data = map[string]any{
 		"ApiVersion":            config.ApiVersion,
 		"PackageName":           config.PackageName("awx"),
 		"Name":                  name,
@@ -248,10 +247,10 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				t.Template,
 				d,
 			); err != nil {
-				return err
+				return data, err
 			}
 		}
 	}
 
-	return nil
+	return data, nil
 }

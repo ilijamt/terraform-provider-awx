@@ -19,6 +19,8 @@ description: |-
 
 - `id` (Number) Database ID for this credential.
 - `name` (String) Name of this credential.
+- `team` (Number) Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.
+- `user` (Number) Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.
 
 ### Read-Only
 
