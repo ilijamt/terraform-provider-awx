@@ -8,13 +8,14 @@ generate-config:
 
 .PHONY: download-api
 download-api:
+	mkdir -p resources/api/$(VERSION)/config resources/api/$(VERSION)/gen-data
 	go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/api/$(VERSION) \
 		--host $(TOWER_HOST) --password $(TOWER_PASSWORD) --username $(TOWER_USERNAME) --insecure-skip-verify
 
 .PHONY: generate-configs
 generate-configs: resources/api/*
 	@for file in $^ ; do \
-			node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/$${file} ; \
+		node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/$${file} ; \
 	done
 
 .PHONY: generate-awx

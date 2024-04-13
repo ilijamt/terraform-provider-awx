@@ -32,7 +32,7 @@ Older version of AWX report incorrect API spec. So manual changes may be require
 
 ```shell
 export AWX_VERSION=24.1.0
-mkdir -p resources/api/$AWX_VERSION/config
+mkdir -p resources/api/$AWX_VERSION/config resources/api/$AWX_VERSION/gen-data
 cat <<EOF > resources/api/$AWX_VERSION/config/default.json
 {
   "api_version": "$AWX_VERSION"
