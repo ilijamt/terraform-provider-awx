@@ -6,7 +6,6 @@ import (
 	"log"
 
 	"github.com/ilijamt/terraform-provider-awx/internal/awx"
-
 	"github.com/ilijamt/terraform-provider-awx/version"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"

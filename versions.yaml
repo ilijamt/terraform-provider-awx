@@ -1,14 +1,22 @@
 - version: 23.5.1
   build: 4
+  active: true
 - version: 23.6.0
   build: 4
 - version: 23.7.0
   build: 4
 - version: 23.8.1
   build: 4
+  active: true
 - version: 23.9.0
   build: 3
+  active: true
 - version: 24.0.0
   build: 3
+  active: true
 - version: 24.1.0
   build: 3
+  active: true
+- version: 24.2.0
+  build: 0
+  active: true
