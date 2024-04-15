@@ -10,6 +10,7 @@ import (
 type BuildConfigVersion struct {
 	Version string `json:"version" yaml:"version"`
 	Build   uint8  `json:"build" yaml:"build"`
+	Active bool `json:"active,omitempty" yaml:"active,omitempty"`
 }
 
 func (c *BuildConfigVersion) Inc() {

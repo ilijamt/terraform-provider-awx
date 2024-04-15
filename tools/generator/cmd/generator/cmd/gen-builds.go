@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -25,11 +26,16 @@ var genBuilds = &cobra.Command{
 			"git commit -m'chore: updated versions.yaml'",
 			"git push",
 		}
+		var versions, _ = cmd.Flags().GetStringSlice("version")
 
 		for _, b := range *buildConfig {
 			func(b *internal.BuildConfigVersion) {
+				var process = slices.Contains(versions, b.Version) || len(versions) == 0
+				if !b.Active || !process {
+					return
+				}
 				defer func() {
-					if !dryRun {
+					if !dryRun && b.Active && process {
 						b.Inc()
 					}
 				}()
@@ -64,5 +70,6 @@ var genBuilds = &cobra.Command{
 
 func init() {
 	genBuilds.Flags().BoolP("dry-run", "n", false, "Do not increase the build counters")
+	genBuilds.Flags().StringSliceP("version", "v", []string{}, "Which versions to build, if empty it builds all available versions.")
 	rootCmd.AddCommand(genBuilds)
 }
