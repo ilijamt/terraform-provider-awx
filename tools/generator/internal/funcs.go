@@ -311,6 +311,10 @@ var FuncMap = template.FuncMap{
 		var val any
 		for _, choice := range choices {
 			val = (choice.([]any))[0]
+			if val == nil {
+				arr = append(arr, "\"\"")
+				continue
+			}
 			switch val := val.(type) {
 			case string:
 				arr = append(arr, fmt.Sprintf("\"%s\"", val))
