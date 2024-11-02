@@ -35,9 +35,9 @@ func hookNotificationTemplate(ctx context.Context, apiVersion string, source hoo
 		var dirty = false
 
 		for k, v := range inputs {
-			switch v.(type) {
+			switch u := v.(type) {
 			case string:
-				if strings.Contains(v.(string), "$encrypted$") {
+				if strings.Contains(u, "$encrypted$") {
 					dirty = true
 					inputs[k] = origInputs[k]
 				}
