@@ -620,7 +620,8 @@
             }
           ]
         }
-      ]
+      ],
+      "pre_state_set_hook_function": "hookNotificationTemplate"
     },
     {
       "endpoint": "/api/v2/organizations/",
@@ -1199,7 +1200,13 @@
       "no_id": true,
       "api_property_resource_key": "PUT",
       "property_name_leave_as_is": true,
-      "undeletable": true
+      "pre_state_set_hook_function": "hookSettingsOidc",
+      "undeletable": true,
+      "property_overrides": {
+        "SOCIAL_AUTH_OIDC_SECRET": {
+          "sensitive": true
+        }
+      }
     },
     {
       "endpoint": "/api/v2/settings/ui/",

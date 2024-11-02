@@ -34,7 +34,7 @@
     "field_constraints": null,
     "skip_write_only": false,
     "undeletable": false,
-    "pre_state_set_hook_function": "",
+    "pre_state_set_hook_function": "hookNotificationTemplate",
     "no_id": false,
     "no_terraform_data_source": false,
     "no_terraform_resource": false,

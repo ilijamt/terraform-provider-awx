@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -80,7 +81,7 @@ func (o *settingsOpenIdconnectResource) Schema(ctx context.Context, req resource
 			},
 			"social_auth_oidc_secret": schema.StringAttribute{
 				Description: "The OIDC secret (Client Secret) from your IDP.",
-				Sensitive:   false,
+				Sensitive:   true,
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
@@ -150,6 +151,14 @@ func (o *settingsOpenIdconnectResource) Create(ctx context.Context, request reso
 		return
 	}
 
+	if err = hookSettingsOidc(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on SettingsOpenIDConnect",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -165,6 +174,7 @@ func (o *settingsOpenIdconnectResource) Read(ctx context.Context, request resour
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for SettingsOpenIDConnect
 	var r *http.Request
@@ -190,6 +200,14 @@ func (o *settingsOpenIdconnectResource) Read(ctx context.Context, request resour
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookSettingsOidc(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on SettingsOpenIDConnect",
+			err.Error(),
+		)
 		return
 	}
 
@@ -239,6 +257,14 @@ func (o *settingsOpenIdconnectResource) Update(ctx context.Context, request reso
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookSettingsOidc(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on SettingsOpenIDConnect",
+			err.Error(),
+		)
 		return
 	}
 

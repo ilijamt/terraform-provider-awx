@@ -19,6 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -197,6 +198,14 @@ func (o *notificationTemplateResource) Create(ctx context.Context, request resou
 		return
 	}
 
+	if err = hookNotificationTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on NotificationTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -212,6 +221,7 @@ func (o *notificationTemplateResource) Read(ctx context.Context, request resourc
 	if response.Diagnostics.HasError() {
 		return
 	}
+	var orig = state.Clone()
 
 	// Creates a new request for NotificationTemplate
 	var r *http.Request
@@ -238,6 +248,14 @@ func (o *notificationTemplateResource) Read(ctx context.Context, request resourc
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookNotificationTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on NotificationTemplate",
+			err.Error(),
+		)
 		return
 	}
 
@@ -288,6 +306,14 @@ func (o *notificationTemplateResource) Update(ctx context.Context, request resou
 	var d diag.Diagnostics
 	if d, err = state.updateFromApiData(data); err != nil {
 		response.Diagnostics.Append(d...)
+		return
+	}
+
+	if err = hookNotificationTemplate(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+		response.Diagnostics.AddError(
+			"Unable to process custom hook for the state on NotificationTemplate",
+			err.Error(),
+		)
 		return
 	}
 

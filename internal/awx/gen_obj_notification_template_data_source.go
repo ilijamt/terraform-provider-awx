@@ -9,6 +9,7 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
@@ -202,6 +203,14 @@ func (o *notificationTemplateDataSource) Read(ctx context.Context, req datasourc
 	}
 
 	// Set state
+	if err = hookNotificationTemplate(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on NotificationTemplate",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
