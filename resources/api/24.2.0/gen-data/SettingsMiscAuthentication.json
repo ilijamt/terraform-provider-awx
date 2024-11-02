@@ -12,7 +12,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_ORGANIZATION_MAP": {
         "type": "json",
@@ -20,7 +23,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_TEAM_MAP": {
         "type": "json",
@@ -28,7 +34,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       }
     },
     "enabled": true,

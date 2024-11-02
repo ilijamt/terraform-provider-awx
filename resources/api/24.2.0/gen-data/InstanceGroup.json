@@ -12,7 +12,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "consumed_capacity": {
         "type": "float",
@@ -20,7 +23,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "instances": {
         "type": "integer",
@@ -28,7 +34,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "jobs_running": {
         "type": "integer",
@@ -36,7 +45,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "percent_capacity_remaining": {
         "type": "float",
@@ -44,7 +56,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       }
     },
     "search_fields": [

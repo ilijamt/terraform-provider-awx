@@ -12,7 +12,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
         "type": "json",
@@ -20,7 +23,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
         "type": "json",
@@ -28,7 +34,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_ORG_INFO": {
         "type": "json",
@@ -36,7 +45,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
         "type": "json",
@@ -44,7 +56,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_SP_EXTRA": {
         "type": "json",
@@ -52,7 +67,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
         "type": "",
@@ -61,7 +79,10 @@
         "trim": true,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
         "type": "",
@@ -69,7 +90,10 @@
         "trim": true,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
         "type": "json",
@@ -77,7 +101,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_TEAM_ATTR": {
         "type": "json",
@@ -85,7 +112,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_TEAM_MAP": {
         "type": "json",
@@ -93,7 +123,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
         "type": "json",
@@ -101,7 +134,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
         "type": "json",
@@ -109,7 +145,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       }
     },
     "enabled": true,

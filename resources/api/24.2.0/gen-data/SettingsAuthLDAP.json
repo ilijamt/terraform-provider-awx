@@ -13,7 +13,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_CONNECTION_OPTIONS": {
         "type": "json",
@@ -21,7 +24,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -29,7 +35,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_ORGANIZATION_MAP": {
         "type": "json",
@@ -37,7 +46,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_TEAM_MAP": {
         "type": "json",
@@ -45,7 +57,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_USER_ATTR_MAP": {
         "type": "json",
@@ -53,7 +68,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -61,7 +79,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_BIND_PASSWORD": {
         "type": "",
@@ -70,7 +91,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_CONNECTION_OPTIONS": {
         "type": "json",
@@ -78,7 +102,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -86,7 +113,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_ORGANIZATION_MAP": {
         "type": "json",
@@ -94,7 +124,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_TEAM_MAP": {
         "type": "json",
@@ -102,7 +135,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_USER_ATTR_MAP": {
         "type": "json",
@@ -110,7 +146,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -118,7 +157,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_BIND_PASSWORD": {
         "type": "",
@@ -127,7 +169,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_CONNECTION_OPTIONS": {
         "type": "json",
@@ -135,7 +180,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -143,7 +191,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_ORGANIZATION_MAP": {
         "type": "json",
@@ -151,7 +202,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_TEAM_MAP": {
         "type": "json",
@@ -159,7 +213,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_USER_ATTR_MAP": {
         "type": "json",
@@ -167,7 +224,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -175,7 +235,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_BIND_PASSWORD": {
         "type": "",
@@ -184,7 +247,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_CONNECTION_OPTIONS": {
         "type": "json",
@@ -192,7 +258,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -200,7 +269,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_ORGANIZATION_MAP": {
         "type": "json",
@@ -208,7 +280,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_TEAM_MAP": {
         "type": "json",
@@ -216,7 +291,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_USER_ATTR_MAP": {
         "type": "json",
@@ -224,7 +302,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -232,7 +313,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_BIND_PASSWORD": {
         "type": "",
@@ -241,7 +325,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_CONNECTION_OPTIONS": {
         "type": "json",
@@ -249,7 +336,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -257,7 +347,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_ORGANIZATION_MAP": {
         "type": "json",
@@ -265,7 +358,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_TEAM_MAP": {
         "type": "json",
@@ -273,7 +369,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_USER_ATTR_MAP": {
         "type": "json",
@@ -281,7 +380,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -289,7 +391,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_BIND_PASSWORD": {
         "type": "",
@@ -298,7 +403,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_CONNECTION_OPTIONS": {
         "type": "json",
@@ -306,7 +414,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_GROUP_TYPE_PARAMS": {
         "type": "json",
@@ -314,7 +425,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_ORGANIZATION_MAP": {
         "type": "json",
@@ -322,7 +436,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_TEAM_MAP": {
         "type": "json",
@@ -330,7 +447,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_USER_ATTR_MAP": {
         "type": "json",
@@ -338,7 +458,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       },
       "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
         "type": "json",
@@ -346,7 +469,10 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": ""
+        "element_type": "",
+        "listvalidator": {
+          "validators": null
+        }
       }
     },
     "enabled": true,
