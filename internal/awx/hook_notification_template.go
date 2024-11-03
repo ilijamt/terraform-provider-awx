@@ -2,12 +2,12 @@ package awx
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 )
 
@@ -22,34 +22,10 @@ func hookNotificationTemplate(ctx context.Context, apiVersion string, source hoo
 		if !strings.Contains(state.NotificationConfiguration.ValueString(), "$encrypted$") {
 			return nil
 		}
-
-		var inputs map[string]any
-		if err = json.Unmarshal([]byte(state.NotificationConfiguration.ValueString()), &inputs); err != nil {
-			return fmt.Errorf("%w: inputs from new state", err)
-		}
-
-		var origInputs map[string]any
-		if err = json.Unmarshal([]byte(orig.NotificationConfiguration.ValueString()), &origInputs); err != nil {
-			return fmt.Errorf("%w: inputs from original state", err)
-		}
-		var dirty = false
-
-		for k, v := range inputs {
-			switch u := v.(type) {
-			case string:
-				if strings.Contains(u, "$encrypted$") {
-					dirty = true
-					inputs[k] = origInputs[k]
-				}
-			}
-		}
-
-		if dirty {
-			var payload []byte
-			if payload, err = json.Marshal(inputs); err != nil {
-				return err
-			}
-			state.NotificationConfiguration = types.StringValue(string(payload))
+		if dirty, msg, err := helpers.ProcessJsonEncryptedValues(orig.NotificationConfiguration, state.NotificationConfiguration); err != nil {
+			return err
+		} else if dirty {
+			state.NotificationConfiguration = msg
 		}
 	}
 
