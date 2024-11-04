@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Email",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Email.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Email.ValueString()",
+        "attribute_type": "String"
       }
     },
     "external_account": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "ExternalAccount",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.ExternalAccount.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.ExternalAccount.ValueString()",
+        "attribute_type": "String"
       }
     },
     "first_name": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "FirstName",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.FirstName.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.FirstName.ValueString()",
+        "attribute_type": "String"
       }
     },
     "id": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "ID",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.ID.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.ID.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "is_superuser": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "IsSuperuser",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.IsSuperuser.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.IsSuperuser.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "is_system_auditor": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "IsSystemAuditor",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.IsSystemAuditor.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.IsSystemAuditor.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "last_login": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LastLogin",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LastLogin.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LastLogin.ValueString()",
+        "attribute_type": "String"
       }
     },
     "last_name": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LastName",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LastName.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LastName.ValueString()",
+        "attribute_type": "String"
       }
     },
     "ldap_dn": {
@@ -226,8 +234,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LdapDn",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LdapDn.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LdapDn.ValueString()",
+        "attribute_type": "String"
       }
     },
     "username": {
@@ -251,8 +260,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Username",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Username.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Username.ValueString()",
+        "attribute_type": "String"
       }
     }
   },

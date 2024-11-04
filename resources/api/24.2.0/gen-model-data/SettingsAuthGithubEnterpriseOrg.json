@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL.ValueString()",
+        "attribute_type": "String"
       }
     }
   },
@@ -228,8 +236,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY": {
@@ -253,8 +262,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME": {
@@ -278,8 +288,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
@@ -303,8 +314,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
@@ -328,8 +340,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP": {
@@ -353,8 +366,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL": {
@@ -378,8 +392,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL.ValueString()",
+        "attribute_type": "String"
       }
     }
   }

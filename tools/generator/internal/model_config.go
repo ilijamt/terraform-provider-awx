@@ -41,12 +41,13 @@ type Property struct {
 }
 
 type PropertyGenerated struct {
-	AwxGoType                  string `json:"awx_go_type" yaml:"awx_go_type"`
-	AwxGoValue                 string `json:"awx_go_value" yaml:"awx_go_value"`
-	PropertyName               string `json:"property_name" yaml:"property_name"`
-	BodyRequestModelType       string `json:"body_request_model_type" yaml:"body_request_model_type"`
-	Terraform2GoPrimitiveValue string `json:"terraform_2_go_primitive_value" yaml:"terraform_2_go_primitive_value"`
-	ModelBodyRequestValue      string `json:"model_body_request_value" yaml:"model_body_request_value"`
+	AwxGoType             string `json:"awx_go_type" yaml:"awx_go_type"`
+	AwxGoValue            string `json:"awx_go_value" yaml:"awx_go_value"`
+	PropertyName          string `json:"property_name" yaml:"property_name"`
+	BodyRequestModelType  string `json:"body_request_model_type" yaml:"body_request_model_type"`
+	TfGoPrimitiveValue    string `json:"tf_go_primitive_value" yaml:"tf_go_primitive_value"`
+	ModelBodyRequestValue string `json:"model_body_request_value" yaml:"model_body_request_value"`
+	AttributeType         string `json:"attribute_type" yaml:"attribute_type"`
 }
 
 type AwxKeyValueType string
@@ -59,6 +60,8 @@ const (
 func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values map[string]any, item Item) error {
 	p.IsTypeRead = vt == TypeRead
 	p.IsTypeWrite = vt == TypeWrite
+	p.Trim = override.Trim
+	p.PostWrap = override.PostWrap
 
 	p.setWriteOnly(values, override)
 	p.setDescription(values, override)
@@ -68,32 +71,25 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.setRequired(values, override)
 	p.setDefaultValue(values, override)
 	p.setElementType(values, override)
+	p.setGenerated(values, override, item)
 
-	p.Trim = override.Trim
-	p.PostWrap = override.PostWrap
+	return nil
+}
 
-	//
+func (p *Property) setGenerated(values map[string]any, override PropertyOverride, item Item) {
 	p.Generated.AwxGoType = awxGoType(p.Type)
 	p.Generated.AwxGoValue = awxGoValue(p.Type)
 	p.Generated.PropertyName = awxPropertyCase(p.Name, item)
-	p.Generated.Terraform2GoPrimitiveValue = tf2GoPrimitiveValue(p.Type, p.PostWrap)
+	p.Generated.TfGoPrimitiveValue = tfGoPrimitiveValue(p.Type, p.PostWrap)
+	p.Generated.AttributeType = tfAttributeType(p.Type)
 
 	if slices.Contains([]string{"json", "json-yaml"}, p.Type) {
 		p.Generated.BodyRequestModelType = "json.RawMessage"
-		p.Generated.ModelBodyRequestValue = fmt.Sprintf("json.RawMessage(o.%s.%s())", p.Generated.PropertyName, p.Generated.Terraform2GoPrimitiveValue)
+		p.Generated.ModelBodyRequestValue = fmt.Sprintf("json.RawMessage(o.%s.%s())", p.Generated.PropertyName, p.Generated.TfGoPrimitiveValue)
 	} else {
 		p.Generated.BodyRequestModelType = awxPrimitiveType(p.Type)
-		p.Generated.ModelBodyRequestValue = fmt.Sprintf("o.%s.%s()", p.Generated.PropertyName, p.Generated.Terraform2GoPrimitiveValue)
+		p.Generated.ModelBodyRequestValue = fmt.Sprintf("o.%s.%s()", p.Generated.PropertyName, p.Generated.TfGoPrimitiveValue)
 	}
-
-	//
-	// if or (eq .type "json") (eq .type "json-yaml")
-	// 	json.RawMessage(o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}())
-	// 	else
-	// 	o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
-	// 	{{ end }}
-
-	return nil
 }
 
 func (p *Property) setWriteOnly(values map[string]any, override PropertyOverride) {

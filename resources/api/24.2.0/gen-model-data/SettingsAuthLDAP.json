@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_BIND_PASSWORD": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_DENY_GROUP": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_GROUP_SEARCH": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_1_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_1_GROUP_TYPE": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
@@ -226,8 +234,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_SERVER_URI": {
@@ -251,8 +260,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_START_TLS": {
@@ -276,8 +286,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_1_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_1_TEAM_MAP": {
@@ -301,8 +312,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
@@ -326,8 +338,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
@@ -351,8 +364,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
@@ -376,8 +390,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_SEARCH": {
@@ -401,8 +416,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_1_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_2_BIND_DN": {
@@ -426,8 +442,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_BIND_PASSWORD": {
@@ -451,8 +468,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
@@ -476,8 +494,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_DENY_GROUP": {
@@ -501,8 +520,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_GROUP_SEARCH": {
@@ -526,8 +546,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_2_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_2_GROUP_TYPE": {
@@ -551,8 +572,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
@@ -576,8 +598,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
@@ -601,8 +624,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
@@ -626,8 +650,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_SERVER_URI": {
@@ -651,8 +676,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_START_TLS": {
@@ -676,8 +702,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_2_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_2_TEAM_MAP": {
@@ -701,8 +728,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
@@ -726,8 +754,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
@@ -751,8 +780,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
@@ -776,8 +806,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_SEARCH": {
@@ -801,8 +832,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_2_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_3_BIND_DN": {
@@ -826,8 +858,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_BIND_PASSWORD": {
@@ -851,8 +884,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
@@ -876,8 +910,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_DENY_GROUP": {
@@ -901,8 +936,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_GROUP_SEARCH": {
@@ -926,8 +962,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_3_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_3_GROUP_TYPE": {
@@ -951,8 +988,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
@@ -976,8 +1014,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
@@ -1001,8 +1040,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
@@ -1026,8 +1066,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_SERVER_URI": {
@@ -1051,8 +1092,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_START_TLS": {
@@ -1076,8 +1118,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_3_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_3_TEAM_MAP": {
@@ -1101,8 +1144,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
@@ -1126,8 +1170,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
@@ -1151,8 +1196,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
@@ -1176,8 +1222,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_SEARCH": {
@@ -1201,8 +1248,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_3_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_4_BIND_DN": {
@@ -1226,8 +1274,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_BIND_PASSWORD": {
@@ -1251,8 +1300,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
@@ -1276,8 +1326,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_DENY_GROUP": {
@@ -1301,8 +1352,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_GROUP_SEARCH": {
@@ -1326,8 +1378,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_4_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_4_GROUP_TYPE": {
@@ -1351,8 +1404,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
@@ -1376,8 +1430,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
@@ -1401,8 +1456,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
@@ -1426,8 +1482,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_SERVER_URI": {
@@ -1451,8 +1508,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_START_TLS": {
@@ -1476,8 +1534,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_4_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_4_TEAM_MAP": {
@@ -1501,8 +1560,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
@@ -1526,8 +1586,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
@@ -1551,8 +1612,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
@@ -1576,8 +1638,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_SEARCH": {
@@ -1601,8 +1664,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_4_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_5_BIND_DN": {
@@ -1626,8 +1690,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_BIND_PASSWORD": {
@@ -1651,8 +1716,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
@@ -1676,8 +1742,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_DENY_GROUP": {
@@ -1701,8 +1768,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_GROUP_SEARCH": {
@@ -1726,8 +1794,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_5_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_5_GROUP_TYPE": {
@@ -1751,8 +1820,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
@@ -1776,8 +1846,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
@@ -1801,8 +1872,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
@@ -1826,8 +1898,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_SERVER_URI": {
@@ -1851,8 +1924,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_START_TLS": {
@@ -1876,8 +1950,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_5_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_5_TEAM_MAP": {
@@ -1901,8 +1976,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
@@ -1926,8 +2002,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
@@ -1951,8 +2028,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
@@ -1976,8 +2054,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_SEARCH": {
@@ -2001,8 +2080,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_5_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_BIND_DN": {
@@ -2026,8 +2106,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_BIND_PASSWORD": {
@@ -2051,8 +2132,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
@@ -2076,8 +2158,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_DENY_GROUP": {
@@ -2101,8 +2184,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_GROUP_SEARCH": {
@@ -2126,8 +2210,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_GROUP_TYPE": {
@@ -2151,8 +2236,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_GROUP_TYPE_PARAMS": {
@@ -2176,8 +2262,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
@@ -2201,8 +2288,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
@@ -2226,8 +2314,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_SERVER_URI": {
@@ -2251,8 +2340,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_START_TLS": {
@@ -2276,8 +2366,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_TEAM_MAP": {
@@ -2301,8 +2392,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
@@ -2326,8 +2418,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
@@ -2351,8 +2444,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
@@ -2376,8 +2470,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_SEARCH": {
@@ -2401,8 +2496,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     }
   },
@@ -2428,8 +2524,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_BIND_PASSWORD": {
@@ -2453,8 +2550,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
@@ -2478,8 +2576,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_DENY_GROUP": {
@@ -2503,8 +2602,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_GROUP_SEARCH": {
@@ -2528,8 +2628,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_1_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_1_GROUP_TYPE": {
@@ -2553,8 +2654,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
@@ -2578,8 +2680,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
@@ -2603,8 +2706,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
@@ -2628,8 +2732,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_SERVER_URI": {
@@ -2653,8 +2758,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_START_TLS": {
@@ -2678,8 +2784,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_1_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_1_TEAM_MAP": {
@@ -2703,8 +2810,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
@@ -2728,8 +2836,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
@@ -2753,8 +2862,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
@@ -2778,8 +2888,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_1_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_1_USER_SEARCH": {
@@ -2803,8 +2914,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_1_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_2_BIND_DN": {
@@ -2828,8 +2940,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_BIND_PASSWORD": {
@@ -2853,8 +2966,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
@@ -2878,8 +2992,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_DENY_GROUP": {
@@ -2903,8 +3018,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_GROUP_SEARCH": {
@@ -2928,8 +3044,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_2_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_2_GROUP_TYPE": {
@@ -2953,8 +3070,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
@@ -2978,8 +3096,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
@@ -3003,8 +3122,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
@@ -3028,8 +3148,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_SERVER_URI": {
@@ -3053,8 +3174,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_START_TLS": {
@@ -3078,8 +3200,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_2_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_2_TEAM_MAP": {
@@ -3103,8 +3226,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
@@ -3128,8 +3252,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
@@ -3153,8 +3278,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
@@ -3178,8 +3304,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_2_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_2_USER_SEARCH": {
@@ -3203,8 +3330,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_2_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_3_BIND_DN": {
@@ -3228,8 +3356,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_BIND_PASSWORD": {
@@ -3253,8 +3382,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
@@ -3278,8 +3408,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_DENY_GROUP": {
@@ -3303,8 +3434,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_GROUP_SEARCH": {
@@ -3328,8 +3460,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_3_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_3_GROUP_TYPE": {
@@ -3353,8 +3486,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
@@ -3378,8 +3512,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
@@ -3403,8 +3538,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
@@ -3428,8 +3564,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_SERVER_URI": {
@@ -3453,8 +3590,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_START_TLS": {
@@ -3478,8 +3616,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_3_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_3_TEAM_MAP": {
@@ -3503,8 +3642,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
@@ -3528,8 +3668,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
@@ -3553,8 +3694,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
@@ -3578,8 +3720,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_3_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_3_USER_SEARCH": {
@@ -3603,8 +3746,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_3_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_4_BIND_DN": {
@@ -3628,8 +3772,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_BIND_PASSWORD": {
@@ -3653,8 +3798,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
@@ -3678,8 +3824,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_DENY_GROUP": {
@@ -3703,8 +3850,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_GROUP_SEARCH": {
@@ -3728,8 +3876,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_4_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_4_GROUP_TYPE": {
@@ -3753,8 +3902,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
@@ -3778,8 +3928,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
@@ -3803,8 +3954,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
@@ -3828,8 +3980,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_SERVER_URI": {
@@ -3853,8 +4006,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_START_TLS": {
@@ -3878,8 +4032,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_4_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_4_TEAM_MAP": {
@@ -3903,8 +4058,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
@@ -3928,8 +4084,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
@@ -3953,8 +4110,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
@@ -3978,8 +4136,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_4_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_4_USER_SEARCH": {
@@ -4003,8 +4162,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_4_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_5_BIND_DN": {
@@ -4028,8 +4188,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_BIND_PASSWORD": {
@@ -4053,8 +4214,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
@@ -4078,8 +4240,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_DENY_GROUP": {
@@ -4103,8 +4266,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_GROUP_SEARCH": {
@@ -4128,8 +4292,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_5_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_5_GROUP_TYPE": {
@@ -4153,8 +4318,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
@@ -4178,8 +4344,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
@@ -4203,8 +4370,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
@@ -4228,8 +4396,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_SERVER_URI": {
@@ -4253,8 +4422,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_START_TLS": {
@@ -4278,8 +4448,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_5_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_5_TEAM_MAP": {
@@ -4303,8 +4474,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
@@ -4328,8 +4500,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
@@ -4353,8 +4526,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
@@ -4378,8 +4552,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_5_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_5_USER_SEARCH": {
@@ -4403,8 +4578,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_5_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_BIND_DN": {
@@ -4428,8 +4604,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_BIND_DN",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_BIND_PASSWORD": {
@@ -4453,8 +4630,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_BIND_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
@@ -4478,8 +4656,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_CONNECTION_OPTIONS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_DENY_GROUP": {
@@ -4503,8 +4682,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_DENY_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_GROUP_SEARCH": {
@@ -4528,8 +4708,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_GROUP_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_LDAP_GROUP_TYPE": {
@@ -4553,8 +4734,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_GROUP_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_GROUP_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_GROUP_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_GROUP_TYPE_PARAMS": {
@@ -4578,8 +4760,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_GROUP_TYPE_PARAMS",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
@@ -4603,8 +4786,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
@@ -4628,8 +4812,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_REQUIRE_GROUP",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_SERVER_URI": {
@@ -4653,8 +4838,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_SERVER_URI",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_START_TLS": {
@@ -4678,8 +4864,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_LDAP_START_TLS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_LDAP_TEAM_MAP": {
@@ -4703,8 +4890,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
@@ -4728,8 +4916,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_ATTR_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
@@ -4753,8 +4942,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_DN_TEMPLATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
@@ -4778,8 +4968,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "AUTH_LDAP_USER_FLAGS_BY_GROUP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "AUTH_LDAP_USER_SEARCH": {
@@ -4803,8 +4994,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTH_LDAP_USER_SEARCH",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()",
+        "attribute_type": "List"
       }
     }
   }

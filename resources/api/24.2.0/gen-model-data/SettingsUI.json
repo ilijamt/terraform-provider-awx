@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "CUSTOM_LOGIN_INFO",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.CUSTOM_LOGIN_INFO.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.CUSTOM_LOGIN_INFO.ValueString()",
+        "attribute_type": "String"
       }
     },
     "CUSTOM_LOGO": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "CUSTOM_LOGO",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.CUSTOM_LOGO.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.CUSTOM_LOGO.ValueString()",
+        "attribute_type": "String"
       }
     },
     "MAX_UI_JOB_EVENTS": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "MAX_UI_JOB_EVENTS",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.MAX_UI_JOB_EVENTS.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.MAX_UI_JOB_EVENTS.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "PENDO_TRACKING_STATE": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "PENDO_TRACKING_STATE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.PENDO_TRACKING_STATE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.PENDO_TRACKING_STATE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "UI_LIVE_UPDATES_ENABLED": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "UI_LIVE_UPDATES_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.UI_LIVE_UPDATES_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.UI_LIVE_UPDATES_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   },
@@ -153,8 +158,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "CUSTOM_LOGIN_INFO",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.CUSTOM_LOGIN_INFO.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.CUSTOM_LOGIN_INFO.ValueString()",
+        "attribute_type": "String"
       }
     },
     "CUSTOM_LOGO": {
@@ -178,8 +184,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "CUSTOM_LOGO",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.CUSTOM_LOGO.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.CUSTOM_LOGO.ValueString()",
+        "attribute_type": "String"
       }
     },
     "MAX_UI_JOB_EVENTS": {
@@ -203,8 +210,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "MAX_UI_JOB_EVENTS",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.MAX_UI_JOB_EVENTS.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.MAX_UI_JOB_EVENTS.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "UI_LIVE_UPDATES_ENABLED": {
@@ -228,8 +236,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "UI_LIVE_UPDATES_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.UI_LIVE_UPDATES_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.UI_LIVE_UPDATES_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   }

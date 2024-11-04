@@ -26,8 +26,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Credential",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Credential.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Credential.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "description": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Description",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Description.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Description.ValueString()",
+        "attribute_type": "String"
       }
     },
     "enabled_value": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "EnabledValue",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.EnabledValue.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.EnabledValue.ValueString()",
+        "attribute_type": "String"
       }
     },
     "enabled_var": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "EnabledVar",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.EnabledVar.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.EnabledVar.ValueString()",
+        "attribute_type": "String"
       }
     },
     "execution_environment": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "ExecutionEnvironment",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.ExecutionEnvironment.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.ExecutionEnvironment.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "host_filter": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "HostFilter",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.HostFilter.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.HostFilter.ValueString()",
+        "attribute_type": "String"
       }
     },
     "id": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "ID",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.ID.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.ID.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "inventory": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Inventory",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Inventory.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Inventory.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "limit": {
@@ -226,8 +234,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Limit",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Limit.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Limit.ValueString()",
+        "attribute_type": "String"
       }
     },
     "name": {
@@ -251,8 +260,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Name",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Name.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Name.ValueString()",
+        "attribute_type": "String"
       }
     },
     "overwrite": {
@@ -276,8 +286,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "Overwrite",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.Overwrite.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.Overwrite.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "overwrite_vars": {
@@ -301,8 +312,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "OverwriteVars",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.OverwriteVars.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.OverwriteVars.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "scm_branch": {
@@ -326,8 +338,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "ScmBranch",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.ScmBranch.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.ScmBranch.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source": {
@@ -351,8 +364,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Source",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Source.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Source.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source_path": {
@@ -376,8 +390,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SourcePath",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SourcePath.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SourcePath.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source_project": {
@@ -401,8 +416,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SourceProject",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SourceProject.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SourceProject.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "source_vars": {
@@ -426,8 +442,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SourceVars",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "String",
-        "model_body_request_value": "json.RawMessage(o.SourceVars.String())"
+        "tf_go_primitive_value": "String",
+        "model_body_request_value": "json.RawMessage(o.SourceVars.String())",
+        "attribute_type": "String"
       }
     },
     "timeout": {
@@ -451,8 +468,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Timeout",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Timeout.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Timeout.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "update_cache_timeout": {
@@ -476,8 +494,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "UpdateCacheTimeout",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.UpdateCacheTimeout.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.UpdateCacheTimeout.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "update_on_launch": {
@@ -501,8 +520,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "UpdateOnLaunch",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.UpdateOnLaunch.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.UpdateOnLaunch.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "verbosity": {
@@ -526,8 +546,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Verbosity",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Verbosity.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Verbosity.ValueString()",
+        "attribute_type": "String"
       }
     }
   },
@@ -553,8 +574,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Credential",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Credential.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Credential.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "description": {
@@ -578,8 +600,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Description",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Description.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Description.ValueString()",
+        "attribute_type": "String"
       }
     },
     "enabled_value": {
@@ -603,8 +626,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "EnabledValue",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.EnabledValue.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.EnabledValue.ValueString()",
+        "attribute_type": "String"
       }
     },
     "enabled_var": {
@@ -628,8 +652,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "EnabledVar",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.EnabledVar.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.EnabledVar.ValueString()",
+        "attribute_type": "String"
       }
     },
     "execution_environment": {
@@ -653,8 +678,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "ExecutionEnvironment",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.ExecutionEnvironment.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.ExecutionEnvironment.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "host_filter": {
@@ -678,8 +704,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "HostFilter",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.HostFilter.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.HostFilter.ValueString()",
+        "attribute_type": "String"
       }
     },
     "inventory": {
@@ -703,8 +730,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Inventory",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Inventory.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Inventory.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "limit": {
@@ -728,8 +756,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Limit",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Limit.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Limit.ValueString()",
+        "attribute_type": "String"
       }
     },
     "name": {
@@ -753,8 +782,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Name",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Name.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Name.ValueString()",
+        "attribute_type": "String"
       }
     },
     "overwrite": {
@@ -778,8 +808,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "Overwrite",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.Overwrite.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.Overwrite.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "overwrite_vars": {
@@ -803,8 +834,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "OverwriteVars",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.OverwriteVars.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.OverwriteVars.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "scm_branch": {
@@ -828,8 +860,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "ScmBranch",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.ScmBranch.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.ScmBranch.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source": {
@@ -853,8 +886,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Source",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Source.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Source.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source_path": {
@@ -878,8 +912,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SourcePath",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SourcePath.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SourcePath.ValueString()",
+        "attribute_type": "String"
       }
     },
     "source_project": {
@@ -903,8 +938,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SourceProject",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SourceProject.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SourceProject.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "source_vars": {
@@ -928,8 +964,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SourceVars",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "String",
-        "model_body_request_value": "json.RawMessage(o.SourceVars.String())"
+        "tf_go_primitive_value": "String",
+        "model_body_request_value": "json.RawMessage(o.SourceVars.String())",
+        "attribute_type": "String"
       }
     },
     "timeout": {
@@ -953,8 +990,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "Timeout",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.Timeout.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.Timeout.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "update_cache_timeout": {
@@ -978,8 +1016,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "UpdateCacheTimeout",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.UpdateCacheTimeout.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.UpdateCacheTimeout.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "update_on_launch": {
@@ -1003,8 +1042,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "UpdateOnLaunch",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.UpdateOnLaunch.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.UpdateOnLaunch.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "verbosity": {
@@ -1028,8 +1068,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "Verbosity",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.Verbosity.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.Verbosity.ValueString()",
+        "attribute_type": "String"
       }
     }
   }

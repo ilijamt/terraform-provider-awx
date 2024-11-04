@@ -79,7 +79,23 @@ func awxPrimitiveType(t string) string {
 	return t
 }
 
-func tf2GoPrimitiveValue(t string, postWrap bool) string {
+func tfAttributeType(t string) string {
+	switch t {
+	case "integer", "id":
+		return "Int64"
+	case "float", "decimal":
+		return "Float64"
+	case "string", "choice", "datetime", "json", "json-yaml":
+		return "String"
+	case "boolean", "bool":
+		return "Bool"
+	case "list":
+		return "List"
+	}
+	return t
+}
+
+func tfGoPrimitiveValue(t string, postWrap bool) string {
 	switch t {
 	case "integer", "id":
 		return "ValueInt64"

@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "API_400_ERROR_LOG_FORMAT",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.API_400_ERROR_LOG_FORMAT.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.API_400_ERROR_LOG_FORMAT.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_ACTION_QUEUE_SIZE",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_ENABLED": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_HOST": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_HOST",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_HOST.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_HOST.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_INDIVIDUAL_FACTS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_LEVEL": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_LEVEL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_LEVEL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_LEVEL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_LOGGERS": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "LOG_AGGREGATOR_LOGGERS",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.LOG_AGGREGATOR_LOGGERS.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.LOG_AGGREGATOR_LOGGERS.Elements()",
+        "attribute_type": "List"
       }
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
@@ -226,8 +234,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_PASSWORD": {
@@ -251,8 +260,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_PORT": {
@@ -276,8 +286,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_PORT",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PORT.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PORT.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_PROTOCOL": {
@@ -301,8 +312,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_PROTOCOL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PROTOCOL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PROTOCOL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
@@ -326,8 +338,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_RSYSLOGD_DEBUG",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_RSYSLOGD_DEBUG.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_RSYSLOGD_DEBUG.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
@@ -351,8 +364,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_TCP_TIMEOUT",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TCP_TIMEOUT.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TCP_TIMEOUT.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_TOWER_UUID": {
@@ -376,8 +390,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_TOWER_UUID",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TOWER_UUID.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TOWER_UUID.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_TYPE": {
@@ -401,8 +416,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_USERNAME": {
@@ -426,8 +442,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_USERNAME",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_USERNAME.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_USERNAME.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
@@ -451,8 +468,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_VERIFY_CERT",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   },
@@ -478,8 +496,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "API_400_ERROR_LOG_FORMAT",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.API_400_ERROR_LOG_FORMAT.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.API_400_ERROR_LOG_FORMAT.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
@@ -503,8 +522,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
@@ -528,8 +548,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_ACTION_QUEUE_SIZE",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_ENABLED": {
@@ -553,8 +574,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_HOST": {
@@ -578,8 +600,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_HOST",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_HOST.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_HOST.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
@@ -603,8 +626,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_INDIVIDUAL_FACTS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_LEVEL": {
@@ -628,8 +652,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_LEVEL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_LEVEL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_LEVEL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_LOGGERS": {
@@ -653,8 +678,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "LOG_AGGREGATOR_LOGGERS",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.LOG_AGGREGATOR_LOGGERS.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.LOG_AGGREGATOR_LOGGERS.Elements()",
+        "attribute_type": "List"
       }
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
@@ -678,8 +704,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_PASSWORD": {
@@ -703,8 +730,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_PASSWORD",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PASSWORD.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PASSWORD.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_PORT": {
@@ -728,8 +756,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_PORT",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PORT.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PORT.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_PROTOCOL": {
@@ -753,8 +782,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_PROTOCOL",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_PROTOCOL.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_PROTOCOL.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
@@ -778,8 +808,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_RSYSLOGD_DEBUG",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_RSYSLOGD_DEBUG.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_RSYSLOGD_DEBUG.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
@@ -803,8 +834,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOG_AGGREGATOR_TCP_TIMEOUT",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TCP_TIMEOUT.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TCP_TIMEOUT.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOG_AGGREGATOR_TOWER_UUID": {
@@ -828,8 +860,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_TOWER_UUID",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TOWER_UUID.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TOWER_UUID.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_TYPE": {
@@ -853,8 +886,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_TYPE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_TYPE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_TYPE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_USERNAME": {
@@ -878,8 +912,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOG_AGGREGATOR_USERNAME",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOG_AGGREGATOR_USERNAME.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOG_AGGREGATOR_USERNAME.ValueString()",
+        "attribute_type": "String"
       }
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
@@ -903,8 +938,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "LOG_AGGREGATOR_VERIFY_CERT",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   }

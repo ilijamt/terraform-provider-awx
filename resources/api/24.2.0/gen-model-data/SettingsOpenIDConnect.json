@@ -26,8 +26,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_KEY",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_SECRET": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_SECRET",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "SOCIAL_AUTH_OIDC_VERIFY_SSL",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   },
@@ -128,8 +132,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_KEY",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT": {
@@ -153,8 +158,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_SECRET": {
@@ -178,8 +184,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_OIDC_SECRET",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -203,8 +210,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "SOCIAL_AUTH_OIDC_VERIFY_SSL",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()",
+        "attribute_type": "Bool"
       }
     }
   }

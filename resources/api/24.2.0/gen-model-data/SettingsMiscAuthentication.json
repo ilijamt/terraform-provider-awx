@@ -26,8 +26,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "ALLOW_METRICS_FOR_ANONYMOUS_USERS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
@@ -51,8 +52,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "ALLOW_OAUTH2_FOR_EXTERNAL_USERS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTHENTICATION_BACKENDS": {
@@ -76,8 +78,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "AUTHENTICATION_BACKENDS",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.AUTHENTICATION_BACKENDS.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.AUTHENTICATION_BACKENDS.Elements()",
+        "attribute_type": "List"
       }
     },
     "AUTH_BASIC_ENABLED": {
@@ -101,8 +104,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_BASIC_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "DISABLE_LOCAL_AUTH": {
@@ -126,8 +130,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "DISABLE_LOCAL_AUTH",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
@@ -151,8 +156,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_DIGITS",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
@@ -176,8 +182,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_LENGTH",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
@@ -201,8 +208,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_SPECIAL",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
@@ -226,8 +234,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_UPPER",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOGIN_REDIRECT_OVERRIDE": {
@@ -251,8 +260,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOGIN_REDIRECT_OVERRIDE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "OAUTH2_PROVIDER": {
@@ -276,8 +286,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "OAUTH2_PROVIDER",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SESSIONS_PER_USER": {
@@ -301,8 +312,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SESSIONS_PER_USER",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "SESSION_COOKIE_AGE": {
@@ -326,8 +338,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SESSION_COOKIE_AGE",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
@@ -351,8 +364,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -376,8 +390,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -401,8 +416,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "SOCIAL_AUTH_USER_FIELDS": {
@@ -426,8 +442,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "SOCIAL_AUTH_USER_FIELDS",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()",
+        "attribute_type": "List"
       }
     }
   },
@@ -453,8 +470,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "ALLOW_METRICS_FOR_ANONYMOUS_USERS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
@@ -478,8 +496,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "ALLOW_OAUTH2_FOR_EXTERNAL_USERS",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "AUTH_BASIC_ENABLED": {
@@ -503,8 +522,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "AUTH_BASIC_ENABLED",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "DISABLE_LOCAL_AUTH": {
@@ -528,8 +548,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "DISABLE_LOCAL_AUTH",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
@@ -553,8 +574,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_DIGITS",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
@@ -578,8 +600,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_LENGTH",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
@@ -603,8 +626,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_SPECIAL",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
@@ -628,8 +652,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "LOCAL_PASSWORD_MIN_UPPER",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "LOGIN_REDIRECT_OVERRIDE": {
@@ -653,8 +678,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "LOGIN_REDIRECT_OVERRIDE",
         "body_request_model_type": "string",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()",
+        "attribute_type": "String"
       }
     },
     "OAUTH2_PROVIDER": {
@@ -678,8 +704,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "OAUTH2_PROVIDER",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SESSIONS_PER_USER": {
@@ -703,8 +730,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SESSIONS_PER_USER",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "SESSION_COOKIE_AGE": {
@@ -728,8 +756,9 @@
         "awx_go_value": "types.Int64Value",
         "property_name": "SESSION_COOKIE_AGE",
         "body_request_model_type": "int64",
-        "terraform_2_go_primitive_value": "ValueInt64",
-        "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()"
+        "tf_go_primitive_value": "ValueInt64",
+        "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()",
+        "attribute_type": "Int64"
       }
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
@@ -753,8 +782,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_ORGANIZATION_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -778,8 +808,9 @@
         "awx_go_value": "types.StringValue",
         "property_name": "SOCIAL_AUTH_TEAM_MAP",
         "body_request_model_type": "json.RawMessage",
-        "terraform_2_go_primitive_value": "ValueString",
-        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())"
+        "tf_go_primitive_value": "ValueString",
+        "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())",
+        "attribute_type": "String"
       }
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -803,8 +834,9 @@
         "awx_go_value": "types.BoolValue",
         "property_name": "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL",
         "body_request_model_type": "bool",
-        "terraform_2_go_primitive_value": "ValueBool",
-        "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()"
+        "tf_go_primitive_value": "ValueBool",
+        "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()",
+        "attribute_type": "Bool"
       }
     },
     "SOCIAL_AUTH_USER_FIELDS": {
@@ -828,8 +860,9 @@
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
         "property_name": "SOCIAL_AUTH_USER_FIELDS",
         "body_request_model_type": "[]string",
-        "terraform_2_go_primitive_value": "Elements",
-        "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()"
+        "tf_go_primitive_value": "Elements",
+        "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()",
+        "attribute_type": "List"
       }
     }
   }
