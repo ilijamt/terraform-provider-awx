@@ -103,7 +103,11 @@ func (o *constructedInventoriesDataSource) Schema(ctx context.Context, req datas
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
+					stringvalidator.OneOf(
+						"",
+						"smart",
+						"constructed",
+					),
 				},
 			},
 			"limit": schema.StringAttribute{

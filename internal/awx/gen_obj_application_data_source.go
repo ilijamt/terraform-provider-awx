@@ -62,7 +62,10 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"authorization-code", "password"}...),
+					stringvalidator.OneOf(
+						"authorization-code",
+						"password",
+					),
 				},
 			},
 			"client_id": schema.StringAttribute{
@@ -82,7 +85,10 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"confidential", "public"}...),
+					stringvalidator.OneOf(
+						"confidential",
+						"public",
+					),
 				},
 			},
 			"description": schema.StringAttribute{

@@ -39,12 +39,12 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Configure(_ context.Context, re
     }
 
     o.client = req.ProviderData.(c.Client)
-    o.endpoint = "{{ $.Endpoint }}"
+    o.endpoint = "{{ .Endpoint }}"
 }
 
 // Metadata returns the data source type name.
 func (o *{{ .Name | lowerCamelCase }}DataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-    resp.TypeName = req.ProviderTypeName + "_{{ $.Config.TypeName }}"
+    resp.TypeName = req.ProviderTypeName + "_{{ .TypeName }}"
 }
 
 // Schema defines the schema for the data source.
@@ -52,54 +52,51 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
     resp.Schema = schema.Schema{
         Attributes: map[string]schema.Attribute{
 			// Data only elements
-{{- range $key := .PropertyGetKeys }}
-{{- with (index $.PropertyGetData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
+{{- range $key, $value := $.ReadProperties }}
+            "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.StringType,
 {{- end }}
-                Description: {{ escape_quotes (default .help_text .label) }},
-{{- if (hasKey . "sensitive") }}
-                Sensitive:   {{ .sensitive }},
-{{- else }}
-                Sensitive:   false,
-{{- end }}
-{{- if awx_is_property_searchable $.Config.SearchFields $key }}
+                Description: {{ escape_quotes (or .Description .Label) }},
+                Sensitive: {{ .IsSensitive }},
+{{- if $value.IsSearchable }}
                 Optional:    true,
                 Computed:    true,
 {{- else }}
                 Computed:    true,
 {{- end }}
-				Validators: []validator.{{ tf_attribute_type . }}{
-{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
-					stringvalidator.LengthAtMost({{ .max_length }}),
-{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
-{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "choice") }}
-					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+				Validators: []validator.{{ $value.Generated.AttributeType }}{
+{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
+					stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
+					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
+					stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                        {{ $item | quote }},
 {{- end }}
-{{- if awx_is_property_searchable $.Config.SearchFields $key }}
-{{- $tftype := tf_attribute_type . | lowerCase }}
-{{- range $key, $attrs := awx_generate_attribute_validator $.Config.SearchFields $key }}
-                    {{ $tftype }}validator.{{ $key }}(
+					),
+{{- end }}
+{{- if $value.IsSearchable }}
+{{- range $key, $attrs := $value.Generated.AttributeValidationData }}
+                    {{ $value.Generated.AttributeType | lowerCase }}validator.{{ $key }}(
 {{- range $attr := $attrs }}
 						path.MatchRoot("{{ $attr }}"),
 {{- end }}
                     ),
 {{- end }}
 {{- end }}
-				},
+			    },
             },
 {{- end }}
+{{- range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+            "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if eq $value.Generated.AttributeType "List" }}
+				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
-				ElementType: types.{{ camelCase .element_type }}Type,
-{{- end }}
-                Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ or .sensitive false }},
+                Description: {{ escape_quotes (or .Description .Label) }},
+                Sensitive:   {{ $value.IsSensitive }},
                 Optional:    true,
                 Computed:    true,
             },
@@ -117,7 +114,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) ConfigValidators(ctx context.Co
 func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state {{ .Name | lowerCamelCase }}TerraformModel
 	var err error
-{{- if gt (len $.Config.SearchFields) 0 }}
+{{- if .HasSearchFields }}
     var endpoint string
     var searchDefined bool
 
@@ -127,19 +124,19 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     var endpoint = o.endpoint
 {{ end }}
 
-{{ range $field := $.Config.SearchFields }}
+{{ range $field := .SearchFields }}
     // Evaluate group '{{ $field.Name }}' based on the schema definition
     var group{{ $field.Name | camelCase }}Exists = func() bool {
          var group{{ $field.Name | camelCase }}Exists = true
          var params{{ $field.Name | camelCase }} = []any{o.endpoint}
 {{- range $attr := $field.Fields }}
-         var attr{{ $attr.Name | camelCase }} {{ awx2go_type (index $.PropertyGetData $attr.Name) }}
+         var attr{{ $attr.Name | camelCase }} {{ (index $.ReadProperties $attr.Name).Generated.AwxGoType }}
          req.Config.GetAttribute(ctx, path.Root("{{ $attr.Name }}"), &attr{{ $attr.Name | camelCase }})
          group{{ $field.Name | camelCase }}Exists = group{{ $field.Name | camelCase }}Exists && (!attr{{ $attr.Name | camelCase }}.IsNull() && !attr{{ $attr.Name | camelCase }}.IsUnknown())
 {{- if $attr.UrlEscapeValue }}
-         params{{ $field.Name | camelCase }} = append(params{{ $field.Name | camelCase }}, url.PathEscape(attr{{ $attr.Name | camelCase }}.{{ tf2go_primitive_value (index $.PropertyGetData $attr.Name) }}()))
+         params{{ $field.Name | camelCase }} = append(params{{ $field.Name | camelCase }}, url.PathEscape(attr{{ $attr.Name | camelCase }}.{{ (index $.ReadProperties $attr.Name).Generated.TfGoPrimitiveValue }}()))
 {{- else }}
-         params{{ $field.Name | camelCase }} = append(params{{ $field.Name | camelCase }}, attr{{ $attr.Name | camelCase }}.{{ tf2go_primitive_value (index $.PropertyGetData $attr.Name) }}())
+         params{{ $field.Name | camelCase }} = append(params{{ $field.Name | camelCase }}, attr{{ $attr.Name | camelCase }}.{{ (index $.ReadProperties $attr.Name).Generated.TfGoPrimitiveValue }}())
 {{- end }}
 {{- end }}
         if group{{ $field.Name | camelCase }}Exists {
@@ -150,7 +147,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     searchDefined = searchDefined || group{{ $field.Name | camelCase }}Exists
 {{ end }}
 
-{{ if gt (len $.Config.SearchFields) 0 }}
+{{ if .HasSearchFields }}
     if !searchDefined {
         var detailMessage string
         resp.Diagnostics.AddError(
@@ -183,7 +180,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
 
     var d diag.Diagnostics
 
-{{ if gt (len $.Config.SearchFields) 0 }}
+{{ if .HasSearchFields }}
 	if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
         resp.Diagnostics.Append(d...)
         return
@@ -196,8 +193,8 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Read(ctx context.Context, req d
     }
 
     // Set state
-{{- if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+{{- if .PreStateSetHookFunction }}
+    if err = {{ .PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),

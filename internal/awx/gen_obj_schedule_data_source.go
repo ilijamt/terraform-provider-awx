@@ -137,7 +137,11 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "run", "check"}...),
+					stringvalidator.OneOf(
+						"",
+						"run",
+						"check",
+					),
 				},
 			},
 			"limit": schema.StringAttribute{
@@ -205,7 +209,14 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"0", "1", "2", "3", "4", "5"}...),
+					stringvalidator.OneOf(
+						"0",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+					),
 				},
 			},
 		},

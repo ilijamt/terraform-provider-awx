@@ -11,12 +11,12 @@ import (
 // {{ .Name | lowerCamelCase }}TerraformModel maps the schema for {{ .Name }} when using Data Source
 type {{ .Name | lowerCamelCase }}TerraformModel struct {
 {{- range $key, $value := .ReadProperties }}
-    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (or $value.Description "") }}
     {{ $value.Generated.PropertyName }} {{ $value.Generated.AwxGoType }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
 {{- end }}
 {{- range $key, $value := .WriteProperties }}
 {{- if $value.IsWriteOnly }}
-    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (or $value.Description "") }}
     {{ $value.Generated.PropertyName }} {{ $value.Generated.AwxGoType }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
 {{- end }}
 {{- end }}
@@ -66,13 +66,13 @@ func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCa
 {{- else if eq $value.Generated.AwxGoValue "types.BoolValue" }}
     return helpers.AttrValueSetBool(&o.{{ $value.Generated.PropertyName }}, data)
 {{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())" }}
-    return helpers.AttrValueSetListString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+    return helpers.AttrValueSetListString(&o.{{ $value.Generated.PropertyName }}, data, {{ or .Trim false }})
 {{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "json") }}
-    return helpers.AttrValueSetJsonString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+    return helpers.AttrValueSetJsonString(&o.{{ $value.Generated.PropertyName }}, data, {{ or .Trim false }})
 {{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "json-yaml") }}
-    return helpers.AttrValueSetJsonYamlString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+    return helpers.AttrValueSetJsonYamlString(&o.{{ $value.Generated.PropertyName }}, data, {{ or .Trim false }})
 {{- else if eq $value.Generated.AwxGoValue "types.StringValue" }}
-    return helpers.AttrValueSetString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+    return helpers.AttrValueSetString(&o.{{ $value.Generated.PropertyName }}, data, {{ or .Trim false }})
 {{- end }}
 }
 {{ end }}
@@ -93,12 +93,12 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) updateFromApiData(data map[
 // {{ .Name | lowerCamelCase }}BodyRequestModel maps the schema for {{ .Name }} for creating and updating the data
 type {{ .Name | lowerCamelCase }}BodyRequestModel struct {
 {{- range $key, $value := .WriteProperties }}
-    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (or $value.Description "") }}
     {{ $value.Generated.PropertyName }} {{ $value.Generated.BodyRequestModelType }} `json:"{{ $key }}{{ if and (not $value.IsRequired) (not (eq $value.Generated.BodyRequestModelType "bool")) }},omitempty{{ end }}"`
 {{- end }}
 }
 
-{{ if $.Config.HasObjectRoles }}
+{{ if .HasObjectRoles }}
 type {{ .Name | lowerCamelCase }}ObjectRolesModel struct {
     ID     types.Int64 `tfsdk:"id"`
 	Roles  types.Map   `tfsdk:"roles"`

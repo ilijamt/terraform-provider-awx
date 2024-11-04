@@ -152,7 +152,21 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"file", "constructed", "scm", "ec2", "gce", "azure_rm", "vmware", "satellite6", "openstack", "rhv", "controller", "insights", "terraform"}...),
+					stringvalidator.OneOf(
+						"file",
+						"constructed",
+						"scm",
+						"ec2",
+						"gce",
+						"azure_rm",
+						"vmware",
+						"satellite6",
+						"openstack",
+						"rhv",
+						"controller",
+						"insights",
+						"terraform",
+					),
 				},
 			},
 			"source_path": schema.StringAttribute{
@@ -200,7 +214,11 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"0", "1", "2"}...),
+					stringvalidator.OneOf(
+						"0",
+						"1",
+						"2",
+					),
 				},
 			},
 		},

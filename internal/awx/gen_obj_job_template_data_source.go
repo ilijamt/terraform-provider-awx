@@ -246,7 +246,10 @@ func (o *jobTemplateDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"run", "check"}...),
+					stringvalidator.OneOf(
+						"run",
+						"check",
+					),
 				},
 			},
 			"limit": schema.StringAttribute{
@@ -334,7 +337,14 @@ func (o *jobTemplateDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"0", "1", "2", "3", "4", "5"}...),
+					stringvalidator.OneOf(
+						"0",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+					),
 				},
 			},
 			"webhook_credential": schema.Int64Attribute{
@@ -348,7 +358,12 @@ func (o *jobTemplateDataSource) Schema(ctx context.Context, req datasource.Schem
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "github", "gitlab", "bitbucket_dc"}...),
+					stringvalidator.OneOf(
+						"",
+						"github",
+						"gitlab",
+						"bitbucket_dc",
+					),
 				},
 			},
 		},

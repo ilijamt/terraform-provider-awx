@@ -31,7 +31,7 @@ import (
 var (
 	_ resource.Resource                = &{{ .Name | lowerCamelCase }}Resource{}
 	_ resource.ResourceWithConfigure   = &{{ .Name | lowerCamelCase }}Resource{}
-{{- if not $.Config.NoId }}
+{{- if not .NoId }}
 	_ resource.ResourceWithImportState = &{{ .Name | lowerCamelCase }}Resource{}
 {{- end }}
 )
@@ -56,139 +56,135 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Configure(ctx context.Context, re
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_{{ $.Config.TypeName }}"
+	response.TypeName = request.ProviderTypeName + "_{{ .TypeName }}"
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
         Attributes: map[string]schema.Attribute{
         // Request elements
-{{- range $key := .PropertyPostKeys }}
-{{- with (index $.PropertyPostData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
-				ElementType: types.{{ camelCase .element_type }}Type,
+{{- range $key, $value := .WriteProperties }}
+{{- if not $value.IsWriteOnly }}
+            "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if eq $value.Generated.AttributeType "List" }}
+				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
-                Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ or .sensitive false }},
-                Required:    {{ or .required false }},
-                Optional:    {{ not (or .required false)}},
-                Computed:    {{ .computed }},
-{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
-                Default:     {{ .default_value }},
+                Description: {{ escape_quotes (or $value.Description $value.Label) }},
+                Sensitive:   {{ $value.IsSensitive }},
+                Required:    {{ $value.IsRequired }},
+                Optional:    {{ not $value.IsRequired }},
+                Computed:    {{ $value.IsComputed }},
+{{- if .HasDefaultValue }}
+                Default:     {{ $value.DefaultValue }},
 {{- end }}
-		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-{{- if not (or .required false) }}
-                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
+		        PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
+{{- if not .IsRequired }}
+                    {{  $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
                 },
-				Validators: []validator.{{ tf_attribute_type . }}{
-{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
-					stringvalidator.LengthAtMost({{ .max_length }}),
-{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
-{{- else if eq .type "choice" }}
-					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+				Validators: []validator.{{ $value.Generated.AttributeType }}{
+{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
+					stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
+					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
+					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
 {{- end }}
-{{- range $constraint := $.Config.FieldConstraints }}
-{{- if in_string_slice $constraint.Fields $key }}
-                    // {{ $constraint.Id }}
-                    {{ $constraint.Constraint }}(
-{{- range $k := $constraint.Fields }}
+{{- range $value.Constraints }}
+                    // {{ .Id }}
+                    {{ .Constraint }}(
+{{- range $k := .Fields }}
                         path.MatchRoot("{{ $k }}"),
 {{- end }}
                     ),
-{{- end }}
 {{- end }}
                 },
             },
 {{- end }}
 {{- end }}
         // Write only elements
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
-				ElementType: types.{{ camelCase .element_type }}Type,
+{{- range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+            "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if eq $value.Generated.AttributeType "List" }}
+				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
-                Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ or .sensitive false }},
-                Required:    {{ or .required false }},
-                Optional:    {{ not (or .required false) }},
-                Computed:    {{ .computed }},
-{{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
-                Default:     {{ .default_value }},
+                Description: {{ escape_quotes (or $value.Description $value.Label) }},
+                Sensitive:   {{ $value.IsSensitive }},
+                Required:    {{ $value.IsRequired }},
+                Optional:    {{ not $value.IsRequired }},
+                Computed:    {{ $value.IsComputed }},
+{{- if .HasDefaultValue }}
+                Default:     {{ $value.DefaultValue }},
 {{- end }}
-		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-{{- if not (or .required false) }}
-                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
+		        PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
+{{- if not $value.IsRequired }}
+                    {{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
 				},
-				Validators: []validator.{{ tf_attribute_type . }}{
-{{- if and (eq (awx2go_value .) "types.StringValue") (hasKey . "max_length") }}
-					stringvalidator.LengthAtMost({{ .max_length }}),
-{{- else if and (eq (awx2go_value .) "types.Int64Value") (hasKey . "min_value") (hasKey . "max_value") }}
-					int64validator.Between({{ format_number .min_value }}, {{ format_number .max_value }}),
-{{- else if eq .type "choice" }}
-					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+				Validators: []validator.{{ $value.Generated.AttributeType }}{
+{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
+					stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
+					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
+					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
 {{- end }}
-{{- range $constraint := $.Config.FieldConstraints }}
-{{- if in_string_slice $constraint.Fields $key }}
-                    // {{ $constraint.Id }}
-                    {{ $constraint.Constraint }}(
-{{- range $k := $constraint.Fields }}
+{{- range $value.Constraints }}
+                    // {{ .Id }}
+                    {{ .Constraint }}(
+{{- range $k := .Fields }}
                         path.MatchRoot("{{ $k }}"),
 {{- end }}
                     ),
-{{- end }}
 {{- end }}
                 },
             },
 {{- end }}
 {{- end }}
         // Data only elements
-{{- range $key := .PropertyGetKeys }}
-{{- if not (hasKey $.PropertyPostData $key) }}
-{{- with (index $.PropertyGetData $key) }}
-            "{{ $key | lowerCase }}": schema.{{ tf_attribute_type . }}Attribute{
-{{- if eq (tf_attribute_type .) "List" }}
-				ElementType: types.{{ camelCase .element_type }}Type,
+{{- range $key, $value := .ReadProperties }}
+{{- if not $value.IsInWriteProperty }}
+            "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if eq $value.Generated.AttributeType "List" }}
+				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
-                Description: {{ escape_quotes (default .help_text "") }},
+                Description: {{ escape_quotes (or $value.Description "") }},
                 Required:    false,
                 Optional:    false,
                 Computed:    true,
-                Sensitive:   {{ or .sensitive false }},
-		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-                    {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
+                Sensitive:   {{ .IsSensitive }},
+		        PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
+                    {{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 				},
-{{- if eq .type "choice" }}
-				Validators: []validator.{{ tf_attribute_type . }}{
-					stringvalidator.OneOf({{ awx_type_choice_data .choices }}...),
+{{- if eq .Type "choice" }}
+				Validators: []validator.{{ $value.Generated.AttributeType }}{
+					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
 				},
 {{- end }}
             },
-{{- end }}
 {{- end }}
 {{- end }}
         },
     }
 }
 
-{{ if not $.Config.NoId }}
-func (o *{{ .Name | lowerCamelCase }}Resource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
-{{- if eq (awx2go_value (index $.PropertyGetData $.Config.IdKey)) "types.Int64Value" }}
+{{ if not .NoId }}
+func (o *{{ $.Name | lowerCamelCase }}Resource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+{{- with $.IdProperty }}
+{{- if eq .Generated.AwxGoValue "types.Int64Value" }}
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ .Name }}.", request.ID),
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ $.Name }}.", request.ID),
 			err.Error(),
 		)
 		return
 	}
-	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("{{ $.Config.IdKey }}"), id)...)
-{{- else if eq (awx2go_value (index $.PropertyGetData $.Config.IdKey "type")) "types.StringValue" }}
-	resource.ImportStatePassthroughID(ctx, path.Root("{{ $.Config.IdKey }}"), request, response)
+	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("{{ $.IdKey }}"), id)...)
+{{- else if eq .Generated.AwxGoValue "types.StringValue" }}
+	resource.ImportStatePassthroughID(ctx, path.Root("{{ $.IdKey }}"), request, response)
+{{- end }}
 {{- end }}
 }
 {{- end }}
@@ -206,9 +202,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 	var endpoint = p.Clean(o.endpoint) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = plan.BodyRequest()
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
+{{- range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+	bodyRequest.{{ $value.Generated.PropertyName }} = plan.{{ $value.Generated.PropertyName }}.{{ $value.Generated.TfGoPrimitiveValue }}()
 {{- end }}
 {{- end }}
 	tflog.Debug(ctx, "[{{.Name}}/Create] Making a request", map[string]any{
@@ -217,7 +213,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, {{ if $.Config.NoId }}http.MethodPatch{{ else }}http.MethodPost{{ end }}, endpoint, &buf); err != nil {
+	if r, err = o.client.NewRequest(ctx, {{ if .NoId }}http.MethodPatch{{ else }}http.MethodPost{{ end }}, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
             fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create", endpoint),
 			err.Error(),
@@ -241,14 +237,14 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
         return
     }
 
-{{ range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-	state.{{ property_case $key $.Config }} = {{ awx2go_value . }}(plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}())
+{{ range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+	state.{{ $value.Generated.PropertyName }} = {{ $value.Generated.AwxGoValue }}(plan.{{ $value.Generated.PropertyName }}.{{ $value.Generated.TfGoPrimitiveValue }}())
 {{- end }}
 {{- end }}
 
-{{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
+{{ if .PreStateSetHookFunction }}
+    if err = {{ .PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -271,16 +267,16 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
 	if response.Diagnostics.HasError() {
 		return
 	}
-{{- if $.Config.PreStateSetHookFunction }}
+{{- if $.PreStateSetHookFunction }}
 	var orig = state.Clone()
 {{- end }}
 
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
-{{- if $.Config.NoId }}
+{{- if $.NoId }}
 	var endpoint = p.Clean(o.endpoint) + "/"
 {{- else }}
-	var id = state.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
+	var id = state.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 {{- end }}
 	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
@@ -307,8 +303,8 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
         return
     }
 
-{{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
+{{ if $.PreStateSetHookFunction }}
+    if err = {{ $.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -332,10 +328,10 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
-{{- if $.Config.NoId }}
+{{- if $.NoId }}
 	var endpoint = p.Clean(o.endpoint) + "/"
 {{- else }}
-	var id = plan.{{ camelCase $.Config.IdKey }}.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}()
+	var id = plan.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}()
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id)) + "/"
 {{- end }}
 	var buf bytes.Buffer
@@ -345,9 +341,10 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 		"method":   http.MethodPost,
 		"endpoint": endpoint,
 	})
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-	bodyRequest.{{ property_case $key $.Config }} = plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()
+
+{{- range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+	bodyRequest.{{ $value.Generated.PropertyName }} = plan.{{ $value.Generated.PropertyName }}.{{ $value.Generated.TfGoPrimitiveValue }}()
 {{- end }}
 {{- end }}
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
@@ -375,14 +372,14 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
         return
     }
 
-{{ range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-	state.{{ property_case $key $.Config }} = {{ awx2go_value . }}(plan.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}())
+{{ range $key, $value := $.WriteProperties }}
+{{- if $value.IsWriteOnly }}
+	state.{{ $value.Generated.PropertyName }} = {{ $value.Generated.AwxGoValue }}(plan.{{ $value.Generated.PropertyName }}.{{ $value.Generated.TfGoPrimitiveValue }}())
 {{- end }}
 {{- end }}
 
-{{ if $.Config.PreStateSetHookFunction }}
-    if err = {{ $.Config.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
+{{ if $.PreStateSetHookFunction }}
+    if err = {{ $.PreStateSetHookFunction }}(ctx, ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state); err != nil {
 		response.Diagnostics.AddError(
 			"Unable to process custom hook for the state on {{ .Name }}",
 			err.Error(),
@@ -397,7 +394,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-{{- if $.Config.Undeletable }}
+{{- if $.UnDeletable }}
 {{- else }}
 	var err error
 
@@ -410,8 +407,8 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, reque
 
 	// Creates a new request for {{ .Name }}
 	var r *http.Request
-	var id = state.{{ camelCase $.Config.IdKey }}
-	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.{{ tf2go_primitive_value (index $.PropertyGetData $.Config.IdKey) }}())) + "/"
+	var id = state.{{ camelCase $.IdKey }}
+	var endpoint = p.Clean(fmt.Sprintf("%s/%v", o.endpoint, id.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}())) + "/"
 	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		response.Diagnostics.AddError(
             fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),

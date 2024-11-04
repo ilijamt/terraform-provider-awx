@@ -91,7 +91,20 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"ssh", "vault", "net", "scm", "cloud", "registry", "token", "insights", "external", "kubernetes", "galaxy", "cryptography"}...),
+					stringvalidator.OneOf(
+						"ssh",
+						"vault",
+						"net",
+						"scm",
+						"cloud",
+						"registry",
+						"token",
+						"insights",
+						"external",
+						"kubernetes",
+						"galaxy",
+						"cryptography",
+					),
 				},
 			},
 			"managed": schema.BoolAttribute{

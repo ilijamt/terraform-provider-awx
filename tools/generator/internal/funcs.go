@@ -321,6 +321,17 @@ var FuncMap = template.FuncMap{
 
 		return fmt.Sprintf("[]string{%s}", strings.Join(arr, ", "))
 	},
+
+	// New functions
+
+	"key_in_map": func(key string, m map[string]any) bool {
+		_, ok := m[key]
+		return ok
+	},
+
+	"quote": func(in any) string {
+		return fmt.Sprintf("%q", in)
+	},
 	"toJson": func(in any) string {
 		payload, _ := json.MarshalIndent(in, "", "  ")
 		return string(payload)

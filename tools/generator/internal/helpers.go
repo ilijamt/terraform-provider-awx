@@ -2,9 +2,90 @@ package internal
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/iancoleman/strcase"
 )
+
+func generateAttributeValidationData(fields []SearchGroup, needle string) (attrs map[string][]string) {
+	attrs = make(map[string][]string)
+
+	var hasMultiFieldSearch = false
+	for _, field := range fields {
+		hasMultiFieldSearch = len(field.Fields) > 1
+		if hasMultiFieldSearch {
+			break
+		}
+	}
+
+	if hasMultiFieldSearch {
+		var sourceFieldName string
+		// 1. Find the one this needle belongs to and create a AlsoRequires for all of them
+		for _, field := range fields {
+			fieldHasKey := false
+			for _, v := range field.Fields {
+				fieldHasKey = v.Name == needle
+				if fieldHasKey {
+					sourceFieldName = field.Name
+					break
+				}
+			}
+
+			if fieldHasKey {
+				for _, v := range field.Fields {
+					if v.Name == needle {
+						continue
+					}
+					attrs["AlsoRequires"] = append(attrs["AlsoRequires"], v.Name)
+				}
+			}
+		}
+
+		// 2. Add all the other fields as Conflicts With
+		for _, field := range fields {
+			if sourceFieldName == field.Name {
+				continue
+			}
+			for _, v := range field.Fields {
+				attrs["ConflictsWith"] = append(attrs["ConflictsWith"], v.Name)
+			}
+		}
+	} else {
+		for _, field := range fields {
+			for _, v := range field.Fields {
+				attrs["ExactlyOneOf"] = append(attrs["ExactlyOneOf"], v.Name)
+			}
+		}
+	}
+	return
+}
+
+func availableChoicesData(choices []any) (ret []string) {
+	var arr []string
+	var val any
+	for _, choice := range choices {
+		val = (choice.([]any))[0]
+		switch val := val.(type) {
+		case string:
+			arr = append(arr, val)
+		case float64:
+			arr = append(arr, strconv.FormatInt(int64(val), 10))
+		}
+	}
+
+	return arr
+}
+
+func fieldIsSearchable(fields []SearchGroup, needle string) bool {
+	for _, field := range fields {
+		for _, v := range field.Fields {
+			if v.Name == needle {
+				return true
+			}
+		}
+	}
+	return false
+}
 
 func getItemElementListType(value map[string]any) (any, error) {
 	if v, ok := value["child"]; ok {

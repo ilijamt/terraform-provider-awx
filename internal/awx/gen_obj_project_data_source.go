@@ -143,7 +143,13 @@ func (o *projectDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "git", "svn", "insights", "archive"}...),
+					stringvalidator.OneOf(
+						"",
+						"git",
+						"svn",
+						"insights",
+						"archive",
+					),
 				},
 			},
 			"scm_update_cache_timeout": schema.Int64Attribute{

@@ -73,7 +73,11 @@ func (o *settingsUiDataSource) Schema(ctx context.Context, req datasource.Schema
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"off", "anonymous", "detailed"}...),
+					stringvalidator.OneOf(
+						"off",
+						"anonymous",
+						"detailed",
+					),
 				},
 			},
 			"ui_live_updates_enabled": schema.BoolAttribute{

@@ -16,15 +16,16 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		return nil, nil, nil
 	}
 
-	var item = &ModelConfig{
-		PackageName:     config.PackageName("awx"),
-		ApiVersion:      config.ApiVersion,
-		Name:            name,
-		Endpoint:        val.Endpoint,
-		Enabled:         val.Enabled,
-		ReadProperties:  make(map[string]*Property),
-		WriteProperties: make(map[string]*Property),
+	var description string
+	if v, ok := objmap["description"].(string); ok {
+		description = v
 	}
+
+	var item = &ModelConfig{
+		Name:        name,
+		Description: description,
+	}
+	_ = item.Update(config, val)
 
 	// ---------------------
 	var propertyWriteOnlyData = make(map[string]any)
@@ -108,27 +109,32 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_data_source.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_data_source.go.tpl",
-			Render:   !val.NoTerraformDataSource,
+			Render:   !item.NoTerraformDataSource,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_resource.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_resource.go.tpl",
-			Render:   !val.NoTerraformResource,
+			Render:   !item.NoTerraformResource,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_object_roles.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_resource_object_role.go.tpl",
-			Render:   val.HasObjectRoles,
+			Render:   item.HasObjectRoles,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_survey_spec.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_survey_spec.go.tpl",
-			Render:   val.HasSurveySpec,
+			Render:   item.HasSurveySpec,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("resources/api/%s/docs/%s.md", config.ApiVersion, strings.ToLower(val.TypeName)),
 			Template: "tf_api_description.md.tpl",
-			Render:   config.RenderApiDocs,
+			Render:   item.RenderApiDocs,
+			IsNew:    true,
 		},
 	}
 
@@ -147,6 +153,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			Data:     adg.Map(),
 		})
 	}
+
+	_ = item.Process(config, val)
 
 	// ---------------------
 

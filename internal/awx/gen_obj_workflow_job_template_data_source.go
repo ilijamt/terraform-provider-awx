@@ -194,7 +194,12 @@ func (o *workflowJobTemplateDataSource) Schema(ctx context.Context, req datasour
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "github", "gitlab", "bitbucket_dc"}...),
+					stringvalidator.OneOf(
+						"",
+						"github",
+						"gitlab",
+						"bitbucket_dc",
+					),
 				},
 			},
 		},
