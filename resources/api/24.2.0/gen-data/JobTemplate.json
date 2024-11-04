@@ -9,8 +9,6 @@
       "extra_vars": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "",
@@ -19,7 +17,6 @@
       "name": {
         "type": "",
         "description": "",
-        "sensitive": false,
         "required": true,
         "trim": false,
         "post_wrap": false,
@@ -33,7 +30,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -104,8 +102,6 @@
       "hidden": false,
       "label": "Allow simultaneous",
       "name": "allow_simultaneous",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_credential_on_launch": {
@@ -114,8 +110,6 @@
       "hidden": false,
       "label": "Ask credential on launch",
       "name": "ask_credential_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_diff_mode_on_launch": {
@@ -124,8 +118,6 @@
       "hidden": false,
       "label": "Ask diff mode on launch",
       "name": "ask_diff_mode_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_execution_environment_on_launch": {
@@ -134,8 +126,6 @@
       "hidden": false,
       "label": "Ask execution environment on launch",
       "name": "ask_execution_environment_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_forks_on_launch": {
@@ -144,8 +134,6 @@
       "hidden": false,
       "label": "Ask forks on launch",
       "name": "ask_forks_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_instance_groups_on_launch": {
@@ -154,8 +142,6 @@
       "hidden": false,
       "label": "Ask instance groups on launch",
       "name": "ask_instance_groups_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_inventory_on_launch": {
@@ -164,8 +150,6 @@
       "hidden": false,
       "label": "Ask inventory on launch",
       "name": "ask_inventory_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_job_slice_count_on_launch": {
@@ -174,8 +158,6 @@
       "hidden": false,
       "label": "Ask job slice count on launch",
       "name": "ask_job_slice_count_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_job_type_on_launch": {
@@ -184,8 +166,6 @@
       "hidden": false,
       "label": "Ask job type on launch",
       "name": "ask_job_type_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_labels_on_launch": {
@@ -194,8 +174,6 @@
       "hidden": false,
       "label": "Ask labels on launch",
       "name": "ask_labels_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_limit_on_launch": {
@@ -204,8 +182,6 @@
       "hidden": false,
       "label": "Ask limit on launch",
       "name": "ask_limit_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_scm_branch_on_launch": {
@@ -214,8 +190,6 @@
       "hidden": false,
       "label": "Ask scm branch on launch",
       "name": "ask_scm_branch_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_skip_tags_on_launch": {
@@ -224,8 +198,6 @@
       "hidden": false,
       "label": "Ask skip tags on launch",
       "name": "ask_skip_tags_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_tags_on_launch": {
@@ -234,8 +206,6 @@
       "hidden": false,
       "label": "Ask tags on launch",
       "name": "ask_tags_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_timeout_on_launch": {
@@ -244,8 +214,6 @@
       "hidden": false,
       "label": "Ask timeout on launch",
       "name": "ask_timeout_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_variables_on_launch": {
@@ -254,8 +222,6 @@
       "hidden": false,
       "label": "Ask variables on launch",
       "name": "ask_variables_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_verbosity_on_launch": {
@@ -264,8 +230,6 @@
       "hidden": false,
       "label": "Ask verbosity on launch",
       "name": "ask_verbosity_on_launch",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "become_enabled": {
@@ -274,8 +238,6 @@
       "hidden": false,
       "label": "Become enabled",
       "name": "become_enabled",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "description": {
@@ -285,8 +247,6 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "diff_mode": {
@@ -296,8 +256,6 @@
       "hidden": false,
       "label": "Diff mode",
       "name": "diff_mode",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "execution_environment": {
@@ -307,8 +265,6 @@
       "hidden": false,
       "label": "Execution environment",
       "name": "execution_environment",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "extra_vars": {
@@ -317,10 +273,6 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "force_handlers": {
@@ -329,8 +281,6 @@
       "hidden": false,
       "label": "Force handlers",
       "name": "force_handlers",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "forks": {
@@ -341,8 +291,6 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "forks",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "host_config_key": {
@@ -351,8 +299,6 @@
       "hidden": false,
       "label": "Host config key",
       "name": "host_config_key",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -362,8 +308,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -372,8 +316,6 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "job_slice_count": {
@@ -385,8 +327,6 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "job_slice_count",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "job_tags": {
@@ -395,8 +335,6 @@
       "hidden": false,
       "label": "Job tags",
       "name": "job_tags",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "job_type": {
@@ -415,8 +353,6 @@
       "hidden": false,
       "label": "Job type",
       "name": "job_type",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -425,8 +361,6 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -436,10 +370,7 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "post_wrap": false,
       "required": true,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "organization": {
@@ -449,8 +380,6 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "playbook": {
@@ -459,8 +388,6 @@
       "hidden": false,
       "label": "Playbook",
       "name": "playbook",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "prevent_instance_group_fallback": {
@@ -470,8 +397,6 @@
       "hidden": false,
       "label": "Prevent instance group fallback",
       "name": "prevent_instance_group_fallback",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "project": {
@@ -480,8 +405,6 @@
       "hidden": false,
       "label": "Project",
       "name": "project",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -491,8 +414,6 @@
       "hidden": false,
       "label": "Scm branch",
       "name": "scm_branch",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -501,8 +422,6 @@
       "hidden": false,
       "label": "Skip tags",
       "name": "skip_tags",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "start_at_task": {
@@ -511,8 +430,6 @@
       "hidden": false,
       "label": "Start at task",
       "name": "start_at_task",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "survey_enabled": {
@@ -521,8 +438,6 @@
       "hidden": false,
       "label": "Survey enabled",
       "name": "survey_enabled",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "timeout": {
@@ -534,8 +449,6 @@
       "max_value": 2147483647,
       "min_value": -2147483648,
       "name": "timeout",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "use_fact_cache": {
@@ -545,8 +458,6 @@
       "hidden": false,
       "label": "Use fact cache",
       "name": "use_fact_cache",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "verbosity": {
@@ -581,8 +492,6 @@
       "hidden": false,
       "label": "Verbosity",
       "name": "verbosity",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "webhook_credential": {
@@ -592,8 +501,6 @@
       "hidden": false,
       "label": "Webhook credential",
       "name": "webhook_credential",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "webhook_service": {
@@ -621,8 +528,6 @@
       "hidden": false,
       "label": "Webhook service",
       "name": "webhook_service",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     }
   },
@@ -682,7 +587,6 @@
       "label": "Allow simultaneous",
       "name": "allow_simultaneous",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_credential_on_launch": {
@@ -693,7 +597,6 @@
       "label": "Ask credential on launch",
       "name": "ask_credential_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_diff_mode_on_launch": {
@@ -704,7 +607,6 @@
       "label": "Ask diff mode on launch",
       "name": "ask_diff_mode_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_execution_environment_on_launch": {
@@ -715,7 +617,6 @@
       "label": "Ask execution environment on launch",
       "name": "ask_execution_environment_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_forks_on_launch": {
@@ -726,7 +627,6 @@
       "label": "Ask forks on launch",
       "name": "ask_forks_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_instance_groups_on_launch": {
@@ -737,7 +637,6 @@
       "label": "Ask instance groups on launch",
       "name": "ask_instance_groups_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_inventory_on_launch": {
@@ -748,7 +647,6 @@
       "label": "Ask inventory on launch",
       "name": "ask_inventory_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_job_slice_count_on_launch": {
@@ -759,7 +657,6 @@
       "label": "Ask job slice count on launch",
       "name": "ask_job_slice_count_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_job_type_on_launch": {
@@ -770,7 +667,6 @@
       "label": "Ask job type on launch",
       "name": "ask_job_type_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_labels_on_launch": {
@@ -781,7 +677,6 @@
       "label": "Ask labels on launch",
       "name": "ask_labels_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_limit_on_launch": {
@@ -792,7 +687,6 @@
       "label": "Ask limit on launch",
       "name": "ask_limit_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_scm_branch_on_launch": {
@@ -803,7 +697,6 @@
       "label": "Ask scm branch on launch",
       "name": "ask_scm_branch_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_skip_tags_on_launch": {
@@ -814,7 +707,6 @@
       "label": "Ask skip tags on launch",
       "name": "ask_skip_tags_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_tags_on_launch": {
@@ -825,7 +717,6 @@
       "label": "Ask tags on launch",
       "name": "ask_tags_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_timeout_on_launch": {
@@ -836,7 +727,6 @@
       "label": "Ask timeout on launch",
       "name": "ask_timeout_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_variables_on_launch": {
@@ -847,7 +737,6 @@
       "label": "Ask variables on launch",
       "name": "ask_variables_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "ask_verbosity_on_launch": {
@@ -858,7 +747,6 @@
       "label": "Ask verbosity on launch",
       "name": "ask_verbosity_on_launch",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "become_enabled": {
@@ -869,7 +757,6 @@
       "label": "Become enabled",
       "name": "become_enabled",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "description": {
@@ -882,7 +769,6 @@
       "label": "Description",
       "name": "description",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "diff_mode": {
@@ -894,7 +780,6 @@
       "label": "Diff mode",
       "name": "diff_mode",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "execution_environment": {
@@ -905,7 +790,6 @@
       "label": "Execution environment",
       "name": "execution_environment",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "extra_vars": {
@@ -916,10 +800,7 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
       "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "force_handlers": {
@@ -930,7 +811,6 @@
       "label": "Force handlers",
       "name": "force_handlers",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "forks": {
@@ -944,7 +824,6 @@
       "min_value": 0,
       "name": "forks",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "host_config_key": {
@@ -957,7 +836,6 @@
       "max_length": 1024,
       "name": "host_config_key",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "inventory": {
@@ -967,7 +845,6 @@
       "label": "Inventory",
       "name": "inventory",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "job_slice_count": {
@@ -982,7 +859,6 @@
       "min_value": 0,
       "name": "job_slice_count",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "job_tags": {
@@ -994,7 +870,6 @@
       "label": "Job tags",
       "name": "job_tags",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "job_type": {
@@ -1016,7 +891,6 @@
       "label": "Job type",
       "name": "job_type",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -1028,7 +902,6 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -1039,10 +912,7 @@
       "label": "Name",
       "max_length": 512,
       "name": "name",
-      "post_wrap": false,
       "required": true,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "playbook": {
@@ -1055,7 +925,6 @@
       "max_length": 1024,
       "name": "playbook",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "prevent_instance_group_fallback": {
@@ -1067,7 +936,6 @@
       "label": "Prevent instance group fallback",
       "name": "prevent_instance_group_fallback",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "project": {
@@ -1077,7 +945,6 @@
       "label": "Project",
       "name": "project",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -1091,7 +958,6 @@
       "max_length": 1024,
       "name": "scm_branch",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -1104,7 +970,6 @@
       "max_length": 1024,
       "name": "skip_tags",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "start_at_task": {
@@ -1117,7 +982,6 @@
       "max_length": 1024,
       "name": "start_at_task",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "survey_enabled": {
@@ -1128,7 +992,6 @@
       "label": "Survey enabled",
       "name": "survey_enabled",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "timeout": {
@@ -1143,7 +1006,6 @@
       "min_value": -2147483648,
       "name": "timeout",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "use_fact_cache": {
@@ -1155,7 +1017,6 @@
       "label": "Use fact cache",
       "name": "use_fact_cache",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "verbosity": {
@@ -1193,7 +1054,6 @@
       "label": "Verbosity",
       "name": "verbosity",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "webhook_credential": {
@@ -1204,7 +1064,6 @@
       "label": "Webhook credential",
       "name": "webhook_credential",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "webhook_service": {
@@ -1233,7 +1092,6 @@
       "label": "Webhook service",
       "name": "webhook_service",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     }
   },

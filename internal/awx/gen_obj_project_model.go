@@ -99,83 +99,84 @@ func (o *projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
 	return
 }
 
-func (o *projectTerraformModel) setAllowOverride(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setAllowOverride(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AllowOverride, data)
 }
 
-func (o *projectTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
-func (o *projectTerraformModel) setDefaultEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setDefaultEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DefaultEnvironment, data)
 }
 
-func (o *projectTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *projectTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *projectTerraformModel) setLocalPath(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setLocalPath(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LocalPath, data, false)
 }
 
-func (o *projectTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *projectTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *projectTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
-func (o *projectTerraformModel) setScmClean(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmClean(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ScmClean, data)
 }
 
-func (o *projectTerraformModel) setScmDeleteOnUpdate(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmDeleteOnUpdate(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ScmDeleteOnUpdate, data)
 }
 
-func (o *projectTerraformModel) setScmRefspec(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmRefspec(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmRefspec, data, false)
 }
 
-func (o *projectTerraformModel) setScmTrackSubmodules(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmTrackSubmodules(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ScmTrackSubmodules, data)
 }
 
-func (o *projectTerraformModel) setScmType(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmType, data, false)
 }
 
-func (o *projectTerraformModel) setScmUpdateCacheTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmUpdateCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ScmUpdateCacheTimeout, data)
 }
 
-func (o *projectTerraformModel) setScmUpdateOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmUpdateOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ScmUpdateOnLaunch, data)
 }
 
-func (o *projectTerraformModel) setScmUrl(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setScmUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmUrl, data, false)
 }
 
-func (o *projectTerraformModel) setSignatureValidationCredential(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setSignatureValidationCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SignatureValidationCredential, data)
 }
 
-func (o *projectTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *projectTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
-func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

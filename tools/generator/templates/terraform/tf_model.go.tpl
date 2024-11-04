@@ -10,16 +10,14 @@ import (
 
 // {{ .Name | lowerCamelCase }}TerraformModel maps the schema for {{ .Name }} when using Data Source
 type {{ .Name | lowerCamelCase }}TerraformModel struct {
-{{- range $key := .PropertyGetKeys }}
-{{- with (index $.PropertyGetData $key) }}
-    // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ awx2go_type . }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
+{{- range $key, $value := .ReadProperties }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    {{ $value.Generated.PropertyName }} {{ $value.Generated.AwxGoType }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
 {{- end }}
-{{- end }}
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-    // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ awx2go_type . }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
+{{- range $key, $value := .WriteProperties }}
+{{- if $value.IsWriteOnly }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    {{ $value.Generated.PropertyName }} {{ $value.Generated.AwxGoType }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
 {{- end }}
 {{- end }}
 }
@@ -27,14 +25,12 @@ type {{ .Name | lowerCamelCase }}TerraformModel struct {
 // Clone the object
 func (o *{{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCamelCase }}TerraformModel {
     return {{ .Name | lowerCamelCase }}TerraformModel{
-    {{- range $key := .PropertyGetKeys }}
-    {{- with (index $.PropertyGetData $key) }}
-        {{ property_case $key $.Config }}: o.{{ property_case $key $.Config }},
+    {{- range $key, $value := .ReadProperties }}
+        {{ $value.Generated.PropertyName }}: o.{{ $value.Generated.PropertyName }},
     {{- end }}
-    {{- end }}
-    {{- range $key := .PropertyWriteOnlyKeys }}
-    {{- with (index $.PropertyWriteOnlyData $key) }}
-        {{ property_case $key $.Config }}: o.{{ property_case $key $.Config }},
+    {{- range $key, $value := .WriteProperties }}
+    {{- if $value.IsWriteOnly }}
+        {{ $value.Generated.PropertyName }}: o.{{ $value.Generated.PropertyName }},
     {{- end }}
     {{- end }}
     }
@@ -42,74 +38,63 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCam
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for {{ .Name }}
 func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name | lowerCamelCase }}BodyRequestModel) {
-{{- range $key := .PropertyPostKeys }}
-{{- with (index $.PropertyPostData $key) }}
-{{- if eq (awx2go_type .) "types.List" }}
-    req.{{ property_case $key $.Config }} = []string{}
-    for _, val := range o.{{ property_case $key $.Config }}.Elements() {
+{{- range $key, $value := .WriteProperties }}
+{{- if not $value.IsWriteOnly }}
+{{- if eq $value.Generated.AwxGoType "types.List" }}
+    req.{{ $value.Generated.PropertyName }} = []string{}
+    for _, val := range o.{{ $value.Generated.PropertyName }}.Elements() {
         if _, ok := val.(types.String); ok {
-            req.{{ property_case $key $.Config }} = append(req.{{ property_case $key $.Config }}, val.(types.String).ValueString())
+            req.{{ $value.Generated.PropertyName }} = append(req.{{ $value.Generated.PropertyName }}, val.(types.String).ValueString())
         } else {
-            req.{{ property_case $key $.Config }} = append(req.{{ property_case $key $.Config }}, val.String())
+            req.{{ $value.Generated.PropertyName }} = append(req.{{ $value.Generated.PropertyName }}, val.String())
         }
     }
 {{- else }}
-    req.{{ property_case $key $.Config }} = {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage(o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}()){{ else }}o.{{ property_case $key $.Config }}.{{ tf2go_primitive_value . }}(){{ end }}
+    req.{{ $value.Generated.PropertyName }} = {{ $value.Generated.ModelBodyRequestValue }}
 {{- end }}
 {{- end }}
 {{- end }}
     return
 }
 
-{{ range $key := .PropertyGetKeys }}
-{{- with (index $.PropertyGetData $key) }}
-func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCase }}(data any) (d diag.Diagnostics, err error) {
-{{- if eq (awx2go_value .) "types.Int64Value" }}
-    return helpers.AttrValueSetInt64(&o.{{ property_case $key $.Config }}, data)
-{{- else if eq (awx2go_value .) "types.Float64Value" }}
-    return helpers.AttrValueSetFloat64(&o.{{ property_case $key $.Config }}, data)
-{{- else if eq (awx2go_value .) "types.BoolValue" }}
-    return helpers.AttrValueSetBool(&o.{{ property_case $key $.Config }}, data)
-{{- else if eq (awx2go_value .) "types.ListValueMust(types.StringType, val.Elements())" }}
-    return helpers.AttrValueSetListString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
-{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json") }}
-    return helpers.AttrValueSetJsonString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
-{{- else if and (eq (awx2go_value .) "types.StringValue") (eq .type "json-yaml") }}
-    return helpers.AttrValueSetJsonYamlString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
-{{- else if eq (awx2go_value .) "types.StringValue" }}
-    return helpers.AttrValueSetString(&o.{{ property_case $key $.Config }}, data, {{ default .trim false }})
+{{ range $key, $value := .ReadProperties }}
+func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCase }}(data any) (_ diag.Diagnostics, _ error) {
+{{- if eq $value.Generated.AwxGoValue "types.Int64Value" }}
+    return helpers.AttrValueSetInt64(&o.{{ $value.Generated.PropertyName }}, data)
+{{- else if eq $value.Generated.AwxGoValue "types.Float64Value" }}
+    return helpers.AttrValueSetFloat64(&o.{{ $value.Generated.PropertyName }}, data)
+{{- else if eq $value.Generated.AwxGoValue "types.BoolValue" }}
+    return helpers.AttrValueSetBool(&o.{{ $value.Generated.PropertyName }}, data)
+{{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())" }}
+    return helpers.AttrValueSetListString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "json") }}
+    return helpers.AttrValueSetJsonString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "json-yaml") }}
+    return helpers.AttrValueSetJsonYamlString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
+{{- else if eq $value.Generated.AwxGoValue "types.StringValue" }}
+    return helpers.AttrValueSetString(&o.{{ $value.Generated.PropertyName }}, data, {{ default .Trim false }})
 {{- end }}
 }
-{{- end }}
 {{ end }}
 
-func (o *{{ .Name | lowerCamelCase }}TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *{{ .Name | lowerCamelCase }}TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
     if data == nil {
         return diags, fmt.Errorf("no data passed")
     }
-{{- range $key := .PropertyGetKeys }}
-{{- with (index $.PropertyGetData $key) }}
+{{- range $key, $value := .ReadProperties }}
     if dg, _ := o.set{{ $key | setPropertyCase }}(data["{{ $key }}"]); dg.HasError() {
         diags.Append(dg...)
     }
-{{- end }}
 {{- end }}
     return diags, nil
 }
 
 // {{ .Name | lowerCamelCase }}BodyRequestModel maps the schema for {{ .Name }} for creating and updating the data
 type {{ .Name | lowerCamelCase }}BodyRequestModel struct {
-{{- range $key := .PropertyPostKeys }}
-{{- with (index $.PropertyPostData $key) }}
-    // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }}{{if and (not .required) (not (eq (awx2go_primitive_type .) "bool"))}},omitempty{{end}}"`
-{{- end }}
-{{- end }}
-{{- range $key := .PropertyWriteOnlyKeys }}
-{{- with (index $.PropertyWriteOnlyData $key) }}
-    // {{ property_case $key $.Config }} {{ escape_quotes (default .help_text "") }}
-    {{ property_case $key $.Config }} {{ if or (eq .type "json") (eq .type "json-yaml") }}json.RawMessage{{ else }}{{ awx2go_primitive_type . }}{{end}} `json:"{{ $key }},omitempty"`
-{{- end }}
+{{- range $key, $value := .WriteProperties }}
+    // {{ $value.Generated.PropertyName }} {{ escape_quotes (default $value.Description "") }}
+    {{ $value.Generated.PropertyName }} {{ $value.Generated.BodyRequestModelType }} `json:"{{ $key }}{{ if and (not $value.IsRequired) (not (eq $value.Generated.BodyRequestModelType "bool")) }},omitempty{{ end }}"`
 {{- end }}
 }
 

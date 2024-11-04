@@ -52,35 +52,36 @@ func (o *settingsAuthGithubEnterpriseTerraformModel) BodyRequest() (req settings
 	return
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseApiUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseApiUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseCallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseSecret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseSecret(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseTeamMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

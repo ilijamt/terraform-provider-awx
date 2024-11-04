@@ -11,7 +11,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -58,8 +59,6 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -69,8 +68,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "messages": {
@@ -240,7 +237,6 @@
           }
         }
       },
-      "required": false,
       "rocketchat": {
         "error": {
           "body": null,
@@ -273,7 +269,6 @@
           }
         }
       },
-      "sensitive": false,
       "slack": {
         "error": {
           "body": null,
@@ -372,8 +367,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "notification_configuration": {
@@ -485,7 +478,6 @@
           "type": "password"
         }
       },
-      "required": false,
       "rocketchat": {
         "rocketchat_no_verify_ssl": {
           "label": "Verify SSL",
@@ -496,7 +488,6 @@
           "type": "string"
         }
       },
-      "sensitive": false,
       "slack": {
         "channels": {
           "label": "Destination Channels",
@@ -601,8 +592,6 @@
       "hidden": false,
       "label": "Notification type",
       "name": "notification_type",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "organization": {
@@ -611,8 +600,6 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     }
   },
@@ -636,7 +623,6 @@
       "label": "Description",
       "name": "description",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "messages": {
@@ -846,7 +832,6 @@
           }
         }
       },
-      "sensitive": false,
       "slack": {
         "error": {
           "body": null,
@@ -947,7 +932,6 @@
       "max_length": 512,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "notification_configuration": {
@@ -1072,7 +1056,6 @@
           "type": "string"
         }
       },
-      "sensitive": false,
       "slack": {
         "channels": {
           "label": "Destination Channels",
@@ -1178,7 +1161,6 @@
       "label": "Notification type",
       "name": "notification_type",
       "required": true,
-      "sensitive": false,
       "type": "choice"
     },
     "organization": {
@@ -1188,7 +1170,6 @@
       "label": "Organization",
       "name": "organization",
       "required": true,
-      "sensitive": false,
       "type": "id"
     }
   },

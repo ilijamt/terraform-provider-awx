@@ -39,23 +39,24 @@ func (o *teamTerraformModel) BodyRequest() (req teamBodyRequestModel) {
 	return
 }
 
-func (o *teamTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *teamTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *teamTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *teamTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *teamTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *teamTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *teamTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *teamTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *teamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *teamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

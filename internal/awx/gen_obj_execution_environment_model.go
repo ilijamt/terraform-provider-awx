@@ -54,39 +54,40 @@ func (o *executionEnvironmentTerraformModel) BodyRequest() (req executionEnviron
 	return
 }
 
-func (o *executionEnvironmentTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
-func (o *executionEnvironmentTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *executionEnvironmentTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *executionEnvironmentTerraformModel) setImage(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setImage(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Image, data, false)
 }
 
-func (o *executionEnvironmentTerraformModel) setManaged(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setManaged(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Managed, data)
 }
 
-func (o *executionEnvironmentTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *executionEnvironmentTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *executionEnvironmentTerraformModel) setPull(data any) (d diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) setPull(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Pull, data, false)
 }
 
-func (o *executionEnvironmentTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *executionEnvironmentTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

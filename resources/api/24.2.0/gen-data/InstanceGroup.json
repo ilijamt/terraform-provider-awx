@@ -9,8 +9,6 @@
       "capacity": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "consumed_capacity": {
         "type": "float",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "instances": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +33,6 @@
       "jobs_running": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +41,6 @@
       "percent_capacity_remaining": {
         "type": "float",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -63,7 +53,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -109,10 +100,6 @@
       "hidden": false,
       "label": "Capacity",
       "name": "capacity",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "consumed_capacity": {
@@ -121,10 +108,6 @@
       "hidden": false,
       "label": "Consumed capacity",
       "name": "consumed_capacity",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "float"
     },
     "credential": {
@@ -133,8 +116,6 @@
       "hidden": false,
       "label": "Credential",
       "name": "credential",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "id": {
@@ -144,8 +125,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "instances": {
@@ -154,10 +133,6 @@
       "hidden": false,
       "label": "Instances",
       "name": "instances",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "is_container_group": {
@@ -167,8 +142,6 @@
       "hidden": false,
       "label": "Is container group",
       "name": "is_container_group",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "jobs_running": {
@@ -177,10 +150,6 @@
       "hidden": false,
       "label": "Jobs running",
       "name": "jobs_running",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "jobs_total": {
@@ -190,8 +159,6 @@
       "hidden": false,
       "label": "Jobs total",
       "name": "jobs_total",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "max_concurrent_jobs": {
@@ -202,8 +169,6 @@
       "label": "Max Concurrent Jobs",
       "min_value": 0,
       "name": "max_concurrent_jobs",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "max_forks": {
@@ -214,8 +179,6 @@
       "label": "Max Forks",
       "min_value": 0,
       "name": "max_forks",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -225,8 +188,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "percent_capacity_remaining": {
@@ -235,10 +196,6 @@
       "hidden": false,
       "label": "Percent capacity remaining",
       "name": "percent_capacity_remaining",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "float"
     },
     "pod_spec_override": {
@@ -247,8 +204,6 @@
       "hidden": false,
       "label": "Pod spec override",
       "name": "pod_spec_override",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "policy_instance_list": {
@@ -263,8 +218,6 @@
       "hidden": false,
       "label": "Policy Instance List",
       "name": "policy_instance_list",
-      "required": false,
-      "sensitive": false,
       "type": "json"
     },
     "policy_instance_minimum": {
@@ -275,8 +228,6 @@
       "label": "Policy Instance Minimum",
       "min_value": 0,
       "name": "policy_instance_minimum",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "policy_instance_percentage": {
@@ -288,8 +239,6 @@
       "max_value": 100,
       "min_value": 0,
       "name": "policy_instance_percentage",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     }
   },
@@ -319,7 +268,6 @@
       "label": "Credential",
       "name": "credential",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "is_container_group": {
@@ -330,7 +278,6 @@
       "label": "Is container group",
       "name": "is_container_group",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "max_concurrent_jobs": {
@@ -344,7 +291,6 @@
       "min_value": 0,
       "name": "max_concurrent_jobs",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "max_forks": {
@@ -358,7 +304,6 @@
       "min_value": 0,
       "name": "max_forks",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -370,7 +315,6 @@
       "max_length": 250,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "pod_spec_override": {
@@ -409,7 +353,6 @@
       "label": "Pod spec override",
       "name": "pod_spec_override",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "policy_instance_list": {
@@ -427,7 +370,6 @@
       "label": "Policy Instance List",
       "name": "policy_instance_list",
       "required": false,
-      "sensitive": false,
       "type": "json"
     },
     "policy_instance_minimum": {
@@ -441,7 +383,6 @@
       "min_value": 0,
       "name": "policy_instance_minimum",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "policy_instance_percentage": {
@@ -456,7 +397,6 @@
       "min_value": 0,
       "name": "policy_instance_percentage",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     }
   },

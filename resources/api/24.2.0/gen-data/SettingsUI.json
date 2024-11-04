@@ -38,8 +38,6 @@
       "hidden": false,
       "label": "Custom Login Info",
       "name": "CUSTOM_LOGIN_INFO",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "CUSTOM_LOGO": {
@@ -51,8 +49,6 @@
       "hidden": false,
       "label": "Custom Logo",
       "name": "CUSTOM_LOGO",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "MAX_UI_JOB_EVENTS": {
@@ -65,8 +61,6 @@
       "label": "Max Job Events Retrieved by UI",
       "min_value": 100,
       "name": "MAX_UI_JOB_EVENTS",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "PENDO_TRACKING_STATE": {
@@ -92,8 +86,6 @@
       "hidden": false,
       "label": "User Analytics Tracking State",
       "name": "PENDO_TRACKING_STATE",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "UI_LIVE_UPDATES_ENABLED": {
@@ -105,8 +97,6 @@
       "hidden": true,
       "label": "Enable Live Updates in the UI",
       "name": "UI_LIVE_UPDATES_ENABLED",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },
@@ -129,7 +119,6 @@
       "label": "Custom Login Info",
       "name": "CUSTOM_LOGIN_INFO",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "CUSTOM_LOGO": {
@@ -144,7 +133,6 @@
       "name": "CUSTOM_LOGO",
       "placeholder": "data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACwAAAAAAQABAAACAkQBADs=",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "MAX_UI_JOB_EVENTS": {
@@ -159,7 +147,6 @@
       "min_value": 100,
       "name": "MAX_UI_JOB_EVENTS",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "UI_LIVE_UPDATES_ENABLED": {
@@ -172,7 +159,6 @@
       "label": "Enable Live Updates in the UI",
       "name": "UI_LIVE_UPDATES_ENABLED",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },

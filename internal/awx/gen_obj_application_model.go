@@ -61,47 +61,48 @@ func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestMod
 	return
 }
 
-func (o *applicationTerraformModel) setAuthorizationGrantType(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setAuthorizationGrantType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.AuthorizationGrantType, data, false)
 }
 
-func (o *applicationTerraformModel) setClientId(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setClientId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ClientId, data, false)
 }
 
-func (o *applicationTerraformModel) setClientSecret(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setClientSecret(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ClientSecret, data, false)
 }
 
-func (o *applicationTerraformModel) setClientType(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setClientType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ClientType, data, false)
 }
 
-func (o *applicationTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *applicationTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *applicationTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *applicationTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *applicationTerraformModel) setRedirectUris(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setRedirectUris(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.RedirectUris, data, false)
 }
 
-func (o *applicationTerraformModel) setSkipAuthorization(data any) (d diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) setSkipAuthorization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SkipAuthorization, data)
 }
 
-func (o *applicationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *applicationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

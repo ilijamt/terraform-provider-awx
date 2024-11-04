@@ -9,8 +9,6 @@
       "AWX_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "GALAXY_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -65,8 +61,6 @@
       "hidden": false,
       "label": "Ansible Modules Allowed for Ad Hoc Jobs",
       "name": "AD_HOC_COMMANDS",
-      "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "ALLOW_JINJA_IN_EXTRA_VARS": {
@@ -92,8 +86,6 @@
       "hidden": false,
       "label": "When can extra variables contain Jinja templates?",
       "name": "ALLOW_JINJA_IN_EXTRA_VARS",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "ANSIBLE_FACT_CACHE_TIMEOUT": {
@@ -106,8 +98,6 @@
       "label": "Per-Host Ansible Fact Cache Timeout",
       "min_value": 0,
       "name": "ANSIBLE_FACT_CACHE_TIMEOUT",
-      "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -125,8 +115,6 @@
       "hidden": false,
       "label": "Ansible Callback Plugins",
       "name": "AWX_ANSIBLE_CALLBACK_PLUGINS",
-      "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "AWX_COLLECTIONS_ENABLED": {
@@ -138,8 +126,6 @@
       "hidden": false,
       "label": "Enable Collection(s) Download",
       "name": "AWX_COLLECTIONS_ENABLED",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_ISOLATION_BASE_PATH": {
@@ -151,8 +137,6 @@
       "hidden": false,
       "label": "Job execution path",
       "name": "AWX_ISOLATION_BASE_PATH",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "AWX_ISOLATION_SHOW_PATHS": {
@@ -169,8 +153,6 @@
       "hidden": false,
       "label": "Paths to expose to isolated jobs",
       "name": "AWX_ISOLATION_SHOW_PATHS",
-      "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "AWX_MOUNT_ISOLATED_PATHS_ON_K8S": {
@@ -182,8 +164,6 @@
       "hidden": false,
       "label": "Expose host paths for Container Groups",
       "name": "AWX_MOUNT_ISOLATED_PATHS_ON_K8S",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_ROLES_ENABLED": {
@@ -195,8 +175,6 @@
       "hidden": false,
       "label": "Enable Role Download",
       "name": "AWX_ROLES_ENABLED",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_RUNNER_KEEPALIVE_SECONDS": {
@@ -208,8 +186,6 @@
       "hidden": false,
       "label": "K8S Ansible Runner Keep-Alive Message Interval",
       "name": "AWX_RUNNER_KEEPALIVE_SECONDS",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "AWX_SHOW_PLAYBOOK_LINKS": {
@@ -221,8 +197,6 @@
       "hidden": false,
       "label": "Follow symlinks",
       "name": "AWX_SHOW_PLAYBOOK_LINKS",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_TASK_ENV": {
@@ -239,10 +213,6 @@
       "hidden": false,
       "label": "Extra Environment Variables",
       "name": "AWX_TASK_ENV",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -259,8 +229,6 @@
       "hidden": false,
       "label": "Container Run Options",
       "name": "DEFAULT_CONTAINER_RUN_OPTIONS",
-      "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
@@ -273,8 +241,6 @@
       "label": "Default Inventory Update Timeout",
       "min_value": 0,
       "name": "DEFAULT_INVENTORY_UPDATE_TIMEOUT",
-      "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -288,8 +254,6 @@
       "label": "Default Job Idle Timeout",
       "min_value": 0,
       "name": "DEFAULT_JOB_IDLE_TIMEOUT",
-      "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -303,8 +267,6 @@
       "label": "Default Job Timeout",
       "min_value": 0,
       "name": "DEFAULT_JOB_TIMEOUT",
-      "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -318,8 +280,6 @@
       "label": "Default Project Update Timeout",
       "min_value": 0,
       "name": "DEFAULT_PROJECT_UPDATE_TIMEOUT",
-      "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -333,8 +293,6 @@
       "label": "Job Event Standard Output Maximum Display Size",
       "min_value": 0,
       "name": "EVENT_STDOUT_MAX_BYTES_DISPLAY",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "GALAXY_IGNORE_CERTS": {
@@ -346,8 +304,6 @@
       "hidden": false,
       "label": "Ignore Ansible Galaxy SSL Certificate Verification",
       "name": "GALAXY_IGNORE_CERTS",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "GALAXY_TASK_ENV": {
@@ -364,10 +320,6 @@
       "hidden": false,
       "label": "Environment Variables for Galaxy Commands",
       "name": "GALAXY_TASK_ENV",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {
@@ -379,8 +331,6 @@
       "hidden": false,
       "label": "Maximum number of forks per job",
       "name": "MAX_FORKS",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "MAX_WEBSOCKET_EVENT_RATE": {
@@ -393,8 +343,6 @@
       "label": "Job Event Maximum Websocket Messages Per Second",
       "min_value": 0,
       "name": "MAX_WEBSOCKET_EVENT_RATE",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "PROJECT_UPDATE_VVV": {
@@ -406,8 +354,6 @@
       "hidden": false,
       "label": "Run Project Updates With Higher Verbosity",
       "name": "PROJECT_UPDATE_VVV",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "SCHEDULE_MAX_JOBS": {
@@ -420,8 +366,6 @@
       "label": "Maximum Scheduled Jobs",
       "min_value": 1,
       "name": "SCHEDULE_MAX_JOBS",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "STDOUT_MAX_BYTES_DISPLAY": {
@@ -434,8 +378,6 @@
       "label": "Standard Output Maximum Display Size",
       "min_value": 0,
       "name": "STDOUT_MAX_BYTES_DISPLAY",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     }
   },
@@ -504,7 +446,6 @@
       "label": "Ansible Modules Allowed for Ad Hoc Jobs",
       "name": "AD_HOC_COMMANDS",
       "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "ALLOW_JINJA_IN_EXTRA_VARS": {
@@ -532,7 +473,6 @@
       "label": "When can extra variables contain Jinja templates?",
       "name": "ALLOW_JINJA_IN_EXTRA_VARS",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "ANSIBLE_FACT_CACHE_TIMEOUT": {
@@ -547,7 +487,6 @@
       "min_value": 0,
       "name": "ANSIBLE_FACT_CACHE_TIMEOUT",
       "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -568,7 +507,6 @@
       "label": "Ansible Callback Plugins",
       "name": "AWX_ANSIBLE_CALLBACK_PLUGINS",
       "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "AWX_COLLECTIONS_ENABLED": {
@@ -581,7 +519,6 @@
       "label": "Enable Collection(s) Download",
       "name": "AWX_COLLECTIONS_ENABLED",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_ISOLATION_BASE_PATH": {
@@ -595,7 +532,6 @@
       "label": "Job execution path",
       "name": "AWX_ISOLATION_BASE_PATH",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "AWX_ISOLATION_SHOW_PATHS": {
@@ -615,7 +551,6 @@
       "label": "Paths to expose to isolated jobs",
       "name": "AWX_ISOLATION_SHOW_PATHS",
       "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "AWX_MOUNT_ISOLATED_PATHS_ON_K8S": {
@@ -628,7 +563,6 @@
       "label": "Expose host paths for Container Groups",
       "name": "AWX_MOUNT_ISOLATED_PATHS_ON_K8S",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_ROLES_ENABLED": {
@@ -641,7 +575,6 @@
       "label": "Enable Role Download",
       "name": "AWX_ROLES_ENABLED",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_RUNNER_KEEPALIVE_SECONDS": {
@@ -656,7 +589,6 @@
       "name": "AWX_RUNNER_KEEPALIVE_SECONDS",
       "placeholder": 240,
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "AWX_SHOW_PLAYBOOK_LINKS": {
@@ -669,7 +601,6 @@
       "label": "Follow symlinks",
       "name": "AWX_SHOW_PLAYBOOK_LINKS",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "AWX_TASK_ENV": {
@@ -692,10 +623,7 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -718,7 +646,6 @@
       "label": "Container Run Options",
       "name": "DEFAULT_CONTAINER_RUN_OPTIONS",
       "required": false,
-      "sensitive": false,
       "type": "list"
     },
     "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
@@ -733,7 +660,6 @@
       "min_value": 0,
       "name": "DEFAULT_INVENTORY_UPDATE_TIMEOUT",
       "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -749,7 +675,6 @@
       "min_value": 0,
       "name": "DEFAULT_JOB_IDLE_TIMEOUT",
       "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -765,7 +690,6 @@
       "min_value": 0,
       "name": "DEFAULT_JOB_TIMEOUT",
       "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -781,7 +705,6 @@
       "min_value": 0,
       "name": "DEFAULT_PROJECT_UPDATE_TIMEOUT",
       "required": false,
-      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -797,7 +720,6 @@
       "min_value": 0,
       "name": "EVENT_STDOUT_MAX_BYTES_DISPLAY",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "GALAXY_IGNORE_CERTS": {
@@ -810,7 +732,6 @@
       "label": "Ignore Ansible Galaxy SSL Certificate Verification",
       "name": "GALAXY_IGNORE_CERTS",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "GALAXY_TASK_ENV": {
@@ -836,10 +757,7 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {
@@ -853,7 +771,6 @@
       "label": "Maximum number of forks per job",
       "name": "MAX_FORKS",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "MAX_WEBSOCKET_EVENT_RATE": {
@@ -868,7 +785,6 @@
       "min_value": 0,
       "name": "MAX_WEBSOCKET_EVENT_RATE",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "PROJECT_UPDATE_VVV": {
@@ -881,7 +797,6 @@
       "label": "Run Project Updates With Higher Verbosity",
       "name": "PROJECT_UPDATE_VVV",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "SCHEDULE_MAX_JOBS": {
@@ -896,7 +811,6 @@
       "min_value": 1,
       "name": "SCHEDULE_MAX_JOBS",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "STDOUT_MAX_BYTES_DISPLAY": {
@@ -911,7 +825,6 @@
       "min_value": 0,
       "name": "STDOUT_MAX_BYTES_DISPLAY",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     }
   },

@@ -12,6 +12,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/iancoleman/strcase"
+	"gopkg.in/yaml.v3"
 )
 
 func init() {
@@ -319,5 +320,13 @@ var FuncMap = template.FuncMap{
 		}
 
 		return fmt.Sprintf("[]string{%s}", strings.Join(arr, ", "))
+	},
+	"toJson": func(in any) string {
+		payload, _ := json.MarshalIndent(in, "", "  ")
+		return string(payload)
+	},
+	"toYaml": func(in any) string {
+		payload, _ := yaml.Marshal(in)
+		return string(payload)
 	},
 }

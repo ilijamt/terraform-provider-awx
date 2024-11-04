@@ -102,79 +102,80 @@ func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBody
 	return
 }
 
-func (o *settingsAuthSamlTerraformModel) setSamlAutoCreateObjects(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSamlAutoCreateObjects(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SAML_AUTO_CREATE_OBJECTS, data)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlCallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlEnabledIdps(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlEnabledIdps(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ENABLED_IDPS, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlExtraData(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlExtraData(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_SAML_EXTRA_DATA, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlMetadataUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlMetadataUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_METADATA_URL, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrgInfo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrgInfo(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORG_INFO, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSecurityConfig(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSecurityConfig(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SECURITY_CONFIG, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpEntityId(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpEntityId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_ENTITY_ID, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpExtra(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpExtra(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SP_EXTRA, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY, data, true)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPublicCert(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPublicCert(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT, data, true)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSupportContact(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSupportContact(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamAttr(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_ATTR, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTechnicalContact(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTechnicalContact(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthSamlTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

@@ -51,39 +51,40 @@ func (o *tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
 	return
 }
 
-func (o *tokensTerraformModel) setApplication(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setApplication(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Application, data)
 }
 
-func (o *tokensTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *tokensTerraformModel) setExpires(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setExpires(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Expires, data, false)
 }
 
-func (o *tokensTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *tokensTerraformModel) setRefreshToken(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setRefreshToken(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.RefreshToken, data, false)
 }
 
-func (o *tokensTerraformModel) setScope(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setScope(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Scope, data, false)
 }
 
-func (o *tokensTerraformModel) setToken(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setToken(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Token, data, false)
 }
 
-func (o *tokensTerraformModel) setUser(data any) (d diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) setUser(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.User, data)
 }
 
-func (o *tokensTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *tokensTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

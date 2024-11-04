@@ -61,6 +61,8 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
                 Description: {{ escape_quotes (default .help_text .label) }},
 {{- if (hasKey . "sensitive") }}
                 Sensitive:   {{ .sensitive }},
+{{- else }}
+                Sensitive:   false,
 {{- end }}
 {{- if awx_is_property_searchable $.Config.SearchFields $key }}
                 Optional:    true,
@@ -97,7 +99,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ .sensitive }},
+                Sensitive:   {{ or .sensitive false }},
                 Optional:    true,
                 Computed:    true,
             },

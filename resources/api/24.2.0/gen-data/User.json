@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +31,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -86,8 +85,6 @@
       "hidden": false,
       "label": "Email address",
       "name": "email",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "external_account": {
@@ -97,10 +94,6 @@
       "hidden": false,
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {
@@ -109,8 +102,6 @@
       "hidden": false,
       "label": "First name",
       "name": "first_name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -120,8 +111,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "is_superuser": {
@@ -131,8 +120,6 @@
       "hidden": false,
       "label": "Superuser status",
       "name": "is_superuser",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "is_system_auditor": {
@@ -141,8 +128,6 @@
       "hidden": false,
       "label": "Is system auditor",
       "name": "is_system_auditor",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "last_login": {
@@ -151,8 +136,6 @@
       "hidden": false,
       "label": "Last login",
       "name": "last_login",
-      "required": false,
-      "sensitive": false,
       "type": "datetime"
     },
     "last_name": {
@@ -161,8 +144,6 @@
       "hidden": false,
       "label": "Last name",
       "name": "last_name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "ldap_dn": {
@@ -171,8 +152,6 @@
       "hidden": false,
       "label": "Ldap dn",
       "name": "ldap_dn",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "password": {
@@ -182,10 +161,8 @@
       "hidden": false,
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": true,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {
@@ -195,8 +172,6 @@
       "hidden": false,
       "label": "Username",
       "name": "username",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     }
   },
@@ -222,7 +197,6 @@
       "max_length": 254,
       "name": "email",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "first_name": {
@@ -233,7 +207,6 @@
       "max_length": 150,
       "name": "first_name",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "is_superuser": {
@@ -245,7 +218,6 @@
       "label": "Superuser status",
       "name": "is_superuser",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "is_system_auditor": {
@@ -256,7 +228,6 @@
       "label": "Is system auditor",
       "name": "is_system_auditor",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "last_name": {
@@ -267,7 +238,6 @@
       "max_length": 150,
       "name": "last_name",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "password": {
@@ -279,10 +249,8 @@
       "hidden": false,
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {
@@ -294,7 +262,6 @@
       "max_length": 150,
       "name": "username",
       "required": true,
-      "sensitive": false,
       "type": "string"
     }
   },

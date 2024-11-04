@@ -10,7 +10,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -50,8 +49,6 @@
       "hidden": false,
       "label": "OIDC Key",
       "name": "SOCIAL_AUTH_OIDC_KEY",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT": {
@@ -63,8 +60,6 @@
       "hidden": false,
       "label": "OIDC Provider URL",
       "name": "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_SECRET": {
@@ -76,10 +71,7 @@
       "hidden": false,
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
-      "post_wrap": false,
-      "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -91,8 +83,6 @@
       "hidden": false,
       "label": "Verify OIDC Provider Certificate",
       "name": "SOCIAL_AUTH_OIDC_VERIFY_SSL",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },
@@ -113,7 +103,6 @@
       "label": "OIDC Key",
       "name": "SOCIAL_AUTH_OIDC_KEY",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT": {
@@ -127,7 +116,6 @@
       "label": "OIDC Provider URL",
       "name": "SOCIAL_AUTH_OIDC_OIDC_ENDPOINT",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_SECRET": {
@@ -140,10 +128,8 @@
       "hidden": false,
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -156,7 +142,6 @@
       "label": "Verify OIDC Provider Certificate",
       "name": "SOCIAL_AUTH_OIDC_VERIFY_SSL",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },

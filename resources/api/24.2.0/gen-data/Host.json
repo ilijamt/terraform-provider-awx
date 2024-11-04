@@ -9,8 +9,6 @@
       "variables": {
         "type": "",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "{}",
@@ -23,7 +21,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -85,8 +84,6 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "enabled": {
@@ -96,8 +93,6 @@
       "hidden": false,
       "label": "Enabled",
       "name": "enabled",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "id": {
@@ -107,8 +102,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "instance_id": {
@@ -118,8 +111,6 @@
       "hidden": false,
       "label": "Instance id",
       "name": "instance_id",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "inventory": {
@@ -128,8 +119,6 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "last_job": {
@@ -138,8 +127,6 @@
       "hidden": false,
       "label": "Last job",
       "name": "last_job",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "last_job_host_summary": {
@@ -148,8 +135,6 @@
       "hidden": false,
       "label": "Last job host summary",
       "name": "last_job_host_summary",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "name": {
@@ -159,8 +144,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "variables": {
@@ -172,10 +155,7 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
-      "post_wrap": true,
       "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
@@ -201,7 +181,6 @@
       "label": "Description",
       "name": "description",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "enabled": {
@@ -213,7 +192,6 @@
       "label": "Enabled",
       "name": "enabled",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "instance_id": {
@@ -227,7 +205,6 @@
       "max_length": 1024,
       "name": "instance_id",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "inventory": {
@@ -237,7 +214,6 @@
       "label": "Inventory",
       "name": "inventory",
       "required": true,
-      "sensitive": false,
       "type": "id"
     },
     "name": {
@@ -249,7 +225,6 @@
       "max_length": 512,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "variables": {
@@ -261,10 +236,7 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
-      "post_wrap": true,
       "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },

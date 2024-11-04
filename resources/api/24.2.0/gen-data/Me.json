@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +47,6 @@
       "hidden": false,
       "label": "Email address",
       "name": "email",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "external_account": {
@@ -60,10 +56,6 @@
       "hidden": false,
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {
@@ -72,8 +64,6 @@
       "hidden": false,
       "label": "First name",
       "name": "first_name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -83,8 +73,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "is_superuser": {
@@ -94,8 +82,6 @@
       "hidden": false,
       "label": "Superuser status",
       "name": "is_superuser",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "is_system_auditor": {
@@ -104,8 +90,6 @@
       "hidden": false,
       "label": "Is system auditor",
       "name": "is_system_auditor",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "last_login": {
@@ -114,8 +98,6 @@
       "hidden": false,
       "label": "Last login",
       "name": "last_login",
-      "required": false,
-      "sensitive": false,
       "type": "datetime"
     },
     "last_name": {
@@ -124,8 +106,6 @@
       "hidden": false,
       "label": "Last name",
       "name": "last_name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "ldap_dn": {
@@ -134,8 +114,6 @@
       "hidden": false,
       "label": "Ldap dn",
       "name": "ldap_dn",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "username": {
@@ -145,8 +123,6 @@
       "hidden": false,
       "label": "Username",
       "name": "username",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     }
   },

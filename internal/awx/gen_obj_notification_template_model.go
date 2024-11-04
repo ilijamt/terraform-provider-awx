@@ -52,35 +52,36 @@ func (o *notificationTemplateTerraformModel) BodyRequest() (req notificationTemp
 	return
 }
 
-func (o *notificationTemplateTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *notificationTemplateTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *notificationTemplateTerraformModel) setMessages(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setMessages(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Messages, data, false)
 }
 
-func (o *notificationTemplateTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *notificationTemplateTerraformModel) setNotificationConfiguration(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setNotificationConfiguration(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.NotificationConfiguration, data, false)
 }
 
-func (o *notificationTemplateTerraformModel) setNotificationType(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setNotificationType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.NotificationType, data, false)
 }
 
-func (o *notificationTemplateTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *notificationTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *notificationTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

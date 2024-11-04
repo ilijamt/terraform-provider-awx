@@ -70,15 +70,15 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ .sensitive }},
-                Required:    {{ .required }},
-                Optional:    {{ not .required }},
+                Sensitive:   {{ or .sensitive false }},
+                Required:    {{ or .required false }},
+                Optional:    {{ not (or .required false)}},
                 Computed:    {{ .computed }},
 {{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
                 Default:     {{ .default_value }},
 {{- end }}
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-{{- if not .required }}
+{{- if not (or .required false) }}
                     {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
                 },
@@ -112,15 +112,15 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.{{ camelCase .element_type }}Type,
 {{- end }}
                 Description: {{ escape_quotes (default .help_text .label) }},
-                Sensitive:   {{ .sensitive }},
-                Required:    {{ .required }},
-                Optional:    {{ not .required }},
+                Sensitive:   {{ or .sensitive false }},
+                Required:    {{ or .required false }},
+                Optional:    {{ not (or .required false) }},
                 Computed:    {{ .computed }},
 {{- if and (hasKey . "default") (hasKey . "default_value") (ne .default nil) }}
                 Default:     {{ .default_value }},
 {{- end }}
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
-{{- if not .required }}
+{{- if not (or .required false) }}
                     {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 {{- end }}
 				},
@@ -158,7 +158,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
                 Required:    false,
                 Optional:    false,
                 Computed:    true,
-                Sensitive:   {{ .sensitive }},
+                Sensitive:   {{ or .sensitive false }},
 		        PlanModifiers: []planmodifier.{{ tf_attribute_type . }} {
                     {{ tf_attribute_type . | lowerCase }}planmodifier.UseStateForUnknown(),
 				},

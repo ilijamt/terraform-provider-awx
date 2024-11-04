@@ -44,27 +44,28 @@ func (o *settingsAuthGithubTerraformModel) BodyRequest() (req settingsAuthGithub
 	return
 }
 
-func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubCallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_KEY, data, false)
 }
 
-func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubSecret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubSecret(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_SECRET, data, false)
 }
 
-func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) setSocialAuthGithubTeamMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthGithubTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

@@ -11,7 +11,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -24,7 +25,8 @@
             "url_escape_value": true
           },
           {
-            "name": "organization"
+            "name": "organization",
+            "url_escape_value": false
           }
         ],
         "multiple_results": true
@@ -61,8 +63,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -72,8 +72,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -83,8 +81,6 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     }
   },
@@ -103,7 +99,6 @@
       "max_length": 512,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -114,7 +109,6 @@
       "label": "Organization",
       "name": "organization",
       "required": true,
-      "sensitive": false,
       "type": "id"
     }
   },

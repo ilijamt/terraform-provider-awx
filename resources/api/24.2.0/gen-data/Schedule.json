@@ -9,8 +9,6 @@
       "timezone": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "until": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +29,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       }
@@ -69,8 +66,6 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "diff_mode": {
@@ -79,8 +74,6 @@
       "hidden": false,
       "label": "Diff mode",
       "name": "diff_mode",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "dtend": {
@@ -90,8 +83,6 @@
       "hidden": false,
       "label": "Dtend",
       "name": "dtend",
-      "required": false,
-      "sensitive": false,
       "type": "datetime"
     },
     "dtstart": {
@@ -101,8 +92,6 @@
       "hidden": false,
       "label": "Dtstart",
       "name": "dtstart",
-      "required": false,
-      "sensitive": false,
       "type": "datetime"
     },
     "enabled": {
@@ -112,8 +101,6 @@
       "hidden": false,
       "label": "Enabled",
       "name": "enabled",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "execution_environment": {
@@ -123,8 +110,6 @@
       "hidden": false,
       "label": "Execution environment",
       "name": "execution_environment",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "extra_data": {
@@ -133,8 +118,6 @@
       "hidden": false,
       "label": "Extra data",
       "name": "extra_data",
-      "required": false,
-      "sensitive": false,
       "type": "json"
     },
     "forks": {
@@ -144,8 +127,6 @@
       "label": "Forks",
       "min_value": 0,
       "name": "forks",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "id": {
@@ -155,8 +136,6 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -166,8 +145,6 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "job_slice_count": {
@@ -177,8 +154,6 @@
       "label": "Job slice count",
       "min_value": 0,
       "name": "job_slice_count",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "job_tags": {
@@ -187,8 +162,6 @@
       "hidden": false,
       "label": "Job tags",
       "name": "job_tags",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "job_type": {
@@ -215,8 +188,6 @@
       "hidden": false,
       "label": "Job type",
       "name": "job_type",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -225,8 +196,6 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -236,8 +205,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "next_run": {
@@ -247,8 +214,6 @@
       "hidden": false,
       "label": "Next run",
       "name": "next_run",
-      "required": false,
-      "sensitive": false,
       "type": "datetime"
     },
     "rrule": {
@@ -258,8 +223,6 @@
       "hidden": false,
       "label": "Rrule",
       "name": "rrule",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "scm_branch": {
@@ -268,8 +231,6 @@
       "hidden": false,
       "label": "Scm branch",
       "name": "scm_branch",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -278,8 +239,6 @@
       "hidden": false,
       "label": "Skip tags",
       "name": "skip_tags",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "timeout": {
@@ -288,8 +247,6 @@
       "hidden": false,
       "label": "Timeout",
       "name": "timeout",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "timezone": {
@@ -299,10 +256,6 @@
       "hidden": false,
       "label": "Timezone",
       "name": "timezone",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "unified_job_template": {
@@ -311,8 +264,6 @@
       "hidden": false,
       "label": "Unified job template",
       "name": "unified_job_template",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "until": {
@@ -322,10 +273,6 @@
       "hidden": false,
       "label": "Until",
       "name": "until",
-      "post_wrap": false,
-      "required": false,
-      "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "verbosity": {
@@ -364,8 +311,6 @@
       "hidden": false,
       "label": "Verbosity",
       "name": "verbosity",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     }
   },
@@ -406,7 +351,6 @@
       "label": "Description",
       "name": "description",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "diff_mode": {
@@ -417,7 +361,6 @@
       "label": "Diff mode",
       "name": "diff_mode",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "enabled": {
@@ -429,7 +372,6 @@
       "label": "Enabled",
       "name": "enabled",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     },
     "execution_environment": {
@@ -440,7 +382,6 @@
       "label": "Execution environment",
       "name": "execution_environment",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "extra_data": {
@@ -452,7 +393,6 @@
       "label": "Extra data",
       "name": "extra_data",
       "required": false,
-      "sensitive": false,
       "type": "json"
     },
     "forks": {
@@ -464,7 +404,6 @@
       "min_value": 0,
       "name": "forks",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -475,7 +414,6 @@
       "label": "Inventory",
       "name": "inventory",
       "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "job_slice_count": {
@@ -487,7 +425,6 @@
       "min_value": 0,
       "name": "job_slice_count",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "job_tags": {
@@ -498,7 +435,6 @@
       "label": "Job tags",
       "name": "job_tags",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "job_type": {
@@ -527,7 +463,6 @@
       "label": "Job type",
       "name": "job_type",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -538,7 +473,6 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -550,7 +484,6 @@
       "max_length": 512,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "rrule": {
@@ -561,7 +494,6 @@
       "label": "Rrule",
       "name": "rrule",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "scm_branch": {
@@ -572,7 +504,6 @@
       "label": "Scm branch",
       "name": "scm_branch",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -583,7 +514,6 @@
       "label": "Skip tags",
       "name": "skip_tags",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "timeout": {
@@ -594,7 +524,6 @@
       "label": "Timeout",
       "name": "timeout",
       "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "unified_job_template": {
@@ -604,7 +533,6 @@
       "label": "Unified job template",
       "name": "unified_job_template",
       "required": true,
-      "sensitive": false,
       "type": "id"
     },
     "verbosity": {
@@ -645,7 +573,6 @@
       "label": "Verbosity",
       "name": "verbosity",
       "required": false,
-      "sensitive": false,
       "type": "choice"
     }
   },

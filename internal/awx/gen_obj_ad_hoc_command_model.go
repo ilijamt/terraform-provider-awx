@@ -115,111 +115,112 @@ func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestM
 	return
 }
 
-func (o *adHocCommandTerraformModel) setBecomeEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setBecomeEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
 }
 
-func (o *adHocCommandTerraformModel) setCanceledOn(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setCanceledOn(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.CanceledOn, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setControllerNode(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setControllerNode(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ControllerNode, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
-func (o *adHocCommandTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
-func (o *adHocCommandTerraformModel) setElapsed(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setElapsed(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetFloat64(&o.Elapsed, data)
 }
 
-func (o *adHocCommandTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
-func (o *adHocCommandTerraformModel) setExecutionNode(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setExecutionNode(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ExecutionNode, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setFailed(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setFailed(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Failed, data)
 }
 
-func (o *adHocCommandTerraformModel) setFinished(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setFinished(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Finished, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
-func (o *adHocCommandTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *adHocCommandTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *adHocCommandTerraformModel) setJobExplanation(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setJobExplanation(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobExplanation, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setLaunchType(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setLaunchType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LaunchType, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setLaunchedBy(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setLaunchedBy(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LaunchedBy, data)
 }
 
-func (o *adHocCommandTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setModuleArgs(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setModuleArgs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ModuleArgs, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setModuleName(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setModuleName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ModuleName, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setStarted(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setStarted(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Started, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setStatus(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setStatus(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Status, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *adHocCommandTerraformModel) setWorkUnitId(data any) (d diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) setWorkUnitId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.WorkUnitId, data, false)
 }
 
-func (o *adHocCommandTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *adHocCommandTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

@@ -10,7 +10,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -23,7 +22,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -36,7 +36,8 @@
             "url_escape_value": true
           },
           {
-            "name": "organization"
+            "name": "organization",
+            "url_escape_value": false
           }
         ],
         "multiple_results": true
@@ -83,8 +84,6 @@
       "hidden": false,
       "label": "Authorization Grant Type",
       "name": "authorization_grant_type",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "client_id": {
@@ -93,8 +92,6 @@
       "hidden": false,
       "label": "Client id",
       "name": "client_id",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "client_secret": {
@@ -104,10 +101,7 @@
       "hidden": false,
       "label": "Client Secret",
       "name": "client_secret",
-      "post_wrap": false,
-      "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "client_type": {
@@ -127,8 +121,6 @@
       "hidden": false,
       "label": "Client Type",
       "name": "client_type",
-      "required": false,
-      "sensitive": false,
       "type": "choice"
     },
     "description": {
@@ -138,8 +130,6 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -149,8 +139,6 @@
       "hidden": false,
       "label": "Id",
       "name": "id",
-      "required": false,
-      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -160,8 +148,6 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -171,8 +157,6 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
-      "required": false,
-      "sensitive": false,
       "type": "id"
     },
     "redirect_uris": {
@@ -182,8 +166,6 @@
       "hidden": false,
       "label": "Redirect URIs",
       "name": "redirect_uris",
-      "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_authorization": {
@@ -193,8 +175,6 @@
       "hidden": false,
       "label": "Skip Authorization",
       "name": "skip_authorization",
-      "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },
@@ -229,7 +209,6 @@
       "label": "Authorization Grant Type",
       "name": "authorization_grant_type",
       "required": true,
-      "sensitive": false,
       "type": "choice"
     },
     "client_type": {
@@ -250,7 +229,6 @@
       "label": "Client Type",
       "name": "client_type",
       "required": true,
-      "sensitive": false,
       "type": "choice"
     },
     "description": {
@@ -263,7 +241,6 @@
       "label": "Description",
       "name": "description",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -275,7 +252,6 @@
       "max_length": 255,
       "name": "name",
       "required": true,
-      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -286,7 +262,6 @@
       "label": "Organization",
       "name": "organization",
       "required": true,
-      "sensitive": false,
       "type": "id"
     },
     "redirect_uris": {
@@ -297,7 +272,6 @@
       "label": "Redirect URIs",
       "name": "redirect_uris",
       "required": false,
-      "sensitive": false,
       "type": "string"
     },
     "skip_authorization": {
@@ -309,7 +283,6 @@
       "label": "Skip Authorization",
       "name": "skip_authorization",
       "required": false,
-      "sensitive": false,
       "type": "boolean"
     }
   },
