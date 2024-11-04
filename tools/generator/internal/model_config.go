@@ -148,8 +148,8 @@ func (p *Property) setRequired(values map[string]any, override PropertyOverride)
 	}
 	if val, ok := values["required"].(bool); ok {
 		p.IsRequired = val
-		values["required"] = val
 	}
+	values["required"] = p.IsRequired
 }
 
 func (p *Property) setType(values map[string]any, override PropertyOverride) {
@@ -168,6 +168,7 @@ func (p *Property) setSensitive(values map[string]any, override PropertyOverride
 	if val, ok := values["sensitive"].(bool); ok {
 		p.IsSensitive = val
 	}
+	values["sensitive"] = p.IsSensitive
 }
 
 func (p *Property) setLabel(values map[string]any, override PropertyOverride) {

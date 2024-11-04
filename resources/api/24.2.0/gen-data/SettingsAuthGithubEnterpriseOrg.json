@@ -65,6 +65,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization API URL",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL": {
@@ -76,6 +78,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization OAuth2 Callback URL",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY": {
@@ -87,6 +91,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization OAuth2 Key",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME": {
@@ -98,6 +104,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization Name",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
@@ -120,6 +128,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
@@ -131,6 +141,7 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET",
+      "required": false,
       "sensitive": true,
       "type": "string"
     },
@@ -154,6 +165,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL": {
@@ -165,6 +178,8 @@
       "hidden": false,
       "label": "GitHub Enterprise Organization URL",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     }
   },
@@ -190,6 +205,7 @@
       "label": "GitHub Enterprise Organization API URL",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY": {
@@ -203,6 +219,7 @@
       "label": "GitHub Enterprise Organization OAuth2 Key",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME": {
@@ -216,6 +233,7 @@
       "label": "GitHub Enterprise Organization Name",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
@@ -264,6 +282,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
@@ -317,6 +336,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL": {
@@ -330,6 +350,7 @@
       "label": "GitHub Enterprise Organization URL",
       "name": "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL",
       "required": false,
+      "sensitive": false,
       "type": "string"
     }
   },

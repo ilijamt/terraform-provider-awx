@@ -38,6 +38,8 @@
       "hidden": false,
       "label": "Log Format For API 4XX Errors",
       "name": "API_400_ERROR_LOG_FORMAT",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
@@ -50,6 +52,8 @@
       "label": "Maximum disk persistence for rsyslogd action queuing (in GB)",
       "min_value": 1,
       "name": "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
@@ -62,6 +66,8 @@
       "label": "Maximum number of messages that can be stored in the log action queue",
       "min_value": 1,
       "name": "LOG_AGGREGATOR_ACTION_QUEUE_SIZE",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_ENABLED": {
@@ -73,6 +79,8 @@
       "hidden": false,
       "label": "Enable External Logging",
       "name": "LOG_AGGREGATOR_ENABLED",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_HOST": {
@@ -84,6 +92,8 @@
       "hidden": false,
       "label": "Logging Aggregator",
       "name": "LOG_AGGREGATOR_HOST",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
@@ -95,6 +105,8 @@
       "hidden": false,
       "label": "Log System Tracking Facts Individually",
       "name": "LOG_AGGREGATOR_INDIVIDUAL_FACTS",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_LEVEL": {
@@ -128,6 +140,8 @@
       "hidden": false,
       "label": "Logging Aggregator Level Threshold",
       "name": "LOG_AGGREGATOR_LEVEL",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_LOGGERS": {
@@ -144,6 +158,8 @@
       "hidden": false,
       "label": "Loggers Sending Data to Log Aggregator Form",
       "name": "LOG_AGGREGATOR_LOGGERS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
@@ -155,6 +171,8 @@
       "hidden": false,
       "label": "File system location for rsyslogd disk persistence",
       "name": "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_PASSWORD": {
@@ -166,6 +184,8 @@
       "hidden": false,
       "label": "Logging Aggregator Password/Token",
       "name": "LOG_AGGREGATOR_PASSWORD",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_PORT": {
@@ -177,6 +197,8 @@
       "hidden": false,
       "label": "Logging Aggregator Port",
       "name": "LOG_AGGREGATOR_PORT",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_PROTOCOL": {
@@ -202,6 +224,8 @@
       "hidden": false,
       "label": "Logging Aggregator Protocol",
       "name": "LOG_AGGREGATOR_PROTOCOL",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
@@ -213,6 +237,8 @@
       "hidden": false,
       "label": "Enable rsyslogd debugging",
       "name": "LOG_AGGREGATOR_RSYSLOGD_DEBUG",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
@@ -224,6 +250,8 @@
       "hidden": false,
       "label": "TCP Connection Timeout",
       "name": "LOG_AGGREGATOR_TCP_TIMEOUT",
+      "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -236,6 +264,8 @@
       "hidden": false,
       "label": "Cluster-wide unique identifier.",
       "name": "LOG_AGGREGATOR_TOWER_UUID",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_TYPE": {
@@ -273,6 +303,8 @@
       "hidden": false,
       "label": "Logging Aggregator Type",
       "name": "LOG_AGGREGATOR_TYPE",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_USERNAME": {
@@ -284,6 +316,8 @@
       "hidden": false,
       "label": "Logging Aggregator Username",
       "name": "LOG_AGGREGATOR_USERNAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
@@ -295,6 +329,8 @@
       "hidden": false,
       "label": "Enable/disable HTTPS certificate verification",
       "name": "LOG_AGGREGATOR_VERIFY_CERT",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     }
   },
@@ -330,6 +366,7 @@
       "label": "Log Format For API 4XX Errors",
       "name": "API_400_ERROR_LOG_FORMAT",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
@@ -344,6 +381,7 @@
       "min_value": 1,
       "name": "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
@@ -358,6 +396,7 @@
       "min_value": 1,
       "name": "LOG_AGGREGATOR_ACTION_QUEUE_SIZE",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_ENABLED": {
@@ -370,6 +409,7 @@
       "label": "Enable External Logging",
       "name": "LOG_AGGREGATOR_ENABLED",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_HOST": {
@@ -382,6 +422,7 @@
       "label": "Logging Aggregator",
       "name": "LOG_AGGREGATOR_HOST",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
@@ -394,6 +435,7 @@
       "label": "Log System Tracking Facts Individually",
       "name": "LOG_AGGREGATOR_INDIVIDUAL_FACTS",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_LEVEL": {
@@ -429,6 +471,7 @@
       "label": "Logging Aggregator Level Threshold",
       "name": "LOG_AGGREGATOR_LEVEL",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_LOGGERS": {
@@ -454,6 +497,7 @@
       "label": "Loggers Sending Data to Log Aggregator Form",
       "name": "LOG_AGGREGATOR_LOGGERS",
       "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
@@ -467,6 +511,7 @@
       "label": "File system location for rsyslogd disk persistence",
       "name": "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_PASSWORD": {
@@ -480,6 +525,7 @@
       "label": "Logging Aggregator Password/Token",
       "name": "LOG_AGGREGATOR_PASSWORD",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_PORT": {
@@ -492,6 +538,7 @@
       "label": "Logging Aggregator Port",
       "name": "LOG_AGGREGATOR_PORT",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOG_AGGREGATOR_PROTOCOL": {
@@ -519,6 +566,7 @@
       "label": "Logging Aggregator Protocol",
       "name": "LOG_AGGREGATOR_PROTOCOL",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
@@ -531,6 +579,7 @@
       "label": "Enable rsyslogd debugging",
       "name": "LOG_AGGREGATOR_RSYSLOGD_DEBUG",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
@@ -544,6 +593,7 @@
       "label": "TCP Connection Timeout",
       "name": "LOG_AGGREGATOR_TCP_TIMEOUT",
       "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -558,6 +608,7 @@
       "label": "Cluster-wide unique identifier.",
       "name": "LOG_AGGREGATOR_TOWER_UUID",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_TYPE": {
@@ -596,6 +647,7 @@
       "label": "Logging Aggregator Type",
       "name": "LOG_AGGREGATOR_TYPE",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "LOG_AGGREGATOR_USERNAME": {
@@ -609,6 +661,7 @@
       "label": "Logging Aggregator Username",
       "name": "LOG_AGGREGATOR_USERNAME",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
@@ -621,6 +674,7 @@
       "label": "Enable/disable HTTPS certificate verification",
       "name": "LOG_AGGREGATOR_VERIFY_CERT",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     }
   },

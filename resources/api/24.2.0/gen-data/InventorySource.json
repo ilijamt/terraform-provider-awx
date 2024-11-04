@@ -76,6 +76,8 @@
       "label": "Credential",
       "min_value": 1,
       "name": "credential",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "description": {
@@ -85,6 +87,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "enabled_value": {
@@ -94,6 +98,8 @@
       "hidden": false,
       "label": "Enabled value",
       "name": "enabled_value",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "enabled_var": {
@@ -103,6 +109,8 @@
       "hidden": false,
       "label": "Enabled var",
       "name": "enabled_var",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "execution_environment": {
@@ -112,6 +120,8 @@
       "hidden": false,
       "label": "Execution environment",
       "name": "execution_environment",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "host_filter": {
@@ -121,6 +131,8 @@
       "hidden": false,
       "label": "Host filter",
       "name": "host_filter",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -130,6 +142,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -138,6 +152,8 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "limit": {
@@ -147,6 +163,8 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -156,6 +174,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "overwrite": {
@@ -165,6 +185,8 @@
       "hidden": false,
       "label": "Overwrite",
       "name": "overwrite",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "overwrite_vars": {
@@ -174,6 +196,8 @@
       "hidden": false,
       "label": "Overwrite vars",
       "name": "overwrite_vars",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_branch": {
@@ -183,6 +207,8 @@
       "hidden": false,
       "label": "Scm branch",
       "name": "scm_branch",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "source": {
@@ -245,6 +271,8 @@
       "hidden": false,
       "label": "Source",
       "name": "source",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "source_path": {
@@ -253,6 +281,8 @@
       "hidden": false,
       "label": "Source path",
       "name": "source_path",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "source_project": {
@@ -262,6 +292,8 @@
       "hidden": false,
       "label": "Source project",
       "name": "source_project",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "source_vars": {
@@ -271,6 +303,8 @@
       "hidden": false,
       "label": "Source vars",
       "name": "source_vars",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "timeout": {
@@ -282,6 +316,8 @@
       "max_value": 2147483647,
       "min_value": -2147483648,
       "name": "timeout",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "update_cache_timeout": {
@@ -292,6 +328,8 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "update_cache_timeout",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "update_on_launch": {
@@ -300,6 +338,8 @@
       "hidden": false,
       "label": "Update on launch",
       "name": "update_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "verbosity": {
@@ -322,6 +362,8 @@
       "hidden": false,
       "label": "Verbosity",
       "name": "verbosity",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },
@@ -359,6 +401,7 @@
       "min_value": 1,
       "name": "credential",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "description": {
@@ -371,6 +414,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "enabled_value": {
@@ -383,6 +427,7 @@
       "label": "Enabled value",
       "name": "enabled_value",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "enabled_var": {
@@ -395,6 +440,7 @@
       "label": "Enabled var",
       "name": "enabled_var",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "execution_environment": {
@@ -405,6 +451,7 @@
       "label": "Execution environment",
       "name": "execution_environment",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "host_filter": {
@@ -417,6 +464,7 @@
       "label": "Host filter",
       "name": "host_filter",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "inventory": {
@@ -426,6 +474,7 @@
       "label": "Inventory",
       "name": "inventory",
       "required": true,
+      "sensitive": false,
       "type": "id"
     },
     "limit": {
@@ -438,6 +487,7 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -449,6 +499,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "overwrite": {
@@ -460,6 +511,7 @@
       "label": "Overwrite",
       "name": "overwrite",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "overwrite_vars": {
@@ -471,6 +523,7 @@
       "label": "Overwrite vars",
       "name": "overwrite_vars",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_branch": {
@@ -484,6 +537,7 @@
       "max_length": 1024,
       "name": "scm_branch",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "source": {
@@ -548,6 +602,7 @@
       "label": "Source",
       "name": "source",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "source_path": {
@@ -560,6 +615,7 @@
       "max_length": 1024,
       "name": "source_path",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "source_project": {
@@ -570,6 +626,7 @@
       "label": "Source project",
       "name": "source_project",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "source_vars": {
@@ -582,6 +639,7 @@
       "label": "Source vars",
       "name": "source_vars",
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "timeout": {
@@ -596,6 +654,7 @@
       "min_value": -2147483648,
       "name": "timeout",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "update_cache_timeout": {
@@ -609,6 +668,7 @@
       "min_value": 0,
       "name": "update_cache_timeout",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "update_on_launch": {
@@ -619,6 +679,7 @@
       "label": "Update on launch",
       "name": "update_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "verbosity": {
@@ -644,6 +705,7 @@
       "label": "Verbosity",
       "name": "verbosity",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },

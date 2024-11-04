@@ -66,6 +66,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -75,6 +77,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -84,6 +88,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -92,6 +98,8 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     }
   },
@@ -112,6 +120,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -123,6 +132,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -132,6 +142,7 @@
       "label": "Organization",
       "name": "organization",
       "required": true,
+      "sensitive": false,
       "type": "id"
     }
   },

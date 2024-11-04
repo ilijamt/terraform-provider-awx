@@ -76,6 +76,8 @@
       "hidden": false,
       "label": "Become enabled",
       "name": "become_enabled",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "canceled_on": {
@@ -85,6 +87,8 @@
       "hidden": false,
       "label": "Canceled on",
       "name": "canceled_on",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "controller_node": {
@@ -94,6 +98,8 @@
       "hidden": false,
       "label": "Controller node",
       "name": "controller_node",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "credential": {
@@ -102,6 +108,8 @@
       "hidden": false,
       "label": "Credential",
       "name": "credential",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "diff_mode": {
@@ -110,6 +118,8 @@
       "hidden": false,
       "label": "Diff mode",
       "name": "diff_mode",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "elapsed": {
@@ -119,6 +129,8 @@
       "hidden": false,
       "label": "Elapsed",
       "name": "elapsed",
+      "required": false,
+      "sensitive": false,
       "type": "decimal"
     },
     "execution_environment": {
@@ -128,6 +140,8 @@
       "hidden": false,
       "label": "Execution environment",
       "name": "execution_environment",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "execution_node": {
@@ -137,6 +151,8 @@
       "hidden": false,
       "label": "Execution node",
       "name": "execution_node",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "extra_vars": {
@@ -145,6 +161,8 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "failed": {
@@ -153,6 +171,8 @@
       "hidden": false,
       "label": "Failed",
       "name": "failed",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "finished": {
@@ -162,6 +182,8 @@
       "hidden": false,
       "label": "Finished",
       "name": "finished",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "forks": {
@@ -172,6 +194,8 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "forks",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "id": {
@@ -181,6 +205,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -189,6 +215,8 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "job_explanation": {
@@ -198,6 +226,8 @@
       "hidden": false,
       "label": "Job explanation",
       "name": "job_explanation",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "job_type": {
@@ -216,6 +246,8 @@
       "hidden": false,
       "label": "Job type",
       "name": "job_type",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "launch_type": {
@@ -262,6 +294,8 @@
       "hidden": false,
       "label": "Launch type",
       "name": "launch_type",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "launched_by": {
@@ -270,6 +304,8 @@
       "hidden": false,
       "label": "Launched by",
       "name": "launched_by",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "limit": {
@@ -278,6 +314,8 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "module_args": {
@@ -286,6 +324,8 @@
       "hidden": false,
       "label": "Module args",
       "name": "module_args",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "module_name": {
@@ -372,6 +412,8 @@
       "hidden": false,
       "label": "Module name",
       "name": "module_name",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "name": {
@@ -381,6 +423,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "started": {
@@ -390,6 +434,8 @@
       "hidden": false,
       "label": "Started",
       "name": "started",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "status": {
@@ -432,6 +478,8 @@
       "hidden": false,
       "label": "Status",
       "name": "status",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "verbosity": {
@@ -466,6 +514,8 @@
       "hidden": false,
       "label": "Verbosity",
       "name": "verbosity",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "work_unit_id": {
@@ -475,6 +525,8 @@
       "hidden": false,
       "label": "Work unit id",
       "name": "work_unit_id",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     }
   },
@@ -515,6 +567,7 @@
       "label": "Become enabled",
       "name": "become_enabled",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "credential": {
@@ -524,6 +577,7 @@
       "label": "Credential",
       "name": "credential",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "diff_mode": {
@@ -534,6 +588,7 @@
       "label": "Diff mode",
       "name": "diff_mode",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "execution_environment": {
@@ -544,6 +599,7 @@
       "label": "Execution environment",
       "name": "execution_environment",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "extra_vars": {
@@ -555,6 +611,7 @@
       "label": "Extra vars",
       "name": "extra_vars",
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "forks": {
@@ -568,6 +625,7 @@
       "min_value": 0,
       "name": "forks",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -577,6 +635,7 @@
       "label": "Inventory",
       "name": "inventory",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "job_type": {
@@ -598,6 +657,7 @@
       "label": "Job type",
       "name": "job_type",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -609,6 +669,7 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "module_args": {
@@ -620,6 +681,7 @@
       "label": "Module args",
       "name": "module_args",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "module_name": {
@@ -709,6 +771,7 @@
       "label": "Module name",
       "name": "module_name",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "verbosity": {
@@ -746,6 +809,7 @@
       "label": "Verbosity",
       "name": "verbosity",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },

@@ -64,6 +64,8 @@
       "hidden": false,
       "label": "Allow anonymous users to poll metrics",
       "name": "ALLOW_METRICS_FOR_ANONYMOUS_USERS",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
@@ -75,6 +77,8 @@
       "hidden": false,
       "label": "Allow External Users to Create OAuth2 Tokens",
       "name": "ALLOW_OAUTH2_FOR_EXTERNAL_USERS",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "AUTHENTICATION_BACKENDS": {
@@ -91,6 +95,8 @@
       "hidden": false,
       "label": "Authentication Backends",
       "name": "AUTHENTICATION_BACKENDS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "AUTH_BASIC_ENABLED": {
@@ -102,6 +108,8 @@
       "hidden": false,
       "label": "Enable HTTP Basic Auth",
       "name": "AUTH_BASIC_ENABLED",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "DISABLE_LOCAL_AUTH": {
@@ -113,6 +121,8 @@
       "hidden": false,
       "label": "Disable the built-in authentication system",
       "name": "DISABLE_LOCAL_AUTH",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
@@ -125,6 +135,8 @@
       "label": "Minimum number of digit characters in local password",
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_DIGITS",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
@@ -137,6 +149,8 @@
       "label": "Minimum number of characters in local password",
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_LENGTH",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
@@ -149,6 +163,8 @@
       "label": "Minimum number of special characters in local password",
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_SPECIAL",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
@@ -161,6 +177,8 @@
       "label": "Minimum number of uppercase characters in local password",
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_UPPER",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOGIN_REDIRECT_OVERRIDE": {
@@ -172,6 +190,8 @@
       "hidden": false,
       "label": "Login redirect override URL",
       "name": "LOGIN_REDIRECT_OVERRIDE",
+      "required": false,
+      "sensitive": false,
       "type": "string",
       "warning_text": "Changing the redirect URL could impact the ability to login if local authentication is also disabled."
     },
@@ -190,6 +210,8 @@
       "hidden": false,
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
+      "required": false,
+      "sensitive": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -203,6 +225,8 @@
       "label": "Maximum number of simultaneous logged in sessions",
       "min_value": -1,
       "name": "SESSIONS_PER_USER",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "SESSION_COOKIE_AGE": {
@@ -216,6 +240,8 @@
       "max_value": 30000000000,
       "min_value": 60,
       "name": "SESSION_COOKIE_AGE",
+      "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -239,6 +265,8 @@
       "hidden": false,
       "label": "Social Auth Organization Map",
       "name": "SOCIAL_AUTH_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -261,6 +289,8 @@
       "hidden": false,
       "label": "Social Auth Team Map",
       "name": "SOCIAL_AUTH_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -272,6 +302,8 @@
       "hidden": false,
       "label": "Use Email address for usernames",
       "name": "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "SOCIAL_AUTH_USER_FIELDS": {
@@ -288,6 +320,8 @@
       "hidden": false,
       "label": "Social Auth User Fields",
       "name": "SOCIAL_AUTH_USER_FIELDS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     }
   },
@@ -321,6 +355,7 @@
       "label": "Allow anonymous users to poll metrics",
       "name": "ALLOW_METRICS_FOR_ANONYMOUS_USERS",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
@@ -333,6 +368,7 @@
       "label": "Allow External Users to Create OAuth2 Tokens",
       "name": "ALLOW_OAUTH2_FOR_EXTERNAL_USERS",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "AUTH_BASIC_ENABLED": {
@@ -345,6 +381,7 @@
       "label": "Enable HTTP Basic Auth",
       "name": "AUTH_BASIC_ENABLED",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "DISABLE_LOCAL_AUTH": {
@@ -357,6 +394,7 @@
       "label": "Disable the built-in authentication system",
       "name": "DISABLE_LOCAL_AUTH",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
@@ -371,6 +409,7 @@
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_DIGITS",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
@@ -385,6 +424,7 @@
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_LENGTH",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
@@ -399,6 +439,7 @@
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_SPECIAL",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
@@ -413,6 +454,7 @@
       "min_value": 0,
       "name": "LOCAL_PASSWORD_MIN_UPPER",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "LOGIN_REDIRECT_OVERRIDE": {
@@ -426,6 +468,7 @@
       "label": "Login redirect override URL",
       "name": "LOGIN_REDIRECT_OVERRIDE",
       "required": false,
+      "sensitive": false,
       "type": "string",
       "warning_text": "Changing the redirect URL could impact the ability to login if local authentication is also disabled."
     },
@@ -452,6 +495,7 @@
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
       "required": false,
+      "sensitive": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -467,6 +511,7 @@
       "min_value": -1,
       "name": "SESSIONS_PER_USER",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "SESSION_COOKIE_AGE": {
@@ -482,6 +527,7 @@
       "min_value": 60,
       "name": "SESSION_COOKIE_AGE",
       "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -531,6 +577,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -570,6 +617,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -582,6 +630,7 @@
       "label": "Use Email address for usernames",
       "name": "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "SOCIAL_AUTH_USER_FIELDS": {
@@ -605,6 +654,7 @@
         "email"
       ],
       "required": false,
+      "sensitive": false,
       "type": "list"
     }
   },

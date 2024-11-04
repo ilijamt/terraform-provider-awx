@@ -145,6 +145,8 @@
       "hidden": false,
       "label": "Automatically Create Organizations and Teams on SAML Login",
       "name": "SAML_AUTO_CREATE_OBJECTS",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "SOCIAL_AUTH_SAML_CALLBACK_URL": {
@@ -156,6 +158,8 @@
       "hidden": false,
       "label": "SAML Assertion Consumer Service (ACS) URL",
       "name": "SOCIAL_AUTH_SAML_CALLBACK_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
@@ -178,6 +182,8 @@
       "hidden": false,
       "label": "SAML Enabled Identity Providers",
       "name": "SOCIAL_AUTH_SAML_ENABLED_IDPS",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -194,6 +200,8 @@
       "hidden": false,
       "label": "SAML IDP to extra_data attribute mapping",
       "name": "SOCIAL_AUTH_SAML_EXTRA_DATA",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "SOCIAL_AUTH_SAML_METADATA_URL": {
@@ -205,6 +213,8 @@
       "hidden": false,
       "label": "SAML Service Provider Metadata URL",
       "name": "SOCIAL_AUTH_SAML_METADATA_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
@@ -221,6 +231,8 @@
       "hidden": false,
       "label": "SAML Organization Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -243,6 +255,8 @@
       "hidden": false,
       "label": "SAML Organization Map",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -265,6 +279,8 @@
       "hidden": false,
       "label": "SAML Service Provider Organization Info",
       "name": "SOCIAL_AUTH_SAML_ORG_INFO",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -281,6 +297,8 @@
       "hidden": false,
       "label": "SAML Security Config",
       "name": "SOCIAL_AUTH_SAML_SECURITY_CONFIG",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -292,6 +310,8 @@
       "hidden": false,
       "label": "SAML Service Provider Entity ID",
       "name": "SOCIAL_AUTH_SAML_SP_ENTITY_ID",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_EXTRA": {
@@ -308,6 +328,8 @@
       "hidden": false,
       "label": "SAML Service Provider extra configuration data",
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -319,6 +341,7 @@
       "hidden": false,
       "label": "SAML Service Provider Private Key",
       "name": "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY",
+      "required": false,
       "sensitive": true,
       "type": "string"
     },
@@ -331,6 +354,8 @@
       "hidden": false,
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -347,6 +372,8 @@
       "hidden": false,
       "label": "SAML Service Provider Support Contact",
       "name": "SOCIAL_AUTH_SAML_SUPPORT_CONTACT",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -363,6 +390,8 @@
       "hidden": false,
       "label": "SAML Team Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_TEAM_ATTR",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -385,6 +414,8 @@
       "hidden": false,
       "label": "SAML Team Map",
       "name": "SOCIAL_AUTH_SAML_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -401,6 +432,8 @@
       "hidden": false,
       "label": "SAML Service Provider Technical Contact",
       "name": "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -417,6 +450,8 @@
       "hidden": false,
       "label": "SAML User Flags Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },
@@ -451,6 +486,7 @@
       "label": "Automatically Create Organizations and Teams on SAML Login",
       "name": "SAML_AUTO_CREATE_OBJECTS",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
@@ -499,6 +535,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -532,6 +569,7 @@
         ]
       ],
       "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
@@ -560,6 +598,7 @@
         "saml_auditor_attr": "organization_auditor"
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -608,6 +647,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -641,6 +681,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -682,6 +723,7 @@
         "wantNameIdEncrypted": false
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -695,6 +737,7 @@
       "label": "SAML Service Provider Entity ID",
       "name": "SOCIAL_AUTH_SAML_SP_ENTITY_ID",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_EXTRA": {
@@ -715,6 +758,7 @@
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
       "placeholder": {},
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -742,6 +786,7 @@
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -766,6 +811,7 @@
         "givenName": "Support Contact"
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -816,6 +862,7 @@
         ]
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -855,6 +902,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -879,6 +927,7 @@
         "givenName": "Technical Contact"
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -941,6 +990,7 @@
         ]
       ],
       "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },

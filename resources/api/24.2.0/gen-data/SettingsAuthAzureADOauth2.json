@@ -65,6 +65,8 @@
       "hidden": false,
       "label": "Azure AD OAuth2 Callback URL",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_KEY": {
@@ -76,6 +78,8 @@
       "hidden": false,
       "label": "Azure AD OAuth2 Key",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_KEY",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
@@ -98,6 +102,8 @@
       "hidden": false,
       "label": "Azure AD OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
@@ -109,6 +115,7 @@
       "hidden": false,
       "label": "Azure AD OAuth2 Secret",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET",
+      "required": false,
       "sensitive": true,
       "type": "string"
     },
@@ -132,6 +139,8 @@
       "hidden": false,
       "label": "Azure AD OAuth2 Team Map",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },
@@ -154,6 +163,7 @@
       "label": "Azure AD OAuth2 Key",
       "name": "SOCIAL_AUTH_AZUREAD_OAUTH2_KEY",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
@@ -202,6 +212,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
@@ -255,6 +266,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },

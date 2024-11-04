@@ -65,6 +65,8 @@
       "hidden": false,
       "label": "GitHub Team OAuth2 Callback URL",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_CALLBACK_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ID": {
@@ -76,6 +78,8 @@
       "hidden": false,
       "label": "GitHub Team ID",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_ID",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_KEY": {
@@ -87,6 +91,8 @@
       "hidden": false,
       "label": "GitHub Team OAuth2 Key",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_KEY",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
@@ -109,6 +115,8 @@
       "hidden": false,
       "label": "GitHub Team OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
@@ -120,6 +128,7 @@
       "hidden": false,
       "label": "GitHub Team OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_SECRET",
+      "required": false,
       "sensitive": true,
       "type": "string"
     },
@@ -143,6 +152,8 @@
       "hidden": false,
       "label": "GitHub Team OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },
@@ -166,6 +177,7 @@
       "label": "GitHub Team ID",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_ID",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_KEY": {
@@ -179,6 +191,7 @@
       "label": "GitHub Team OAuth2 Key",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_KEY",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
@@ -227,6 +240,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
@@ -280,6 +294,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },

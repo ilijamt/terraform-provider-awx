@@ -48,6 +48,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -57,6 +59,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -65,6 +69,8 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "name": {
@@ -74,6 +80,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "variables": {
@@ -83,6 +91,8 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },
@@ -104,6 +114,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "inventory": {
@@ -113,6 +124,7 @@
       "label": "Inventory",
       "name": "inventory",
       "required": true,
+      "sensitive": false,
       "type": "id"
     },
     "name": {
@@ -124,6 +136,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "variables": {
@@ -136,6 +149,7 @@
       "label": "Variables",
       "name": "variables",
       "required": false,
+      "sensitive": false,
       "type": "json"
     }
   },

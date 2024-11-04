@@ -56,6 +56,8 @@
       "hidden": false,
       "label": "Allow override",
       "name": "allow_override",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "credential": {
@@ -64,6 +66,8 @@
       "hidden": false,
       "label": "Credential",
       "name": "credential",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "default_environment": {
@@ -73,6 +77,8 @@
       "hidden": false,
       "label": "Default environment",
       "name": "default_environment",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -82,6 +88,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -91,6 +99,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "local_path": {
@@ -100,6 +110,8 @@
       "hidden": false,
       "label": "Local path",
       "name": "local_path",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -109,6 +121,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -118,6 +132,8 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -127,6 +143,8 @@
       "hidden": false,
       "label": "SCM Branch",
       "name": "scm_branch",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "scm_clean": {
@@ -136,6 +154,8 @@
       "hidden": false,
       "label": "Scm clean",
       "name": "scm_clean",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_delete_on_update": {
@@ -145,6 +165,8 @@
       "hidden": false,
       "label": "Scm delete on update",
       "name": "scm_delete_on_update",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_refspec": {
@@ -154,6 +176,8 @@
       "hidden": false,
       "label": "SCM refspec",
       "name": "scm_refspec",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "scm_track_submodules": {
@@ -163,6 +187,8 @@
       "hidden": false,
       "label": "Scm track submodules",
       "name": "scm_track_submodules",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_type": {
@@ -194,6 +220,8 @@
       "hidden": false,
       "label": "SCM Type",
       "name": "scm_type",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "scm_update_cache_timeout": {
@@ -205,6 +233,8 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "scm_update_cache_timeout",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "scm_update_on_launch": {
@@ -214,6 +244,8 @@
       "hidden": false,
       "label": "Scm update on launch",
       "name": "scm_update_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_url": {
@@ -223,6 +255,8 @@
       "hidden": false,
       "label": "SCM URL",
       "name": "scm_url",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "signature_validation_credential": {
@@ -232,6 +266,8 @@
       "hidden": false,
       "label": "Signature validation credential",
       "name": "signature_validation_credential",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "timeout": {
@@ -243,6 +279,8 @@
       "max_value": 2147483647,
       "min_value": -2147483648,
       "name": "timeout",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     }
   },
@@ -277,6 +315,7 @@
       "label": "Allow override",
       "name": "allow_override",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "credential": {
@@ -286,6 +325,7 @@
       "label": "Credential",
       "name": "credential",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "default_environment": {
@@ -296,6 +336,7 @@
       "label": "Default environment",
       "name": "default_environment",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -308,6 +349,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "local_path": {
@@ -319,6 +361,7 @@
       "max_length": 1024,
       "name": "local_path",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -330,6 +373,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -340,6 +384,7 @@
       "label": "Organization",
       "name": "organization",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -353,6 +398,7 @@
       "max_length": 256,
       "name": "scm_branch",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "scm_clean": {
@@ -364,6 +410,7 @@
       "label": "Scm clean",
       "name": "scm_clean",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_delete_on_update": {
@@ -375,6 +422,7 @@
       "label": "Scm delete on update",
       "name": "scm_delete_on_update",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_refspec": {
@@ -388,6 +436,7 @@
       "max_length": 1024,
       "name": "scm_refspec",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "scm_track_submodules": {
@@ -399,6 +448,7 @@
       "label": "Scm track submodules",
       "name": "scm_track_submodules",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_type": {
@@ -433,6 +483,7 @@
       "label": "SCM Type",
       "name": "scm_type",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "scm_update_cache_timeout": {
@@ -447,6 +498,7 @@
       "min_value": 0,
       "name": "scm_update_cache_timeout",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "scm_update_on_launch": {
@@ -458,6 +510,7 @@
       "label": "Scm update on launch",
       "name": "scm_update_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "scm_url": {
@@ -471,6 +524,7 @@
       "max_length": 1024,
       "name": "scm_url",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "signature_validation_credential": {
@@ -481,6 +535,7 @@
       "label": "Signature validation credential",
       "name": "signature_validation_credential",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "timeout": {
@@ -495,6 +550,7 @@
       "min_value": -2147483648,
       "name": "timeout",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     }
   },

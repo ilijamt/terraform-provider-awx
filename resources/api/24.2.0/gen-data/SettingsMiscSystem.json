@@ -61,6 +61,8 @@
       "hidden": false,
       "label": "Enable Activity Stream",
       "name": "ACTIVITY_STREAM_ENABLED",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC": {
@@ -72,6 +74,8 @@
       "hidden": false,
       "label": "Enable Activity Stream for Inventory Sync",
       "name": "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "AUTOMATION_ANALYTICS_GATHER_INTERVAL": {
@@ -84,6 +88,8 @@
       "label": "Automation Analytics Gather Interval",
       "min_value": 1800,
       "name": "AUTOMATION_ANALYTICS_GATHER_INTERVAL",
+      "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -95,6 +101,8 @@
       "hidden": false,
       "label": "Last gathered entries from the data collection service of Automation Analytics",
       "name": "AUTOMATION_ANALYTICS_LAST_ENTRIES",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "AUTOMATION_ANALYTICS_LAST_GATHER": {
@@ -105,6 +113,8 @@
       "hidden": false,
       "label": "Last gather date for Automation Analytics.",
       "name": "AUTOMATION_ANALYTICS_LAST_GATHER",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "AUTOMATION_ANALYTICS_URL": {
@@ -116,6 +126,8 @@
       "hidden": false,
       "label": "Automation Analytics upload URL",
       "name": "AUTOMATION_ANALYTICS_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "CLEANUP_HOST_METRICS_LAST_TS": {
@@ -126,6 +138,8 @@
       "hidden": false,
       "label": "Last cleanup date for HostMetrics",
       "name": "CLEANUP_HOST_METRICS_LAST_TS",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "CSRF_TRUSTED_ORIGINS": {
@@ -142,6 +156,8 @@
       "hidden": false,
       "label": "CSRF Trusted Origins List",
       "name": "CSRF_TRUSTED_ORIGINS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "CUSTOM_VENV_PATHS": {
@@ -158,6 +174,8 @@
       "hidden": false,
       "label": "Custom virtual environment paths",
       "name": "CUSTOM_VENV_PATHS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "DEFAULT_CONTROL_PLANE_QUEUE_NAME": {
@@ -168,6 +186,8 @@
       "hidden": false,
       "label": "The instance group where control plane tasks run",
       "name": "DEFAULT_CONTROL_PLANE_QUEUE_NAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
@@ -179,6 +199,8 @@
       "hidden": false,
       "label": "Global default execution environment",
       "name": "DEFAULT_EXECUTION_ENVIRONMENT",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "DEFAULT_EXECUTION_QUEUE_NAME": {
@@ -189,6 +211,8 @@
       "hidden": false,
       "label": "The instance group where user jobs run (currently only on non-VM installs)",
       "name": "DEFAULT_EXECUTION_QUEUE_NAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "HOST_METRIC_SUMMARY_TASK_LAST_TS": {
@@ -199,6 +223,8 @@
       "hidden": false,
       "label": "Last computing date of HostMetricSummaryMonthly",
       "name": "HOST_METRIC_SUMMARY_TASK_LAST_TS",
+      "required": false,
+      "sensitive": false,
       "type": "datetime"
     },
     "INSIGHTS_TRACKING_STATE": {
@@ -210,6 +236,8 @@
       "hidden": false,
       "label": "Gather data for Automation Analytics",
       "name": "INSIGHTS_TRACKING_STATE",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "INSTALL_UUID": {
@@ -220,6 +248,8 @@
       "hidden": false,
       "label": "Unique identifier for an installation",
       "name": "INSTALL_UUID",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "IS_K8S": {
@@ -231,6 +261,8 @@
       "hidden": false,
       "label": "Is k8s",
       "name": "IS_K8S",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "LICENSE": {
@@ -247,6 +279,8 @@
       "hidden": false,
       "label": "License",
       "name": "LICENSE",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "MANAGE_ORGANIZATION_AUTH": {
@@ -258,6 +292,8 @@
       "hidden": false,
       "label": "Organization Admins Can Manage Users and Teams",
       "name": "MANAGE_ORGANIZATION_AUTH",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ORG_ADMINS_CAN_SEE_ALL_USERS": {
@@ -269,6 +305,8 @@
       "hidden": false,
       "label": "All Users Visible to Organization Admins",
       "name": "ORG_ADMINS_CAN_SEE_ALL_USERS",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "PROXY_IP_ALLOWED_LIST": {
@@ -285,6 +323,8 @@
       "hidden": false,
       "label": "Proxy IP Allowed List",
       "name": "PROXY_IP_ALLOWED_LIST",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "REDHAT_PASSWORD": {
@@ -296,6 +336,8 @@
       "hidden": false,
       "label": "Red Hat customer password",
       "name": "REDHAT_PASSWORD",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "REDHAT_USERNAME": {
@@ -307,6 +349,8 @@
       "hidden": false,
       "label": "Red Hat customer username",
       "name": "REDHAT_USERNAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "REMOTE_HOST_HEADERS": {
@@ -323,6 +367,8 @@
       "hidden": false,
       "label": "Remote Host Headers",
       "name": "REMOTE_HOST_HEADERS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "SUBSCRIPTIONS_PASSWORD": {
@@ -334,6 +380,8 @@
       "hidden": false,
       "label": "Red Hat or Satellite password",
       "name": "SUBSCRIPTIONS_PASSWORD",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SUBSCRIPTIONS_USERNAME": {
@@ -345,6 +393,8 @@
       "hidden": false,
       "label": "Red Hat or Satellite username",
       "name": "SUBSCRIPTIONS_USERNAME",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SUBSCRIPTION_USAGE_MODEL": {
@@ -365,6 +415,8 @@
       "hidden": false,
       "label": "Defines subscription usage model and shows Host Metrics",
       "name": "SUBSCRIPTION_USAGE_MODEL",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "TOWER_URL_BASE": {
@@ -376,6 +428,8 @@
       "hidden": false,
       "label": "Base URL of the service",
       "name": "TOWER_URL_BASE",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "UI_NEXT": {
@@ -387,6 +441,8 @@
       "hidden": true,
       "label": "Enable Preview of New User Interface",
       "name": "UI_NEXT",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     }
   },
@@ -431,6 +487,7 @@
       "label": "Enable Activity Stream",
       "name": "ACTIVITY_STREAM_ENABLED",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC": {
@@ -443,6 +500,7 @@
       "label": "Enable Activity Stream for Inventory Sync",
       "name": "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "AUTOMATION_ANALYTICS_GATHER_INTERVAL": {
@@ -457,6 +515,7 @@
       "min_value": 1800,
       "name": "AUTOMATION_ANALYTICS_GATHER_INTERVAL",
       "required": false,
+      "sensitive": false,
       "type": "integer",
       "unit": "seconds"
     },
@@ -470,6 +529,7 @@
       "label": "Last gathered entries from the data collection service of Automation Analytics",
       "name": "AUTOMATION_ANALYTICS_LAST_ENTRIES",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "AUTOMATION_ANALYTICS_URL": {
@@ -483,6 +543,7 @@
       "label": "Automation Analytics upload URL",
       "name": "AUTOMATION_ANALYTICS_URL",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "CSRF_TRUSTED_ORIGINS": {
@@ -502,6 +563,7 @@
       "label": "CSRF Trusted Origins List",
       "name": "CSRF_TRUSTED_ORIGINS",
       "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
@@ -514,6 +576,7 @@
       "label": "Global default execution environment",
       "name": "DEFAULT_EXECUTION_ENVIRONMENT",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "INSIGHTS_TRACKING_STATE": {
@@ -526,6 +589,7 @@
       "label": "Gather data for Automation Analytics",
       "name": "INSIGHTS_TRACKING_STATE",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "MANAGE_ORGANIZATION_AUTH": {
@@ -538,6 +602,7 @@
       "label": "Organization Admins Can Manage Users and Teams",
       "name": "MANAGE_ORGANIZATION_AUTH",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ORG_ADMINS_CAN_SEE_ALL_USERS": {
@@ -550,6 +615,7 @@
       "label": "All Users Visible to Organization Admins",
       "name": "ORG_ADMINS_CAN_SEE_ALL_USERS",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "PROXY_IP_ALLOWED_LIST": {
@@ -569,6 +635,7 @@
       "label": "Proxy IP Allowed List",
       "name": "PROXY_IP_ALLOWED_LIST",
       "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "REDHAT_PASSWORD": {
@@ -582,6 +649,7 @@
       "label": "Red Hat customer password",
       "name": "REDHAT_PASSWORD",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "REDHAT_USERNAME": {
@@ -595,6 +663,7 @@
       "label": "Red Hat customer username",
       "name": "REDHAT_USERNAME",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "REMOTE_HOST_HEADERS": {
@@ -617,6 +686,7 @@
       "label": "Remote Host Headers",
       "name": "REMOTE_HOST_HEADERS",
       "required": false,
+      "sensitive": false,
       "type": "list"
     },
     "SUBSCRIPTIONS_PASSWORD": {
@@ -630,6 +700,7 @@
       "label": "Red Hat or Satellite password",
       "name": "SUBSCRIPTIONS_PASSWORD",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SUBSCRIPTIONS_USERNAME": {
@@ -643,6 +714,7 @@
       "label": "Red Hat or Satellite username",
       "name": "SUBSCRIPTIONS_USERNAME",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SUBSCRIPTION_USAGE_MODEL": {
@@ -665,6 +737,7 @@
       "label": "Defines subscription usage model and shows Host Metrics",
       "name": "SUBSCRIPTION_USAGE_MODEL",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "TOWER_URL_BASE": {
@@ -678,6 +751,7 @@
       "label": "Base URL of the service",
       "name": "TOWER_URL_BASE",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "UI_NEXT": {
@@ -690,6 +764,7 @@
       "label": "Enable Preview of New User Interface",
       "name": "UI_NEXT",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     }
   },

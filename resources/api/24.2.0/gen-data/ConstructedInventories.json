@@ -59,6 +59,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "has_active_failures": {
@@ -68,6 +70,8 @@
       "hidden": false,
       "label": "Has active failures",
       "name": "has_active_failures",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "has_inventory_sources": {
@@ -77,6 +81,8 @@
       "hidden": false,
       "label": "Has inventory sources",
       "name": "has_inventory_sources",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "hosts_with_active_failures": {
@@ -87,6 +93,8 @@
       "label": "Hosts with active failures",
       "min_value": 0,
       "name": "hosts_with_active_failures",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "id": {
@@ -96,6 +104,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory_sources_with_failures": {
@@ -106,6 +116,8 @@
       "label": "Inventory sources with failures",
       "min_value": 0,
       "name": "inventory_sources_with_failures",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "kind": {
@@ -129,6 +141,8 @@
       "hidden": false,
       "label": "Kind",
       "name": "kind",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     },
     "limit": {
@@ -138,6 +152,8 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -147,6 +163,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -156,6 +174,8 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "pending_deletion": {
@@ -165,6 +185,8 @@
       "hidden": false,
       "label": "Pending deletion",
       "name": "pending_deletion",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "prevent_instance_group_fallback": {
@@ -174,6 +196,8 @@
       "hidden": false,
       "label": "Prevent instance group fallback",
       "name": "prevent_instance_group_fallback",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "source_vars": {
@@ -183,6 +207,8 @@
       "hidden": false,
       "label": "Source vars",
       "name": "source_vars",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "total_groups": {
@@ -193,6 +219,8 @@
       "label": "Total groups",
       "min_value": 0,
       "name": "total_groups",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "total_hosts": {
@@ -203,6 +231,8 @@
       "label": "Total hosts",
       "min_value": 0,
       "name": "total_hosts",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "total_inventory_sources": {
@@ -213,6 +243,8 @@
       "label": "Total inventory sources",
       "min_value": 0,
       "name": "total_inventory_sources",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "update_cache_timeout": {
@@ -223,6 +255,8 @@
       "label": "Update cache timeout",
       "min_value": 0,
       "name": "update_cache_timeout",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "variables": {
@@ -232,6 +266,8 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "verbosity": {
@@ -243,6 +279,8 @@
       "max_value": 2,
       "min_value": 0,
       "name": "verbosity",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     }
   },
@@ -278,6 +316,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "limit": {
@@ -289,6 +328,7 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -300,6 +340,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -310,6 +351,7 @@
       "label": "Organization",
       "name": "organization",
       "required": true,
+      "sensitive": false,
       "type": "id"
     },
     "prevent_instance_group_fallback": {
@@ -321,6 +363,7 @@
       "label": "Prevent instance group fallback",
       "name": "prevent_instance_group_fallback",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "source_vars": {
@@ -332,6 +375,7 @@
       "label": "Source vars",
       "name": "source_vars",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "update_cache_timeout": {
@@ -344,6 +388,7 @@
       "min_value": 0,
       "name": "update_cache_timeout",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "variables": {
@@ -356,6 +401,7 @@
       "label": "Variables",
       "name": "variables",
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "verbosity": {
@@ -369,6 +415,7 @@
       "min_value": 0,
       "name": "verbosity",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     }
   },

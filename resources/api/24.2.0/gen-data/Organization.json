@@ -83,6 +83,8 @@
       "hidden": false,
       "label": "Default environment",
       "name": "default_environment",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -92,6 +94,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -101,6 +105,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "max_hosts": {
@@ -112,6 +118,8 @@
       "max_value": 2147483647,
       "min_value": 0,
       "name": "max_hosts",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -121,6 +129,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     }
   },
@@ -140,6 +150,7 @@
       "label": "Default environment",
       "name": "default_environment",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -152,6 +163,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "max_hosts": {
@@ -166,6 +178,7 @@
       "min_value": 0,
       "name": "max_hosts",
       "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "name": {
@@ -177,6 +190,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     }
   },

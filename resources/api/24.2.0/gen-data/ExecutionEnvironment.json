@@ -58,6 +58,8 @@
       "hidden": false,
       "label": "Credential",
       "name": "credential",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -67,6 +69,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "id": {
@@ -76,6 +80,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "image": {
@@ -85,6 +91,8 @@
       "hidden": false,
       "label": "Image location",
       "name": "image",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "managed": {
@@ -93,6 +101,8 @@
       "hidden": false,
       "label": "Managed",
       "name": "managed",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "name": {
@@ -102,6 +112,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -111,6 +123,8 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "pull": {
@@ -138,6 +152,8 @@
       "hidden": false,
       "label": "Pull",
       "name": "pull",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },
@@ -159,6 +175,7 @@
       "label": "Credential",
       "name": "credential",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "description": {
@@ -171,6 +188,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "image": {
@@ -182,6 +200,7 @@
       "max_length": 1024,
       "name": "image",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -193,6 +212,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -203,6 +223,7 @@
       "label": "Organization",
       "name": "organization",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "pull": {
@@ -233,6 +254,7 @@
       "label": "Pull",
       "name": "pull",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },

@@ -81,6 +81,8 @@
       "hidden": false,
       "label": "Allow simultaneous",
       "name": "allow_simultaneous",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_inventory_on_launch": {
@@ -89,6 +91,8 @@
       "hidden": false,
       "label": "Ask inventory on launch",
       "name": "ask_inventory_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_labels_on_launch": {
@@ -97,6 +101,8 @@
       "hidden": false,
       "label": "Ask labels on launch",
       "name": "ask_labels_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_limit_on_launch": {
@@ -105,6 +111,8 @@
       "hidden": false,
       "label": "Ask limit on launch",
       "name": "ask_limit_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_scm_branch_on_launch": {
@@ -113,6 +121,8 @@
       "hidden": false,
       "label": "Ask scm branch on launch",
       "name": "ask_scm_branch_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_skip_tags_on_launch": {
@@ -121,6 +131,8 @@
       "hidden": false,
       "label": "Ask skip tags on launch",
       "name": "ask_skip_tags_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_tags_on_launch": {
@@ -129,6 +141,8 @@
       "hidden": false,
       "label": "Ask tags on launch",
       "name": "ask_tags_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_variables_on_launch": {
@@ -137,6 +151,8 @@
       "hidden": false,
       "label": "Ask variables on launch",
       "name": "ask_variables_on_launch",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "description": {
@@ -146,6 +162,8 @@
       "hidden": false,
       "label": "Description",
       "name": "description",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "extra_vars": {
@@ -154,6 +172,8 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "id": {
@@ -163,6 +183,8 @@
       "hidden": false,
       "label": "ID",
       "name": "id",
+      "required": false,
+      "sensitive": false,
       "type": "integer"
     },
     "inventory": {
@@ -172,6 +194,8 @@
       "hidden": false,
       "label": "Inventory",
       "name": "inventory",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "job_tags": {
@@ -180,6 +204,8 @@
       "hidden": false,
       "label": "Job tags",
       "name": "job_tags",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "limit": {
@@ -188,6 +214,8 @@
       "hidden": false,
       "label": "Limit",
       "name": "limit",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -197,6 +225,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -206,6 +236,8 @@
       "hidden": false,
       "label": "Organization",
       "name": "organization",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -214,6 +246,8 @@
       "hidden": false,
       "label": "Scm branch",
       "name": "scm_branch",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -222,6 +256,8 @@
       "hidden": false,
       "label": "Skip tags",
       "name": "skip_tags",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "survey_enabled": {
@@ -230,6 +266,8 @@
       "hidden": false,
       "label": "Survey enabled",
       "name": "survey_enabled",
+      "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "webhook_credential": {
@@ -239,6 +277,8 @@
       "hidden": false,
       "label": "Webhook credential",
       "name": "webhook_credential",
+      "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "webhook_service": {
@@ -266,6 +306,8 @@
       "hidden": false,
       "label": "Webhook service",
       "name": "webhook_service",
+      "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },
@@ -301,6 +343,7 @@
       "label": "Allow simultaneous",
       "name": "allow_simultaneous",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_inventory_on_launch": {
@@ -311,6 +354,7 @@
       "label": "Ask inventory on launch",
       "name": "ask_inventory_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_labels_on_launch": {
@@ -321,6 +365,7 @@
       "label": "Ask labels on launch",
       "name": "ask_labels_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_limit_on_launch": {
@@ -331,6 +376,7 @@
       "label": "Ask limit on launch",
       "name": "ask_limit_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_scm_branch_on_launch": {
@@ -341,6 +387,7 @@
       "label": "Ask scm branch on launch",
       "name": "ask_scm_branch_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_skip_tags_on_launch": {
@@ -351,6 +398,7 @@
       "label": "Ask skip tags on launch",
       "name": "ask_skip_tags_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_tags_on_launch": {
@@ -361,6 +409,7 @@
       "label": "Ask tags on launch",
       "name": "ask_tags_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "ask_variables_on_launch": {
@@ -371,6 +420,7 @@
       "label": "Ask variables on launch",
       "name": "ask_variables_on_launch",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "description": {
@@ -383,6 +433,7 @@
       "label": "Description",
       "name": "description",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "extra_vars": {
@@ -394,6 +445,7 @@
       "label": "Extra vars",
       "name": "extra_vars",
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "inventory": {
@@ -404,6 +456,7 @@
       "label": "Inventory",
       "name": "inventory",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "job_tags": {
@@ -414,6 +467,7 @@
       "label": "Job tags",
       "name": "job_tags",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "limit": {
@@ -424,6 +478,7 @@
       "label": "Limit",
       "name": "limit",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "name": {
@@ -435,6 +490,7 @@
       "max_length": 512,
       "name": "name",
       "required": true,
+      "sensitive": false,
       "type": "string"
     },
     "organization": {
@@ -445,6 +501,7 @@
       "label": "Organization",
       "name": "organization",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "scm_branch": {
@@ -455,6 +512,7 @@
       "label": "Scm branch",
       "name": "scm_branch",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "skip_tags": {
@@ -465,6 +523,7 @@
       "label": "Skip tags",
       "name": "skip_tags",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "survey_enabled": {
@@ -475,6 +534,7 @@
       "label": "Survey enabled",
       "name": "survey_enabled",
       "required": false,
+      "sensitive": false,
       "type": "boolean"
     },
     "webhook_credential": {
@@ -485,6 +545,7 @@
       "label": "Webhook credential",
       "name": "webhook_credential",
       "required": false,
+      "sensitive": false,
       "type": "id"
     },
     "webhook_service": {
@@ -513,6 +574,7 @@
       "label": "Webhook service",
       "name": "webhook_service",
       "required": false,
+      "sensitive": false,
       "type": "choice"
     }
   },

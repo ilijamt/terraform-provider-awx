@@ -78,6 +78,8 @@
       "hidden": false,
       "label": "Google OAuth2 Extra Arguments",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL": {
@@ -89,6 +91,8 @@
       "hidden": false,
       "label": "Google OAuth2 Callback URL",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY": {
@@ -100,6 +104,8 @@
       "hidden": false,
       "label": "Google OAuth2 Key",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY",
+      "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
@@ -122,6 +128,8 @@
       "hidden": false,
       "label": "Google OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
@@ -133,6 +141,7 @@
       "hidden": false,
       "label": "Google OAuth2 Secret",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET",
+      "required": false,
       "sensitive": true,
       "type": "string"
     },
@@ -156,6 +165,8 @@
       "hidden": false,
       "label": "Google OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP",
+      "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS": {
@@ -172,6 +183,8 @@
       "hidden": false,
       "label": "Google OAuth2 Allowed Domains",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS",
+      "required": false,
+      "sensitive": false,
       "type": "list"
     }
   },
@@ -206,6 +219,7 @@
         "hd": "example.com"
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY": {
@@ -220,6 +234,7 @@
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY",
       "placeholder": "528620852399-gm2dt4hrl2tsj67fqamk09k1e0ad6gd8.apps.googleusercontent.com",
       "required": false,
+      "sensitive": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
@@ -268,6 +283,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
@@ -322,6 +338,7 @@
         }
       },
       "required": false,
+      "sensitive": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS": {
@@ -344,6 +361,7 @@
         "example.com"
       ],
       "required": false,
+      "sensitive": false,
       "type": "list"
     }
   },
