@@ -63,14 +63,14 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.Trim = override.Trim
 	p.PostWrap = override.PostWrap
 
+	p.setType(values, override)
 	p.setWriteOnly(values, override)
 	p.setDescription(values, override)
 	p.setLabel(values, override)
-	p.setType(values, override)
 	p.setSensitive(values, override)
 	p.setRequired(values, override)
-	p.setDefaultValue(values, override)
 	p.setElementType(values, override)
+	p.setDefaultValue(values, override)
 	p.setGenerated(values, override, item)
 
 	return nil
@@ -117,9 +117,9 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 		values["computed"] = true
 		p.IsComputed = true
 
-		attrType := tf_attribute_type(values)
+		attrType := tfAttributeType(p.Type)
 		defValue := convertDefaultValue(values["default"])
-		switch awx2go_value(values) {
+		switch awxGoValue(p.Type) {
 		case "types.StringValue":
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)
