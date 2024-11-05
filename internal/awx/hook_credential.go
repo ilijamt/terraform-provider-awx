@@ -2,10 +2,10 @@ package awx
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"strings"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -24,26 +24,10 @@ func hookCredential(ctx context.Context, apiVersion string, source hooks.Source,
 		if !strings.Contains(state.Inputs.ValueString(), "$encrypted$") {
 			return nil
 		}
-		var inputs, origInputs map[string]string
-		if err = json.Unmarshal([]byte(state.Inputs.ValueString()), &inputs); err != nil {
-			return fmt.Errorf("%w: inputs from new state", err)
-		}
-
-		if !orig.Inputs.IsNull() {
-			if err = json.Unmarshal([]byte(orig.Inputs.ValueString()), &origInputs); err != nil {
-				return fmt.Errorf("%w: inputs from original state", err)
-			}
-			for k, v := range inputs {
-				if strings.Contains(v, "$encrypted$") {
-					inputs[k] = origInputs[k]
-					var payload []byte
-					if payload, err = json.Marshal(inputs); err != nil {
-						return err
-					}
-					state.Inputs = types.StringValue(string(payload))
-					break
-				}
-			}
+		if dirty, msg, err := helpers.ProcessJsonEncryptedValues(orig.Inputs, state.Inputs); err != nil {
+			return err
+		} else if dirty {
+			state.Inputs = msg
 		}
 	}
 

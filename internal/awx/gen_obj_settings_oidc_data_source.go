@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -63,7 +64,7 @@ func (o *settingsOpenIdconnectDataSource) Schema(ctx context.Context, req dataso
 			},
 			"social_auth_oidc_secret": schema.StringAttribute{
 				Description: "The OIDC secret (Client Secret) from your IDP.",
-				Sensitive:   false,
+				Sensitive:   true,
 				Computed:    true,
 				Validators:  []validator.String{},
 			},
@@ -115,6 +116,14 @@ func (o *settingsOpenIdconnectDataSource) Read(ctx context.Context, req datasour
 	}
 
 	// Set state
+	if err = hookSettingsOidc(ctx, ApiVersion, hooks.SourceData, hooks.CalleeRead, nil, &state); err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to process custom hook for the state on SettingsOpenIDConnect",
+			err.Error(),
+		)
+		return
+	}
+
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return

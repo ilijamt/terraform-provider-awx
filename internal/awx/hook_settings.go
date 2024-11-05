@@ -9,6 +9,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
+func hookSettingsOidc(ctx context.Context, apiVersion string, source hooks.Source, callee hooks.Callee, orig, state *settingsOpenIdconnectTerraformModel) (err error) {
+	if source == hooks.SourceResource && (state == nil || orig == nil) && (callee == hooks.CalleeUpdate || callee == hooks.CalleeCreate || callee == hooks.CalleeRead) {
+		return fmt.Errorf("state and orig required for resource")
+	}
+
+	if source == hooks.SourceResource && callee == hooks.CalleeCreate ||
+		(state.SOCIAL_AUTH_OIDC_SECRET.Equal(types.StringValue("$encrypted$")) &&
+			(source == hooks.SourceResource && (callee == hooks.CalleeUpdate || callee == hooks.CalleeRead)) &&
+			!orig.SOCIAL_AUTH_OIDC_SECRET.IsNull()) {
+		state.SOCIAL_AUTH_OIDC_SECRET = orig.SOCIAL_AUTH_OIDC_SECRET
+	}
+
+	return err
+}
+
 func hookSettingsAuthAzureADOauth2(ctx context.Context, apiVersion string, source hooks.Source, callee hooks.Callee, orig, state *settingsAuthAzureAdoauth2TerraformModel) (err error) {
 	if source == hooks.SourceResource && (state == nil || orig == nil) && (callee == hooks.CalleeUpdate || callee == hooks.CalleeCreate || callee == hooks.CalleeRead) {
 		return fmt.Errorf("state and orig required for resource")
