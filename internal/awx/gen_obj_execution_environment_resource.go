@@ -127,7 +127,12 @@ func (o *executionEnvironmentResource) Schema(ctx context.Context, req resource.
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "always", "missing", "never"}...),
+					stringvalidator.OneOf(
+						"",
+						"always",
+						"missing",
+						"never",
+					),
 				},
 			},
 			// Write only elements

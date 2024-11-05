@@ -83,7 +83,11 @@ func (o *settingsJobsResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"always", "never", "template"}...),
+					stringvalidator.OneOf(
+						"always",
+						"never",
+						"template",
+					),
 				},
 			},
 			"ansible_fact_cache_timeout": schema.Int64Attribute{

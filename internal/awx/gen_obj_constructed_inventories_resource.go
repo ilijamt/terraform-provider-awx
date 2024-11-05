@@ -224,7 +224,11 @@ func (o *constructedInventoriesResource) Schema(ctx context.Context, req resourc
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "smart", "constructed"}...),
+					stringvalidator.OneOf(
+						"",
+						"smart",
+						"constructed",
+					),
 				},
 			},
 			"pending_deletion": schema.BoolAttribute{

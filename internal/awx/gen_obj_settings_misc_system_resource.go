@@ -257,7 +257,10 @@ func (o *settingsMiscSystemResource) Schema(ctx context.Context, req resource.Sc
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "unique_managed_hosts"}...),
+					stringvalidator.OneOf(
+						"",
+						"unique_managed_hosts",
+					),
 				},
 			},
 			"tower_url_base": schema.StringAttribute{

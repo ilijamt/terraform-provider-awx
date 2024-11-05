@@ -104,7 +104,10 @@ func (o *credentialTypeResource) Schema(ctx context.Context, req resource.Schema
 				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"net", "cloud"}...),
+					stringvalidator.OneOf(
+						"net",
+						"cloud",
+					),
 				},
 			},
 			"name": schema.StringAttribute{

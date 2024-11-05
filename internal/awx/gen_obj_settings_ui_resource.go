@@ -117,7 +117,11 @@ func (o *settingsUiResource) Schema(ctx context.Context, req resource.SchemaRequ
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"off", "anonymous", "detailed"}...),
+					stringvalidator.OneOf(
+						"off",
+						"anonymous",
+						"detailed",
+					),
 				},
 			},
 		},

@@ -88,7 +88,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
 					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
 {{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
-					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
+					stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                        {{ $item | quote }},
+{{- end }}
+                    ),
 {{- end }}
 {{- range $value.Constraints }}
                     // {{ .Id }}
@@ -128,7 +132,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
 					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
 {{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
-					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
+					stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                        {{ $item | quote }},
+{{- end }}
+                    ),
 {{- end }}
 {{- range $value.Constraints }}
                     // {{ .Id }}
@@ -159,7 +167,11 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				},
 {{- if eq .Type "choice" }}
 				Validators: []validator.{{ $value.Generated.AttributeType }}{
-					stringvalidator.OneOf([]string{ {{- range $item := $value.Generated.ValidationAvailableChoiceData }}{{ $item | quote }},{{- end }} }...),
+					stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                        {{ $item | quote }},
+{{- end }}
+                    ),
 				},
 {{- end }}
             },
