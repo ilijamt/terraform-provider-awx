@@ -40,12 +40,12 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Configure(_ context.
     }
 
     o.client = req.ProviderData.(c.Client)
-    o.endpoint = "{{ $.Endpoint }}%d/object_roles/"
+    o.endpoint = "{{ .Endpoint }}%d/object_roles/"
 }
 
 // Metadata returns the data source type name.
 func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-    resp.TypeName = req.ProviderTypeName + "_{{ $.Config.TypeName }}_object_roles"
+    resp.TypeName = req.ProviderTypeName + "_{{ $.TypeName }}_object_roles"
 }
 
 // Schema defines the schema for the data source.
@@ -57,7 +57,7 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Schema(ctx context.C
 				Required:    true,
 			},
 			"roles": schema.MapAttribute{
-				Description: "Roles for {{ $.Config.TypeName }}",
+				Description: "Roles for {{ $.TypeName }}",
 				ElementType: types.Int64Type,
 				Computed:    true,
 			},

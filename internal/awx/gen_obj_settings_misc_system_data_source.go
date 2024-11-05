@@ -210,7 +210,10 @@ func (o *settingsMiscSystemDataSource) Schema(ctx context.Context, req datasourc
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "unique_managed_hosts"}...),
+					stringvalidator.OneOf(
+						"",
+						"unique_managed_hosts",
+					),
 				},
 			},
 			"tower_url_base": schema.StringAttribute{

@@ -9,8 +9,6 @@
       "OAUTH2_PROVIDER": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "SOCIAL_AUTH_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "SOCIAL_AUTH_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -216,10 +210,8 @@
       "hidden": false,
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -273,10 +265,8 @@
       "hidden": false,
       "label": "Social Auth Organization Map",
       "name": "SOCIAL_AUTH_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -299,10 +289,8 @@
       "hidden": false,
       "label": "Social Auth Team Map",
       "name": "SOCIAL_AUTH_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -506,10 +494,8 @@
       "hidden": false,
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -590,10 +576,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -632,10 +616,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {

@@ -9,8 +9,6 @@
       "source_vars": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "",
@@ -23,7 +21,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -283,10 +282,8 @@
       "help_text": "Inventory source variables in YAML or JSON format.",
       "label": "Source vars",
       "name": "source_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "timeout": {
@@ -596,10 +593,8 @@
       "help_text": "Inventory source variables in YAML or JSON format.",
       "label": "Source vars",
       "name": "source_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "timeout": {

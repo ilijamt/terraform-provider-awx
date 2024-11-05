@@ -9,8 +9,6 @@
       "timezone": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "until": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +29,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       }
@@ -299,10 +296,8 @@
       "hidden": false,
       "label": "Timezone",
       "name": "timezone",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "unified_job_template": {
@@ -322,10 +317,8 @@
       "hidden": false,
       "label": "Until",
       "name": "until",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "verbosity": {

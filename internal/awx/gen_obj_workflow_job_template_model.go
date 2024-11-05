@@ -108,91 +108,92 @@ func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTempla
 	return
 }
 
-func (o *workflowJobTemplateTerraformModel) setAllowSimultaneous(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAllowSimultaneous(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AllowSimultaneous, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskLimitOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskLimitOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setJobTags(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobTags, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setSkipTags(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SkipTags, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) setSurveyEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setSurveyEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SurveyEnabled, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setWebhookCredential(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setWebhookCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.WebhookCredential, data)
 }
 
-func (o *workflowJobTemplateTerraformModel) setWebhookService(data any) (d diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) setWebhookService(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.WebhookService, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *workflowJobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

@@ -10,7 +10,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +18,6 @@
       "AUTH_LDAP_1_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +26,6 @@
       "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +34,6 @@
       "AUTH_LDAP_1_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +42,6 @@
       "AUTH_LDAP_1_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -59,8 +50,6 @@
       "AUTH_LDAP_1_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -69,8 +58,6 @@
       "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -80,7 +67,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -89,8 +75,6 @@
       "AUTH_LDAP_2_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -99,8 +83,6 @@
       "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -109,8 +91,6 @@
       "AUTH_LDAP_2_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -119,8 +99,6 @@
       "AUTH_LDAP_2_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -129,8 +107,6 @@
       "AUTH_LDAP_2_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -139,8 +115,6 @@
       "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -150,7 +124,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -159,8 +132,6 @@
       "AUTH_LDAP_3_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -169,8 +140,6 @@
       "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -179,8 +148,6 @@
       "AUTH_LDAP_3_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -189,8 +156,6 @@
       "AUTH_LDAP_3_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -199,8 +164,6 @@
       "AUTH_LDAP_3_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -209,8 +172,6 @@
       "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -220,7 +181,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -229,8 +189,6 @@
       "AUTH_LDAP_4_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -239,8 +197,6 @@
       "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -249,8 +205,6 @@
       "AUTH_LDAP_4_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -259,8 +213,6 @@
       "AUTH_LDAP_4_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -269,8 +221,6 @@
       "AUTH_LDAP_4_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -279,8 +229,6 @@
       "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -290,7 +238,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -299,8 +246,6 @@
       "AUTH_LDAP_5_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -309,8 +254,6 @@
       "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -319,8 +262,6 @@
       "AUTH_LDAP_5_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -329,8 +270,6 @@
       "AUTH_LDAP_5_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -339,8 +278,6 @@
       "AUTH_LDAP_5_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -349,8 +286,6 @@
       "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -360,7 +295,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -369,8 +303,6 @@
       "AUTH_LDAP_CONNECTION_OPTIONS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -379,8 +311,6 @@
       "AUTH_LDAP_GROUP_TYPE_PARAMS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -389,8 +319,6 @@
       "AUTH_LDAP_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -399,8 +327,6 @@
       "AUTH_LDAP_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -409,8 +335,6 @@
       "AUTH_LDAP_USER_ATTR_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -419,8 +343,6 @@
       "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -473,10 +395,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_1_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
@@ -493,10 +413,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_1_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_DENY_GROUP": {
@@ -607,10 +525,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_1_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
@@ -633,10 +549,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_1_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
@@ -698,10 +612,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_1_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
@@ -718,10 +630,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_1_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
@@ -757,10 +667,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_1_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_SEARCH": {
@@ -803,10 +711,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_2_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
@@ -823,10 +729,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_2_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_DENY_GROUP": {
@@ -937,10 +841,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_2_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
@@ -963,10 +865,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_2_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
@@ -1028,10 +928,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_2_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
@@ -1048,10 +946,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_2_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
@@ -1087,10 +983,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_2_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_SEARCH": {
@@ -1133,10 +1027,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_3_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
@@ -1153,10 +1045,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_3_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_DENY_GROUP": {
@@ -1267,10 +1157,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_3_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
@@ -1293,10 +1181,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_3_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
@@ -1358,10 +1244,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_3_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
@@ -1378,10 +1262,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_3_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
@@ -1417,10 +1299,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_3_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_SEARCH": {
@@ -1463,10 +1343,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_4_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
@@ -1483,10 +1361,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_4_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_DENY_GROUP": {
@@ -1597,10 +1473,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_4_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
@@ -1623,10 +1497,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_4_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
@@ -1688,10 +1560,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_4_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
@@ -1708,10 +1578,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_4_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
@@ -1747,10 +1615,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_4_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_SEARCH": {
@@ -1793,10 +1659,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_5_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
@@ -1813,10 +1677,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_5_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_DENY_GROUP": {
@@ -1927,10 +1789,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_5_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
@@ -1953,10 +1813,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_5_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
@@ -2018,10 +1876,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_5_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
@@ -2038,10 +1894,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_5_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
@@ -2077,10 +1931,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_5_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_SEARCH": {
@@ -2123,10 +1975,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
@@ -2143,10 +1993,8 @@
       "hidden": false,
       "label": "LDAP Connection Options",
       "name": "AUTH_LDAP_CONNECTION_OPTIONS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_DENY_GROUP": {
@@ -2257,10 +2105,8 @@
       "hidden": false,
       "label": "LDAP Group Type Parameters",
       "name": "AUTH_LDAP_GROUP_TYPE_PARAMS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
@@ -2283,10 +2129,8 @@
       "hidden": false,
       "label": "LDAP Organization Map",
       "name": "AUTH_LDAP_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
@@ -2348,10 +2192,8 @@
       "hidden": false,
       "label": "LDAP Team Map",
       "name": "AUTH_LDAP_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
@@ -2368,10 +2210,8 @@
       "hidden": false,
       "label": "LDAP User Attribute Map",
       "name": "AUTH_LDAP_USER_ATTR_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
@@ -2407,10 +2247,8 @@
       "hidden": false,
       "label": "LDAP User Flags By Group",
       "name": "AUTH_LDAP_USER_FLAGS_BY_GROUP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_SEARCH": {
@@ -2555,10 +2393,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_1_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
@@ -2585,10 +2421,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_DENY_GROUP": {
@@ -2719,10 +2553,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
@@ -2765,10 +2597,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
@@ -2850,10 +2680,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
@@ -2878,10 +2706,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
@@ -2925,10 +2751,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_1_USER_SEARCH": {
@@ -2980,10 +2804,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_2_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
@@ -3010,10 +2832,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_DENY_GROUP": {
@@ -3144,10 +2964,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
@@ -3190,10 +3008,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
@@ -3275,10 +3091,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
@@ -3303,10 +3117,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
@@ -3350,10 +3162,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_2_USER_SEARCH": {
@@ -3405,10 +3215,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_3_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
@@ -3435,10 +3243,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_DENY_GROUP": {
@@ -3569,10 +3375,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
@@ -3615,10 +3419,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
@@ -3700,10 +3502,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
@@ -3728,10 +3528,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
@@ -3775,10 +3573,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_3_USER_SEARCH": {
@@ -3830,10 +3626,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_4_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
@@ -3860,10 +3654,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_DENY_GROUP": {
@@ -3994,10 +3786,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
@@ -4040,10 +3830,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
@@ -4125,10 +3913,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
@@ -4153,10 +3939,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
@@ -4200,10 +3984,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_4_USER_SEARCH": {
@@ -4255,10 +4037,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_5_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
@@ -4285,10 +4065,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_DENY_GROUP": {
@@ -4419,10 +4197,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
@@ -4465,10 +4241,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
@@ -4550,10 +4324,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
@@ -4578,10 +4350,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
@@ -4625,10 +4395,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_5_USER_SEARCH": {
@@ -4680,10 +4448,8 @@
       "hidden": false,
       "label": "LDAP Bind Password",
       "name": "AUTH_LDAP_BIND_PASSWORD",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
@@ -4710,10 +4476,8 @@
         "OPT_NETWORK_TIMEOUT": 30,
         "OPT_REFERRALS": 0
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_DENY_GROUP": {
@@ -4844,10 +4608,8 @@
         "member_attr": "member",
         "name_attr": "cn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
@@ -4890,10 +4652,8 @@
           "users": true
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
@@ -4975,10 +4735,8 @@
           "users": "CN=Other Users,CN=Users,DC=example,DC=com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
@@ -5003,10 +4761,8 @@
         "first_name": "givenName",
         "last_name": "sn"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
@@ -5050,10 +4806,8 @@
         "is_superuser": "CN=Domain Admins,CN=Users,DC=example,DC=com",
         "is_system_auditor": "CN=Domain Auditors,CN=Users,DC=example,DC=com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "AUTH_LDAP_USER_SEARCH": {

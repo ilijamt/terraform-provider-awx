@@ -104,7 +104,17 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"email", "grafana", "irc", "mattermost", "pagerduty", "rocketchat", "slack", "twilio", "webhook"}...),
+					stringvalidator.OneOf(
+						"email",
+						"grafana",
+						"irc",
+						"mattermost",
+						"pagerduty",
+						"rocketchat",
+						"slack",
+						"twilio",
+						"webhook",
+					),
 				},
 			},
 			"organization": schema.Int64Attribute{

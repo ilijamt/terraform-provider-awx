@@ -171,7 +171,11 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "run", "check"}...),
+					stringvalidator.OneOf(
+						"",
+						"run",
+						"check",
+					),
 				},
 			},
 			"limit": schema.StringAttribute{
@@ -257,7 +261,14 @@ func (o *scheduleResource) Schema(ctx context.Context, req resource.SchemaReques
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"0", "1", "2", "3", "4", "5"}...),
+					stringvalidator.OneOf(
+						"0",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+					),
 				},
 			},
 			// Write only elements

@@ -9,8 +9,6 @@
       "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +33,6 @@
       "SOCIAL_AUTH_SAML_ORG_INFO": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +41,6 @@
       "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -59,8 +49,6 @@
       "SOCIAL_AUTH_SAML_SP_EXTRA": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -70,7 +58,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": true,
         "post_wrap": false,
         "default_value": "",
@@ -79,8 +66,6 @@
       "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
         "type": "",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": true,
         "post_wrap": false,
         "default_value": "",
@@ -89,8 +74,6 @@
       "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -99,8 +82,6 @@
       "SOCIAL_AUTH_SAML_TEAM_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -109,8 +90,6 @@
       "SOCIAL_AUTH_SAML_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -119,8 +98,6 @@
       "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -129,8 +106,6 @@
       "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -207,10 +182,8 @@
       "hidden": false,
       "label": "SAML Enabled Identity Providers",
       "name": "SOCIAL_AUTH_SAML_ENABLED_IDPS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -258,10 +231,8 @@
       "hidden": false,
       "label": "SAML Organization Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -284,10 +255,8 @@
       "hidden": false,
       "label": "SAML Organization Map",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -310,10 +279,8 @@
       "hidden": false,
       "label": "SAML Service Provider Organization Info",
       "name": "SOCIAL_AUTH_SAML_ORG_INFO",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -330,10 +297,8 @@
       "hidden": false,
       "label": "SAML Security Config",
       "name": "SOCIAL_AUTH_SAML_SECURITY_CONFIG",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -363,10 +328,8 @@
       "hidden": false,
       "label": "SAML Service Provider extra configuration data",
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -378,10 +341,8 @@
       "hidden": false,
       "label": "SAML Service Provider Private Key",
       "name": "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
@@ -393,10 +354,8 @@
       "hidden": false,
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -413,10 +372,8 @@
       "hidden": false,
       "label": "SAML Service Provider Support Contact",
       "name": "SOCIAL_AUTH_SAML_SUPPORT_CONTACT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -433,10 +390,8 @@
       "hidden": false,
       "label": "SAML Team Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_TEAM_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -459,10 +414,8 @@
       "hidden": false,
       "label": "SAML Team Map",
       "name": "SOCIAL_AUTH_SAML_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -479,10 +432,8 @@
       "hidden": false,
       "label": "SAML Service Provider Technical Contact",
       "name": "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -499,10 +450,8 @@
       "hidden": false,
       "label": "SAML User Flags Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
@@ -585,10 +534,8 @@
           "x509cert": "MIIEJjCCAw6gAwIBAgIUfuSD54OPSBhndDHh3gZo..."
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -650,10 +597,8 @@
         "saml_attr": "organization",
         "saml_auditor_attr": "organization_auditor"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -701,10 +646,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -737,10 +680,8 @@
           "url": "http://www.example.com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -781,10 +722,8 @@
         "wantNameId": true,
         "wantNameIdEncrypted": false
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -818,10 +757,8 @@
       "label": "SAML Service Provider extra configuration data",
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
       "placeholder": {},
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -834,10 +771,8 @@
       "hidden": false,
       "label": "SAML Service Provider Private Key",
       "name": "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
@@ -850,10 +785,8 @@
       "hidden": false,
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -877,10 +810,8 @@
         "emailAddress": "support@example.com",
         "givenName": "Support Contact"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -930,10 +861,8 @@
           }
         ]
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -972,10 +901,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -999,10 +926,8 @@
         "emailAddress": "techsup@example.com",
         "givenName": "Technical Contact"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -1064,10 +989,8 @@
           true
         ]
       ],
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },

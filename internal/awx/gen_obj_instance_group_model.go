@@ -82,71 +82,72 @@ func (o *instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyReques
 	return
 }
 
-func (o *instanceGroupTerraformModel) setCapacity(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setCapacity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Capacity, data)
 }
 
-func (o *instanceGroupTerraformModel) setConsumedCapacity(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setConsumedCapacity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetFloat64(&o.ConsumedCapacity, data)
 }
 
-func (o *instanceGroupTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
-func (o *instanceGroupTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *instanceGroupTerraformModel) setInstances(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setInstances(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Instances, data)
 }
 
-func (o *instanceGroupTerraformModel) setIsContainerGroup(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setIsContainerGroup(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IsContainerGroup, data)
 }
 
-func (o *instanceGroupTerraformModel) setJobsRunning(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setJobsRunning(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.JobsRunning, data)
 }
 
-func (o *instanceGroupTerraformModel) setJobsTotal(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setJobsTotal(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.JobsTotal, data)
 }
 
-func (o *instanceGroupTerraformModel) setMaxConcurrentJobs(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setMaxConcurrentJobs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MaxConcurrentJobs, data)
 }
 
-func (o *instanceGroupTerraformModel) setMaxForks(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setMaxForks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MaxForks, data)
 }
 
-func (o *instanceGroupTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *instanceGroupTerraformModel) setPercentCapacityRemaining(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setPercentCapacityRemaining(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetFloat64(&o.PercentCapacityRemaining, data)
 }
 
-func (o *instanceGroupTerraformModel) setPodSpecOverride(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setPodSpecOverride(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.PodSpecOverride, data, false)
 }
 
-func (o *instanceGroupTerraformModel) setPolicyInstanceList(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setPolicyInstanceList(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.PolicyInstanceList, data, false)
 }
 
-func (o *instanceGroupTerraformModel) setPolicyInstanceMinimum(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setPolicyInstanceMinimum(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.PolicyInstanceMinimum, data)
 }
 
-func (o *instanceGroupTerraformModel) setPolicyInstancePercentage(data any) (d diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) setPolicyInstancePercentage(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.PolicyInstancePercentage, data)
 }
 
-func (o *instanceGroupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *instanceGroupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

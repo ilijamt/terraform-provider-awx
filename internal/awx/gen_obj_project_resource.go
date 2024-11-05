@@ -214,7 +214,13 @@ func (o *projectResource) Schema(ctx context.Context, req resource.SchemaRequest
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "git", "svn", "insights", "archive"}...),
+					stringvalidator.OneOf(
+						"",
+						"git",
+						"svn",
+						"insights",
+						"archive",
+					),
 				},
 			},
 			"scm_update_cache_timeout": schema.Int64Attribute{

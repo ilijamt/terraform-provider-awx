@@ -9,8 +9,6 @@
       "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -20,7 +18,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +26,6 @@
       "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -107,10 +102,8 @@
       "hidden": false,
       "label": "GitHub OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_SECRET": {
@@ -122,10 +115,8 @@
       "hidden": false,
       "label": "GitHub OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
@@ -148,10 +139,8 @@
       "hidden": false,
       "label": "GitHub OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
@@ -222,10 +211,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_SECRET": {
@@ -238,10 +225,8 @@
       "hidden": false,
       "label": "GitHub OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
@@ -280,10 +265,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },

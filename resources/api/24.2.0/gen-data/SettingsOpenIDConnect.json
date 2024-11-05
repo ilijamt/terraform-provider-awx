@@ -10,7 +10,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -76,10 +75,8 @@
       "hidden": false,
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -140,10 +137,8 @@
       "hidden": false,
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {

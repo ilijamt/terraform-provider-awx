@@ -9,8 +9,6 @@
       "capacity": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "consumed_capacity": {
         "type": "float",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "instances": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +33,6 @@
       "jobs_running": {
         "type": "integer",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +41,6 @@
       "percent_capacity_remaining": {
         "type": "float",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -63,7 +53,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -108,10 +99,8 @@
       "filterable": false,
       "label": "Capacity",
       "name": "capacity",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "consumed_capacity": {
@@ -119,10 +108,8 @@
       "filterable": false,
       "label": "Consumed capacity",
       "name": "consumed_capacity",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "float"
     },
     "credential": {
@@ -149,10 +136,8 @@
       "filterable": false,
       "label": "Instances",
       "name": "instances",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "is_container_group": {
@@ -170,10 +155,8 @@
       "filterable": false,
       "label": "Jobs running",
       "name": "jobs_running",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "integer"
     },
     "jobs_total": {
@@ -223,10 +206,8 @@
       "filterable": false,
       "label": "Percent capacity remaining",
       "name": "percent_capacity_remaining",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "float"
     },
     "pod_spec_override": {

@@ -108,91 +108,92 @@ func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRe
 	return
 }
 
-func (o *inventorySourceTerraformModel) setCredential(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Credential, data)
 }
 
-func (o *inventorySourceTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setEnabledValue(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setEnabledValue(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.EnabledValue, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setEnabledVar(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setEnabledVar(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.EnabledVar, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
-func (o *inventorySourceTerraformModel) setHostFilter(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setHostFilter(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.HostFilter, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *inventorySourceTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *inventorySourceTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setOverwrite(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setOverwrite(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Overwrite, data)
 }
 
-func (o *inventorySourceTerraformModel) setOverwriteVars(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setOverwriteVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.OverwriteVars, data)
 }
 
-func (o *inventorySourceTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setSource(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setSource(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Source, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setSourcePath(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setSourcePath(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SourcePath, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setSourceProject(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setSourceProject(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SourceProject, data)
 }
 
-func (o *inventorySourceTerraformModel) setSourceVars(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setSourceVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SourceVars, data, false)
 }
 
-func (o *inventorySourceTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
-func (o *inventorySourceTerraformModel) setUpdateCacheTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setUpdateCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data)
 }
 
-func (o *inventorySourceTerraformModel) setUpdateOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setUpdateOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.UpdateOnLaunch, data)
 }
 
-func (o *inventorySourceTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

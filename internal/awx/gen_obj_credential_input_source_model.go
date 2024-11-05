@@ -48,31 +48,32 @@ func (o *credentialInputSourceTerraformModel) BodyRequest() (req credentialInput
 	return
 }
 
-func (o *credentialInputSourceTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *credentialInputSourceTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *credentialInputSourceTerraformModel) setInputFieldName(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setInputFieldName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.InputFieldName, data, false)
 }
 
-func (o *credentialInputSourceTerraformModel) setMetadata(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setMetadata(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Metadata, data, false)
 }
 
-func (o *credentialInputSourceTerraformModel) setSourceCredential(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setSourceCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SourceCredential, data)
 }
 
-func (o *credentialInputSourceTerraformModel) setTargetCredential(data any) (d diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) setTargetCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.TargetCredential, data)
 }
 
-func (o *credentialInputSourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *credentialInputSourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

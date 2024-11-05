@@ -9,8 +9,6 @@
       "AWX_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "GALAXY_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -239,10 +235,8 @@
       "hidden": false,
       "label": "Extra Environment Variables",
       "name": "AWX_TASK_ENV",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -364,10 +358,8 @@
       "hidden": false,
       "label": "Environment Variables for Galaxy Commands",
       "name": "GALAXY_TASK_ENV",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {
@@ -692,10 +684,8 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -836,10 +826,8 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {

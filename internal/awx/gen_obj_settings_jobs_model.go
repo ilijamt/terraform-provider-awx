@@ -153,107 +153,108 @@ func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestM
 	return
 }
 
-func (o *settingsJobsTerraformModel) setAdHocCommands(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAdHocCommands(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.AD_HOC_COMMANDS, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setAllowJinjaInExtraVars(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAllowJinjaInExtraVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ALLOW_JINJA_IN_EXTRA_VARS, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setAnsibleFactCacheTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAnsibleFactCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ANSIBLE_FACT_CACHE_TIMEOUT, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxAnsibleCallbackPlugins(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxAnsibleCallbackPlugins(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.AWX_ANSIBLE_CALLBACK_PLUGINS, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setAwxCollectionsEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxCollectionsEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AWX_COLLECTIONS_ENABLED, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxIsolationBasePath(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxIsolationBasePath(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.AWX_ISOLATION_BASE_PATH, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setAwxIsolationShowPaths(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxIsolationShowPaths(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.AWX_ISOLATION_SHOW_PATHS, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setAwxMountIsolatedPathsOnK8S(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxMountIsolatedPathsOnK8S(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxRolesEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxRolesEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AWX_ROLES_ENABLED, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxRunnerKeepaliveSeconds(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxRunnerKeepaliveSeconds(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.AWX_RUNNER_KEEPALIVE_SECONDS, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxShowPlaybookLinks(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxShowPlaybookLinks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AWX_SHOW_PLAYBOOK_LINKS, data)
 }
 
-func (o *settingsJobsTerraformModel) setAwxTaskEnv(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setAwxTaskEnv(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.AWX_TASK_ENV, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setDefaultContainerRunOptions(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setDefaultContainerRunOptions(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.DEFAULT_CONTAINER_RUN_OPTIONS, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setDefaultInventoryUpdateTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setDefaultInventoryUpdateTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DEFAULT_INVENTORY_UPDATE_TIMEOUT, data)
 }
 
-func (o *settingsJobsTerraformModel) setDefaultJobIdleTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setDefaultJobIdleTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_IDLE_TIMEOUT, data)
 }
 
-func (o *settingsJobsTerraformModel) setDefaultJobTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setDefaultJobTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_TIMEOUT, data)
 }
 
-func (o *settingsJobsTerraformModel) setDefaultProjectUpdateTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setDefaultProjectUpdateTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DEFAULT_PROJECT_UPDATE_TIMEOUT, data)
 }
 
-func (o *settingsJobsTerraformModel) setEventStdoutMaxBytesDisplay(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setEventStdoutMaxBytesDisplay(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.EVENT_STDOUT_MAX_BYTES_DISPLAY, data)
 }
 
-func (o *settingsJobsTerraformModel) setGalaxyIgnoreCerts(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setGalaxyIgnoreCerts(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.GALAXY_IGNORE_CERTS, data)
 }
 
-func (o *settingsJobsTerraformModel) setGalaxyTaskEnv(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setGalaxyTaskEnv(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.GALAXY_TASK_ENV, data, false)
 }
 
-func (o *settingsJobsTerraformModel) setMaxForks(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setMaxForks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MAX_FORKS, data)
 }
 
-func (o *settingsJobsTerraformModel) setMaxWebsocketEventRate(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setMaxWebsocketEventRate(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MAX_WEBSOCKET_EVENT_RATE, data)
 }
 
-func (o *settingsJobsTerraformModel) setProjectUpdateVvv(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setProjectUpdateVvv(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.PROJECT_UPDATE_VVV, data)
 }
 
-func (o *settingsJobsTerraformModel) setScheduleMaxJobs(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setScheduleMaxJobs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SCHEDULE_MAX_JOBS, data)
 }
 
-func (o *settingsJobsTerraformModel) setStdoutMaxBytesDisplay(data any) (d diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) setStdoutMaxBytesDisplay(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.STDOUT_MAX_BYTES_DISPLAY, data)
 }
 
-func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

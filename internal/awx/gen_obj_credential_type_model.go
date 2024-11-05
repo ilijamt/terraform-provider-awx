@@ -54,39 +54,40 @@ func (o *credentialTypeTerraformModel) BodyRequest() (req credentialTypeBodyRequ
 	return
 }
 
-func (o *credentialTypeTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *credentialTypeTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *credentialTypeTerraformModel) setInjectors(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setInjectors(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Injectors, data, false)
 }
 
-func (o *credentialTypeTerraformModel) setInputs(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setInputs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Inputs, data, false)
 }
 
-func (o *credentialTypeTerraformModel) setKind(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setKind(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Kind, data, false)
 }
 
-func (o *credentialTypeTerraformModel) setManaged(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setManaged(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Managed, data)
 }
 
-func (o *credentialTypeTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *credentialTypeTerraformModel) setNamespace(data any) (d diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) setNamespace(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Namespace, data, false)
 }
 
-func (o *credentialTypeTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *credentialTypeTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

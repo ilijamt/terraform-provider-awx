@@ -64,51 +64,52 @@ func (o *userTerraformModel) BodyRequest() (req userBodyRequestModel) {
 	return
 }
 
-func (o *userTerraformModel) setEmail(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setEmail(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Email, data, false)
 }
 
-func (o *userTerraformModel) setExternalAccount(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setExternalAccount(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ExternalAccount, data, false)
 }
 
-func (o *userTerraformModel) setFirstName(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setFirstName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.FirstName, data, false)
 }
 
-func (o *userTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *userTerraformModel) setIsSuperuser(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setIsSuperuser(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IsSuperuser, data)
 }
 
-func (o *userTerraformModel) setIsSystemAuditor(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setIsSystemAuditor(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IsSystemAuditor, data)
 }
 
-func (o *userTerraformModel) setLastLogin(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setLastLogin(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LastLogin, data, false)
 }
 
-func (o *userTerraformModel) setLastName(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setLastName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LastName, data, false)
 }
 
-func (o *userTerraformModel) setLdapDn(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setLdapDn(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LdapDn, data, false)
 }
 
-func (o *userTerraformModel) setPassword(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Password, data, false)
 }
 
-func (o *userTerraformModel) setUsername(data any) (d diag.Diagnostics, err error) {
+func (o *userTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *userTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *userTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

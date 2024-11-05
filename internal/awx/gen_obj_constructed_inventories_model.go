@@ -91,83 +91,84 @@ func (o *constructedInventoriesTerraformModel) BodyRequest() (req constructedInv
 	return
 }
 
-func (o *constructedInventoriesTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setHasActiveFailures(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setHasActiveFailures(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.HasActiveFailures, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setHasInventorySources(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setHasInventorySources(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.HasInventorySources, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setHostsWithActiveFailures(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setHostsWithActiveFailures(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.HostsWithActiveFailures, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setInventorySourcesWithFailures(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setInventorySourcesWithFailures(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.InventorySourcesWithFailures, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setKind(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setKind(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Kind, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setPendingDeletion(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setPendingDeletion(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.PendingDeletion, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setPreventInstanceGroupFallback(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setPreventInstanceGroupFallback(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setSourceVars(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setSourceVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SourceVars, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setTotalGroups(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setTotalGroups(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.TotalGroups, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setTotalHosts(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setTotalHosts(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.TotalHosts, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setTotalInventorySources(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setTotalInventorySources(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.TotalInventorySources, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setUpdateCacheTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setUpdateCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data)
 }
 
-func (o *constructedInventoriesTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
-func (o *constructedInventoriesTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Verbosity, data)
 }
 
-func (o *constructedInventoriesTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *constructedInventoriesTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

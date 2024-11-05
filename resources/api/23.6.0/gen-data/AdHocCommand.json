@@ -9,8 +9,6 @@
       "extra_vars": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "",
@@ -19,8 +17,6 @@
       "launched_by": {
         "type": "id",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +29,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -155,10 +152,8 @@
       "filterable": true,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "failed": {
@@ -291,10 +286,8 @@
       "filterable": false,
       "label": "Launched by",
       "name": "launched_by",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "id"
     },
     "limit": {
@@ -586,10 +579,8 @@
       "filterable": true,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "forks": {

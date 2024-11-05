@@ -48,31 +48,32 @@ func (o *settingsAuthGithubTeamTerraformModel) BodyRequest() (req settingsAuthGi
 	return
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamCallbackUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_TEAM_CALLBACK_URL, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamId(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_TEAM_ID, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_TEAM_KEY, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamSecret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamSecret(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_TEAM_SECRET, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamTeamMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsAuthGithubTeamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

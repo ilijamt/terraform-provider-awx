@@ -103,79 +103,80 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 	return
 }
 
-func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.API_400_ERROR_LOG_FORMAT, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionMaxDiskUsageGb(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionMaxDiskUsageGb(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionQueueSize(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionQueueSize(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_ENABLED, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorHost(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorHost(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_HOST, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorIndividualFacts(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorIndividualFacts(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_INDIVIDUAL_FACTS, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLevel(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLevel(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_LEVEL, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLoggers(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLoggers(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.LOG_AGGREGATOR_LOGGERS, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsagePath(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsagePath(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PASSWORD, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPort(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPort(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_PORT, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorProtocol(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorProtocol(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PROTOCOL, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorRsyslogdDebug(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorRsyslogdDebug(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_RSYSLOGD_DEBUG, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTcpTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTcpTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_TCP_TIMEOUT, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTowerUuid(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTowerUuid(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TOWER_UUID, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorType(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TYPE, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorUsername(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_USERNAME, data, false)
 }
 
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorVerifyCert(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) setLogAggregatorVerifyCert(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_VERIFY_CERT, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

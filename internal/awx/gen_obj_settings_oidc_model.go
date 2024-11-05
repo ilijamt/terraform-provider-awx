@@ -40,23 +40,24 @@ func (o *settingsOpenIdconnectTerraformModel) BodyRequest() (req settingsOpenIdc
 	return
 }
 
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcKey(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_KEY, data, false)
 }
 
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT, data, false)
 }
 
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcSecret(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcSecret(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_SECRET, data, false)
 }
 
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data)
 }
 
-func (o *settingsOpenIdconnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsOpenIdconnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

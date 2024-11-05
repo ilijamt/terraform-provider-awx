@@ -140,7 +140,13 @@ func (o *settingsMiscLoggingResource) Schema(ctx context.Context, req resource.S
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}...),
+					stringvalidator.OneOf(
+						"DEBUG",
+						"INFO",
+						"WARNING",
+						"ERROR",
+						"CRITICAL",
+					),
 				},
 			},
 			"log_aggregator_loggers": schema.ListAttribute{
@@ -201,7 +207,11 @@ func (o *settingsMiscLoggingResource) Schema(ctx context.Context, req resource.S
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"https", "tcp", "udp"}...),
+					stringvalidator.OneOf(
+						"https",
+						"tcp",
+						"udp",
+					),
 				},
 			},
 			"log_aggregator_rsyslogd_debug": schema.BoolAttribute{
@@ -249,7 +259,13 @@ func (o *settingsMiscLoggingResource) Schema(ctx context.Context, req resource.S
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"logstash", "splunk", "loggly", "sumologic", "other"}...),
+					stringvalidator.OneOf(
+						"logstash",
+						"splunk",
+						"loggly",
+						"sumologic",
+						"other",
+					),
 				},
 			},
 			"log_aggregator_username": schema.StringAttribute{

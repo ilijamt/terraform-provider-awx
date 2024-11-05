@@ -8,110 +8,28 @@ import (
 	"text/template"
 )
 
-func getItemElementListType(value map[string]any) (any, error) {
-	if v, ok := value["child"]; ok {
-		if t, ok := v.(map[string]any)["type"]; ok {
-			switch t.(type) {
-			case string:
-				if t == "field" {
-					t = "string"
-				}
-				return t, nil
-			}
-			return "", fmt.Errorf("unknown type for list type")
-		}
-	}
-	return "", fmt.Errorf("no list element type found")
-}
-
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, err error) {
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
 		log.Printf("No actions for %s, skipping ....", name)
-		return nil, nil
+		return nil, nil, nil
 	}
+
+	var description string
+	if v, ok := objmap["description"].(string); ok {
+		description = v
+	}
+
+	var item = &ModelConfig{
+		Name:        name,
+		Description: description,
+	}
+	_ = item.Update(config, val)
 
 	// ---------------------
 	var propertyWriteOnlyData = make(map[string]any)
 	var propertyWriteOnlyKeys []string
-
-	var processOverride = func(
-		source string,
-		value map[string]any,
-		key string,
-	) {
-		value["name"] = key
-		if v, err := getItemElementListType(value); err == nil {
-			value["element_type"] = v
-		}
-
-		if override, ok := val.PropertyOverrides[key]; ok {
-			if "" != override.Type {
-				value["type"] = override.Type
-			}
-			if "" != override.DefaultValue {
-				value["default"] = override.DefaultValue
-			}
-			if "" != override.Description {
-				value["help_text"] = override.Description
-			}
-			if override.Sensitive {
-				value["sensitive"] = override.Sensitive
-			}
-			if override.Required {
-				value["required"] = override.Required
-			}
-			if "" != override.ElementType {
-				value["element_type"] = override.ElementType
-			}
-			value["trim"] = override.Trim
-			value["post_wrap"] = override.PostWrap
-		}
-	}
-
-	var processValues = func(
-		source string,
-		value map[string]any,
-		key string,
-	) {
-		// sensitive
-		if val, ok := value["sensitive"].(bool); ok {
-			value["sensitive"] = val
-		} else {
-			value["sensitive"] = false
-		}
-
-		var required bool
-		if val, ok := value["required"].(bool); ok {
-			required = val
-		} else {
-			value["required"] = required
-		}
-
-		var hasDefault bool
-		if _, ok := value["default"]; ok {
-			hasDefault = fn_default(value["default"], nil) != nil
-		}
-
-		// computed
-		value["computed"] = !required || hasDefault
-
-		// If a property has a default then we need to mark the property as not required,
-		// so we can have a default value
-		if hasDefault {
-			value["required"] = false
-			value["computed"] = true
-			attrType := tf_attribute_type(value)
-			defValue := convertDefaultValue(value["default"])
-			switch awx2go_value(value) {
-			case "types.StringValue":
-				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
-			case "types.Int64Value":
-				value["default_value"] = fmt.Sprintf("%sdefault.Static%s(%v)", lowerCase(attrType), attrType, defValue)
-			}
-		}
-	}
 
 	// ---------------------
 	var propertyGetData = make(map[string]any)
@@ -122,8 +40,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 
 		for key, value := range props {
-			processOverride(val.ApiPropertyDataKey, value.(map[string]any), key)
-			processValues(val.ApiPropertyDataKey, value.(map[string]any), key)
+			value.(map[string]any)["name"] = key
+			_, _ = item.UpdateProperty(TypeRead, key, val.PropertyOverrides[key], value.(map[string]any), val)
 			propertyGetKeys = append(propertyGetKeys, key)
 			propertyGetData[key] = value
 		}
@@ -138,8 +56,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}
 
 		for key, value := range props {
-			processOverride(val.ApiPropertyResourceKey, value.(map[string]any), key)
-			processValues(val.ApiPropertyResourceKey, value.(map[string]any), key)
+			value.(map[string]any)["name"] = key
+			_, _ = item.UpdateProperty(TypeWrite, key, val.PropertyOverrides[key], value.(map[string]any), val)
 			if writeOnly, ok := value.(map[string]any)["write_only"].(bool); ok && writeOnly {
 				if val.SkipWriteOnly {
 					continue
@@ -179,37 +97,44 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		Filename string
 		Template string
 		Render   bool
+		IsNew    bool
 		Data     map[string]any
 	}{
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_model.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_model.go.tpl",
 			Render:   true,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_data_source.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_data_source.go.tpl",
-			Render:   !val.NoTerraformDataSource,
+			Render:   !item.NoTerraformDataSource,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_resource.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_resource.go.tpl",
-			Render:   !val.NoTerraformResource,
+			Render:   !item.NoTerraformResource,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_object_roles.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_resource_object_role.go.tpl",
-			Render:   val.HasObjectRoles,
+			Render:   item.HasObjectRoles,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_survey_spec.go", resourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_survey_spec.go.tpl",
-			Render:   val.HasSurveySpec,
+			Render:   item.HasSurveySpec,
+			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("resources/api/%s/docs/%s.md", config.ApiVersion, strings.ToLower(val.TypeName)),
 			Template: "tf_api_description.md.tpl",
-			Render:   config.RenderApiDocs,
+			Render:   item.RenderApiDocs,
+			IsNew:    true,
 		},
 	}
 
@@ -218,6 +143,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			Filename string
 			Template string
 			Render   bool
+			IsNew    bool
 			Data     map[string]any
 		}{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_adg_%s.go", resourcePath,
@@ -227,6 +153,8 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			Data:     adg.Map(),
 		})
 	}
+
+	_ = item.Process(config, val)
 
 	// ---------------------
 
@@ -241,16 +169,22 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				d = t.Data
 				d["PackageName"] = data["PackageName"]
 			}
+
+			if t.IsNew {
+				d = item.ToMap()
+				d["Config"] = val
+			}
+
 			if err = renderTemplate(
 				tpl,
 				t.Filename,
 				t.Template,
 				d,
 			); err != nil {
-				return data, err
+				return data, item, err
 			}
 		}
 	}
 
-	return data, nil
+	return data, item, nil
 }

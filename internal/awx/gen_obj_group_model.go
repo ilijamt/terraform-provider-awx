@@ -44,27 +44,28 @@ func (o *groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
 	return
 }
 
-func (o *groupTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *groupTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *groupTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *groupTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *groupTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *groupTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *groupTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *groupTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *groupTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
+func (o *groupTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
-func (o *groupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *groupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

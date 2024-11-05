@@ -99,75 +99,76 @@ func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMi
 	return
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setAllowMetricsForAnonymousUsers(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setAllowMetricsForAnonymousUsers(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ALLOW_METRICS_FOR_ANONYMOUS_USERS, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setAllowOauth2ForExternalUsers(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setAllowOauth2ForExternalUsers(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setAuthenticationBackends(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setAuthenticationBackends(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.AUTHENTICATION_BACKENDS, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setAuthBasicEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setAuthBasicEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AUTH_BASIC_ENABLED, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setDisableLocalAuth(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setDisableLocalAuth(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.DISABLE_LOCAL_AUTH, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinDigits(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinDigits(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_DIGITS, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinLength(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinLength(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_LENGTH, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinSpecial(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinSpecial(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_SPECIAL, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinUpper(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinUpper(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_UPPER, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setLoginRedirectOverride(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setLoginRedirectOverride(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LOGIN_REDIRECT_OVERRIDE, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setOauth2Provider(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setOauth2Provider(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.OAUTH2_PROVIDER, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSessionsPerUser(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSessionsPerUser(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SESSIONS_PER_USER, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSessionCookieAge(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSessionCookieAge(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.SESSION_COOKIE_AGE, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthOrganizationMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_ORGANIZATION_MAP, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthTeamMap(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthTeamMap(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_TEAM_MAP, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUsernameIsFullEmail(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUsernameIsFullEmail(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL, data)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUserFields(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUserFields(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_USER_FIELDS, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsMiscAuthenticationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

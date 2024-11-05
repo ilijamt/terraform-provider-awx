@@ -9,8 +9,6 @@
       "AWX_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "GALAXY_TASK_ENV": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -223,10 +219,8 @@
       "help_text": "Additional environment variables set for playbook runs, inventory updates, project updates, and notification sending.",
       "label": "Extra Environment Variables",
       "name": "AWX_TASK_ENV",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -338,10 +332,8 @@
       "help_text": "Additional environment variables set for invocations of ansible-galaxy within project updates. Useful if you must use a proxy server for ansible-galaxy but not git.",
       "label": "Environment Variables for Galaxy Commands",
       "name": "GALAXY_TASK_ENV",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {
@@ -645,10 +637,8 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
@@ -779,10 +769,8 @@
       "placeholder": {
         "HTTP_PROXY": "myproxy.local:8080"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "MAX_FORKS": {

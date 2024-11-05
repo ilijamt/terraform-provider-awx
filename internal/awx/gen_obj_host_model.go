@@ -58,43 +58,44 @@ func (o *hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
 	return
 }
 
-func (o *hostTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *hostTerraformModel) setEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Enabled, data)
 }
 
-func (o *hostTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *hostTerraformModel) setInstanceId(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setInstanceId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.InstanceId, data, false)
 }
 
-func (o *hostTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *hostTerraformModel) setLastJob(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setLastJob(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LastJob, data)
 }
 
-func (o *hostTerraformModel) setLastJobHostSummary(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setLastJobHostSummary(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.LastJobHostSummary, data)
 }
 
-func (o *hostTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *hostTerraformModel) setVariables(data any) (d diag.Diagnostics, err error) {
+func (o *hostTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
-func (o *hostTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *hostTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

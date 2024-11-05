@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +31,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -97,10 +96,8 @@
       "hidden": false,
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {
@@ -182,10 +179,8 @@
       "hidden": false,
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": true,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {
@@ -279,10 +274,8 @@
       "hidden": false,
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {

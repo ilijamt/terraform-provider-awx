@@ -43,27 +43,28 @@ func (o *settingsUiTerraformModel) BodyRequest() (req settingsUiBodyRequestModel
 	return
 }
 
-func (o *settingsUiTerraformModel) setCustomLoginInfo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setCustomLoginInfo(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data, false)
 }
 
-func (o *settingsUiTerraformModel) setCustomLogo(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setCustomLogo(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.CUSTOM_LOGO, data, false)
 }
 
-func (o *settingsUiTerraformModel) setMaxUiJobEvents(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setMaxUiJobEvents(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data)
 }
 
-func (o *settingsUiTerraformModel) setPendoTrackingState(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setPendoTrackingState(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data, false)
 }
 
-func (o *settingsUiTerraformModel) setUiLiveUpdatesEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) setUiLiveUpdatesEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data)
 }
 
-func (o *settingsUiTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsUiTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

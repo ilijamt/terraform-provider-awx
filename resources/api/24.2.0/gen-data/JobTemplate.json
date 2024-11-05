@@ -9,8 +9,6 @@
       "extra_vars": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "",
@@ -19,7 +17,6 @@
       "name": {
         "type": "",
         "description": "",
-        "sensitive": false,
         "required": true,
         "trim": false,
         "post_wrap": false,
@@ -33,7 +30,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -317,10 +315,8 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "force_handlers": {
@@ -436,10 +432,8 @@
       "hidden": false,
       "label": "Name",
       "name": "name",
-      "post_wrap": false,
       "required": true,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "organization": {
@@ -916,10 +910,8 @@
       "hidden": false,
       "label": "Extra vars",
       "name": "extra_vars",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "force_handlers": {
@@ -1039,10 +1031,8 @@
       "label": "Name",
       "max_length": 512,
       "name": "name",
-      "post_wrap": false,
       "required": true,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "playbook": {

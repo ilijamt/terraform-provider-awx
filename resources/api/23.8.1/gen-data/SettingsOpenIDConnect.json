@@ -5,6 +5,17 @@
     "name": "SettingsOpenIDConnect",
     "type_name": "settings_oidc",
     "id_key": "id",
+    "property_overrides": {
+      "SOCIAL_AUTH_OIDC_SECRET": {
+        "type": "",
+        "description": "",
+        "sensitive": true,
+        "trim": false,
+        "post_wrap": false,
+        "default_value": "",
+        "element_type": ""
+      }
+    },
     "enabled": true,
     "has_object_roles": false,
     "has_survey_spec": false,
@@ -12,7 +23,7 @@
     "field_constraints": null,
     "skip_write_only": false,
     "undeletable": true,
-    "pre_state_set_hook_function": "",
+    "pre_state_set_hook_function": "hookSettingsOidc",
     "no_id": true,
     "no_terraform_data_source": false,
     "no_terraform_resource": false,
@@ -62,7 +73,7 @@
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
       "required": false,
-      "sensitive": false,
+      "sensitive": true,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {
@@ -120,7 +131,7 @@
       "label": "OIDC Secret",
       "name": "SOCIAL_AUTH_OIDC_SECRET",
       "required": false,
-      "sensitive": false,
+      "sensitive": true,
       "type": "string"
     },
     "SOCIAL_AUTH_OIDC_VERIFY_SSL": {

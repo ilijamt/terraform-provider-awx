@@ -115,103 +115,104 @@ func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
 	return
 }
 
-func (o *scheduleTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *scheduleTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
-func (o *scheduleTerraformModel) setDtend(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setDtend(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Dtend, data, false)
 }
 
-func (o *scheduleTerraformModel) setDtstart(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setDtstart(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Dtstart, data, false)
 }
 
-func (o *scheduleTerraformModel) setEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Enabled, data)
 }
 
-func (o *scheduleTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
-func (o *scheduleTerraformModel) setExtraData(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setExtraData(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.ExtraData, data, false)
 }
 
-func (o *scheduleTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
-func (o *scheduleTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *scheduleTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *scheduleTerraformModel) setJobSliceCount(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setJobSliceCount(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
 }
 
-func (o *scheduleTerraformModel) setJobTags(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobTags, data, false)
 }
 
-func (o *scheduleTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
-func (o *scheduleTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *scheduleTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *scheduleTerraformModel) setNextRun(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setNextRun(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.NextRun, data, false)
 }
 
-func (o *scheduleTerraformModel) setRrule(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setRrule(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Rrule, data, false)
 }
 
-func (o *scheduleTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
-func (o *scheduleTerraformModel) setSkipTags(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SkipTags, data, false)
 }
 
-func (o *scheduleTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
-func (o *scheduleTerraformModel) setTimezone(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setTimezone(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Timezone, data, false)
 }
 
-func (o *scheduleTerraformModel) setUnifiedJobTemplate(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setUnifiedJobTemplate(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.UnifiedJobTemplate, data)
 }
 
-func (o *scheduleTerraformModel) setUntil(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setUntil(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Until, data, false)
 }
 
-func (o *scheduleTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *scheduleTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *scheduleTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

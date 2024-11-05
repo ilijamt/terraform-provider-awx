@@ -43,27 +43,28 @@ func (o *organizationTerraformModel) BodyRequest() (req organizationBodyRequestM
 	return
 }
 
-func (o *organizationTerraformModel) setDefaultEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) setDefaultEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DefaultEnvironment, data)
 }
 
-func (o *organizationTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *organizationTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *organizationTerraformModel) setMaxHosts(data any) (d diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) setMaxHosts(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.MaxHosts, data)
 }
 
-func (o *organizationTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *organizationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *organizationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

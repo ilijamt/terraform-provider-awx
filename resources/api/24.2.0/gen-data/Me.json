@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -60,10 +58,8 @@
       "hidden": false,
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {

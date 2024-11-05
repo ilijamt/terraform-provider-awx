@@ -9,8 +9,6 @@
       "variables": {
         "type": "json-yaml",
         "description": "Inventory variables in JSON format",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": true,
         "default_value": "{}",
@@ -23,7 +21,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -256,10 +255,8 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json-yaml"
     }
   },
@@ -378,10 +375,8 @@
       "hidden": false,
       "label": "Variables",
       "name": "variables",
-      "post_wrap": true,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json-yaml"
     }
   },

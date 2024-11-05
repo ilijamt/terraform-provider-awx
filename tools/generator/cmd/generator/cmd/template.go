@@ -71,14 +71,24 @@ var templateCmd = &cobra.Command{
 
 				if objmap, ok := apiResource.Resources[item.Name]; ok {
 					var data map[string]any
-					data, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
+					var p *internal.ModelConfig
+					data, p, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
 					if err != nil {
 						return err
 					}
-					payload, _ := json.MarshalIndent(data, "", "  ")
-					genDataFile := fmt.Sprintf("%s/gen-data/%s.json", apiResourcePath, item.Name)
-					log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
-					_ = os.WriteFile(genDataFile, payload, os.ModePerm)
+					{
+						payload, _ := json.MarshalIndent(data, "", "  ")
+						genDataFile := fmt.Sprintf("%s/gen-data/%s.json", apiResourcePath, item.Name)
+						log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
+						_ = os.WriteFile(genDataFile, payload, os.ModePerm)
+					}
+					{
+						_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
+						payload, _ := json.MarshalIndent(p, "", "  ")
+						genDataFile := fmt.Sprintf("%s/gen-model-data/%s.json", apiResourcePath, item.Name)
+						log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
+						_ = os.WriteFile(genDataFile, payload, os.ModePerm)
+					}
 				} else {
 					log.Printf("Missing definition for %s, skipping ...", item.Name)
 				}

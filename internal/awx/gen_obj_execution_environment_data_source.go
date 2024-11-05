@@ -115,7 +115,12 @@ func (o *executionEnvironmentDataSource) Schema(ctx context.Context, req datasou
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"", "always", "missing", "never"}...),
+					stringvalidator.OneOf(
+						"",
+						"always",
+						"missing",
+						"never",
+					),
 				},
 			},
 		},

@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -58,10 +56,8 @@
       "help_text": "Set if the account is managed by an external service",
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {

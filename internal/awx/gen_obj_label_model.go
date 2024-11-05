@@ -35,19 +35,20 @@ func (o *labelTerraformModel) BodyRequest() (req labelBodyRequestModel) {
 	return
 }
 
-func (o *labelTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *labelTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *labelTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *labelTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *labelTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *labelTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *labelTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *labelTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

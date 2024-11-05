@@ -148,119 +148,120 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 	return
 }
 
-func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabledForInventorySync(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabledForInventorySync(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsGatherInterval(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsGatherInterval(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.AUTOMATION_ANALYTICS_GATHER_INTERVAL, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastEntries(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastEntries(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastGather(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastGather(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_GATHER, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsUrl(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsUrl(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_URL, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setCleanupHostMetricsLastTs(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setCleanupHostMetricsLastTs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.CLEANUP_HOST_METRICS_LAST_TS, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setCsrfTrustedOrigins(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setCsrfTrustedOrigins(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.CSRF_TRUSTED_ORIGINS, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setCustomVenvPaths(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setCustomVenvPaths(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.CUSTOM_VENV_PATHS, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setDefaultControlPlaneQueueName(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setDefaultControlPlaneQueueName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.DEFAULT_CONTROL_PLANE_QUEUE_NAME, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setDefaultExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setDefaultExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.DEFAULT_EXECUTION_ENVIRONMENT, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setDefaultExecutionQueueName(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setDefaultExecutionQueueName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.DEFAULT_EXECUTION_QUEUE_NAME, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setHostMetricSummaryTaskLastTs(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setHostMetricSummaryTaskLastTs(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.HOST_METRIC_SUMMARY_TASK_LAST_TS, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setInsightsTrackingState(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setInsightsTrackingState(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.INSIGHTS_TRACKING_STATE, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setInstallUuid(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setInstallUuid(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.INSTALL_UUID, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setIsK8S(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setIsK8S(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IS_K8S, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setLicense(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setLicense(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LICENSE, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setManageOrganizationAuth(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setManageOrganizationAuth(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.MANAGE_ORGANIZATION_AUTH, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setOrgAdminsCanSeeAllUsers(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setOrgAdminsCanSeeAllUsers(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ORG_ADMINS_CAN_SEE_ALL_USERS, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) setProxyIpAllowedList(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setProxyIpAllowedList(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.PROXY_IP_ALLOWED_LIST, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setRedhatPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setRedhatPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.REDHAT_PASSWORD, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setRedhatUsername(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setRedhatUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.REDHAT_USERNAME, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setRemoteHostHeaders(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setRemoteHostHeaders(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetListString(&o.REMOTE_HOST_HEADERS, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setSubscriptionsPassword(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setSubscriptionsPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_PASSWORD, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setSubscriptionsUsername(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setSubscriptionsUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_USERNAME, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setSubscriptionUsageModel(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setSubscriptionUsageModel(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SUBSCRIPTION_USAGE_MODEL, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setTowerUrlBase(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setTowerUrlBase(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.TOWER_URL_BASE, data, false)
 }
 
-func (o *settingsMiscSystemTerraformModel) setUiNext(data any) (d diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) setUiNext(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.UI_NEXT, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

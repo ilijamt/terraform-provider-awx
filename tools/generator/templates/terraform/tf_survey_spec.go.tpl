@@ -162,7 +162,7 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Read(ctx context.Context, request r
 	}
 
 	if val, ok := data["spec"]; ok {
-		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val, {{ default .trim false }})
+		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val, {{ or .Trim false }})
 		if dg.HasError() {
 			response.Diagnostics.Append(dg...)
 		}

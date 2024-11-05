@@ -63,7 +63,11 @@ func (o *settingsJobsDataSource) Schema(ctx context.Context, req datasource.Sche
 				Sensitive:   false,
 				Computed:    true,
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"always", "never", "template"}...),
+					stringvalidator.OneOf(
+						"always",
+						"never",
+						"template",
+					),
 				},
 			},
 			"ansible_fact_cache_timeout": schema.Int64Attribute{

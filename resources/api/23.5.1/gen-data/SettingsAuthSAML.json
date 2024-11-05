@@ -9,8 +9,6 @@
       "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +33,6 @@
       "SOCIAL_AUTH_SAML_ORG_INFO": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -49,8 +41,6 @@
       "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -59,8 +49,6 @@
       "SOCIAL_AUTH_SAML_SP_EXTRA": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -70,7 +58,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": true,
         "post_wrap": false,
         "default_value": "",
@@ -79,8 +66,6 @@
       "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
         "type": "",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": true,
         "post_wrap": false,
         "default_value": "",
@@ -89,8 +74,6 @@
       "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -99,8 +82,6 @@
       "SOCIAL_AUTH_SAML_TEAM_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -109,8 +90,6 @@
       "SOCIAL_AUTH_SAML_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -119,8 +98,6 @@
       "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -129,8 +106,6 @@
       "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -202,10 +177,8 @@
       "help_text": "Configure the Entity ID, SSO URL and certificate for each identity provider (IdP) in use. Multiple SAML IdPs are supported. Some IdPs may provide user data using attribute names that differ from the default OIDs. Attribute names may be overridden for each IdP. Refer to the Ansible documentation for additional details and syntax.",
       "label": "SAML Enabled Identity Providers",
       "name": "SOCIAL_AUTH_SAML_ENABLED_IDPS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -248,10 +221,8 @@
       "help_text": "Used to translate user organization membership.",
       "label": "SAML Organization Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -271,10 +242,8 @@
       "help_text": "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
       "label": "SAML Organization Map",
       "name": "SOCIAL_AUTH_SAML_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -294,10 +263,8 @@
       "help_text": "Provide the URL, display name, and the name of your app. Refer to the documentation for example syntax.",
       "label": "SAML Service Provider Organization Info",
       "name": "SOCIAL_AUTH_SAML_ORG_INFO",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -312,10 +279,8 @@
       "help_text": "A dict of key value pairs that are passed to the underlying python-saml security setting https://github.com/onelogin/python-saml#settings",
       "label": "SAML Security Config",
       "name": "SOCIAL_AUTH_SAML_SECURITY_CONFIG",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -342,10 +307,8 @@
       "help_text": "A dict of key value pairs to be passed to the underlying python-saml Service Provider configuration setting.",
       "label": "SAML Service Provider extra configuration data",
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -356,10 +319,8 @@
       "help_text": "Create a keypair to use as a service provider (SP) and include the private key content here.",
       "label": "SAML Service Provider Private Key",
       "name": "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
@@ -370,10 +331,8 @@
       "help_text": "Create a keypair to use as a service provider (SP) and include the certificate content here.",
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -388,10 +347,8 @@
       "help_text": "Provide the name and email address of the support contact for your service provider. Refer to the documentation for example syntax.",
       "label": "SAML Service Provider Support Contact",
       "name": "SOCIAL_AUTH_SAML_SUPPORT_CONTACT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -406,10 +363,8 @@
       "help_text": "Used to translate user team membership.",
       "label": "SAML Team Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_TEAM_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -429,10 +384,8 @@
       "help_text": "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
       "label": "SAML Team Map",
       "name": "SOCIAL_AUTH_SAML_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -447,10 +400,8 @@
       "help_text": "Provide the name and email address of the technical contact for your service provider. Refer to the documentation for example syntax.",
       "label": "SAML Service Provider Technical Contact",
       "name": "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -465,10 +416,8 @@
       "help_text": "Used to map super users and system auditors from SAML.",
       "label": "SAML User Flags Attribute Mapping",
       "name": "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
@@ -547,10 +496,8 @@
           "x509cert": "MIIEJjCCAw6gAwIBAgIUfuSD54OPSBhndDHh3gZo..."
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
@@ -608,10 +555,8 @@
         "saml_attr": "organization",
         "saml_auditor_attr": "organization_auditor"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
@@ -656,10 +601,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
@@ -689,10 +632,8 @@
           "url": "http://www.example.com"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -731,10 +672,8 @@
         "wantNameId": true,
         "wantNameIdEncrypted": false
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
@@ -765,10 +704,8 @@
       "label": "SAML Service Provider extra configuration data",
       "name": "SOCIAL_AUTH_SAML_SP_EXTRA",
       "placeholder": {},
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
@@ -780,10 +717,8 @@
       "help_text": "Create a keypair to use as a service provider (SP) and include the private key content here.",
       "label": "SAML Service Provider Private Key",
       "name": "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
@@ -795,10 +730,8 @@
       "help_text": "Create a keypair to use as a service provider (SP) and include the certificate content here.",
       "label": "SAML Service Provider Public Certificate",
       "name": "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": true,
       "type": "string"
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
@@ -820,10 +753,8 @@
         "emailAddress": "support@example.com",
         "givenName": "Support Contact"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
@@ -871,10 +802,8 @@
           }
         ]
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
@@ -910,10 +839,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
@@ -935,10 +862,8 @@
         "emailAddress": "techsup@example.com",
         "givenName": "Technical Contact"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
@@ -998,10 +923,8 @@
           true
         ]
       ],
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },

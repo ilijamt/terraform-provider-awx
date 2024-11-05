@@ -9,8 +9,6 @@
       "DEFAULT_EXECUTION_ENVIRONMENT": {
         "type": "id",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "LICENSE": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -190,10 +186,8 @@
       "help_text": "The Execution Environment to be used when one has not been configured for a job template.",
       "label": "Global default execution environment",
       "name": "DEFAULT_EXECUTION_ENVIRONMENT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "id"
     },
     "DEFAULT_EXECUTION_QUEUE_NAME": {
@@ -265,10 +259,8 @@
       "help_text": "The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license.",
       "label": "License",
       "name": "LICENSE",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "MANAGE_ORGANIZATION_AUTH": {
@@ -542,10 +534,8 @@
       "help_text": "The Execution Environment to be used when one has not been configured for a job template.",
       "label": "Global default execution environment",
       "name": "DEFAULT_EXECUTION_ENVIRONMENT",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "id"
     },
     "INSIGHTS_TRACKING_STATE": {

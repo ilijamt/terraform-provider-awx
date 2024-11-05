@@ -156,7 +156,10 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"run", "check"}...),
+					stringvalidator.OneOf(
+						"run",
+						"check",
+					),
 				},
 			},
 			"limit": schema.StringAttribute{
@@ -194,7 +197,27 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"command", "shell", "yum", "apt", "apt_key", "apt_repository", "apt_rpm", "service", "group", "user", "mount", "ping", "selinux", "setup", "win_ping", "win_service", "win_updates", "win_group", "win_user"}...),
+					stringvalidator.OneOf(
+						"command",
+						"shell",
+						"yum",
+						"apt",
+						"apt_key",
+						"apt_repository",
+						"apt_rpm",
+						"service",
+						"group",
+						"user",
+						"mount",
+						"ping",
+						"selinux",
+						"setup",
+						"win_ping",
+						"win_service",
+						"win_updates",
+						"win_group",
+						"win_user",
+					),
 				},
 			},
 			"verbosity": schema.StringAttribute{
@@ -208,7 +231,14 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"0", "1", "2", "3", "4", "5"}...),
+					stringvalidator.OneOf(
+						"0",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+					),
 				},
 			},
 			// Write only elements
@@ -303,7 +333,17 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"manual", "relaunch", "callback", "scheduled", "dependency", "workflow", "webhook", "sync", "scm"}...),
+					stringvalidator.OneOf(
+						"manual",
+						"relaunch",
+						"callback",
+						"scheduled",
+						"dependency",
+						"workflow",
+						"webhook",
+						"sync",
+						"scm",
+					),
 				},
 			},
 			"launched_by": schema.Int64Attribute{
@@ -346,7 +386,16 @@ func (o *adHocCommandResource) Schema(ctx context.Context, req resource.SchemaRe
 					stringplanmodifier.UseStateForUnknown(),
 				},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"new", "pending", "waiting", "running", "successful", "failed", "error", "canceled"}...),
+					stringvalidator.OneOf(
+						"new",
+						"pending",
+						"waiting",
+						"running",
+						"successful",
+						"failed",
+						"error",
+						"canceled",
+					),
 				},
 			},
 			"work_unit_id": schema.StringAttribute{

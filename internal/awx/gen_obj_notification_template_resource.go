@@ -115,7 +115,17 @@ func (o *notificationTemplateResource) Schema(ctx context.Context, req resource.
 				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"email", "grafana", "irc", "mattermost", "pagerduty", "rocketchat", "slack", "twilio", "webhook"}...),
+					stringvalidator.OneOf(
+						"email",
+						"grafana",
+						"irc",
+						"mattermost",
+						"pagerduty",
+						"rocketchat",
+						"slack",
+						"twilio",
+						"webhook",
+					),
 				},
 			},
 			"organization": schema.Int64Attribute{

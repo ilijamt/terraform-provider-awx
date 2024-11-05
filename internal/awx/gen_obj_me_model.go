@@ -54,47 +54,48 @@ func (o *meTerraformModel) BodyRequest() (req meBodyRequestModel) {
 	return
 }
 
-func (o *meTerraformModel) setEmail(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setEmail(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Email, data, false)
 }
 
-func (o *meTerraformModel) setExternalAccount(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setExternalAccount(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ExternalAccount, data, false)
 }
 
-func (o *meTerraformModel) setFirstName(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setFirstName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.FirstName, data, false)
 }
 
-func (o *meTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *meTerraformModel) setIsSuperuser(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setIsSuperuser(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IsSuperuser, data)
 }
 
-func (o *meTerraformModel) setIsSystemAuditor(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setIsSystemAuditor(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.IsSystemAuditor, data)
 }
 
-func (o *meTerraformModel) setLastLogin(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setLastLogin(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LastLogin, data, false)
 }
 
-func (o *meTerraformModel) setLastName(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setLastName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LastName, data, false)
 }
 
-func (o *meTerraformModel) setLdapDn(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setLdapDn(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.LdapDn, data, false)
 }
 
-func (o *meTerraformModel) setUsername(data any) (d diag.Diagnostics, err error) {
+func (o *meTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *meTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *meTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}

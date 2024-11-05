@@ -69,7 +69,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"authorization-code", "password"}...),
+					stringvalidator.OneOf(
+						"authorization-code",
+						"password",
+					),
 				},
 			},
 			"client_type": schema.StringAttribute{
@@ -80,7 +83,10 @@ func (o *applicationResource) Schema(ctx context.Context, req resource.SchemaReq
 				Computed:      false,
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
-					stringvalidator.OneOf([]string{"confidential", "public"}...),
+					stringvalidator.OneOf(
+						"confidential",
+						"public",
+					),
 				},
 			},
 			"description": schema.StringAttribute{

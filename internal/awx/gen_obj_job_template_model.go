@@ -203,187 +203,188 @@ func (o *jobTemplateTerraformModel) BodyRequest() (req jobTemplateBodyRequestMod
 	return
 }
 
-func (o *jobTemplateTerraformModel) setAllowSimultaneous(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAllowSimultaneous(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AllowSimultaneous, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskCredentialOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskCredentialOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskCredentialOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskDiffModeOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskDiffModeOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskDiffModeOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskExecutionEnvironmentOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskExecutionEnvironmentOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskExecutionEnvironmentOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskForksOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskForksOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskForksOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskInstanceGroupsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskInstanceGroupsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskInstanceGroupsOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskJobSliceCountOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskJobSliceCountOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskJobSliceCountOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskJobTypeOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskJobTypeOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskJobTypeOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskLimitOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskLimitOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskTagsOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskTimeoutOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskTimeoutOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskTimeoutOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setAskVerbosityOnLaunch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setAskVerbosityOnLaunch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.AskVerbosityOnLaunch, data)
 }
 
-func (o *jobTemplateTerraformModel) setBecomeEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setBecomeEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
 }
 
-func (o *jobTemplateTerraformModel) setDescription(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setDiffMode(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.DiffMode, data)
 }
 
-func (o *jobTemplateTerraformModel) setExecutionEnvironment(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
 }
 
-func (o *jobTemplateTerraformModel) setExtraVars(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setForceHandlers(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setForceHandlers(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.ForceHandlers, data)
 }
 
-func (o *jobTemplateTerraformModel) setForks(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Forks, data)
 }
 
-func (o *jobTemplateTerraformModel) setHostConfigKey(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setHostConfigKey(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.HostConfigKey, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setID(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *jobTemplateTerraformModel) setInventory(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Inventory, data)
 }
 
-func (o *jobTemplateTerraformModel) setJobSliceCount(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setJobSliceCount(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
 }
 
-func (o *jobTemplateTerraformModel) setJobTags(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobTags, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setJobType(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.JobType, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setLimit(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Limit, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setName(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setOrganization(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *jobTemplateTerraformModel) setPlaybook(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setPlaybook(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Playbook, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setPreventInstanceGroupFallback(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setPreventInstanceGroupFallback(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
 }
 
-func (o *jobTemplateTerraformModel) setProject(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setProject(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Project, data)
 }
 
-func (o *jobTemplateTerraformModel) setScmBranch(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setSkipTags(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SkipTags, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setStartAtTask(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setStartAtTask(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.StartAtTask, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setSurveyEnabled(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setSurveyEnabled(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.SurveyEnabled, data)
 }
 
-func (o *jobTemplateTerraformModel) setTimeout(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
-func (o *jobTemplateTerraformModel) setUseFactCache(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setUseFactCache(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.UseFactCache, data)
 }
 
-func (o *jobTemplateTerraformModel) setVerbosity(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *jobTemplateTerraformModel) setWebhookCredential(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setWebhookCredential(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.WebhookCredential, data)
 }
 
-func (o *jobTemplateTerraformModel) setWebhookService(data any) (d diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) setWebhookService(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.WebhookService, data, false)
 }
 
-func (o *jobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, err error) {
+func (o *jobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
