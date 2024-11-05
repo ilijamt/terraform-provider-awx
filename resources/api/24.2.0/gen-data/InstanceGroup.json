@@ -12,10 +12,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "consumed_capacity": {
         "type": "float",
@@ -23,10 +20,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "instances": {
         "type": "integer",
@@ -34,10 +28,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "jobs_running": {
         "type": "integer",
@@ -45,10 +36,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "percent_capacity_remaining": {
         "type": "float",
@@ -56,10 +44,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       }
     },
     "search_fields": [

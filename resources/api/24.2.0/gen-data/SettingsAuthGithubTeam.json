@@ -12,10 +12,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
         "type": "",
@@ -24,10 +21,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP": {
         "type": "json",
@@ -35,10 +29,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       }
     },
     "enabled": true,

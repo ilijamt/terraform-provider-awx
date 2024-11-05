@@ -12,10 +12,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "GALAXY_TASK_ENV": {
         "type": "json",
@@ -23,10 +20,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       }
     },
     "enabled": true,

@@ -12,10 +12,7 @@
         "trim": false,
         "post_wrap": true,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       }
     },
     "search_fields": [

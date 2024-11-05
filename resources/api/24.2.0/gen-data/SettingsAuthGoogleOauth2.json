@@ -12,10 +12,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
         "type": "json",
@@ -23,10 +20,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
         "type": "",
@@ -35,10 +29,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       },
       "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
         "type": "json",
@@ -46,10 +37,7 @@
         "trim": false,
         "post_wrap": false,
         "default_value": "",
-        "element_type": "",
-        "listvalidator": {
-          "validators": null
-        }
+        "element_type": ""
       }
     },
     "enabled": true,
