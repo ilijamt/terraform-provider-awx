@@ -9,8 +9,6 @@
       "timezone": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "until": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +29,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       }
@@ -278,10 +275,8 @@
       "help_text": "The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.",
       "label": "Timezone",
       "name": "timezone",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "unified_job_template": {
@@ -299,10 +294,8 @@
       "help_text": "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned",
       "label": "Until",
       "name": "until",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "verbosity": {

@@ -305,7 +305,7 @@ func (c *ModelConfig) Process(config Config, item Item) (_ error) {
 			c.WriteOnlyKeys = append(c.WriteOnlyKeys, key)
 		}
 	}
-
+	slices.Sort(c.WriteOnlyKeys)
 	c.IdProperty = c.ReadProperties[c.IdKey]
 	return nil
 }

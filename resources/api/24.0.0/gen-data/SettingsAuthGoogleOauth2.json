@@ -9,8 +9,6 @@
       "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -30,7 +26,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -39,8 +34,6 @@
       "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -83,10 +76,8 @@
       "help_text": "Extra arguments for Google OAuth2 login. You can restrict it to only allow a single domain to authenticate, even if the user is logged in with multple Google accounts. Refer to the documentation for more detail.",
       "label": "Google OAuth2 Extra Arguments",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL": {
@@ -130,10 +121,8 @@
       "help_text": "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
       "label": "Google OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
@@ -144,10 +133,8 @@
       "help_text": "The OAuth2 secret from your web application.",
       "label": "Google OAuth2 Secret",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
@@ -167,10 +154,8 @@
       "help_text": "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
       "label": "Google OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS": {
@@ -218,10 +203,8 @@
       "placeholder": {
         "hd": "example.com"
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY": {
@@ -280,10 +263,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
@@ -296,10 +277,8 @@
       "label": "Google OAuth2 Secret",
       "name": "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET",
       "placeholder": "q2fMVCmEregbg-drvebPp8OW",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
@@ -335,10 +314,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS": {

@@ -9,8 +9,6 @@
       "external_account": {
         "type": "string",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -33,7 +31,8 @@
         "name": "by_id",
         "fields": [
           {
-            "name": "id"
+            "name": "id",
+            "url_escape_value": false
           }
         ]
       },
@@ -95,10 +94,8 @@
       "help_text": "Set if the account is managed by an external service",
       "label": "External account",
       "name": "external_account",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "string"
     },
     "first_name": {
@@ -172,10 +169,8 @@
       "help_text": "Field used to change the password.",
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": true,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {
@@ -262,10 +257,8 @@
       "help_text": "Field used to change the password.",
       "label": "Password",
       "name": "password",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "username": {

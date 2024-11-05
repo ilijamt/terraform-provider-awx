@@ -9,8 +9,6 @@
       "OAUTH2_PROVIDER": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -19,8 +17,6 @@
       "SOCIAL_AUTH_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +25,6 @@
       "SOCIAL_AUTH_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -202,10 +196,8 @@
       "help_text": "Dictionary for customizing OAuth 2 timeouts, available items are `ACCESS_TOKEN_EXPIRE_SECONDS`, the duration of access tokens in the number of seconds, `AUTHORIZATION_CODE_EXPIRE_SECONDS`, the duration of authorization codes in the number of seconds, and `REFRESH_TOKEN_EXPIRE_SECONDS`, the duration of refresh tokens, after expired access tokens, in the number of seconds.",
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -254,10 +246,8 @@
       "help_text": "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
       "label": "Social Auth Organization Map",
       "name": "SOCIAL_AUTH_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -277,10 +267,8 @@
       "help_text": "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
       "label": "Social Auth Team Map",
       "name": "SOCIAL_AUTH_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
@@ -469,10 +457,8 @@
       "help_text": "Dictionary for customizing OAuth 2 timeouts, available items are `ACCESS_TOKEN_EXPIRE_SECONDS`, the duration of access tokens in the number of seconds, `AUTHORIZATION_CODE_EXPIRE_SECONDS`, the duration of authorization codes in the number of seconds, and `REFRESH_TOKEN_EXPIRE_SECONDS`, the duration of refresh tokens, after expired access tokens, in the number of seconds.",
       "label": "OAuth 2 Timeout Settings",
       "name": "OAUTH2_PROVIDER",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json",
       "unit": "seconds"
     },
@@ -548,10 +534,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_TEAM_MAP": {
@@ -587,10 +571,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {

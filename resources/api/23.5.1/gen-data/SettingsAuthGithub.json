@@ -9,8 +9,6 @@
       "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -20,7 +18,6 @@
         "type": "",
         "description": "",
         "sensitive": true,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -29,8 +26,6 @@
       "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
         "type": "json",
         "description": "",
-        "sensitive": false,
-        "required": false,
         "trim": false,
         "post_wrap": false,
         "default_value": "",
@@ -102,10 +97,8 @@
       "help_text": "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
       "label": "GitHub OAuth2 Organization Map",
       "name": "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_SECRET": {
@@ -116,10 +109,8 @@
       "help_text": "The OAuth2 secret (Client Secret) from your GitHub developer application.",
       "label": "GitHub OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
@@ -139,10 +130,8 @@
       "help_text": "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
       "label": "GitHub OAuth2 Team Map",
       "name": "SOCIAL_AUTH_GITHUB_TEAM_MAP",
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
@@ -209,10 +198,8 @@
           "users": "/^[^@].*?@example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     },
     "SOCIAL_AUTH_GITHUB_SECRET": {
@@ -224,10 +211,8 @@
       "help_text": "The OAuth2 secret (Client Secret) from your GitHub developer application.",
       "label": "GitHub OAuth2 Secret",
       "name": "SOCIAL_AUTH_GITHUB_SECRET",
-      "post_wrap": false,
       "required": false,
       "sensitive": true,
-      "trim": false,
       "type": "string"
     },
     "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
@@ -263,10 +248,8 @@
           "users": "/^[^@]+?@test2\\.example\\.com$/i"
         }
       },
-      "post_wrap": false,
       "required": false,
       "sensitive": false,
-      "trim": false,
       "type": "json"
     }
   },
