@@ -61,41 +61,26 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Description: "The Grant type the user must use for acquire tokens for this application.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"authorization-code",
-						"password",
-					),
-				},
 			},
 			"client_id": schema.StringAttribute{
 				Description: "Client id",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"client_secret": schema.StringAttribute{
 				Description: "Used for more stringent verification of access to an application when creating a token.",
 				Sensitive:   true,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"client_type": schema.StringAttribute{
 				Description: "Set to Public or Confidential depending on how secure the client device is.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"confidential",
-						"public",
-					),
-				},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this application.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this application.",
@@ -141,13 +126,11 @@ func (o *applicationDataSource) Schema(ctx context.Context, req datasource.Schem
 				Description: "Allowed URIs list, space separated",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"skip_authorization": schema.BoolAttribute{
 				Description: "Set True to skip authorization step for completely trusted applications.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 		},
 	}

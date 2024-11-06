@@ -60,7 +60,6 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Description: "Optional description of this credential type.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential type.",
@@ -78,40 +77,21 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Description: "Enter injectors using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"inputs": schema.StringAttribute{
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"kind": schema.StringAttribute{
 				Description: "The credential type",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"ssh",
-						"vault",
-						"net",
-						"scm",
-						"cloud",
-						"registry",
-						"token",
-						"insights",
-						"external",
-						"kubernetes",
-						"galaxy",
-						"cryptography",
-					),
-				},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "Is the resource managed",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this credential type.",
@@ -129,7 +109,6 @@ func (o *credentialTypeDataSource) Schema(ctx context.Context, req datasource.Sc
 				Description: "The namespace to which the resource belongs to",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 		},
 	}

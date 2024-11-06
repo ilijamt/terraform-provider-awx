@@ -58,7 +58,6 @@ func (o *groupDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 				Description: "Optional description of this group.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this group.",
@@ -75,19 +74,16 @@ func (o *groupDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 				Description: "Inventory",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this group.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"variables": schema.StringAttribute{
 				Description: "Group variables in JSON or YAML format.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 		},
 	}
