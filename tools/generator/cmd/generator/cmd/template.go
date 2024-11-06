@@ -51,6 +51,11 @@ var templateCmd = &cobra.Command{
 		}
 
 		for _, item := range cfg.Items {
+			// if item.Name == "RoleDefinition" {
+			// 	item.Enabled = true
+			// } else {
+			// 	item.Enabled = false
+			// }
 			if item.Enabled {
 				if !item.NoTerraformResource {
 					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)

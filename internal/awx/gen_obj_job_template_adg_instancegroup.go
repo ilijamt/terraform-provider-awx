@@ -147,7 +147,7 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Create(ctx context.Conte
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create of type ", endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create of type 'default'", endpoint),
 			err.Error(),
 		)
 		return
@@ -193,7 +193,7 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Delete(ctx context.Conte
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type ", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type 'default'", o.endpoint),
 			err.Error(),
 		)
 		return

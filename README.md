@@ -21,6 +21,11 @@ Currently, built provider versions for AWX. To see which ones are active check [
 * 24.0.0
 * 24.1.0
 * 24.2.0
+* 24.3.1
+* 24.4.0
+* 24.5.0
+* 24.6.0
+* 24.6.1
 
 TODO:
 -----

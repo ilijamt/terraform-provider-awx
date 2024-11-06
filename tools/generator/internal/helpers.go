@@ -1,10 +1,17 @@
 package internal
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
+	"os"
+	p "path"
 	"strconv"
+	"strings"
+	"text/template"
 
 	"github.com/iancoleman/strcase"
+	"gopkg.in/yaml.v3"
 )
 
 func generateAttributeValidationData(fields []SearchGroup, needle string) (attrs map[string][]string) {
@@ -193,4 +200,78 @@ func tfGoPrimitiveValue(t string, postWrap bool) string {
 		return "Elements"
 	}
 	return t
+}
+
+func setPropertyCase(in string) string {
+	return strcase.ToCamel(strcase.ToSnake(in))
+}
+
+func init() {
+	strcase.ConfigureAcronym("id", "ID")
+}
+
+func renderTemplate(tpl *template.Template, filename, template string, data any) (err error) {
+	log.Printf("Rendering of %s into %s.", template, filename)
+	var f *os.File
+	if f, err = os.Create(filename); err != nil {
+		return err
+	}
+
+	if err = tpl.ExecuteTemplate(f, template, data); err != nil {
+		return err
+	}
+	return nil
+}
+
+var lowerCase = func(in string) string {
+	return strings.ToLower(in)
+}
+
+var convertDefaultValue = func(in any) any {
+	switch in.(type) {
+	case map[string]any:
+		payload, err := json.Marshal(in)
+		if err != nil {
+			return "{}"
+		}
+		return string(payload)
+	}
+	return in
+}
+
+var FuncMap = template.FuncMap{
+	"format_number": func(in any) any {
+		switch v := in.(type) {
+		case float32:
+			return int64(v)
+		case float64:
+			return int64(v)
+		}
+		return in
+	},
+	"url_path_clean": func(in string) string {
+		return p.Clean(in)
+	},
+	"escape_quotes": func(in string) string {
+		return fmt.Sprintf("%q", in)
+	},
+	"snakeCase":      strcase.ToSnake,
+	"camelCase":      strcase.ToCamel,
+	"lowerCase":      lowerCase,
+	"lowerCamelCase": strcase.ToLowerCamel,
+	"hasKey": func(d map[string]any, key string) bool {
+		_, ok := d[key]
+		return ok
+	},
+	"quote": func(in any) string {
+		return fmt.Sprintf("%q", in)
+	},
+	"toJson": func(in any) string {
+		payload, _ := json.MarshalIndent(in, "", "  ")
+		return string(payload)
+	},
+	"toYaml": func(in any) string {
+		payload, _ := yaml.Marshal(in)
+		return string(payload)
+	},
 }

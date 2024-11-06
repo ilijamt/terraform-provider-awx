@@ -58,7 +58,7 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name
 }
 
 {{ range $key, $value := .ReadProperties }}
-func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $key | setPropertyCase }}(data any) (_ diag.Diagnostics, _ error) {
+func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $value.Generated.PropertyCase }}(data any) (_ diag.Diagnostics, _ error) {
 {{- if eq $value.Generated.AwxGoValue "types.Int64Value" }}
     return helpers.AttrValueSetInt64(&o.{{ $value.Generated.PropertyName }}, data)
 {{- else if eq $value.Generated.AwxGoValue "types.Float64Value" }}
@@ -83,7 +83,7 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) updateFromApiData(data map[
         return diags, fmt.Errorf("no data passed")
     }
 {{- range $key, $value := .ReadProperties }}
-    if dg, _ := o.set{{ $key | setPropertyCase }}(data["{{ $key }}"]); dg.HasError() {
+    if dg, _ := o.set{{ $value.Generated.PropertyCase }}(data["{{ $key }}"]); dg.HasError() {
         diags.Append(dg...)
     }
 {{- end }}
