@@ -147,7 +147,7 @@ func (o *hostAssociateDisassociateGroup) Create(ctx context.Context, request res
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Host on %s for create of type ", endpoint),
+			fmt.Sprintf("Unable to create a new request for Host on %s for create of type 'default'", endpoint),
 			err.Error(),
 		)
 		return
@@ -193,7 +193,7 @@ func (o *hostAssociateDisassociateGroup) Delete(ctx context.Context, request res
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
 	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Host on %s for delete of type ", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Host on %s for delete of type 'default'", o.endpoint),
 			err.Error(),
 		)
 		return

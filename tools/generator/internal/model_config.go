@@ -69,6 +69,7 @@ type PropertyGenerated struct {
 	AwxGoType                     string              `json:"awx_go_type" yaml:"awx_go_type"`
 	AwxGoValue                    string              `json:"awx_go_value" yaml:"awx_go_value"`
 	PropertyName                  string              `json:"property_name" yaml:"property_name"`
+	PropertyCase                  string              `json:"property_case" yaml:"property_case"`
 	BodyRequestModelType          string              `json:"body_request_model_type" yaml:"body_request_model_type"`
 	TfGoPrimitiveValue            string              `json:"tf_go_primitive_value" yaml:"tf_go_primitive_value"`
 	ModelBodyRequestValue         string              `json:"model_body_request_value" yaml:"model_body_request_value"`
@@ -136,6 +137,7 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 	p.Generated.AwxGoType = awxGoType(p.Type)
 	p.Generated.AwxGoValue = awxGoValue(p.Type)
 	p.Generated.PropertyName = awxPropertyCase(p.Name, item)
+	p.Generated.PropertyCase = setPropertyCase(p.Name)
 	p.Generated.TfGoPrimitiveValue = tfGoPrimitiveValue(p.Type, p.PostWrap)
 	p.Generated.AttributeType = tfAttributeType(p.Type)
 
