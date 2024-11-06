@@ -66,7 +66,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- range $key, $value := .WriteProperties }}
 {{- if not $value.IsWriteOnly }}
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
+				ElementType: types.ListType{ElemType: types.StringType},
+{{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
                 Description: {{ escape_quotes (or $value.Description $value.Label) }},
@@ -93,6 +95,15 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
                         {{ $item | quote }},
 {{- end }}
                     ),
+{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq .Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
+{{- range $item := $value.Validators }}
+                    {{ $item }},
+{{- end }}
+					listvalidator.ValueStringsAre(stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                         {{ $item | quote }},
+{{- end }}
+                    )),
 {{- end }}
 {{- range $value.Constraints }}
                     // {{ .Id }}
@@ -110,7 +121,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- range $key, $value := $.WriteProperties }}
 {{- if $value.IsWriteOnly }}
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
+				ElementType: types.ListType{ElemType: types.StringType},
+{{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
                 Description: {{ escape_quotes (or $value.Description $value.Label) }},
@@ -137,6 +150,15 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
                         {{ $item | quote }},
 {{- end }}
                     ),
+{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq .Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
+{{- range $item := $value.Validators }}
+                    {{ $item }},
+{{- end }}
+					listvalidator.ValueStringsAre(stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+                         {{ $item | quote }},
+{{- end }}
+                    )),
 {{- end }}
 {{- range $value.Constraints }}
                     // {{ .Id }}
@@ -154,7 +176,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- range $key, $value := .ReadProperties }}
 {{- if not $value.IsInWriteProperty }}
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
+				ElementType: types.ListType{ElemType: types.StringType},
+{{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
                 Description: {{ escape_quotes (or $value.Description "") }},

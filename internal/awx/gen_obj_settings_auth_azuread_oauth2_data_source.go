@@ -11,7 +11,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )
 
 var (
@@ -54,31 +53,26 @@ func (o *settingsAuthAzureAdoauth2DataSource) Schema(ctx context.Context, req da
 				Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail. ",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"social_auth_azuread_oauth2_key": schema.StringAttribute{
 				Description: "The OAuth2 key (Client ID) from your Azure AD application.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"social_auth_azuread_oauth2_organization_map": schema.StringAttribute{
 				Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"social_auth_azuread_oauth2_secret": schema.StringAttribute{
 				Description: "The OAuth2 secret (Client Secret) from your Azure AD application.",
 				Sensitive:   true,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"social_auth_azuread_oauth2_team_map": schema.StringAttribute{
 				Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 		},
 	}

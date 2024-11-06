@@ -61,19 +61,16 @@ func (o *credentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				Description: "Cloud",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"credential_type": schema.Int64Attribute{
 				Description: "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this credential.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential.",
@@ -91,25 +88,21 @@ func (o *credentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"kind": schema.StringAttribute{
 				Description: "Kind",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"kubernetes": schema.BoolAttribute{
 				Description: "Kubernetes",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"managed": schema.BoolAttribute{
 				Description: "Managed",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this credential.",
@@ -127,7 +120,6 @@ func (o *credentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				Description: "Inherit permissions from organization roles. If provided on creation, do not give either user or team.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"team": schema.Int64Attribute{
 				Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",

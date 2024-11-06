@@ -10,7 +10,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )
 
 var (
@@ -53,61 +52,51 @@ func (o *meDataSource) Schema(ctx context.Context, req datasource.SchemaRequest,
 				Description: "Email address",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"external_account": schema.StringAttribute{
 				Description: "Set if the account is managed by an external service",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"first_name": schema.StringAttribute{
 				Description: "First name",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this user.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"is_superuser": schema.BoolAttribute{
 				Description: "Designates that this user has all permissions without explicitly assigning them.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"is_system_auditor": schema.BoolAttribute{
 				Description: "Is system auditor",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"last_login": schema.StringAttribute{
 				Description: "Last login",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"last_name": schema.StringAttribute{
 				Description: "Last name",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"ldap_dn": schema.StringAttribute{
 				Description: "Ldap dn",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"username": schema.StringAttribute{
 				Description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 		},
 	}

@@ -56,6 +56,7 @@ type Property struct {
 	IsTypeWrite       bool              `json:"is_type_write" yaml:"is_type_write" ` // Indicates if the property is a write type
 	IsInReadProperty  bool              `json:"is_in_read_property" yaml:"is_in_read_property" `
 	IsInWriteProperty bool              `json:"is_in_write_property" yaml:"is_in_write_property" `
+	Validators        []string          `json:"validators" yaml:"validators"`
 	IsHidden          bool              `json:"is_hidden" yaml:"is_hidden"`
 	PostWrap          bool              `json:"post_wrap" yaml:"post_wrap"`
 	Trim              bool              `json:"trim" yaml:"trim"`
@@ -103,17 +104,32 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.setConstraints(item.FieldConstraints)
 	p.setHidden(values)
 	p.setValidatorData(values)
+	p.setPropertyCustom(values, override)
 	p.IsSearchable = fieldIsSearchable(item.SearchFields, p.Name)
 
 	p.setGenerated(values, override, item)
+
 	return nil
+}
+
+func (p *Property) setPropertyCustom(values map[string]any, override PropertyOverride) {
+	if len(override.Validators) > 0 {
+		p.Validators = override.Validators
+	}
 }
 
 func (p *Property) setValidatorData(values map[string]any) {
 	p.ValidatorData = make(map[string]any)
+
 	for _, key := range []string{"max_length", "min_value", "max_value", "choices"} {
 		if v, ok := values[key]; ok {
 			p.ValidatorData[key] = v
+		}
+	}
+
+	if v, ok := values["child"].(map[string]any); ok {
+		if choices, ok := v["choices"].([]any); ok {
+			p.ValidatorData["choices"] = choices
 		}
 	}
 }
@@ -150,7 +166,7 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 	}
 
 	switch p.Type {
-	case "choice":
+	case "choice", "list":
 		if v, ok := p.ValidatorData["choices"].([]any); ok {
 			p.Generated.ValidationAvailableChoiceData = availableChoicesData(v)
 		}

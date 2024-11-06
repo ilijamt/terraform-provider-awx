@@ -60,13 +60,11 @@ func (o *organizationDataSource) Schema(ctx context.Context, req datasource.Sche
 				Description: "The default execution environment for jobs run by this organization.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this organization.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this organization.",
@@ -84,9 +82,6 @@ func (o *organizationDataSource) Schema(ctx context.Context, req datasource.Sche
 				Description: "Maximum number of hosts allowed to be managed by this organization.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(0, 2147483647),
-				},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this organization.",

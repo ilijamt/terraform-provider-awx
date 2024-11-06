@@ -6,14 +6,15 @@ import (
 )
 
 type PropertyOverride struct {
-	Type         string `json:"type" yaml:"type"`
-	Description  string `json:"description" yaml:"description"`
-	Sensitive    *bool  `json:"sensitive,omitempty" yaml:"sensitive"`
-	Required     *bool  `json:"required,omitempty" yaml:"required"`
-	Trim         bool   `json:"trim" yaml:"trim"`
-	PostWrap     bool   `json:"post_wrap" yaml:"post_wrap"`
-	DefaultValue string `json:"default_value" yaml:"default_value"`
-	ElementType  string `json:"element_type" yaml:"element_type"`
+	Type         string   `json:"type" yaml:"type"`
+	Description  string   `json:"description" yaml:"description"`
+	Sensitive    *bool    `json:"sensitive,omitempty" yaml:"sensitive"`
+	Required     *bool    `json:"required,omitempty" yaml:"required"`
+	Trim         bool     `json:"trim" yaml:"trim"`
+	PostWrap     bool     `json:"post_wrap" yaml:"post_wrap"`
+	DefaultValue string   `json:"default_value" yaml:"default_value"`
+	ElementType  string   `json:"element_type" yaml:"element_type"`
+	Validators   []string `json:"validators" yaml:"validators"`
 }
 
 type SearchField struct {

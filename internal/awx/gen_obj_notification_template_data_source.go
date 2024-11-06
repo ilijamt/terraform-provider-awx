@@ -61,7 +61,6 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Description: "Optional description of this notification template.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this notification template.",
@@ -79,7 +78,6 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Description: "Optional custom messages for notification template.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this notification template.",
@@ -97,31 +95,16 @@ func (o *notificationTemplateDataSource) Schema(ctx context.Context, req datasou
 				Description: "Notification configuration",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"notification_type": schema.StringAttribute{
 				Description: "Notification type",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"email",
-						"grafana",
-						"irc",
-						"mattermost",
-						"pagerduty",
-						"rocketchat",
-						"slack",
-						"twilio",
-						"webhook",
-					),
-				},
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 		},
 	}
