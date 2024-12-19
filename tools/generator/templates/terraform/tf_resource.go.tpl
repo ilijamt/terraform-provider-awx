@@ -71,6 +71,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+{{- end }}
                 Description: {{ escape_quotes (or $value.Description $value.Label) }},
                 Sensitive:   {{ $value.IsSensitive }},
                 Required:    {{ $value.IsRequired }},
@@ -126,6 +129,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 {{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
 {{- end }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+{{- end }}
                 Description: {{ escape_quotes (or $value.Description $value.Label) }},
                 Sensitive:   {{ $value.IsSensitive }},
                 Required:    {{ $value.IsRequired }},
@@ -180,6 +186,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req r
 				ElementType: types.ListType{ElemType: types.StringType},
 {{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
+{{- end }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
                 Description: {{ escape_quotes (or $value.Description "") }},
                 Required:    false,

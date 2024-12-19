@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_BIND_PASSWORD": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -126,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_DENY_GROUP": {
       "id_key": "",
@@ -164,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_SEARCH": {
       "id_key": "",
@@ -202,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_TYPE": {
       "id_key": "",
@@ -304,7 +309,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -342,7 +348,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
       "id_key": "",
@@ -380,7 +387,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
       "id_key": "",
@@ -418,7 +426,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_SERVER_URI": {
       "id_key": "",
@@ -456,7 +465,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_START_TLS": {
       "id_key": "",
@@ -494,7 +504,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_TEAM_MAP": {
       "id_key": "",
@@ -532,7 +543,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
       "id_key": "",
@@ -570,7 +582,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -608,7 +621,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -646,7 +660,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_SEARCH": {
       "id_key": "",
@@ -684,7 +699,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_BIND_DN": {
       "id_key": "",
@@ -722,7 +738,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_BIND_PASSWORD": {
       "id_key": "",
@@ -760,7 +777,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -798,7 +816,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_DENY_GROUP": {
       "id_key": "",
@@ -836,7 +855,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_SEARCH": {
       "id_key": "",
@@ -874,7 +894,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_TYPE": {
       "id_key": "",
@@ -976,7 +997,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -1014,7 +1036,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
       "id_key": "",
@@ -1052,7 +1075,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
       "id_key": "",
@@ -1090,7 +1114,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_SERVER_URI": {
       "id_key": "",
@@ -1128,7 +1153,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_START_TLS": {
       "id_key": "",
@@ -1166,7 +1192,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_TEAM_MAP": {
       "id_key": "",
@@ -1204,7 +1231,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
       "id_key": "",
@@ -1242,7 +1270,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -1280,7 +1309,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -1318,7 +1348,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_SEARCH": {
       "id_key": "",
@@ -1356,7 +1387,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_BIND_DN": {
       "id_key": "",
@@ -1394,7 +1426,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_BIND_PASSWORD": {
       "id_key": "",
@@ -1432,7 +1465,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -1470,7 +1504,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_DENY_GROUP": {
       "id_key": "",
@@ -1508,7 +1543,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_SEARCH": {
       "id_key": "",
@@ -1546,7 +1582,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_TYPE": {
       "id_key": "",
@@ -1648,7 +1685,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -1686,7 +1724,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
       "id_key": "",
@@ -1724,7 +1763,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
       "id_key": "",
@@ -1762,7 +1802,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_SERVER_URI": {
       "id_key": "",
@@ -1800,7 +1841,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_START_TLS": {
       "id_key": "",
@@ -1838,7 +1880,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_TEAM_MAP": {
       "id_key": "",
@@ -1876,7 +1919,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
       "id_key": "",
@@ -1914,7 +1958,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -1952,7 +1997,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -1990,7 +2036,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_SEARCH": {
       "id_key": "",
@@ -2028,7 +2075,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_BIND_DN": {
       "id_key": "",
@@ -2066,7 +2114,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_BIND_PASSWORD": {
       "id_key": "",
@@ -2104,7 +2153,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -2142,7 +2192,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_DENY_GROUP": {
       "id_key": "",
@@ -2180,7 +2231,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_SEARCH": {
       "id_key": "",
@@ -2218,7 +2270,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_TYPE": {
       "id_key": "",
@@ -2320,7 +2373,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -2358,7 +2412,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
       "id_key": "",
@@ -2396,7 +2451,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
       "id_key": "",
@@ -2434,7 +2490,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_SERVER_URI": {
       "id_key": "",
@@ -2472,7 +2529,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_START_TLS": {
       "id_key": "",
@@ -2510,7 +2568,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_TEAM_MAP": {
       "id_key": "",
@@ -2548,7 +2607,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
       "id_key": "",
@@ -2586,7 +2646,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -2624,7 +2685,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -2662,7 +2724,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_SEARCH": {
       "id_key": "",
@@ -2700,7 +2763,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_BIND_DN": {
       "id_key": "",
@@ -2738,7 +2802,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_BIND_PASSWORD": {
       "id_key": "",
@@ -2776,7 +2841,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -2814,7 +2880,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_DENY_GROUP": {
       "id_key": "",
@@ -2852,7 +2919,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_SEARCH": {
       "id_key": "",
@@ -2890,7 +2958,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_TYPE": {
       "id_key": "",
@@ -2992,7 +3061,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -3030,7 +3100,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
       "id_key": "",
@@ -3068,7 +3139,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
       "id_key": "",
@@ -3106,7 +3178,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_SERVER_URI": {
       "id_key": "",
@@ -3144,7 +3217,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_START_TLS": {
       "id_key": "",
@@ -3182,7 +3256,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_TEAM_MAP": {
       "id_key": "",
@@ -3220,7 +3295,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
       "id_key": "",
@@ -3258,7 +3334,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -3296,7 +3373,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -3334,7 +3412,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_SEARCH": {
       "id_key": "",
@@ -3372,7 +3451,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_BIND_DN": {
       "id_key": "",
@@ -3410,7 +3490,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_BIND_PASSWORD": {
       "id_key": "",
@@ -3448,7 +3529,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -3486,7 +3568,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_DENY_GROUP": {
       "id_key": "",
@@ -3524,7 +3607,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_SEARCH": {
       "id_key": "",
@@ -3562,7 +3646,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_TYPE": {
       "id_key": "",
@@ -3664,7 +3749,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -3702,7 +3788,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
       "id_key": "",
@@ -3740,7 +3827,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
       "id_key": "",
@@ -3778,7 +3866,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_SERVER_URI": {
       "id_key": "",
@@ -3816,7 +3905,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_START_TLS": {
       "id_key": "",
@@ -3854,7 +3944,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_TEAM_MAP": {
       "id_key": "",
@@ -3892,7 +3983,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
       "id_key": "",
@@ -3930,7 +4022,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -3968,7 +4061,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -4006,7 +4100,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_SEARCH": {
       "id_key": "",
@@ -4044,7 +4139,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -4084,7 +4180,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_BIND_PASSWORD": {
       "id_key": "",
@@ -4122,7 +4219,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -4160,7 +4258,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_DENY_GROUP": {
       "id_key": "",
@@ -4198,7 +4297,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_SEARCH": {
       "id_key": "",
@@ -4236,7 +4336,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_TYPE": {
       "id_key": "",
@@ -4338,7 +4439,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -4376,7 +4478,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_ORGANIZATION_MAP": {
       "id_key": "",
@@ -4414,7 +4517,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_REQUIRE_GROUP": {
       "id_key": "",
@@ -4452,7 +4556,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_SERVER_URI": {
       "id_key": "",
@@ -4490,7 +4595,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_START_TLS": {
       "id_key": "",
@@ -4528,7 +4634,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_TEAM_MAP": {
       "id_key": "",
@@ -4566,7 +4673,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_ATTR_MAP": {
       "id_key": "",
@@ -4604,7 +4712,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -4642,7 +4751,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -4680,7 +4790,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_1_USER_SEARCH": {
       "id_key": "",
@@ -4718,7 +4829,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_BIND_DN": {
       "id_key": "",
@@ -4756,7 +4868,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_BIND_PASSWORD": {
       "id_key": "",
@@ -4794,7 +4907,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -4832,7 +4946,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_DENY_GROUP": {
       "id_key": "",
@@ -4870,7 +4985,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_SEARCH": {
       "id_key": "",
@@ -4908,7 +5024,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_TYPE": {
       "id_key": "",
@@ -5010,7 +5127,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -5048,7 +5166,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_ORGANIZATION_MAP": {
       "id_key": "",
@@ -5086,7 +5205,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_REQUIRE_GROUP": {
       "id_key": "",
@@ -5124,7 +5244,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_SERVER_URI": {
       "id_key": "",
@@ -5162,7 +5283,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_START_TLS": {
       "id_key": "",
@@ -5200,7 +5322,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_TEAM_MAP": {
       "id_key": "",
@@ -5238,7 +5361,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_ATTR_MAP": {
       "id_key": "",
@@ -5276,7 +5400,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -5314,7 +5439,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -5352,7 +5478,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_2_USER_SEARCH": {
       "id_key": "",
@@ -5390,7 +5517,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_BIND_DN": {
       "id_key": "",
@@ -5428,7 +5556,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_BIND_PASSWORD": {
       "id_key": "",
@@ -5466,7 +5595,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -5504,7 +5634,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_DENY_GROUP": {
       "id_key": "",
@@ -5542,7 +5673,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_SEARCH": {
       "id_key": "",
@@ -5580,7 +5712,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_TYPE": {
       "id_key": "",
@@ -5682,7 +5815,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -5720,7 +5854,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_ORGANIZATION_MAP": {
       "id_key": "",
@@ -5758,7 +5893,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_REQUIRE_GROUP": {
       "id_key": "",
@@ -5796,7 +5932,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_SERVER_URI": {
       "id_key": "",
@@ -5834,7 +5971,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_START_TLS": {
       "id_key": "",
@@ -5872,7 +6010,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_TEAM_MAP": {
       "id_key": "",
@@ -5910,7 +6049,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_ATTR_MAP": {
       "id_key": "",
@@ -5948,7 +6088,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -5986,7 +6127,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -6024,7 +6166,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_3_USER_SEARCH": {
       "id_key": "",
@@ -6062,7 +6205,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_BIND_DN": {
       "id_key": "",
@@ -6100,7 +6244,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_BIND_PASSWORD": {
       "id_key": "",
@@ -6138,7 +6283,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -6176,7 +6322,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_DENY_GROUP": {
       "id_key": "",
@@ -6214,7 +6361,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_SEARCH": {
       "id_key": "",
@@ -6252,7 +6400,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_TYPE": {
       "id_key": "",
@@ -6354,7 +6503,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -6392,7 +6542,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_ORGANIZATION_MAP": {
       "id_key": "",
@@ -6430,7 +6581,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_REQUIRE_GROUP": {
       "id_key": "",
@@ -6468,7 +6620,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_SERVER_URI": {
       "id_key": "",
@@ -6506,7 +6659,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_START_TLS": {
       "id_key": "",
@@ -6544,7 +6698,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_TEAM_MAP": {
       "id_key": "",
@@ -6582,7 +6737,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_ATTR_MAP": {
       "id_key": "",
@@ -6620,7 +6776,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -6658,7 +6815,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -6696,7 +6854,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_4_USER_SEARCH": {
       "id_key": "",
@@ -6734,7 +6893,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_BIND_DN": {
       "id_key": "",
@@ -6772,7 +6932,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_BIND_PASSWORD": {
       "id_key": "",
@@ -6810,7 +6971,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -6848,7 +7010,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_DENY_GROUP": {
       "id_key": "",
@@ -6886,7 +7049,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_SEARCH": {
       "id_key": "",
@@ -6924,7 +7088,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_TYPE": {
       "id_key": "",
@@ -7026,7 +7191,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -7064,7 +7230,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_ORGANIZATION_MAP": {
       "id_key": "",
@@ -7102,7 +7269,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_REQUIRE_GROUP": {
       "id_key": "",
@@ -7140,7 +7308,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_SERVER_URI": {
       "id_key": "",
@@ -7178,7 +7347,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_START_TLS": {
       "id_key": "",
@@ -7216,7 +7386,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_TEAM_MAP": {
       "id_key": "",
@@ -7254,7 +7425,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_ATTR_MAP": {
       "id_key": "",
@@ -7292,7 +7464,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -7330,7 +7503,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -7368,7 +7542,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_5_USER_SEARCH": {
       "id_key": "",
@@ -7406,7 +7581,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_BIND_DN": {
       "id_key": "",
@@ -7444,7 +7620,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_BIND_PASSWORD": {
       "id_key": "",
@@ -7482,7 +7659,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_CONNECTION_OPTIONS": {
       "id_key": "",
@@ -7520,7 +7698,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_DENY_GROUP": {
       "id_key": "",
@@ -7558,7 +7737,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_SEARCH": {
       "id_key": "",
@@ -7596,7 +7776,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_TYPE": {
       "id_key": "",
@@ -7698,7 +7879,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_GROUP_TYPE_PARAMS": {
       "id_key": "",
@@ -7736,7 +7918,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_ORGANIZATION_MAP": {
       "id_key": "",
@@ -7774,7 +7957,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_REQUIRE_GROUP": {
       "id_key": "",
@@ -7812,7 +7996,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_SERVER_URI": {
       "id_key": "",
@@ -7850,7 +8035,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_START_TLS": {
       "id_key": "",
@@ -7888,7 +8074,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_TEAM_MAP": {
       "id_key": "",
@@ -7926,7 +8113,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_ATTR_MAP": {
       "id_key": "",
@@ -7964,7 +8152,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_DN_TEMPLATE": {
       "id_key": "",
@@ -8002,7 +8191,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_FLAGS_BY_GROUP": {
       "id_key": "",
@@ -8040,7 +8230,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_LDAP_USER_SEARCH": {
       "id_key": "",
@@ -8078,7 +8269,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -8087,5 +8279,7 @@
   "pre_state_set_hook_function": "hookSettingsAuthLdap",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": null
 }

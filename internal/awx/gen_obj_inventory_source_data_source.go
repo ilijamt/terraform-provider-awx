@@ -83,9 +83,10 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 				Computed:    true,
 			},
 			"host_filter": schema.StringAttribute{
-				Description: "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.",
-				Sensitive:   false,
-				Computed:    true,
+				DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+				Description:        "Regex where only matching hosts will be imported.",
+				Sensitive:          false,
+				Computed:           true,
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this inventory source.",

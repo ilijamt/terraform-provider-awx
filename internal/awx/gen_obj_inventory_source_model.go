@@ -22,7 +22,7 @@ type inventorySourceTerraformModel struct {
 	EnabledVar types.String `tfsdk:"enabled_var" json:"enabled_var"`
 	// ExecutionEnvironment "The container image to be used for execution."
 	ExecutionEnvironment types.Int64 `tfsdk:"execution_environment" json:"execution_environment"`
-	// HostFilter "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported."
+	// HostFilter "Regex where only matching hosts will be imported."
 	HostFilter types.String `tfsdk:"host_filter" json:"host_filter"`
 	// ID "Database ID for this inventory source."
 	ID types.Int64 `tfsdk:"id" json:"id"`
@@ -275,7 +275,7 @@ type inventorySourceBodyRequestModel struct {
 	EnabledVar string `json:"enabled_var,omitempty"`
 	// ExecutionEnvironment "The container image to be used for execution."
 	ExecutionEnvironment int64 `json:"execution_environment,omitempty"`
-	// HostFilter "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported."
+	// HostFilter "Regex where only matching hosts will be imported."
 	HostFilter string `json:"host_filter,omitempty"`
 	// Inventory ""
 	Inventory int64 `json:"inventory"`

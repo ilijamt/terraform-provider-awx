@@ -35,6 +35,8 @@ type ModelConfig struct {
 	FieldConstraints            []FieldConstraint            `json:"field_constraints" yaml:"field_constraints" mapstructure:"field_constraints"`
 	AssociateDisassociateGroups []AssociateDisassociateGroup `json:"associate_disassociate_groups" yaml:"associate_disassociate_groups"`
 	WriteOnlyKeys               []string                     `json:"write_only_keys" yaml:"write_only_keys"`
+	Deprecated                  bool                         `json:"deprecated" yaml:"deprecated"`
+	DeprecatedParts             []string                     `json:"deprecated_parts" yaml:"deprecated_parts"`
 }
 
 // Property represents a single property in the model
@@ -64,6 +66,7 @@ type Property struct {
 	Generated         PropertyGenerated `json:"generated" yaml:"generated"`
 	ValidatorData     map[string]any    `json:"validator_data" yaml:"validator_data"`
 	Constraints       []FieldConstraint `json:"constraints" yaml:"constraints"`
+	Deprecated        bool              `json:"deprecated" yaml:"deprecated"`
 }
 
 type PropertyGenerated struct {
@@ -106,6 +109,11 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.setValidatorData(values)
 	p.setPropertyCustom(values, override)
 	p.IsSearchable = fieldIsSearchable(item.SearchFields, p.Name)
+
+	p.Deprecated = strings.Contains(strings.ToLower(p.Description), "this field is deprecated")
+	if p.Deprecated {
+		p.Description = strings.TrimSpace(strings.ReplaceAll(p.Description, "This field is deprecated and will be removed in a future release.", ""))
+	}
 
 	p.setGenerated(values, override, item)
 
@@ -308,6 +316,11 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 
 	c.SearchFields = item.SearchFields
 	c.HasSearchFields = len(item.SearchFields) > 0
+
+	for _, d := range deprecations {
+		_ = d.Check(c)
+	}
+
 	return nil
 }
 

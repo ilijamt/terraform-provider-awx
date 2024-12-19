@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_KEY": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
       "id_key": "",
@@ -126,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
       "id_key": "",
@@ -164,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP": {
       "id_key": "",
@@ -202,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -242,7 +247,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
       "id_key": "",
@@ -280,7 +286,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
       "id_key": "",
@@ -318,7 +325,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP": {
       "id_key": "",
@@ -356,7 +364,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -365,5 +374,7 @@
   "pre_state_set_hook_function": "hookSettingsAuthAzureADOauth2",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": null
 }

@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_JINJA_IN_EXTRA_VARS": {
       "id_key": "",
@@ -107,7 +108,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ANSIBLE_FACT_CACHE_TIMEOUT": {
       "id_key": "",
@@ -147,7 +149,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ANSIBLE_CALLBACK_PLUGINS": {
       "id_key": "",
@@ -185,7 +188,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_COLLECTIONS_ENABLED": {
       "id_key": "",
@@ -223,7 +227,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ISOLATION_BASE_PATH": {
       "id_key": "",
@@ -261,7 +266,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ISOLATION_SHOW_PATHS": {
       "id_key": "",
@@ -299,7 +305,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_MOUNT_ISOLATED_PATHS_ON_K8S": {
       "id_key": "",
@@ -337,7 +344,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ROLES_ENABLED": {
       "id_key": "",
@@ -375,7 +383,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_RUNNER_KEEPALIVE_SECONDS": {
       "id_key": "",
@@ -413,7 +422,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_SHOW_PLAYBOOK_LINKS": {
       "id_key": "",
@@ -451,7 +461,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_TASK_ENV": {
       "id_key": "",
@@ -489,7 +500,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
       "id_key": "",
@@ -527,7 +539,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
       "id_key": "",
@@ -567,7 +580,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_JOB_IDLE_TIMEOUT": {
       "id_key": "",
@@ -607,7 +621,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_JOB_TIMEOUT": {
       "id_key": "",
@@ -647,7 +662,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_PROJECT_UPDATE_TIMEOUT": {
       "id_key": "",
@@ -687,7 +703,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
       "id_key": "",
@@ -727,7 +744,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "GALAXY_IGNORE_CERTS": {
       "id_key": "",
@@ -765,7 +783,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "GALAXY_TASK_ENV": {
       "id_key": "",
@@ -803,7 +822,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_FORKS": {
       "id_key": "",
@@ -841,7 +861,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_WEBSOCKET_EVENT_RATE": {
       "id_key": "",
@@ -881,7 +902,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "PROJECT_UPDATE_VVV": {
       "id_key": "",
@@ -919,7 +941,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SCHEDULE_MAX_JOBS": {
       "id_key": "",
@@ -959,7 +982,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "STDOUT_MAX_BYTES_DISPLAY": {
       "id_key": "",
@@ -999,7 +1023,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -1039,7 +1064,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_JINJA_IN_EXTRA_VARS": {
       "id_key": "",
@@ -1096,7 +1122,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ANSIBLE_FACT_CACHE_TIMEOUT": {
       "id_key": "",
@@ -1136,7 +1163,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ANSIBLE_CALLBACK_PLUGINS": {
       "id_key": "",
@@ -1174,7 +1202,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_COLLECTIONS_ENABLED": {
       "id_key": "",
@@ -1212,7 +1241,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ISOLATION_BASE_PATH": {
       "id_key": "",
@@ -1250,7 +1280,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ISOLATION_SHOW_PATHS": {
       "id_key": "",
@@ -1288,7 +1319,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_MOUNT_ISOLATED_PATHS_ON_K8S": {
       "id_key": "",
@@ -1326,7 +1358,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_ROLES_ENABLED": {
       "id_key": "",
@@ -1364,7 +1397,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_RUNNER_KEEPALIVE_SECONDS": {
       "id_key": "",
@@ -1402,7 +1436,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_SHOW_PLAYBOOK_LINKS": {
       "id_key": "",
@@ -1440,7 +1475,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AWX_TASK_ENV": {
       "id_key": "",
@@ -1478,7 +1514,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_CONTAINER_RUN_OPTIONS": {
       "id_key": "",
@@ -1516,7 +1553,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
       "id_key": "",
@@ -1556,7 +1594,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_JOB_IDLE_TIMEOUT": {
       "id_key": "",
@@ -1596,7 +1635,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_JOB_TIMEOUT": {
       "id_key": "",
@@ -1636,7 +1676,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_PROJECT_UPDATE_TIMEOUT": {
       "id_key": "",
@@ -1676,7 +1717,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
       "id_key": "",
@@ -1716,7 +1758,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "GALAXY_IGNORE_CERTS": {
       "id_key": "",
@@ -1754,7 +1797,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "GALAXY_TASK_ENV": {
       "id_key": "",
@@ -1792,7 +1836,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_FORKS": {
       "id_key": "",
@@ -1830,7 +1875,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_WEBSOCKET_EVENT_RATE": {
       "id_key": "",
@@ -1870,7 +1916,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "PROJECT_UPDATE_VVV": {
       "id_key": "",
@@ -1908,7 +1955,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SCHEDULE_MAX_JOBS": {
       "id_key": "",
@@ -1948,7 +1996,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "STDOUT_MAX_BYTES_DISPLAY": {
       "id_key": "",
@@ -1988,7 +2037,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -1997,5 +2047,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": null
 }

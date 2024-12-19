@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CUSTOM_LOGO": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_UI_JOB_EVENTS": {
       "id_key": "",
@@ -128,7 +130,8 @@
       "validator_data": {
         "min_value": 100
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "PENDO_TRACKING_STATE": {
       "id_key": "",
@@ -185,7 +188,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "UI_LIVE_UPDATES_ENABLED": {
       "id_key": "",
@@ -223,7 +227,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -263,7 +268,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CUSTOM_LOGO": {
       "id_key": "",
@@ -301,7 +307,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MAX_UI_JOB_EVENTS": {
       "id_key": "",
@@ -341,7 +348,8 @@
       "validator_data": {
         "min_value": 100
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "UI_LIVE_UPDATES_ENABLED": {
       "id_key": "",
@@ -379,7 +387,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -388,5 +397,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": null
 }

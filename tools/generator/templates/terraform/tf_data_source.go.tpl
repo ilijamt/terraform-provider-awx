@@ -54,6 +54,9 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 			// Data only elements
 {{- range $key, $value := $.ReadProperties }}
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+{{- end }}
 {{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
 				ElementType: types.ListType{ElemType: types.StringType},
 {{- else if eq $value.Generated.AttributeType "List" }}
@@ -85,6 +88,9 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
 {{- if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
+{{- end }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
                 Description: {{ escape_quotes (or .Description .Label) }},
                 Sensitive:   {{ $value.IsSensitive }},
