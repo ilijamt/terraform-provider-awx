@@ -583,6 +583,7 @@ func (o *jobTemplateResource) Schema(ctx context.Context, req resource.SchemaReq
 						"",
 						"github",
 						"gitlab",
+						"bitbucket_dc",
 					),
 				},
 			},
