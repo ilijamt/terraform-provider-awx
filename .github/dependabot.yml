@@ -18,3 +18,6 @@ updates:
       - github.com/hashicorp/terraform-plugin-log
       - github.com/hashicorp/terraform-plugin-testing
       - github.com/hashicorp/go-multierror
+      update-types:
+      - minor
+      - patch
