@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     awx = {
-      source = "registry.terraform.io/ilijamt/awx"
+      source = "ilijamt/awx"
     }
   }
 }

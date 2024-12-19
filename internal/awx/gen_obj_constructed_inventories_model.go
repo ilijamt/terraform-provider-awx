@@ -14,11 +14,11 @@ import (
 type constructedInventoriesTerraformModel struct {
 	// Description "Optional description of this inventory."
 	Description types.String `tfsdk:"description" json:"description"`
-	// HasActiveFailures "This field is deprecated and will be removed in a future release. Flag indicating whether any hosts in this inventory have failed."
+	// HasActiveFailures "Flag indicating whether any hosts in this inventory have failed."
 	HasActiveFailures types.Bool `tfsdk:"has_active_failures" json:"has_active_failures"`
-	// HasInventorySources "This field is deprecated and will be removed in a future release. Flag indicating whether this inventory has any external inventory sources."
+	// HasInventorySources "Flag indicating whether this inventory has any external inventory sources."
 	HasInventorySources types.Bool `tfsdk:"has_inventory_sources" json:"has_inventory_sources"`
-	// HostsWithActiveFailures "This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures."
+	// HostsWithActiveFailures "Number of hosts in this inventory with active failures."
 	HostsWithActiveFailures types.Int64 `tfsdk:"hosts_with_active_failures" json:"hosts_with_active_failures"`
 	// ID "Database ID for this inventory."
 	ID types.Int64 `tfsdk:"id" json:"id"`
@@ -38,9 +38,9 @@ type constructedInventoriesTerraformModel struct {
 	PreventInstanceGroupFallback types.Bool `tfsdk:"prevent_instance_group_fallback" json:"prevent_instance_group_fallback"`
 	// SourceVars "The source_vars for the related auto-created inventory source, special to constructed inventory."
 	SourceVars types.String `tfsdk:"source_vars" json:"source_vars"`
-	// TotalGroups "This field is deprecated and will be removed in a future release. Total number of groups in this inventory."
+	// TotalGroups "Total number of groups in this inventory."
 	TotalGroups types.Int64 `tfsdk:"total_groups" json:"total_groups"`
-	// TotalHosts "This field is deprecated and will be removed in a future release. Total number of hosts in this inventory."
+	// TotalHosts "Total number of hosts in this inventory."
 	TotalHosts types.Int64 `tfsdk:"total_hosts" json:"total_hosts"`
 	// TotalInventorySources "Total number of external inventory sources configured within this inventory."
 	TotalInventorySources types.Int64 `tfsdk:"total_inventory_sources" json:"total_inventory_sources"`
