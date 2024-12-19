@@ -64,6 +64,9 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Metadata(
 
 func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
+{{- if .Deprecated }}
+            DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
+{{- end }}
 			Attributes: map[string]schema.Attribute{
 			    "{{ .Name | snakeCase }}_id": schema.Int64Attribute{
 					Description: "Database ID for this {{ .Name }}.",
