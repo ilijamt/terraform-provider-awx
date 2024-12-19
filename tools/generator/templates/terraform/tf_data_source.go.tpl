@@ -50,6 +50,9 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Metadata(_ context.Context, req
 // Schema defines the schema for the data source.
 func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
     resp.Schema = schema.Schema{
+{{- if .Deprecated }}
+        DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
+{{- end }}
         Attributes: map[string]schema.Attribute{
 			// Data only elements
 {{- range $key, $value := $.ReadProperties }}

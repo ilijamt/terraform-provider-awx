@@ -61,6 +61,9 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Metadata(ctx context.Context, req
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
+{{- if .Deprecated }}
+        DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
+{{- end }}
         Attributes: map[string]schema.Attribute{
         // Request elements
 {{- range $key, $value := .WriteProperties }}
