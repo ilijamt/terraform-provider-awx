@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	ApiVersion string = "24.1.0"
+	ApiVersion string = "24.2.0"
 )
 
 // DataSources is a helper function to return all defined data sources
