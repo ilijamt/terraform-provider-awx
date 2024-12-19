@@ -198,7 +198,6 @@ func (o *workflowJobTemplateDataSource) Schema(ctx context.Context, req datasour
 						"",
 						"github",
 						"gitlab",
-						"bitbucket_dc",
 					),
 				},
 			},
