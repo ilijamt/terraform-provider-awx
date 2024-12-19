@@ -73,7 +73,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_inventory_on_launch": {
       "id_key": "",
@@ -111,7 +112,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_labels_on_launch": {
       "id_key": "",
@@ -149,7 +151,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_limit_on_launch": {
       "id_key": "",
@@ -187,7 +190,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_scm_branch_on_launch": {
       "id_key": "",
@@ -225,7 +229,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_skip_tags_on_launch": {
       "id_key": "",
@@ -263,7 +268,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_tags_on_launch": {
       "id_key": "",
@@ -301,7 +307,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_variables_on_launch": {
       "id_key": "",
@@ -339,7 +346,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -377,7 +385,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "extra_vars": {
       "id_key": "",
@@ -415,7 +424,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -458,7 +468,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -496,7 +507,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_tags": {
       "id_key": "",
@@ -534,7 +546,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -572,7 +585,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -615,7 +629,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "organization": {
       "id_key": "",
@@ -653,7 +668,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -691,7 +707,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "skip_tags": {
       "id_key": "",
@@ -729,7 +746,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "survey_enabled": {
       "id_key": "",
@@ -767,7 +785,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_credential": {
       "id_key": "",
@@ -805,7 +824,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_service": {
       "id_key": "",
@@ -867,7 +887,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -907,7 +928,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_inventory_on_launch": {
       "id_key": "",
@@ -945,7 +967,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_labels_on_launch": {
       "id_key": "",
@@ -983,7 +1006,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_limit_on_launch": {
       "id_key": "",
@@ -1021,7 +1045,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_scm_branch_on_launch": {
       "id_key": "",
@@ -1059,7 +1084,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_skip_tags_on_launch": {
       "id_key": "",
@@ -1097,7 +1123,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_tags_on_launch": {
       "id_key": "",
@@ -1135,7 +1162,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_variables_on_launch": {
       "id_key": "",
@@ -1173,7 +1201,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -1211,7 +1240,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "extra_vars": {
       "id_key": "",
@@ -1249,7 +1279,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -1287,7 +1318,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_tags": {
       "id_key": "",
@@ -1325,7 +1357,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -1363,7 +1396,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -1408,7 +1442,8 @@
       "validator_data": {
         "max_length": 512
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "organization": {
       "id_key": "",
@@ -1446,7 +1481,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -1484,7 +1520,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "skip_tags": {
       "id_key": "",
@@ -1522,7 +1559,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "survey_enabled": {
       "id_key": "",
@@ -1560,7 +1598,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_credential": {
       "id_key": "",
@@ -1598,7 +1637,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_service": {
       "id_key": "",
@@ -1660,7 +1700,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -1704,7 +1745,8 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
@@ -1718,5 +1760,9 @@
       "associate_type": "notification_job_workflow_template"
     }
   ],
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {
+    "ObjectRoles": true
+  }
 }

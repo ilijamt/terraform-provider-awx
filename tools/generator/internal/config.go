@@ -36,12 +36,13 @@ type AssociateDisassociateGroup struct {
 	AssociateType string `json:"associate_type" yaml:"associate_type"`
 }
 
-func (a AssociateDisassociateGroup) Map() map[string]any {
+func (a AssociateDisassociateGroup) Map(deprecated bool) map[string]any {
 	return map[string]any{
 		"Name":          a.Name,
 		"Endpoint":      a.Endpoint,
 		"Type":          a.Type,
 		"AssociateType": a.AssociateType,
+		"Deprecated":    deprecated,
 	}
 }
 

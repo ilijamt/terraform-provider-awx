@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_CALLBACK_URL": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
       "id_key": "",
@@ -126,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
       "id_key": "",
@@ -164,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_METADATA_URL": {
       "id_key": "",
@@ -202,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
       "id_key": "",
@@ -240,7 +245,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
       "id_key": "",
@@ -278,7 +284,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
       "id_key": "",
@@ -316,7 +323,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
       "id_key": "",
@@ -354,7 +362,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
       "id_key": "",
@@ -392,7 +401,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_EXTRA": {
       "id_key": "",
@@ -430,7 +440,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
       "id_key": "",
@@ -468,7 +479,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
       "id_key": "",
@@ -506,7 +518,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
       "id_key": "",
@@ -544,7 +557,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
       "id_key": "",
@@ -582,7 +596,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
       "id_key": "",
@@ -620,7 +635,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
       "id_key": "",
@@ -658,7 +674,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
       "id_key": "",
@@ -696,7 +713,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -736,7 +754,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
       "id_key": "",
@@ -774,7 +793,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_EXTRA_DATA": {
       "id_key": "",
@@ -812,7 +832,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
       "id_key": "",
@@ -850,7 +871,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
       "id_key": "",
@@ -888,7 +910,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_ORG_INFO": {
       "id_key": "",
@@ -926,7 +949,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
       "id_key": "",
@@ -964,7 +988,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_ENTITY_ID": {
       "id_key": "",
@@ -1002,7 +1027,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_EXTRA": {
       "id_key": "",
@@ -1040,7 +1066,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
       "id_key": "",
@@ -1078,7 +1105,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
       "id_key": "",
@@ -1116,7 +1144,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
       "id_key": "",
@@ -1154,7 +1183,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
       "id_key": "",
@@ -1192,7 +1222,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TEAM_MAP": {
       "id_key": "",
@@ -1230,7 +1261,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
       "id_key": "",
@@ -1268,7 +1300,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
       "id_key": "",
@@ -1306,7 +1339,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -1315,5 +1349,7 @@
   "pre_state_set_hook_function": "hookSettingsSaml",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

@@ -14,5 +14,5 @@ type Deprecation interface {
 }
 
 var deprecations = []Deprecation{
-	&ObjectRole{deprecation{name: "ObjectRole"}},
+	&ObjectRole{deprecation{name: "ObjectRoles"}},
 }

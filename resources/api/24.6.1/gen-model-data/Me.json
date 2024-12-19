@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "external_account": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "first_name": {
       "id_key": "",
@@ -126,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -164,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "is_superuser": {
       "id_key": "",
@@ -202,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "is_system_auditor": {
       "id_key": "",
@@ -240,7 +245,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_login": {
       "id_key": "",
@@ -278,7 +284,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_name": {
       "id_key": "",
@@ -316,7 +323,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ldap_dn": {
       "id_key": "",
@@ -354,7 +362,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "username": {
       "id_key": "",
@@ -392,7 +401,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {},
@@ -402,5 +412,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

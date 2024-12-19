@@ -73,7 +73,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_credential_on_launch": {
       "id_key": "",
@@ -111,7 +112,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_diff_mode_on_launch": {
       "id_key": "",
@@ -149,7 +151,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_execution_environment_on_launch": {
       "id_key": "",
@@ -187,7 +190,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_forks_on_launch": {
       "id_key": "",
@@ -225,7 +229,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_instance_groups_on_launch": {
       "id_key": "",
@@ -263,7 +268,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_inventory_on_launch": {
       "id_key": "",
@@ -301,7 +307,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_job_slice_count_on_launch": {
       "id_key": "",
@@ -339,7 +346,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_job_type_on_launch": {
       "id_key": "",
@@ -377,7 +385,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_labels_on_launch": {
       "id_key": "",
@@ -415,7 +424,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_limit_on_launch": {
       "id_key": "",
@@ -453,7 +463,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_scm_branch_on_launch": {
       "id_key": "",
@@ -491,7 +502,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_skip_tags_on_launch": {
       "id_key": "",
@@ -529,7 +541,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_tags_on_launch": {
       "id_key": "",
@@ -567,7 +580,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_timeout_on_launch": {
       "id_key": "",
@@ -605,7 +619,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_variables_on_launch": {
       "id_key": "",
@@ -643,7 +658,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_verbosity_on_launch": {
       "id_key": "",
@@ -681,7 +697,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "become_enabled": {
       "id_key": "",
@@ -719,7 +736,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -757,7 +775,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "diff_mode": {
       "id_key": "",
@@ -795,7 +814,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "execution_environment": {
       "id_key": "",
@@ -833,7 +853,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "extra_vars": {
       "id_key": "",
@@ -871,7 +892,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "force_handlers": {
       "id_key": "",
@@ -909,7 +931,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "forks": {
       "id_key": "",
@@ -950,7 +973,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "host_config_key": {
       "id_key": "",
@@ -988,7 +1012,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -1031,7 +1056,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -1069,7 +1095,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_slice_count": {
       "id_key": "",
@@ -1110,7 +1137,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_tags": {
       "id_key": "",
@@ -1148,7 +1176,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_type": {
       "id_key": "",
@@ -1200,7 +1229,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -1238,7 +1268,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -1281,7 +1312,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "organization": {
       "id_key": "",
@@ -1319,7 +1351,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "playbook": {
       "id_key": "",
@@ -1357,7 +1390,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "prevent_instance_group_fallback": {
       "id_key": "",
@@ -1395,7 +1429,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "project": {
       "id_key": "",
@@ -1433,7 +1468,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -1471,7 +1507,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "skip_tags": {
       "id_key": "",
@@ -1509,7 +1546,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "start_at_task": {
       "id_key": "",
@@ -1547,7 +1585,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "survey_enabled": {
       "id_key": "",
@@ -1585,7 +1624,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "timeout": {
       "id_key": "",
@@ -1626,7 +1666,8 @@
         "max_value": 2147483647,
         "min_value": -2147483648
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "use_fact_cache": {
       "id_key": "",
@@ -1664,7 +1705,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "verbosity": {
       "id_key": "",
@@ -1736,7 +1778,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_credential": {
       "id_key": "",
@@ -1774,7 +1817,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_service": {
       "id_key": "",
@@ -1836,7 +1880,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -1876,7 +1921,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_credential_on_launch": {
       "id_key": "",
@@ -1914,7 +1960,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_diff_mode_on_launch": {
       "id_key": "",
@@ -1952,7 +1999,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_execution_environment_on_launch": {
       "id_key": "",
@@ -1990,7 +2038,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_forks_on_launch": {
       "id_key": "",
@@ -2028,7 +2077,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_instance_groups_on_launch": {
       "id_key": "",
@@ -2066,7 +2116,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_inventory_on_launch": {
       "id_key": "",
@@ -2104,7 +2155,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_job_slice_count_on_launch": {
       "id_key": "",
@@ -2142,7 +2194,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_job_type_on_launch": {
       "id_key": "",
@@ -2180,7 +2233,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_labels_on_launch": {
       "id_key": "",
@@ -2218,7 +2272,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_limit_on_launch": {
       "id_key": "",
@@ -2256,7 +2311,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_scm_branch_on_launch": {
       "id_key": "",
@@ -2294,7 +2350,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_skip_tags_on_launch": {
       "id_key": "",
@@ -2332,7 +2389,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_tags_on_launch": {
       "id_key": "",
@@ -2370,7 +2428,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_timeout_on_launch": {
       "id_key": "",
@@ -2408,7 +2467,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_variables_on_launch": {
       "id_key": "",
@@ -2446,7 +2506,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ask_verbosity_on_launch": {
       "id_key": "",
@@ -2484,7 +2545,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "become_enabled": {
       "id_key": "",
@@ -2522,7 +2584,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -2560,7 +2623,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "diff_mode": {
       "id_key": "",
@@ -2598,7 +2662,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "execution_environment": {
       "id_key": "",
@@ -2636,7 +2701,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "extra_vars": {
       "id_key": "",
@@ -2674,7 +2740,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "force_handlers": {
       "id_key": "",
@@ -2712,7 +2779,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "forks": {
       "id_key": "",
@@ -2753,7 +2821,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "host_config_key": {
       "id_key": "",
@@ -2793,7 +2862,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -2831,7 +2901,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_slice_count": {
       "id_key": "",
@@ -2872,7 +2943,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_tags": {
       "id_key": "",
@@ -2910,7 +2982,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "job_type": {
       "id_key": "",
@@ -2962,7 +3035,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -3000,7 +3074,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -3045,7 +3120,8 @@
       "validator_data": {
         "max_length": 512
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "playbook": {
       "id_key": "",
@@ -3085,7 +3161,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "prevent_instance_group_fallback": {
       "id_key": "",
@@ -3123,7 +3200,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "project": {
       "id_key": "",
@@ -3161,7 +3239,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -3201,7 +3280,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "skip_tags": {
       "id_key": "",
@@ -3241,7 +3321,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "start_at_task": {
       "id_key": "",
@@ -3281,7 +3362,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "survey_enabled": {
       "id_key": "",
@@ -3319,7 +3401,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "timeout": {
       "id_key": "",
@@ -3360,7 +3443,8 @@
         "max_value": 2147483647,
         "min_value": -2147483648
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "use_fact_cache": {
       "id_key": "",
@@ -3398,7 +3482,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "verbosity": {
       "id_key": "",
@@ -3470,7 +3555,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_credential": {
       "id_key": "",
@@ -3508,7 +3594,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "webhook_service": {
       "id_key": "",
@@ -3570,7 +3657,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -3614,7 +3702,8 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
@@ -3640,5 +3729,9 @@
       "associate_type": ""
     }
   ],
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {
+    "ObjectRoles": true
+  }
 }

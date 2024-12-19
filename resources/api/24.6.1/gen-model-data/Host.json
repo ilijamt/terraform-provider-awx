@@ -73,7 +73,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled": {
       "id_key": "",
@@ -111,7 +112,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -154,7 +156,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "instance_id": {
       "id_key": "",
@@ -192,7 +195,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -230,7 +234,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_job": {
       "id_key": "",
@@ -268,7 +273,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_job_host_summary": {
       "id_key": "",
@@ -306,7 +312,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -349,7 +356,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "variables": {
       "id_key": "",
@@ -387,7 +395,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -427,7 +436,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled": {
       "id_key": "",
@@ -465,7 +475,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "instance_id": {
       "id_key": "",
@@ -505,7 +516,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -543,7 +555,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -588,7 +601,8 @@
       "validator_data": {
         "max_length": 512
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "variables": {
       "id_key": "",
@@ -626,7 +640,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -670,7 +685,8 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
@@ -684,5 +700,9 @@
       "associate_type": ""
     }
   ],
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {
+    "ObjectRoles": true
+  }
 }

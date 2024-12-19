@@ -105,7 +105,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "created_by": {
       "id_key": "",
@@ -143,7 +144,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -185,7 +187,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "object_ansible_id": {
       "id_key": "",
@@ -223,7 +226,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "object_id": {
       "id_key": "",
@@ -261,7 +265,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "role_definition": {
       "id_key": "",
@@ -299,7 +304,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "team": {
       "id_key": "",
@@ -337,7 +343,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "team_ansible_id": {
       "id_key": "",
@@ -375,7 +382,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -415,7 +423,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "object_id": {
       "id_key": "",
@@ -453,7 +462,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "role_definition": {
       "id_key": "",
@@ -491,7 +501,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "team": {
       "id_key": "",
@@ -529,7 +540,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "team_ansible_id": {
       "id_key": "",
@@ -567,7 +579,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -610,12 +623,15 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

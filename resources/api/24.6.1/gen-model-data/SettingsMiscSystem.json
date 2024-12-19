@@ -50,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC": {
       "id_key": "",
@@ -88,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_GATHER_INTERVAL": {
       "id_key": "",
@@ -128,7 +130,8 @@
       "validator_data": {
         "min_value": 1800
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_LAST_ENTRIES": {
       "id_key": "",
@@ -166,7 +169,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_LAST_GATHER": {
       "id_key": "",
@@ -204,7 +208,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_URL": {
       "id_key": "",
@@ -242,7 +247,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CLEANUP_HOST_METRICS_LAST_TS": {
       "id_key": "",
@@ -280,7 +286,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CSRF_TRUSTED_ORIGINS": {
       "id_key": "",
@@ -318,7 +325,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CUSTOM_VENV_PATHS": {
       "id_key": "",
@@ -356,7 +364,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_CONTROL_PLANE_QUEUE_NAME": {
       "id_key": "",
@@ -394,7 +403,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
       "id_key": "",
@@ -432,7 +442,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_EXECUTION_QUEUE_NAME": {
       "id_key": "",
@@ -470,7 +481,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "HOST_METRIC_SUMMARY_TASK_LAST_TS": {
       "id_key": "",
@@ -508,7 +520,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "INSIGHTS_TRACKING_STATE": {
       "id_key": "",
@@ -546,7 +559,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "INSTALL_UUID": {
       "id_key": "",
@@ -584,7 +598,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "IS_K8S": {
       "id_key": "",
@@ -622,7 +637,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LICENSE": {
       "id_key": "",
@@ -660,7 +676,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MANAGE_ORGANIZATION_AUTH": {
       "id_key": "",
@@ -698,7 +715,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ORG_ADMINS_CAN_SEE_ALL_USERS": {
       "id_key": "",
@@ -736,7 +754,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "PROXY_IP_ALLOWED_LIST": {
       "id_key": "",
@@ -774,7 +793,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REDHAT_PASSWORD": {
       "id_key": "",
@@ -812,7 +832,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REDHAT_USERNAME": {
       "id_key": "",
@@ -850,7 +871,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REMOTE_HOST_HEADERS": {
       "id_key": "",
@@ -888,7 +910,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTIONS_PASSWORD": {
       "id_key": "",
@@ -926,7 +949,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTIONS_USERNAME": {
       "id_key": "",
@@ -964,7 +988,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTION_USAGE_MODEL": {
       "id_key": "",
@@ -1016,7 +1041,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "TOWER_URL_BASE": {
       "id_key": "",
@@ -1054,7 +1080,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "UI_NEXT": {
       "id_key": "",
@@ -1092,7 +1119,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -1132,7 +1160,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC": {
       "id_key": "",
@@ -1170,7 +1199,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_GATHER_INTERVAL": {
       "id_key": "",
@@ -1210,7 +1240,8 @@
       "validator_data": {
         "min_value": 1800
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_LAST_ENTRIES": {
       "id_key": "",
@@ -1248,7 +1279,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTOMATION_ANALYTICS_URL": {
       "id_key": "",
@@ -1286,7 +1318,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "CSRF_TRUSTED_ORIGINS": {
       "id_key": "",
@@ -1324,7 +1357,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
       "id_key": "",
@@ -1362,7 +1396,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "INSIGHTS_TRACKING_STATE": {
       "id_key": "",
@@ -1400,7 +1435,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "MANAGE_ORGANIZATION_AUTH": {
       "id_key": "",
@@ -1438,7 +1474,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ORG_ADMINS_CAN_SEE_ALL_USERS": {
       "id_key": "",
@@ -1476,7 +1513,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "PROXY_IP_ALLOWED_LIST": {
       "id_key": "",
@@ -1514,7 +1552,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REDHAT_PASSWORD": {
       "id_key": "",
@@ -1552,7 +1591,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REDHAT_USERNAME": {
       "id_key": "",
@@ -1590,7 +1630,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "REMOTE_HOST_HEADERS": {
       "id_key": "",
@@ -1628,7 +1669,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTIONS_PASSWORD": {
       "id_key": "",
@@ -1666,7 +1708,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTIONS_USERNAME": {
       "id_key": "",
@@ -1704,7 +1747,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SUBSCRIPTION_USAGE_MODEL": {
       "id_key": "",
@@ -1756,7 +1800,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "TOWER_URL_BASE": {
       "id_key": "",
@@ -1794,7 +1839,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "UI_NEXT": {
       "id_key": "",
@@ -1832,7 +1878,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -1841,5 +1888,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

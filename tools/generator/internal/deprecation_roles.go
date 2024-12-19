@@ -1,6 +1,8 @@
 package internal
 
-import "github.com/Masterminds/semver/v3"
+import (
+	"github.com/Masterminds/semver/v3"
+)
 
 type ObjectRole struct {
 	deprecation
@@ -14,7 +16,7 @@ func (r *ObjectRole) Check(mc *ModelConfig) (err error) {
 	constraint, _ = semver.NewConstraint(">= 24.3.0")
 
 	if constraint.Check(version) && mc.HasObjectRoles {
-		mc.DeprecatedParts = append(mc.DeprecatedParts, r.Name())
+		mc.DeprecatedParts[r.Name()] = true
 	}
 
 	return nil

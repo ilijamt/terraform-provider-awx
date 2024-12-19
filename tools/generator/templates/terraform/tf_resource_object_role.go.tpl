@@ -51,6 +51,9 @@ func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Metadata(_ context.C
 // Schema defines the schema for the data source.
 func (o *{{ .Name | lowerCamelCase }}ObjectRolesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
     resp.Schema = schema.Schema{
+{{- if (index .DeprecatedParts "ObjectRoles") }}
+        DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
+{{- end }}
         Attributes: map[string]schema.Attribute{
             "id": schema.Int64Attribute{
 				Description: "{{ .Name }} ID",

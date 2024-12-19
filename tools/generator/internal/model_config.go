@@ -36,7 +36,7 @@ type ModelConfig struct {
 	AssociateDisassociateGroups []AssociateDisassociateGroup `json:"associate_disassociate_groups" yaml:"associate_disassociate_groups"`
 	WriteOnlyKeys               []string                     `json:"write_only_keys" yaml:"write_only_keys"`
 	Deprecated                  bool                         `json:"deprecated" yaml:"deprecated"`
-	DeprecatedParts             []string                     `json:"deprecated_parts" yaml:"deprecated_parts"`
+	DeprecatedParts             map[string]bool              `json:"deprecated_parts" yaml:"deprecated_parts"`
 }
 
 // Property represents a single property in the model
@@ -317,6 +317,7 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.SearchFields = item.SearchFields
 	c.HasSearchFields = len(item.SearchFields) > 0
 
+	c.DeprecatedParts = make(map[string]bool)
 	for _, d := range deprecations {
 		_ = d.Check(c)
 	}

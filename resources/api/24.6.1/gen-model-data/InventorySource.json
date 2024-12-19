@@ -75,7 +75,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -113,7 +114,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled_value": {
       "id_key": "",
@@ -151,7 +153,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled_var": {
       "id_key": "",
@@ -189,7 +192,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "execution_environment": {
       "id_key": "",
@@ -227,13 +231,14 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "host_filter": {
       "id_key": "",
       "name": "host_filter",
       "label": "Host filter",
-      "description": "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.",
+      "description": "Regex where only matching hosts will be imported.",
       "type": "string",
       "has_default_value": false,
       "default_value": "",
@@ -265,7 +270,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": true
     },
     "id": {
       "id_key": "",
@@ -308,7 +314,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -346,7 +353,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -384,7 +392,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -427,7 +436,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "overwrite": {
       "id_key": "",
@@ -465,7 +475,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "overwrite_vars": {
       "id_key": "",
@@ -503,7 +514,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -541,7 +553,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source": {
       "id_key": "",
@@ -653,7 +666,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_path": {
       "id_key": "",
@@ -691,7 +705,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_project": {
       "id_key": "",
@@ -729,7 +744,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_vars": {
       "id_key": "",
@@ -767,7 +783,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "timeout": {
       "id_key": "",
@@ -808,7 +825,8 @@
         "max_value": 2147483647,
         "min_value": -2147483648
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "update_cache_timeout": {
       "id_key": "",
@@ -849,7 +867,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "update_on_launch": {
       "id_key": "",
@@ -887,7 +906,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "verbosity": {
       "id_key": "",
@@ -944,7 +964,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -986,7 +1007,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "description": {
       "id_key": "",
@@ -1024,7 +1046,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled_value": {
       "id_key": "",
@@ -1062,7 +1085,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled_var": {
       "id_key": "",
@@ -1100,7 +1124,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "execution_environment": {
       "id_key": "",
@@ -1138,13 +1163,14 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "host_filter": {
       "id_key": "",
       "name": "host_filter",
       "label": "Host filter",
-      "description": "This field is deprecated and will be removed in a future release. Regex where only matching hosts will be imported.",
+      "description": "Regex where only matching hosts will be imported.",
       "type": "string",
       "has_default_value": true,
       "default_value": "stringdefault.StaticString(``)",
@@ -1176,7 +1202,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": true
     },
     "inventory": {
       "id_key": "",
@@ -1214,7 +1241,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "limit": {
       "id_key": "",
@@ -1252,7 +1280,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -1297,7 +1326,8 @@
       "validator_data": {
         "max_length": 512
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "overwrite": {
       "id_key": "",
@@ -1335,7 +1365,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "overwrite_vars": {
       "id_key": "",
@@ -1373,7 +1404,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "scm_branch": {
       "id_key": "",
@@ -1413,7 +1445,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source": {
       "id_key": "",
@@ -1525,7 +1558,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_path": {
       "id_key": "",
@@ -1565,7 +1599,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_project": {
       "id_key": "",
@@ -1603,7 +1638,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "source_vars": {
       "id_key": "",
@@ -1641,7 +1677,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "timeout": {
       "id_key": "",
@@ -1682,7 +1719,8 @@
         "max_value": 2147483647,
         "min_value": -2147483648
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "update_cache_timeout": {
       "id_key": "",
@@ -1723,7 +1761,8 @@
         "max_value": 2147483647,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "update_on_launch": {
       "id_key": "",
@@ -1761,7 +1800,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "verbosity": {
       "id_key": "",
@@ -1818,7 +1858,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -1862,12 +1903,15 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
   "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }
