@@ -1,6 +1,6 @@
 default: generate build
 
-VERSION=24.6.1
+VERSION=24.2.0
 
 .PHONY: generate-config
 generate-config:
