@@ -97,7 +97,7 @@ func (o *groupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 				Required:    false,
 				Optional:    true,
 				Computed:    true,
-				Default:     stringdefault.StaticString(``),
+				Default:     stringdefault.StaticString(`{}`),
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},

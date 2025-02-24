@@ -40,7 +40,7 @@ func (o *groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
 	req.Description = o.Description.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
-	req.Variables = json.RawMessage(o.Variables.ValueString())
+	req.Variables = json.RawMessage(o.Variables.String())
 	return
 }
 

@@ -67,6 +67,8 @@ fabric.properties
 *.dylib
 *.out
 
+/examples/.envrc
+/examples/*/plan
 /.envrc*
 /resources/run.sh
 /.terraformrc

@@ -4,6 +4,12 @@
   "type_name": "group",
   "id_key": "id",
   "enabled": true,
+  "property_overrides": {
+    "variables": {
+      "post_wrap": true,
+      "default_value": "{}"
+    }
+  },
   "search_fields": [
     {
       "url_suffix": "%d/",
