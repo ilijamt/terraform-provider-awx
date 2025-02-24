@@ -224,7 +224,6 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 						"rhv",
 						"controller",
 						"insights",
-						"terraform",
 					),
 				},
 			},

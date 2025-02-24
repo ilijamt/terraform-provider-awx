@@ -286,7 +286,6 @@ func (o *workflowJobTemplateResource) Schema(ctx context.Context, req resource.S
 						"",
 						"github",
 						"gitlab",
-						"bitbucket_dc",
 					),
 				},
 			},
