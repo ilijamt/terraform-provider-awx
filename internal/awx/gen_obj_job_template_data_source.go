@@ -362,6 +362,7 @@ func (o *jobTemplateDataSource) Schema(ctx context.Context, req datasource.Schem
 						"",
 						"github",
 						"gitlab",
+						"bitbucket_dc",
 					),
 				},
 			},

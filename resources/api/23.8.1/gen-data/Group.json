@@ -5,6 +5,16 @@
     "name": "Group",
     "type_name": "group",
     "id_key": "id",
+    "property_overrides": {
+      "variables": {
+        "type": "",
+        "description": "",
+        "trim": false,
+        "post_wrap": true,
+        "default_value": "{}",
+        "element_type": ""
+      }
+    },
     "search_fields": [
       {
         "url_suffix": "%d/",
@@ -82,6 +92,8 @@
     },
     "variables": {
       "computed": true,
+      "default": "{}",
+      "default_value": "stringdefault.StaticString(`{}`)",
       "filterable": true,
       "help_text": "Group variables in JSON or YAML format.",
       "label": "Variables",
@@ -133,8 +145,8 @@
     },
     "variables": {
       "computed": true,
-      "default": "",
-      "default_value": "stringdefault.StaticString(``)",
+      "default": "{}",
+      "default_value": "stringdefault.StaticString(`{}`)",
       "filterable": true,
       "help_text": "Group variables in JSON or YAML format.",
       "label": "Variables",
