@@ -165,6 +165,7 @@ func (o *inventorySourceDataSource) Schema(ctx context.Context, req datasource.S
 						"rhv",
 						"controller",
 						"insights",
+						"terraform",
 					),
 				},
 			},
