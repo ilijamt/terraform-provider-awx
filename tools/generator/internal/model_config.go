@@ -326,11 +326,11 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 }
 
 func (c *ModelConfig) Process(config Config, item Item) (_ error) {
-	for key, _ := range c.ReadProperties {
+	for key := range c.ReadProperties {
 		_, ok := c.WriteProperties[key]
 		c.ReadProperties[key].IsInWriteProperty = ok
 	}
-	for key, _ := range c.WriteProperties {
+	for key := range c.WriteProperties {
 		_, ok := c.ReadProperties[key]
 		c.WriteProperties[key].IsInReadProperty = ok
 		if c.WriteProperties[key].IsWriteOnly {
