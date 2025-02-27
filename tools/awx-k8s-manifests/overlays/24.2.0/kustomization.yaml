@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+- name: quay.io/ansible/awx-operator
+  newTag: 24.2.0
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/image_version
+      value: 24.2.0
+  target:
+    group: awx.ansible.com
+    kind: AWX
+    name: awx
+    version: v1beta1
+
+resources:
+- https://github.com/ansible/awx-operator//config/default??timeout=120&ref=2.15.0
+- ../../base
