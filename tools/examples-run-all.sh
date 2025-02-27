@@ -39,4 +39,4 @@ run settings_github
 
 
 go tool covdata textfmt -i=$COVERAGEDIR -o $ROOTDIR/build/coverage.data.out
-go tool cover -html=$ROOTDIR/build/coverage.data.out -o $ROOTDIR/build/coverage.html
+go tool cover -html=$ROOTDIR/build/coverage.data.out -o $ROOTDIR/build/coverage.data.html
