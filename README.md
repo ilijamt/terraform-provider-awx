@@ -60,13 +60,29 @@ make generate VERSION=23.7.0
 Setup AWX for local testing
 ---------------------------
 
-Make sure you checkout the AWX project locally, and have basic requirements setup, like `docker`, `docker-compose`, `python`, `ansible`, `ansible-builder`.
+Review [Creating a minikube cluster for testing](https://github.com/ansible/awx-operator/blob/devel/docs/installation/creating-a-minikube-cluster-for-testing.md) on how to setup your environment. 
+
+Username: `admin`
+Password: `admin`
+
+After that you can use the predefined manifests to quickly spin up your environment.
+Make sure you have a fully clean environment, delete the `namespace` and any lingering `pv`.
 
 ```shell
-export AWX_VERSION=24.1.0
-git checkout $AWX_VERSION
-make clean
-make ui-devel
-make docker-compose-build
-make docker-compose
+❯ kubectl config current-context
+minikube
+❯ kustomize build tools/awx-k8s-manifests/overlays/24.3.1 | kubectl apply -f -
+```
+
+```shell
+❯ minikube ip
+10.211.55.6
+```
+
+Make sure that `awx.local` is points to `10.211.55.6` in your `/etc/hosts` file on your system.
+
+To cleanup just run:
+
+```shell
+❯ kustomize build tools/awx-k8s-manifests/overlays/24.3.1 | kubectl delete -f -
 ```

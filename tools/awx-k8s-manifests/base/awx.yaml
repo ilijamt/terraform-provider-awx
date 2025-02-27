@@ -3,7 +3,6 @@ kind: AWX
 metadata:
   name: awx
 spec:
-  image_version: 24.6.1
   ingress_type: Ingress
   ingress_class_name: nginx
   hostname: awx.local

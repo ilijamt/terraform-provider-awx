@@ -1,7 +1,23 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- https://github.com/ansible/awx-operator//config/default?ref=2.19.1
 - secret.yaml
 - awx.yaml
+
+images:
+- name: quay.io/ansible/awx-operator
+  newTag: 2.19.1
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/image_version
+      value: 24.2.0
+  target:
+    version: v1beta1
+    group: awx.ansible.com
+    kind: AWX
+    name: awx
 
 namespace: awx
