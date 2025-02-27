@@ -58,6 +58,7 @@ func (o *teamAssociateDisassociateRole) Metadata(ctx context.Context, request re
 
 func (o *teamAssociateDisassociateRole) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
 		Attributes: map[string]schema.Attribute{
 			"team_id": schema.Int64Attribute{
 				Description: "Database ID for this Team.",

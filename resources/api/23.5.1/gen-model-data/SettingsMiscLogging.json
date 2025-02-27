@@ -32,6 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -49,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
       "id_key": "",
@@ -69,6 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -88,7 +91,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
       "id_key": "",
@@ -108,6 +112,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -127,7 +132,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ENABLED": {
       "id_key": "",
@@ -147,6 +153,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -164,7 +171,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_HOST": {
       "id_key": "",
@@ -184,6 +192,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -201,7 +210,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
       "id_key": "",
@@ -221,6 +231,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -238,7 +249,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_LEVEL": {
       "id_key": "",
@@ -258,6 +270,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -304,7 +317,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_LOGGERS": {
       "id_key": "",
@@ -324,6 +338,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -341,7 +356,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
       "id_key": "",
@@ -361,6 +377,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -378,7 +395,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PASSWORD": {
       "id_key": "",
@@ -398,6 +416,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -415,7 +434,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PORT": {
       "id_key": "",
@@ -435,6 +455,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -452,7 +473,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PROTOCOL": {
       "id_key": "",
@@ -472,6 +494,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -508,7 +531,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
       "id_key": "",
@@ -528,6 +552,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -545,7 +570,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
       "id_key": "",
@@ -565,6 +591,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -582,7 +609,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TOWER_UUID": {
       "id_key": "",
@@ -602,6 +630,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -619,7 +648,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TYPE": {
       "id_key": "",
@@ -639,6 +669,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -689,7 +720,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_USERNAME": {
       "id_key": "",
@@ -709,6 +741,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -726,7 +759,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
       "id_key": "",
@@ -746,6 +780,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -763,7 +798,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -785,6 +821,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -802,7 +839,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB": {
       "id_key": "",
@@ -822,6 +860,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -841,7 +880,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ACTION_QUEUE_SIZE": {
       "id_key": "",
@@ -861,6 +901,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -880,7 +921,8 @@
       "validator_data": {
         "min_value": 1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_ENABLED": {
       "id_key": "",
@@ -900,6 +942,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -917,7 +960,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_HOST": {
       "id_key": "",
@@ -937,6 +981,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -954,7 +999,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_INDIVIDUAL_FACTS": {
       "id_key": "",
@@ -974,6 +1020,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -991,7 +1038,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_LEVEL": {
       "id_key": "",
@@ -1011,6 +1059,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1057,7 +1106,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_LOGGERS": {
       "id_key": "",
@@ -1077,6 +1127,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1094,7 +1145,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_MAX_DISK_USAGE_PATH": {
       "id_key": "",
@@ -1114,6 +1166,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1131,7 +1184,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PASSWORD": {
       "id_key": "",
@@ -1151,6 +1205,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1168,7 +1223,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PORT": {
       "id_key": "",
@@ -1188,6 +1244,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1205,7 +1262,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_PROTOCOL": {
       "id_key": "",
@@ -1225,6 +1283,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1261,7 +1320,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_RSYSLOGD_DEBUG": {
       "id_key": "",
@@ -1281,6 +1341,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1298,7 +1359,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TCP_TIMEOUT": {
       "id_key": "",
@@ -1318,6 +1380,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1335,7 +1398,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TOWER_UUID": {
       "id_key": "",
@@ -1355,6 +1419,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1372,7 +1437,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_TYPE": {
       "id_key": "",
@@ -1392,6 +1458,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1442,7 +1509,8 @@
           ]
         ]
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_USERNAME": {
       "id_key": "",
@@ -1462,6 +1530,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1479,7 +1548,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOG_AGGREGATOR_VERIFY_CERT": {
       "id_key": "",
@@ -1499,6 +1569,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1516,7 +1587,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -1525,5 +1597,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

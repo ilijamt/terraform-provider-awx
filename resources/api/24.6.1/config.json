@@ -1398,12 +1398,10 @@
         },
         "permissions": {
           "type": "list",
-          "listvalidator": {
-            "validators": [
-              "SizeAtLeast(1)",
-              "UniqueValues"
-            ]
-          }
+          "validators": [
+            "listvalidator.SizeAtLeast(1)",
+            "listvalidator.UniqueValues()"
+          ]
         }
       },
       "search_fields": [

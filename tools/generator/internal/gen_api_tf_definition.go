@@ -139,6 +139,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	}
 
 	for _, adg := range val.AssociateDisassociateGroups {
+		_, deprecated := item.DeprecatedParts["ObjectRoles"]
 		tpls = append(tpls, struct {
 			Filename string
 			Template string
@@ -150,7 +151,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				strings.ToLower(val.TypeName), strings.ToLower(adg.Type)),
 			Template: "tf_associate_disassociate.go.tpl",
 			Render:   true,
-			Data:     adg.Map(),
+			Data:     adg.Map(deprecated),
 		})
 	}
 

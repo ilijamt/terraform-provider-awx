@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	ApiVersion string = "24.2.0"
+	ApiVersion string = "24.3.1"
 )
 
 // DataSources is a helper function to return all defined data sources
@@ -38,6 +38,9 @@ func DataSources() []func() datasource.DataSource {
 		NewOrganizationObjectRolesDataSource,
 		NewProjectDataSource,
 		NewProjectObjectRolesDataSource,
+		NewRoleDefinitionDataSource,
+		NewRoleTeamAssignmentDataSource,
+		NewRoleUserAssignmentDataSource,
 		NewScheduleDataSource,
 		NewSettingsAuthAzureADOauth2DataSource,
 		NewSettingsAuthGithubDataSource,
@@ -91,6 +94,9 @@ func Resources() []func() resource.Resource {
 		NewOrganizationAssociateDisassociateGalaxyCredentialResource,
 		NewOrganizationAssociateDisassociateInstanceGroupResource,
 		NewProjectResource,
+		NewRoleDefinitionResource,
+		NewRoleTeamAssignmentResource,
+		NewRoleUserAssignmentResource,
 		NewScheduleResource,
 		NewSettingsAuthAzureADOauth2Resource,
 		NewSettingsAuthGithubResource,

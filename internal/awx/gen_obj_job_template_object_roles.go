@@ -51,6 +51,7 @@ func (o *jobTemplateObjectRolesDataSource) Metadata(_ context.Context, req datas
 // Schema defines the schema for the data source.
 func (o *jobTemplateObjectRolesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.Int64Attribute{
 				Description: "JobTemplate ID",

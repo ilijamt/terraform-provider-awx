@@ -10,7 +10,6 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -59,49 +58,41 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Description: "Optional description of this schedule.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"diff_mode": schema.BoolAttribute{
 				Description: "Diff mode",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"dtend": schema.StringAttribute{
 				Description: "The last occurrence of the schedule occurs before this time, aftewards the schedule expires.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"dtstart": schema.StringAttribute{
 				Description: "The first occurrence of the schedule occurs on or after this time.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"enabled": schema.BoolAttribute{
 				Description: "Enables processing of this schedule.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"execution_environment": schema.Int64Attribute{
 				Description: "The container image to be used for execution.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"extra_data": schema.StringAttribute{
 				Description: "Extra data",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"forks": schema.Int64Attribute{
 				Description: "Forks",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this schedule.",
@@ -118,106 +109,76 @@ func (o *scheduleDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 				Description: "Inventory applied as a prompt, assuming job template prompts for inventory",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"job_slice_count": schema.Int64Attribute{
 				Description: "Job slice count",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"job_tags": schema.StringAttribute{
 				Description: "Job tags",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"job_type": schema.StringAttribute{
 				Description: "Job type",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"",
-						"run",
-						"check",
-					),
-				},
 			},
 			"limit": schema.StringAttribute{
 				Description: "Limit",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this schedule.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"next_run": schema.StringAttribute{
 				Description: "The next time that the scheduled action will run.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"rrule": schema.StringAttribute{
 				Description: "A value representing the schedules iCal recurrence rule.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"scm_branch": schema.StringAttribute{
 				Description: "Scm branch",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"skip_tags": schema.StringAttribute{
 				Description: "Skip tags",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"timeout": schema.Int64Attribute{
 				Description: "Timeout",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"timezone": schema.StringAttribute{
 				Description: "The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"unified_job_template": schema.Int64Attribute{
 				Description: "Unified job template",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"until": schema.StringAttribute{
 				Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"verbosity": schema.StringAttribute{
 				Description: "Verbosity",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.String{
-					stringvalidator.OneOf(
-						"0",
-						"1",
-						"2",
-						"3",
-						"4",
-						"5",
-					),
-				},
 			},
 		},
 	}

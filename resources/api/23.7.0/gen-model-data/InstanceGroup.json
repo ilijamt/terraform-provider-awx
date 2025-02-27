@@ -55,6 +55,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -72,7 +73,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "consumed_capacity": {
       "id_key": "",
@@ -92,6 +94,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -109,7 +112,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "credential": {
       "id_key": "",
@@ -129,6 +133,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -146,7 +151,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -166,6 +172,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -188,7 +195,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "instances": {
       "id_key": "",
@@ -208,6 +216,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -225,7 +234,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "is_container_group": {
       "id_key": "",
@@ -245,6 +255,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -262,7 +273,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "jobs_running": {
       "id_key": "",
@@ -282,6 +294,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -299,7 +312,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "jobs_total": {
       "id_key": "",
@@ -319,6 +333,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -336,7 +351,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "max_concurrent_jobs": {
       "id_key": "",
@@ -356,6 +372,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -375,7 +392,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "max_forks": {
       "id_key": "",
@@ -395,6 +413,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -414,7 +433,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -434,6 +454,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -456,7 +477,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "percent_capacity_remaining": {
       "id_key": "",
@@ -476,6 +498,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -493,7 +516,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "pod_spec_override": {
       "id_key": "",
@@ -513,6 +537,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -530,7 +555,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_list": {
       "id_key": "",
@@ -550,6 +576,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -567,7 +594,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_minimum": {
       "id_key": "",
@@ -587,6 +615,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -606,7 +635,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_percentage": {
       "id_key": "",
@@ -626,6 +656,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -646,7 +677,8 @@
         "max_value": 100,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -668,6 +700,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -685,7 +718,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "is_container_group": {
       "id_key": "",
@@ -705,6 +739,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -722,7 +757,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "max_concurrent_jobs": {
       "id_key": "",
@@ -742,6 +778,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -761,7 +798,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "max_forks": {
       "id_key": "",
@@ -781,6 +819,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -800,7 +839,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -820,6 +860,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -844,7 +885,8 @@
       "validator_data": {
         "max_length": 250
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "pod_spec_override": {
       "id_key": "",
@@ -864,6 +906,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -881,7 +924,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_list": {
       "id_key": "",
@@ -901,6 +945,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -918,7 +963,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_minimum": {
       "id_key": "",
@@ -938,6 +984,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -957,7 +1004,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "policy_instance_percentage": {
       "id_key": "",
@@ -977,6 +1025,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -997,7 +1046,8 @@
         "max_value": 100,
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -1018,6 +1068,7 @@
     "is_type_write": false,
     "is_in_read_property": false,
     "is_in_write_property": false,
+    "validators": null,
     "is_hidden": false,
     "post_wrap": false,
     "trim": false,
@@ -1040,12 +1091,15 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

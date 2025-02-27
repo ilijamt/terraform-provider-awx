@@ -35,6 +35,8 @@ type ModelConfig struct {
 	FieldConstraints            []FieldConstraint            `json:"field_constraints" yaml:"field_constraints" mapstructure:"field_constraints"`
 	AssociateDisassociateGroups []AssociateDisassociateGroup `json:"associate_disassociate_groups" yaml:"associate_disassociate_groups"`
 	WriteOnlyKeys               []string                     `json:"write_only_keys" yaml:"write_only_keys"`
+	Deprecated                  bool                         `json:"deprecated" yaml:"deprecated"`
+	DeprecatedParts             map[string]bool              `json:"deprecated_parts" yaml:"deprecated_parts"`
 }
 
 // Property represents a single property in the model
@@ -56,6 +58,7 @@ type Property struct {
 	IsTypeWrite       bool              `json:"is_type_write" yaml:"is_type_write" ` // Indicates if the property is a write type
 	IsInReadProperty  bool              `json:"is_in_read_property" yaml:"is_in_read_property" `
 	IsInWriteProperty bool              `json:"is_in_write_property" yaml:"is_in_write_property" `
+	Validators        []string          `json:"validators" yaml:"validators"`
 	IsHidden          bool              `json:"is_hidden" yaml:"is_hidden"`
 	PostWrap          bool              `json:"post_wrap" yaml:"post_wrap"`
 	Trim              bool              `json:"trim" yaml:"trim"`
@@ -63,6 +66,7 @@ type Property struct {
 	Generated         PropertyGenerated `json:"generated" yaml:"generated"`
 	ValidatorData     map[string]any    `json:"validator_data" yaml:"validator_data"`
 	Constraints       []FieldConstraint `json:"constraints" yaml:"constraints"`
+	Deprecated        bool              `json:"deprecated" yaml:"deprecated"`
 }
 
 type PropertyGenerated struct {
@@ -103,17 +107,37 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.setConstraints(item.FieldConstraints)
 	p.setHidden(values)
 	p.setValidatorData(values)
+	p.setPropertyCustom(values, override)
 	p.IsSearchable = fieldIsSearchable(item.SearchFields, p.Name)
 
+	p.Deprecated = strings.Contains(strings.ToLower(p.Description), "this field is deprecated")
+	if p.Deprecated {
+		p.Description = strings.TrimSpace(strings.ReplaceAll(p.Description, "This field is deprecated and will be removed in a future release.", ""))
+	}
+
 	p.setGenerated(values, override, item)
+
 	return nil
+}
+
+func (p *Property) setPropertyCustom(values map[string]any, override PropertyOverride) {
+	if len(override.Validators) > 0 {
+		p.Validators = override.Validators
+	}
 }
 
 func (p *Property) setValidatorData(values map[string]any) {
 	p.ValidatorData = make(map[string]any)
+
 	for _, key := range []string{"max_length", "min_value", "max_value", "choices"} {
 		if v, ok := values[key]; ok {
 			p.ValidatorData[key] = v
+		}
+	}
+
+	if v, ok := values["child"].(map[string]any); ok {
+		if choices, ok := v["choices"].([]any); ok {
+			p.ValidatorData["choices"] = choices
 		}
 	}
 }
@@ -150,7 +174,7 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 	}
 
 	switch p.Type {
-	case "choice":
+	case "choice", "list":
 		if v, ok := p.ValidatorData["choices"].([]any); ok {
 			p.Generated.ValidationAvailableChoiceData = availableChoicesData(v)
 		}
@@ -292,6 +316,12 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 
 	c.SearchFields = item.SearchFields
 	c.HasSearchFields = len(item.SearchFields) > 0
+
+	c.DeprecatedParts = make(map[string]bool)
+	for _, d := range deprecations {
+		_ = d.Check(c)
+	}
+
 	return nil
 }
 

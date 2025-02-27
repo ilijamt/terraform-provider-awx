@@ -32,6 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -49,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ID": {
       "id_key": "",
@@ -69,6 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -86,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_KEY": {
       "id_key": "",
@@ -106,6 +110,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -123,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
       "id_key": "",
@@ -143,6 +149,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -160,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
       "id_key": "",
@@ -180,6 +188,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -197,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP": {
       "id_key": "",
@@ -217,6 +227,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -234,7 +245,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -256,6 +268,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -273,7 +286,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_KEY": {
       "id_key": "",
@@ -293,6 +307,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -310,7 +325,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
       "id_key": "",
@@ -330,6 +346,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -347,7 +364,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
       "id_key": "",
@@ -367,6 +385,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -384,7 +403,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP": {
       "id_key": "",
@@ -404,6 +424,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -421,7 +442,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -430,5 +452,7 @@
   "pre_state_set_hook_function": "hookSettingsAuthGithubTeam",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

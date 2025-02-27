@@ -55,6 +55,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -72,7 +73,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled": {
       "id_key": "",
@@ -92,6 +94,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -109,7 +112,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "id": {
       "id_key": "",
@@ -129,6 +133,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -151,7 +156,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "instance_id": {
       "id_key": "",
@@ -171,6 +177,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -188,7 +195,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -208,6 +216,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -225,7 +234,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_job": {
       "id_key": "",
@@ -245,6 +255,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -262,7 +273,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "last_job_host_summary": {
       "id_key": "",
@@ -282,6 +294,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -299,7 +312,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -319,6 +333,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -341,7 +356,8 @@
         }
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "variables": {
       "id_key": "",
@@ -361,6 +377,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": true,
       "trim": false,
@@ -378,7 +395,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -400,6 +418,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -417,7 +436,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "enabled": {
       "id_key": "",
@@ -437,6 +457,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -454,7 +475,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "instance_id": {
       "id_key": "",
@@ -474,6 +496,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -493,7 +516,8 @@
       "validator_data": {
         "max_length": 1024
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "inventory": {
       "id_key": "",
@@ -513,6 +537,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -530,7 +555,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "name": {
       "id_key": "",
@@ -550,6 +576,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -574,7 +601,8 @@
       "validator_data": {
         "max_length": 512
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "variables": {
       "id_key": "",
@@ -594,6 +622,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": true,
       "trim": false,
@@ -611,7 +640,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": {
@@ -632,6 +662,7 @@
     "is_type_write": false,
     "is_in_read_property": false,
     "is_in_write_property": false,
+    "validators": null,
     "is_hidden": false,
     "post_wrap": false,
     "trim": false,
@@ -654,7 +685,8 @@
       }
     },
     "validator_data": {},
-    "constraints": []
+    "constraints": [],
+    "deprecated": false
   },
   "id_key": "id",
   "un_deletable": false,
@@ -668,5 +700,7 @@
       "associate_type": ""
     }
   ],
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }

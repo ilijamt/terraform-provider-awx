@@ -32,6 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -49,7 +50,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
       "id_key": "",
@@ -69,6 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -86,7 +89,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTHENTICATION_BACKENDS": {
       "id_key": "",
@@ -106,6 +110,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -123,7 +128,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_BASIC_ENABLED": {
       "id_key": "",
@@ -143,6 +149,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -160,7 +167,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DISABLE_LOCAL_AUTH": {
       "id_key": "",
@@ -180,6 +188,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -197,7 +206,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
       "id_key": "",
@@ -217,6 +227,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -236,7 +247,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
       "id_key": "",
@@ -256,6 +268,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -275,7 +288,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
       "id_key": "",
@@ -295,6 +309,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -314,7 +329,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
       "id_key": "",
@@ -334,6 +350,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -353,7 +370,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOGIN_REDIRECT_OVERRIDE": {
       "id_key": "",
@@ -373,6 +391,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -390,7 +409,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "OAUTH2_PROVIDER": {
       "id_key": "",
@@ -410,6 +430,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -427,7 +448,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSIONS_PER_USER": {
       "id_key": "",
@@ -447,6 +469,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -466,7 +489,8 @@
       "validator_data": {
         "min_value": -1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSION_COOKIE_AGE": {
       "id_key": "",
@@ -486,6 +510,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -506,7 +531,8 @@
         "max_value": 30000000000,
         "min_value": 60
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
       "id_key": "",
@@ -526,6 +552,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -543,7 +570,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_TEAM_MAP": {
       "id_key": "",
@@ -563,6 +591,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -580,7 +609,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
       "id_key": "",
@@ -600,6 +630,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -617,7 +648,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USER_FIELDS": {
       "id_key": "",
@@ -637,6 +669,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -654,7 +687,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -676,6 +710,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -693,7 +728,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
       "id_key": "",
@@ -713,6 +749,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -730,7 +767,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_BASIC_ENABLED": {
       "id_key": "",
@@ -750,6 +788,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -767,7 +806,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DISABLE_LOCAL_AUTH": {
       "id_key": "",
@@ -787,6 +827,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -804,7 +845,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
       "id_key": "",
@@ -824,6 +866,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -843,7 +886,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
       "id_key": "",
@@ -863,6 +907,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -882,7 +927,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
       "id_key": "",
@@ -902,6 +948,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -921,7 +968,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
       "id_key": "",
@@ -941,6 +989,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -960,7 +1009,8 @@
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOGIN_REDIRECT_OVERRIDE": {
       "id_key": "",
@@ -980,6 +1030,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -997,7 +1048,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "OAUTH2_PROVIDER": {
       "id_key": "",
@@ -1017,6 +1069,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1034,7 +1087,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSIONS_PER_USER": {
       "id_key": "",
@@ -1054,6 +1108,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1073,7 +1128,8 @@
       "validator_data": {
         "min_value": -1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSION_COOKIE_AGE": {
       "id_key": "",
@@ -1093,6 +1149,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1113,7 +1170,8 @@
         "max_value": 30000000000,
         "min_value": 60
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
       "id_key": "",
@@ -1133,6 +1191,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1150,7 +1209,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_TEAM_MAP": {
       "id_key": "",
@@ -1170,6 +1230,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1187,7 +1248,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
       "id_key": "",
@@ -1207,6 +1269,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1224,7 +1287,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USER_FIELDS": {
       "id_key": "",
@@ -1244,6 +1308,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": null,
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1261,7 +1326,8 @@
         "attribute_validation_data": null
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
@@ -1270,5 +1336,7 @@
   "pre_state_set_hook_function": "",
   "field_constraints": null,
   "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "write_only_keys": null,
+  "deprecated": false,
+  "deprecated_parts": {}
 }
