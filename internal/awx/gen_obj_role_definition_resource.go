@@ -150,7 +150,6 @@ func (o *roleDefinitionResource) Schema(ctx context.Context, req resource.Schema
 						"awx.use_inventory",
 						"awx.use_project",
 						"awx.view_credential",
-						"awx.view_executionenvironment",
 						"awx.view_instancegroup",
 						"awx.view_inventory",
 						"awx.view_jobtemplate",

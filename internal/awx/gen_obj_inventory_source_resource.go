@@ -226,6 +226,7 @@ func (o *inventorySourceResource) Schema(ctx context.Context, req resource.Schem
 						"controller",
 						"insights",
 						"terraform",
+						"openshift_virtualization",
 					),
 				},
 			},
