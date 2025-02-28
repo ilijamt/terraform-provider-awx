@@ -32,6 +32,7 @@ run instance_groups
 run inventory
 # run job_template_survey_spec
 # run preload_data
+# run objectroles
 run roles
 run settings
 run settings_authentication

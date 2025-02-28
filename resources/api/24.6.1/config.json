@@ -718,7 +718,7 @@
       "name": "RoleDefinition",
       "type_name": "role_definition",
       "id_key": "id",
-      "enabled": true,
+      "enabled": false,
       "property_overrides": {
         "content_type": {
           "type": "choice"
@@ -759,7 +759,7 @@
       "name": "RoleTeamAssignment",
       "type_name": "role_team_assignment",
       "id_key": "id",
-      "enabled": true,
+      "enabled": false,
       "search_fields": [
         {
           "url_suffix": "%d/",
@@ -777,7 +777,7 @@
       "name": "RoleUserAssignment",
       "type_name": "role_user_assignment",
       "id_key": "id",
-      "enabled": true,
+      "enabled": false,
       "search_fields": [
         {
           "url_suffix": "%d/",
