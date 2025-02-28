@@ -23,6 +23,7 @@ generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
 	rm -rf cmd/provider/docs/*
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
+	cp resources/api/$(VERSION)/deprecated.md .
 	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go
 

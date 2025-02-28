@@ -6,14 +6,16 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+
+	"github.com/iancoleman/strcase"
 )
 
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, err error) {
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, deprecatedResources Deprecated, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
 		log.Printf("No actions for %s, skipping ....", name)
-		return nil, nil, nil
+		return nil, nil, deprecatedResources, nil
 	}
 
 	var description string
@@ -153,6 +155,18 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			Render:   true,
 			Data:     adg.Map(deprecated),
 		})
+
+		if deprecated && val.Enabled {
+			deprecatedResources.Resources = append(
+				deprecatedResources.Resources,
+				strcase.ToDelimited(
+					fmt.Sprintf(
+						"%sAssociateDisassociate%s",
+						strcase.ToLowerCamel(adg.Name), adg.Type,
+					), '_',
+				),
+			)
+		}
 	}
 
 	_ = item.Process(config, val)
@@ -160,6 +174,13 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	// ---------------------
 
 	if val.Enabled {
+		deprecatedResources.Properties = []DeprecatedProperties{
+			{
+				Resource:        item.Name,
+				WriteProperties: item.DeprecatedWriteProperties,
+				ReadProperties:  item.DeprecatedReadProperties,
+			},
+		}
 		for _, t := range tpls {
 			if !t.Render {
 				log.Printf("Rendering of %s into %s skipped.", t.Template, t.Filename)
@@ -182,10 +203,10 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				t.Template,
 				d,
 			); err != nil {
-				return data, item, err
+				return data, item, deprecatedResources, err
 			}
 		}
 	}
 
-	return data, item, nil
+	return data, item, deprecatedResources, nil
 }

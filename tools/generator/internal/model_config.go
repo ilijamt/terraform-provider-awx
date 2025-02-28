@@ -37,6 +37,8 @@ type ModelConfig struct {
 	WriteOnlyKeys               []string                     `json:"write_only_keys" yaml:"write_only_keys"`
 	Deprecated                  bool                         `json:"deprecated" yaml:"deprecated"`
 	DeprecatedParts             map[string]bool              `json:"deprecated_parts" yaml:"deprecated_parts"`
+	DeprecatedReadProperties    []string                     `json:"deprecated_read_properties" yaml:"deprecated_read_properties"`
+	DeprecatedWriteProperties   []string                     `json:"deprecated_write_properties" yaml:"deprecated_write_properties"`
 }
 
 // Property represents a single property in the model
@@ -94,6 +96,9 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.IsTypeWrite = vt == TypeWrite
 	p.Trim = override.Trim
 	p.PostWrap = override.PostWrap
+	p.Validators = make([]string, 0)
+	p.Generated.ValidationAvailableChoiceData = make([]string, 0)
+	p.Generated.AttributeValidationData = make(map[string][]string)
 
 	p.setIdKey(values, override)
 	p.setType(values, override)
@@ -305,6 +310,14 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.IdKey = item.IdKey
 	c.FieldConstraints = item.FieldConstraints
 	c.AssociateDisassociateGroups = item.AssociateDisassociateGroups
+	c.DeprecatedReadProperties = make([]string, 0)
+	c.DeprecatedWriteProperties = make([]string, 0)
+	c.WriteOnlyKeys = make([]string, 0)
+	c.FieldConstraints = make([]FieldConstraint, 0)
+
+	if c.AssociateDisassociateGroups == nil {
+		c.AssociateDisassociateGroups = make([]AssociateDisassociateGroup, 0)
+	}
 
 	if c.ReadProperties == nil {
 		c.ReadProperties = make(map[string]*Property)
@@ -358,7 +371,13 @@ func (c *ModelConfig) UpdateProperty(vt AwxKeyValueType, key string, overrides P
 
 	if vt == TypeRead {
 		c.ReadProperties[key] = prop
+		if prop.Deprecated {
+			c.DeprecatedReadProperties = append(c.DeprecatedReadProperties, key)
+		}
 	} else if vt == TypeWrite {
+		if prop.Deprecated {
+			c.DeprecatedWriteProperties = append(c.DeprecatedWriteProperties, key)
+		}
 		if prop.IsWriteOnly && !item.SkipWriteOnly || !prop.IsWriteOnly {
 			c.WriteProperties[key] = prop
 		}

@@ -32,7 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -46,8 +46,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -71,7 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -85,8 +85,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -110,7 +110,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -124,8 +124,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -149,7 +149,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -163,8 +163,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -190,7 +190,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -204,8 +204,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_KEY.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -229,7 +229,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -243,8 +243,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -268,7 +268,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -282,8 +282,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_SECRET.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -307,7 +307,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -321,8 +321,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -333,9 +333,11 @@
   "id_key": "id",
   "un_deletable": true,
   "pre_state_set_hook_function": "hookSettingsOidc",
-  "field_constraints": null,
-  "associate_disassociate_groups": null,
-  "write_only_keys": null,
+  "field_constraints": [],
+  "associate_disassociate_groups": [],
+  "write_only_keys": [],
   "deprecated": false,
-  "deprecated_parts": {}
+  "deprecated_parts": {},
+  "deprecated_read_properties": [],
+  "deprecated_write_properties": []
 }

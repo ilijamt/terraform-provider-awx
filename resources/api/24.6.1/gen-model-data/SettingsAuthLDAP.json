@@ -32,7 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -46,8 +46,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -71,7 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -85,8 +85,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -110,7 +110,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -124,8 +124,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -149,7 +149,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -163,8 +163,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -188,7 +188,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -202,8 +202,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -227,7 +227,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -255,7 +255,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -330,7 +330,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -344,8 +344,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -369,7 +369,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -383,8 +383,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -408,7 +408,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -422,8 +422,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -447,7 +447,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -461,8 +461,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -486,7 +486,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -500,8 +500,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -525,7 +525,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -539,8 +539,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -564,7 +564,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -578,8 +578,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -603,7 +603,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -617,8 +617,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -642,7 +642,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -656,8 +656,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -681,7 +681,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -695,8 +695,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -720,7 +720,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -734,8 +734,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -759,7 +759,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -773,8 +773,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -798,7 +798,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -812,8 +812,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -837,7 +837,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -851,8 +851,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -876,7 +876,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -890,8 +890,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -915,7 +915,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -943,7 +943,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -1018,7 +1018,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1032,8 +1032,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1057,7 +1057,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1071,8 +1071,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1096,7 +1096,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1110,8 +1110,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1135,7 +1135,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1149,8 +1149,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1174,7 +1174,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1188,8 +1188,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1213,7 +1213,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1227,8 +1227,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1252,7 +1252,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1266,8 +1266,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1291,7 +1291,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1305,8 +1305,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1330,7 +1330,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1344,8 +1344,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1369,7 +1369,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1383,8 +1383,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1408,7 +1408,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1422,8 +1422,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1447,7 +1447,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1461,8 +1461,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1486,7 +1486,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1500,8 +1500,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1525,7 +1525,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1539,8 +1539,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1564,7 +1564,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1578,8 +1578,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1603,7 +1603,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1631,7 +1631,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -1706,7 +1706,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1720,8 +1720,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1745,7 +1745,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1759,8 +1759,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1784,7 +1784,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1798,8 +1798,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1823,7 +1823,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1837,8 +1837,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1862,7 +1862,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1876,8 +1876,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1901,7 +1901,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1915,8 +1915,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1940,7 +1940,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1954,8 +1954,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -1979,7 +1979,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1993,8 +1993,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2018,7 +2018,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2032,8 +2032,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2057,7 +2057,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2071,8 +2071,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2096,7 +2096,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2110,8 +2110,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2135,7 +2135,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2149,8 +2149,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2174,7 +2174,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2188,8 +2188,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2213,7 +2213,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2227,8 +2227,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2252,7 +2252,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2266,8 +2266,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2291,7 +2291,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2319,7 +2319,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -2394,7 +2394,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2408,8 +2408,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2433,7 +2433,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2447,8 +2447,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2472,7 +2472,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2486,8 +2486,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2511,7 +2511,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2525,8 +2525,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2550,7 +2550,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2564,8 +2564,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2589,7 +2589,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2603,8 +2603,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2628,7 +2628,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2642,8 +2642,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2667,7 +2667,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2681,8 +2681,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2706,7 +2706,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2720,8 +2720,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2745,7 +2745,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2759,8 +2759,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2784,7 +2784,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2798,8 +2798,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2823,7 +2823,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2837,8 +2837,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2862,7 +2862,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2876,8 +2876,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2901,7 +2901,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2915,8 +2915,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2940,7 +2940,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -2954,8 +2954,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -2979,7 +2979,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3007,7 +3007,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -3082,7 +3082,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3096,8 +3096,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3121,7 +3121,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3135,8 +3135,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3160,7 +3160,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3174,8 +3174,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3199,7 +3199,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3213,8 +3213,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3238,7 +3238,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3252,8 +3252,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3277,7 +3277,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3291,8 +3291,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3316,7 +3316,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3330,8 +3330,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3355,7 +3355,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3369,8 +3369,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3394,7 +3394,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3408,8 +3408,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3433,7 +3433,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3447,8 +3447,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3472,7 +3472,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3486,8 +3486,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3511,7 +3511,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3525,8 +3525,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3550,7 +3550,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3564,8 +3564,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3589,7 +3589,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3603,8 +3603,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3628,7 +3628,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3642,8 +3642,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3667,7 +3667,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3695,7 +3695,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -3770,7 +3770,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3784,8 +3784,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3809,7 +3809,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3823,8 +3823,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3848,7 +3848,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3862,8 +3862,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3887,7 +3887,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3901,8 +3901,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3926,7 +3926,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3940,8 +3940,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -3965,7 +3965,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -3979,8 +3979,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4004,7 +4004,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4018,8 +4018,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4043,7 +4043,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4057,8 +4057,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4082,7 +4082,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4096,8 +4096,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4121,7 +4121,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4135,8 +4135,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4162,7 +4162,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4176,8 +4176,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4201,7 +4201,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4215,8 +4215,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4240,7 +4240,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4254,8 +4254,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4279,7 +4279,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4293,8 +4293,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4318,7 +4318,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4332,8 +4332,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_1_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4357,7 +4357,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4385,7 +4385,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -4460,7 +4460,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4474,8 +4474,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4499,7 +4499,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4513,8 +4513,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4538,7 +4538,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4552,8 +4552,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4577,7 +4577,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4591,8 +4591,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4616,7 +4616,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4630,8 +4630,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_1_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4655,7 +4655,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4669,8 +4669,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4694,7 +4694,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4708,8 +4708,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4733,7 +4733,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4747,8 +4747,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4772,7 +4772,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4786,8 +4786,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4811,7 +4811,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4825,8 +4825,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_1_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4850,7 +4850,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4864,8 +4864,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4889,7 +4889,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4903,8 +4903,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4928,7 +4928,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4942,8 +4942,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -4967,7 +4967,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -4981,8 +4981,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5006,7 +5006,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5020,8 +5020,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_2_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5045,7 +5045,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5073,7 +5073,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -5148,7 +5148,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5162,8 +5162,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5187,7 +5187,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5201,8 +5201,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5226,7 +5226,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5240,8 +5240,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5265,7 +5265,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5279,8 +5279,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5304,7 +5304,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5318,8 +5318,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_2_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5343,7 +5343,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5357,8 +5357,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5382,7 +5382,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5396,8 +5396,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5421,7 +5421,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5435,8 +5435,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5460,7 +5460,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5474,8 +5474,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5499,7 +5499,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5513,8 +5513,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_2_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5538,7 +5538,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5552,8 +5552,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5577,7 +5577,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5591,8 +5591,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5616,7 +5616,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5630,8 +5630,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5655,7 +5655,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5669,8 +5669,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5694,7 +5694,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5708,8 +5708,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_3_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5733,7 +5733,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5761,7 +5761,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -5836,7 +5836,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5850,8 +5850,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5875,7 +5875,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5889,8 +5889,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5914,7 +5914,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5928,8 +5928,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5953,7 +5953,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -5967,8 +5967,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -5992,7 +5992,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6006,8 +6006,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_3_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6031,7 +6031,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6045,8 +6045,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6070,7 +6070,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6084,8 +6084,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6109,7 +6109,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6123,8 +6123,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6148,7 +6148,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6162,8 +6162,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6187,7 +6187,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6201,8 +6201,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_3_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6226,7 +6226,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6240,8 +6240,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6265,7 +6265,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6279,8 +6279,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6304,7 +6304,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6318,8 +6318,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6343,7 +6343,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6357,8 +6357,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6382,7 +6382,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6396,8 +6396,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_4_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6421,7 +6421,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6449,7 +6449,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -6524,7 +6524,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6538,8 +6538,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6563,7 +6563,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6577,8 +6577,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6602,7 +6602,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6616,8 +6616,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6641,7 +6641,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6655,8 +6655,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6680,7 +6680,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6694,8 +6694,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_4_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6719,7 +6719,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6733,8 +6733,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6758,7 +6758,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6772,8 +6772,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6797,7 +6797,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6811,8 +6811,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6836,7 +6836,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6850,8 +6850,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6875,7 +6875,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6889,8 +6889,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_4_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6914,7 +6914,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6928,8 +6928,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6953,7 +6953,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -6967,8 +6967,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -6992,7 +6992,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7006,8 +7006,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7031,7 +7031,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7045,8 +7045,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7070,7 +7070,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7084,8 +7084,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_5_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7109,7 +7109,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7137,7 +7137,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -7212,7 +7212,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7226,8 +7226,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7251,7 +7251,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7265,8 +7265,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7290,7 +7290,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7304,8 +7304,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7329,7 +7329,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7343,8 +7343,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7368,7 +7368,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7382,8 +7382,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_5_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7407,7 +7407,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7421,8 +7421,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7446,7 +7446,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7460,8 +7460,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7485,7 +7485,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7499,8 +7499,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7524,7 +7524,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7538,8 +7538,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7563,7 +7563,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7577,8 +7577,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_5_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7602,7 +7602,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7616,8 +7616,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_BIND_DN.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7641,7 +7641,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7655,8 +7655,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_BIND_PASSWORD.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7680,7 +7680,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7694,8 +7694,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7719,7 +7719,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7733,8 +7733,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_DENY_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7758,7 +7758,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7772,8 +7772,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_GROUP_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7797,7 +7797,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7825,7 +7825,7 @@
           "NestedMemberDNGroupType",
           "PosixUIDGroupType"
         ],
-        "attribute_validation_data": null
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "choices": [
@@ -7900,7 +7900,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7914,8 +7914,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7939,7 +7939,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7953,8 +7953,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -7978,7 +7978,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -7992,8 +7992,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_REQUIRE_GROUP.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8017,7 +8017,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8031,8 +8031,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_SERVER_URI.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8056,7 +8056,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8070,8 +8070,8 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_LDAP_START_TLS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8095,7 +8095,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8109,8 +8109,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8134,7 +8134,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8148,8 +8148,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8173,7 +8173,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8187,8 +8187,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8212,7 +8212,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8226,8 +8226,8 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8251,7 +8251,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
-      "validators": null,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -8265,8 +8265,8 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTH_LDAP_USER_SEARCH.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
       "constraints": [],
@@ -8277,9 +8277,11 @@
   "id_key": "id",
   "un_deletable": true,
   "pre_state_set_hook_function": "hookSettingsAuthLdap",
-  "field_constraints": null,
-  "associate_disassociate_groups": null,
-  "write_only_keys": null,
+  "field_constraints": [],
+  "associate_disassociate_groups": [],
+  "write_only_keys": [],
   "deprecated": false,
-  "deprecated_parts": {}
+  "deprecated_parts": {},
+  "deprecated_read_properties": [],
+  "deprecated_write_properties": []
 }

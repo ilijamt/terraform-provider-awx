@@ -120,3 +120,14 @@ func (c *Config) Load(filename string) error {
 	}
 	return nil
 }
+
+type Deprecated struct {
+	Resources  []string
+	Properties []DeprecatedProperties
+}
+
+type DeprecatedProperties struct {
+	Resource        string
+	ReadProperties  []string
+	WriteProperties []string
+}
