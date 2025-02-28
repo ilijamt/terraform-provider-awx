@@ -17,7 +17,12 @@
 
 ### ConstructedInventories
 
+
 #### Read properties
+
+- has_inventory_sources
+
+- total_hosts
 
 - total_groups
 
@@ -25,12 +30,8 @@
 
 - hosts_with_active_failures
 
-- has_inventory_sources
-
-- total_hosts
 
 
-#### Write properties
 
 
 
@@ -44,34 +45,39 @@
 
 ### Inventory
 
+
 #### Read properties
-
-- has_inventory_sources
-
-- has_active_failures
-
-- total_groups
-
-- total_hosts
 
 - hosts_with_active_failures
 
+- has_inventory_sources
 
-#### Write properties
+- total_groups
+
+- has_active_failures
+
+- total_hosts
+
+
+
 
 
 
 
 ### InventorySource
 
+
 #### Read properties
 
 - host_filter
 
 
+
+
 #### Write properties
 
 - host_filter
+
 
 
 

@@ -1057,11 +1057,11 @@
     "ObjectRoles": true
   },
   "deprecated_read_properties": [
+    "hosts_with_active_failures",
     "has_inventory_sources",
-    "has_active_failures",
     "total_groups",
-    "total_hosts",
-    "hosts_with_active_failures"
+    "has_active_failures",
+    "total_hosts"
   ],
   "deprecated_write_properties": []
 }

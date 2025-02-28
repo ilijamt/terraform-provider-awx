@@ -10,14 +10,18 @@
 {{ if or $item.ReadProperties $item.WriteProperties }}
 ### {{ $item.Resource }}
 
+{{ if $item.ReadProperties }}
 #### Read properties
 {{ range $prop := $item.ReadProperties }}
 - {{ $prop }}
 {{ end }}
+{{ end }}
 
+{{ if $item.WriteProperties }}
 #### Write properties
 {{ range $prop := $item.WriteProperties }}
 - {{ $prop }}
+{{ end }}
 {{ end }}
 
 {{ end }}
