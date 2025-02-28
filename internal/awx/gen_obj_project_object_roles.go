@@ -51,6 +51,7 @@ func (o *projectObjectRolesDataSource) Metadata(_ context.Context, req datasourc
 // Schema defines the schema for the data source.
 func (o *projectObjectRolesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		DeprecationMessage: "This data source has been deprecated and will be removed in a future release.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.Int64Attribute{
 				Description: "Project ID",
