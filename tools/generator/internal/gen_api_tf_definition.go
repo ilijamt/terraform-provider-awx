@@ -141,7 +141,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	}
 
 	for _, adg := range val.AssociateDisassociateGroups {
-		_, deprecated := item.DeprecatedParts["ObjectRoles"]
+		_, deprecated := item.DeprecatedParts["AssociateDisassociateGroups"]
 		tpls = append(tpls, struct {
 			Filename string
 			Template string

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"slices"
 	"text/template"
 
 	"github.com/spf13/cobra"
@@ -99,6 +100,7 @@ var templateCmd = &cobra.Command{
 			filePath := fmt.Sprintf("%s/deprecated.md", apiResourcePath)
 			if file, err := os.Create(filePath); err == nil {
 				log.Printf("Storing deprecated data in %s\n", filePath)
+				slices.Sort(deprecated.Resources)
 				err = tpl.ExecuteTemplate(file, "deprecated.md.tpl", deprecated)
 				if err != nil {
 					fmt.Println(err)

@@ -351,6 +351,8 @@ func (c *ModelConfig) Process(config Config, item Item) (_ error) {
 		}
 	}
 	slices.Sort(c.WriteOnlyKeys)
+	slices.Sort(c.DeprecatedReadProperties)
+	slices.Sort(c.DeprecatedWriteProperties)
 	c.IdProperty = c.ReadProperties[c.IdKey]
 	return nil
 }
@@ -369,18 +371,21 @@ func (c *ModelConfig) UpdateProperty(vt AwxKeyValueType, key string, overrides P
 	prop.Name = key
 	err = prop.Update(vt, overrides, values, item)
 
-	if vt == TypeRead {
-		c.ReadProperties[key] = prop
+	switch vt {
+	case TypeRead:
 		if prop.Deprecated {
 			c.DeprecatedReadProperties = append(c.DeprecatedReadProperties, key)
 		}
-	} else if vt == TypeWrite {
+		c.ReadProperties[key] = prop
+	case TypeWrite:
 		if prop.Deprecated {
 			c.DeprecatedWriteProperties = append(c.DeprecatedWriteProperties, key)
 		}
 		if prop.IsWriteOnly && !item.SkipWriteOnly || !prop.IsWriteOnly {
 			c.WriteProperties[key] = prop
 		}
+	default:
+		panic(fmt.Sprintf("unknown property type %q", vt))
 	}
 
 	return prop, err

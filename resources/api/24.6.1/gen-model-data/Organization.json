@@ -479,6 +479,7 @@
   "write_only_keys": [],
   "deprecated": false,
   "deprecated_parts": {
+    "AssociateDisassociateGroups": true,
     "ObjectRoles": true
   },
   "deprecated_read_properties": [],

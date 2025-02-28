@@ -4,11 +4,11 @@ import (
 	"github.com/Masterminds/semver/v3"
 )
 
-type ObjectRole struct {
+type Deprecation2430 struct {
 	deprecation
 }
 
-func (r *ObjectRole) Check(mc *ModelConfig) (err error) {
+func (r *Deprecation2430) Check(mc *ModelConfig) (err error) {
 	var version *semver.Version
 	var constraint *semver.Constraints
 
@@ -22,4 +22,4 @@ func (r *ObjectRole) Check(mc *ModelConfig) (err error) {
 	return nil
 }
 
-var _ Deprecation = (*ObjectRole)(nil)
+var _ Deprecation = (*Deprecation2430)(nil)

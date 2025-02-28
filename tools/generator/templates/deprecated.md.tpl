@@ -6,23 +6,23 @@
 {{- end }}
 
 ## Resource properties
-{{ range $item := .Properties }}
-{{ if or $item.ReadProperties $item.WriteProperties }}
+{{- range $item := .Properties }}
+{{- if or $item.ReadProperties $item.WriteProperties }}
 ### {{ $item.Resource }}
 
-{{ if $item.ReadProperties }}
+{{- if $item.ReadProperties }}
 #### Read properties
-{{ range $prop := $item.ReadProperties }}
+{{- range $prop := $item.ReadProperties }}
 - {{ $prop }}
-{{ end }}
-{{ end }}
+{{- end }}
+{{- end }}
 
-{{ if $item.WriteProperties }}
+{{- if $item.WriteProperties }}
 #### Write properties
-{{ range $prop := $item.WriteProperties }}
+{{- range $prop := $item.WriteProperties }}
 - {{ $prop }}
-{{ end }}
-{{ end }}
+{{- end }}
+{{- end }}
 
-{{ end }}
+{{- end }}
 {{- end }}

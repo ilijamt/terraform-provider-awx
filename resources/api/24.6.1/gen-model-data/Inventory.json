@@ -1054,13 +1054,14 @@
   "write_only_keys": [],
   "deprecated": false,
   "deprecated_parts": {
+    "AssociateDisassociateGroups": true,
     "ObjectRoles": true
   },
   "deprecated_read_properties": [
-    "hosts_with_active_failures",
-    "has_inventory_sources",
-    "total_groups",
     "has_active_failures",
+    "has_inventory_sources",
+    "hosts_with_active_failures",
+    "total_groups",
     "total_hosts"
   ],
   "deprecated_write_properties": []
