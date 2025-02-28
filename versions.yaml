@@ -1,32 +1,6 @@
-- version: 23.5.1
-  build: 6
-  active: true
-- version: 23.6.0
-  build: 4
-- version: 23.7.0
-  build: 4
-- version: 23.8.1
-  build: 6
-  active: true
-- version: 23.9.0
-  build: 5
-  active: true
-- version: 24.0.0
-  build: 5
-  active: true
-- version: 24.1.0
-  build: 5
-  active: true
 - version: 24.2.0
   build: 3
   active: true
-- version: 24.3.1
-  build: 0
-- version: 24.4.0
-  build: 0
-- version: 24.5.0
-  build: 0
-- version: 24.6.0
-  build: 0
 - version: 24.6.1
   build: 0
+  active: true

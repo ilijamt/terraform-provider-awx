@@ -50,11 +50,19 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Metadata(_ context.Context, req
 // Schema defines the schema for the data source.
 func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
     resp.Schema = schema.Schema{
+{{- if .Deprecated }}
+        DeprecationMessage: "This data source has been deprecated and will be removed in a future release.",
+{{- end }}
         Attributes: map[string]schema.Attribute{
 			// Data only elements
 {{- range $key, $value := $.ReadProperties }}
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+{{- end }}
+{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
+				ElementType: types.ListType{ElemType: types.StringType},
+{{- else if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.StringType,
 {{- end }}
                 Description: {{ escape_quotes (or .Description .Label) }},
@@ -65,19 +73,8 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 {{- else }}
                 Computed:    true,
 {{- end }}
-				Validators: []validator.{{ $value.Generated.AttributeType }}{
-{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
-					stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
-					int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
-					stringvalidator.OneOf(
-{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
-                        {{ $item | quote }},
-{{- end }}
-					),
-{{- end }}
 {{- if $value.IsSearchable }}
+				Validators: []validator.{{ $value.Generated.AttributeType }}{
 {{- range $key, $attrs := $value.Generated.AttributeValidationData }}
                     {{ $value.Generated.AttributeType | lowerCase }}validator.{{ $key }}(
 {{- range $attr := $attrs }}
@@ -85,8 +82,8 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
 {{- end }}
                     ),
 {{- end }}
-{{- end }}
 			    },
+{{- end }}
             },
 {{- end }}
 {{- range $key, $value := $.WriteProperties }}
@@ -94,6 +91,9 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Schema(ctx context.Context, req
             "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
 {{- if eq $value.Generated.AttributeType "List" }}
 				ElementType: types.{{ camelCase $value.ElementType }}Type,
+{{- end }}
+{{- if $value.Deprecated }}
+                DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
                 Description: {{ escape_quotes (or .Description .Label) }},
                 Sensitive:   {{ $value.IsSensitive }},

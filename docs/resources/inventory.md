@@ -30,12 +30,12 @@ description: |-
 
 ### Read-Only
 
-- `has_active_failures` (Boolean) This field is deprecated and will be removed in a future release. Flag indicating whether any hosts in this inventory have failed.
-- `has_inventory_sources` (Boolean) This field is deprecated and will be removed in a future release. Flag indicating whether this inventory has any external inventory sources.
-- `hosts_with_active_failures` (Number) This field is deprecated and will be removed in a future release. Number of hosts in this inventory with active failures.
+- `has_active_failures` (Boolean, Deprecated) Flag indicating whether any hosts in this inventory have failed.
+- `has_inventory_sources` (Boolean, Deprecated) Flag indicating whether this inventory has any external inventory sources.
+- `hosts_with_active_failures` (Number, Deprecated) Number of hosts in this inventory with active failures.
 - `id` (Number) Database ID for this inventory.
 - `inventory_sources_with_failures` (Number) Number of external inventory sources in this inventory with failures.
 - `pending_deletion` (Boolean) Flag indicating the inventory is being deleted.
-- `total_groups` (Number) This field is deprecated and will be removed in a future release. Total number of groups in this inventory.
-- `total_hosts` (Number) This field is deprecated and will be removed in a future release. Total number of hosts in this inventory.
+- `total_groups` (Number, Deprecated) Total number of groups in this inventory.
+- `total_hosts` (Number, Deprecated) Total number of hosts in this inventory.
 - `total_inventory_sources` (Number) Total number of external inventory sources configured within this inventory.

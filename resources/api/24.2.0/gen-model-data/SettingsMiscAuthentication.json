@@ -32,6 +32,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -45,11 +46,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
       "id_key": "",
@@ -69,6 +71,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -82,11 +85,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTHENTICATION_BACKENDS": {
       "id_key": "",
@@ -106,6 +110,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -119,11 +124,12 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.AUTHENTICATION_BACKENDS.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_BASIC_ENABLED": {
       "id_key": "",
@@ -143,6 +149,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -156,11 +163,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DISABLE_LOCAL_AUTH": {
       "id_key": "",
@@ -180,6 +188,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -193,11 +202,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
       "id_key": "",
@@ -217,6 +227,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -230,13 +241,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
       "id_key": "",
@@ -256,6 +268,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -269,13 +282,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
       "id_key": "",
@@ -295,6 +309,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -308,13 +323,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
       "id_key": "",
@@ -334,6 +350,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -347,13 +364,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOGIN_REDIRECT_OVERRIDE": {
       "id_key": "",
@@ -373,6 +391,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -386,11 +405,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "OAUTH2_PROVIDER": {
       "id_key": "",
@@ -410,6 +430,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -423,11 +444,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSIONS_PER_USER": {
       "id_key": "",
@@ -447,6 +469,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -460,13 +483,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": -1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSION_COOKIE_AGE": {
       "id_key": "",
@@ -486,6 +510,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -499,14 +524,15 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "max_value": 30000000000,
         "min_value": 60
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
       "id_key": "",
@@ -526,6 +552,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -539,11 +566,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_TEAM_MAP": {
       "id_key": "",
@@ -563,6 +591,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -576,11 +605,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
       "id_key": "",
@@ -600,6 +630,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -613,11 +644,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USER_FIELDS": {
       "id_key": "",
@@ -637,6 +669,7 @@
       "is_type_write": false,
       "is_in_read_property": false,
       "is_in_write_property": true,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -650,11 +683,12 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "write_properties": {
@@ -676,6 +710,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -689,11 +724,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "ALLOW_OAUTH2_FOR_EXTERNAL_USERS": {
       "id_key": "",
@@ -713,6 +749,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -726,11 +763,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "AUTH_BASIC_ENABLED": {
       "id_key": "",
@@ -750,6 +788,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -763,11 +802,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.AUTH_BASIC_ENABLED.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "DISABLE_LOCAL_AUTH": {
       "id_key": "",
@@ -787,6 +827,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -800,11 +841,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.DISABLE_LOCAL_AUTH.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_DIGITS": {
       "id_key": "",
@@ -824,6 +866,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -837,13 +880,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_DIGITS.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_LENGTH": {
       "id_key": "",
@@ -863,6 +907,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -876,13 +921,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_LENGTH.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_SPECIAL": {
       "id_key": "",
@@ -902,6 +948,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -915,13 +962,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_SPECIAL.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOCAL_PASSWORD_MIN_UPPER": {
       "id_key": "",
@@ -941,6 +989,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -954,13 +1003,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.LOCAL_PASSWORD_MIN_UPPER.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": 0
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "LOGIN_REDIRECT_OVERRIDE": {
       "id_key": "",
@@ -980,6 +1030,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -993,11 +1044,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "o.LOGIN_REDIRECT_OVERRIDE.ValueString()",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "OAUTH2_PROVIDER": {
       "id_key": "",
@@ -1017,6 +1069,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1030,11 +1083,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.OAUTH2_PROVIDER.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSIONS_PER_USER": {
       "id_key": "",
@@ -1054,6 +1108,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1067,13 +1122,14 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.SESSIONS_PER_USER.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "min_value": -1
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SESSION_COOKIE_AGE": {
       "id_key": "",
@@ -1093,6 +1149,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1106,14 +1163,15 @@
         "tf_go_primitive_value": "ValueInt64",
         "model_body_request_value": "o.SESSION_COOKIE_AGE.ValueInt64()",
         "attribute_type": "Int64",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {
         "max_value": 30000000000,
         "min_value": 60
       },
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
       "id_key": "",
@@ -1133,6 +1191,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1146,11 +1205,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_TEAM_MAP": {
       "id_key": "",
@@ -1170,6 +1230,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1183,11 +1244,12 @@
         "tf_go_primitive_value": "ValueString",
         "model_body_request_value": "json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())",
         "attribute_type": "String",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL": {
       "id_key": "",
@@ -1207,6 +1269,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1220,11 +1283,12 @@
         "tf_go_primitive_value": "ValueBool",
         "model_body_request_value": "o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()",
         "attribute_type": "Bool",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     },
     "SOCIAL_AUTH_USER_FIELDS": {
       "id_key": "",
@@ -1244,6 +1308,7 @@
       "is_type_write": true,
       "is_in_read_property": true,
       "is_in_write_property": false,
+      "validators": [],
       "is_hidden": false,
       "post_wrap": false,
       "trim": false,
@@ -1257,18 +1322,23 @@
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.SOCIAL_AUTH_USER_FIELDS.Elements()",
         "attribute_type": "List",
-        "validation_available_choice_data": null,
-        "attribute_validation_data": null
+        "validation_available_choice_data": [],
+        "attribute_validation_data": {}
       },
       "validator_data": {},
-      "constraints": []
+      "constraints": [],
+      "deprecated": false
     }
   },
   "id_property": null,
   "id_key": "id",
   "un_deletable": true,
   "pre_state_set_hook_function": "",
-  "field_constraints": null,
-  "associate_disassociate_groups": null,
-  "write_only_keys": null
+  "field_constraints": [],
+  "associate_disassociate_groups": [],
+  "write_only_keys": [],
+  "deprecated": false,
+  "deprecated_parts": {},
+  "deprecated_read_properties": [],
+  "deprecated_write_properties": []
 }

@@ -58,19 +58,16 @@ func (o *tokensDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				Description: "Application",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"description": schema.StringAttribute{
 				Description: "Optional description of this access token.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"expires": schema.StringAttribute{
 				Description: "Expires",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this access token.",
@@ -87,25 +84,21 @@ func (o *tokensDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				Description: "Refresh token",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"scope": schema.StringAttribute{
 				Description: "Allowed scopes, further restricts user's permissions. Must be a simple space-separated string with allowed scopes ['read', 'write'].",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"token": schema.StringAttribute{
 				Description: "Token",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"user": schema.Int64Attribute{
 				Description: "The user representing the token owner",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 		},
 	}

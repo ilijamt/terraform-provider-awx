@@ -58,7 +58,6 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 				Description: "Optional description of this credential input source.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this credential input source.",
@@ -75,25 +74,21 @@ func (o *credentialInputSourceDataSource) Schema(ctx context.Context, req dataso
 				Description: "Input field name",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"metadata": schema.StringAttribute{
 				Description: "Metadata",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"source_credential": schema.Int64Attribute{
 				Description: "Source credential",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"target_credential": schema.Int64Attribute{
 				Description: "Target credential",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 		},
 	}

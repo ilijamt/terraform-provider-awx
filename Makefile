@@ -1,6 +1,6 @@
 default: generate build
 
-VERSION=24.2.0
+VERSION=24.6.1
 
 .PHONY: generate-config
 generate-config:
@@ -43,6 +43,10 @@ build-cover:
 .PHONY: build
 build:
 	go build -trimpath -o ./build/terraform-provider-awx -ldflags "-s -w" ./cmd/provider
+
+.PHONY: build-debug
+build-debug:
+	go build -cover -covermode=atomic -trimpath -o ./build/terraform-provider-awx ./cmd/provider
 
 .PHONY: test
 test:

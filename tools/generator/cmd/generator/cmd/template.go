@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"slices"
 	"text/template"
 
 	"github.com/spf13/cobra"
@@ -20,6 +21,7 @@ var templateCmd = &cobra.Command{
 	Short: "Template all the resources for the terraform provider",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var tpl *template.Template
+		var deprecated internal.Deprecated
 
 		var configResource, apiResourcePath, resourcePath string
 		apiResourcePath = args[0]
@@ -45,17 +47,12 @@ var templateCmd = &cobra.Command{
 
 		log.Printf("Processing '%s' in '%s' resource from '%s'\n", apiResourcePath, resourcePath, configResource)
 
-		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs(), "templates/terraform/*.tpl")
+		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
 		if err != nil {
 			return err
 		}
 
 		for _, item := range cfg.Items {
-			// if item.Name == "RoleDefinition" {
-			// 	item.Enabled = true
-			// } else {
-			// 	item.Enabled = false
-			// }
 			if item.Enabled {
 				if !item.NoTerraformResource {
 					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
@@ -75,18 +72,16 @@ var templateCmd = &cobra.Command{
 				}
 
 				if objmap, ok := apiResource.Resources[item.Name]; ok {
-					var data map[string]any
+					// var data map[string]any
 					var p *internal.ModelConfig
-					data, p, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
+					var dr internal.Deprecated
+					_, p, dr, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
 					if err != nil {
 						return err
 					}
-					{
-						payload, _ := json.MarshalIndent(data, "", "  ")
-						genDataFile := fmt.Sprintf("%s/gen-data/%s.json", apiResourcePath, item.Name)
-						log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
-						_ = os.WriteFile(genDataFile, payload, os.ModePerm)
-					}
+					deprecated.Resources = append(deprecated.Resources, dr.Resources...)
+					deprecated.DataSources = append(deprecated.DataSources, dr.DataSources...)
+					deprecated.Properties = append(deprecated.Properties, dr.Properties...)
 					{
 						_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
 						payload, _ := json.MarshalIndent(p, "", "  ")
@@ -99,6 +94,20 @@ var templateCmd = &cobra.Command{
 				}
 			} else {
 				log.Printf("Skipping %s, disabled ...", item.Name)
+			}
+		}
+
+		{
+			filePath := fmt.Sprintf("%s/deprecated.md", apiResourcePath)
+			if file, err := os.Create(filePath); err == nil {
+				log.Printf("Storing deprecated data in %s\n", filePath)
+				slices.Sort(deprecated.Resources)
+				slices.Sort(deprecated.DataSources)
+				err = tpl.ExecuteTemplate(file, "deprecated.md.tpl", deprecated)
+				if err != nil {
+					fmt.Println(err)
+				}
+				_ = file.Close()
 			}
 		}
 

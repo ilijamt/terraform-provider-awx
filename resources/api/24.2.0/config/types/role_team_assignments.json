@@ -1,0 +1,7 @@
+{
+  "endpoint": "/api/v2/role_team_assignments/",
+  "name": "RoleTeamAssignment",
+  "type_name": "role_team_assignment",
+  "id_key": "id",
+  "enabled": false
+}

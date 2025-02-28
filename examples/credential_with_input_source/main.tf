@@ -17,7 +17,7 @@ data "awx_credential_type" "scm" {
 }
 
 resource "awx_organization" "credentials" {
-  name = "Credentials"
+  name = "Credentials (with input)"
 }
 
 resource "awx_credential" "vault_default_lookup" {

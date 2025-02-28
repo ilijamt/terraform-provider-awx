@@ -1,0 +1,19 @@
+{
+  "endpoint": "/api/v2/role_user_assignments/",
+  "name": "RoleUserAssignment",
+  "type_name": "role_user_assignment",
+  "id_key": "id",
+  "enabled": false,
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+  ]
+
+}

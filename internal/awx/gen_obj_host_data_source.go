@@ -60,13 +60,11 @@ func (o *hostDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "Optional description of this host.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"enabled": schema.BoolAttribute{
 				Description: "Is this host online and available for running jobs?",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this host.",
@@ -84,25 +82,21 @@ func (o *hostDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "The value used by the remote inventory source to uniquely identify the host",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"inventory": schema.Int64Attribute{
 				Description: "Inventory",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"last_job": schema.Int64Attribute{
 				Description: "Last job",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"last_job_host_summary": schema.Int64Attribute{
 				Description: "Last job host summary",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this host.",
@@ -120,7 +114,6 @@ func (o *hostDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "Host variables in JSON or YAML format.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 		},
 	}

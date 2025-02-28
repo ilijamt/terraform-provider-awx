@@ -60,7 +60,6 @@ func (o *teamDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "Optional description of this team.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this team.",
@@ -90,7 +89,6 @@ func (o *teamDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Description: "Organization",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 		},
 	}

@@ -40,10 +40,6 @@ resource "awx_host" "example_host_vars" {
 resource "awx_host" "example_host_no_vars" {
   name      = "no-vars.example.com"
   inventory = awx_inventory.inventory.id
-  variables = jsonencode({
-    "host1" = "val1"
-    "host2" = "val2"
-  })
 }
 
 resource "awx_group" "example_group_vars" {

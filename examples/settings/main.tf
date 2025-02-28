@@ -34,12 +34,12 @@ resource "awx_settings_misc_logging" "default" {
     "job_events",
     "system_tracking",
   ]
-  log_aggregator_action_max_disk_usage_gb   = 1
-  log_aggregator_max_disk_usage_path = "/var/lib/awx"
-  log_aggregator_protocol            = "https"
-  log_aggregator_rsyslogd_debug      = false
-  log_aggregator_tcp_timeout         = 5
-  log_aggregator_verify_cert         = true
+  log_aggregator_action_max_disk_usage_gb = 1
+  log_aggregator_max_disk_usage_path      = "/var/lib/awx"
+  log_aggregator_protocol                 = "https"
+  log_aggregator_rsyslogd_debug           = false
+  log_aggregator_tcp_timeout              = 5
+  log_aggregator_verify_cert              = true
 }
 
 data "awx_settings_misc_system" "default" {}
@@ -50,6 +50,7 @@ resource "awx_settings_misc_system" "default" {
   activity_stream_enabled_for_inventory_sync = false
   automation_analytics_gather_interval       = 14400
   automation_analytics_url                   = "https://example.com"
+  tower_url_base                             = "http://awx.local"
   insights_tracking_state                    = false
   manage_organization_auth                   = true
   org_admins_can_see_all_users               = true

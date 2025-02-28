@@ -1,11 +1,23 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "daily"
 
-  - package-ecosystem: "gomod"
-    directory: "/"
-    schedule:
-      interval: "daily"
+- package-ecosystem: "gomod"
+  directory: "/"
+  schedule:
+    interval: "daily"
+  groups:
+    terraform:
+      patterns:
+      - github.com/hashicorp/terraform-plugin-framework
+      - github.com/hashicorp/terraform-plugin-framework-validators
+      - github.com/hashicorp/terraform-plugin-go
+      - github.com/hashicorp/terraform-plugin-log
+      - github.com/hashicorp/terraform-plugin-testing
+      - github.com/hashicorp/go-multierror
+      update-types:
+      - minor
+      - patch

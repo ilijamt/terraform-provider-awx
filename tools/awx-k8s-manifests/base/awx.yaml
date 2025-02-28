@@ -1,0 +1,15 @@
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  ingress_type: Ingress
+  ingress_class_name: nginx
+  hostname: awx.local
+  admin_password_secret: admin-password
+  create_preload_data: false
+  replicas: 1
+  image_pull_policy: Always
+  extra_settings:
+  - setting: TOWER_URL_BASE
+    value: '"http://awx.local"'

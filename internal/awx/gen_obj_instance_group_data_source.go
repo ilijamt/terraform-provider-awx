@@ -60,19 +60,16 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Description: "Capacity",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"consumed_capacity": schema.Float64Attribute{
 				Description: "Consumed capacity",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Float64{},
 			},
 			"credential": schema.Int64Attribute{
 				Description: "Credential",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"id": schema.Int64Attribute{
 				Description: "Database ID for this instance group.",
@@ -90,37 +87,31 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Description: "Instances",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"is_container_group": schema.BoolAttribute{
 				Description: "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Bool{},
 			},
 			"jobs_running": schema.Int64Attribute{
 				Description: "Jobs running",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"jobs_total": schema.Int64Attribute{
 				Description: "Count of all jobs that target this instance group",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"max_concurrent_jobs": schema.Int64Attribute{
 				Description: "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"max_forks": schema.Int64Attribute{
 				Description: "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this instance group.",
@@ -138,33 +129,26 @@ func (o *instanceGroupDataSource) Schema(ctx context.Context, req datasource.Sch
 				Description: "Percent capacity remaining",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Float64{},
 			},
 			"pod_spec_override": schema.StringAttribute{
 				Description: "Pod spec override",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"policy_instance_list": schema.StringAttribute{
 				Description: "List of exact-match Instances that will be assigned to this group",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.String{},
 			},
 			"policy_instance_minimum": schema.Int64Attribute{
 				Description: "Static minimum number of Instances that will be automatically assign to this group when new instances come online.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators:  []validator.Int64{},
 			},
 			"policy_instance_percentage": schema.Int64Attribute{
 				Description: "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.",
 				Sensitive:   false,
 				Computed:    true,
-				Validators: []validator.Int64{
-					int64validator.Between(0, 100),
-				},
 			},
 		},
 	}

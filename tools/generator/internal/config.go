@@ -6,14 +6,15 @@ import (
 )
 
 type PropertyOverride struct {
-	Type         string `json:"type" yaml:"type"`
-	Description  string `json:"description" yaml:"description"`
-	Sensitive    *bool  `json:"sensitive,omitempty" yaml:"sensitive"`
-	Required     *bool  `json:"required,omitempty" yaml:"required"`
-	Trim         bool   `json:"trim" yaml:"trim"`
-	PostWrap     bool   `json:"post_wrap" yaml:"post_wrap"`
-	DefaultValue string `json:"default_value" yaml:"default_value"`
-	ElementType  string `json:"element_type" yaml:"element_type"`
+	Type         string   `json:"type" yaml:"type"`
+	Description  string   `json:"description" yaml:"description"`
+	Sensitive    *bool    `json:"sensitive,omitempty" yaml:"sensitive"`
+	Required     *bool    `json:"required,omitempty" yaml:"required"`
+	Trim         bool     `json:"trim" yaml:"trim"`
+	PostWrap     bool     `json:"post_wrap" yaml:"post_wrap"`
+	DefaultValue string   `json:"default_value" yaml:"default_value"`
+	ElementType  string   `json:"element_type" yaml:"element_type"`
+	Validators   []string `json:"validators" yaml:"validators"`
 }
 
 type SearchField struct {
@@ -35,12 +36,13 @@ type AssociateDisassociateGroup struct {
 	AssociateType string `json:"associate_type" yaml:"associate_type"`
 }
 
-func (a AssociateDisassociateGroup) Map() map[string]any {
+func (a AssociateDisassociateGroup) Map(deprecated bool) map[string]any {
 	return map[string]any{
 		"Name":          a.Name,
 		"Endpoint":      a.Endpoint,
 		"Type":          a.Type,
 		"AssociateType": a.AssociateType,
+		"Deprecated":    deprecated,
 	}
 }
 
@@ -117,4 +119,16 @@ func (c *Config) Load(filename string) error {
 		}
 	}
 	return nil
+}
+
+type Deprecated struct {
+	Resources   []string
+	DataSources []string
+	Properties  []DeprecatedProperties
+}
+
+type DeprecatedProperties struct {
+	Resource        string
+	ReadProperties  []string
+	WriteProperties []string
 }

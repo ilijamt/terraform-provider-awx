@@ -1,0 +1,38 @@
+{
+  "endpoint": "/api/v2/role_definitions/",
+  "name": "RoleDefinition",
+  "type_name": "role_definition",
+  "id_key": "id",
+  "enabled": false,
+  "property_overrides": {
+    "content_type": {
+      "type": "choice"
+    },
+    "permissions": {
+      "type": "list",
+      "validators": ["listvalidator.SizeAtLeast(1)", "listvalidator.UniqueValues()"]
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "by_name",
+      "url_suffix": "?name__exact=%s",
+      "multiple_results": true,
+      "fields": [
+        {
+          "name": "name",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

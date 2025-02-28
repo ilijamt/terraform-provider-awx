@@ -6,14 +6,16 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+
+	"github.com/iancoleman/strcase"
 )
 
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, err error) {
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, dr Deprecated, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
 		log.Printf("No actions for %s, skipping ....", name)
-		return nil, nil, nil
+		return nil, nil, dr, nil
 	}
 
 	var description string
@@ -139,6 +141,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	}
 
 	for _, adg := range val.AssociateDisassociateGroups {
+		_, deprecated := item.DeprecatedParts["AssociateDisassociateGroups"]
 		tpls = append(tpls, struct {
 			Filename string
 			Template string
@@ -150,8 +153,29 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				strings.ToLower(val.TypeName), strings.ToLower(adg.Type)),
 			Template: "tf_associate_disassociate.go.tpl",
 			Render:   true,
-			Data:     adg.Map(),
+			Data:     adg.Map(deprecated),
 		})
+
+		if deprecated && val.Enabled {
+			dr.Resources = append(
+				dr.Resources,
+				strcase.ToDelimited(
+					fmt.Sprintf(
+						"%sAssociateDisassociate%s",
+						strcase.ToLowerCamel(adg.Name), adg.Type,
+					), '_',
+				),
+			)
+			dr.DataSources = append(
+				dr.DataSources,
+				strcase.ToDelimited(
+					fmt.Sprintf(
+						"%sObjectRoles",
+						strcase.ToLowerCamel(item.Name),
+					), '_',
+				),
+			)
+		}
 	}
 
 	_ = item.Process(config, val)
@@ -159,6 +183,13 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	// ---------------------
 
 	if val.Enabled {
+		dr.Properties = []DeprecatedProperties{
+			{
+				Resource:        item.Name,
+				WriteProperties: item.DeprecatedWriteProperties,
+				ReadProperties:  item.DeprecatedReadProperties,
+			},
+		}
 		for _, t := range tpls {
 			if !t.Render {
 				log.Printf("Rendering of %s into %s skipped.", t.Template, t.Filename)
@@ -181,10 +212,10 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				t.Template,
 				d,
 			); err != nil {
-				return data, item, err
+				return data, item, dr, err
 			}
 		}
 	}
 
-	return data, item, nil
+	return data, item, dr, nil
 }
