@@ -14,6 +14,7 @@ AWX Versions
 Currently, built provider versions for AWX.
 
 * 24.6.1
+  * [Deprecations](resources/api/24.6.1/deprecated.md)
 
 TODO:
 -----
