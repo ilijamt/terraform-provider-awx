@@ -13,8 +13,6 @@ AWX Versions
 
 Currently, built provider versions for AWX.
 
-* 24.2.0
-* 24.3.1
 * 24.6.1
 
 TODO:
