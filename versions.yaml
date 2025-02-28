@@ -36,3 +36,4 @@
   active: false
 - version: 24.6.1
   build: 0
+  active: true
