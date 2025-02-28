@@ -1,6 +1,3 @@
-run:
-  deadline: 3m
-
 issues:
   exclude-rules:
     - path: tools/tfplugindocs/tools.go
