@@ -116,7 +116,6 @@ func (o *notificationTemplateResource) Schema(ctx context.Context, req resource.
 				PlanModifiers: []planmodifier.String{},
 				Validators: []validator.String{
 					stringvalidator.OneOf(
-						"awssns",
 						"email",
 						"grafana",
 						"irc",

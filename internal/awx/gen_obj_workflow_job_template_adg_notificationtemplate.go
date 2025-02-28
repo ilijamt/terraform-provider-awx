@@ -59,7 +59,6 @@ func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Metadata(
 
 func (o *workflowJobTemplateAssociateDisassociateNotificationTemplate) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
 		Attributes: map[string]schema.Attribute{
 			"workflow_job_template_id": schema.Int64Attribute{
 				Description: "Database ID for this WorkflowJobTemplate.",
