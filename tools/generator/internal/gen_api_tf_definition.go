@@ -10,12 +10,12 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, deprecatedResources Deprecated, err error) {
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, dr Deprecated, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
 		log.Printf("No actions for %s, skipping ....", name)
-		return nil, nil, deprecatedResources, nil
+		return nil, nil, dr, nil
 	}
 
 	var description string
@@ -157,12 +157,21 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		})
 
 		if deprecated && val.Enabled {
-			deprecatedResources.Resources = append(
-				deprecatedResources.Resources,
+			dr.Resources = append(
+				dr.Resources,
 				strcase.ToDelimited(
 					fmt.Sprintf(
 						"%sAssociateDisassociate%s",
 						strcase.ToLowerCamel(adg.Name), adg.Type,
+					), '_',
+				),
+			)
+			dr.DataSources = append(
+				dr.DataSources,
+				strcase.ToDelimited(
+					fmt.Sprintf(
+						"%sObjectRoles",
+						strcase.ToLowerCamel(item.Name),
 					), '_',
 				),
 			)
@@ -174,7 +183,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	// ---------------------
 
 	if val.Enabled {
-		deprecatedResources.Properties = []DeprecatedProperties{
+		dr.Properties = []DeprecatedProperties{
 			{
 				Resource:        item.Name,
 				WriteProperties: item.DeprecatedWriteProperties,
@@ -203,10 +212,10 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 				t.Template,
 				d,
 			); err != nil {
-				return data, item, deprecatedResources, err
+				return data, item, dr, err
 			}
 		}
 	}
 
-	return data, item, deprecatedResources, nil
+	return data, item, dr, nil
 }

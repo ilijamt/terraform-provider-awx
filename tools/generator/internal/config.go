@@ -122,8 +122,9 @@ func (c *Config) Load(filename string) error {
 }
 
 type Deprecated struct {
-	Resources  []string
-	Properties []DeprecatedProperties
+	Resources   []string
+	DataSources []string
+	Properties  []DeprecatedProperties
 }
 
 type DeprecatedProperties struct {

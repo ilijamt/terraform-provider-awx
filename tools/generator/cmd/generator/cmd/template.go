@@ -80,6 +80,7 @@ var templateCmd = &cobra.Command{
 						return err
 					}
 					deprecated.Resources = append(deprecated.Resources, dr.Resources...)
+					deprecated.DataSources = append(deprecated.DataSources, dr.DataSources...)
 					deprecated.Properties = append(deprecated.Properties, dr.Properties...)
 					{
 						_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
@@ -101,6 +102,7 @@ var templateCmd = &cobra.Command{
 			if file, err := os.Create(filePath); err == nil {
 				log.Printf("Storing deprecated data in %s\n", filePath)
 				slices.Sort(deprecated.Resources)
+				slices.Sort(deprecated.DataSources)
 				err = tpl.ExecuteTemplate(file, "deprecated.md.tpl", deprecated)
 				if err != nil {
 					fmt.Println(err)

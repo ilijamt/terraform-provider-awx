@@ -51,7 +51,7 @@ func (o *credentialObjectRolesDataSource) Metadata(_ context.Context, req dataso
 // Schema defines the schema for the data source.
 func (o *credentialObjectRolesDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
+		DeprecationMessage: "This data source has been deprecated and will be removed in a future release.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.Int64Attribute{
 				Description: "Credential ID",
