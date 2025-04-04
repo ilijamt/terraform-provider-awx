@@ -1,7 +1,6 @@
 package client
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -18,7 +17,7 @@ func TestDoRequest(t *testing.T) {
 		req, err := http.NewRequest(http.MethodGet, "url", nil)
 		require.NoError(t, err)
 		require.NotNil(t, req)
-		data, err := doRequest(nil, context.Background(), req)
+		data, err := doRequest(nil, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "nil http clientWithBasicAuth")
 		require.Empty(t, data)
@@ -34,7 +33,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, context.Background(), req)
+		data, err := doRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "io stream error")
 		require.ErrorContains(t, err, "failed to do request")
@@ -52,7 +51,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, context.Background(), req)
+		data, err := doRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "failed to decode data")
 		require.Empty(t, data)
@@ -69,7 +68,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, context.Background(), req)
+		data, err := doRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "unexpected EOF")
 		require.Empty(t, data)

@@ -1,7 +1,6 @@
 package client_test
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -35,10 +34,10 @@ func TestNewClientWithTokenAuth(t *testing.T) {
 
 	for _, tst := range tests {
 		t.Run(tst.method, func(t *testing.T) {
-			req, err := c.NewRequest(context.Background(), http.MethodGet, "/api/v2/request", nil)
+			req, err := c.NewRequest(t.Context(), http.MethodGet, "/api/v2/request", nil)
 			require.NoError(t, err)
 			require.NotNil(t, req)
-			data, err := c.Do(context.Background(), req)
+			data, err := c.Do(t.Context(), req)
 			require.ErrorIs(t, err, tst.err)
 			require.Empty(t, data)
 		})
@@ -69,11 +68,11 @@ func TestNewClientWithTokenAuthBody(t *testing.T) {
 	c := client.NewClientWithTokenAuth("token", server.URL, "test", true, nil)
 	for _, tst := range tests {
 		t.Run(fmt.Sprintf("%s - %s", tst.name, tst.method), func(t *testing.T) {
-			req, err := c.NewRequest(context.Background(), http.MethodGet, "/api/v2/request", nil)
+			req, err := c.NewRequest(t.Context(), http.MethodGet, "/api/v2/request", nil)
 			require.NoError(t, err)
 			require.NotNil(t, req)
 			req.Header.Set("test-x-type", tst.name)
-			data, err := c.Do(context.Background(), req)
+			data, err := c.Do(t.Context(), req)
 			require.ErrorIs(t, err, tst.err)
 			require.Empty(t, data)
 		})

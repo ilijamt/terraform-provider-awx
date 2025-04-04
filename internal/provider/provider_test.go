@@ -1,7 +1,6 @@
 package provider_test
 
 import (
-	"context"
 	"fmt"
 	"testing"
 
@@ -28,10 +27,10 @@ func TestProvider(t *testing.T) {
 	frameworkServer, err := awxProvider()
 	require.NoError(t, err)
 	require.NotNil(t, frameworkServer)
-	schema, err := frameworkServer.GetProviderSchema(context.Background(), &tfprotov6.GetProviderSchemaRequest{})
+	schema, err := frameworkServer.GetProviderSchema(t.Context(), &tfprotov6.GetProviderSchemaRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, schema)
-	_, err = frameworkServer.ValidateProviderConfig(context.Background(), &tfprotov6.ValidateProviderConfigRequest{})
+	_, err = frameworkServer.ValidateProviderConfig(t.Context(), &tfprotov6.ValidateProviderConfigRequest{})
 	require.NoError(t, err)
 }
 
@@ -68,7 +67,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 		}))
 		require.NoError(t, err)
-		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
+		response, err := frameworkServer.ConfigureProvider(t.Context(), &tfprotov6.ConfigureProviderRequest{
 			Config: &config,
 		})
 		require.NoError(t, err)
@@ -85,7 +84,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"token":      tftypes.NewValue(tftypes.String, tftypes.UnknownValue),
 		}))
 		require.NoError(t, err)
-		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
+		response, err := frameworkServer.ConfigureProvider(t.Context(), &tfprotov6.ConfigureProviderRequest{
 			Config: &config,
 		})
 		require.NoError(t, err)
@@ -102,7 +101,7 @@ func TestProviderConfiguration(t *testing.T) {
 			"token":      tftypes.NewValue(tftypes.String, ""),
 		}))
 		require.NoError(t, err)
-		response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
+		response, err := frameworkServer.ConfigureProvider(t.Context(), &tfprotov6.ConfigureProviderRequest{
 			Config: &config,
 		})
 		require.NoError(t, err)
@@ -240,7 +239,7 @@ func TestProviderConfiguration(t *testing.T) {
 				config, err := tfprotov6.NewDynamicValue(ConfigDataType,
 					tftypes.NewValue(ConfigDataType, test.in))
 				require.NoError(t, err)
-				response, err := frameworkServer.ConfigureProvider(context.Background(), &tfprotov6.ConfigureProviderRequest{
+				response, err := frameworkServer.ConfigureProvider(t.Context(), &tfprotov6.ConfigureProviderRequest{
 					Config: &config,
 				})
 				require.NoError(t, err)

@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	"testing"
 
@@ -68,7 +67,7 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 			}
 
 			var config = new(Model)
-			configureFromEnvironment(context.Background(), config)
+			configureFromEnvironment(t.Context(), config)
 			assert.EqualValues(t, test.out, *config)
 
 			for _, n := range test.null {
@@ -95,14 +94,14 @@ func TestConfigureDefaults(t *testing.T) {
 	t.Run("value already set should not override it", func(t *testing.T) {
 		var config = &Model{VerifySSL: types.BoolValue(false)}
 		require.False(t, config.VerifySSL.IsNull())
-		configureDefaults(context.Background(), config)
+		configureDefaults(t.Context(), config)
 		require.False(t, config.VerifySSL.ValueBool())
 	})
 
 	t.Run("value is set should not override it", func(t *testing.T) {
 		var config = &Model{}
 		require.True(t, config.VerifySSL.IsNull())
-		configureDefaults(context.Background(), config)
+		configureDefaults(t.Context(), config)
 		require.True(t, config.VerifySSL.ValueBool())
 	})
 }
