@@ -80,7 +80,7 @@ minikube
 10.211.55.6
 ```
 
-Make sure that `awx.local` is points to `10.211.55.6` in your `/etc/hosts` file on your system.
+Make sure that `awx.local` points to `10.211.55.6` in your `/etc/hosts` file on your system.
 
 To cleanup just run:
 
