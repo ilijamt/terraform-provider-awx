@@ -1,4 +1,4 @@
-package client
+package client_test
 
 import (
 	"encoding/json"
@@ -9,6 +9,8 @@ import (
 	"testing/iotest"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/client"
 )
 
 func TestDoRequest(t *testing.T) {
@@ -17,7 +19,7 @@ func TestDoRequest(t *testing.T) {
 		req, err := http.NewRequest(http.MethodGet, "url", nil)
 		require.NoError(t, err)
 		require.NotNil(t, req)
-		data, err := doRequest(nil, t.Context(), req)
+		data, err := client.DoRequest(nil, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "nil http clientWithBasicAuth")
 		require.Empty(t, data)
@@ -33,7 +35,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, t.Context(), req)
+		data, err := client.DoRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "io stream error")
 		require.ErrorContains(t, err, "failed to do request")
@@ -51,7 +53,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, t.Context(), req)
+		data, err := client.DoRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "failed to decode data")
 		require.Empty(t, data)
@@ -68,7 +70,7 @@ func TestDoRequest(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, req)
 
-		data, err := doRequest(http.DefaultClient, t.Context(), req)
+		data, err := client.DoRequest(http.DefaultClient, t.Context(), req)
 		require.Error(t, err)
 		require.ErrorContains(t, err, "unexpected EOF")
 		require.Empty(t, data)

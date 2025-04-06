@@ -38,5 +38,5 @@ func (c *clientWithTokenAuth) NewRequest(ctx context.Context, method string, end
 }
 
 func (c *clientWithTokenAuth) Do(ctx context.Context, req *http.Request) (data map[string]any, err error) {
-	return doRequest(c.client, ctx, req)
+	return DoRequest(c.client, ctx, req)
 }

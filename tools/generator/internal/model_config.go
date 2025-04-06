@@ -2,7 +2,10 @@ package internal
 
 import (
 	"cmp"
+	"encoding/json"
 	"fmt"
+	"log"
+	"os"
 	"slices"
 	"strings"
 
@@ -394,4 +397,11 @@ func (c *ModelConfig) UpdateProperty(vt AwxKeyValueType, key string, overrides P
 func (c *ModelConfig) ToMap() (out map[string]any) {
 	_ = mapstructure.Decode(c, &out)
 	return out
+}
+
+func (c *ModelConfig) Save(path string) error {
+	genDataFile := fmt.Sprintf("%s/%s.json", path, c.TypeName)
+	log.Printf("Storing generated data for '%s' in '%s'\n", c.Name, genDataFile)
+	payload, _ := json.MarshalIndent(c, "", "  ")
+	return os.WriteFile(genDataFile, payload, os.ModePerm)
 }

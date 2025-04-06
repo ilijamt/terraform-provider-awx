@@ -28,6 +28,7 @@ func NewSettingsAuthLDAPDataSource() datasource.DataSource {
 type settingsAuthLdapDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -36,6 +37,7 @@ func (o *settingsAuthLdapDataSource) Configure(_ context.Context, req datasource
 		return
 	}
 
+	o.name = "SettingsAuthLDAP"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/ldap/"
 }

@@ -36,6 +36,7 @@ func NewSettingsAuthAzureADOauth2Resource() resource.Resource {
 type settingsAuthAzureAdoauth2Resource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsAuthAzureAdoauth2Resource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -43,6 +44,7 @@ func (o *settingsAuthAzureAdoauth2Resource) Configure(ctx context.Context, reque
 		return
 	}
 
+	o.name = "SettingsAuthAzureADOauth2"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/azuread-oauth2/"
 }
@@ -169,9 +171,6 @@ func (o *settingsAuthAzureAdoauth2Resource) Create(ctx context.Context, request 
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthAzureAdoauth2Resource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -221,9 +220,6 @@ func (o *settingsAuthAzureAdoauth2Resource) Read(ctx context.Context, request re
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthAzureAdoauth2Resource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -278,9 +274,6 @@ func (o *settingsAuthAzureAdoauth2Resource) Update(ctx context.Context, request 
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthAzureAdoauth2Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

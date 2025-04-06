@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -28,6 +27,9 @@ var templateCmd = &cobra.Command{
 		tCfg.generatePath = args[1]
 		resourcePath = tCfg.generatePath
 		configResource = fmt.Sprintf("%s/config.json", apiResourcePath)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data/resources", apiResourcePath), os.ModePerm)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath), os.ModePerm)
 
 		if err = cfg.Load(configResource); err != nil {
 			return err
@@ -82,18 +84,38 @@ var templateCmd = &cobra.Command{
 					deprecated.Resources = append(deprecated.Resources, dr.Resources...)
 					deprecated.DataSources = append(deprecated.DataSources, dr.DataSources...)
 					deprecated.Properties = append(deprecated.Properties, dr.Properties...)
-					{
-						_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
-						payload, _ := json.MarshalIndent(p, "", "  ")
-						genDataFile := fmt.Sprintf("%s/gen-model-data/%s.json", apiResourcePath, item.Name)
-						log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
-						_ = os.WriteFile(genDataFile, payload, os.ModePerm)
-					}
+					_ = p.Save(fmt.Sprintf("%s/gen-model-data/resources", apiResourcePath))
 				} else {
 					log.Printf("Missing definition for %s, skipping ...", item.Name)
 				}
 			} else {
 				log.Printf("Skipping %s, disabled ...", item.Name)
+			}
+		}
+
+		for _, item := range cfg.Credentials {
+			if !item.Enabled {
+				log.Printf("Skipping Credential %s, disabled ...", item.Name)
+				continue
+			}
+			var p *internal.ModelCredential
+			var objmap map[string]any
+			var ok bool
+			var inclDatasource bool
+			if objmap, ok = apiResource.CredentialTypes[item.TypeName]; !ok {
+				log.Printf("Missing definition for %s, skipping ...", item.Name)
+				continue
+			}
+			p, inclDatasource, err = internal.GenerateApiTfCredentialDefinition(tpl, cfg, item, item.Name, resourcePath, objmap)
+			if err != nil {
+				log.Printf("Error generating credentials for '%s' in '%s': %v", item.Name, item.TypeName, err)
+				return err
+			}
+
+			_ = p.Save(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath))
+			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sCredential", item.Name))
+			if inclDatasource {
+				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sCredential", item.Name))
 			}
 		}
 

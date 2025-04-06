@@ -86,14 +86,22 @@ type CredentialTypes struct {
 	Inputs       map[string]any `json:"inputs" mapstructure:"inputs"`
 }
 
+type Credential struct {
+	Enabled  bool   `json:"enabled" yaml:"enabled"`
+	Name     string `json:"name" yaml:"name"`
+	TypeName string `json:"type_name" yaml:"type_name"`
+	IdKey    string `json:"id_key" yaml:"id_key"`
+}
+
 type Config struct {
-	DefaultRemoveApiDataSource   []string `json:"default_remove_api_data_source"`
-	DefaultRemoveApiResource     []string `json:"default_remove_api_resource"`
-	Items                        []Item   `json:"items"`
-	ApiVersion                   string   `json:"api_version"`
-	RenderApiDocs                bool     `json:"render_api_docs"`
-	GeneratedApiResources        []string `json:"-"`
-	GeneratedDataSourceResources []string `json:"-"`
+	DefaultRemoveApiDataSource   []string     `json:"default_remove_api_data_source"`
+	DefaultRemoveApiResource     []string     `json:"default_remove_api_resource"`
+	Items                        []Item       `json:"items"`
+	Credentials                  []Credential `json:"credentials"`
+	ApiVersion                   string       `json:"api_version"`
+	RenderApiDocs                bool         `json:"render_api_docs"`
+	GeneratedApiResources        []string     `json:"-"`
+	GeneratedDataSourceResources []string     `json:"-"`
 }
 
 func (c *Config) PackageName(name string) string {

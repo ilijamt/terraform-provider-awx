@@ -39,6 +39,7 @@ func NewSettingsUIResource() resource.Resource {
 type settingsUiResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsUiResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -46,6 +47,7 @@ func (o *settingsUiResource) Configure(ctx context.Context, request resource.Con
 		return
 	}
 
+	o.name = "SettingsUI"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/ui/"
 }
@@ -172,9 +174,6 @@ func (o *settingsUiResource) Create(ctx context.Context, request resource.Create
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsUiResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -215,9 +214,6 @@ func (o *settingsUiResource) Read(ctx context.Context, request resource.ReadRequ
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsUiResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -264,9 +260,6 @@ func (o *settingsUiResource) Update(ctx context.Context, request resource.Update
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsUiResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

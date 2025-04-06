@@ -1463,5 +1463,19 @@
         "status"
       ]
     }
+  ],
+  "credentials": [
+    {
+      "enabled": true,
+      "name": "AWS",
+      "type_name": "aws",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Net",
+      "type_name": "net",
+      "id_key": "id"
+    }
   ]
 }

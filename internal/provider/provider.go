@@ -172,12 +172,6 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 					"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
 					"If either is already set, ensure the value is not empty.")
 			}
-			// } else {
-			// 	if "" == config.Token.ValueString() || config.Token.IsUnknown() {
-			// 		resp.Diagnostics.AddAttributeError(path.Root("token"), "Unknown AWX Auth Token", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX auth token. "+
-			// 			"Set the token value in the configuration or use the TOWER_AUTH_TOKEN or AWX_AUTH_TOKEN environment variable."+
-			// 			"If either is already set, ensure the value is not empty.")
-			// 	}
 		}
 	}
 

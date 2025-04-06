@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ilijamt/envwrap"
-	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"github.com/ilijamt/envwrap/v2"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
 func TestGetFirstSetEnvVar(t *testing.T) {
@@ -23,14 +24,13 @@ func TestGetFirstSetEnvVar(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("%s should be %s", test.in, test.out), func(t *testing.T) {
-			env := envwrap.NewStorage()
-
+			env := envwrap.New(t)
+			var kv []envwrap.KV
 			for k, v := range test.env {
-				_ = env.Store(k, v)
+				kv = append(kv, envwrap.KV{Key: k, Value: v})
 			}
-
+			env.Setenv(kv...)
 			assert.EqualValues(t, test.out, helpers.GetFirstSetEnvVar(test.in...))
-			_ = env.ReleaseAll()
 		})
 	}
 
