@@ -41,6 +41,7 @@ func NewSettingsMiscLoggingResource() resource.Resource {
 type settingsMiscLoggingResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsMiscLoggingResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -48,6 +49,7 @@ func (o *settingsMiscLoggingResource) Configure(ctx context.Context, request res
 		return
 	}
 
+	o.name = "SettingsMiscLogging"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/logging/"
 }
@@ -341,9 +343,6 @@ func (o *settingsMiscLoggingResource) Create(ctx context.Context, request resour
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscLoggingResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -384,9 +383,6 @@ func (o *settingsMiscLoggingResource) Read(ctx context.Context, request resource
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -433,9 +429,6 @@ func (o *settingsMiscLoggingResource) Update(ctx context.Context, request resour
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscLoggingResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

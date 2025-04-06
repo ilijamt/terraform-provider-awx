@@ -27,6 +27,7 @@ func NewSettingsMiscLoggingDataSource() datasource.DataSource {
 type settingsMiscLoggingDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsMiscLoggingDataSource) Configure(_ context.Context, req datasou
 		return
 	}
 
+	o.name = "SettingsMiscLogging"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/logging/"
 }

@@ -27,6 +27,7 @@ func NewSettingsJobsDataSource() datasource.DataSource {
 type settingsJobsDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsJobsDataSource) Configure(_ context.Context, req datasource.Con
 		return
 	}
 
+	o.name = "SettingsJobs"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/jobs/"
 }

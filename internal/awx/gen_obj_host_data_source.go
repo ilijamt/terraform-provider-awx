@@ -34,6 +34,7 @@ func NewHostDataSource() datasource.DataSource {
 type hostDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -42,6 +43,7 @@ func (o *hostDataSource) Configure(_ context.Context, req datasource.ConfigureRe
 		return
 	}
 
+	o.name = "Host"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/hosts/"
 }

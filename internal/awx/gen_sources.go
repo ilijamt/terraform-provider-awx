@@ -67,6 +67,7 @@ func DataSources() []func() datasource.DataSource {
 // Resources is a helper function to return all defined resources
 func Resources() []func() resource.Resource {
 	return []func() resource.Resource{
+		NewAWSCredentialResource,
 		NewAdHocCommandResource,
 		NewApplicationResource,
 		NewConstructedInventoriesResource,

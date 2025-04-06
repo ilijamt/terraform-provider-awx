@@ -34,6 +34,7 @@ func NewLabelDataSource() datasource.DataSource {
 type labelDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -42,6 +43,7 @@ func (o *labelDataSource) Configure(_ context.Context, req datasource.ConfigureR
 		return
 	}
 
+	o.name = "Label"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/labels/"
 }

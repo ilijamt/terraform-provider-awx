@@ -44,6 +44,7 @@ func New{{ .Name }}Resource() resource.Resource {
 type {{ .Name | lowerCamelCase }}Resource struct {
     client   c.Client
     endpoint string
+    name     string
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -51,6 +52,7 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Configure(ctx context.Context, re
         return
     }
 
+    o.name = "{{ .Name }}"
     o.client = request.ProviderData.(c.Client)
     o.endpoint = "{{ $.Endpoint }}"
 }
@@ -301,9 +303,6 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Create(ctx context.Context, reque
     }
 {{ end }}
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -361,9 +360,6 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Read(ctx context.Context, request
     }
 {{ end }}
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -436,9 +432,6 @@ func (o *{{ .Name | lowerCamelCase }}Resource) Update(ctx context.Context, reque
     }
 {{ end }}
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *{{ .Name | lowerCamelCase }}Resource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

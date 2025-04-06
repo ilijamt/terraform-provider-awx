@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func doRequest(client *http.Client, ctx context.Context, req *http.Request) (data map[string]any, err error) {
+func DoRequest(client *http.Client, ctx context.Context, req *http.Request) (data map[string]any, err error) {
 	if client == nil {
 		return data, fmt.Errorf("nil http clientWithBasicAuth")
 	}
@@ -19,7 +19,7 @@ func doRequest(client *http.Client, ctx context.Context, req *http.Request) (dat
 	if resp, err = client.Do(req.WithContext(ctx)); err != nil {
 		return nil, fmt.Errorf("%w: failed to do request", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	var payload []byte
 
