@@ -116,11 +116,12 @@ func (o *awsCredentialResource) Create(ctx context.Context, request resource.Cre
 }
 func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state awsCredentialTerraformModel
+	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Read(ctx, o.client, o.rci, state.ID, &state)
+	var d, _ = r.Read(ctx, o.client, rci, state.ID, &state)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
 		return
@@ -133,10 +134,11 @@ func (o *awsCredentialResource) Update(ctx context.Context, request resource.Upd
 
 func (o *awsCredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	var state awsCredentialTerraformModel
+	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Delete(ctx, o.client, o.rci, state.ID)
+	var d, _ = r.Delete(ctx, o.client, rci, state.ID)
 	response.Diagnostics.Append(d...)
 }

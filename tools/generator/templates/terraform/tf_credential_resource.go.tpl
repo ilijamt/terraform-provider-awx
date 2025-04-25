@@ -96,11 +96,12 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) ImportState(ctx context
 func (o *{{ .Name | lowerCamelCase }}CredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {}
 func (o *{{ .Name | lowerCamelCase }}CredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state {{ .Name | lowerCamelCase }}CredentialTerraformModel
+	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-    var d, _ = r.Read(ctx, o.client, o.rci, state.ID, &state)
+    var d, _ = r.Read(ctx, o.client, rci, state.ID, &state)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
 		return
@@ -112,10 +113,11 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) Update(ctx context.Cont
 
 func (o *{{ .Name | lowerCamelCase }}CredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	var state {{ .Name | lowerCamelCase }}CredentialTerraformModel
+	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Delete(ctx, o.client, o.rci, state.ID)
+	var d, _ = r.Delete(ctx, o.client, rci, state.ID)
 	response.Diagnostics.Append(d...)
 }

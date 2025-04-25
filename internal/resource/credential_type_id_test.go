@@ -4,20 +4,16 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"go.uber.org/mock/gomock"
 
 	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
 
-func TestUpdate(t *testing.T) {
-	ctrl := gomock.NewController(t)
-	client := NewMockClient(ctrl)
+func TestGetCredentialTypeID(t *testing.T) {
 	ctx := t.Context()
 	rci := resource.CallInfo{Name: "Name", Endpoint: "/", TypeName: "name"}
-	_ = client
 
-	t.Run("nil/data client", func(t *testing.T) {
-		d, err := resource.Update(ctx, nil, rci.With(resource.SourceResource, resource.CalleeUpdate), nil)
+	t.Run("nil client and empty name", func(t *testing.T) {
+		d, err := resource.GetCredentialTypeID(ctx, nil, rci.With(resource.SourceResource, resource.CalleeCreate), "")
 		require.NotEmpty(t, d)
 		require.Error(t, err)
 	})
