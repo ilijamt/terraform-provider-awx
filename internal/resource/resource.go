@@ -4,8 +4,21 @@ import (
 	"encoding/json"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+)
 
-	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
+type Callee uint8
+type Source uint8
+
+const (
+	CalleeCreate Callee = iota
+	CalleeUpdate
+	CalleeRead
+	CalleeDelete
+)
+
+const (
+	SourceData Source = iota
+	SourceResource
 )
 
 // Updater is an interface for resources that can be updated with API data.
@@ -41,13 +54,13 @@ type CallInfo struct {
 	// TypeName is the type classification of the resource.
 	TypeName string `json:"type_name"`
 	// Source from where the action came from
-	Source hooks.Source `json:"action"`
+	Source Source `json:"action"`
 	// Callee is who called the action
-	Callee hooks.Callee `json:"callee"`
+	Callee Callee `json:"callee"`
 }
 
-// With creates a new CallInfo with the specified hooks.Source and hooks.Callee
-func (r CallInfo) With(source hooks.Source, callee hooks.Callee) CallInfo {
+// With creates a new CallInfo with the specified Source and Callee
+func (r CallInfo) With(source Source, callee Callee) CallInfo {
 	return CallInfo{
 		Name:     r.Name,
 		Endpoint: r.Endpoint,

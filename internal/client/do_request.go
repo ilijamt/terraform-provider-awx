@@ -19,7 +19,10 @@ func DoRequest(client *http.Client, ctx context.Context, req *http.Request) (dat
 	if resp, err = client.Do(req.WithContext(ctx)); err != nil {
 		return nil, fmt.Errorf("%w: failed to do request", err)
 	}
-	defer func() { _ = resp.Body.Close() }()
+	defer func() {
+		_, _ = io.Copy(io.Discard, resp.Body)
+		_ = resp.Body.Close()
+	}()
 
 	var payload []byte
 
