@@ -1,5 +1,0 @@
-package helpers
-
-func Setter() {
-
-}

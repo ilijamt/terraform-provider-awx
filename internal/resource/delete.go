@@ -17,8 +17,14 @@ import (
 // It constructs the appropriate endpoint URL by combining the base endpoint from CallInfo
 // with the resource ID and sends a DELETE request to that endpoint.
 func Delete(ctx context.Context, client client.Client, rci CallInfo, id types.Int64) (d diag.Diagnostics, err error) {
-	var r *http.Request
 	d = make(diag.Diagnostics, 0)
+	if client == nil {
+		err = fmt.Errorf("client is nil")
+		d.AddError("unable to delete resource", err.Error())
+		return d, err
+	}
+
+	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", rci.Endpoint, id.ValueInt64())) + "/"
 	if r, err = client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
 		d.AddError(

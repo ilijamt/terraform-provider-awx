@@ -66,21 +66,25 @@ func (o *{{ $.Name | lowerCamelCase }}CredentialTerraformModel) set{{ $value.Gen
 }
 {{ end }}
 
+func (o *{{ $.Name | lowerCamelCase }}CredentialTerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+    return helpers.AttrValueSetInt64(&o.ID, data)
+}
+
 func (o *{{ .Name | lowerCamelCase }}CredentialTerraformModel) UpdateWithApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
     if data == nil {
-        return diags, fmt.Errorf("no data passed")
+        return diags, fmt.Errorf("data is empty")
     }
 
-    for field, setter := range map[string]func(any) (diag.Diagnostics, error) {
-           "id":             func(v any) (diag.Diagnostics, error) { return helpers.AttrValueSetInt64(&o.ID, v) },
+	diags, _ = helpers.ApplyFieldMappings(
+		data,
+		[]helpers.FieldMapping{
+			{ APIField: "id", Setter: o.setId },
 {{- range $key, $value := .Fields }}
-           "{{ $value.Id }}":           o.set{{ $value.Generated.Name }},
+			{ APIField:  "{{ $value.Id }}", Setter:   o.set{{ $value.Generated.Name }} },
 {{- end }}
-       } {
-         d, _ := setter(data[field])
-         diags.Append(d...)
-    }
+		},
+	)
 
     return diags, nil
 }

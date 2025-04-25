@@ -7,7 +7,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
-
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
@@ -102,24 +101,28 @@ func (o *awsCredentialTerraformModel) setSecurityToken(data any) (_ diag.Diagnos
 	return helpers.AttrValueSetString(&o.SecurityToken, data, false)
 }
 
+func (o *awsCredentialTerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+	return helpers.AttrValueSetInt64(&o.ID, data)
+}
+
 func (o *awsCredentialTerraformModel) UpdateWithApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
-		return diags, fmt.Errorf("no data passed")
+		return diags, fmt.Errorf("data is empty")
 	}
 
-	for field, setter := range map[string]func(any) (diag.Diagnostics, error){
-		"id":             func(v any) (diag.Diagnostics, error) { return helpers.AttrValueSetInt64(&o.ID, v) },
-		"name":           o.setName,
-		"description":    o.setDescription,
-		"organization":   o.setOrganization,
-		"username":       o.setUsername,
-		"password":       o.setPassword,
-		"security_token": o.setSecurityToken,
-	} {
-		d, _ := setter(data[field])
-		diags.Append(d...)
-	}
+	diags, _ = helpers.ApplyFieldMappings(
+		data,
+		[]helpers.FieldMapping{
+			{APIField: "id", Setter: o.setId},
+			{APIField: "name", Setter: o.setName},
+			{APIField: "description", Setter: o.setDescription},
+			{APIField: "organization", Setter: o.setOrganization},
+			{APIField: "username", Setter: o.setUsername},
+			{APIField: "password", Setter: o.setPassword},
+			{APIField: "security_token", Setter: o.setSecurityToken},
+		},
+	)
 
 	return diags, nil
 }

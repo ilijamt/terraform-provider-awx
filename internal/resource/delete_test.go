@@ -18,6 +18,12 @@ func TestDeleteResource(t *testing.T) {
 	ctx := t.Context()
 	rci := resource.CallInfo{Name: "Name", Endpoint: "/", TypeName: "name"}
 
+	t.Run("client is nil", func(t *testing.T) {
+		d, err := resource.Delete(ctx, nil, rci, types.Int64Value(1))
+		assert.Error(t, err)
+		assert.NotEmpty(t, d)
+	})
+
 	t.Run("fail to create new request", func(t *testing.T) {
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodDelete), gomock.Any(), gomock.Eq(nil)).Return(nil, fmt.Errorf("failed to create request")).Times(1)
 		d, err := resource.Delete(ctx, c, rci, types.Int64Value(1))
