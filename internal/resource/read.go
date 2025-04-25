@@ -2,6 +2,7 @@ package resource
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	p "path"
@@ -18,8 +19,21 @@ import (
 // with the resource ID, sends a GET request to that endpoint, and updates the provided state
 // with the response data.
 func Read(ctx context.Context, client client.Client, rci CallInfo, id types.Int64, state Updater) (d diag.Diagnostics, err error) {
-	var r *http.Request
 	d = make(diag.Diagnostics, 0)
+	if client == nil {
+		err = errors.Join(err, fmt.Errorf("client is nil"))
+	}
+
+	if state == nil {
+		err = errors.Join(err, fmt.Errorf("state updater is nil"))
+	}
+
+	if err != nil {
+		d.AddError("unable to read resource", err.Error())
+		return d, err
+	}
+
+	var r *http.Request
 	var endpoint = p.Clean(fmt.Sprintf("%s/%v", rci.Endpoint, id.ValueInt64())) + "/"
 	if r, err = client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
 		d.AddError(

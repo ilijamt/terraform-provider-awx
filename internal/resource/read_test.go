@@ -18,6 +18,12 @@ func TestReadResource(t *testing.T) {
 	ctx := t.Context()
 	rci := resource.CallInfo{Name: "Name", Endpoint: "/", TypeName: "name"}
 
+	t.Run("state updater/client is nil", func(t *testing.T) {
+		d, err := resource.Read(ctx, nil, rci, types.Int64Value(1), nil)
+		assert.Error(t, err)
+		assert.NotEmpty(t, d)
+	})
+
 	t.Run("fail to create new request", func(t *testing.T) {
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(nil, fmt.Errorf("failed to create request")).Times(1)
 		updater := &resourceUpdaterTest{}

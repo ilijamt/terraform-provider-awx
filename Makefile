@@ -23,8 +23,8 @@ generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
 	rm -rf cmd/provider/docs/*
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
-	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go
+	goimports -w internal/awx/*.go
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:

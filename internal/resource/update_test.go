@@ -10,7 +10,7 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
 
-func TestCreate(t *testing.T) {
+func TestUpdate(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	client := NewMockClient(ctrl)
 	ctx := t.Context()
@@ -18,7 +18,7 @@ func TestCreate(t *testing.T) {
 	_ = client
 
 	t.Run("nil/data client", func(t *testing.T) {
-		d, err := resource.Create(ctx, nil, rci.With(hooks.SourceResource, hooks.CalleeCreate), nil)
+		d, err := resource.Update(ctx, nil, rci.With(hooks.SourceResource, hooks.CalleeUpdate), nil)
 		require.NotEmpty(t, d)
 		require.Error(t, err)
 	})
