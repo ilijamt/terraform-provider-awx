@@ -27,10 +27,11 @@ func NewAWSCredentialResource() resource.Resource {
 }
 
 type awsCredentialResource struct {
-	client   c.Client
-	rci      r.CallInfo
-	endpoint string
-	name     string
+	client           c.Client
+	rci              r.CallInfo
+	endpoint         string
+	name             string
+	credentialTypeId int
 }
 
 func (o *awsCredentialResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -41,6 +42,7 @@ func (o *awsCredentialResource) Configure(ctx context.Context, request resource.
 	o.name = "AWS"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credentials/"
+	o.credentialTypeId = 5
 }
 
 func (o *awsCredentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
