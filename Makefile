@@ -22,6 +22,7 @@ generate-configs: resources/api/*
 generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
 	rm -rf cmd/provider/docs/*
+	rm -rf resources/api/$(VERSION)/gen-model-data
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
 	gofmt -s -w internal/awx/*.go
 	goimports -w internal/awx/*.go

@@ -41,10 +41,11 @@ func New{{ .Name }}CredentialResource() resource.Resource {
 }
 
 type {{ .Name | lowerCamelCase }}CredentialResource struct {
-    client   c.Client
-    rci      r.CallInfo
-    endpoint string
-    name     string
+    client           c.Client
+    rci              r.CallInfo
+    endpoint         string
+    name             string
+    credentialTypeId int
 }
 
 func (o *{{ .Name | lowerCamelCase }}CredentialResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -55,6 +56,7 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) Configure(ctx context.C
     o.name = "{{ .Name }}"
     o.client = request.ProviderData.(c.Client)
     o.endpoint = "/api/v2/credentials/"
+    o.credentialTypeId = {{ .Id }}
 }
 
 func (o *{{ .Name | lowerCamelCase }}CredentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {

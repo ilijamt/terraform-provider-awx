@@ -16,6 +16,7 @@ type ModelCredential struct {
 	PackageName string            `json:"package_name" yaml:"package_name"`
 	ApiVersion  string            `json:"api_version" yaml:"api_version"`
 	TypeName    string            `json:"type_name" yaml:"type_name"`
+	Id          int64             `json:"id" yaml:"id"`
 	Description string            `json:"description" yaml:"description"`
 	Name        string            `json:"name" yaml:"name"`
 	Namespace   string            `json:"namespace" yaml:"namespace"`
@@ -53,6 +54,7 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 	c.Enabled = item.Enabled
 	c.Name = item.Name
 	c.TypeName = item.TypeName
+	c.Id, _ = objmap["id"].(json.Number).Int64()
 	c.IdKey = cmp.Or(item.IdKey, "id")
 	c.ApiVersion = config.ApiVersion
 	c.PackageName = config.PackageName("awx")
