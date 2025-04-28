@@ -5,7 +5,6 @@ type Credential struct {
 	Name           string         `json:"name" yaml:"name"`
 	Description    string         `json:"description" yaml:"description"`
 	CredentialType int            `json:"credential_type" yaml:"credential_type"`
-	// User           int64          `json:"user,omitzero" yaml:"user"`
-	// Team           int64          `json:"team,omitzero" yaml:"team"`
-	Organization *int64 `json:"organization,omitzero" yaml:"organization"`
+	User           int64          `json:"user,omitzero" yaml:"user"`
+	Organization   *int64         `json:"organization,omitzero" yaml:"organization"`
 }

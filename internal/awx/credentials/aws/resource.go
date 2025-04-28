@@ -1,4 +1,4 @@
-package awx
+package aws
 
 import (
 	"context"
@@ -25,8 +25,8 @@ var (
 	_ resource.ResourceWithImportState      = &awsCredentialResource{}
 )
 
-// NewawsCredentialResource is a helper function to simplify the provider implementation.
-func NewawsCredentialResource() resource.Resource {
+// NewResource is a helper function to simplify the provider implementation.
+func NewResource() resource.Resource {
 	return &awsCredentialResource{}
 }
 
@@ -140,11 +140,22 @@ func (o *awsCredentialResource) ImportState(ctx context.Context, request resourc
 
 func (o *awsCredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
-	var plan awsCredentialTerraformModel
+	var plan terraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
+
+	// fetch the UserID if organization is not set
+	if plan.Organization.IsNull() || plan.Organization.IsUnknown() {
+		user, err := o.client.User(ctx)
+		if err != nil {
+			response.Diagnostics.AddError("failed to retrieve current user", err.Error())
+			return
+		}
+		plan.userId = user.ID
+	}
+
 	var d, _ = r.Create(ctx, o.client, rci, &plan)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
@@ -154,7 +165,7 @@ func (o *awsCredentialResource) Create(ctx context.Context, request resource.Cre
 }
 
 func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var state awsCredentialTerraformModel
+	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
@@ -170,7 +181,7 @@ func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadR
 
 func (o *awsCredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
-	var plan awsCredentialTerraformModel
+	var plan terraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -184,7 +195,7 @@ func (o *awsCredentialResource) Update(ctx context.Context, request resource.Upd
 }
 
 func (o *awsCredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var state awsCredentialTerraformModel
+	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {

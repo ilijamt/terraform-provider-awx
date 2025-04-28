@@ -21,11 +21,12 @@ generate-configs: resources/api/*
 .PHONY: generate-awx
 generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
+	rm -rf internal/awx/credentials
 	rm -rf cmd/provider/docs/*
 	rm -rf resources/api/$(VERSION)/gen-model-data
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
-	gofmt -s -w internal/awx/*.go
-	goimports -w internal/awx/*.go
+	gofmt -s -w internal/awx/
+	goimports -w internal/awx/
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
@@ -55,7 +56,7 @@ dlv-debug: build-debug
 
 .PHONY: test
 test:
-	go test ./internal/resource ./internal/client ./internal/helpers ./internal/hooks ./internal/models ./internal/provider -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
+	go test -coverpkg=./internal/... ./internal/awx/credentials/... ./internal/resource ./internal/client ./internal/helpers ./internal/hooks ./internal/models ./internal/provider -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
 	go tool cover -html=build/coverage.out -o build/coverage.html
 
 .PHONY: testacc

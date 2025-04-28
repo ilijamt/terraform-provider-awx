@@ -1,33 +1,22 @@
 package {{ .PackageName }}
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
-	"net/http"
-	p "path"
 	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
-	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	r "github.com/ilijamt/terraform-provider-awx/internal/resource"
-    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
-	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 )
+
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
@@ -37,8 +26,8 @@ var (
 	_ resource.ResourceWithImportState = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 )
 
-// New{{ $.TypeName | pascalCase }}CredentialResource is a helper function to simplify the provider implementation.
-func New{{ $.TypeName | pascalCase }}CredentialResource() resource.Resource {
+// NewResource is a helper function to simplify the provider implementation.
+func NewResource() resource.Resource {
 	return &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 }
 
@@ -118,7 +107,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ImportState(ctx co
 
 func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
-	var plan {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+	var plan terraformModel
     response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
     if response.Diagnostics.HasError() {
         return
@@ -132,7 +121,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Create(ctx context
 }
 
 func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var state {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
@@ -148,7 +137,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Read(ctx context.C
 
 func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
-	var plan {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+	var plan terraformModel
     response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
     if response.Diagnostics.HasError() {
         return
@@ -162,7 +151,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Update(ctx context
 }
 
 func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var state {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {

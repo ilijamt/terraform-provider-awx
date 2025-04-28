@@ -57,19 +57,19 @@ var templateCmd = &cobra.Command{
 		for _, item := range cfg.Items {
 			if item.Enabled {
 				if !item.NoTerraformResource {
-					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
+					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sResource", item.Name))
 					for _, adg := range item.AssociateDisassociateGroups {
-						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sAssociateDisassociate%s", item.Name, adg.Type))
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sAssociateDisassociate%sResource", item.Name, adg.Type))
 					}
 					if item.HasSurveySpec {
-						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sSurvey", item.Name))
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sSurveyResource", item.Name))
 					}
 				}
 
 				if !item.NoTerraformDataSource {
-					cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, item.Name)
+					cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("New%sDataSource", item.Name))
 					if item.HasObjectRoles {
-						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sObjectRoles", item.Name))
+						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("New%sObjectRolesDataSource", item.Name))
 					}
 				}
 
@@ -113,9 +113,9 @@ var templateCmd = &cobra.Command{
 			}
 
 			_ = p.Save(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath))
-			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sCredential", internal.PascalCase(item.TypeName)))
+			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%s.NewResource", item.TypeName))
 			if inclDatasource {
-				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sCredential", internal.PascalCase(item.TypeName)))
+				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%s.NewDataSource", item.TypeName))
 			}
 		}
 
