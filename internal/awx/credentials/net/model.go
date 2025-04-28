@@ -1,4 +1,4 @@
-package aws
+package net
 
 import (
 	"encoding/json"
@@ -21,7 +21,7 @@ var (
 	_ resource.Id                     = &terraformModel{}
 )
 
-// terraformModel maps the schema for Credential aws
+// terraformModel maps the schema for Credential net
 type terraformModel struct {
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
@@ -31,12 +31,18 @@ type terraformModel struct {
 	Description types.String `tfsdk:"description" json:"description"`
 	// Organization "Organization of this credential"
 	Organization types.Int64 `tfsdk:"organization" json:"organization"`
-	// Username "Access Key"
+	// Username "Username"
 	Username types.String `tfsdk:"username" json:"username"`
-	// Password "Secret Key"
+	// Password "Password"
 	Password types.String `tfsdk:"password" json:"password"`
-	// SecurityToken "STS Token"
-	SecurityToken types.String `tfsdk:"security_token" json:"security_token"`
+	// SshKeyData "SSH Private Key"
+	SshKeyData types.String `tfsdk:"ssh_key_data" json:"ssh_key_data"`
+	// SshKeyUnlock "Private Key Passphrase"
+	SshKeyUnlock types.String `tfsdk:"ssh_key_unlock" json:"ssh_key_unlock"`
+	// Authorize "Authorize"
+	Authorize types.Bool `tfsdk:"authorize" json:"authorize"`
+	// AuthorizePassword "Authorize Password"
+	AuthorizePassword types.String `tfsdk:"authorize_password" json:"authorize_password"`
 
 	// internal variables that are required for the request to finish
 	// successfully
@@ -54,10 +60,21 @@ func (o *terraformModel) GetId() (string, error) {
 func (o *terraformModel) Data() models.Credential {
 	var inputs = map[string]any{
 		"username": o.Username.ValueString(),
-		"password": o.Password.ValueString(),
 	}
-	if !o.SecurityToken.IsNull() && !o.SecurityToken.IsUnknown() {
-		inputs["security_token"] = o.SecurityToken.ValueString()
+	if !o.Password.IsNull() && !o.Password.IsUnknown() {
+		inputs["password"] = o.Password.ValueString()
+	}
+	if !o.SshKeyData.IsNull() && !o.SshKeyData.IsUnknown() {
+		inputs["ssh_key_data"] = o.SshKeyData.ValueString()
+	}
+	if !o.SshKeyUnlock.IsNull() && !o.SshKeyUnlock.IsUnknown() {
+		inputs["ssh_key_unlock"] = o.SshKeyUnlock.ValueString()
+	}
+	if !o.Authorize.IsNull() && !o.Authorize.IsUnknown() {
+		inputs["authorize"] = o.Authorize.ValueBool()
+	}
+	if !o.AuthorizePassword.IsNull() && !o.AuthorizePassword.IsUnknown() {
+		inputs["authorize_password"] = o.AuthorizePassword.ValueString()
 	}
 
 	return models.Credential{
@@ -77,13 +94,16 @@ func (o *terraformModel) RequestBody() ([]byte, error) {
 // Clone the object
 func (o *terraformModel) Clone() terraformModel {
 	return terraformModel{
-		ID:            o.ID,
-		Name:          o.Name,
-		Description:   o.Description,
-		Organization:  o.Organization,
-		Username:      o.Username,
-		Password:      o.Password,
-		SecurityToken: o.SecurityToken,
+		ID:                o.ID,
+		Name:              o.Name,
+		Description:       o.Description,
+		Organization:      o.Organization,
+		Username:          o.Username,
+		Password:          o.Password,
+		SshKeyData:        o.SshKeyData,
+		SshKeyUnlock:      o.SshKeyUnlock,
+		Authorize:         o.Authorize,
+		AuthorizePassword: o.AuthorizePassword,
 	}
 }
 
@@ -107,8 +127,20 @@ func (o *terraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Password, data, false)
 }
 
-func (o *terraformModel) setSecurityToken(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SecurityToken, data, false)
+func (o *terraformModel) setSshKeyData(data any) (_ diag.Diagnostics, _ error) {
+	return helpers.AttrValueSetString(&o.SshKeyData, data, false)
+}
+
+func (o *terraformModel) setSshKeyUnlock(data any) (_ diag.Diagnostics, _ error) {
+	return helpers.AttrValueSetString(&o.SshKeyUnlock, data, false)
+}
+
+func (o *terraformModel) setAuthorize(data any) (_ diag.Diagnostics, _ error) {
+	return helpers.AttrValueSetBool(&o.Authorize, data)
+}
+
+func (o *terraformModel) setAuthorizePassword(data any) (_ diag.Diagnostics, _ error) {
+	return helpers.AttrValueSetString(&o.AuthorizePassword, data, false)
 }
 
 func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
@@ -149,6 +181,11 @@ func (o *terraformModel) UpdateWithApiData(callee resource.Callee, source resour
 			helpers.FieldMapping{
 				APIField: "username",
 				Setter:   o.setUsername,
+				Data:     inputs,
+			},
+			helpers.FieldMapping{
+				APIField: "authorize",
+				Setter:   o.setAuthorize,
 				Data:     inputs,
 			},
 		)

@@ -1472,7 +1472,7 @@
       "id_key": "id"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "name": "Network",
       "type_name": "net",
       "id_key": "id"

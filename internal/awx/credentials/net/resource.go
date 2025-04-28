@@ -1,4 +1,4 @@
-package aws
+package net
 
 import (
 	"context"
@@ -43,16 +43,16 @@ func (o *terraformResource) Configure(ctx context.Context, request resource.Conf
 	if request.ProviderData == nil {
 		return
 	}
-	o.name = "Amazon Web Services"
-	o.typeName = "aws"
+	o.name = "Network"
+	o.typeName = "net"
 	o.rci = r.CallInfo{Name: o.name, TypeName: o.typeName, Endpoint: "/api/v2/credentials/"}
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credentials/"
-	o.credentialTypeId = 5
+	o.credentialTypeId = 4
 }
 
 func (o *terraformResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_credential_aws"
+	response.TypeName = request.ProviderTypeName + "_credential_net"
 }
 
 func (o *terraformResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
@@ -99,7 +99,7 @@ func (o *terraformResource) Schema(ctx context.Context, req resource.SchemaReque
 				WriteOnly:   false,
 			},
 			"username": schema.StringAttribute{
-				Description: "Access Key",
+				Description: "Username",
 				Required:    true,
 				Optional:    false,
 				Computed:    false,
@@ -107,15 +107,39 @@ func (o *terraformResource) Schema(ctx context.Context, req resource.SchemaReque
 				WriteOnly:   false,
 			},
 			"password": schema.StringAttribute{
-				Description: "Secret Key",
-				Required:    true,
-				Optional:    false,
+				Description: "Password",
+				Required:    false,
+				Optional:    true,
 				Computed:    false,
 				Sensitive:   true,
 				WriteOnly:   false,
 			},
-			"security_token": schema.StringAttribute{
-				Description: "STS Token",
+			"ssh_key_data": schema.StringAttribute{
+				Description: "SSH Private Key",
+				Required:    false,
+				Optional:    true,
+				Computed:    false,
+				Sensitive:   true,
+				WriteOnly:   false,
+			},
+			"ssh_key_unlock": schema.StringAttribute{
+				Description: "Private Key Passphrase",
+				Required:    false,
+				Optional:    true,
+				Computed:    false,
+				Sensitive:   true,
+				WriteOnly:   false,
+			},
+			"authorize": schema.BoolAttribute{
+				Description: "Authorize",
+				Required:    false,
+				Optional:    true,
+				Computed:    false,
+				Sensitive:   false,
+				WriteOnly:   false,
+			},
+			"authorize_password": schema.StringAttribute{
+				Description: "Authorize Password",
 				Required:    false,
 				Optional:    true,
 				Computed:    false,
@@ -130,7 +154,7 @@ func (o *terraformResource) ImportState(ctx context.Context, request resource.Im
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the aws.", request.ID),
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the net.", request.ID),
 			err.Error(),
 		)
 		return
