@@ -10,9 +10,9 @@ import (
 	"net/http"
 )
 
-func DoRequest(client *http.Client, ctx context.Context, req *http.Request) (data map[string]any, err error) {
+func DoRequest(ctx context.Context, client *http.Client, req *http.Request) (data map[string]any, err error) {
 	if client == nil {
-		return data, fmt.Errorf("nil http clientWithBasicAuth")
+		return data, fmt.Errorf("nil http client")
 	}
 
 	var resp *http.Response

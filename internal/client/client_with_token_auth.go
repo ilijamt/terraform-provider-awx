@@ -6,16 +6,29 @@ import (
 	"io"
 	"net/http"
 	"strings"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
 type clientWithTokenAuth struct {
 	client *http.Client
 
+	user            *models.User
 	token, hostname string
 	version         string
 }
 
 var _ Client = &clientWithTokenAuth{}
+
+func (c *clientWithTokenAuth) User(ctx context.Context) (_ models.User, err error) {
+	if c.user == nil {
+		if c.user, err = UserId(ctx, c); err != nil {
+			return models.User{}, err
+		}
+	}
+
+	return *c.user, nil
+}
 
 func NewClientWithTokenAuth(token, hostname string, version string, insecureSkipVerify bool, httpClient *http.Client) Client {
 	return &clientWithTokenAuth{
@@ -38,5 +51,5 @@ func (c *clientWithTokenAuth) NewRequest(ctx context.Context, method string, end
 }
 
 func (c *clientWithTokenAuth) Do(ctx context.Context, req *http.Request) (data map[string]any, err error) {
-	return DoRequest(c.client, ctx, req)
+	return DoRequest(ctx, c.client, req)
 }
