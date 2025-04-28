@@ -40,6 +40,11 @@ func TestNewClientWithTokenAuth(t *testing.T) {
 			data, err := c.Do(t.Context(), req)
 			require.ErrorIs(t, err, tst.err)
 			require.Empty(t, data)
+			if tst.err != nil {
+				user, err := c.User(t.Context())
+				require.Error(t, err)
+				require.Empty(t, user)
+			}
 		})
 	}
 }
