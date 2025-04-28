@@ -13,7 +13,7 @@ const (
 func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 {{- range $org := .DataSources }}
-		New{{ $org }}DataSource,
+		{{ $org }},
 {{- end }}
 	}
 }
@@ -22,7 +22,7 @@ func DataSources() []func() datasource.DataSource {
 func Resources() []func() resource.Resource {
 	return []func() resource.Resource{
 {{- range $org := .Resources }}
-		New{{ $org }}Resource,
+		{{ $org }},
 {{- end }}
 	}
 }

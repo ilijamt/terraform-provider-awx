@@ -13,8 +13,8 @@ provider "awx" {
 }
 
 resource "awx_credential_aws" "test" {
-  name           = "Credential for AWS (test)"
-  username       = "username"
-  password       = "password"
-  description    = "Description for our new shiny AWS credential"
+  name         = "Credential for AWS (test)"
+  username     = "username"
+  password     = "password"
+  description  = "Description for our new shiny AWS credential"
 }

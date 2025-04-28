@@ -1,4 +1,4 @@
-package awx
+package aws
 
 import (
 	"encoding/json"
@@ -14,15 +14,16 @@ import (
 )
 
 var (
-	_ resource.Updater                             = &awsCredentialTerraformModel{}
-	_ resource.Cloner[awsCredentialTerraformModel] = &awsCredentialTerraformModel{}
-	_ resource.RequestBody                         = &awsCredentialTerraformModel{}
-	_ resource.Credential                          = &awsCredentialTerraformModel{}
-	_ resource.Id                                  = &awsCredentialTerraformModel{}
+	_ resource.Updater                = &terraformModel{}
+	_ resource.Cloner[terraformModel] = &terraformModel{}
+	_ resource.RequestBody            = &terraformModel{}
+	_ resource.Credential             = &terraformModel{}
+	_ resource.Id                     = &terraformModel{}
 )
 
-// awsCredentialTerraformModel maps the schema for Credential aws
-type awsCredentialTerraformModel struct {
+// terraformModel maps the schema for Credential aws
+type terraformModel struct {
+	userId int64
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 	// Name "Name of this credential"
@@ -39,14 +40,14 @@ type awsCredentialTerraformModel struct {
 	SecurityToken types.String `tfsdk:"security_token" json:"security_token"`
 }
 
-func (o *awsCredentialTerraformModel) GetId() (string, error) {
+func (o *terraformModel) GetId() (string, error) {
 	if o.ID.IsNull() || o.ID.IsUnknown() {
 		return "", fmt.Errorf("id not set")
 	}
 	return o.ID.String(), nil
 }
 
-func (o *awsCredentialTerraformModel) Data() models.Credential {
+func (o *terraformModel) Data() models.Credential {
 	var inputs = map[string]any{
 		"username": o.Username.ValueString(),
 		"password": o.Password.ValueString(),
@@ -58,19 +59,20 @@ func (o *awsCredentialTerraformModel) Data() models.Credential {
 	return models.Credential{
 		CredentialType: 5,
 		Inputs:         inputs,
+		User:           o.userId,
 		Name:           o.Name.ValueString(),
 		Description:    o.Description.ValueString(),
 		Organization:   o.Organization.ValueInt64Pointer(),
 	}
 }
 
-func (o *awsCredentialTerraformModel) RequestBody() ([]byte, error) {
+func (o *terraformModel) RequestBody() ([]byte, error) {
 	return json.Marshal(o.Data())
 }
 
 // Clone the object
-func (o *awsCredentialTerraformModel) Clone() awsCredentialTerraformModel {
-	return awsCredentialTerraformModel{
+func (o *terraformModel) Clone() terraformModel {
+	return terraformModel{
 		ID:            o.ID,
 		Name:          o.Name,
 		Description:   o.Description,
@@ -81,35 +83,35 @@ func (o *awsCredentialTerraformModel) Clone() awsCredentialTerraformModel {
 	}
 }
 
-func (o *awsCredentialTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *awsCredentialTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *awsCredentialTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *awsCredentialTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *awsCredentialTerraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Password, data, false)
 }
 
-func (o *awsCredentialTerraformModel) setSecurityToken(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setSecurityToken(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.SecurityToken, data, false)
 }
 
-func (o *awsCredentialTerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *awsCredentialTerraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *terraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("data is empty")

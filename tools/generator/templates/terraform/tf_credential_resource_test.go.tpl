@@ -7,15 +7,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/awx"
+	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/{{ .PackageName }}"
 )
 
-func TestNew{{ $.TypeName | pascalCase }}CredentialResource(t *testing.T) {
-
-    t.Run("config validators should not be empty", func(t *testing.T) {
-        obj := awx.New{{ $.TypeName | pascalCase }}CredentialResource()
-        require.NotNil(t, obj)
-        validators := obj.(resource.ResourceWithConfigValidators).ConfigValidators(t.Context())
-        require.NotEmpty(t, validators)
-	})
+func TestNewResource(t *testing.T) {
+    obj := {{ .PackageName }}.NewResource()
+    require.NotNil(t, obj)
+    validators := obj.(resource.ResourceWithConfigValidators).ConfigValidators(t.Context())
+    require.NotEmpty(t, validators)
+    resp := &resource.MetadataResponse{}
+    obj.Metadata(t.Context(), resource.MetadataRequest{ProviderTypeName: "awx"}, resp)
+    require.Equal(t, "awx_credential_{{ .TypeName }}", resp.TypeName)
 }
