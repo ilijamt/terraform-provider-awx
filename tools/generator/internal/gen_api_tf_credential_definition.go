@@ -16,6 +16,8 @@ func GenerateApiTfCredentialDefinition(tpl *template.Template, config Config, it
 		return nil, inclDatasource, err
 	}
 
+	resourcePath = fmt.Sprintf("%s/credentials/%s", resourcePath, strings.ToLower(p.TypeName))
+
 	var tpls = []struct {
 		Filename string
 		Template string
@@ -23,15 +25,19 @@ func GenerateApiTfCredentialDefinition(tpl *template.Template, config Config, it
 		Data     map[string]any
 	}{
 		{
-			Filename: fmt.Sprintf("%s/gen_obj_credential_%s_model.go", resourcePath, strings.ToLower(p.TypeName)),
+			Filename: fmt.Sprintf("%s/model.go", resourcePath),
 			Template: "tf_credential_model.go.tpl",
 		},
 		{
-			Filename: fmt.Sprintf("%s/gen_obj_credential_%s_resource.go", resourcePath, strings.ToLower(p.TypeName)),
+			Filename: fmt.Sprintf("%s/resource.go", resourcePath),
 			Template: "tf_credential_resource.go.tpl",
 		},
 		{
-			Filename: fmt.Sprintf("%s/gen_obj_credential_%s_data_source.go", resourcePath, strings.ToLower(p.TypeName)),
+			Filename: fmt.Sprintf("%s/resource_test.go", resourcePath),
+			Template: "tf_credential_resource_test.go.tpl",
+		},
+		{
+			Filename: fmt.Sprintf("%s/data_source.go", resourcePath),
 			Template: "tf_credential_data_source.go.tpl",
 			Skip:     !inclDatasource,
 		},
