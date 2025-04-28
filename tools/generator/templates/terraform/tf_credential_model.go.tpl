@@ -1,31 +1,28 @@
 package {{ .PackageName }}
 
 import (
+	"encoding/json"
 	"fmt"
+
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
+	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
 
 var (
-    _ resource.Updater = &{{ $.Name | lowerCamelCase }}CredentialTerraformModel{}
-    _ resource.Cloner[{{ $.Name | lowerCamelCase }}CredentialTerraformModel] = &{{ $.Name | lowerCamelCase }}CredentialTerraformModel{}
-    _ resource.Body = &{{ .Name | lowerCamelCase }}CredentialBodyRequestModel{}
+    _ resource.Updater = &{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{}
+    _ resource.Cloner[{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel] = &{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{}
+    _ resource.RequestBody = &{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{}
+	_ resource.Credential = &{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{}
+	_ resource.Id = &{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{}
 )
 
-// {{ .Name | lowerCamelCase }}CredentialBodyRequestModel maps the schema for Credential {{ .Name }} for creating and updating the data
-type {{ .Name | lowerCamelCase }}CredentialBodyRequestModel struct {
-{{- range $key, $value := .Fields }}
-    // {{ $value.Generated.Name }} {{ escape_quotes (or $value.HelpText $value.Label) }}
-    {{ $value.Generated.Name }} {{ $value.Generated.GoType }} `json:"{{ $value.Id }}{{ if not $value.Generated.Required }},omitempty{{ end }}"`
-{{- end }}
-}
-
-func (o {{ .Name | lowerCamelCase }}CredentialBodyRequestModel) MarshalJSON() ([]byte, error) { return json.Marshal(o) }
-
-// {{ .Name | lowerCamelCase }}CredentialTerraformModel maps the schema for Credential {{ .Name }}
-type {{ .Name | lowerCamelCase }}CredentialTerraformModel struct {
+// {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel maps the schema for Credential {{ $.TypeName }}
+type {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel struct {
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 {{- range $key, $value := .Fields }}
@@ -34,9 +31,49 @@ type {{ .Name | lowerCamelCase }}CredentialTerraformModel struct {
 {{- end }}
 }
 
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) GetId() (string, error) {
+	if o.ID.IsNull() || o.ID.IsUnknown() {
+		return "", fmt.Errorf("id not set")
+	}
+	return o.ID.String(), nil
+}
+
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) Data() models.Credential {
+    var inputs = map[string]any{
+{{- range $key, $value := .Fields }}
+{{- if and $value.IsInput $value.Generated.Required }}
+        "{{ $value.Id }}": o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}(),
+{{- end }}
+{{- end }}
+    }
+
+{{- range $key, $value := .Fields }}
+{{- if and $value.IsInput (not $value.Generated.Required) }}
+    if !o.{{ $value.Generated.Name }}.IsNull() && !o.{{ $value.Generated.Name }}.IsUnknown() {
+        inputs["{{ $value.Id }}"] = o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}()
+    }
+{{- end }}
+{{- end }}
+
+    return models.Credential{
+        CredentialType: {{ .Id }},
+		Inputs: inputs,
+{{- range $key, $value := .Fields }}
+{{- if not $value.IsInput }}
+        {{ $value.Generated.Name }}: o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}(),
+{{- end }}
+{{- end }}
+    }
+}
+
+
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) RequestBody() ([]byte, error) {
+    return json.Marshal(o.Data())
+}
+
 // Clone the object
-func (o *{{ .Name | lowerCamelCase }}CredentialTerraformModel) Clone() {{ .Name | lowerCamelCase }}CredentialTerraformModel {
-    return {{ .Name | lowerCamelCase }}CredentialTerraformModel{
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) Clone() {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel {
+    return {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel{
         ID: o.ID,
     {{- range $key, $value := .Fields }}
         {{ $value.Generated.Name }}: o.{{ $value.Generated.Name }},
@@ -44,16 +81,8 @@ func (o *{{ .Name | lowerCamelCase }}CredentialTerraformModel) Clone() {{ .Name 
     }
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for {{ .Name }}
-func (o *{{ .Name | lowerCamelCase }}CredentialTerraformModel) BodyRequest() (req {{ .Name | lowerCamelCase }}CredentialBodyRequestModel) {
-{{- range $key, $value := .Fields }}
-    req.{{ $value.Generated.Name }} = o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}()
-{{- end }}
-    return
-}
-
 {{ range $key, $value := .Fields }}
-func (o *{{ $.Name | lowerCamelCase }}CredentialTerraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagnostics, _ error) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagnostics, _ error) {
 {{- if eq $value.Generated.Type "types.String" }}
     return helpers.AttrValueSetString(&o.{{ $value.Generated.Name }}, data, false)
 {{- else if eq $value.Generated.Type "types.Bool" }}
@@ -66,25 +95,62 @@ func (o *{{ $.Name | lowerCamelCase }}CredentialTerraformModel) set{{ $value.Gen
 }
 {{ end }}
 
-func (o *{{ $.Name | lowerCamelCase }}CredentialTerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
     return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialTerraformModel) UpdateWithApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
     if data == nil {
         return diags, fmt.Errorf("data is empty")
     }
 
-	diags, _ = helpers.ApplyFieldMappings(
-		data,
-		[]helpers.FieldMapping{
-			{ APIField: "id", Setter: o.setId },
+	// Set the User, Team or Organization to the proper value
+	// only one of them can be set for the credential, and they are write-only properties
+	// setting them after creation should result in recreation of the resource
+	var fieldUTO []helpers.FieldMapping
 {{- range $key, $value := .Fields }}
-			{ APIField:  "{{ $value.Id }}", Setter:   o.set{{ $value.Generated.Name }} },
+{{- if $value.IsUTO }}
+	if val, ok := data["{{ $value.Id }}"]; ok && val != nil {
+		fieldUTO = append(
+            fieldUTO,
+            helpers.FieldMapping{ APIField:  "{{ $value.Id }}", Setter: o.set{{ $value.Generated.Name }} },
+		)
+	}
 {{- end }}
-		},
+{{- end }}
+
+    // Set the default items to the values in the API payload
+	var fieldMappings = append(
+	    []helpers.FieldMapping{
+            { APIField: "id", Setter: o.setId },
+{{- range $key, $value := .Fields }}
+{{- if and (not $value.IsInput) (not $value.IsUTO) }}
+            { APIField:  "{{ $value.Id }}", Setter:   o.set{{ $value.Generated.Name }} },
+{{- end }}
+{{- end }}
+	    },
+	    fieldUTO...,
 	)
 
+	// We need to process all the inputs that are not a secret
+	// if an input is a secret, then the value will be $encrypted$ which is not useful
+	// so we skip those fields
+	if inputs, ok := data["inputs"].(map[string]any); ok {
+        fieldMappings = append(
+            fieldMappings,
+{{- range $key, $value := .Fields }}
+{{- if and $value.IsInput (not $value.Secret) }}
+            helpers.FieldMapping{
+                APIField:  "{{ $value.Id }}",
+                Setter: o.set{{ $value.Generated.Name }},
+                Data: inputs,
+            },
+{{- end }}
+{{- end }}
+        )
+	}
+
+	diags, _ = helpers.ApplyFieldMappings(data, fieldMappings...)
     return diags, nil
 }

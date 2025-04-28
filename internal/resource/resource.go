@@ -1,9 +1,9 @@
 package resource
 
 import (
-	"encoding/json"
-
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
 type Callee uint8
@@ -28,7 +28,7 @@ type Updater interface {
 	// The data parameter contains key-value pairs representing the resource's properties.
 	// It returns diagnostics that may contain warnings or errors encountered during the update,
 	// as well as any error that occurred during the update process.
-	UpdateWithApiData(data map[string]any) (diags diag.Diagnostics, err error)
+	UpdateWithApiData(callee Callee, source Source, data map[string]any) (diags diag.Diagnostics, err error)
 }
 
 // Cloner is a generic interface for resources that can be cloned.
@@ -39,9 +39,17 @@ type Cloner[T any] interface {
 	Clone() T
 }
 
-// Body is a generic interface for resources that can provide a JSON request body.
-type Body interface {
-	json.Marshaler
+// RequestBody is a generic interface for resources that can provide a JSON request body.
+type RequestBody interface {
+	RequestBody() ([]byte, error)
+}
+
+type Credential interface {
+	Data() models.Credential
+}
+
+type Id interface {
+	GetId() (string, error)
 }
 
 // CallInfo contains information about a resource API call.

@@ -35,19 +35,23 @@ type CredentialField struct {
 	Secret       bool                     `json:"secret" yaml:"secret"`
 	Multiline    bool                     `json:"multiline" yaml:"multiline"`
 	Format       string                   `json:"format" yaml:"format"`
+	IsInput      bool                     `json:"is_input" yaml:"is_input"`
+	IsUTO        bool                     `json:"is_uto" yaml:"is_uto"`
 	AskAtRuntime bool                     `json:"ask_at_runtime" yaml:"ask_at_runtime"`
 	Generated    CredentialFieldGenerated `json:"generated" yaml:"generated"`
 }
 
 type CredentialFieldGenerated struct {
-	Name                   string `json:"name" yaml:"name"`
-	Type                   string `json:"type" yaml:"type"`
-	GoType                 string `json:"go_type" yaml:"go_type"`
-	Required               bool   `json:"required" yaml:"required"`
-	Optional               bool   `json:"optional" yaml:"optional"`
-	Computed               bool   `json:"computed" yaml:"computed"`
-	TerraformValue         string `json:"terraform_value" yaml:"terraform_value"`
-	TerraformAttributeType string `json:"terraform_attribute_type" yaml:"terraform_attribute_type"`
+	Name                   string   `json:"name" yaml:"name"`
+	Type                   string   `json:"type" yaml:"type"`
+	GoType                 string   `json:"go_type" yaml:"go_type"`
+	Required               bool     `json:"required" yaml:"required"`
+	Optional               bool     `json:"optional" yaml:"optional"`
+	Computed               bool     `json:"computed" yaml:"computed"`
+	TerraformValue         string   `json:"terraform_value" yaml:"terraform_value"`
+	TerraformAttributeType string   `json:"terraform_attribute_type" yaml:"terraform_attribute_type"`
+	ValidatorsOneOf        []string `json:"validators_one_of" yaml:"validators_one_of"`
+	WriteOnly              bool     `json:"write_only" yaml:"write_only"`
 }
 
 func (c *ModelCredential) Update(config Config, item Credential, objmap map[string]any) (err error) {
@@ -77,6 +81,7 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 			Id:       "name",
 			Label:    "Name",
 			Type:     "string",
+			IsInput:  false,
 			Generated: CredentialFieldGenerated{
 				Name:                   setPropertyCase("name"),
 				Type:                   awxGoType("string"),
@@ -91,6 +96,7 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 			Id:       "description",
 			Label:    "Description",
 			Type:     "string",
+			IsInput:  false,
 			Generated: CredentialFieldGenerated{
 				Name:                   setPropertyCase("description"),
 				Type:                   awxGoType("string"),
@@ -105,6 +111,8 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 			Id:       "organization",
 			Label:    "Organization",
 			Type:     "integer",
+			IsUTO:    true,
+			IsInput:  false,
 			Generated: CredentialFieldGenerated{
 				Name:                   setPropertyCase("organization"),
 				Type:                   awxGoType("integer"),
@@ -112,6 +120,41 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 				Optional:               true,
 				TerraformValue:         tfGoPrimitiveValue("integer", false),
 				TerraformAttributeType: tfAttributeType("integer"),
+				WriteOnly:              false,
+			},
+		},
+		{
+			HelpText: "User of this credential",
+			Id:       "user",
+			Label:    "User",
+			Type:     "integer",
+			IsUTO:    true,
+			IsInput:  false,
+			Generated: CredentialFieldGenerated{
+				Name:                   setPropertyCase("user"),
+				Type:                   awxGoType("integer"),
+				GoType:                 awxPrimitiveType("integer"),
+				Optional:               true,
+				TerraformValue:         tfGoPrimitiveValue("integer", false),
+				TerraformAttributeType: tfAttributeType("integer"),
+				WriteOnly:              false,
+			},
+		},
+		{
+			HelpText: "Team of this credential",
+			Id:       "team",
+			Label:    "Team",
+			Type:     "integer",
+			IsUTO:    true,
+			IsInput:  false,
+			Generated: CredentialFieldGenerated{
+				Name:                   setPropertyCase("team"),
+				Type:                   awxGoType("integer"),
+				GoType:                 awxPrimitiveType("integer"),
+				Optional:               true,
+				TerraformValue:         tfGoPrimitiveValue("integer", false),
+				TerraformAttributeType: tfAttributeType("integer"),
+				WriteOnly:              false,
 			},
 		},
 	}
@@ -123,7 +166,6 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 
 	var inputs inputsData
 	err = mapstructure.Decode(objmap["inputs"], &inputs)
-
 	c.Required = inputs.Required
 
 	for _, field := range inputs.Fields {
@@ -134,6 +176,8 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 		field.Generated.Name = setPropertyCase(field.Id)
 		field.Generated.Required = slices.Contains(c.Required, field.Id)
 		field.Generated.Optional = !field.Generated.Required
+		field.IsInput = true
+		field.IsUTO = false
 		c.Fields = append(c.Fields, field)
 	}
 

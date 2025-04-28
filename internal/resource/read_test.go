@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
 
@@ -13,41 +12,48 @@ import (
 )
 
 func TestReadResource(t *testing.T) {
-	ctrl := gomock.NewController(t)
-	c := NewMockClient(ctrl)
 	ctx := t.Context()
 	rci := resource.CallInfo{Name: "Name", Endpoint: "/", TypeName: "name"}
 
-	t.Run("state updater/client is nil", func(t *testing.T) {
-		d, err := resource.Read(ctx, nil, rci, types.Int64Value(1), nil)
+	t.Run("data/client is nil", func(t *testing.T) {
+		d, err := resource.Read(ctx, nil, rci, nil)
 		assert.Error(t, err)
 		assert.NotEmpty(t, d)
 	})
 
+	t.Run("has invalid id", func(t *testing.T) {
+		c := NewMockClient(gomock.NewController(t))
+		updater := &dummyResource{getIdErr: fmt.Errorf("err")}
+		d, err := resource.Read(ctx, c, rci, updater)
+		assert.Error(t, err)
+		assert.True(t, d.HasError())
+		assert.Empty(t, updater.data)
+	})
+
 	t.Run("fail to create new request", func(t *testing.T) {
+		c := NewMockClient(gomock.NewController(t))
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(nil, fmt.Errorf("failed to create request")).Times(1)
-		updater := &resourceUpdaterTest{}
-		d, err := resource.Read(ctx, c, rci, types.Int64Value(1), updater)
+		d, err := resource.Read(ctx, c, rci, &dummyResource{getIdId: "1"})
 		assert.Error(t, err)
 		assert.True(t, d.HasError())
 	})
 
 	t.Run("fail to read resource", func(t *testing.T) {
+		c := NewMockClient(gomock.NewController(t))
 		var r, _ = http.NewRequest(http.MethodDelete, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{}, fmt.Errorf("fail to delete")).Times(1)
-		updater := &resourceUpdaterTest{}
-		d, err := resource.Read(ctx, c, rci, types.Int64Value(1), updater)
+		d, err := resource.Read(ctx, c, rci, &dummyResource{getIdId: "1"})
 		assert.Error(t, err)
 		assert.True(t, d.HasError())
 	})
 
 	t.Run("success read a resource", func(t *testing.T) {
+		c := NewMockClient(gomock.NewController(t))
 		var r, _ = http.NewRequest(http.MethodDelete, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{}, nil).Times(1)
-		updater := &resourceUpdaterTest{}
-		d, err := resource.Read(ctx, c, rci, types.Int64Value(1), updater)
+		d, err := resource.Read(ctx, c, rci, &dummyResource{getIdId: "1"})
 		assert.NoError(t, err)
 		assert.False(t, d.HasError())
 	})
