@@ -37,8 +37,8 @@ var (
 	_ resource.ResourceWithImportState = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 )
 
-// New{{ $.TypeName }}CredentialResource is a helper function to simplify the provider implementation.
-func New{{ $.TypeName }}CredentialResource() resource.Resource {
+// New{{ $.TypeName | pascalCase }}CredentialResource is a helper function to simplify the provider implementation.
+func New{{ $.TypeName | pascalCase }}CredentialResource() resource.Resource {
 	return &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 }
 

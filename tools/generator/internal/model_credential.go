@@ -62,7 +62,7 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 	c.Id, _ = objmap["id"].(json.Number).Int64()
 	c.IdKey = cmp.Or(item.IdKey, "id")
 	c.ApiVersion = config.ApiVersion
-	c.PackageName = config.PackageName("awx")
+	c.PackageName = config.PackageName(c.TypeName)
 	c.Required = make([]string, 0)
 	c.Kind, _ = objmap["kind"].(string)
 	c.Managed, _ = objmap["managed"].(bool)

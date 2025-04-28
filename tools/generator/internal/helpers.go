@@ -6,9 +6,11 @@ import (
 	"log"
 	"os"
 	p "path"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"text/template"
+	"unicode"
 
 	"github.com/iancoleman/strcase"
 	"gopkg.in/yaml.v3"
@@ -213,6 +215,11 @@ func init() {
 func renderTemplate(tpl *template.Template, filename, template string, data any) (err error) {
 	log.Printf("Rendering of %s into %s.", template, filename)
 	var f *os.File
+	resourcePathDir := filepath.Dir(filename)
+	if err = os.MkdirAll(resourcePathDir, os.ModePerm); err != nil {
+		return err
+	}
+
 	if f, err = os.Create(filename); err != nil {
 		return err
 	}
@@ -225,6 +232,29 @@ func renderTemplate(tpl *template.Template, filename, template string, data any)
 
 var lowerCase = func(in string) string {
 	return strings.ToLower(in)
+}
+
+var PascalCase = func(s string) string {
+	// Split the string by non-alphanumeric characters
+	words := strings.FieldsFunc(s, func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsNumber(r)
+	})
+
+	// Capitalize the first letter of each word
+	for i, word := range words {
+		if len(word) > 0 {
+			runes := []rune(word)
+			runes[0] = unicode.ToUpper(runes[0])
+			// Make the rest of the letters lowercase
+			for j := 1; j < len(runes); j++ {
+				runes[j] = unicode.ToLower(runes[j])
+			}
+			words[i] = string(runes)
+		}
+	}
+
+	// Join the words back together
+	return strings.Join(words, "")
 }
 
 var convertDefaultValue = func(in any) any {
@@ -255,6 +285,7 @@ var FuncMap = template.FuncMap{
 	"escape_quotes": func(in string) string {
 		return fmt.Sprintf("%q", in)
 	},
+	"pascalCase":     PascalCase,
 	"snakeCase":      strcase.ToSnake,
 	"camelCase":      strcase.ToCamel,
 	"lowerCase":      lowerCase,
