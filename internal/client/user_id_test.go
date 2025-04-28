@@ -32,7 +32,7 @@ func TestUserId(t *testing.T) {
 			user, err := c.User(t.Context())
 			require.NoError(t, err)
 			require.NotNil(t, user)
-			require.Equal(t, 1, user.ID)
+			require.EqualValues(t, 1, user.ID)
 		})
 
 		t.Run("token auth", func(t *testing.T) {
@@ -40,7 +40,7 @@ func TestUserId(t *testing.T) {
 			user, err := c.User(t.Context())
 			require.NoError(t, err)
 			require.NotNil(t, user)
-			require.Equal(t, 1, user.ID)
+			require.EqualValues(t, 1, user.ID)
 		})
 	})
 
