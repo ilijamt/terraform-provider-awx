@@ -10,6 +10,7 @@ import (
 	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -30,45 +31,62 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource                = &{{ .Name | lowerCamelCase }}CredentialResource{}
-	_ resource.ResourceWithConfigure   = &{{ .Name | lowerCamelCase }}CredentialResource{}
-	_ resource.ResourceWithImportState = &{{ .Name | lowerCamelCase }}CredentialResource{}
+	_ resource.Resource                = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
+	_ resource.ResourceWithConfigValidators = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
+	_ resource.ResourceWithConfigure   = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
+	_ resource.ResourceWithImportState = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 )
 
-// New{{ .Name }}CredentialResource is a helper function to simplify the provider implementation.
-func New{{ .Name }}CredentialResource() resource.Resource {
-	return &{{ .Name | lowerCamelCase }}CredentialResource{}
+// New{{ $.TypeName }}CredentialResource is a helper function to simplify the provider implementation.
+func New{{ $.TypeName }}CredentialResource() resource.Resource {
+	return &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
 }
 
-type {{ .Name | lowerCamelCase }}CredentialResource struct {
+type {{ $.TypeName | lowerCamelCase }}CredentialResource struct {
     client           c.Client
     rci              r.CallInfo
     endpoint         string
     name             string
+    typeName         string
     credentialTypeId int
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
     if request.ProviderData == nil {
         return
     }
-    o.rci = r.CallInfo{Name: "{{ .Name }}", Endpoint: "/api/v2/credentials/", TypeName: "{{ .TypeName }}" }
-    o.name = "{{ .Name }}"
+    o.name = "{{ $.Name }}"
+    o.typeName = "{{ $.TypeName }}"
+    o.rci = r.CallInfo{Name: o.name, TypeName: o.typeName, Endpoint: "/api/v2/credentials/" }
     o.client = request.ProviderData.(c.Client)
     o.endpoint = "/api/v2/credentials/"
     o.credentialTypeId = {{ .Id }}
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential_{{ .TypeName }}"
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
+	return []resource.ConfigValidator{
+		resourcevalidator.Conflicting(
+			path.MatchRoot("user"),
+			path.MatchRoot("team"),
+			path.MatchRoot("organization"),
+		),
+	}
+}
+
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
+		Description: "{{ .Description }}",
         Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
+			"id": schema.Int64Attribute{
 				Description: "Database ID of this credential",
 				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
 			},
 {{- range $key, $value := .Fields }}
             "{{ $value.Id | lowerCase }}": schema.{{ $value.Generated.TerraformAttributeType }}Attribute{
@@ -77,17 +95,18 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) Schema(ctx context.Cont
 				Optional:            {{ $value.Generated.Optional }},
 				Computed:            {{ $value.Generated.Computed }},
 				Sensitive:           {{ $value.Secret }},
+				WriteOnly:           {{ $value.Generated.WriteOnly }},
             },
 {{- end }}
         },
     }
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ .Name }}.", request.ID),
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ $.TypeName }}.", request.ID),
 			err.Error(),
 		)
 		return
@@ -95,15 +114,29 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) ImportState(ctx context
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("{{ .IdKey }}"), id)...)
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {}
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var state {{ .Name | lowerCamelCase }}CredentialTerraformModel
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
+	var plan {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+    response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+    if response.Diagnostics.HasError() {
+        return
+    }
+    var d, _ = r.Create(ctx, o.client, rci, &plan)
+	if d.HasError() {
+		response.Diagnostics.Append(d...)
+		return
+	}
+	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
+}
+
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+	var state {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-    var d, _ = r.Read(ctx, o.client, rci, state.ID, &state)
+    var d, _ = r.Read(ctx, o.client, rci, &state)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
 		return
@@ -111,15 +144,28 @@ func (o *{{ .Name | lowerCamelCase }}CredentialResource) Read(ctx context.Contex
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {}
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
+	var plan {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
+    response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+    if response.Diagnostics.HasError() {
+        return
+    }
+    var d, _ = r.Update(ctx, o.client, rci, &plan)
+	if d.HasError() {
+		response.Diagnostics.Append(d...)
+		return
+	}
+	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
+}
 
-func (o *{{ .Name | lowerCamelCase }}CredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var state {{ .Name | lowerCamelCase }}CredentialTerraformModel
+func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+	var state {{ $.TypeName | lowerCamelCase }}CredentialTerraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Delete(ctx, o.client, rci, state.ID)
+	var d, _ = r.Delete(ctx, o.client, rci, &state)
 	response.Diagnostics.Append(d...)
 }

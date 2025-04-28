@@ -113,9 +113,9 @@ var templateCmd = &cobra.Command{
 			}
 
 			_ = p.Save(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath))
-			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sCredential", item.Name))
+			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sCredential", item.TypeName))
 			if inclDatasource {
-				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sCredential", item.Name))
+				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sCredential", item.TypeName))
 			}
 		}
 

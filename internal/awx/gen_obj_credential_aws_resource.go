@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework-validators/resourcevalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	r "github.com/ilijamt/terraform-provider-awx/internal/resource"
@@ -16,13 +19,14 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource                = &awsCredentialResource{}
-	_ resource.ResourceWithConfigure   = &awsCredentialResource{}
-	_ resource.ResourceWithImportState = &awsCredentialResource{}
+	_ resource.Resource                     = &awsCredentialResource{}
+	_ resource.ResourceWithConfigValidators = &awsCredentialResource{}
+	_ resource.ResourceWithConfigure        = &awsCredentialResource{}
+	_ resource.ResourceWithImportState      = &awsCredentialResource{}
 )
 
-// NewAWSCredentialResource is a helper function to simplify the provider implementation.
-func NewAWSCredentialResource() resource.Resource {
+// NewawsCredentialResource is a helper function to simplify the provider implementation.
+func NewawsCredentialResource() resource.Resource {
 	return &awsCredentialResource{}
 }
 
@@ -31,6 +35,7 @@ type awsCredentialResource struct {
 	rci              r.CallInfo
 	endpoint         string
 	name             string
+	typeName         string
 	credentialTypeId int
 }
 
@@ -38,8 +43,9 @@ func (o *awsCredentialResource) Configure(ctx context.Context, request resource.
 	if request.ProviderData == nil {
 		return
 	}
-	o.rci = r.CallInfo{Name: "AWS", Endpoint: "/api/v2/credentials/", TypeName: "aws"}
-	o.name = "AWS"
+	o.name = "Amazon Web Services"
+	o.typeName = "aws"
+	o.rci = r.CallInfo{Name: o.name, TypeName: o.typeName, Endpoint: "/api/v2/credentials/"}
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credentials/"
 	o.credentialTypeId = 5
@@ -49,12 +55,26 @@ func (o *awsCredentialResource) Metadata(ctx context.Context, request resource.M
 	response.TypeName = request.ProviderTypeName + "_credential_aws"
 }
 
+func (o *awsCredentialResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
+	return []resource.ConfigValidator{
+		resourcevalidator.Conflicting(
+			path.MatchRoot("user"),
+			path.MatchRoot("team"),
+			path.MatchRoot("organization"),
+		),
+	}
+}
+
 func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "",
 		Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
+			"id": schema.Int64Attribute{
 				Description: "Database ID of this credential",
 				Computed:    true,
+				PlanModifiers: []planmodifier.Int64{
+					int64planmodifier.UseStateForUnknown(),
+				},
 			},
 			"name": schema.StringAttribute{
 				Description: "Name of this credential",
@@ -62,6 +82,7 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    false,
 				Computed:    false,
 				Sensitive:   false,
+				WriteOnly:   false,
 			},
 			"description": schema.StringAttribute{
 				Description: "Description of this credential",
@@ -69,6 +90,7 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    true,
 				Computed:    false,
 				Sensitive:   false,
+				WriteOnly:   false,
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization of this credential",
@@ -76,6 +98,23 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    true,
 				Computed:    false,
 				Sensitive:   false,
+				WriteOnly:   false,
+			},
+			"user": schema.Int64Attribute{
+				Description: "User of this credential",
+				Required:    false,
+				Optional:    true,
+				Computed:    false,
+				Sensitive:   false,
+				WriteOnly:   false,
+			},
+			"team": schema.Int64Attribute{
+				Description: "Team of this credential",
+				Required:    false,
+				Optional:    true,
+				Computed:    false,
+				Sensitive:   false,
+				WriteOnly:   false,
 			},
 			"username": schema.StringAttribute{
 				Description: "Access Key",
@@ -83,6 +122,7 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    false,
 				Computed:    false,
 				Sensitive:   false,
+				WriteOnly:   false,
 			},
 			"password": schema.StringAttribute{
 				Description: "Secret Key",
@@ -90,6 +130,7 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    false,
 				Computed:    false,
 				Sensitive:   true,
+				WriteOnly:   false,
 			},
 			"security_token": schema.StringAttribute{
 				Description: "STS Token",
@@ -97,6 +138,7 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 				Optional:    true,
 				Computed:    false,
 				Sensitive:   true,
+				WriteOnly:   false,
 			},
 		},
 	}
@@ -106,7 +148,7 @@ func (o *awsCredentialResource) ImportState(ctx context.Context, request resourc
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the AWS.", request.ID),
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the aws.", request.ID),
 			err.Error(),
 		)
 		return
@@ -115,7 +157,20 @@ func (o *awsCredentialResource) ImportState(ctx context.Context, request resourc
 }
 
 func (o *awsCredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
+	var plan awsCredentialTerraformModel
+	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+	var d, _ = r.Create(ctx, o.client, rci, &plan)
+	if d.HasError() {
+		response.Diagnostics.Append(d...)
+		return
+	}
+	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
+
 func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state awsCredentialTerraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
@@ -123,7 +178,7 @@ func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadR
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Read(ctx, o.client, rci, state.ID, &state)
+	var d, _ = r.Read(ctx, o.client, rci, &state)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
 		return
@@ -132,6 +187,18 @@ func (o *awsCredentialResource) Read(ctx context.Context, request resource.ReadR
 }
 
 func (o *awsCredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
+	var plan awsCredentialTerraformModel
+	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
+	if response.Diagnostics.HasError() {
+		return
+	}
+	var d, _ = r.Update(ctx, o.client, rci, &plan)
+	if d.HasError() {
+		response.Diagnostics.Append(d...)
+		return
+	}
+	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
 
 func (o *awsCredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
@@ -141,6 +208,6 @@ func (o *awsCredentialResource) Delete(ctx context.Context, request resource.Del
 	if response.Diagnostics.HasError() {
 		return
 	}
-	var d, _ = r.Delete(ctx, o.client, rci, state.ID)
+	var d, _ = r.Delete(ctx, o.client, rci, &state)
 	response.Diagnostics.Append(d...)
 }

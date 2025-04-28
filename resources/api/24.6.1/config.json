@@ -1467,13 +1467,13 @@
   "credentials": [
     {
       "enabled": true,
-      "name": "AWS",
+      "name": "Amazon Web Services",
       "type_name": "aws",
       "id_key": "id"
     },
     {
       "enabled": false,
-      "name": "Net",
+      "name": "Network",
       "type_name": "net",
       "id_key": "id"
     }

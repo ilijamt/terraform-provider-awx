@@ -47,7 +47,11 @@ build:
 
 .PHONY: build-debug
 build-debug:
-	go build -cover -covermode=atomic -trimpath -o ./build/terraform-provider-awx ./cmd/provider
+	go build -cover -covermode=atomic -gcflags="all=-N -l"  -trimpath -o ./build/terraform-provider-awx ./cmd/provider
+
+.PHONY: dlv-debug
+dlv-debug: build-debug
+	dlv --listen=:2345 --accept-multiclient --continue --headless exec ./build/terraform-provider-awx -- -debug
 
 .PHONY: test
 test:
