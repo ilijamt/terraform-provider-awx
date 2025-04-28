@@ -88,6 +88,7 @@ func (o *terraformModel) Clone() terraformModel {
 }
 
 {{ range $key, $value := .Fields }}
+{{- if not $value.Secret }}
 func (o *terraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagnostics, _ error) {
 {{- if eq $value.Generated.Type "types.String" }}
     return helpers.AttrValueSetString(&o.{{ $value.Generated.Name }}, data, false)
@@ -99,6 +100,7 @@ func (o *terraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagno
     return nil, fmt.Errorf("invalid type: $value.Generated.Type")
 {{- end }}
 }
+{{- end }}
 {{ end }}
 
 func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
