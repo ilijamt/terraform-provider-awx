@@ -8,7 +8,7 @@ import (
 	"os"
 	"slices"
 
-	"github.com/mitchellh/mapstructure"
+	"github.com/go-viper/mapstructure/v2"
 )
 
 type ModelCredential struct {
@@ -52,6 +52,7 @@ type CredentialFieldGenerated struct {
 	TerraformAttributeType string   `json:"terraform_attribute_type" yaml:"terraform_attribute_type"`
 	ValidatorsOneOf        []string `json:"validators_one_of" yaml:"validators_one_of"`
 	WriteOnly              bool     `json:"write_only" yaml:"write_only"`
+	Pointer                bool     `json:"pointer" yaml:"pointer"`
 }
 
 func (c *ModelCredential) Update(config Config, item Credential, objmap map[string]any) (err error) {
@@ -121,42 +122,43 @@ func (c *ModelCredential) Update(config Config, item Credential, objmap map[stri
 				TerraformValue:         tfGoPrimitiveValue("integer", false),
 				TerraformAttributeType: tfAttributeType("integer"),
 				WriteOnly:              false,
+				Pointer:                true,
 			},
 		},
-		{
-			HelpText: "User of this credential",
-			Id:       "user",
-			Label:    "User",
-			Type:     "integer",
-			IsUTO:    true,
-			IsInput:  false,
-			Generated: CredentialFieldGenerated{
-				Name:                   setPropertyCase("user"),
-				Type:                   awxGoType("integer"),
-				GoType:                 awxPrimitiveType("integer"),
-				Optional:               true,
-				TerraformValue:         tfGoPrimitiveValue("integer", false),
-				TerraformAttributeType: tfAttributeType("integer"),
-				WriteOnly:              false,
-			},
-		},
-		{
-			HelpText: "Team of this credential",
-			Id:       "team",
-			Label:    "Team",
-			Type:     "integer",
-			IsUTO:    true,
-			IsInput:  false,
-			Generated: CredentialFieldGenerated{
-				Name:                   setPropertyCase("team"),
-				Type:                   awxGoType("integer"),
-				GoType:                 awxPrimitiveType("integer"),
-				Optional:               true,
-				TerraformValue:         tfGoPrimitiveValue("integer", false),
-				TerraformAttributeType: tfAttributeType("integer"),
-				WriteOnly:              false,
-			},
-		},
+		// {
+		// 	HelpText: "User of this credential, only provided during initial creation of the credential",
+		// 	Id:       "user",
+		// 	Label:    "User",
+		// 	Type:     "integer",
+		// 	IsUTO:    true,
+		// 	IsInput:  false,
+		// 	Generated: CredentialFieldGenerated{
+		// 		Name:                   setPropertyCase("user"),
+		// 		Type:                   awxGoType("integer"),
+		// 		GoType:                 awxPrimitiveType("integer"),
+		// 		Optional:               true,
+		// 		TerraformValue:         tfGoPrimitiveValue("integer", false),
+		// 		TerraformAttributeType: tfAttributeType("integer"),
+		// 		WriteOnly:              true,
+		// 	},
+		// },
+		// {
+		// 	HelpText: "Team of this credential, only provided during initial creation of the credential",
+		// 	Id:       "team",
+		// 	Label:    "Team",
+		// 	Type:     "integer",
+		// 	IsUTO:    true,
+		// 	IsInput:  false,
+		// 	Generated: CredentialFieldGenerated{
+		// 		Name:                   setPropertyCase("team"),
+		// 		Type:                   awxGoType("integer"),
+		// 		GoType:                 awxPrimitiveType("integer"),
+		// 		Optional:               true,
+		// 		TerraformValue:         tfGoPrimitiveValue("integer", false),
+		// 		TerraformAttributeType: tfAttributeType("integer"),
+		// 		WriteOnly:              true,
+		// 	},
+		// },
 	}
 
 	type inputsData struct {

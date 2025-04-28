@@ -60,7 +60,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) Data() model
 		Inputs: inputs,
 {{- range $key, $value := .Fields }}
 {{- if not $value.IsInput }}
-        {{ $value.Generated.Name }}: o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}(),
+        {{ $value.Generated.Name }}: o.{{ $value.Generated.Name }}.{{ $value.Generated.TerraformValue }}{{ if $value.Generated.Pointer }}Pointer{{ end }}(),
 {{- end }}
 {{- end }}
     }
@@ -105,12 +105,10 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) UpdateWithAp
         return diags, fmt.Errorf("data is empty")
     }
 
-	// Set the User, Team or Organization to the proper value
-	// only one of them can be set for the credential, and they are write-only properties
-	// setting them after creation should result in recreation of the resource
 	var fieldUTO []helpers.FieldMapping
 {{- range $key, $value := .Fields }}
-{{- if $value.IsUTO }}
+{{- if and ($value.IsUTO) (not $value.Generated.WriteOnly) }}
+    o.{{ $value.Generated.Name }} = {{ $value.Generated.Type }}Null()
 	if val, ok := data["{{ $value.Id }}"]; ok && val != nil {
 		fieldUTO = append(
             fieldUTO,
@@ -125,7 +123,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialTerraformModel) UpdateWithAp
 	    []helpers.FieldMapping{
             { APIField: "id", Setter: o.setId },
 {{- range $key, $value := .Fields }}
-{{- if and (not $value.IsInput) (not $value.IsUTO) }}
+{{- if and (not $value.IsInput) (not $value.IsUTO) (not $value.Generated.WriteOnly) }}
             { APIField:  "{{ $value.Id }}", Setter:   o.set{{ $value.Generated.Name }} },
 {{- end }}
 {{- end }}

@@ -31,10 +31,6 @@ type awsCredentialTerraformModel struct {
 	Description types.String `tfsdk:"description" json:"description"`
 	// Organization "Organization of this credential"
 	Organization types.Int64 `tfsdk:"organization" json:"organization"`
-	// User "User of this credential"
-	User types.Int64 `tfsdk:"user" json:"user"`
-	// Team "Team of this credential"
-	Team types.Int64 `tfsdk:"team" json:"team"`
 	// Username "Access Key"
 	Username types.String `tfsdk:"username" json:"username"`
 	// Password "Secret Key"
@@ -64,9 +60,7 @@ func (o *awsCredentialTerraformModel) Data() models.Credential {
 		Inputs:         inputs,
 		Name:           o.Name.ValueString(),
 		Description:    o.Description.ValueString(),
-		Organization:   o.Organization.ValueInt64(),
-		User:           o.User.ValueInt64(),
-		Team:           o.Team.ValueInt64(),
+		Organization:   o.Organization.ValueInt64Pointer(),
 	}
 }
 
@@ -81,8 +75,6 @@ func (o *awsCredentialTerraformModel) Clone() awsCredentialTerraformModel {
 		Name:          o.Name,
 		Description:   o.Description,
 		Organization:  o.Organization,
-		User:          o.User,
-		Team:          o.Team,
 		Username:      o.Username,
 		Password:      o.Password,
 		SecurityToken: o.SecurityToken,
@@ -99,14 +91,6 @@ func (o *awsCredentialTerraformModel) setDescription(data any) (_ diag.Diagnosti
 
 func (o *awsCredentialTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *awsCredentialTerraformModel) setUser(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.User, data)
-}
-
-func (o *awsCredentialTerraformModel) setTeam(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Team, data)
 }
 
 func (o *awsCredentialTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
@@ -131,26 +115,12 @@ func (o *awsCredentialTerraformModel) UpdateWithApiData(callee resource.Callee, 
 		return diags, fmt.Errorf("data is empty")
 	}
 
-	// Set the User, Team or Organization to the proper value
-	// only one of them can be set for the credential, and they are write-only properties
-	// setting them after creation should result in recreation of the resource
 	var fieldUTO []helpers.FieldMapping
+	o.Organization = types.Int64Null()
 	if val, ok := data["organization"]; ok && val != nil {
 		fieldUTO = append(
 			fieldUTO,
 			helpers.FieldMapping{APIField: "organization", Setter: o.setOrganization},
-		)
-	}
-	if val, ok := data["user"]; ok && val != nil {
-		fieldUTO = append(
-			fieldUTO,
-			helpers.FieldMapping{APIField: "user", Setter: o.setUser},
-		)
-	}
-	if val, ok := data["team"]; ok && val != nil {
-		fieldUTO = append(
-			fieldUTO,
-			helpers.FieldMapping{APIField: "team", Setter: o.setTeam},
 		)
 	}
 

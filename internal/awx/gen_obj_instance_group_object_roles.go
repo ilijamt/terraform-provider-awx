@@ -7,6 +7,7 @@ import (
 
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 
+	"github.com/go-viper/mapstructure/v2"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -14,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
-	"github.com/mitchellh/mapstructure"
 )
 
 var (

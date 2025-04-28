@@ -9,7 +9,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/mitchellh/mapstructure"
+	"github.com/go-viper/mapstructure/v2"
 )
 
 // ModelConfig holds the entire structure's configuration

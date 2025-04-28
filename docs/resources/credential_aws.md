@@ -26,8 +26,6 @@ description: |-
 - `description` (String) Description of this credential
 - `organization` (Number) Organization of this credential
 - `security_token` (String, Sensitive) STS Token
-- `team` (Number) Team of this credential
-- `user` (Number) User of this credential
 
 ### Read-Only
 

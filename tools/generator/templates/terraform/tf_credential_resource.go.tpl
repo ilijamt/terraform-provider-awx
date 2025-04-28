@@ -70,9 +70,11 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Metadata(ctx conte
 func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
 	return []resource.ConfigValidator{
 		resourcevalidator.Conflicting(
-			path.MatchRoot("user"),
-			path.MatchRoot("team"),
-			path.MatchRoot("organization"),
+{{- range $key, $value := .Fields }}
+{{- if $value.IsUTO }}
+			path.MatchRoot("{{ $value.Id }}"),
+{{- end }}
+{{- end }}
 		),
 	}
 }
