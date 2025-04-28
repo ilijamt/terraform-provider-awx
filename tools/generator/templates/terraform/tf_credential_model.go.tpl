@@ -23,13 +23,17 @@ var (
 
 // terraformModel maps the schema for Credential {{ $.TypeName }}
 type terraformModel struct {
-	userId int64
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 {{- range $key, $value := .Fields }}
     // {{ $value.Generated.Name }} {{ escape_quotes (or $value.HelpText $value.Label) }}
     {{ $value.Generated.Name }} {{ $value.Generated.Type }}  `tfsdk:"{{ $value.Id | lowerCase }}" json:"{{ $value.Id }}"`
 {{- end }}
+
+    // internal variables that are required for the request to finish
+    // successfully
+	userId int64
+	credentialTypeId int64
 }
 
 func (o *terraformModel) GetId() (string, error) {
@@ -57,7 +61,7 @@ func (o *terraformModel) Data() models.Credential {
 {{- end }}
 
     return models.Credential{
-        CredentialType: {{ .Id }},
+		CredentialType: o.credentialTypeId,
 		Inputs: inputs,
 		User: o.userId,
 {{- range $key, $value := .Fields }}

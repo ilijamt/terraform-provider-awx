@@ -20,27 +20,27 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource                = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
-	_ resource.ResourceWithConfigValidators = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
-	_ resource.ResourceWithConfigure   = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
-	_ resource.ResourceWithImportState = &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
+	_ resource.Resource                = &terraformResource{}
+	_ resource.ResourceWithConfigValidators = &terraformResource{}
+	_ resource.ResourceWithConfigure   = &terraformResource{}
+	_ resource.ResourceWithImportState = &terraformResource{}
 )
 
 // NewResource is a helper function to simplify the provider implementation.
 func NewResource() resource.Resource {
-	return &{{ $.TypeName | lowerCamelCase }}CredentialResource{}
+	return &terraformResource{}
 }
 
-type {{ $.TypeName | lowerCamelCase }}CredentialResource struct {
+type terraformResource struct {
     client           c.Client
     rci              r.CallInfo
     endpoint         string
     name             string
     typeName         string
-    credentialTypeId int
+    credentialTypeId int64
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *terraformResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
     if request.ProviderData == nil {
         return
     }
@@ -52,11 +52,11 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Configure(ctx cont
     o.credentialTypeId = {{ .Id }}
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *terraformResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential_{{ .TypeName }}"
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
+func (o *terraformResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
 	return []resource.ConfigValidator{
 		resourcevalidator.Conflicting(
 {{- range $key, $value := .Fields }}
@@ -68,7 +68,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ConfigValidators(c
 	}
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *terraformResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
 		Description: "{{ .Description }}",
         Attributes: map[string]schema.Attribute{
@@ -93,7 +93,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Schema(ctx context
     }
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+func (o *terraformResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
@@ -105,13 +105,22 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) ImportState(ctx co
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("{{ .IdKey }}"), id)...)
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *terraformResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
 	var plan terraformModel
     response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
     if response.Diagnostics.HasError() {
         return
     }
+	if plan.Organization.IsNull() || plan.Organization.IsUnknown() {
+		user, err := o.client.User(ctx)
+		if err != nil {
+			response.Diagnostics.AddError("failed to retrieve current user", err.Error())
+			return
+		}
+		plan.userId = user.ID
+	}
+    plan.credentialTypeId = o.credentialTypeId
     var d, _ = r.Create(ctx, o.client, rci, &plan)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
@@ -120,7 +129,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Create(ctx context
 	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+func (o *terraformResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
@@ -135,13 +144,14 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Read(ctx context.C
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *terraformResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
 	var plan terraformModel
     response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
     if response.Diagnostics.HasError() {
         return
     }
+    plan.credentialTypeId = o.credentialTypeId
     var d, _ = r.Update(ctx, o.client, rci, &plan)
 	if d.HasError() {
 		response.Diagnostics.Append(d...)
@@ -150,7 +160,7 @@ func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Update(ctx context
 	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
 
-func (o *{{ $.TypeName | lowerCamelCase }}CredentialResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+func (o *terraformResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	var state terraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
