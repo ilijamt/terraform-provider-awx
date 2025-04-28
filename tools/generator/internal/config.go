@@ -119,10 +119,10 @@ func (c *Config) Load(filename string) error {
 		return err
 	}
 	for idx, item := range c.Items {
-		if "" == item.ApiPropertyResourceKey {
+		if item.ApiPropertyResourceKey == "" {
 			c.Items[idx].ApiPropertyResourceKey = "POST"
 		}
-		if "" == item.ApiPropertyDataKey {
+		if item.ApiPropertyDataKey == "" {
 			c.Items[idx].ApiPropertyDataKey = "GET"
 		}
 	}

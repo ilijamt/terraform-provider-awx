@@ -143,10 +143,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	configureFromEnvironment(ctx, &config)
 	configureDefaults(ctx, &config)
 
-	var missingHostname = "" == config.Hostname.ValueString() || config.Hostname.IsUnknown()
-	var noTokenAuth = "" == config.Token.ValueString() || config.Token.IsUnknown()
-	var noBasicAuth = ("" == config.Username.ValueString() || config.Username.IsUnknown()) &&
-		("" == config.Password.ValueString() || config.Password.IsUnknown())
+	var missingHostname = config.Hostname.ValueString() == "" || config.Hostname.IsUnknown()
+	var noTokenAuth = config.Token.ValueString() == "" || config.Token.IsUnknown()
+	var noBasicAuth = (config.Username.ValueString() == "" || config.Username.IsUnknown()) &&
+		(config.Password.ValueString() == "" || config.Password.IsUnknown())
 
 	if missingHostname {
 		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
@@ -161,13 +161,13 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	} else {
 		if !noBasicAuth && noTokenAuth {
-			if "" == config.Username.ValueString() || config.Username.IsUnknown() {
+			if config.Username.ValueString() == "" || config.Username.IsUnknown() {
 				resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
 					"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
 					"If either is already set, ensure the value is not empty.")
 			}
 
-			if "" == config.Password.ValueString() || config.Password.IsUnknown() {
+			if config.Password.ValueString() == "" || config.Password.IsUnknown() {
 				resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
 					"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
 					"If either is already set, ensure the value is not empty.")
