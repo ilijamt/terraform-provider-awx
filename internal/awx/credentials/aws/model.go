@@ -103,14 +103,6 @@ func (o *terraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *terraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Password, data, false)
-}
-
-func (o *terraformModel) setSecurityToken(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SecurityToken, data, false)
-}
-
 func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }

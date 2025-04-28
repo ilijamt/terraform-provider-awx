@@ -1,7 +1,7 @@
 package models
 
 type Credential struct {
-	Inputs         map[string]any `json:"inputs" yaml:"inputs" yaml:"inputs"`
+	Inputs         map[string]any `json:"inputs" yaml:"inputs"`
 	Name           string         `json:"name" yaml:"name"`
 	Description    string         `json:"description" yaml:"description"`
 	CredentialType int64          `json:"credential_type" yaml:"credential_type"`

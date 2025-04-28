@@ -123,24 +123,8 @@ func (o *terraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *terraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Password, data, false)
-}
-
-func (o *terraformModel) setSshKeyData(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SshKeyData, data, false)
-}
-
-func (o *terraformModel) setSshKeyUnlock(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SshKeyUnlock, data, false)
-}
-
 func (o *terraformModel) setAuthorize(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Authorize, data)
-}
-
-func (o *terraformModel) setAuthorizePassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AuthorizePassword, data, false)
 }
 
 func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
