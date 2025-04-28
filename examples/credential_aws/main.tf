@@ -17,5 +17,4 @@ resource "awx_credential_aws" "test" {
   username       = "username"
   password       = "password"
   description    = "Description for our new shiny AWS credential"
-  user = 1
 }

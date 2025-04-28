@@ -49,7 +49,7 @@ func Update(ctx context.Context, client client.Client, rci CallInfo, data update
 	buf.Write(payload)
 
 	tflog.Debug(ctx, "Preparing a request to update a resource", map[string]any{
-		"data":     data,
+		"payload":  buf.String(),
 		"method":   http.MethodPatch,
 		"rci":      rci,
 		"endpoint": endpoint,

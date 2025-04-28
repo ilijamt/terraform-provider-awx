@@ -41,7 +41,7 @@ func Create(ctx context.Context, client client.Client, rci CallInfo, data create
 	buf.Write(payload)
 
 	tflog.Debug(ctx, "Preparing a request to create a resource", map[string]any{
-		"data":     data,
+		"payload":  buf.String(),
 		"method":   http.MethodPost,
 		"rci":      rci,
 		"endpoint": endpoint,

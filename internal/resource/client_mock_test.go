@@ -15,6 +15,7 @@ import (
 	http "net/http"
 	reflect "reflect"
 
+	models "github.com/ilijamt/terraform-provider-awx/internal/models"
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -116,6 +117,45 @@ func (c *MockClientNewRequestCall) Do(f func(context.Context, string, string, io
 
 // DoAndReturn rewrite *gomock.Call.DoAndReturn
 func (c *MockClientNewRequestCall) DoAndReturn(f func(context.Context, string, string, io.Reader) (*http.Request, error)) *MockClientNewRequestCall {
+	c.Call = c.Call.DoAndReturn(f)
+	return c
+}
+
+// User mocks base method.
+func (m *MockClient) User(ctx context.Context) (models.User, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "User", ctx)
+	ret0, _ := ret[0].(models.User)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// User indicates an expected call of User.
+func (mr *MockClientMockRecorder) User(ctx any) *MockClientUserCall {
+	mr.mock.ctrl.T.Helper()
+	call := mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "User", reflect.TypeOf((*MockClient)(nil).User), ctx)
+	return &MockClientUserCall{Call: call}
+}
+
+// MockClientUserCall wrap *gomock.Call
+type MockClientUserCall struct {
+	*gomock.Call
+}
+
+// Return rewrite *gomock.Call.Return
+func (c *MockClientUserCall) Return(arg0 models.User, err error) *MockClientUserCall {
+	c.Call = c.Call.Return(arg0, err)
+	return c
+}
+
+// Do rewrite *gomock.Call.Do
+func (c *MockClientUserCall) Do(f func(context.Context) (models.User, error)) *MockClientUserCall {
+	c.Call = c.Call.Do(f)
+	return c
+}
+
+// DoAndReturn rewrite *gomock.Call.DoAndReturn
+func (c *MockClientUserCall) DoAndReturn(f func(context.Context) (models.User, error)) *MockClientUserCall {
 	c.Call = c.Call.DoAndReturn(f)
 	return c
 }

@@ -58,8 +58,6 @@ func (o *awsCredentialResource) Metadata(ctx context.Context, request resource.M
 func (o *awsCredentialResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
 	return []resource.ConfigValidator{
 		resourcevalidator.Conflicting(
-			path.MatchRoot("user"),
-			path.MatchRoot("team"),
 			path.MatchRoot("organization"),
 		),
 	}
@@ -94,22 +92,6 @@ func (o *awsCredentialResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"organization": schema.Int64Attribute{
 				Description: "Organization of this credential",
-				Required:    false,
-				Optional:    true,
-				Computed:    false,
-				Sensitive:   false,
-				WriteOnly:   false,
-			},
-			"user": schema.Int64Attribute{
-				Description: "User of this credential",
-				Required:    false,
-				Optional:    true,
-				Computed:    false,
-				Sensitive:   false,
-				WriteOnly:   false,
-			},
-			"team": schema.Int64Attribute{
-				Description: "Team of this credential",
 				Required:    false,
 				Optional:    true,
 				Computed:    false,
