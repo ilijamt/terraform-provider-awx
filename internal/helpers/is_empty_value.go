@@ -5,5 +5,5 @@ import (
 )
 
 func IsEmptyValue(val attr.Value) bool {
-	return val.IsNull() || val.IsUnknown() || "" == val.String()
+	return val.IsNull() || val.IsUnknown() || val.String() == ""
 }

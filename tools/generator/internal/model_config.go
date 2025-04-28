@@ -207,7 +207,7 @@ func (p *Property) setWriteOnly(values map[string]any, override PropertyOverride
 }
 
 func (p *Property) setDefaultValue(values map[string]any, override PropertyOverride) {
-	if "" != override.DefaultValue {
+	if override.DefaultValue != "" {
 		values["default"] = override.DefaultValue
 	}
 
@@ -242,7 +242,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 }
 
 func (p *Property) setElementType(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.ElementType) {
+	if strings.TrimSpace(override.ElementType) != "" {
 		values["element_type"] = override.ElementType
 	} else if v, err := getItemElementListType(values); err == nil {
 		values["element_type"] = v
@@ -263,7 +263,7 @@ func (p *Property) setRequired(values map[string]any, override PropertyOverride)
 }
 
 func (p *Property) setType(values map[string]any, override PropertyOverride) {
-	if "" != override.Type {
+	if override.Type != "" {
 		values["type"] = override.Type
 	}
 	if val, ok := values["type"].(string); ok {
@@ -288,7 +288,7 @@ func (p *Property) setLabel(values map[string]any, override PropertyOverride) {
 
 }
 func (p *Property) setDescription(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.Description) {
+	if strings.TrimSpace(override.Description) != "" {
 		values["help_text"] = override.Description
 	}
 	if val, ok := values["help_text"].(string); ok {
