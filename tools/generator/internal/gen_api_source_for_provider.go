@@ -20,7 +20,7 @@ func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resour
 	sort.Strings(resources)
 	sort.Strings(dataSources)
 
-	return tpl.ExecuteTemplate(f, "sources.go.tpl", map[string]any{
+	return tpl.ExecuteTemplate(f, "terraform/sources.go.tpl", map[string]any{
 		"ApiVersion":  config.ApiVersion,
 		"PackageName": config.PackageName("awx"),
 		"Resources":   resources,

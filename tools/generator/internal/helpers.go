@@ -279,6 +279,15 @@ var FuncMap = template.FuncMap{
 		}
 		return in
 	},
+	"testTfValue": func(t any, name string) any {
+		switch t {
+		case "integer", "id":
+			return "types.Int64Value(1)"
+		case "boolean", "bool":
+			return "types.BoolValue(true)"
+		}
+		return fmt.Sprintf("types.StringValue(%q)", name)
+	},
 	"url_path_clean": func(in string) string {
 		return p.Clean(in)
 	},

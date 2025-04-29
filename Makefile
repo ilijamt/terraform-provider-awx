@@ -20,8 +20,7 @@ generate-configs: resources/api/*
 
 .PHONY: generate-awx
 generate-awx: generate-config
-	rm -f internal/awx/gen_*.go
-	rm -rf internal/awx/credentials
+	find internal/awx -name "gen_obj*.go" -delete
 	rm -rf cmd/provider/docs/*
 	rm -rf resources/api/$(VERSION)/gen-model-data
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx

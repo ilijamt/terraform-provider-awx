@@ -104,37 +104,37 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 	}{
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_model.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_model.go.tpl",
+			Template: "terraform/tf_model.go.tpl",
 			Render:   true,
 			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_data_source.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_data_source.go.tpl",
+			Template: "terraform/tf_data_source.go.tpl",
 			Render:   !item.NoTerraformDataSource,
 			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_resource.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_resource.go.tpl",
+			Template: "terraform/tf_resource.go.tpl",
 			Render:   !item.NoTerraformResource,
 			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_object_roles.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_resource_object_role.go.tpl",
+			Template: "terraform/tf_resource_object_role.go.tpl",
 			Render:   item.HasObjectRoles,
 			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_survey_spec.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_survey_spec.go.tpl",
+			Template: "terraform/tf_survey_spec.go.tpl",
 			Render:   item.HasSurveySpec,
 			IsNew:    true,
 		},
 		{
 			Filename: fmt.Sprintf("resources/api/%s/docs/%s.md", config.ApiVersion, strings.ToLower(val.TypeName)),
-			Template: "tf_api_description.md.tpl",
+			Template: "terraform/tf_api_description.md.tpl",
 			Render:   item.RenderApiDocs,
 			IsNew:    true,
 		},
@@ -151,7 +151,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		}{
 			Filename: fmt.Sprintf("%s/gen_obj_%s_adg_%s.go", resourcePath,
 				strings.ToLower(val.TypeName), strings.ToLower(adg.Type)),
-			Template: "tf_associate_disassociate.go.tpl",
+			Template: "terraform/tf_associate_disassociate.go.tpl",
 			Render:   true,
 			Data:     adg.Map(deprecated),
 		})
