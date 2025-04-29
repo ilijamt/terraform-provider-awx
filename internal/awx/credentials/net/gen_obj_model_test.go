@@ -9,17 +9,17 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/net"
 )
 
-func TestTerraformModel(t *testing.T) {
+func TestModel(t *testing.T) {
 	t.Run("GetId", func(t *testing.T) {
 		t.Run("no value for id", func(t *testing.T) {
-			obj := net.TerraformModel{}
+			obj := net.Model{}
 			id, err := obj.GetId()
 			assert.Error(t, err)
 			assert.Empty(t, id)
 		})
 
 		t.Run("with value for id", func(t *testing.T) {
-			obj := net.TerraformModel{
+			obj := net.Model{
 				ID: types.Int64Value(1),
 			}
 			id, err := obj.GetId()
@@ -29,7 +29,7 @@ func TestTerraformModel(t *testing.T) {
 	})
 
 	t.Run("Data", func(t *testing.T) {
-		obj := net.TerraformModel{
+		obj := net.Model{
 			ID:                types.Int64Value(1),
 			Name:              types.StringValue("name"),
 			Description:       types.StringValue("description"),
@@ -49,7 +49,7 @@ func TestTerraformModel(t *testing.T) {
 	})
 
 	t.Run("RequestBody", func(t *testing.T) {
-		obj := net.TerraformModel{}
+		obj := net.Model{}
 		payload, err := obj.RequestBody()
 		assert.NoError(t, err)
 		assert.NotEmpty(t, payload)
