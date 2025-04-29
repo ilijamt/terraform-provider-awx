@@ -14,15 +14,15 @@ import (
 )
 
 var (
-	_ resource.Updater                = &TerraformModel{}
-	_ resource.Cloner[TerraformModel] = &TerraformModel{}
-	_ resource.RequestBody            = &TerraformModel{}
-	_ resource.Credential             = &TerraformModel{}
-	_ resource.Id                     = &TerraformModel{}
+	_ resource.Updater       = &Model{}
+	_ resource.Cloner[Model] = &Model{}
+	_ resource.RequestBody   = &Model{}
+	_ resource.Credential    = &Model{}
+	_ resource.Id            = &Model{}
 )
 
-// TerraformModel maps the schema for Credential net
-type TerraformModel struct {
+// Model maps the schema for Credential net
+type Model struct {
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 	// Name "Name of this credential"
@@ -50,14 +50,14 @@ type TerraformModel struct {
 	credentialTypeId int64
 }
 
-func (o *TerraformModel) GetId() (string, error) {
+func (o *Model) GetId() (string, error) {
 	if o.ID.IsNull() || o.ID.IsUnknown() {
 		return "", fmt.Errorf("id not set")
 	}
 	return o.ID.String(), nil
 }
 
-func (o *TerraformModel) Data() models.Credential {
+func (o *Model) Data() models.Credential {
 	var inputs = map[string]any{
 		"username": o.Username.ValueString(),
 	}
@@ -87,13 +87,13 @@ func (o *TerraformModel) Data() models.Credential {
 	}
 }
 
-func (o *TerraformModel) RequestBody() ([]byte, error) {
+func (o *Model) RequestBody() ([]byte, error) {
 	return json.Marshal(o.Data())
 }
 
 // Clone the object
-func (o *TerraformModel) Clone() TerraformModel {
-	return TerraformModel{
+func (o *Model) Clone() Model {
+	return Model{
 		ID:                o.ID,
 		Name:              o.Name,
 		Description:       o.Description,
@@ -107,31 +107,31 @@ func (o *TerraformModel) Clone() TerraformModel {
 	}
 }
 
-func (o *TerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setName(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *TerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setDescription(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Description, data, false)
 }
 
-func (o *TerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setOrganization(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *TerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *TerraformModel) setAuthorize(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setAuthorize(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetBool(&o.Authorize, data)
 }
 
-func (o *TerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+func (o *Model) setId(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *TerraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *Model) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("data is empty")
