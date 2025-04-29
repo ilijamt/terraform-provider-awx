@@ -14,15 +14,15 @@ import (
 )
 
 var (
-    _ resource.Updater = &terraformModel{}
-    _ resource.Cloner[terraformModel] = &terraformModel{}
-    _ resource.RequestBody = &terraformModel{}
-	_ resource.Credential = &terraformModel{}
-	_ resource.Id = &terraformModel{}
+    _ resource.Updater = &TerraformModel{}
+    _ resource.Cloner[TerraformModel] = &TerraformModel{}
+    _ resource.RequestBody = &TerraformModel{}
+	_ resource.Credential = &TerraformModel{}
+	_ resource.Id = &TerraformModel{}
 )
 
-// terraformModel maps the schema for Credential {{ $.TypeName }}
-type terraformModel struct {
+// TerraformModel maps the schema for Credential {{ $.TypeName }}
+type TerraformModel struct {
 	// ID "Database ID for this credential."
 	ID types.Int64 `tfsdk:"id" json:"id"`
 {{- range $key, $value := .Fields }}
@@ -36,14 +36,14 @@ type terraformModel struct {
 	credentialTypeId int64
 }
 
-func (o *terraformModel) GetId() (string, error) {
+func (o *TerraformModel) GetId() (string, error) {
 	if o.ID.IsNull() || o.ID.IsUnknown() {
 		return "", fmt.Errorf("id not set")
 	}
 	return o.ID.String(), nil
 }
 
-func (o *terraformModel) Data() models.Credential {
+func (o *TerraformModel) Data() models.Credential {
     var inputs = map[string]any{
 {{- range $key, $value := .Fields }}
 {{- if and $value.IsInput $value.Generated.Required }}
@@ -73,13 +73,13 @@ func (o *terraformModel) Data() models.Credential {
 }
 
 
-func (o *terraformModel) RequestBody() ([]byte, error) {
+func (o *TerraformModel) RequestBody() ([]byte, error) {
     return json.Marshal(o.Data())
 }
 
 // Clone the object
-func (o *terraformModel) Clone() terraformModel {
-    return terraformModel{
+func (o *TerraformModel) Clone() TerraformModel {
+    return TerraformModel{
         ID: o.ID,
     {{- range $key, $value := .Fields }}
         {{ $value.Generated.Name }}: o.{{ $value.Generated.Name }},
@@ -89,7 +89,7 @@ func (o *terraformModel) Clone() terraformModel {
 
 {{ range $key, $value := .Fields }}
 {{- if not $value.Secret }}
-func (o *terraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagnostics, _ error) {
+func (o *TerraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagnostics, _ error) {
 {{- if eq $value.Generated.Type "types.String" }}
     return helpers.AttrValueSetString(&o.{{ $value.Generated.Name }}, data, false)
 {{- else if eq $value.Generated.Type "types.Bool" }}
@@ -103,11 +103,11 @@ func (o *terraformModel) set{{ $value.Generated.Name }}(data any) (_ diag.Diagno
 {{- end }}
 {{ end }}
 
-func (o *terraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
+func (o *TerraformModel) setId(data any) (_ diag.Diagnostics, _ error) {
     return helpers.AttrValueSetInt64(&o.ID, data)
 }
 
-func (o *terraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *TerraformModel) UpdateWithApiData(callee resource.Callee, source resource.Source, data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
     if data == nil {
         return diags, fmt.Errorf("data is empty")

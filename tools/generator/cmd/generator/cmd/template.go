@@ -49,7 +49,7 @@ var templateCmd = &cobra.Command{
 
 		log.Printf("Processing '%s' in '%s' resource from '%s'\n", apiResourcePath, resourcePath, configResource)
 
-		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
+		tpl, err = internal.LoadTemplates(generator.Fs())
 		if err != nil {
 			return err
 		}

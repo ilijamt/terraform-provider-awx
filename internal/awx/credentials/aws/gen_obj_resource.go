@@ -19,18 +19,18 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource                     = &terraformResource{}
-	_ resource.ResourceWithConfigValidators = &terraformResource{}
-	_ resource.ResourceWithConfigure        = &terraformResource{}
-	_ resource.ResourceWithImportState      = &terraformResource{}
+	_ resource.Resource                     = &TerraformResource{}
+	_ resource.ResourceWithConfigValidators = &TerraformResource{}
+	_ resource.ResourceWithConfigure        = &TerraformResource{}
+	_ resource.ResourceWithImportState      = &TerraformResource{}
 )
 
 // NewResource is a helper function to simplify the provider implementation.
 func NewResource() resource.Resource {
-	return &terraformResource{}
+	return &TerraformResource{}
 }
 
-type terraformResource struct {
+type TerraformResource struct {
 	client           c.Client
 	rci              r.CallInfo
 	endpoint         string
@@ -39,7 +39,7 @@ type terraformResource struct {
 	credentialTypeId int64
 }
 
-func (o *terraformResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+func (o *TerraformResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
 	if request.ProviderData == nil {
 		return
 	}
@@ -51,11 +51,11 @@ func (o *terraformResource) Configure(ctx context.Context, request resource.Conf
 	o.credentialTypeId = 5
 }
 
-func (o *terraformResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
+func (o *TerraformResource) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_credential_aws"
 }
 
-func (o *terraformResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
+func (o *TerraformResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
 	return []resource.ConfigValidator{
 		resourcevalidator.Conflicting(
 			path.MatchRoot("organization"),
@@ -63,7 +63,7 @@ func (o *terraformResource) ConfigValidators(ctx context.Context) []resource.Con
 	}
 }
 
-func (o *terraformResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (o *TerraformResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Description: "",
 		Attributes: map[string]schema.Attribute{
@@ -126,7 +126,7 @@ func (o *terraformResource) Schema(ctx context.Context, req resource.SchemaReque
 	}
 }
 
-func (o *terraformResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
+func (o *TerraformResource) ImportState(ctx context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
 	var id, err = strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		response.Diagnostics.AddError(
@@ -138,9 +138,9 @@ func (o *terraformResource) ImportState(ctx context.Context, request resource.Im
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("id"), id)...)
 }
 
-func (o *terraformResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+func (o *TerraformResource) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeCreate)
-	var plan terraformModel
+	var plan TerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -162,8 +162,8 @@ func (o *terraformResource) Create(ctx context.Context, request resource.CreateR
 	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
 
-func (o *terraformResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var state terraformModel
+func (o *TerraformResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+	var state TerraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeRead)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
@@ -177,9 +177,9 @@ func (o *terraformResource) Read(ctx context.Context, request resource.ReadReque
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-func (o *terraformResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
+func (o *TerraformResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var rci = o.rci.With(r.SourceResource, r.CalleeUpdate)
-	var plan terraformModel
+	var plan TerraformModel
 	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
 	if response.Diagnostics.HasError() {
 		return
@@ -193,8 +193,8 @@ func (o *terraformResource) Update(ctx context.Context, request resource.UpdateR
 	response.Diagnostics.Append(response.State.Set(ctx, &plan)...)
 }
 
-func (o *terraformResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var state terraformModel
+func (o *TerraformResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
+	var state TerraformModel
 	var rci = o.rci.With(r.SourceResource, r.CalleeDelete)
 	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
 	if response.Diagnostics.HasError() {
