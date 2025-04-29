@@ -41,8 +41,8 @@ func GenerateApiTfCredentialDefinition(tpl *template.Template, config Config, it
 			Template: "terraform/credentials/tf_resource_test.go.tpl",
 		},
 		{
-			Filename: fmt.Sprintf("%s/gen_obj_resource_create_test.go", resourcePath),
-			Template: "terraform/credentials/tf_resource_create_test.go.tpl",
+			Filename: fmt.Sprintf("%s/gen_obj_resource_acc_test.go", resourcePath),
+			Template: "terraform/credentials/tf_resource_acc_test.go.tpl",
 		},
 		{
 			Filename: fmt.Sprintf("%s/gen_obj_data_source.go", resourcePath),

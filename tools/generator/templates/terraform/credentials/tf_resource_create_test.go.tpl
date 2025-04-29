@@ -1,1 +1,0 @@
-package {{ .PackageName }}_test
