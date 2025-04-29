@@ -8,6 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
 
@@ -22,7 +23,7 @@ func TestReadResource(t *testing.T) {
 	})
 
 	t.Run("has invalid id", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		updater := &dummyResource{getIdErr: fmt.Errorf("err")}
 		d, err := resource.Read(ctx, c, rci, updater)
 		assert.Error(t, err)
@@ -31,7 +32,7 @@ func TestReadResource(t *testing.T) {
 	})
 
 	t.Run("fail to create new request", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(nil, fmt.Errorf("failed to create request")).Times(1)
 		d, err := resource.Read(ctx, c, rci, &dummyResource{getIdId: "1"})
 		assert.Error(t, err)
@@ -39,7 +40,7 @@ func TestReadResource(t *testing.T) {
 	})
 
 	t.Run("fail to read resource", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		var r, _ = http.NewRequest(http.MethodDelete, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{}, fmt.Errorf("fail to delete")).Times(1)
@@ -49,7 +50,7 @@ func TestReadResource(t *testing.T) {
 	})
 
 	t.Run("success read a resource", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		var r, _ = http.NewRequest(http.MethodDelete, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodGet), gomock.Any(), gomock.Eq(nil)).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{}, nil).Times(1)

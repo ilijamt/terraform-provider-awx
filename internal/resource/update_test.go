@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/resource"
 )
 
@@ -23,7 +24,7 @@ func TestUpdate(t *testing.T) {
 	})
 
 	t.Run("fail to create new request", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodPatch), gomock.Any(), gomock.Any()).Return(nil, fmt.Errorf("failed to create request")).Times(1)
 		updater := &dummyResource{getIdId: "1"}
 		d, err := resource.Update(ctx, c, rci, updater)
@@ -32,7 +33,7 @@ func TestUpdate(t *testing.T) {
 	})
 
 	t.Run("has invalid id", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		updater := &dummyResource{getIdErr: fmt.Errorf("err")}
 		d, err := resource.Update(ctx, c, rci, updater)
 		assert.Error(t, err)
@@ -41,7 +42,7 @@ func TestUpdate(t *testing.T) {
 	})
 
 	t.Run("fail to update resource", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		var r, _ = http.NewRequest(http.MethodPatch, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodPatch), gomock.Any(), gomock.Any()).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{}, fmt.Errorf("fail to create resource")).Times(1)
@@ -53,7 +54,7 @@ func TestUpdate(t *testing.T) {
 	})
 
 	t.Run("success update a resource", func(t *testing.T) {
-		c := NewMockClient(gomock.NewController(t))
+		c, _ := client.NewTestingClient(t)
 		var r, _ = http.NewRequest(http.MethodPatch, "http://localhost", nil)
 		c.EXPECT().NewRequest(gomock.Eq(ctx), gomock.Eq(http.MethodPatch), gomock.Any(), gomock.Any()).Return(r, nil).Times(1)
 		c.EXPECT().Do(gomock.Eq(ctx), gomock.Eq(r)).Return(map[string]any{"id": 1}, nil).Times(1)
