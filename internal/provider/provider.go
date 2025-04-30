@@ -31,6 +31,7 @@ type Provider struct {
 	version    string
 	config     Model
 	httpClient *http.Client
+	awxClient  c.Client
 
 	fnResources   []func() resource.Resource
 	fnDataSources []func() datasource.DataSource
@@ -179,11 +180,14 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client c.Client
-	if !noBasicAuth && noTokenAuth {
-		client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
-	} else {
-		client = c.NewClientWithTokenAuth(config.Token.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	var client = p.awxClient
+	if client == nil {
+		if !noBasicAuth && noTokenAuth {
+			client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+		} else {
+			client = c.NewClientWithTokenAuth(config.Token.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+		}
+		p.awxClient = client
 	}
 	resp.DataSourceData = client
 	resp.ResourceData = client
@@ -199,17 +203,18 @@ func (p *Provider) DataSources(ctx context.Context) []func() datasource.DataSour
 	return p.fnDataSources
 }
 
-func NewFuncProvider(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
+func NewFuncProvider(version string, httpClient *http.Client, awxClient c.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
 	return func() provider.Provider {
-		return New(version, httpClient, fnResources, fnDataSources)
+		return New(version, httpClient, awxClient, fnResources, fnDataSources)
 	}
 }
 
-func New(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
+func New(version string, httpClient *http.Client, awxClient c.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
 	return &Provider{
 		version:       version,
 		fnResources:   fnResources,
 		fnDataSources: fnDataSources,
 		httpClient:    httpClient,
+		awxClient:     awxClient,
 	}
 }

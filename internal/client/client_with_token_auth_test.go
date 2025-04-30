@@ -31,6 +31,8 @@ func TestNewClientWithTokenAuth(t *testing.T) {
 	}
 
 	c := client.NewClientWithTokenAuth("token", server.URL, "test", true, nil)
+	_, err := c.User(t.Context())
+	require.Error(t, err)
 
 	for _, tst := range tests {
 		t.Run(tst.method, func(t *testing.T) {

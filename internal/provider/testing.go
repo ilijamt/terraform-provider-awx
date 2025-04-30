@@ -8,14 +8,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/client"
 )
 
 func TestAccPreCheck(t *testing.T) {}
 
-func TestFactories(t *testing.T, name string, httpClient *http.Client, version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) (factory map[string]func() (tfprotov6.ProviderServer, error)) {
+func TestFactories(t *testing.T, name string, httpClient *http.Client, awxClient client.Client, version string, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) (factory map[string]func() (tfprotov6.ProviderServer, error)) {
 	return map[string]func() (tfprotov6.ProviderServer, error){
 		name: providerserver.NewProtocol6WithError(
-			NewFuncProvider(version, httpClient, fnResources, fnDataSources)(),
+			NewFuncProvider(version, httpClient, awxClient, fnResources, fnDataSources)(),
 		),
 	}
 }
