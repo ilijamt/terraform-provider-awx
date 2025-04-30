@@ -22,7 +22,7 @@ provider "awx" {
 )
 
 func TestProviderIntegration(t *testing.T) {
-	factories := provider.TestFactories(t, "awx", nil, version.Version, provider.TestEmptyResources(t), provider.TestEmptyDataSources(t))
+	factories := provider.TestFactories(t, "awx", nil, nil, version.Version, provider.TestEmptyResources(t), provider.TestEmptyDataSources(t))
 	resource.UnitTest(t, resource.TestCase{
 		PreCheck:                 func() { provider.TestAccPreCheck(t) },
 		ProtoV6ProviderFactories: factories,
