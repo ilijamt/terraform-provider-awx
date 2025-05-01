@@ -4,7 +4,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/aws"
-	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/net"
 )
 
 const (
@@ -119,6 +118,5 @@ func Resources() []func() resource.Resource {
 		NewWorkflowJobTemplateResource,
 		NewWorkflowJobTemplateSurveyResource,
 		aws.NewResource,
-		net.NewResource,
 	}
 }
