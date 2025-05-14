@@ -13,8 +13,6 @@ AWX Versions
 
 Currently, built provider versions for AWX.
 
-* 24.2.0
-    * [Deprecations](resources/api/24.2.0/deprecated.md)
 * 24.6.1
     * [Deprecations](resources/api/24.6.1/deprecated.md)
 
@@ -31,7 +29,7 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-export AWX_VERSION=24.2.0
+export AWX_VERSION=24.6.1
 mkdir -p resources/api/$AWX_VERSION/config resources/api/$AWX_VERSION/gen-data
 cat <<EOF > resources/api/$AWX_VERSION/config/default.json
 {

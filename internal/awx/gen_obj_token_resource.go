@@ -39,6 +39,7 @@ func NewTokensResource() resource.Resource {
 type tokensResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *tokensResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -46,6 +47,7 @@ func (o *tokensResource) Configure(ctx context.Context, request resource.Configu
 		return
 	}
 
+	o.name = "Tokens"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/tokens/"
 }
@@ -205,9 +207,6 @@ func (o *tokensResource) Create(ctx context.Context, request resource.CreateRequ
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *tokensResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -249,9 +248,6 @@ func (o *tokensResource) Read(ctx context.Context, request resource.ReadRequest,
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *tokensResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -299,9 +295,6 @@ func (o *tokensResource) Update(ctx context.Context, request resource.UpdateRequ
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *tokensResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

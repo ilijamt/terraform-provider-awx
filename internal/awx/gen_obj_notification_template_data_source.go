@@ -35,6 +35,7 @@ func NewNotificationTemplateDataSource() datasource.DataSource {
 type notificationTemplateDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -43,6 +44,7 @@ func (o *notificationTemplateDataSource) Configure(_ context.Context, req dataso
 		return
 	}
 
+	o.name = "NotificationTemplate"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/notification_templates/"
 }

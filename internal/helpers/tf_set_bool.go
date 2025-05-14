@@ -8,6 +8,7 @@ import (
 )
 
 func AttrValueSetBool(obj *types.Bool, data any) (d diag.Diagnostics, err error) {
+	d = make(diag.Diagnostics, 0)
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(

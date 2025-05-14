@@ -42,6 +42,7 @@ func NewApplicationResource() resource.Resource {
 type applicationResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *applicationResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -49,6 +50,7 @@ func (o *applicationResource) Configure(ctx context.Context, request resource.Co
 		return
 	}
 
+	o.name = "Application"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/applications/"
 }
@@ -243,9 +245,6 @@ func (o *applicationResource) Create(ctx context.Context, request resource.Creat
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *applicationResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -296,9 +295,6 @@ func (o *applicationResource) Read(ctx context.Context, request resource.ReadReq
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *applicationResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -354,9 +350,6 @@ func (o *applicationResource) Update(ctx context.Context, request resource.Updat
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *applicationResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

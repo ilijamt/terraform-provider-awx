@@ -9,6 +9,7 @@ import (
 )
 
 func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnostics, err error) {
+	d = make(diag.Diagnostics, 0)
 	if obj == nil {
 		err = fmt.Errorf("obj is nil")
 		d.AddError(

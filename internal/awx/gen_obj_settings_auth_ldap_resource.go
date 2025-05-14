@@ -40,6 +40,7 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 type settingsAuthLdapResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsAuthLdapResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -47,6 +48,7 @@ func (o *settingsAuthLdapResource) Configure(ctx context.Context, request resour
 		return
 	}
 
+	o.name = "SettingsAuthLDAP"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/ldap/"
 }
@@ -1335,9 +1337,6 @@ func (o *settingsAuthLdapResource) Create(ctx context.Context, request resource.
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthLdapResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -1387,9 +1386,6 @@ func (o *settingsAuthLdapResource) Read(ctx context.Context, request resource.Re
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthLdapResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -1444,9 +1440,6 @@ func (o *settingsAuthLdapResource) Update(ctx context.Context, request resource.
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthLdapResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
