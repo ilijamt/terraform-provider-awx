@@ -3,7 +3,7 @@ module github.com/ilijamt/terraform-provider-awx
 go 1.24
 
 require (
-	github.com/Masterminds/semver/v3 v3.3.1
+	github.com/Masterminds/semver/v3 v3.4.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/hashicorp/terraform-plugin-framework v1.14.1
 	github.com/hashicorp/terraform-plugin-framework-validators v0.18.0
