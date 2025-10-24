@@ -56,7 +56,7 @@ dlv-debug: build-debug
 
 .PHONY: test
 test:
-	go test -coverpkg=./internal/... ./internal/awx/credentials/... ./internal/resource ./internal/client ./internal/helpers ./internal/hooks ./internal/models ./internal/provider -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
+	go test -coverpkg=./internal/... ./internal/awx/credential/... ./internal/resource ./internal/client ./internal/helpers ./internal/hooks ./internal/models ./internal/provider -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
 	go tool cover -html=build/coverage.out -o build/coverage.html
 
 .PHONY: testacc
