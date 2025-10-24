@@ -46,10 +46,7 @@ func parseTemplatesFromFS(tpl *template.Template, fs embed.FS, dir string) error
 		}
 
 		// Use the relative path as the template name (without the "templates/" prefix)
-		templateName := path
-		if strings.HasPrefix(templateName, "templates/") {
-			templateName = templateName[len("templates/"):]
-		}
+		templateName := strings.TrimPrefix(path, "templates/")
 
 		// Parse the template
 		_, err = tpl.New(templateName).Parse(string(content))
