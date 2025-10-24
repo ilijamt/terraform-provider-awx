@@ -32,6 +32,7 @@ func NewScheduleDataSource() datasource.DataSource {
 type scheduleDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -40,6 +41,7 @@ func (o *scheduleDataSource) Configure(_ context.Context, req datasource.Configu
 		return
 	}
 
+	o.name = "Schedule"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/schedules/"
 }

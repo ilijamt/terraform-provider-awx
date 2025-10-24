@@ -30,6 +30,7 @@ func New{{ .Name }}DataSource() datasource.DataSource {
 type {{ .Name | lowerCamelCase }}DataSource struct{
     client   c.Client
     endpoint string
+    name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -38,6 +39,7 @@ func (o *{{ .Name | lowerCamelCase }}DataSource) Configure(_ context.Context, re
         return
     }
 
+    o.name = "{{ .Name }}"
     o.client = req.ProviderData.(c.Client)
     o.endpoint = "{{ .Endpoint }}"
 }

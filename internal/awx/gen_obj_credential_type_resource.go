@@ -41,6 +41,7 @@ func NewCredentialTypeResource() resource.Resource {
 type credentialTypeResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *credentialTypeResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -48,6 +49,7 @@ func (o *credentialTypeResource) Configure(ctx context.Context, request resource
 		return
 	}
 
+	o.name = "CredentialType"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credential_types/"
 }
@@ -213,9 +215,6 @@ func (o *credentialTypeResource) Create(ctx context.Context, request resource.Cr
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *credentialTypeResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -257,9 +256,6 @@ func (o *credentialTypeResource) Read(ctx context.Context, request resource.Read
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *credentialTypeResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -307,9 +303,6 @@ func (o *credentialTypeResource) Update(ctx context.Context, request resource.Up
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *credentialTypeResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

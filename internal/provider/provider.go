@@ -31,6 +31,7 @@ type Provider struct {
 	version    string
 	config     Model
 	httpClient *http.Client
+	awxClient  c.Client
 
 	fnResources   []func() resource.Resource
 	fnDataSources []func() datasource.DataSource
@@ -143,10 +144,10 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 	configureFromEnvironment(ctx, &config)
 	configureDefaults(ctx, &config)
 
-	var missingHostname = "" == config.Hostname.ValueString() || config.Hostname.IsUnknown()
-	var noTokenAuth = "" == config.Token.ValueString() || config.Token.IsUnknown()
-	var noBasicAuth = ("" == config.Username.ValueString() || config.Username.IsUnknown()) &&
-		("" == config.Password.ValueString() || config.Password.IsUnknown())
+	var missingHostname = config.Hostname.ValueString() == "" || config.Hostname.IsUnknown()
+	var noTokenAuth = config.Token.ValueString() == "" || config.Token.IsUnknown()
+	var noBasicAuth = (config.Username.ValueString() == "" || config.Username.IsUnknown()) &&
+		(config.Password.ValueString() == "" || config.Password.IsUnknown())
 
 	if missingHostname {
 		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
@@ -161,23 +162,17 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	} else {
 		if !noBasicAuth && noTokenAuth {
-			if "" == config.Username.ValueString() || config.Username.IsUnknown() {
+			if config.Username.ValueString() == "" || config.Username.IsUnknown() {
 				resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
 					"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
 					"If either is already set, ensure the value is not empty.")
 			}
 
-			if "" == config.Password.ValueString() || config.Password.IsUnknown() {
+			if config.Password.ValueString() == "" || config.Password.IsUnknown() {
 				resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
 					"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
 					"If either is already set, ensure the value is not empty.")
 			}
-			// } else {
-			// 	if "" == config.Token.ValueString() || config.Token.IsUnknown() {
-			// 		resp.Diagnostics.AddAttributeError(path.Root("token"), "Unknown AWX Auth Token", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX auth token. "+
-			// 			"Set the token value in the configuration or use the TOWER_AUTH_TOKEN or AWX_AUTH_TOKEN environment variable."+
-			// 			"If either is already set, ensure the value is not empty.")
-			// 	}
 		}
 	}
 
@@ -185,11 +180,14 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		return
 	}
 
-	var client c.Client
-	if !noBasicAuth && noTokenAuth {
-		client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
-	} else {
-		client = c.NewClientWithTokenAuth(config.Token.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+	var client = p.awxClient
+	if client == nil {
+		if !noBasicAuth && noTokenAuth {
+			client = c.NewClientWithBasicAuth(config.Username.ValueString(), config.Password.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+		} else {
+			client = c.NewClientWithTokenAuth(config.Token.ValueString(), config.Hostname.ValueString(), p.version, !config.VerifySSL.ValueBool(), p.httpClient)
+		}
+		p.awxClient = client
 	}
 	resp.DataSourceData = client
 	resp.ResourceData = client
@@ -205,17 +203,18 @@ func (p *Provider) DataSources(ctx context.Context) []func() datasource.DataSour
 	return p.fnDataSources
 }
 
-func NewFuncProvider(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
+func NewFuncProvider(version string, httpClient *http.Client, awxClient c.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) func() provider.Provider {
 	return func() provider.Provider {
-		return New(version, httpClient, fnResources, fnDataSources)
+		return New(version, httpClient, awxClient, fnResources, fnDataSources)
 	}
 }
 
-func New(version string, httpClient *http.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
+func New(version string, httpClient *http.Client, awxClient c.Client, fnResources []func() resource.Resource, fnDataSources []func() datasource.DataSource) provider.Provider {
 	return &Provider{
 		version:       version,
 		fnResources:   fnResources,
 		fnDataSources: fnDataSources,
 		httpClient:    httpClient,
+		awxClient:     awxClient,
 	}
 }

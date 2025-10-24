@@ -32,6 +32,7 @@ func NewGroupDataSource() datasource.DataSource {
 type groupDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -40,6 +41,7 @@ func (o *groupDataSource) Configure(_ context.Context, req datasource.ConfigureR
 		return
 	}
 
+	o.name = "Group"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/groups/"
 }

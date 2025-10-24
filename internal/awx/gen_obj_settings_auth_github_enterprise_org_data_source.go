@@ -27,6 +27,7 @@ func NewSettingsAuthGithubEnterpriseOrgDataSource() datasource.DataSource {
 type settingsAuthGithubEnterpriseOrgDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsAuthGithubEnterpriseOrgDataSource) Configure(_ context.Context,
 		return
 	}
 
+	o.name = "SettingsAuthGithubEnterpriseOrg"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/github-enterprise-org/"
 }

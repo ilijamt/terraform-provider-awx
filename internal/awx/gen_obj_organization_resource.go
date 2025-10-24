@@ -42,6 +42,7 @@ func NewOrganizationResource() resource.Resource {
 type organizationResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *organizationResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -49,6 +50,7 @@ func (o *organizationResource) Configure(ctx context.Context, request resource.C
 		return
 	}
 
+	o.name = "Organization"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/organizations/"
 }
@@ -181,9 +183,6 @@ func (o *organizationResource) Create(ctx context.Context, request resource.Crea
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *organizationResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -225,9 +224,6 @@ func (o *organizationResource) Read(ctx context.Context, request resource.ReadRe
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *organizationResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -275,9 +271,6 @@ func (o *organizationResource) Update(ctx context.Context, request resource.Upda
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *organizationResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

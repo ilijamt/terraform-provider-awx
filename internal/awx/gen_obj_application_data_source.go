@@ -35,6 +35,7 @@ func NewApplicationDataSource() datasource.DataSource {
 type applicationDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -43,6 +44,7 @@ func (o *applicationDataSource) Configure(_ context.Context, req datasource.Conf
 		return
 	}
 
+	o.name = "Application"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/applications/"
 }

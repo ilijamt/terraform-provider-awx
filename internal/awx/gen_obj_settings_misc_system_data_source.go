@@ -27,6 +27,7 @@ func NewSettingsMiscSystemDataSource() datasource.DataSource {
 type settingsMiscSystemDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsMiscSystemDataSource) Configure(_ context.Context, req datasour
 		return
 	}
 
+	o.name = "SettingsMiscSystem"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/system/"
 }

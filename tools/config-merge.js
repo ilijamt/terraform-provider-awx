@@ -44,6 +44,7 @@ function readJSONFiles(directoryPath) {
 const configDefault = require(`${configDir}/default.json`);
 const targetDefault = require(`${apiDir}/config/default.json`);
 const configTypes = readJSONFiles(`${configDir}/types`);
+const configCredentials = readJSONFiles(`${configDir}/credentials`);
 let apiCustomConfigTypes = new Map();
 try {
     apiCustomConfigTypes = readJSONFiles(`${apiDir}/config/types`);
@@ -68,6 +69,14 @@ apiCustomConfigTypes.forEach(function (value, key, map) {
     }
 })
 
-const generatedConfig = Object.assign({}, configDefault, targetDefault, { items: Array.from(configTypes.values()) })
+const generatedConfig = Object.assign(
+    {},
+    configDefault,
+    targetDefault,
+    {
+        items: Array.from(configTypes.values()),
+        credentials: Array.from(configCredentials.values())
+    }
+)
 
 fs.writeFileSync(`${apiDir}/config.json`, JSON.stringify(generatedConfig, null, 2));

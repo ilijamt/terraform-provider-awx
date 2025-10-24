@@ -44,6 +44,7 @@ func NewInventorySourceResource() resource.Resource {
 type inventorySourceResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *inventorySourceResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -51,6 +52,7 @@ func (o *inventorySourceResource) Configure(ctx context.Context, request resourc
 		return
 	}
 
+	o.name = "InventorySource"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/inventory_sources/"
 }
@@ -404,9 +406,6 @@ func (o *inventorySourceResource) Create(ctx context.Context, request resource.C
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *inventorySourceResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -457,9 +456,6 @@ func (o *inventorySourceResource) Read(ctx context.Context, request resource.Rea
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *inventorySourceResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -515,9 +511,6 @@ func (o *inventorySourceResource) Update(ctx context.Context, request resource.U
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *inventorySourceResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
