@@ -6,7 +6,7 @@ import (
 	r "github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/{{ .PackageName }}"
+	"github.com/ilijamt/terraform-provider-awx/internal/awx/credential/{{ .PackageName }}"
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/provider"
 	"github.com/ilijamt/terraform-provider-awx/version"

@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/aws"
+	"github.com/ilijamt/terraform-provider-awx/internal/awx/credential/aws"
 )
 
 func TestModel(t *testing.T) {

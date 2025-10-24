@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/aws"
+	"github.com/ilijamt/terraform-provider-awx/internal/awx/credential/aws"
 )
 
 func TestNewResource(t *testing.T) {
