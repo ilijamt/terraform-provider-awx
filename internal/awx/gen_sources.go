@@ -3,7 +3,7 @@ package awx
 import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/ilijamt/terraform-provider-awx/internal/awx/credentials/aws"
+	credentialAws "github.com/ilijamt/terraform-provider-awx/internal/awx/credential/aws"
 )
 
 const (
@@ -117,6 +117,6 @@ func Resources() []func() resource.Resource {
 		NewWorkflowJobTemplateAssociateDisassociateNotificationTemplateResource,
 		NewWorkflowJobTemplateResource,
 		NewWorkflowJobTemplateSurveyResource,
-		aws.NewResource,
+		credentialAws.NewResource,
 	}
 }

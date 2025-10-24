@@ -94,14 +94,20 @@ type Credential struct {
 }
 
 type Config struct {
-	DefaultRemoveApiDataSource   []string     `json:"default_remove_api_data_source"`
-	DefaultRemoveApiResource     []string     `json:"default_remove_api_resource"`
-	Items                        []Item       `json:"items"`
-	Credentials                  []Credential `json:"credentials"`
-	ApiVersion                   string       `json:"api_version"`
-	RenderApiDocs                bool         `json:"render_api_docs"`
-	GeneratedApiResources        []string     `json:"-"`
-	GeneratedDataSourceResources []string     `json:"-"`
+	DefaultRemoveApiDataSource   []string        `json:"default_remove_api_data_source"`
+	DefaultRemoveApiResource     []string        `json:"default_remove_api_resource"`
+	Items                        []Item          `json:"items"`
+	Credentials                  []Credential    `json:"credentials"`
+	ApiVersion                   string          `json:"api_version"`
+	RenderApiDocs                bool            `json:"render_api_docs"`
+	GeneratedApiResources        []string        `json:"-"`
+	GeneratedDataSourceResources []string        `json:"-"`
+	Imports                      []PackageImport `json:"-"`
+}
+
+type PackageImport struct {
+	Name string `json:"name"`
+	Path string `json:"path"`
 }
 
 func (c *Config) PackageName(name string) string {

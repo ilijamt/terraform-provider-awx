@@ -8,7 +8,7 @@ import (
 	"text/template"
 )
 
-func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resourcePath string, resources []string, dataSources []string) error {
+func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resourcePath string, resources []string, dataSources []string, imports []PackageImport) error {
 	var f *os.File
 	var err error
 	var filename = fmt.Sprintf("%s/gen_sources.go", resourcePath)
@@ -19,11 +19,13 @@ func GenerateApiSourcesForProvider(tpl *template.Template, config Config, resour
 
 	sort.Strings(resources)
 	sort.Strings(dataSources)
+	sort.Slice(imports, func(i, j int) bool { return imports[i].Name < imports[j].Name })
 
 	return tpl.ExecuteTemplate(f, "terraform/sources.go.tpl", map[string]any{
 		"ApiVersion":  config.ApiVersion,
 		"PackageName": config.PackageName("awx"),
 		"Resources":   resources,
 		"DataSources": dataSources,
+		"Imports":     imports,
 	})
 }

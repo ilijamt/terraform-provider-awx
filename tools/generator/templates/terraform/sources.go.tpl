@@ -3,6 +3,10 @@ package {{ .PackageName }}
 import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+
+{{- range $import := .Imports }}
+    {{ $import.Name }} "github.com/ilijamt/terraform-provider-awx/{{ $import.Path }}"
+{{- end }}
 )
 
 const (

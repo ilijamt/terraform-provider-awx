@@ -16,7 +16,7 @@ func GenerateApiTfCredentialDefinition(tpl *template.Template, config Config, it
 		return nil, inclDatasource, err
 	}
 
-	resourcePath = fmt.Sprintf("%s/credentials/%s", resourcePath, strings.ToLower(p.TypeName))
+	resourcePath = fmt.Sprintf("%s/credential/%s", resourcePath, strings.ToLower(p.TypeName))
 
 	var tpls = []struct {
 		Filename string

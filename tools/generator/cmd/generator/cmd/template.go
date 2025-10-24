@@ -7,6 +7,9 @@ import (
 	"slices"
 	"text/template"
 
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
+
 	"github.com/spf13/cobra"
 
 	"github.com/ilijamt/terraform-provider-awx/tools/generator"
@@ -112,10 +115,17 @@ var templateCmd = &cobra.Command{
 				return err
 			}
 
+			c := cases.Title(language.English)
+			credPkgName := fmt.Sprintf("credential%s", c.String(item.TypeName))
+
 			_ = p.Save(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath))
-			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%s.NewResource", item.TypeName))
+			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%s.NewResource", credPkgName))
+			cfg.Imports = append(cfg.Imports, internal.PackageImport{
+				Name: credPkgName,
+				Path: fmt.Sprintf("internal/awx/credential/%s", item.TypeName),
+			})
 			if inclDatasource {
-				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%s.NewDataSource", item.TypeName))
+				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%s.NewDataSource", credPkgName))
 			}
 		}
 
@@ -133,7 +143,7 @@ var templateCmd = &cobra.Command{
 			}
 		}
 
-		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources)
+		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources, cfg.Imports)
 	},
 }
 
