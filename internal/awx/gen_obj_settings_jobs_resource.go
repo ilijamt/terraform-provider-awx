@@ -41,6 +41,7 @@ func NewSettingsJobsResource() resource.Resource {
 type settingsJobsResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsJobsResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -48,6 +49,7 @@ func (o *settingsJobsResource) Configure(ctx context.Context, request resource.C
 		return
 	}
 
+	o.name = "SettingsJobs"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/jobs/"
 }
@@ -410,9 +412,6 @@ func (o *settingsJobsResource) Create(ctx context.Context, request resource.Crea
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsJobsResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -453,9 +452,6 @@ func (o *settingsJobsResource) Read(ctx context.Context, request resource.ReadRe
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsJobsResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -502,9 +498,6 @@ func (o *settingsJobsResource) Update(ctx context.Context, request resource.Upda
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsJobsResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

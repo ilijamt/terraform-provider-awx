@@ -40,6 +40,7 @@ func NewTeamResource() resource.Resource {
 type teamResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *teamResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -47,6 +48,7 @@ func (o *teamResource) Configure(ctx context.Context, request resource.Configure
 		return
 	}
 
+	o.name = "Team"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/teams/"
 }
@@ -163,9 +165,6 @@ func (o *teamResource) Create(ctx context.Context, request resource.CreateReques
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *teamResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -207,9 +206,6 @@ func (o *teamResource) Read(ctx context.Context, request resource.ReadRequest, r
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *teamResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -257,9 +253,6 @@ func (o *teamResource) Update(ctx context.Context, request resource.UpdateReques
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *teamResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

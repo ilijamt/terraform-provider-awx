@@ -40,6 +40,7 @@ func NewGroupResource() resource.Resource {
 type groupResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *groupResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -47,6 +48,7 @@ func (o *groupResource) Configure(ctx context.Context, request resource.Configur
 		return
 	}
 
+	o.name = "Group"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/groups/"
 }
@@ -175,9 +177,6 @@ func (o *groupResource) Create(ctx context.Context, request resource.CreateReque
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *groupResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -219,9 +218,6 @@ func (o *groupResource) Read(ctx context.Context, request resource.ReadRequest, 
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *groupResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -269,9 +265,6 @@ func (o *groupResource) Update(ctx context.Context, request resource.UpdateReque
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *groupResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

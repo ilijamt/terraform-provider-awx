@@ -34,6 +34,7 @@ func NewInventoryDataSource() datasource.DataSource {
 type inventoryDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -42,6 +43,7 @@ func (o *inventoryDataSource) Configure(_ context.Context, req datasource.Config
 		return
 	}
 
+	o.name = "Inventory"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/inventories/"
 }

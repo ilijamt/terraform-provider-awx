@@ -35,6 +35,7 @@ func NewUserDataSource() datasource.DataSource {
 type userDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -43,6 +44,7 @@ func (o *userDataSource) Configure(_ context.Context, req datasource.ConfigureRe
 		return
 	}
 
+	o.name = "User"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/users/"
 }

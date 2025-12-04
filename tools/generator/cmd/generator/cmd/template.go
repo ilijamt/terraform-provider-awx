@@ -1,12 +1,14 @@
 package cmd
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
 	"slices"
 	"text/template"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/spf13/cobra"
 
@@ -28,6 +30,9 @@ var templateCmd = &cobra.Command{
 		tCfg.generatePath = args[1]
 		resourcePath = tCfg.generatePath
 		configResource = fmt.Sprintf("%s/config.json", apiResourcePath)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data/resources", apiResourcePath), os.ModePerm)
+		_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath), os.ModePerm)
 
 		if err = cfg.Load(configResource); err != nil {
 			return err
@@ -47,7 +52,7 @@ var templateCmd = &cobra.Command{
 
 		log.Printf("Processing '%s' in '%s' resource from '%s'\n", apiResourcePath, resourcePath, configResource)
 
-		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
+		tpl, err = internal.LoadTemplates(generator.Fs())
 		if err != nil {
 			return err
 		}
@@ -55,19 +60,19 @@ var templateCmd = &cobra.Command{
 		for _, item := range cfg.Items {
 			if item.Enabled {
 				if !item.NoTerraformResource {
-					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
+					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sResource", item.Name))
 					for _, adg := range item.AssociateDisassociateGroups {
-						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sAssociateDisassociate%s", item.Name, adg.Type))
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sAssociateDisassociate%sResource", item.Name, adg.Type))
 					}
 					if item.HasSurveySpec {
-						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%sSurvey", item.Name))
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("New%sSurveyResource", item.Name))
 					}
 				}
 
 				if !item.NoTerraformDataSource {
-					cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, item.Name)
+					cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("New%sDataSource", item.Name))
 					if item.HasObjectRoles {
-						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%sObjectRoles", item.Name))
+						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("New%sObjectRolesDataSource", item.Name))
 					}
 				}
 
@@ -82,18 +87,45 @@ var templateCmd = &cobra.Command{
 					deprecated.Resources = append(deprecated.Resources, dr.Resources...)
 					deprecated.DataSources = append(deprecated.DataSources, dr.DataSources...)
 					deprecated.Properties = append(deprecated.Properties, dr.Properties...)
-					{
-						_ = os.MkdirAll(fmt.Sprintf("%s/gen-model-data", apiResourcePath), os.ModePerm)
-						payload, _ := json.MarshalIndent(p, "", "  ")
-						genDataFile := fmt.Sprintf("%s/gen-model-data/%s.json", apiResourcePath, item.Name)
-						log.Printf("Storing generated data for '%s' in '%s'\n", item.Name, genDataFile)
-						_ = os.WriteFile(genDataFile, payload, os.ModePerm)
-					}
+					_ = p.Save(fmt.Sprintf("%s/gen-model-data/resources", apiResourcePath))
 				} else {
 					log.Printf("Missing definition for %s, skipping ...", item.Name)
 				}
 			} else {
 				log.Printf("Skipping %s, disabled ...", item.Name)
+			}
+		}
+
+		for _, item := range cfg.Credentials {
+			if !item.Enabled {
+				log.Printf("Skipping Credential %s, disabled ...", item.Name)
+				continue
+			}
+			var p *internal.ModelCredential
+			var objmap map[string]any
+			var ok bool
+			var inclDatasource bool
+			if objmap, ok = apiResource.CredentialTypes[item.TypeName]; !ok {
+				log.Printf("Missing definition for %s, skipping ...", item.Name)
+				continue
+			}
+			p, inclDatasource, err = internal.GenerateApiTfCredentialDefinition(tpl, cfg, item, item.Name, resourcePath, objmap)
+			if err != nil {
+				log.Printf("Error generating credentials for '%s' in '%s': %v", item.Name, item.TypeName, err)
+				return err
+			}
+
+			c := cases.Title(language.English)
+			credPkgName := fmt.Sprintf("credential%s", c.String(item.TypeName))
+
+			_ = p.Save(fmt.Sprintf("%s/gen-model-data/credentials", apiResourcePath))
+			cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, fmt.Sprintf("%s.NewResource", credPkgName))
+			cfg.Imports = append(cfg.Imports, internal.PackageImport{
+				Name: credPkgName,
+				Path: fmt.Sprintf("internal/awx/credential/%s", item.TypeName),
+			})
+			if inclDatasource {
+				cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, fmt.Sprintf("%s.NewDataSource", credPkgName))
 			}
 		}
 
@@ -111,7 +143,7 @@ var templateCmd = &cobra.Command{
 			}
 		}
 
-		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources)
+		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources, cfg.Imports)
 	},
 }
 

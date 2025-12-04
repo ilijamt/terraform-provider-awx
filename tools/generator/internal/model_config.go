@@ -2,11 +2,14 @@ package internal
 
 import (
 	"cmp"
+	"encoding/json"
 	"fmt"
+	"log"
+	"os"
 	"slices"
 	"strings"
 
-	"github.com/mitchellh/mapstructure"
+	"github.com/go-viper/mapstructure/v2"
 )
 
 // ModelConfig holds the entire structure's configuration
@@ -204,7 +207,7 @@ func (p *Property) setWriteOnly(values map[string]any, override PropertyOverride
 }
 
 func (p *Property) setDefaultValue(values map[string]any, override PropertyOverride) {
-	if "" != override.DefaultValue {
+	if override.DefaultValue != "" {
 		values["default"] = override.DefaultValue
 	}
 
@@ -239,7 +242,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 }
 
 func (p *Property) setElementType(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.ElementType) {
+	if strings.TrimSpace(override.ElementType) != "" {
 		values["element_type"] = override.ElementType
 	} else if v, err := getItemElementListType(values); err == nil {
 		values["element_type"] = v
@@ -260,7 +263,7 @@ func (p *Property) setRequired(values map[string]any, override PropertyOverride)
 }
 
 func (p *Property) setType(values map[string]any, override PropertyOverride) {
-	if "" != override.Type {
+	if override.Type != "" {
 		values["type"] = override.Type
 	}
 	if val, ok := values["type"].(string); ok {
@@ -285,7 +288,7 @@ func (p *Property) setLabel(values map[string]any, override PropertyOverride) {
 
 }
 func (p *Property) setDescription(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.Description) {
+	if strings.TrimSpace(override.Description) != "" {
 		values["help_text"] = override.Description
 	}
 	if val, ok := values["help_text"].(string); ok {
@@ -394,4 +397,11 @@ func (c *ModelConfig) UpdateProperty(vt AwxKeyValueType, key string, overrides P
 func (c *ModelConfig) ToMap() (out map[string]any) {
 	_ = mapstructure.Decode(c, &out)
 	return out
+}
+
+func (c *ModelConfig) Save(path string) error {
+	genDataFile := fmt.Sprintf("%s/%s.json", path, c.TypeName)
+	log.Printf("Storing generated data for '%s' in '%s'\n", c.Name, genDataFile)
+	payload, _ := json.MarshalIndent(c, "", "  ")
+	return os.WriteFile(genDataFile, payload, os.ModePerm)
 }

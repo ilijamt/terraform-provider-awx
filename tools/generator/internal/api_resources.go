@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -33,7 +34,7 @@ type ApiResources struct {
 func (c *ApiResources) Load(data string, info ApiResourcesInfo) error {
 	c.Version = info.Version
 
-	// decode and load all the resources information
+	// decode and load all the resource information
 	c.Resources = make(map[string]map[string]any)
 	for k, v := range info.Resources {
 		var payload, err = os.ReadFile(fmt.Sprintf("%s/%s", data, v))
@@ -55,7 +56,9 @@ func (c *ApiResources) Load(data string, info ApiResourcesInfo) error {
 			return err
 		}
 		var obj map[string]any
-		if err = json.Unmarshal(payload, &obj); err != nil {
+		var d = json.NewDecoder(bytes.NewBuffer(payload))
+		d.UseNumber()
+		if err = d.Decode(&obj); err != nil {
 			return err
 		}
 		c.CredentialTypes[k] = obj

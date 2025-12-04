@@ -6,13 +6,30 @@ import (
 	"io"
 	"net/http"
 	"strings"
+	"sync"
+
+	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
 type clientWithBasicAuth struct {
 	client *http.Client
 
+	lock                         *sync.Mutex
+	user                         *models.User
 	username, password, hostname string
 	version                      string
+}
+
+func (c *clientWithBasicAuth) User(ctx context.Context) (user models.User, err error) {
+	c.lock.Lock()
+	defer c.lock.Unlock()
+	if c.user == nil {
+		if c.user, err = UserId(ctx, c); err != nil {
+			return models.User{}, err
+		}
+	}
+
+	return *c.user, nil
 }
 
 var _ Client = &clientWithBasicAuth{}
@@ -24,6 +41,7 @@ func NewClientWithBasicAuth(username, password, hostname string, version string,
 		username: username,
 		password: password,
 		version:  version,
+		lock:     new(sync.Mutex),
 	}
 }
 
@@ -39,5 +57,5 @@ func (c *clientWithBasicAuth) NewRequest(ctx context.Context, method string, end
 }
 
 func (c *clientWithBasicAuth) Do(ctx context.Context, req *http.Request) (data map[string]any, err error) {
-	return doRequest(c.client, ctx, req)
+	return DoRequest(ctx, c.client, req)
 }

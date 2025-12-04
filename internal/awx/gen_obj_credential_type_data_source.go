@@ -34,6 +34,7 @@ func NewCredentialTypeDataSource() datasource.DataSource {
 type credentialTypeDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -42,6 +43,7 @@ func (o *credentialTypeDataSource) Configure(_ context.Context, req datasource.C
 		return
 	}
 
+	o.name = "CredentialType"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credential_types/"
 }

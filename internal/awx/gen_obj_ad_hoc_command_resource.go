@@ -45,6 +45,7 @@ func NewAdHocCommandResource() resource.Resource {
 type adHocCommandResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *adHocCommandResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -52,6 +53,7 @@ func (o *adHocCommandResource) Configure(ctx context.Context, request resource.C
 		return
 	}
 
+	o.name = "AdHocCommand"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/ad_hoc_commands/"
 }
@@ -476,9 +478,6 @@ func (o *adHocCommandResource) Create(ctx context.Context, request resource.Crea
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *adHocCommandResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -529,9 +528,6 @@ func (o *adHocCommandResource) Read(ctx context.Context, request resource.ReadRe
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *adHocCommandResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -587,9 +583,6 @@ func (o *adHocCommandResource) Update(ctx context.Context, request resource.Upda
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *adHocCommandResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

@@ -5,13 +5,12 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/ilijamt/envwrap"
+	"github.com/ilijamt/envwrap/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestProviderConfigureFromEnvironment(t *testing.T) {
-	var defaultEnvs = []string{"AWX_HOST", "AWX_USERNAME", "AWX_PASSWORD", "TOWER_HOST", "TOWER_PASSWORD", "TOWER_USERNAME", "TOWER_AUTH_TOKEN", "AWX_AUTH_TOKEN"}
 	var tests = []struct {
 		in   map[string]string
 		null []string
@@ -56,15 +55,12 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("%v", test.in), func(t *testing.T) {
-			env := envwrap.NewStorage()
-			for _, v := range defaultEnvs {
-				if _, ok := test.in[v]; !ok {
-					_ = env.Store(v, "")
-				}
-			}
+			env := envwrap.NewClean(t)
+			var kv []envwrap.KV
 			for k, v := range test.in {
-				_ = env.Store(k, v)
+				kv = append(kv, envwrap.KV{Key: k, Value: v})
 			}
+			env.Setenv(kv...)
 
 			var config = new(Model)
 			configureFromEnvironment(t.Context(), config)
@@ -84,8 +80,6 @@ func TestProviderConfigureFromEnvironment(t *testing.T) {
 					assert.True(t, config.VerifySSL.IsNull())
 				}
 			}
-
-			_ = env.ReleaseAll()
 		})
 	}
 }

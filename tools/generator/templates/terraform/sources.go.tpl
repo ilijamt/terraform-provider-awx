@@ -3,6 +3,10 @@ package {{ .PackageName }}
 import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+
+{{- range $import := .Imports }}
+    {{ $import.Name }} "github.com/ilijamt/terraform-provider-awx/{{ $import.Path }}"
+{{- end }}
 )
 
 const (
@@ -13,7 +17,7 @@ const (
 func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 {{- range $org := .DataSources }}
-		New{{ $org }}DataSource,
+		{{ $org }},
 {{- end }}
 	}
 }
@@ -22,7 +26,7 @@ func DataSources() []func() datasource.DataSource {
 func Resources() []func() resource.Resource {
 	return []func() resource.Resource{
 {{- range $org := .Resources }}
-		New{{ $org }}Resource,
+		{{ $org }},
 {{- end }}
 	}
 }
