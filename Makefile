@@ -20,11 +20,13 @@ generate-configs: resources/api/*
 
 .PHONY: generate-awx
 generate-awx: generate-config
-	rm -f internal/awx/gen_*.go
+	find internal/awx -name "gen_obj*.go" -delete
+	find internal/awx -type d -empty -delete
 	rm -rf cmd/provider/docs/*
+	rm -rf resources/api/$(VERSION)/gen-model-data
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
-	goimports -w internal/awx/*.go
-	gofmt -s -w internal/awx/*.go
+	gofmt -s -w internal/awx/
+	goimports -w internal/awx/
 
 .PHONY: generate-tfplugindocs
 generate-tfplugindocs:
@@ -46,11 +48,15 @@ build:
 
 .PHONY: build-debug
 build-debug:
-	go build -cover -covermode=atomic -trimpath -o ./build/terraform-provider-awx ./cmd/provider
+	go build -cover -covermode=atomic -gcflags="all=-N -l"  -trimpath -o ./build/terraform-provider-awx ./cmd/provider
+
+.PHONY: dlv-debug
+dlv-debug: build-debug
+	dlv --listen=:2345 --accept-multiclient --continue --headless exec ./build/terraform-provider-awx -- -debug
 
 .PHONY: test
 test:
-	go test ./internal/... -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
+	go test -coverpkg=./internal/... ./internal/awx/credential/... ./internal/resource ./internal/client ./internal/helpers ./internal/hooks ./internal/models ./internal/provider -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
 	go tool cover -html=build/coverage.out -o build/coverage.html
 
 .PHONY: testacc

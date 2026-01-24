@@ -27,6 +27,7 @@ func NewSettingsAuthAzureADOauth2DataSource() datasource.DataSource {
 type settingsAuthAzureAdoauth2DataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsAuthAzureAdoauth2DataSource) Configure(_ context.Context, req d
 		return
 	}
 
+	o.name = "SettingsAuthAzureADOauth2"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/azuread-oauth2/"
 }

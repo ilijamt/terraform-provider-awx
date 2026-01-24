@@ -1463,5 +1463,187 @@
         "status"
       ]
     }
+  ],
+  "credentials": [
+    {
+      "enabled": false,
+      "name": "CyberArk Central Credential Provider Lookup",
+      "type_name": "aim",
+      "id_key": "id"
+    },
+    {
+      "enabled": true,
+      "name": "Amazon Web Services",
+      "type_name": "aws",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "AWS Secrets Manager lookup",
+      "type_name": "aws_secretsmanager_credential",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Microsoft Azure Key Vault",
+      "type_name": "azure_kv",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Microsoft Azure Resource Manager",
+      "type_name": "azure_rm",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Bitbucket Data Center HTTP Access Token",
+      "type_name": "bitbucket_dc_token",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Centrify Vault Credential Provider Lookup",
+      "type_name": "centrify_vault_kv",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "CyberArk Conjur Secrets Manager Lookup",
+      "type_name": "conjur",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Red Hat Ansible Automation Platform",
+      "type_name": "controller",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Ansible Galaxy/Automation Hub API Token",
+      "type_name": "galaxy_api_token",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Google Compute Engine",
+      "type_name": "gce",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "GitHub Personal Access Token",
+      "type_name": "github_token",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "GitLab Personal Access Token",
+      "type_name": "gitlab_token",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "GPG Public Key",
+      "type_name": "gpg_public_key",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "HashiCorp Vault Secret Lookup",
+      "type_name": "hashivault_kv",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "HashiCorp Vault Signed SSH",
+      "type_name": "hashivault_ssh",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Insights",
+      "type_name": "insights",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "OpenShift or Kubernetes API Bearer Token",
+      "type_name": "kubernetes_bearer_token",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Network",
+      "type_name": "net",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "OpenStack",
+      "type_name": "openstack",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Container Registry",
+      "type_name": "registry",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Red Hat Virtualization",
+      "type_name": "rhv",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Red Hat Satellite 6",
+      "type_name": "satellite6",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Source Control",
+      "type_name": "scm",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Machine",
+      "type_name": "ssh",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Terraform backend configuration",
+      "type_name": "terraform",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Thycotic DevOps Secrets Vault",
+      "type_name": "thycotic_dsv",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Thycotic Secret Server",
+      "type_name": "thycotic_tss",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "Vault",
+      "type_name": "vault",
+      "id_key": "id"
+    },
+    {
+      "enabled": false,
+      "name": "VMware vCenter",
+      "type_name": "vmware",
+      "id_key": "id"
+    }
   ]
 }

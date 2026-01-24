@@ -44,6 +44,7 @@ func NewInstanceGroupResource() resource.Resource {
 type instanceGroupResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *instanceGroupResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -51,6 +52,7 @@ func (o *instanceGroupResource) Configure(ctx context.Context, request resource.
 		return
 	}
 
+	o.name = "InstanceGroup"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/instance_groups/"
 }
@@ -301,9 +303,6 @@ func (o *instanceGroupResource) Create(ctx context.Context, request resource.Cre
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *instanceGroupResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -345,9 +344,6 @@ func (o *instanceGroupResource) Read(ctx context.Context, request resource.ReadR
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *instanceGroupResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -395,9 +391,6 @@ func (o *instanceGroupResource) Update(ctx context.Context, request resource.Upd
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *instanceGroupResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

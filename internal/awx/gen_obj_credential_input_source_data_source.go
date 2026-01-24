@@ -32,6 +32,7 @@ func NewCredentialInputSourceDataSource() datasource.DataSource {
 type credentialInputSourceDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -40,6 +41,7 @@ func (o *credentialInputSourceDataSource) Configure(_ context.Context, req datas
 		return
 	}
 
+	o.name = "CredentialInputSource"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/credential_input_sources/"
 }

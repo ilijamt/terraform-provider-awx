@@ -26,6 +26,7 @@ func NewSettingsUIDataSource() datasource.DataSource {
 type settingsUiDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -34,6 +35,7 @@ func (o *settingsUiDataSource) Configure(_ context.Context, req datasource.Confi
 		return
 	}
 
+	o.name = "SettingsUI"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/ui/"
 }

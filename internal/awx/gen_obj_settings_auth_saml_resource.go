@@ -39,6 +39,7 @@ func NewSettingsAuthSAMLResource() resource.Resource {
 type settingsAuthSamlResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsAuthSamlResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -46,6 +47,7 @@ func (o *settingsAuthSamlResource) Configure(ctx context.Context, request resour
 		return
 	}
 
+	o.name = "SettingsAuthSAML"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/saml/"
 }
@@ -324,9 +326,6 @@ func (o *settingsAuthSamlResource) Create(ctx context.Context, request resource.
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthSamlResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -376,9 +375,6 @@ func (o *settingsAuthSamlResource) Read(ctx context.Context, request resource.Re
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthSamlResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -433,9 +429,6 @@ func (o *settingsAuthSamlResource) Update(ctx context.Context, request resource.
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthSamlResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

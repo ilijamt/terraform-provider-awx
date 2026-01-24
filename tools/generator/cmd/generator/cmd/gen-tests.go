@@ -5,9 +5,10 @@ import (
 	"log"
 	"text/template"
 
+	"github.com/spf13/cobra"
+
 	"github.com/ilijamt/terraform-provider-awx/tools/generator"
 	"github.com/ilijamt/terraform-provider-awx/tools/generator/internal"
-	"github.com/spf13/cobra"
 )
 
 // genTestsCmd represents the base command when called without any subcommands
@@ -41,7 +42,7 @@ var genTestsCmd = &cobra.Command{
 
 		log.Printf("Processing '%s' in '%s' resource from '%s' with test data in '%s'\n", apiResourcePath, resourcePath, configResource, testPayloadLocation)
 
-		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs(), "templates/terraform/*.tpl")
+		tpl, err = template.New("").Funcs(internal.FuncMap).ParseFS(generator.Fs())
 		if err != nil {
 			return err
 		}

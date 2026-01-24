@@ -27,6 +27,7 @@ func NewSettingsOpenIDConnectDataSource() datasource.DataSource {
 type settingsOpenIdconnectDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -35,6 +36,7 @@ func (o *settingsOpenIdconnectDataSource) Configure(_ context.Context, req datas
 		return
 	}
 
+	o.name = "SettingsOpenIDConnect"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/oidc/"
 }

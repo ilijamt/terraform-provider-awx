@@ -22,7 +22,7 @@ func TestProvider(t *testing.T) {
 	var dataSources = func() []func() datasource.DataSource {
 		return []func() datasource.DataSource{}
 	}
-	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", nil, resources(), dataSources())())
+	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", nil, nil, resources(), dataSources())())
 	require.NotNil(t, awxProvider)
 	frameworkServer, err := awxProvider()
 	require.NoError(t, err)
@@ -42,7 +42,7 @@ func TestProviderConfiguration(t *testing.T) {
 		return []func() datasource.DataSource{}
 	}
 
-	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", nil, resources(), dataSources())())
+	awxProvider := providerserver.NewProtocol6WithError(provider.NewFuncProvider("test", nil, nil, resources(), dataSources())())
 	require.NotNil(t, awxProvider)
 	frameworkServer, err := awxProvider()
 	require.NoError(t, err)

@@ -34,6 +34,7 @@ func NewOrganizationDataSource() datasource.DataSource {
 type organizationDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -42,6 +43,7 @@ func (o *organizationDataSource) Configure(_ context.Context, req datasource.Con
 		return
 	}
 
+	o.name = "Organization"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/organizations/"
 }

@@ -28,6 +28,7 @@ func NewSettingsAuthGoogleOauth2DataSource() datasource.DataSource {
 type settingsAuthGoogleOauth2DataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -36,6 +37,7 @@ func (o *settingsAuthGoogleOauth2DataSource) Configure(_ context.Context, req da
 		return
 	}
 
+	o.name = "SettingsAuthGoogleOauth2"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/google-oauth2/"
 }

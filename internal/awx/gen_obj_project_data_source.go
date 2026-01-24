@@ -32,6 +32,7 @@ func NewProjectDataSource() datasource.DataSource {
 type projectDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -40,6 +41,7 @@ func (o *projectDataSource) Configure(_ context.Context, req datasource.Configur
 		return
 	}
 
+	o.name = "Project"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/projects/"
 }

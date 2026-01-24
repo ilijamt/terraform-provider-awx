@@ -36,6 +36,7 @@ func NewSettingsAuthGithubOrgResource() resource.Resource {
 type settingsAuthGithubOrgResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsAuthGithubOrgResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -43,6 +44,7 @@ func (o *settingsAuthGithubOrgResource) Configure(ctx context.Context, request r
 		return
 	}
 
+	o.name = "SettingsAuthGithubOrg"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/github-org/"
 }
@@ -181,9 +183,6 @@ func (o *settingsAuthGithubOrgResource) Create(ctx context.Context, request reso
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthGithubOrgResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -233,9 +232,6 @@ func (o *settingsAuthGithubOrgResource) Read(ctx context.Context, request resour
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthGithubOrgResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -290,9 +286,6 @@ func (o *settingsAuthGithubOrgResource) Update(ctx context.Context, request reso
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsAuthGithubOrgResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

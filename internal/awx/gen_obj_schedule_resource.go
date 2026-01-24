@@ -41,6 +41,7 @@ func NewScheduleResource() resource.Resource {
 type scheduleResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *scheduleResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -48,6 +49,7 @@ func (o *scheduleResource) Configure(ctx context.Context, request resource.Confi
 		return
 	}
 
+	o.name = "Schedule"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/schedules/"
 }
@@ -393,9 +395,6 @@ func (o *scheduleResource) Create(ctx context.Context, request resource.CreateRe
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *scheduleResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -437,9 +436,6 @@ func (o *scheduleResource) Read(ctx context.Context, request resource.ReadReques
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *scheduleResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -487,9 +483,6 @@ func (o *scheduleResource) Update(ctx context.Context, request resource.UpdateRe
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *scheduleResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

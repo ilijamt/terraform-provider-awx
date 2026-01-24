@@ -35,6 +35,7 @@ func NewAdHocCommandDataSource() datasource.DataSource {
 type adHocCommandDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -43,6 +44,7 @@ func (o *adHocCommandDataSource) Configure(_ context.Context, req datasource.Con
 		return
 	}
 
+	o.name = "AdHocCommand"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/ad_hoc_commands/"
 }

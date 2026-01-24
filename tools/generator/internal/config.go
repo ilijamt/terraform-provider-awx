@@ -86,14 +86,28 @@ type CredentialTypes struct {
 	Inputs       map[string]any `json:"inputs" mapstructure:"inputs"`
 }
 
+type Credential struct {
+	Enabled  bool   `json:"enabled" yaml:"enabled"`
+	Name     string `json:"name" yaml:"name"`
+	TypeName string `json:"type_name" yaml:"type_name"`
+	IdKey    string `json:"id_key" yaml:"id_key"`
+}
+
 type Config struct {
-	DefaultRemoveApiDataSource   []string `json:"default_remove_api_data_source"`
-	DefaultRemoveApiResource     []string `json:"default_remove_api_resource"`
-	Items                        []Item   `json:"items"`
-	ApiVersion                   string   `json:"api_version"`
-	RenderApiDocs                bool     `json:"render_api_docs"`
-	GeneratedApiResources        []string `json:"-"`
-	GeneratedDataSourceResources []string `json:"-"`
+	DefaultRemoveApiDataSource   []string        `json:"default_remove_api_data_source"`
+	DefaultRemoveApiResource     []string        `json:"default_remove_api_resource"`
+	Items                        []Item          `json:"items"`
+	Credentials                  []Credential    `json:"credentials"`
+	ApiVersion                   string          `json:"api_version"`
+	RenderApiDocs                bool            `json:"render_api_docs"`
+	GeneratedApiResources        []string        `json:"-"`
+	GeneratedDataSourceResources []string        `json:"-"`
+	Imports                      []PackageImport `json:"-"`
+}
+
+type PackageImport struct {
+	Name string `json:"name"`
+	Path string `json:"path"`
 }
 
 func (c *Config) PackageName(name string) string {
@@ -111,10 +125,10 @@ func (c *Config) Load(filename string) error {
 		return err
 	}
 	for idx, item := range c.Items {
-		if "" == item.ApiPropertyResourceKey {
+		if item.ApiPropertyResourceKey == "" {
 			c.Items[idx].ApiPropertyResourceKey = "POST"
 		}
-		if "" == item.ApiPropertyDataKey {
+		if item.ApiPropertyDataKey == "" {
 			c.Items[idx].ApiPropertyDataKey = "GET"
 		}
 	}

@@ -42,6 +42,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 type workflowJobTemplateResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *workflowJobTemplateResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -49,6 +50,7 @@ func (o *workflowJobTemplateResource) Configure(ctx context.Context, request res
 		return
 	}
 
+	o.name = "WorkflowJobTemplate"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/workflow_job_templates/"
 }
@@ -370,9 +372,6 @@ func (o *workflowJobTemplateResource) Create(ctx context.Context, request resour
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -423,9 +422,6 @@ func (o *workflowJobTemplateResource) Read(ctx context.Context, request resource
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *workflowJobTemplateResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -481,9 +477,6 @@ func (o *workflowJobTemplateResource) Update(ctx context.Context, request resour
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *workflowJobTemplateResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

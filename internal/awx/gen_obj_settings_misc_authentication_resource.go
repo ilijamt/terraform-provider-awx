@@ -41,6 +41,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 type settingsMiscAuthenticationResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *settingsMiscAuthenticationResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -48,6 +49,7 @@ func (o *settingsMiscAuthenticationResource) Configure(ctx context.Context, requ
 		return
 	}
 
+	o.name = "SettingsMiscAuthentication"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/settings/authentication/"
 }
@@ -308,9 +310,6 @@ func (o *settingsMiscAuthenticationResource) Create(ctx context.Context, request
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscAuthenticationResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -351,9 +350,6 @@ func (o *settingsMiscAuthenticationResource) Read(ctx context.Context, request r
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -400,9 +396,6 @@ func (o *settingsMiscAuthenticationResource) Update(ctx context.Context, request
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *settingsMiscAuthenticationResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

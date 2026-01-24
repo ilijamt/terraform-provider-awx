@@ -44,6 +44,7 @@ func NewJobTemplateResource() resource.Resource {
 type jobTemplateResource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 func (o *jobTemplateResource) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
@@ -51,6 +52,7 @@ func (o *jobTemplateResource) Configure(ctx context.Context, request resource.Co
 		return
 	}
 
+	o.name = "JobTemplate"
 	o.client = request.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/job_templates/"
 }
@@ -677,9 +679,6 @@ func (o *jobTemplateResource) Create(ctx context.Context, request resource.Creat
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
@@ -730,9 +729,6 @@ func (o *jobTemplateResource) Read(ctx context.Context, request resource.ReadReq
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *jobTemplateResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
@@ -788,9 +784,6 @@ func (o *jobTemplateResource) Update(ctx context.Context, request resource.Updat
 	}
 
 	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
 }
 
 func (o *jobTemplateResource) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {

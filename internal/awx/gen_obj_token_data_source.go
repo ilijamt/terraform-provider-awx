@@ -32,6 +32,7 @@ func NewTokensDataSource() datasource.DataSource {
 type tokensDataSource struct {
 	client   c.Client
 	endpoint string
+	name     string
 }
 
 // Configure adds the provider configured client to the data source.
@@ -40,6 +41,7 @@ func (o *tokensDataSource) Configure(_ context.Context, req datasource.Configure
 		return
 	}
 
+	o.name = "Tokens"
 	o.client = req.ProviderData.(c.Client)
 	o.endpoint = "/api/v2/tokens/"
 }
