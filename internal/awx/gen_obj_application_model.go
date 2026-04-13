@@ -50,7 +50,8 @@ func (o *applicationTerraformModel) Clone() applicationTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Application
-func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestModel) {
+func (o *applicationTerraformModel) BodyRequest() *applicationBodyRequestModel {
+	var req applicationBodyRequestModel
 	req.AuthorizationGrantType = o.AuthorizationGrantType.ValueString()
 	req.ClientType = o.ClientType.ValueString()
 	req.Description = o.Description.ValueString()
@@ -58,7 +59,7 @@ func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestMod
 	req.Organization = o.Organization.ValueInt64()
 	req.RedirectUris = o.RedirectUris.ValueString()
 	req.SkipAuthorization = o.SkipAuthorization.ValueBool()
-	return
+	return &req
 }
 
 func (o *applicationTerraformModel) setAuthorizationGrantType(data any) (_ diag.Diagnostics, _ error) {
@@ -101,7 +102,7 @@ func (o *applicationTerraformModel) setSkipAuthorization(data any) (_ diag.Diagn
 	return helpers.AttrValueSetBool(&o.SkipAuthorization, data)
 }
 
-func (o *applicationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *applicationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

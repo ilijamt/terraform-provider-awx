@@ -37,7 +37,8 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) Clone() {{ .Name | lowerCam
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for {{ .Name }}
-func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name | lowerCamelCase }}BodyRequestModel) {
+func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() *{{ .Name | lowerCamelCase }}BodyRequestModel {
+    var req {{ .Name | lowerCamelCase }}BodyRequestModel
 {{- range $key, $value := .WriteProperties }}
 {{- if not $value.IsWriteOnly }}
 {{- if eq $value.Generated.AwxGoType "types.List" }}
@@ -54,7 +55,7 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() (req {{ .Name
 {{- end }}
 {{- end }}
 {{- end }}
-    return
+    return &req
 }
 
 {{ range $key, $value := .ReadProperties }}
@@ -77,7 +78,7 @@ func (o *{{ $.Name | lowerCamelCase }}TerraformModel) set{{ $value.Generated.Pro
 }
 {{ end }}
 
-func (o *{{ .Name | lowerCamelCase }}TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *{{ .Name | lowerCamelCase }}TerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
     if data == nil {
         return diags, fmt.Errorf("no data passed")

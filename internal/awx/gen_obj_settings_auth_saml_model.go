@@ -75,7 +75,8 @@ func (o *settingsAuthSamlTerraformModel) Clone() settingsAuthSamlTerraformModel 
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthSAML
-func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBodyRequestModel) {
+func (o *settingsAuthSamlTerraformModel) BodyRequest() *settingsAuthSamlBodyRequestModel {
+	var req settingsAuthSamlBodyRequestModel
 	req.SAML_AUTO_CREATE_OBJECTS = o.SAML_AUTO_CREATE_OBJECTS.ValueBool()
 	req.SOCIAL_AUTH_SAML_ENABLED_IDPS = json.RawMessage(o.SOCIAL_AUTH_SAML_ENABLED_IDPS.ValueString())
 	req.SOCIAL_AUTH_SAML_EXTRA_DATA = []string{}
@@ -99,7 +100,7 @@ func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBody
 	req.SOCIAL_AUTH_SAML_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_SAML_TEAM_MAP.ValueString())
 	req.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = json.RawMessage(o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT.ValueString())
 	req.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR = json.RawMessage(o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR.ValueString())
-	return
+	return &req
 }
 
 func (o *settingsAuthSamlTerraformModel) setSamlAutoCreateObjects(data any) (_ diag.Diagnostics, _ error) {
@@ -174,7 +175,7 @@ func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlUserFlagsByAttr(data a
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data, false)
 }
 
-func (o *settingsAuthSamlTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthSamlTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

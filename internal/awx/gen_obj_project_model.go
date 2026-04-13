@@ -77,7 +77,8 @@ func (o *projectTerraformModel) Clone() projectTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Project
-func (o *projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
+func (o *projectTerraformModel) BodyRequest() *projectBodyRequestModel {
+	var req projectBodyRequestModel
 	req.AllowOverride = o.AllowOverride.ValueBool()
 	req.Credential = o.Credential.ValueInt64()
 	req.DefaultEnvironment = o.DefaultEnvironment.ValueInt64()
@@ -96,7 +97,7 @@ func (o *projectTerraformModel) BodyRequest() (req projectBodyRequestModel) {
 	req.ScmUrl = o.ScmUrl.ValueString()
 	req.SignatureValidationCredential = o.SignatureValidationCredential.ValueInt64()
 	req.Timeout = o.Timeout.ValueInt64()
-	return
+	return &req
 }
 
 func (o *projectTerraformModel) setAllowOverride(data any) (_ diag.Diagnostics, _ error) {
@@ -175,7 +176,7 @@ func (o *projectTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ erro
 	return helpers.AttrValueSetInt64(&o.Timeout, data)
 }
 
-func (o *projectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *projectTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

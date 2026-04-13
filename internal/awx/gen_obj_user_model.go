@@ -53,7 +53,8 @@ func (o *userTerraformModel) Clone() userTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for User
-func (o *userTerraformModel) BodyRequest() (req userBodyRequestModel) {
+func (o *userTerraformModel) BodyRequest() *userBodyRequestModel {
+	var req userBodyRequestModel
 	req.Email = o.Email.ValueString()
 	req.FirstName = o.FirstName.ValueString()
 	req.IsSuperuser = o.IsSuperuser.ValueBool()
@@ -61,7 +62,7 @@ func (o *userTerraformModel) BodyRequest() (req userBodyRequestModel) {
 	req.LastName = o.LastName.ValueString()
 	req.Password = o.Password.ValueString()
 	req.Username = o.Username.ValueString()
-	return
+	return &req
 }
 
 func (o *userTerraformModel) setEmail(data any) (_ diag.Diagnostics, _ error) {
@@ -108,7 +109,7 @@ func (o *userTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error)
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *userTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *userTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

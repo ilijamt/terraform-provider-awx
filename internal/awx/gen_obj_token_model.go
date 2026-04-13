@@ -44,11 +44,12 @@ func (o *tokensTerraformModel) Clone() tokensTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Tokens
-func (o *tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
+func (o *tokensTerraformModel) BodyRequest() *tokensBodyRequestModel {
+	var req tokensBodyRequestModel
 	req.Application = o.Application.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Scope = o.Scope.ValueString()
-	return
+	return &req
 }
 
 func (o *tokensTerraformModel) setApplication(data any) (_ diag.Diagnostics, _ error) {
@@ -83,7 +84,7 @@ func (o *tokensTerraformModel) setUser(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetInt64(&o.User, data)
 }
 
-func (o *tokensTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *tokensTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

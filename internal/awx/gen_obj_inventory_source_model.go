@@ -84,7 +84,8 @@ func (o *inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InventorySource
-func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRequestModel) {
+func (o *inventorySourceTerraformModel) BodyRequest() *inventorySourceBodyRequestModel {
+	var req inventorySourceBodyRequestModel
 	req.Credential = o.Credential.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.EnabledValue = o.EnabledValue.ValueString()
@@ -105,7 +106,7 @@ func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRe
 	req.UpdateCacheTimeout = o.UpdateCacheTimeout.ValueInt64()
 	req.UpdateOnLaunch = o.UpdateOnLaunch.ValueBool()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
 func (o *inventorySourceTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
@@ -192,7 +193,7 @@ func (o *inventorySourceTerraformModel) setVerbosity(data any) (_ diag.Diagnosti
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *inventorySourceTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

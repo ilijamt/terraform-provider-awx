@@ -72,7 +72,8 @@ func (o *settingsMiscAuthenticationTerraformModel) Clone() settingsMiscAuthentic
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscAuthentication
-func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMiscAuthenticationBodyRequestModel) {
+func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() *settingsMiscAuthenticationBodyRequestModel {
+	var req settingsMiscAuthenticationBodyRequestModel
 	req.ALLOW_METRICS_FOR_ANONYMOUS_USERS = o.ALLOW_METRICS_FOR_ANONYMOUS_USERS.ValueBool()
 	req.ALLOW_OAUTH2_FOR_EXTERNAL_USERS = o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS.ValueBool()
 	req.AUTH_BASIC_ENABLED = o.AUTH_BASIC_ENABLED.ValueBool()
@@ -96,7 +97,7 @@ func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() (req settingsMi
 			req.SOCIAL_AUTH_USER_FIELDS = append(req.SOCIAL_AUTH_USER_FIELDS, val.String())
 		}
 	}
-	return
+	return &req
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) setAllowMetricsForAnonymousUsers(data any) (_ diag.Diagnostics, _ error) {
@@ -167,7 +168,7 @@ func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUserFields(data 
 	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_USER_FIELDS, data, false)
 }
 
-func (o *settingsMiscAuthenticationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsMiscAuthenticationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

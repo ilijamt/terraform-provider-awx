@@ -309,7 +309,8 @@ func (o *settingsAuthLdapTerraformModel) Clone() settingsAuthLdapTerraformModel 
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthLDAP
-func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBodyRequestModel) {
+func (o *settingsAuthLdapTerraformModel) BodyRequest() *settingsAuthLdapBodyRequestModel {
+	var req settingsAuthLdapBodyRequestModel
 	req.AUTH_LDAP_1_BIND_DN = o.AUTH_LDAP_1_BIND_DN.ValueString()
 	req.AUTH_LDAP_1_BIND_PASSWORD = o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_1_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())
@@ -490,7 +491,7 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 			req.AUTH_LDAP_USER_SEARCH = append(req.AUTH_LDAP_USER_SEARCH, val.String())
 		}
 	}
-	return
+	return &req
 }
 
 func (o *settingsAuthLdapTerraformModel) setAuthLdap1BindDn(data any) (_ diag.Diagnostics, _ error) {
@@ -877,7 +878,7 @@ func (o *settingsAuthLdapTerraformModel) setAuthLdapUserSearch(data any) (_ diag
 	return helpers.AttrValueSetListString(&o.AUTH_LDAP_USER_SEARCH, data, false)
 }
 
-func (o *settingsAuthLdapTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthLdapTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

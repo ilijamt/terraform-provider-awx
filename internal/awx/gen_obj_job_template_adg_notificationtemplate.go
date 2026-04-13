@@ -19,7 +19,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
@@ -36,25 +36,11 @@ type jobTemplateAssociateDisassociateNotificationTemplateTerraformModel struct {
 
 // NewJobTemplateAssociateDisassociateNotificationTemplateResource is a helper function to simplify the provider implementation.
 func NewJobTemplateAssociateDisassociateNotificationTemplateResource() resource.Resource {
-	return &jobTemplateAssociateDisassociateNotificationTemplate{}
+	return &jobTemplateAssociateDisassociateNotificationTemplate{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "job_template_associate_notification_template", Endpoint: "/api/v2/job_templates/%d/notification_templates_%s/"}}}
 }
 
 type jobTemplateAssociateDisassociateNotificationTemplate struct {
-	client   c.Client
-	endpoint string
-}
-
-func (o *jobTemplateAssociateDisassociateNotificationTemplate) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-	if request.ProviderData == nil {
-		return
-	}
-
-	o.client = request.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/job_templates/%d/notification_templates_%s/"
-}
-
-func (o *jobTemplateAssociateDisassociateNotificationTemplate) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_job_template_associate_notification_template"
+	framework.ResourceBase
 }
 
 func (o *jobTemplateAssociateDisassociateNotificationTemplate) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -104,14 +90,13 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 
 	// Retrieve values from state
 	var plan, state jobTemplateAssociateDisassociateNotificationTemplateTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
 	// Creates a new request for association of JobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.JobTemplateID.ValueInt64(), plan.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.NotificationTemplateID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]any{
@@ -120,7 +105,7 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create of type 'notification_job_template'", endpoint),
 			err.Error(),
@@ -128,7 +113,7 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to associate for JobTemplate on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
@@ -140,8 +125,7 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Create(ctx contex
 	state.NotificationTemplateID = plan.NotificationTemplateID
 	state.Option = plan.Option
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }
@@ -151,14 +135,13 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Delete(ctx contex
 
 	// Retrieve values from state
 	var state jobTemplateAssociateDisassociateNotificationTemplateTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
 	// Creates a new request for disassociation of JobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.JobTemplateID.ValueInt64(), state.Option.ValueString())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.NotificationTemplateID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]any{
@@ -167,17 +150,17 @@ func (o *jobTemplateAssociateDisassociateNotificationTemplate) Delete(ctx contex
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type 'notification_job_template'", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type 'notification_job_template'", o.Endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to disassociate for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to disassociate for JobTemplate on %s", o.Endpoint),
 			err.Error(),
 		)
 		return

@@ -36,12 +36,13 @@ func (o *settingsAuthAzureAdoauth2TerraformModel) Clone() settingsAuthAzureAdoau
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthAzureADOauth2
-func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() (req settingsAuthAzureAdoauth2BodyRequestModel) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() *settingsAuthAzureAdoauth2BodyRequestModel {
+	var req settingsAuthAzureAdoauth2BodyRequestModel
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP.ValueString())
-	return
+	return &req
 }
 
 func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2CallbackUrl(data any) (_ diag.Diagnostics, _ error) {
@@ -64,7 +65,7 @@ func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2Team
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthAzureAdoauth2TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

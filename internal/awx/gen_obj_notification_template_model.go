@@ -42,14 +42,15 @@ func (o *notificationTemplateTerraformModel) Clone() notificationTemplateTerrafo
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for NotificationTemplate
-func (o *notificationTemplateTerraformModel) BodyRequest() (req notificationTemplateBodyRequestModel) {
+func (o *notificationTemplateTerraformModel) BodyRequest() *notificationTemplateBodyRequestModel {
+	var req notificationTemplateBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Messages = json.RawMessage(o.Messages.ValueString())
 	req.Name = o.Name.ValueString()
 	req.NotificationConfiguration = json.RawMessage(o.NotificationConfiguration.ValueString())
 	req.NotificationType = o.NotificationType.ValueString()
 	req.Organization = o.Organization.ValueInt64()
-	return
+	return &req
 }
 
 func (o *notificationTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -80,7 +81,7 @@ func (o *notificationTemplateTerraformModel) setOrganization(data any) (_ diag.D
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *notificationTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *notificationTemplateTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

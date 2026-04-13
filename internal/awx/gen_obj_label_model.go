@@ -29,10 +29,11 @@ func (o *labelTerraformModel) Clone() labelTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Label
-func (o *labelTerraformModel) BodyRequest() (req labelBodyRequestModel) {
+func (o *labelTerraformModel) BodyRequest() *labelBodyRequestModel {
+	var req labelBodyRequestModel
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
-	return
+	return &req
 }
 
 func (o *labelTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
@@ -47,7 +48,7 @@ func (o *labelTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ e
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *labelTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *labelTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

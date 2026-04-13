@@ -44,14 +44,15 @@ func (o *executionEnvironmentTerraformModel) Clone() executionEnvironmentTerrafo
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for ExecutionEnvironment
-func (o *executionEnvironmentTerraformModel) BodyRequest() (req executionEnvironmentBodyRequestModel) {
+func (o *executionEnvironmentTerraformModel) BodyRequest() *executionEnvironmentBodyRequestModel {
+	var req executionEnvironmentBodyRequestModel
 	req.Credential = o.Credential.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Image = o.Image.ValueString()
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
 	req.Pull = o.Pull.ValueString()
-	return
+	return &req
 }
 
 func (o *executionEnvironmentTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
@@ -86,7 +87,7 @@ func (o *executionEnvironmentTerraformModel) setPull(data any) (_ diag.Diagnosti
 	return helpers.AttrValueSetString(&o.Pull, data, false)
 }
 
-func (o *executionEnvironmentTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *executionEnvironmentTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

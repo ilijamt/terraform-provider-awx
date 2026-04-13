@@ -35,12 +35,13 @@ func (o *settingsUiTerraformModel) Clone() settingsUiTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsUI
-func (o *settingsUiTerraformModel) BodyRequest() (req settingsUiBodyRequestModel) {
+func (o *settingsUiTerraformModel) BodyRequest() *settingsUiBodyRequestModel {
+	var req settingsUiBodyRequestModel
 	req.CUSTOM_LOGIN_INFO = o.CUSTOM_LOGIN_INFO.ValueString()
 	req.CUSTOM_LOGO = o.CUSTOM_LOGO.ValueString()
 	req.MAX_UI_JOB_EVENTS = o.MAX_UI_JOB_EVENTS.ValueInt64()
 	req.UI_LIVE_UPDATES_ENABLED = o.UI_LIVE_UPDATES_ENABLED.ValueBool()
-	return
+	return &req
 }
 
 func (o *settingsUiTerraformModel) setCustomLoginInfo(data any) (_ diag.Diagnostics, _ error) {
@@ -63,7 +64,7 @@ func (o *settingsUiTerraformModel) setUiLiveUpdatesEnabled(data any) (_ diag.Dia
 	return helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data)
 }
 
-func (o *settingsUiTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsUiTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

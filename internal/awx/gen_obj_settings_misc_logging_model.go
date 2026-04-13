@@ -74,7 +74,8 @@ func (o *settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraform
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscLogging
-func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggingBodyRequestModel) {
+func (o *settingsMiscLoggingTerraformModel) BodyRequest() *settingsMiscLoggingBodyRequestModel {
+	var req settingsMiscLoggingBodyRequestModel
 	req.API_400_ERROR_LOG_FORMAT = o.API_400_ERROR_LOG_FORMAT.ValueString()
 	req.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB = o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()
 	req.LOG_AGGREGATOR_ACTION_QUEUE_SIZE = o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()
@@ -100,7 +101,7 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 	req.LOG_AGGREGATOR_TYPE = o.LOG_AGGREGATOR_TYPE.ValueString()
 	req.LOG_AGGREGATOR_USERNAME = o.LOG_AGGREGATOR_USERNAME.ValueString()
 	req.LOG_AGGREGATOR_VERIFY_CERT = o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()
-	return
+	return &req
 }
 
 func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (_ diag.Diagnostics, _ error) {
@@ -175,7 +176,7 @@ func (o *settingsMiscLoggingTerraformModel) setLogAggregatorVerifyCert(data any)
 	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_VERIFY_CERT, data)
 }
 
-func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsMiscLoggingTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

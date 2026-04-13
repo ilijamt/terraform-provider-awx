@@ -48,14 +48,15 @@ func (o *hostTerraformModel) Clone() hostTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Host
-func (o *hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
+func (o *hostTerraformModel) BodyRequest() *hostBodyRequestModel {
+	var req hostBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Enabled = o.Enabled.ValueBool()
 	req.InstanceId = o.InstanceId.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
 	req.Variables = json.RawMessage(o.Variables.String())
-	return
+	return &req
 }
 
 func (o *hostTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -94,7 +95,7 @@ func (o *hostTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error
 	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
-func (o *hostTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *hostTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

@@ -78,7 +78,8 @@ func (o *constructedInventoriesTerraformModel) Clone() constructedInventoriesTer
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for ConstructedInventories
-func (o *constructedInventoriesTerraformModel) BodyRequest() (req constructedInventoriesBodyRequestModel) {
+func (o *constructedInventoriesTerraformModel) BodyRequest() *constructedInventoriesBodyRequestModel {
+	var req constructedInventoriesBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Limit = o.Limit.ValueString()
 	req.Name = o.Name.ValueString()
@@ -88,7 +89,7 @@ func (o *constructedInventoriesTerraformModel) BodyRequest() (req constructedInv
 	req.UpdateCacheTimeout = o.UpdateCacheTimeout.ValueInt64()
 	req.Variables = json.RawMessage(o.Variables.ValueString())
 	req.Verbosity = o.Verbosity.ValueInt64()
-	return
+	return &req
 }
 
 func (o *constructedInventoriesTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -167,7 +168,7 @@ func (o *constructedInventoriesTerraformModel) setVerbosity(data any) (_ diag.Di
 	return helpers.AttrValueSetInt64(&o.Verbosity, data)
 }
 
-func (o *constructedInventoriesTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *constructedInventoriesTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

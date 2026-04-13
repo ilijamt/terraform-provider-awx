@@ -42,7 +42,8 @@ func (o *settingsAuthGoogleOauth2TerraformModel) Clone() settingsAuthGoogleOauth
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGoogleOauth2
-func (o *settingsAuthGoogleOauth2TerraformModel) BodyRequest() (req settingsAuthGoogleOauth2BodyRequestModel) {
+func (o *settingsAuthGoogleOauth2TerraformModel) BodyRequest() *settingsAuthGoogleOauth2BodyRequestModel {
+	var req settingsAuthGoogleOauth2BodyRequestModel
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = json.RawMessage(o.SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS.ValueString())
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = o.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP.ValueString())
@@ -56,7 +57,7 @@ func (o *settingsAuthGoogleOauth2TerraformModel) BodyRequest() (req settingsAuth
 			req.SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = append(req.SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS, val.String())
 		}
 	}
-	return
+	return &req
 }
 
 func (o *settingsAuthGoogleOauth2TerraformModel) setSocialAuthGoogleOauth2AuthExtraArguments(data any) (_ diag.Diagnostics, _ error) {
@@ -87,7 +88,7 @@ func (o *settingsAuthGoogleOauth2TerraformModel) setSocialAuthGoogleOauth2Whitel
 	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS, data, false)
 }
 
-func (o *settingsAuthGoogleOauth2TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthGoogleOauth2TerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

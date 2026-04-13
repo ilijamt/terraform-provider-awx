@@ -84,7 +84,8 @@ func (o *workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraform
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for WorkflowJobTemplate
-func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTemplateBodyRequestModel) {
+func (o *workflowJobTemplateTerraformModel) BodyRequest() *workflowJobTemplateBodyRequestModel {
+	var req workflowJobTemplateBodyRequestModel
 	req.AllowSimultaneous = o.AllowSimultaneous.ValueBool()
 	req.AskInventoryOnLaunch = o.AskInventoryOnLaunch.ValueBool()
 	req.AskLabelsOnLaunch = o.AskLabelsOnLaunch.ValueBool()
@@ -105,7 +106,7 @@ func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTempla
 	req.SurveyEnabled = o.SurveyEnabled.ValueBool()
 	req.WebhookCredential = o.WebhookCredential.ValueInt64()
 	req.WebhookService = o.WebhookService.ValueString()
-	return
+	return &req
 }
 
 func (o *workflowJobTemplateTerraformModel) setAllowSimultaneous(data any) (_ diag.Diagnostics, _ error) {
@@ -192,7 +193,7 @@ func (o *workflowJobTemplateTerraformModel) setWebhookService(data any) (_ diag.
 	return helpers.AttrValueSetString(&o.WebhookService, data, false)
 }
 
-func (o *workflowJobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *workflowJobTemplateTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

@@ -18,7 +18,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
@@ -35,25 +35,11 @@ type teamAssociateDisassociateRoleTerraformModel struct {
 
 // NewTeamAssociateDisassociateRoleResource is a helper function to simplify the provider implementation.
 func NewTeamAssociateDisassociateRoleResource() resource.Resource {
-	return &teamAssociateDisassociateRole{}
+	return &teamAssociateDisassociateRole{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "team_associate_role", Endpoint: "/api/v2/teams/%d/roles/"}}}
 }
 
 type teamAssociateDisassociateRole struct {
-	client   c.Client
-	endpoint string
-}
-
-func (o *teamAssociateDisassociateRole) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-	if request.ProviderData == nil {
-		return
-	}
-
-	o.client = request.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/teams/%d/roles/"
-}
-
-func (o *teamAssociateDisassociateRole) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_team_associate_role"
+	framework.ResourceBase
 }
 
 func (o *teamAssociateDisassociateRole) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -130,14 +116,13 @@ func (o *teamAssociateDisassociateRole) Create(ctx context.Context, request reso
 
 	// Retrieve values from state
 	var plan, state teamAssociateDisassociateRoleTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
 	// Creates a new request for association of Team
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.TeamID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.TeamID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.RoleID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[Team/Create/Associate] Making a request", map[string]any{
@@ -146,7 +131,7 @@ func (o *teamAssociateDisassociateRole) Create(ctx context.Context, request reso
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for Team on %s for create of type 'default'", endpoint),
 			err.Error(),
@@ -154,7 +139,7 @@ func (o *teamAssociateDisassociateRole) Create(ctx context.Context, request reso
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to associate for Team on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
@@ -165,8 +150,7 @@ func (o *teamAssociateDisassociateRole) Create(ctx context.Context, request reso
 	state.TeamID = plan.TeamID
 	state.RoleID = plan.RoleID
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }
@@ -176,14 +160,13 @@ func (o *teamAssociateDisassociateRole) Delete(ctx context.Context, request reso
 
 	// Retrieve values from state
 	var state teamAssociateDisassociateRoleTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
 	// Creates a new request for disassociation of Team
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.TeamID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.TeamID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.RoleID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[Team/Delete/Disassociate] Making a request", map[string]any{
@@ -192,17 +175,17 @@ func (o *teamAssociateDisassociateRole) Delete(ctx context.Context, request reso
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for Team on %s for delete of type 'default'", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for Team on %s for delete of type 'default'", o.Endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to disassociate for Team on %s", o.endpoint),
+			fmt.Sprintf("Unable to disassociate for Team on %s", o.Endpoint),
 			err.Error(),
 		)
 		return

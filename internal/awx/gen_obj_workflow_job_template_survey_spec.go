@@ -1,7 +1,6 @@
 package awx
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -15,8 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
@@ -52,25 +50,11 @@ type workflowJobTemplateSurveyModel struct {
 
 // NewWorkflowJobTemplateSurveyResource is a helper function to simplify the provider implementation.
 func NewWorkflowJobTemplateSurveyResource() resource.Resource {
-	return &workflowJobTemplateSurvey{}
+	return &workflowJobTemplateSurvey{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "workflow_job_template_survey_spec", Endpoint: "/api/v2/workflow_job_templates/%d/survey_spec/"}}}
 }
 
 type workflowJobTemplateSurvey struct {
-	client   c.Client
-	endpoint string
-}
-
-func (o *workflowJobTemplateSurvey) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-	if request.ProviderData == nil {
-		return
-	}
-
-	o.client = request.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/workflow_job_templates/%d/survey_spec/"
-}
-
-func (o *workflowJobTemplateSurvey) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_workflow_job_template_survey_spec"
+	framework.ResourceBase
 }
 
 func (o *workflowJobTemplateSurvey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -106,58 +90,27 @@ func (o *workflowJobTemplateSurvey) ImportState(ctx context.Context, request res
 
 // Delete the survey spec for WorkflowJobTemplate
 func (o *workflowJobTemplateSurvey) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var err error
-
 	var state workflowJobTemplateSurveyTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
-	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for WorkflowJobTemplate/Survey on %s", endpoint),
-			err.Error(),
-		)
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
+	if framework.DiagnosticsHasError(&response.Diagnostics, framework.DeleteRequest(ctx, o.Client, endpoint, "WorkflowJobTemplate/Survey")...) {
 		return
 	}
 }
 
 // Read the survey spec for WorkflowJobTemplate
 func (o *workflowJobTemplateSurvey) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var err error
 	var state workflowJobTemplateSurveyTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
-	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	var data map[string]any
-	if data, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
-			err.Error(),
-		)
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.WorkflowJobTemplateID.ValueInt64())) + "/"
+	data, d := framework.ReadRequest(ctx, o.Client, endpoint, "WorkflowJobTemplate/Survey")
+	if framework.DiagnosticsHasError(&response.Diagnostics, d...) {
 		return
 	}
 
@@ -168,94 +121,47 @@ func (o *workflowJobTemplateSurvey) Read(ctx context.Context, request resource.R
 		}
 	}
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }
 
 // Create the survey spec for WorkflowJobTemplate
 func (o *workflowJobTemplateSurvey) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
-	var err error
 	var plan, state workflowJobTemplateSurveyTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
-	var buf bytes.Buffer
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Create/Survey] Making a request", map[string]any{
-		"payload":  bodyRequest,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
-	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
-			err.Error(),
-		)
+	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "WorkflowJobTemplate/Survey", "create"); framework.DiagnosticsHasError(&response.Diagnostics, d...) {
 		return
 	}
 
 	state.Spec = types.StringValue(plan.Spec.ValueString())
 	state.WorkflowJobTemplateID = types.Int64Value(plan.WorkflowJobTemplateID.ValueInt64())
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }
 
 // Update the survey spec for WorkflowJobTemplate
 func (o *workflowJobTemplateSurvey) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
-	var err error
 	var plan, state workflowJobTemplateSurveyTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
-	var buf bytes.Buffer
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.WorkflowJobTemplateID.ValueInt64())) + "/"
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[WorkflowJobTemplate/Update/SurveySpec] Making a request", map[string]any{
-		"payload":  bodyRequest,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
-	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for WorkflowJobTemplate on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for WorkflowJobTemplate/Survey on %s", endpoint),
-			err.Error(),
-		)
+	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "WorkflowJobTemplate/Survey", "update"); framework.DiagnosticsHasError(&response.Diagnostics, d...) {
 		return
 	}
 
 	state.Spec = types.StringValue(plan.Spec.ValueString())
 	state.WorkflowJobTemplateID = types.Int64Value(plan.WorkflowJobTemplateID.ValueInt64())
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }

@@ -69,7 +69,8 @@ func (o *instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InstanceGroup
-func (o *instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyRequestModel) {
+func (o *instanceGroupTerraformModel) BodyRequest() *instanceGroupBodyRequestModel {
+	var req instanceGroupBodyRequestModel
 	req.Credential = o.Credential.ValueInt64()
 	req.IsContainerGroup = o.IsContainerGroup.ValueBool()
 	req.MaxConcurrentJobs = o.MaxConcurrentJobs.ValueInt64()
@@ -79,7 +80,7 @@ func (o *instanceGroupTerraformModel) BodyRequest() (req instanceGroupBodyReques
 	req.PolicyInstanceList = json.RawMessage(o.PolicyInstanceList.ValueString())
 	req.PolicyInstanceMinimum = o.PolicyInstanceMinimum.ValueInt64()
 	req.PolicyInstancePercentage = o.PolicyInstancePercentage.ValueInt64()
-	return
+	return &req
 }
 
 func (o *instanceGroupTerraformModel) setCapacity(data any) (_ diag.Diagnostics, _ error) {
@@ -146,7 +147,7 @@ func (o *instanceGroupTerraformModel) setPolicyInstancePercentage(data any) (_ d
 	return helpers.AttrValueSetInt64(&o.PolicyInstancePercentage, data)
 }
 
-func (o *instanceGroupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *instanceGroupTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

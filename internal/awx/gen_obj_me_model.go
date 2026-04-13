@@ -50,8 +50,9 @@ func (o *meTerraformModel) Clone() meTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Me
-func (o *meTerraformModel) BodyRequest() (req meBodyRequestModel) {
-	return
+func (o *meTerraformModel) BodyRequest() *meBodyRequestModel {
+	var req meBodyRequestModel
+	return &req
 }
 
 func (o *meTerraformModel) setEmail(data any) (_ diag.Diagnostics, _ error) {
@@ -94,7 +95,7 @@ func (o *meTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
 	return helpers.AttrValueSetString(&o.Username, data, false)
 }
 
-func (o *meTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *meTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

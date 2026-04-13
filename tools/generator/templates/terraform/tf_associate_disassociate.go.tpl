@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 	"net/http"
 	p "path"
@@ -41,25 +41,11 @@ type {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}TerraformModel 
 
 // New{{ .Name }}AssociateDisassociate{{ .Type }}Resource is a helper function to simplify the provider implementation.
 func New{{ .Name }}AssociateDisassociate{{ .Type }}Resource() resource.Resource {
-	return &{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}{}
+	return &{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "{{ .Name | snakeCase }}_associate_{{ .Type | snakeCase }}", Endpoint: "{{ .Endpoint }}"}}}
 }
 
 type {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }} struct {
-    client   c.Client
-    endpoint string
-}
-
-func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-    if request.ProviderData == nil {
-        return
-    }
-
-    o.client = request.ProviderData.(c.Client)
-    o.endpoint = "{{ .Endpoint }}"
-}
-
-func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-    response.TypeName = request.ProviderTypeName + "_{{ .Name | snakeCase }}_associate_{{ .Type | snakeCase }}"
+    framework.ResourceBase
 }
 
 func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -161,17 +147,14 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 
 	// Retrieve values from state
 	var plan, state {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}TerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) { return }
 
 	// Creates a new request for association of {{ .Name }}
 	var r *http.Request
 {{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64(), plan.Option.ValueString())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.{{ .Name }}ID.ValueInt64(), plan.Option.ValueString())) + "/"
 {{- else }}
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.{{ .Type }}ID.ValueInt64(), Disassociate: false}
@@ -181,7 +164,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
             fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for create of type '{{ or .AssociateType "default" }}'", endpoint),
 			err.Error(),
@@ -189,7 +172,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 		return
 	}
 
-    if _, err = o.client.Do(ctx, r); err != nil {
+    if _, err = o.Client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
             fmt.Sprintf("Unable to associate for {{ .Name }} on %s with a payload of %#v", endpoint, bodyRequest),
             err.Error(),
@@ -203,10 +186,7 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Create(ct
 	state.Option = plan.Option
 {{ end }}
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) { return }
 }
 
 func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
@@ -214,17 +194,14 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Delete(ct
 
 	// Retrieve values from state
 	var state {{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}TerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) { return }
 
 	// Creates a new request for disassociation of {{ .Name }}
 	var r *http.Request
 {{- if or (eq .AssociateType "notification_job_template") (eq .AssociateType "notification_job_workflow_template") }}
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.{{ .Name }}ID.ValueInt64(), state.Option.ValueString())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.{{ .Name }}ID.ValueInt64(), state.Option.ValueString())) + "/"
 {{- else }}
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
 {{- end }}
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.{{ .Type | camelCase }}ID.ValueInt64(), Disassociate: true}
@@ -234,17 +211,17 @@ func (o *{{ .Name | lowerCamelCase }}AssociateDisassociate{{ .Type }}) Delete(ct
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete of type '{{ or .AssociateType "default" }}'" , o.endpoint),
+            fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete of type '{{ or .AssociateType "default" }}'" , o.Endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-    if _, err = o.client.Do(ctx, r); err != nil {
+    if _, err = o.Client.Do(ctx, r); err != nil {
         response.Diagnostics.AddError(
-            fmt.Sprintf("Unable to disassociate for {{ .Name }} on %s", o.endpoint),
+            fmt.Sprintf("Unable to disassociate for {{ .Name }} on %s", o.Endpoint),
             err.Error(),
         )
         return

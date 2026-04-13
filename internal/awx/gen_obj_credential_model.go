@@ -57,13 +57,14 @@ func (o *credentialTerraformModel) Clone() credentialTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Credential
-func (o *credentialTerraformModel) BodyRequest() (req credentialBodyRequestModel) {
+func (o *credentialTerraformModel) BodyRequest() *credentialBodyRequestModel {
+	var req credentialBodyRequestModel
 	req.CredentialType = o.CredentialType.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Inputs = json.RawMessage(o.Inputs.ValueString())
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
-	return
+	return &req
 }
 
 func (o *credentialTerraformModel) setCloud(data any) (_ diag.Diagnostics, _ error) {
@@ -106,7 +107,7 @@ func (o *credentialTerraformModel) setOrganization(data any) (_ diag.Diagnostics
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *credentialTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *credentialTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

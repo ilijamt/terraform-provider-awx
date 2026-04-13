@@ -99,7 +99,8 @@ func (o *adHocCommandTerraformModel) Clone() adHocCommandTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for AdHocCommand
-func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestModel) {
+func (o *adHocCommandTerraformModel) BodyRequest() *adHocCommandBodyRequestModel {
+	var req adHocCommandBodyRequestModel
 	req.BecomeEnabled = o.BecomeEnabled.ValueBool()
 	req.Credential = o.Credential.ValueInt64()
 	req.DiffMode = o.DiffMode.ValueBool()
@@ -112,7 +113,7 @@ func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestM
 	req.ModuleArgs = o.ModuleArgs.ValueString()
 	req.ModuleName = o.ModuleName.ValueString()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
 func (o *adHocCommandTerraformModel) setBecomeEnabled(data any) (_ diag.Diagnostics, _ error) {
@@ -219,7 +220,7 @@ func (o *adHocCommandTerraformModel) setWorkUnitId(data any) (_ diag.Diagnostics
 	return helpers.AttrValueSetString(&o.WorkUnitId, data, false)
 }
 
-func (o *adHocCommandTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *adHocCommandTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

@@ -96,7 +96,8 @@ func (o *settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsJobs
-func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestModel) {
+func (o *settingsJobsTerraformModel) BodyRequest() *settingsJobsBodyRequestModel {
+	var req settingsJobsBodyRequestModel
 	req.AD_HOC_COMMANDS = []string{}
 	for _, val := range o.AD_HOC_COMMANDS.Elements() {
 		if _, ok := val.(types.String); ok {
@@ -150,7 +151,7 @@ func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestM
 	req.PROJECT_UPDATE_VVV = o.PROJECT_UPDATE_VVV.ValueBool()
 	req.SCHEDULE_MAX_JOBS = o.SCHEDULE_MAX_JOBS.ValueInt64()
 	req.STDOUT_MAX_BYTES_DISPLAY = o.STDOUT_MAX_BYTES_DISPLAY.ValueInt64()
-	return
+	return &req
 }
 
 func (o *settingsJobsTerraformModel) setAdHocCommands(data any) (_ diag.Diagnostics, _ error) {
@@ -253,7 +254,7 @@ func (o *settingsJobsTerraformModel) setStdoutMaxBytesDisplay(data any) (_ diag.
 	return helpers.AttrValueSetInt64(&o.STDOUT_MAX_BYTES_DISPLAY, data)
 }
 
-func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsJobsTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

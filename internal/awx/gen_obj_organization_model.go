@@ -35,12 +35,13 @@ func (o *organizationTerraformModel) Clone() organizationTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Organization
-func (o *organizationTerraformModel) BodyRequest() (req organizationBodyRequestModel) {
+func (o *organizationTerraformModel) BodyRequest() *organizationBodyRequestModel {
+	var req organizationBodyRequestModel
 	req.DefaultEnvironment = o.DefaultEnvironment.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.MaxHosts = o.MaxHosts.ValueInt64()
 	req.Name = o.Name.ValueString()
-	return
+	return &req
 }
 
 func (o *organizationTerraformModel) setDefaultEnvironment(data any) (_ diag.Diagnostics, _ error) {
@@ -63,7 +64,7 @@ func (o *organizationTerraformModel) setName(data any) (_ diag.Diagnostics, _ er
 	return helpers.AttrValueSetString(&o.Name, data, false)
 }
 
-func (o *organizationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *organizationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

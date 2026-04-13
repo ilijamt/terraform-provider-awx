@@ -32,12 +32,13 @@ func (o *settingsOpenIdconnectTerraformModel) Clone() settingsOpenIdconnectTerra
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsOpenIDConnect
-func (o *settingsOpenIdconnectTerraformModel) BodyRequest() (req settingsOpenIdconnectBodyRequestModel) {
+func (o *settingsOpenIdconnectTerraformModel) BodyRequest() *settingsOpenIdconnectBodyRequestModel {
+	var req settingsOpenIdconnectBodyRequestModel
 	req.SOCIAL_AUTH_OIDC_KEY = o.SOCIAL_AUTH_OIDC_KEY.ValueString()
 	req.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT.ValueString()
 	req.SOCIAL_AUTH_OIDC_SECRET = o.SOCIAL_AUTH_OIDC_SECRET.ValueString()
 	req.SOCIAL_AUTH_OIDC_VERIFY_SSL = o.SOCIAL_AUTH_OIDC_VERIFY_SSL.ValueBool()
-	return
+	return &req
 }
 
 func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcKey(data any) (_ diag.Diagnostics, _ error) {
@@ -56,7 +57,7 @@ func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcVerifySsl(data an
 	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data)
 }
 
-func (o *settingsOpenIdconnectTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsOpenIdconnectTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

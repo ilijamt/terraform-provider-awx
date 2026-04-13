@@ -32,11 +32,12 @@ func (o *teamTerraformModel) Clone() teamTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Team
-func (o *teamTerraformModel) BodyRequest() (req teamBodyRequestModel) {
+func (o *teamTerraformModel) BodyRequest() *teamBodyRequestModel {
+	var req teamBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Name = o.Name.ValueString()
 	req.Organization = o.Organization.ValueInt64()
-	return
+	return &req
 }
 
 func (o *teamTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -55,7 +56,7 @@ func (o *teamTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ er
 	return helpers.AttrValueSetInt64(&o.Organization, data)
 }
 
-func (o *teamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *teamTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

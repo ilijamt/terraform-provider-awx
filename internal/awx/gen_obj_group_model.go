@@ -36,12 +36,13 @@ func (o *groupTerraformModel) Clone() groupTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Group
-func (o *groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
+func (o *groupTerraformModel) BodyRequest() *groupBodyRequestModel {
+	var req groupBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
 	req.Variables = json.RawMessage(o.Variables.String())
-	return
+	return &req
 }
 
 func (o *groupTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -64,7 +65,7 @@ func (o *groupTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ erro
 	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
 }
 
-func (o *groupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *groupTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

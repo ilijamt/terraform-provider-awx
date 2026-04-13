@@ -45,7 +45,8 @@ func (o *settingsAuthGithubEnterpriseOrgTerraformModel) Clone() settingsAuthGith
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubEnterpriseOrg
-func (o *settingsAuthGithubEnterpriseOrgTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseOrgBodyRequestModel) {
+func (o *settingsAuthGithubEnterpriseOrgTerraformModel) BodyRequest() *settingsAuthGithubEnterpriseOrgBodyRequestModel {
+	var req settingsAuthGithubEnterpriseOrgBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_KEY.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_NAME.ValueString()
@@ -53,7 +54,7 @@ func (o *settingsAuthGithubEnterpriseOrgTerraformModel) BodyRequest() (req setti
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP.ValueString())
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL.ValueString()
-	return
+	return &req
 }
 
 func (o *settingsAuthGithubEnterpriseOrgTerraformModel) setSocialAuthGithubEnterpriseOrgApiUrl(data any) (_ diag.Diagnostics, _ error) {
@@ -88,7 +89,7 @@ func (o *settingsAuthGithubEnterpriseOrgTerraformModel) setSocialAuthGithubEnter
 	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_URL, data, false)
 }
 
-func (o *settingsAuthGithubEnterpriseOrgTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthGithubEnterpriseOrgTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

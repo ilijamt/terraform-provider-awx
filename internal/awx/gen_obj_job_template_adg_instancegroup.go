@@ -18,7 +18,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
 
@@ -35,25 +35,11 @@ type jobTemplateAssociateDisassociateInstanceGroupTerraformModel struct {
 
 // NewJobTemplateAssociateDisassociateInstanceGroupResource is a helper function to simplify the provider implementation.
 func NewJobTemplateAssociateDisassociateInstanceGroupResource() resource.Resource {
-	return &jobTemplateAssociateDisassociateInstanceGroup{}
+	return &jobTemplateAssociateDisassociateInstanceGroup{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "job_template_associate_instance_group", Endpoint: "/api/v2/job_templates/%d/instance_groups/"}}}
 }
 
 type jobTemplateAssociateDisassociateInstanceGroup struct {
-	client   c.Client
-	endpoint string
-}
-
-func (o *jobTemplateAssociateDisassociateInstanceGroup) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-	if request.ProviderData == nil {
-		return
-	}
-
-	o.client = request.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/job_templates/%d/instance_groups/"
-}
-
-func (o *jobTemplateAssociateDisassociateInstanceGroup) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-	response.TypeName = request.ProviderTypeName + "_job_template_associate_instance_group"
+	framework.ResourceBase
 }
 
 func (o *jobTemplateAssociateDisassociateInstanceGroup) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -130,14 +116,13 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Create(ctx context.Conte
 
 	// Retrieve values from state
 	var plan, state jobTemplateAssociateDisassociateInstanceGroupTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
 	// Creates a new request for association of JobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.JobTemplateID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: plan.InstanceGroupID.ValueInt64(), Disassociate: false}
 	tflog.Debug(ctx, "[JobTemplate/Create/Associate] Making a request", map[string]any{
@@ -146,7 +131,7 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Create(ctx context.Conte
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for create of type 'default'", endpoint),
 			err.Error(),
@@ -154,7 +139,7 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Create(ctx context.Conte
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
 			fmt.Sprintf("Unable to associate for JobTemplate on %s with a payload of %#v", endpoint, bodyRequest),
 			err.Error(),
@@ -165,8 +150,7 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Create(ctx context.Conte
 	state.JobTemplateID = plan.JobTemplateID
 	state.InstanceGroupID = plan.InstanceGroupID
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
 		return
 	}
 }
@@ -176,14 +160,13 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Delete(ctx context.Conte
 
 	// Retrieve values from state
 	var state jobTemplateAssociateDisassociateInstanceGroupTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
 	// Creates a new request for disassociation of JobTemplate
 	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.JobTemplateID.ValueInt64())) + "/"
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.JobTemplateID.ValueInt64())) + "/"
 	var buf bytes.Buffer
 	var bodyRequest = models.AssociateDisassociateRequestModel{ID: state.InstanceGroupID.ValueInt64(), Disassociate: true}
 	tflog.Debug(ctx, "[JobTemplate/Delete/Disassociate] Making a request", map[string]any{
@@ -192,17 +175,17 @@ func (o *jobTemplateAssociateDisassociateInstanceGroup) Delete(ctx context.Conte
 		"endpoint": endpoint,
 	})
 	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
+	if r, err = o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type 'default'", o.endpoint),
+			fmt.Sprintf("Unable to create a new request for JobTemplate on %s for delete of type 'default'", o.Endpoint),
 			err.Error(),
 		)
 		return
 	}
 
-	if _, err = o.client.Do(ctx, r); err != nil {
+	if _, err = o.Client.Do(ctx, r); err != nil {
 		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to disassociate for JobTemplate on %s", o.endpoint),
+			fmt.Sprintf("Unable to disassociate for JobTemplate on %s", o.Endpoint),
 			err.Error(),
 		)
 		return

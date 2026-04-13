@@ -3,8 +3,8 @@ package awx
 import (
 	"context"
 	"fmt"
-	"net/http"
 
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -13,7 +13,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/mitchellh/mapstructure"
 )
 
@@ -24,28 +23,12 @@ var (
 
 // NewConstructedInventoriesObjectRolesDataSource is a helper function to instantiate the ConstructedInventories data source.
 func NewConstructedInventoriesObjectRolesDataSource() datasource.DataSource {
-	return &constructedInventoriesObjectRolesDataSource{}
+	return &constructedInventoriesObjectRolesDataSource{DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "constructed_inventories_object_roles", Endpoint: "/api/v2/constructed_inventories/%d/object_roles/"}}}
 }
 
 // constructedInventoriesObjectRolesDataSource is the data source implementation.
 type constructedInventoriesObjectRolesDataSource struct {
-	client   c.Client
-	endpoint string
-}
-
-// Configure adds the provider configured client to the data source.
-func (o *constructedInventoriesObjectRolesDataSource) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
-	if req.ProviderData == nil {
-		return
-	}
-
-	o.client = req.ProviderData.(c.Client)
-	o.endpoint = "/api/v2/constructed_inventories/%d/object_roles/"
-}
-
-// Metadata returns the data source type name.
-func (o *constructedInventoriesObjectRolesDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_constructed_inventories_object_roles"
+	framework.DataSourceBase
 }
 
 // Schema defines the schema for the data source.
@@ -72,30 +55,14 @@ func (o *constructedInventoriesObjectRolesDataSource) Read(ctx context.Context, 
 	var err error
 	var id types.Int64
 
-	if d := req.Config.GetAttribute(ctx, path.Root("id"), &id); d.HasError() {
-		resp.Diagnostics.Append(d...)
+	if framework.DiagnosticsHasError(&resp.Diagnostics, req.Config.GetAttribute(ctx, path.Root("id"), &id)...) {
 		return
 	}
 	state.ID = types.Int64Value(id.ValueInt64())
 
-	// Creates a new request for Credential
-	var r *http.Request
-	var endpoint = fmt.Sprintf(o.endpoint, id.ValueInt64())
-	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
-		resp.Diagnostics.AddError(
-			"Unable to create a new request for constructedInventories",
-			err.Error(),
-		)
-		return
-	}
-
-	// Try and actually fetch the data for Credential
-	var data map[string]any
-	if data, err = o.client.Do(ctx, r); err != nil {
-		resp.Diagnostics.AddError(
-			fmt.Sprintf("Unable to fetch the request for constructedinventories object roles on %s", endpoint),
-			err.Error(),
-		)
+	var endpoint = fmt.Sprintf(o.Endpoint, id.ValueInt64())
+	data, d := framework.ReadRequest(ctx, o.Client, endpoint, "ConstructedInventories/ObjectRoles")
+	if framework.DiagnosticsHasError(&resp.Diagnostics, d...) {
 		return
 	}
 
@@ -113,15 +80,12 @@ func (o *constructedInventoriesObjectRolesDataSource) Read(ctx context.Context, 
 		in[role.Name] = types.Int64Value(role.ID)
 	}
 
-	var d diag.Diagnostics
-	if state.Roles, d = types.MapValue(types.Int64Type, in); d.HasError() {
-		resp.Diagnostics.Append(d...)
+	var dg diag.Diagnostics
+	if state.Roles, dg = types.MapValue(types.Int64Type, in); framework.DiagnosticsHasError(&resp.Diagnostics, dg...) {
 		return
 	}
 
-	// Set state
-	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
-	if resp.Diagnostics.HasError() {
+	if framework.DiagnosticsHasError(&resp.Diagnostics, resp.State.Set(ctx, &state)...) {
 		return
 	}
 }

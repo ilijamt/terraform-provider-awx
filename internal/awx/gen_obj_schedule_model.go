@@ -93,7 +93,8 @@ func (o *scheduleTerraformModel) Clone() scheduleTerraformModel {
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Schedule
-func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
+func (o *scheduleTerraformModel) BodyRequest() *scheduleBodyRequestModel {
+	var req scheduleBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.Enabled = o.Enabled.ValueBool()
@@ -112,7 +113,7 @@ func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
 	req.Timeout = o.Timeout.ValueInt64()
 	req.UnifiedJobTemplate = o.UnifiedJobTemplate.ValueInt64()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
 func (o *scheduleTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
@@ -211,7 +212,7 @@ func (o *scheduleTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ e
 	return helpers.AttrValueSetString(&o.Verbosity, data, false)
 }
 
-func (o *scheduleTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *scheduleTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

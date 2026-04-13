@@ -39,13 +39,14 @@ func (o *settingsAuthGithubTeamTerraformModel) Clone() settingsAuthGithubTeamTer
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubTeam
-func (o *settingsAuthGithubTeamTerraformModel) BodyRequest() (req settingsAuthGithubTeamBodyRequestModel) {
+func (o *settingsAuthGithubTeamTerraformModel) BodyRequest() *settingsAuthGithubTeamBodyRequestModel {
+	var req settingsAuthGithubTeamBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_TEAM_ID = o.SOCIAL_AUTH_GITHUB_TEAM_ID.ValueString()
 	req.SOCIAL_AUTH_GITHUB_TEAM_KEY = o.SOCIAL_AUTH_GITHUB_TEAM_KEY.ValueString()
 	req.SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_GITHUB_TEAM_SECRET = o.SOCIAL_AUTH_GITHUB_TEAM_SECRET.ValueString()
 	req.SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP.ValueString())
-	return
+	return &req
 }
 
 func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
@@ -72,7 +73,7 @@ func (o *settingsAuthGithubTeamTerraformModel) setSocialAuthGithubTeamTeamMap(da
 	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP, data, false)
 }
 
-func (o *settingsAuthGithubTeamTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthGithubTeamTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")

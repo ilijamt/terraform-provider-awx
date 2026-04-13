@@ -104,7 +104,8 @@ func (o *settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformMo
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscSystem
-func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystemBodyRequestModel) {
+func (o *settingsMiscSystemTerraformModel) BodyRequest() *settingsMiscSystemBodyRequestModel {
+	var req settingsMiscSystemBodyRequestModel
 	req.ACTIVITY_STREAM_ENABLED = o.ACTIVITY_STREAM_ENABLED.ValueBool()
 	req.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC = o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC.ValueBool()
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
@@ -145,7 +146,7 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() (req settingsMiscSystem
 	req.SUBSCRIPTION_USAGE_MODEL = o.SUBSCRIPTION_USAGE_MODEL.ValueString()
 	req.TOWER_URL_BASE = o.TOWER_URL_BASE.ValueString()
 	req.UI_NEXT = o.UI_NEXT.ValueBool()
-	return
+	return &req
 }
 
 func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabled(data any) (_ diag.Diagnostics, _ error) {
@@ -260,7 +261,7 @@ func (o *settingsMiscSystemTerraformModel) setUiNext(data any) (_ diag.Diagnosti
 	return helpers.AttrValueSetBool(&o.UI_NEXT, data)
 }
 
-func (o *settingsMiscSystemTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsMiscSystemTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
