@@ -33,7 +33,7 @@ func doRequest(client *http.Client, ctx context.Context, req *http.Request) (dat
 		return data, fmt.Errorf("%w: failed to decode data", err)
 	}
 
-	if !(resp.StatusCode >= 200 && resp.StatusCode < 300) {
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		return data, fmt.Errorf("%w: %d, on %s with %s", ErrInvalidStatusCode, resp.StatusCode, req.URL.RequestURI(), string(payload))
 	}
 
