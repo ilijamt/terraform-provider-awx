@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,31 +22,28 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
-          cache: true
       - name: Display Go version
         run: go version
       - name: Test
         run: go test -cover -coverprofile=coverage.out -v ./...
       - name: Upload coverage reports to Codecov
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           files: ./coverage.out
           flags: unittests
+          fail_ci_if_error: false
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        provider: [ 'provider' ]
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
-          cache: true
       - name: Display Go version
         run: go version
       - name: Build
-        run: go build -v ./cmd/${{ matrix.provider }}
+        run: go build -v ./cmd/provider
