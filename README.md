@@ -13,8 +13,6 @@ AWX Versions
 
 Currently, built provider versions for AWX.
 
-* 24.2.0
-    * [Deprecations](resources/api/24.2.0/deprecated.md)
 * 24.6.1
     * [Deprecations](resources/api/24.6.1/deprecated.md)
 
@@ -72,7 +70,7 @@ Make sure you have a fully clean environment, delete the `namespace` and any lin
 ```shell
 ❯ kubectl config current-context
 minikube
-❯ kustomize build tools/awx-k8s-manifests/overlays/24.3.1 | kubectl apply -f -
+❯ kustomize build tools/awx-k8s-manifests/overlays/24.6.1 | kubectl apply -f -
 ```
 
 ```shell
@@ -85,5 +83,5 @@ Make sure that `awx.local` points to `10.211.55.6` in your `/etc/hosts` file on 
 To cleanup just run:
 
 ```shell
-❯ kustomize build tools/awx-k8s-manifests/overlays/24.3.1 | kubectl delete -f -
+❯ kustomize build tools/awx-k8s-manifests/overlays/24.6.1 | kubectl delete -f -
 ```
