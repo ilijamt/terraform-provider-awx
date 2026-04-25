@@ -46,7 +46,7 @@ jobs:
         with:
           languages: go
       - name: Build
-        run: go build ./cmd/vault-plugin-secrets-gitlab
+        run: go build ./cmd/provider
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
         with:
