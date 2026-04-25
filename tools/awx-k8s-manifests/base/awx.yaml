@@ -11,7 +11,7 @@ spec:
   replicas: 1
   image_pull_policy: Always
   image_version: 24.6.1
-  image: quay.io/ansible/awx:24.6.1
+  image: quay.io/ansible/awx
   extra_settings:
   - setting: TOWER_URL_BASE
     value: '"http://awx.local"'
