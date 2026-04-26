@@ -145,8 +145,3 @@ type hostBodyRequestModel struct {
 	// Variables "Host variables in JSON or YAML format."
 	Variables json.RawMessage `json:"variables,omitempty"`
 }
-
-type hostObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

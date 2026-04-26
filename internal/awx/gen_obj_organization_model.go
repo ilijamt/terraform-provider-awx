@@ -98,8 +98,3 @@ type organizationBodyRequestModel struct {
 	// Name "Name of this organization."
 	Name string `json:"name"`
 }
-
-type organizationObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

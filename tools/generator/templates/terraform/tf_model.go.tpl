@@ -99,9 +99,3 @@ type {{ .Name | lowerCamelCase }}BodyRequestModel struct {
 {{- end }}
 }
 
-{{ if .HasObjectRoles }}
-type {{ .Name | lowerCamelCase }}ObjectRolesModel struct {
-    ID     types.Int64 `tfsdk:"id"`
-	Roles  types.Map   `tfsdk:"roles"`
-}
-{{- end }}

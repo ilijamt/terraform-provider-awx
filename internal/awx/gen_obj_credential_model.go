@@ -162,8 +162,3 @@ type credentialBodyRequestModel struct {
 	// User "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation."
 	User int64 `json:"user,omitempty"`
 }
-
-type credentialObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

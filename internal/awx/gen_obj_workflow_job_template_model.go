@@ -307,8 +307,3 @@ type workflowJobTemplateBodyRequestModel struct {
 	// WebhookService "Service that webhook requests will be accepted from"
 	WebhookService string `json:"webhook_service,omitempty"`
 }
-
-type workflowJobTemplateObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

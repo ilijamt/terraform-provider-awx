@@ -85,8 +85,3 @@ type teamBodyRequestModel struct {
 	// Organization ""
 	Organization int64 `json:"organization"`
 }
-
-type teamObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

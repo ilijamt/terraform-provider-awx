@@ -280,8 +280,3 @@ type projectBodyRequestModel struct {
 	// Timeout "The amount of time (in seconds) to run before the task is canceled."
 	Timeout int64 `json:"timeout,omitempty"`
 }
-
-type projectObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}

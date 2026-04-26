@@ -254,8 +254,3 @@ type constructedInventoriesBodyRequestModel struct {
 	// Verbosity "The verbosity level for the related auto-created inventory source, special to constructed inventory"
 	Verbosity int64 `json:"verbosity,omitempty"`
 }
-
-type constructedInventoriesObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
-}
