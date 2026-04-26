@@ -1,8 +1,13 @@
 package awx
 
 import (
+	"context"
+	"time"
+
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -12,6 +17,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 
 	"github.com/ilijamt/terraform-provider-awx/internal/framework"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -264,10 +270,44 @@ func NewProjectResource() resource.Resource {
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
+					// Terraform-only lifecycle controls
+					"wait_for_sync": schema.BoolAttribute{
+						Description: "If true, wait for AWX to finish the SCM update kicked off on create or update before returning. Configure the maximum wait via the timeouts block.",
+						Optional:    true,
+						Computed:    true,
+						Default:     booldefault.StaticBool(false),
+						PlanModifiers: []planmodifier.Bool{
+							boolplanmodifier.UseStateForUnknown(),
+						},
+					},
 				},
 			},
 			IDAccessor:   func(m *projectTerraformModel) any { return m.ID.ValueInt64() },
 			IDKey:        "id",
+			EmitTimeouts: true,
+			CopyExtraAttributes: func(plan, state *projectTerraformModel) {
+				state.WaitForSync = plan.WaitForSync
+				state.Timeouts = plan.Timeouts
+			},
+			WaitLifecycle: &framework.WaitLifecycleCfg[projectTerraformModel]{
+				ShouldWait: func(plan *projectTerraformModel) bool {
+					return !plan.WaitForSync.IsNull() && plan.WaitForSync.ValueBool()
+				},
+				EndpointForModel: func(m *projectTerraformModel) string {
+					return framework.EndpointWithID("/api/v2/projects/", m.ID.ValueInt64())
+				},
+				Field:          "status",
+				SuccessValues:  []string{"successful", "ok", "never updated"},
+				FailureValues:  []string{"failed", "error", "canceled"},
+				PollInterval:   5 * time.Second,
+				DefaultTimeout: 5 * time.Minute,
+				ResolveTimeout: func(ctx context.Context, plan *projectTerraformModel, callee hooks.Callee) (time.Duration, diag.Diagnostics) {
+					if callee == hooks.CalleeUpdate {
+						return plan.Timeouts.Update(ctx, 5*time.Minute)
+					}
+					return plan.Timeouts.Create(ctx, 5*time.Minute)
+				},
+			},
 			ApiVersion:   ApiVersion,
 			ResourceName: "Project",
 		},

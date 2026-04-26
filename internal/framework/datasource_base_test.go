@@ -97,8 +97,8 @@ func TestDataSourceBase_Metadata(t *testing.T) {
 // mockConfigValidator is a no-op datasource.ConfigValidator for testing.
 type mockConfigValidator struct{}
 
-func (mockConfigValidator) Description(context.Context) string          { return "" }
-func (mockConfigValidator) MarkdownDescription(context.Context) string  { return "" }
+func (mockConfigValidator) Description(context.Context) string         { return "" }
+func (mockConfigValidator) MarkdownDescription(context.Context) string { return "" }
 func (mockConfigValidator) ValidateDataSource(context.Context, datasource.ValidateConfigRequest, *datasource.ValidateConfigResponse) {
 }
 

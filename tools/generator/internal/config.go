@@ -78,6 +78,31 @@ type Item struct {
 	RemoveFieldsDataSource      []string                     `json:"remove_fields_data_source" yaml:"remove_fields_data_source"`
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource" yaml:"remove_fields_resource"`
 	CredentialTypes             []CredentialTypes            `json:"credential_types" yaml:"credential_types"`
+	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
+}
+
+// WaitLifecycleConfig opts a resource into post-Create/Update polling. The
+// generator emits a Terraform-only bool toggle (WaitAttribute), a timeouts
+// block, and the WaitLifecycle wiring on the generated resource so the
+// framework polls AWX until the resource reaches a terminal status.
+type WaitLifecycleConfig struct {
+	// WaitAttribute is the schema attribute name (e.g. "wait_for_sync").
+	WaitAttribute string `json:"wait_attribute" yaml:"wait_attribute"`
+	// WaitDescription is the schema attribute description.
+	WaitDescription string `json:"wait_description" yaml:"wait_description"`
+	// EndpointSuffix is appended to the resource's base endpoint with the ID
+	// substituted via Sprintf — typically "%d/" for AWX.
+	EndpointSuffix string `json:"endpoint_suffix" yaml:"endpoint_suffix"`
+	// StatusField is the JSON field on the polled response to inspect.
+	StatusField string `json:"status_field" yaml:"status_field"`
+	// SuccessValues are terminal field values that mean the wait succeeded.
+	SuccessValues []string `json:"success_values" yaml:"success_values"`
+	// FailureValues are terminal field values that mean the wait failed.
+	FailureValues []string `json:"failure_values" yaml:"failure_values"`
+	// DefaultTimeout is the fallback if the user doesn't set timeouts. Go duration string.
+	DefaultTimeout string `json:"default_timeout" yaml:"default_timeout"`
+	// PollInterval between status reads. Go duration string.
+	PollInterval string `json:"poll_interval" yaml:"poll_interval"`
 }
 
 type CredentialTypes struct {

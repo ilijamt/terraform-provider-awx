@@ -89,6 +89,13 @@ resource "awx_project" "demo_project" {
   scm_url      = "https://github.com/ansible/ansible-tower-samples"
   scm_type     = "git"
   scm_clean    = false
+
+  wait_for_sync = true
+
+  timeouts {
+    create = "10m"
+    update = "5m"
+  }
 }
 
 resource "awx_inventory" "demo_inventory" {

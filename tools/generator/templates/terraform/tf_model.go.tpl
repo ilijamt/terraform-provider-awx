@@ -5,6 +5,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+{{- if .WaitLifecycle }}
+	"github.com/hashicorp/terraform-plugin-framework-timeouts/resource/timeouts"
+{{- end }}
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
@@ -19,6 +22,12 @@ type {{ .Name | lowerCamelCase }}TerraformModel struct {
     // {{ $value.Generated.PropertyName }} {{ escape_quotes (or $value.Description "") }}
     {{ $value.Generated.PropertyName }} {{ $value.Generated.AwxGoType }} `tfsdk:"{{ $key | lowerCase }}" json:"{{ $key }}"`
 {{- end }}
+{{- end }}
+{{- if .WaitLifecycle }}
+    // {{ .WaitLifecycle.WaitAttribute | camelCase }} is a Terraform-only toggle (not synced to the AWX API).
+    {{ .WaitLifecycle.WaitAttribute | camelCase }} types.Bool `tfsdk:"{{ .WaitLifecycle.WaitAttribute }}" json:"-"`
+    // Timeouts holds the user-configured timeouts {} block.
+    Timeouts timeouts.Value `tfsdk:"timeouts" json:"-"`
 {{- end }}
 }
 

@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/iancoleman/strcase"
 	"gopkg.in/yaml.v3"
@@ -273,5 +274,39 @@ var FuncMap = template.FuncMap{
 	"toYaml": func(in any) string {
 		payload, _ := yaml.Marshal(in)
 		return string(payload)
+	},
+	"go_duration": func(s string) string {
+		if s == "" {
+			return "0"
+		}
+		d, err := time.ParseDuration(s)
+		if err != nil || d == 0 {
+			return "0"
+		}
+		switch {
+		case d%time.Hour == 0:
+			return fmt.Sprintf("%d * time.Hour", d/time.Hour)
+		case d%time.Minute == 0:
+			return fmt.Sprintf("%d * time.Minute", d/time.Minute)
+		case d%time.Second == 0:
+			return fmt.Sprintf("%d * time.Second", d/time.Second)
+		default:
+			return fmt.Sprintf("%d * time.Millisecond", d/time.Millisecond)
+		}
+	},
+	"go_string_slice": func(in []string) string {
+		if len(in) == 0 {
+			return "nil"
+		}
+		var b strings.Builder
+		b.WriteString("[]string{")
+		for i, v := range in {
+			if i > 0 {
+				b.WriteString(", ")
+			}
+			b.WriteString(fmt.Sprintf("%q", v))
+		}
+		b.WriteString("}")
+		return b.String()
 	},
 }

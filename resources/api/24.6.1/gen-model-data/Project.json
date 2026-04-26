@@ -1612,5 +1612,23 @@
     "ObjectRoles": true
   },
   "deprecated_read_properties": [],
-  "deprecated_write_properties": []
+  "deprecated_write_properties": [],
+  "wait_lifecycle": {
+    "wait_attribute": "wait_for_sync",
+    "wait_description": "If true, wait for AWX to finish the SCM update kicked off on create or update before returning. Configure the maximum wait via the timeouts block.",
+    "endpoint_suffix": "%d/",
+    "status_field": "status",
+    "success_values": [
+      "successful",
+      "ok",
+      "never updated"
+    ],
+    "failure_values": [
+      "failed",
+      "error",
+      "canceled"
+    ],
+    "default_timeout": "5m",
+    "poll_interval": "5s"
+  }
 }

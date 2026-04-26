@@ -185,6 +185,18 @@ func New{{ .Name }}Resource() resource.Resource {
 					},
 {{- end }}
 {{- end }}
+{{- if .WaitLifecycle }}
+				// Terraform-only lifecycle controls
+					"{{ .WaitLifecycle.WaitAttribute }}": schema.BoolAttribute{
+						Description: {{ escape_quotes .WaitLifecycle.WaitDescription }},
+						Optional:    true,
+						Computed:    true,
+						Default:     booldefault.StaticBool(false),
+						PlanModifiers: []planmodifier.Bool{
+							boolplanmodifier.UseStateForUnknown(),
+						},
+					},
+{{- end }}
 				},
 			},
 {{- if not .NoId }}
@@ -234,6 +246,32 @@ func New{{ .Name }}Resource() resource.Resource {
 				state.{{ $value.Generated.PropertyName }} = {{ $value.Generated.AwxGoValue }}(plan.{{ $value.Generated.PropertyName }}.{{ $value.Generated.TfGoPrimitiveValue }}())
 {{- end }}
 {{- end }}
+			},
+{{- end }}
+{{- if .WaitLifecycle }}
+			EmitTimeouts: true,
+			CopyExtraAttributes: func(plan, state *{{ .Name | lowerCamelCase }}TerraformModel) {
+				state.{{ .WaitLifecycle.WaitAttribute | camelCase }} = plan.{{ .WaitLifecycle.WaitAttribute | camelCase }}
+				state.Timeouts = plan.Timeouts
+			},
+			WaitLifecycle: &framework.WaitLifecycleCfg[{{ .Name | lowerCamelCase }}TerraformModel]{
+				ShouldWait: func(plan *{{ .Name | lowerCamelCase }}TerraformModel) bool {
+					return !plan.{{ .WaitLifecycle.WaitAttribute | camelCase }}.IsNull() && plan.{{ .WaitLifecycle.WaitAttribute | camelCase }}.ValueBool()
+				},
+				EndpointForModel: func(m *{{ .Name | lowerCamelCase }}TerraformModel) string {
+					return framework.EndpointWithID("{{ $.Endpoint }}", m.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}())
+				},
+				Field:          {{ .WaitLifecycle.StatusField | quote }},
+				SuccessValues:  {{ go_string_slice .WaitLifecycle.SuccessValues }},
+				FailureValues:  {{ go_string_slice .WaitLifecycle.FailureValues }},
+				PollInterval:   {{ go_duration .WaitLifecycle.PollInterval }},
+				DefaultTimeout: {{ go_duration .WaitLifecycle.DefaultTimeout }},
+				ResolveTimeout: func(ctx context.Context, plan *{{ .Name | lowerCamelCase }}TerraformModel, callee hooks.Callee) (time.Duration, diag.Diagnostics) {
+					if callee == hooks.CalleeUpdate {
+						return plan.Timeouts.Update(ctx, {{ go_duration .WaitLifecycle.DefaultTimeout }})
+					}
+					return plan.Timeouts.Create(ctx, {{ go_duration .WaitLifecycle.DefaultTimeout }})
+				},
 			},
 {{- end }}
 			ApiVersion: ApiVersion,

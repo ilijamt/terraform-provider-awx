@@ -5,6 +5,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
+	"github.com/hashicorp/terraform-plugin-framework-timeouts/resource/timeouts"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
@@ -49,6 +50,10 @@ type projectTerraformModel struct {
 	SignatureValidationCredential types.Int64 `tfsdk:"signature_validation_credential" json:"signature_validation_credential"`
 	// Timeout "The amount of time (in seconds) to run before the task is canceled."
 	Timeout types.Int64 `tfsdk:"timeout" json:"timeout"`
+	// WaitForSync is a Terraform-only toggle (not synced to the AWX API).
+	WaitForSync types.Bool `tfsdk:"wait_for_sync" json:"-"`
+	// Timeouts holds the user-configured timeouts {} block.
+	Timeouts timeouts.Value `tfsdk:"timeouts" json:"-"`
 }
 
 // Clone the object
