@@ -1231,6 +1231,15 @@
         },
         "GALAXY_TASK_ENV": {
           "type": "json"
+        },
+        "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
+          "omit_empty": false
+        },
+        "MAX_WEBSOCKET_EVENT_RATE": {
+          "omit_empty": false
+        },
+        "STDOUT_MAX_BYTES_DISPLAY": {
+          "omit_empty": false
         }
       }
     },

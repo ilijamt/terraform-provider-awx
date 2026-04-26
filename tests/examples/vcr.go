@@ -65,7 +65,7 @@ func NewVCRClient(t *testing.T, cassetteName string) *http.Client {
 	}
 
 	opts := []recorder.Option{
-		recorder.WithSkipRequestLatency(false),
+		recorder.WithSkipRequestLatency(true),
 		recorder.WithMode(mode),
 		recorder.WithMatcher(matcher),
 		recorder.WithHook(redactHook, recorder.AfterCaptureHook),

@@ -83,7 +83,7 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) UpdateFromApiData(data map[
 type {{ .Name | lowerCamelCase }}BodyRequestModel struct {
 {{- range $key, $value := .WriteProperties }}
     // {{ $value.Generated.PropertyName }} {{ escape_quotes (or $value.Description "") }}
-    {{ $value.Generated.PropertyName }} {{ $value.Generated.BodyRequestModelType }} `json:"{{ $key }}{{ if and (not $value.IsRequired) (not (eq $value.Generated.BodyRequestModelType "bool")) }},omitempty{{ end }}"`
+    {{ $value.Generated.PropertyName }} {{ $value.Generated.BodyRequestModelType }} `json:"{{ $key }}{{ if and (not $value.IsRequired) (not (eq $value.Generated.BodyRequestModelType "bool")) $value.OmitEmpty }},omitempty{{ end }}"`
 {{- end }}
 }
 

@@ -1,0 +1,537 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 511
+        host: awx.local
+        body: |
+            {"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1120
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1120"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 997924e754574e5c934e296aea5bf8ed
+            X-Api-Time:
+                - 0.093s
+            X-Api-Total-Time:
+                - 0.160s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 5.188563167s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1120
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1120"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - eaeea5c9161141a6b5fc5c51fe58f6cb
+            X-Api-Time:
+                - 0.062s
+            X-Api-Total-Time:
+                - 0.123s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 133.620834ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1120
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1120"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 497afa242fd248f5935c188e568870da
+            X-Api-Time:
+                - 0.063s
+            X-Api-Total-Time:
+                - 0.128s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 139.275917ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 907
+        host: awx.local
+        body: |
+            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":100,"MAX_WEBSOCKET_EVENT_RATE":60,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":25,"STDOUT_MAX_BYTES_DISPLAY":524288}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 328be224627c436292c852b4695b64b3
+            X-Api-Time:
+                - 0.220s
+            X-Api-Total-Time:
+                - 0.294s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 361.443541ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3839ecb8706c42d5a93ff911ffd34732
+            X-Api-Time:
+                - 0.026s
+            X-Api-Total-Time:
+                - 0.084s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 94.878083ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:55 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d5ecde2ccac14977a012431564294568
+            X-Api-Time:
+                - 0.047s
+            X-Api-Total-Time:
+                - 0.104s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 114.916209ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 898
+        host: awx.local
+        body: |
+            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1120
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1120"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:55 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b126afbb6a7344d989903c6572b2944b
+            X-Api-Time:
+                - 0.174s
+            X-Api-Total-Time:
+                - 0.236s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 282.558666ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/jobs/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1120
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1120"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 16:40:55 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f2b1ce8ea1eb4b2db2a2a6233035da3e
+            X-Api-Time:
+                - 0.045s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.524541ms

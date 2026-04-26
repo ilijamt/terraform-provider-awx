@@ -245,7 +245,7 @@ type settingsJobsBodyRequestModel struct {
 	// DEFAULT_PROJECT_UPDATE_TIMEOUT "Maximum time in seconds to allow project updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual project will override this."
 	DEFAULT_PROJECT_UPDATE_TIMEOUT int64 `json:"DEFAULT_PROJECT_UPDATE_TIMEOUT,omitempty"`
 	// EVENT_STDOUT_MAX_BYTES_DISPLAY "Maximum Size of Standard Output in bytes to display for a single job or ad hoc command event. `stdout` will end with `…` when truncated."
-	EVENT_STDOUT_MAX_BYTES_DISPLAY int64 `json:"EVENT_STDOUT_MAX_BYTES_DISPLAY,omitempty"`
+	EVENT_STDOUT_MAX_BYTES_DISPLAY int64 `json:"EVENT_STDOUT_MAX_BYTES_DISPLAY"`
 	// GALAXY_IGNORE_CERTS "If set to true, certificate validation will not be done when installing content from any Galaxy server."
 	GALAXY_IGNORE_CERTS bool `json:"GALAXY_IGNORE_CERTS"`
 	// GALAXY_TASK_ENV "Additional environment variables set for invocations of ansible-galaxy within project updates. Useful if you must use a proxy server for ansible-galaxy but not git."
@@ -253,11 +253,11 @@ type settingsJobsBodyRequestModel struct {
 	// MAX_FORKS "Saving a Job Template with more than this number of forks will result in an error. When set to 0, no limit is applied."
 	MAX_FORKS int64 `json:"MAX_FORKS,omitempty"`
 	// MAX_WEBSOCKET_EVENT_RATE "Maximum number of messages to update the UI live job output with per second. Value of 0 means no limit."
-	MAX_WEBSOCKET_EVENT_RATE int64 `json:"MAX_WEBSOCKET_EVENT_RATE,omitempty"`
+	MAX_WEBSOCKET_EVENT_RATE int64 `json:"MAX_WEBSOCKET_EVENT_RATE"`
 	// PROJECT_UPDATE_VVV "Adds the CLI -vvv flag to ansible-playbook runs of project_update.yml used for project updates."
 	PROJECT_UPDATE_VVV bool `json:"PROJECT_UPDATE_VVV"`
 	// SCHEDULE_MAX_JOBS "Maximum number of the same job template that can be waiting to run when launching from a schedule before no more are created."
 	SCHEDULE_MAX_JOBS int64 `json:"SCHEDULE_MAX_JOBS,omitempty"`
 	// STDOUT_MAX_BYTES_DISPLAY "Maximum Size of Standard Output in bytes to display before requiring the output be downloaded."
-	STDOUT_MAX_BYTES_DISPLAY int64 `json:"STDOUT_MAX_BYTES_DISPLAY,omitempty"`
+	STDOUT_MAX_BYTES_DISPLAY int64 `json:"STDOUT_MAX_BYTES_DISPLAY"`
 }

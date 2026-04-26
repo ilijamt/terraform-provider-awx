@@ -61,6 +61,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -100,6 +101,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -139,6 +141,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -178,6 +181,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -217,6 +221,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -256,6 +261,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -295,6 +301,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -334,6 +341,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -373,6 +381,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -412,6 +421,7 @@
       "post_wrap": true,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -451,6 +461,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": true,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -495,6 +506,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -534,6 +546,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -573,6 +586,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -612,6 +626,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": true,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -656,6 +671,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -695,6 +711,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -734,6 +751,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -773,6 +791,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -812,6 +831,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -851,6 +871,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -916,6 +937,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -955,6 +977,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -994,6 +1017,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1033,6 +1057,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1072,6 +1097,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1111,6 +1137,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1150,6 +1177,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1189,6 +1217,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1228,6 +1257,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1267,6 +1297,7 @@
       "post_wrap": true,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1306,6 +1337,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1345,6 +1377,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1384,6 +1417,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1423,6 +1457,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": true,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1469,6 +1504,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1508,6 +1544,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1547,6 +1584,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1586,6 +1624,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1625,6 +1664,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1664,6 +1704,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1728,6 +1769,7 @@
     "post_wrap": false,
     "trim": false,
     "is_searchable": true,
+    "omit_empty": true,
     "generated": {
       "awx_go_type": "types.Int64",
       "awx_go_value": "types.Int64Value",

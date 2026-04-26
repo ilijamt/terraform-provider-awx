@@ -38,6 +38,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -77,6 +78,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -116,6 +118,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -155,6 +158,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -194,6 +198,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -233,6 +238,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -272,6 +278,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -313,6 +320,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -352,6 +360,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -391,6 +400,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -430,6 +440,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -469,6 +480,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -508,6 +520,7 @@
       "post_wrap": false,
       "trim": false,
       "is_searchable": false,
+      "omit_empty": true,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",

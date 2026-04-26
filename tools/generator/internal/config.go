@@ -15,6 +15,14 @@ type PropertyOverride struct {
 	DefaultValue string   `json:"default_value" yaml:"default_value"`
 	ElementType  string   `json:"element_type" yaml:"element_type"`
 	Validators   []string `json:"validators" yaml:"validators"`
+	// OmitEmpty controls whether the body-request struct field gets a
+	// `,omitempty` JSON tag. Default is the legacy behavior (omit on zero
+	// for non-required, non-bool fields). Set to false on int64/float64
+	// fields where 0 is a meaningful value (e.g. AWX "0 = no limit"
+	// settings) — otherwise the zero gets stripped from the PATCH body and
+	// the server keeps its existing default, causing "Provider produced
+	// inconsistent result after apply".
+	OmitEmpty *bool `json:"omit_empty,omitempty" yaml:"omit_empty,omitempty"`
 }
 
 type SearchField struct {

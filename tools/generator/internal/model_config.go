@@ -67,6 +67,7 @@ type Property struct {
 	PostWrap          bool              `json:"post_wrap" yaml:"post_wrap"`
 	Trim              bool              `json:"trim" yaml:"trim"`
 	IsSearchable      bool              `json:"is_searchable" yaml:"is_searchable"`
+	OmitEmpty         bool              `json:"omit_empty" yaml:"omit_empty"`
 	Generated         PropertyGenerated `json:"generated" yaml:"generated"`
 	ValidatorData     map[string]any    `json:"validator_data" yaml:"validator_data"`
 	Constraints       []FieldConstraint `json:"constraints" yaml:"constraints"`
@@ -98,6 +99,10 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.IsTypeWrite = vt == TypeWrite
 	p.Trim = override.Trim
 	p.PostWrap = override.PostWrap
+	p.OmitEmpty = true
+	if override.OmitEmpty != nil {
+		p.OmitEmpty = *override.OmitEmpty
+	}
 	p.Validators = make([]string, 0)
 	p.Generated.ValidationAvailableChoiceData = make([]string, 0)
 	p.Generated.AttributeValidationData = make(map[string][]string)
