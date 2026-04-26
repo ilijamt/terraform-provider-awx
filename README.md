@@ -29,7 +29,7 @@ You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
 ```shell
-export AWX_VERSION=24.2.0
+export AWX_VERSION=24.6.1
 mkdir -p resources/api/$AWX_VERSION/config resources/api/$AWX_VERSION/gen-data
 cat <<EOF > resources/api/$AWX_VERSION/config/default.json
 {
@@ -50,10 +50,10 @@ Build the version of the current API
 make generate
 ```
 
-If you want to build an API for the `23.7.0` version just run
+If you want to build an API for the `24.6.1` version just run
 
 ```shell
-make generate VERSION=23.7.0
+make generate VERSION=24.6.1
 ```
 
 Setup AWX for local testing
