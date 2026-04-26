@@ -62,13 +62,17 @@ test:
 
 .PHONY: test-all
 test-all:
-	mkdir -p build
-	go test ./internal/... -count=1 -parallel=4 \
-		-coverpkg=./internal/... -coverprofile=build/coverage.internal.out
+	rm -rf build/covdata-internal build/covdata-tests build/covdata-merged
+	mkdir -p build/covdata-internal build/covdata-tests build/covdata-merged
+	go test ./internal/... -count=1 -parallel=4 -cover -coverpkg=./internal/... \
+		-args -test.gocoverdir=$(shell pwd)/build/covdata-internal
 	TF_ACC=1 go test -tags=integration ./tests/... -run '^TestIntegration_' -count=1 \
-		-coverpkg=./internal/... -coverprofile=build/coverage.tests.out
-	go run github.com/wadey/gocovmerge@latest \
-		build/coverage.internal.out build/coverage.tests.out > build/coverage.out
+		-cover -coverpkg=./internal/... \
+		-args -test.gocoverdir=$(shell pwd)/build/covdata-tests
+	go tool covdata merge \
+		-i=build/covdata-internal,build/covdata-tests \
+		-o=build/covdata-merged
+	go tool covdata textfmt -i=build/covdata-merged -o=build/coverage.out
 	go tool cover -html=build/coverage.out -o build/coverage.html
 
 .PHONY: testacc
