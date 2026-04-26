@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "Organization",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "default_environment": {
       "id_key": "",

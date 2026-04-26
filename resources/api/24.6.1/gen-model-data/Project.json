@@ -25,6 +25,7 @@
   "enabled": true,
   "name": "Project",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "allow_override": {
       "id_key": "",

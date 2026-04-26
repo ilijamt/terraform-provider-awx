@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "User",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "email": {
       "id_key": "",

@@ -68,6 +68,7 @@ type Item struct {
 	Undeletable                 bool                         `json:"undeletable" yaml:"undeletable"`
 	PreStateSetHookFunction     string                       `json:"pre_state_set_hook_function" yaml:"pre_state_set_hook_function"`
 	NoId                        bool                         `json:"no_id" yaml:"no_id"`
+	NoImport                    bool                         `json:"no_import" yaml:"no_import"`
 	NoTerraformDataSource       bool                         `json:"no_terraform_data_source" yaml:"no_terraform_data_source"`
 	NoTerraformResource         bool                         `json:"no_terraform_resource" yaml:"no_terraform_resource"`
 	ApiPropertyResourceKey      string                       `json:"api_property_resource_key" yaml:"api_property_resource_key"`

@@ -13,6 +13,7 @@
   "enabled": true,
   "name": "SettingsAuthLDAP",
   "no_id": true,
+  "no_import": false,
   "read_properties": {
     "AUTH_LDAP_1_BIND_DN": {
       "id_key": "",

@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "InstanceGroup",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "capacity": {
       "id_key": "",

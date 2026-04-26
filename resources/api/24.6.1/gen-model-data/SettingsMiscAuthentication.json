@@ -13,6 +13,7 @@
   "enabled": true,
   "name": "SettingsMiscAuthentication",
   "no_id": true,
+  "no_import": false,
   "read_properties": {
     "ALLOW_METRICS_FOR_ANONYMOUS_USERS": {
       "id_key": "",

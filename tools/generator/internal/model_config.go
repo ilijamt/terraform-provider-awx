@@ -26,6 +26,7 @@ type ModelConfig struct {
 	Enabled                     bool                         `json:"enabled" yaml:"enabled"`
 	Name                        string                       `json:"name" yaml:"name"`
 	NoId                        bool                         `json:"no_id" yaml:"no_id"`
+	NoImport                    bool                         `json:"no_import" yaml:"no_import"`
 	ReadProperties              map[string]*Property         `json:"read_properties" yaml:"read_properties"`
 	WriteProperties             map[string]*Property         `json:"write_properties" yaml:"write_properties"`
 	IdProperty                  *Property                    `json:"id_property" yaml:"id_property"`
@@ -307,6 +308,7 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.ApiVersion = config.ApiVersion
 	c.RenderApiDocs = config.RenderApiDocs
 	c.NoId = item.NoId
+	c.NoImport = item.NoImport
 	c.IdKey = item.IdKey
 	c.FieldConstraints = item.FieldConstraints
 	c.AssociateDisassociateGroups = item.AssociateDisassociateGroups

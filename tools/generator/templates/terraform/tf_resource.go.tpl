@@ -189,13 +189,18 @@ func New{{ .Name }}Resource() resource.Resource {
 			},
 {{- if not .NoId }}
 			IDAccessor: func(m *{{ .Name | lowerCamelCase }}TerraformModel) any { return m.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}() },
+{{- if not .NoImport }}
 			IDKey: "{{ $.IdKey }}",
 {{- if eq $.IdProperty.Generated.AwxGoValue "types.StringValue" }}
 			IDIsString: true,
 {{- end }}
 {{- end }}
+{{- end }}
 {{- if .NoId }}
 			NoId: true,
+{{- end }}
+{{- if .NoImport }}
+			NoImport: true,
 {{- end }}
 {{- if .UnDeletable }}
 			UnDeletable: true,

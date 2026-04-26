@@ -13,6 +13,7 @@
   "enabled": true,
   "name": "SettingsOpenIDConnect",
   "no_id": true,
+  "no_import": false,
   "read_properties": {
     "SOCIAL_AUTH_OIDC_KEY": {
       "id_key": "",

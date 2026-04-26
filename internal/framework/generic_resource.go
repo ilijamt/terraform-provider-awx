@@ -49,6 +49,8 @@ type ResourceCfg[T any, B any] struct {
 	IDIsString bool
 	// NoId means the resource has no ID field (settings-style). Create uses PATCH, endpoints have no ID.
 	NoId bool
+	// NoImport disables terraform import for this resource. Attempts return an error diagnostic.
+	NoImport bool
 	// UnDeletable means Delete is a no-op.
 	UnDeletable bool
 	// ApiVersion is passed to hook functions.
@@ -84,7 +86,11 @@ func (r *GenericResource[T, B, PT]) Schema(_ context.Context, _ resource.SchemaR
 
 // ImportState handles terraform import using IDKey + IDIsString from ResourceCfg.
 func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	if r.Cfg.NoId {
+	if r.Cfg.NoId || r.Cfg.NoImport {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("Resource %s does not support import.", r.name()),
+			"This resource has not been configured to support `terraform import`.",
+		)
 		return
 	}
 	idPath := path.Root(r.Cfg.IDKey)

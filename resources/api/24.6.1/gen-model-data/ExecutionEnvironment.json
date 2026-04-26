@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "ExecutionEnvironment",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "credential": {
       "id_key": "",

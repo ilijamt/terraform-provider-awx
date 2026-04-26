@@ -13,6 +13,7 @@
   "enabled": true,
   "name": "SettingsAuthSAML",
   "no_id": true,
+  "no_import": false,
   "read_properties": {
     "SAML_AUTO_CREATE_OBJECTS": {
       "id_key": "",

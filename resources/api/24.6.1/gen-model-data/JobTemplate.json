@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "JobTemplate",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "allow_simultaneous": {
       "id_key": "",

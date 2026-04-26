@@ -36,6 +36,7 @@
   "enabled": true,
   "name": "AdHocCommand",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "become_enabled": {
       "id_key": "",
