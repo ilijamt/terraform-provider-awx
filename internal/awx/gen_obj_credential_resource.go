@@ -27,55 +27,37 @@ func NewCredentialResource() resource.Resource {
 		Cfg: framework.ResourceCfg[credentialTerraformModel, credentialBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"credential_type": schema.Int64Attribute{
-						Description:   "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
+						Required:    true,
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"inputs": schema.StringAttribute{
 						Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this credential.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this credential.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"organization": schema.Int64Attribute{
 						Description: "Inherit permissions from organization roles. If provided on creation, do not give either user or team.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
@@ -83,18 +65,11 @@ func NewCredentialResource() resource.Resource {
 						},
 						Validators: []validator.Int64{
 							// exactly_one_of_org_user_team
-							int64validator.ExactlyOneOf(
-								path.MatchRoot("organization"),
-								path.MatchRoot("team"),
-								path.MatchRoot("user"),
-							),
+							int64validator.ExactlyOneOf(path.MatchRoot("organization"), path.MatchRoot("team"), path.MatchRoot("user")),
 						},
 					},
-					// Write only elements
 					"team": schema.Int64Attribute{
 						Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
@@ -102,17 +77,11 @@ func NewCredentialResource() resource.Resource {
 						},
 						Validators: []validator.Int64{
 							// exactly_one_of_org_user_team
-							int64validator.ExactlyOneOf(
-								path.MatchRoot("organization"),
-								path.MatchRoot("team"),
-								path.MatchRoot("user"),
-							),
+							int64validator.ExactlyOneOf(path.MatchRoot("organization"), path.MatchRoot("team"), path.MatchRoot("user")),
 						},
 					},
 					"user": schema.Int64Attribute{
 						Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
@@ -120,60 +89,40 @@ func NewCredentialResource() resource.Resource {
 						},
 						Validators: []validator.Int64{
 							// exactly_one_of_org_user_team
-							int64validator.ExactlyOneOf(
-								path.MatchRoot("organization"),
-								path.MatchRoot("team"),
-								path.MatchRoot("user"),
-							),
+							int64validator.ExactlyOneOf(path.MatchRoot("organization"), path.MatchRoot("team"), path.MatchRoot("user")),
 						},
 					},
-					// Data only elements
 					"cloud": schema.BoolAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Cloud",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this credential.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"kind": schema.StringAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Kind",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"kubernetes": schema.BoolAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Kubernetes",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"managed": schema.BoolAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Managed",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

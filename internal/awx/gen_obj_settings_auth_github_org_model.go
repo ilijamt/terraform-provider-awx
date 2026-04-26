@@ -10,28 +10,19 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthGithubOrgTerraformModel maps the schema for SettingsAuthGithubOrg when using Data Source
 type settingsAuthGithubOrgTerraformModel struct {
-	// SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail."
-	SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL types.String `tfsdk:"social_auth_github_org_callback_url" json:"SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"`
-	// SOCIAL_AUTH_GITHUB_ORG_KEY "The OAuth2 key (Client ID) from your GitHub organization application."
-	SOCIAL_AUTH_GITHUB_ORG_KEY types.String `tfsdk:"social_auth_github_org_key" json:"SOCIAL_AUTH_GITHUB_ORG_KEY"`
-	// SOCIAL_AUTH_GITHUB_ORG_NAME "The name of your GitHub organization, as used in your organization's URL: https://github.com/<yourorg>/."
-	SOCIAL_AUTH_GITHUB_ORG_NAME types.String `tfsdk:"social_auth_github_org_name" json:"SOCIAL_AUTH_GITHUB_ORG_NAME"`
-	// SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL     types.String `tfsdk:"social_auth_github_org_callback_url" json:"SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"`
+	SOCIAL_AUTH_GITHUB_ORG_KEY              types.String `tfsdk:"social_auth_github_org_key" json:"SOCIAL_AUTH_GITHUB_ORG_KEY"`
+	SOCIAL_AUTH_GITHUB_ORG_NAME             types.String `tfsdk:"social_auth_github_org_name" json:"SOCIAL_AUTH_GITHUB_ORG_NAME"`
 	SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP types.String `tfsdk:"social_auth_github_org_organization_map" json:"SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"`
-	// SOCIAL_AUTH_GITHUB_ORG_SECRET "The OAuth2 secret (Client Secret) from your GitHub organization application."
-	SOCIAL_AUTH_GITHUB_ORG_SECRET types.String `tfsdk:"social_auth_github_org_secret" json:"SOCIAL_AUTH_GITHUB_ORG_SECRET"`
-	// SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP types.String `tfsdk:"social_auth_github_org_team_map" json:"SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"`
+	SOCIAL_AUTH_GITHUB_ORG_SECRET           types.String `tfsdk:"social_auth_github_org_secret" json:"SOCIAL_AUTH_GITHUB_ORG_SECRET"`
+	SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP         types.String `tfsdk:"social_auth_github_org_team_map" json:"SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"`
 }
 
-// Clone the object
 func (o *settingsAuthGithubOrgTerraformModel) Clone() settingsAuthGithubOrgTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubOrg
 func (o *settingsAuthGithubOrgTerraformModel) BodyRequest() *settingsAuthGithubOrgBodyRequestModel {
 	var req settingsAuthGithubOrgBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_ORG_KEY = o.SOCIAL_AUTH_GITHUB_ORG_KEY.ValueString()
@@ -47,43 +38,20 @@ func (o *settingsAuthGithubOrgTerraformModel) UpdateFromApiData(data map[string]
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_KEY, data["SOCIAL_AUTH_GITHUB_ORG_KEY"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_NAME, data["SOCIAL_AUTH_GITHUB_ORG_NAME"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_SECRET, data["SOCIAL_AUTH_GITHUB_ORG_SECRET"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_KEY, data["SOCIAL_AUTH_GITHUB_ORG_KEY"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_NAME, data["SOCIAL_AUTH_GITHUB_ORG_NAME"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_SECRET, data["SOCIAL_AUTH_GITHUB_ORG_SECRET"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"], false))
 	return diags, nil
 }
 
-// settingsAuthGithubOrgBodyRequestModel maps the schema for SettingsAuthGithubOrg for creating and updating the data
 type settingsAuthGithubOrgBodyRequestModel struct {
-	// SOCIAL_AUTH_GITHUB_ORG_KEY "The OAuth2 key (Client ID) from your GitHub organization application."
-	SOCIAL_AUTH_GITHUB_ORG_KEY string `json:"SOCIAL_AUTH_GITHUB_ORG_KEY,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ORG_NAME "The name of your GitHub organization, as used in your organization's URL: https://github.com/<yourorg>/."
-	SOCIAL_AUTH_GITHUB_ORG_NAME string `json:"SOCIAL_AUTH_GITHUB_ORG_NAME,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_GITHUB_ORG_KEY              string          `json:"SOCIAL_AUTH_GITHUB_ORG_KEY,omitempty"`
+	SOCIAL_AUTH_GITHUB_ORG_NAME             string          `json:"SOCIAL_AUTH_GITHUB_ORG_NAME,omitempty"`
 	SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ORG_SECRET "The OAuth2 secret (Client Secret) from your GitHub organization application."
-	SOCIAL_AUTH_GITHUB_ORG_SECRET string `json:"SOCIAL_AUTH_GITHUB_ORG_SECRET,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP,omitempty"`
+	SOCIAL_AUTH_GITHUB_ORG_SECRET           string          `json:"SOCIAL_AUTH_GITHUB_ORG_SECRET,omitempty"`
+	SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP         json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP,omitempty"`
 }

@@ -20,20 +20,16 @@ func NewHostDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[hostTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this host.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"enabled": schema.BoolAttribute{
 						Description: "Is this host online and available for running jobs?",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this host.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -45,27 +41,22 @@ func NewHostDataSource() datasource.DataSource {
 					},
 					"instance_id": schema.StringAttribute{
 						Description: "The value used by the remote inventory source to uniquely identify the host",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"last_job": schema.Int64Attribute{
 						Description: "Last job",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"last_job_host_summary": schema.Int64Attribute{
 						Description: "Last job host summary",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this host.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -77,7 +68,6 @@ func NewHostDataSource() datasource.DataSource {
 					},
 					"variables": schema.StringAttribute{
 						Description: "Host variables in JSON or YAML format.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

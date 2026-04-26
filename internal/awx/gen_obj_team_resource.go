@@ -23,47 +23,29 @@ func NewTeamResource() resource.Resource {
 		Cfg: framework.ResourceCfg[teamTerraformModel, teamBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this team.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this team.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this team.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"organization": schema.Int64Attribute{
-						Description:   "Organization",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Organization",
+						Required:    true,
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this team.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

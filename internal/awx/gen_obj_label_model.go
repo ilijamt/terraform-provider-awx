@@ -9,22 +9,16 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// labelTerraformModel maps the schema for Label when using Data Source
 type labelTerraformModel struct {
-	// ID "Database ID for this label."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// Name "Name of this label."
-	Name types.String `tfsdk:"name" json:"name"`
-	// Organization "Organization this label belongs to."
-	Organization types.Int64 `tfsdk:"organization" json:"organization"`
+	ID           types.Int64  `tfsdk:"id" json:"id"`
+	Name         types.String `tfsdk:"name" json:"name"`
+	Organization types.Int64  `tfsdk:"organization" json:"organization"`
 }
 
-// Clone the object
 func (o *labelTerraformModel) Clone() labelTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for Label
 func (o *labelTerraformModel) BodyRequest() *labelBodyRequestModel {
 	var req labelBodyRequestModel
 	req.Name = o.Name.ValueString()
@@ -37,25 +31,14 @@ func (o *labelTerraformModel) UpdateFromApiData(data map[string]any) (diags diag
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetInt64(&o.Organization, data["organization"]))
 	return diags, nil
 }
 
-// labelBodyRequestModel maps the schema for Label for creating and updating the data
 type labelBodyRequestModel struct {
-	// Name "Name of this label."
-	Name string `json:"name"`
-	// Organization "Organization this label belongs to."
-	Organization int64 `json:"organization"`
+	Name         string `json:"name"`
+	Organization int64  `json:"organization"`
 }

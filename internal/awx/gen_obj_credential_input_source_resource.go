@@ -23,68 +23,42 @@ func NewCredentialInputSourceResource() resource.Resource {
 		Cfg: framework.ResourceCfg[credentialInputSourceTerraformModel, credentialInputSourceBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential input source.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"input_field_name": schema.StringAttribute{
-						Description:   "Input field name",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Input field name",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(1024),
 						},
 					},
 					"metadata": schema.StringAttribute{
 						Description: "Metadata",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"source_credential": schema.Int64Attribute{
-						Description:   "Source credential",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Source credential",
+						Required:    true,
 					},
 					"target_credential": schema.Int64Attribute{
-						Description:   "Target credential",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Target credential",
+						Required:    true,
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this credential input source.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

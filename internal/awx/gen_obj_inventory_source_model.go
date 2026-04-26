@@ -10,58 +10,34 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// inventorySourceTerraformModel maps the schema for InventorySource when using Data Source
 type inventorySourceTerraformModel struct {
-	// Credential "Cloud credential to use for inventory updates."
-	Credential types.Int64 `tfsdk:"credential" json:"credential"`
-	// Description "Optional description of this inventory source."
-	Description types.String `tfsdk:"description" json:"description"`
-	// EnabledValue "Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var=\"status.power_state\"and enabled_value=\"powered_on\" with host variables:{   \"status\": {     \"power_state\": \"powered_on\",     \"created\": \"2020-08-04T18:13:04+00:00\",     \"healthy\": true    },    \"name\": \"foobar\",    \"ip_address\": \"192.168.2.1\"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled"
-	EnabledValue types.String `tfsdk:"enabled_value" json:"enabled_value"`
-	// EnabledVar "Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as \"foo.bar\", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get(\"foo\", {}).get(\"bar\", default)"
-	EnabledVar types.String `tfsdk:"enabled_var" json:"enabled_var"`
-	// ExecutionEnvironment "The container image to be used for execution."
-	ExecutionEnvironment types.Int64 `tfsdk:"execution_environment" json:"execution_environment"`
-	// HostFilter "Regex where only matching hosts will be imported."
-	HostFilter types.String `tfsdk:"host_filter" json:"host_filter"`
-	// ID "Database ID for this inventory source."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// Inventory ""
-	Inventory types.Int64 `tfsdk:"inventory" json:"inventory"`
-	// Limit "Enter host, group or pattern match"
-	Limit types.String `tfsdk:"limit" json:"limit"`
-	// Name "Name of this inventory source."
-	Name types.String `tfsdk:"name" json:"name"`
-	// Overwrite "Overwrite local groups and hosts from remote inventory source."
-	Overwrite types.Bool `tfsdk:"overwrite" json:"overwrite"`
-	// OverwriteVars "Overwrite local variables from remote inventory source."
-	OverwriteVars types.Bool `tfsdk:"overwrite_vars" json:"overwrite_vars"`
-	// ScmBranch "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true."
-	ScmBranch types.String `tfsdk:"scm_branch" json:"scm_branch"`
-	// Source ""
-	Source types.String `tfsdk:"source" json:"source"`
-	// SourcePath ""
-	SourcePath types.String `tfsdk:"source_path" json:"source_path"`
-	// SourceProject "Project containing inventory file used as source."
-	SourceProject types.Int64 `tfsdk:"source_project" json:"source_project"`
-	// SourceVars "Inventory source variables in YAML or JSON format."
-	SourceVars types.String `tfsdk:"source_vars" json:"source_vars"`
-	// Timeout "The amount of time (in seconds) to run before the task is canceled."
-	Timeout types.Int64 `tfsdk:"timeout" json:"timeout"`
-	// UpdateCacheTimeout ""
-	UpdateCacheTimeout types.Int64 `tfsdk:"update_cache_timeout" json:"update_cache_timeout"`
-	// UpdateOnLaunch ""
-	UpdateOnLaunch types.Bool `tfsdk:"update_on_launch" json:"update_on_launch"`
-	// Verbosity ""
-	Verbosity types.String `tfsdk:"verbosity" json:"verbosity"`
+	Credential           types.Int64  `tfsdk:"credential" json:"credential"`
+	Description          types.String `tfsdk:"description" json:"description"`
+	EnabledValue         types.String `tfsdk:"enabled_value" json:"enabled_value"`
+	EnabledVar           types.String `tfsdk:"enabled_var" json:"enabled_var"`
+	ExecutionEnvironment types.Int64  `tfsdk:"execution_environment" json:"execution_environment"`
+	HostFilter           types.String `tfsdk:"host_filter" json:"host_filter"`
+	ID                   types.Int64  `tfsdk:"id" json:"id"`
+	Inventory            types.Int64  `tfsdk:"inventory" json:"inventory"`
+	Limit                types.String `tfsdk:"limit" json:"limit"`
+	Name                 types.String `tfsdk:"name" json:"name"`
+	Overwrite            types.Bool   `tfsdk:"overwrite" json:"overwrite"`
+	OverwriteVars        types.Bool   `tfsdk:"overwrite_vars" json:"overwrite_vars"`
+	ScmBranch            types.String `tfsdk:"scm_branch" json:"scm_branch"`
+	Source               types.String `tfsdk:"source" json:"source"`
+	SourcePath           types.String `tfsdk:"source_path" json:"source_path"`
+	SourceProject        types.Int64  `tfsdk:"source_project" json:"source_project"`
+	SourceVars           types.String `tfsdk:"source_vars" json:"source_vars"`
+	Timeout              types.Int64  `tfsdk:"timeout" json:"timeout"`
+	UpdateCacheTimeout   types.Int64  `tfsdk:"update_cache_timeout" json:"update_cache_timeout"`
+	UpdateOnLaunch       types.Bool   `tfsdk:"update_on_launch" json:"update_on_launch"`
+	Verbosity            types.String `tfsdk:"verbosity" json:"verbosity"`
 }
 
-// Clone the object
 func (o *inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for InventorySource
 func (o *inventorySourceTerraformModel) BodyRequest() *inventorySourceBodyRequestModel {
 	var req inventorySourceBodyRequestModel
 	req.Credential = o.Credential.ValueInt64()
@@ -92,133 +68,50 @@ func (o *inventorySourceTerraformModel) UpdateFromApiData(data map[string]any) (
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.EnabledValue, data["enabled_value"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.EnabledVar, data["enabled_var"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.HostFilter, data["host_filter"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.Overwrite, data["overwrite"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.OverwriteVars, data["overwrite_vars"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Source, data["source"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SourcePath, data["source_path"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.SourceProject, data["source_project"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SourceVars, data["source_vars"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Timeout, data["timeout"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data["update_cache_timeout"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.UpdateOnLaunch, data["update_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetInt64(&o.Credential, data["credential"]))
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetString(&o.EnabledValue, data["enabled_value"], false))
+	collect(helpers.AttrValueSetString(&o.EnabledVar, data["enabled_var"], false))
+	collect(helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"]))
+	collect(helpers.AttrValueSetString(&o.HostFilter, data["host_filter"], false))
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetInt64(&o.Inventory, data["inventory"]))
+	collect(helpers.AttrValueSetString(&o.Limit, data["limit"], false))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetBool(&o.Overwrite, data["overwrite"]))
+	collect(helpers.AttrValueSetBool(&o.OverwriteVars, data["overwrite_vars"]))
+	collect(helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false))
+	collect(helpers.AttrValueSetString(&o.Source, data["source"], false))
+	collect(helpers.AttrValueSetString(&o.SourcePath, data["source_path"], false))
+	collect(helpers.AttrValueSetInt64(&o.SourceProject, data["source_project"]))
+	collect(helpers.AttrValueSetJsonString(&o.SourceVars, data["source_vars"], false))
+	collect(helpers.AttrValueSetInt64(&o.Timeout, data["timeout"]))
+	collect(helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data["update_cache_timeout"]))
+	collect(helpers.AttrValueSetBool(&o.UpdateOnLaunch, data["update_on_launch"]))
+	collect(helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false))
 	return diags, nil
 }
 
-// inventorySourceBodyRequestModel maps the schema for InventorySource for creating and updating the data
 type inventorySourceBodyRequestModel struct {
-	// Credential "Cloud credential to use for inventory updates."
-	Credential int64 `json:"credential,omitempty"`
-	// Description "Optional description of this inventory source."
-	Description string `json:"description,omitempty"`
-	// EnabledValue "Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var=\"status.power_state\"and enabled_value=\"powered_on\" with host variables:{   \"status\": {     \"power_state\": \"powered_on\",     \"created\": \"2020-08-04T18:13:04+00:00\",     \"healthy\": true    },    \"name\": \"foobar\",    \"ip_address\": \"192.168.2.1\"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled"
-	EnabledValue string `json:"enabled_value,omitempty"`
-	// EnabledVar "Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as \"foo.bar\", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get(\"foo\", {}).get(\"bar\", default)"
-	EnabledVar string `json:"enabled_var,omitempty"`
-	// ExecutionEnvironment "The container image to be used for execution."
-	ExecutionEnvironment int64 `json:"execution_environment,omitempty"`
-	// HostFilter "Regex where only matching hosts will be imported."
-	HostFilter string `json:"host_filter,omitempty"`
-	// Inventory ""
-	Inventory int64 `json:"inventory"`
-	// Limit "Enter host, group or pattern match"
-	Limit string `json:"limit,omitempty"`
-	// Name "Name of this inventory source."
-	Name string `json:"name"`
-	// Overwrite "Overwrite local groups and hosts from remote inventory source."
-	Overwrite bool `json:"overwrite"`
-	// OverwriteVars "Overwrite local variables from remote inventory source."
-	OverwriteVars bool `json:"overwrite_vars"`
-	// ScmBranch "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true."
-	ScmBranch string `json:"scm_branch,omitempty"`
-	// Source ""
-	Source string `json:"source,omitempty"`
-	// SourcePath ""
-	SourcePath string `json:"source_path,omitempty"`
-	// SourceProject "Project containing inventory file used as source."
-	SourceProject int64 `json:"source_project,omitempty"`
-	// SourceVars "Inventory source variables in YAML or JSON format."
-	SourceVars json.RawMessage `json:"source_vars,omitempty"`
-	// Timeout "The amount of time (in seconds) to run before the task is canceled."
-	Timeout int64 `json:"timeout,omitempty"`
-	// UpdateCacheTimeout ""
-	UpdateCacheTimeout int64 `json:"update_cache_timeout,omitempty"`
-	// UpdateOnLaunch ""
-	UpdateOnLaunch bool `json:"update_on_launch"`
-	// Verbosity ""
-	Verbosity string `json:"verbosity,omitempty"`
+	Credential           int64           `json:"credential,omitempty"`
+	Description          string          `json:"description,omitempty"`
+	EnabledValue         string          `json:"enabled_value,omitempty"`
+	EnabledVar           string          `json:"enabled_var,omitempty"`
+	ExecutionEnvironment int64           `json:"execution_environment,omitempty"`
+	HostFilter           string          `json:"host_filter,omitempty"`
+	Inventory            int64           `json:"inventory"`
+	Limit                string          `json:"limit,omitempty"`
+	Name                 string          `json:"name"`
+	Overwrite            bool            `json:"overwrite"`
+	OverwriteVars        bool            `json:"overwrite_vars"`
+	ScmBranch            string          `json:"scm_branch,omitempty"`
+	Source               string          `json:"source,omitempty"`
+	SourcePath           string          `json:"source_path,omitempty"`
+	SourceProject        int64           `json:"source_project,omitempty"`
+	SourceVars           json.RawMessage `json:"source_vars,omitempty"`
+	Timeout              int64           `json:"timeout,omitempty"`
+	UpdateCacheTimeout   int64           `json:"update_cache_timeout,omitempty"`
+	UpdateOnLaunch       bool            `json:"update_on_launch"`
+	Verbosity            string          `json:"verbosity,omitempty"`
 }

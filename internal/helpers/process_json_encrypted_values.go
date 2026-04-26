@@ -1,43 +1,45 @@
 package helpers
 
+// TODO: subsume the remaining callers (hook_credential.go,
+// hook_notification_template.go) into the typed-credential pipeline and
+// remove this helper. The typed-credential pattern handles the same
+// `$encrypted$` drift problem at the field level rather than across an
+// opaque JSON blob.
+
 import (
 	"cmp"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 func ProcessJsonEncryptedValues(orig, cur types.String) (dirty bool, msg types.String, err error) {
 	var curM, origM map[string]any
-	var me *multierror.Error
+	var errs []error
 
 	if e := json.Unmarshal([]byte(cur.ValueString()), &curM); e != nil {
-		me = multierror.Append(me, fmt.Errorf("%w: inputs from new state", e))
+		errs = append(errs, fmt.Errorf("%w: inputs from new state", e))
 	}
-
 	if e := json.Unmarshal([]byte(orig.ValueString()), &origM); e != nil {
-		me = multierror.Append(me, fmt.Errorf("%w: inputs from original state", e))
+		errs = append(errs, fmt.Errorf("%w: inputs from original state", e))
 	}
-
-	err = me.ErrorOrNil()
-	if err != nil {
-		return dirty, msg, me
+	if err = errors.Join(errs...); err != nil {
+		return dirty, msg, err
 	}
 
 	for k, v := range curM {
-		switch u := v.(type) {
-		case string:
-			if strings.Contains(u, "$encrypted$") {
-				if _, ok := origM[k]; ok {
-					dirty = true
-					curM[k] = origM[k]
-				} else {
-					me = multierror.Append(me, fmt.Errorf("key %s not found in orig", k))
-				}
-			}
+		s, ok := v.(string)
+		if !ok || !strings.Contains(s, "$encrypted$") {
+			continue
+		}
+		if origVal, ok := origM[k]; ok {
+			dirty = true
+			curM[k] = origVal
+		} else {
+			errs = append(errs, fmt.Errorf("key %s not found in orig", k))
 		}
 	}
 
@@ -46,6 +48,5 @@ func ProcessJsonEncryptedValues(orig, cur types.String) (dirty bool, msg types.S
 		msg = types.StringValue(string(payload))
 	}
 
-	err = me.ErrorOrNil()
-	return dirty, cmp.Or(msg, cur), err
+	return dirty, cmp.Or(msg, cur), errors.Join(errs...)
 }

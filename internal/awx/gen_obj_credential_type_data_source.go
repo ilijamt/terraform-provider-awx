@@ -20,15 +20,12 @@ func NewCredentialTypeDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[credentialTypeTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential type.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this credential type.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -40,27 +37,22 @@ func NewCredentialTypeDataSource() datasource.DataSource {
 					},
 					"injectors": schema.StringAttribute{
 						Description: "Enter injectors using either JSON or YAML syntax. Refer to the documentation for example syntax.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"inputs": schema.StringAttribute{
 						Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"kind": schema.StringAttribute{
 						Description: "The credential type",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"managed": schema.BoolAttribute{
 						Description: "Is the resource managed",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this credential type.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -72,7 +64,6 @@ func NewCredentialTypeDataSource() datasource.DataSource {
 					},
 					"namespace": schema.StringAttribute{
 						Description: "The namespace to which the resource belongs to",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

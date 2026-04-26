@@ -16,15 +16,12 @@ func NewSettingsOpenIDConnectDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[settingsOpenIdconnectTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"social_auth_oidc_key": schema.StringAttribute{
 						Description: "The OIDC key (Client ID) from your IDP.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"social_auth_oidc_oidc_endpoint": schema.StringAttribute{
 						Description: "The URL for your OIDC provider including the path up to /.well-known/openid-configuration",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"social_auth_oidc_secret": schema.StringAttribute{
@@ -34,7 +31,6 @@ func NewSettingsOpenIDConnectDataSource() datasource.DataSource {
 					},
 					"social_auth_oidc_verify_ssl": schema.BoolAttribute{
 						Description: "Verify the OIDC provider ssl certificate.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

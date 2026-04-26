@@ -25,34 +25,25 @@ func NewOrganizationResource() resource.Resource {
 		Cfg: framework.ResourceCfg[organizationTerraformModel, organizationBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"default_environment": schema.Int64Attribute{
 						Description: "The default execution environment for jobs run by this organization.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this organization.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"max_hosts": schema.Int64Attribute{
 						Description: "Maximum number of hosts allowed to be managed by this organization.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
@@ -64,24 +55,15 @@ func NewOrganizationResource() resource.Resource {
 						},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this organization.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this organization.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this organization.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

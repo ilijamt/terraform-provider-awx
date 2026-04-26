@@ -264,6 +264,20 @@ var FuncMap = template.FuncMap{
 		_, ok := d[key]
 		return ok
 	},
+	"dict": func(args ...any) (map[string]any, error) {
+		if len(args)%2 != 0 {
+			return nil, fmt.Errorf("dict requires an even number of args")
+		}
+		m := make(map[string]any, len(args)/2)
+		for i := 0; i < len(args); i += 2 {
+			k, ok := args[i].(string)
+			if !ok {
+				return nil, fmt.Errorf("dict key %d must be string, got %T", i, args[i])
+			}
+			m[k] = args[i+1]
+		}
+		return m, nil
+	},
 	"quote": func(in any) string {
 		return fmt.Sprintf("%q", in)
 	},

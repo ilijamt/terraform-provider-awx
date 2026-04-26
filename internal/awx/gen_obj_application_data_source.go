@@ -20,15 +20,12 @@ func NewApplicationDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[applicationTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"authorization_grant_type": schema.StringAttribute{
 						Description: "The Grant type the user must use for acquire tokens for this application.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"client_id": schema.StringAttribute{
 						Description: "Client id",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"client_secret": schema.StringAttribute{
@@ -38,17 +35,14 @@ func NewApplicationDataSource() datasource.DataSource {
 					},
 					"client_type": schema.StringAttribute{
 						Description: "Set to Public or Confidential depending on how secure the client device is.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this application.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this application.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -60,7 +54,6 @@ func NewApplicationDataSource() datasource.DataSource {
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this application.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -74,7 +67,6 @@ func NewApplicationDataSource() datasource.DataSource {
 					},
 					"organization": schema.Int64Attribute{
 						Description: "Organization containing this application.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -88,12 +80,10 @@ func NewApplicationDataSource() datasource.DataSource {
 					},
 					"redirect_uris": schema.StringAttribute{
 						Description: "Allowed URIs list, space separated",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"skip_authorization": schema.BoolAttribute{
 						Description: "Set True to skip authorization step for completely trusted applications.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

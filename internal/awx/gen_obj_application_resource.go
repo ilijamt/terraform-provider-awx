@@ -24,14 +24,9 @@ func NewApplicationResource() resource.Resource {
 		Cfg: framework.ResourceCfg[applicationTerraformModel, applicationBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"authorization_grant_type": schema.StringAttribute{
-						Description:   "The Grant type the user must use for acquire tokens for this application.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "The Grant type the user must use for acquire tokens for this application.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"authorization-code",
@@ -40,12 +35,8 @@ func NewApplicationResource() resource.Resource {
 						},
 					},
 					"client_type": schema.StringAttribute{
-						Description:   "Set to Public or Confidential depending on how secure the client device is.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Set to Public or Confidential depending on how secure the client device is.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"confidential",
@@ -55,86 +46,58 @@ func NewApplicationResource() resource.Resource {
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this application.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this application.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this application.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(255),
 						},
 					},
 					"organization": schema.Int64Attribute{
-						Description:   "Organization containing this application.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Organization containing this application.",
+						Required:    true,
 					},
 					"redirect_uris": schema.StringAttribute{
 						Description: "Allowed URIs list, space separated",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"skip_authorization": schema.BoolAttribute{
 						Description: "Set True to skip authorization step for completely trusted applications.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
-					// Write only elements
-					// Data only elements
 					"client_id": schema.StringAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Client id",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"client_secret": schema.StringAttribute{
 						Description: "Used for more stringent verification of access to an application when creating a token.",
-						Required:    false,
-						Optional:    false,
-						Computed:    true,
 						Sensitive:   true,
+						Computed:    true,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this application.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

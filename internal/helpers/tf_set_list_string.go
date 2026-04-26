@@ -10,12 +10,7 @@ import (
 
 func AttrValueSetListString(obj *types.List, data any, trim bool) (d diag.Diagnostics, err error) {
 	if obj == nil {
-		err = fmt.Errorf("obj is nil")
-		d.AddError(
-			"nil pointer passed",
-			err.Error(),
-		)
-		return d, err
+		return nilObjErr()
 	}
 
 	if data == nil {
@@ -23,27 +18,26 @@ func AttrValueSetListString(obj *types.List, data any, trim bool) (d diag.Diagno
 		return nil, nil
 	}
 
+	maybeTrim := func(s string) string {
+		if trim {
+			return TrimAwxString(s)
+		}
+		return s
+	}
+
 	switch data := data.(type) {
 	case types.List:
 		*obj = types.ListValueMust(types.StringType, data.Elements())
 	case []any:
-		var list []attr.Value
+		list := make([]attr.Value, 0, len(data))
 		for _, v := range data {
-			if trim {
-				list = append(list, types.StringValue(TrimAwxString(v.(string))))
-			} else {
-				list = append(list, types.StringValue(v.(string)))
-			}
+			list = append(list, types.StringValue(maybeTrim(v.(string))))
 		}
 		*obj = types.ListValueMust(types.StringType, list)
 	case []string:
-		var list []attr.Value
+		list := make([]attr.Value, 0, len(data))
 		for _, v := range data {
-			if trim {
-				list = append(list, types.StringValue(TrimAwxString(v)))
-			} else {
-				list = append(list, types.StringValue(v))
-			}
+			list = append(list, types.StringValue(maybeTrim(v)))
 		}
 		*obj = types.ListValueMust(types.StringType, list)
 	default:

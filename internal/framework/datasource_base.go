@@ -13,17 +13,14 @@ type DataSourceBase struct {
 	Validators []datasource.ConfigValidator
 }
 
-// Configure implements datasource.DataSourceWithConfigure.
 func (b *DataSourceBase) Configure(_ context.Context, req datasource.ConfigureRequest, _ *datasource.ConfigureResponse) {
 	b.configureClient(req.ProviderData)
 }
 
-// Metadata implements datasource.DataSource.
 func (b *DataSourceBase) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_" + b.TypeName
 }
 
-// ConfigValidators returns the configured validators, or an empty list if none were set.
 func (b *DataSourceBase) ConfigValidators(_ context.Context) []datasource.ConfigValidator {
 	if b.Validators != nil {
 		return b.Validators

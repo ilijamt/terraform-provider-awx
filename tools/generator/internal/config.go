@@ -87,6 +87,13 @@ type Item struct {
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource" yaml:"remove_fields_resource"`
 	CredentialTypes             []CredentialTypes            `json:"credential_types" yaml:"credential_types"`
 	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
+
+	// CredentialType, when non-empty, marks this item as a typed credential
+	// resource generated from resources/api/<VERSION>/payload/credential_type_<value>.json
+	// rather than from the regular API actions metadata. The value is the
+	// AWX namespace ("aws", "ssh", "vault", ...). The generator routes these
+	// items through GenerateCredentialTypeTfDefinition.
+	CredentialType string `json:"credential_type,omitempty" yaml:"credential_type,omitempty"`
 }
 
 // WaitLifecycleConfig opts a resource into post-Create/Update polling. The

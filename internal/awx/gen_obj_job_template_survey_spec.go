@@ -8,6 +8,7 @@ import (
 	p "path"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -57,6 +58,11 @@ type jobTemplateSurvey struct {
 	framework.ResourceBase
 }
 
+// endpointFor returns the survey-spec URL for a given parent ID.
+func (o *jobTemplateSurvey) endpointFor(parentID int64) string {
+	return p.Clean(fmt.Sprintf(o.Endpoint, parentID)) + "/"
+}
+
 func (o *jobTemplateSurvey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
@@ -88,27 +94,25 @@ func (o *jobTemplateSurvey) ImportState(ctx context.Context, request resource.Im
 	response.Diagnostics.Append(response.State.SetAttribute(ctx, path.Root("job_template_id"), id)...)
 }
 
-// Delete the survey spec for JobTemplate
 func (o *jobTemplateSurvey) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	var state jobTemplateSurveyTerraformModel
 	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
-	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.JobTemplateID.ValueInt64())) + "/"
+	endpoint := o.endpointFor(state.JobTemplateID.ValueInt64())
 	if framework.DiagnosticsHasError(&response.Diagnostics, framework.DeleteRequest(ctx, o.Client, endpoint, "JobTemplate/Survey")...) {
 		return
 	}
 }
 
-// Read the survey spec for JobTemplate
 func (o *jobTemplateSurvey) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state jobTemplateSurveyTerraformModel
 	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
-	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.JobTemplateID.ValueInt64())) + "/"
+	endpoint := o.endpointFor(state.JobTemplateID.ValueInt64())
 	data, d := framework.ReadRequest(ctx, o.Client, endpoint, "JobTemplate/Survey")
 	if framework.DiagnosticsHasError(&response.Diagnostics, d...) {
 		return
@@ -116,9 +120,7 @@ func (o *jobTemplateSurvey) Read(ctx context.Context, request resource.ReadReque
 
 	if val, ok := data["spec"]; ok {
 		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val, false)
-		if dg.HasError() {
-			response.Diagnostics.Append(dg...)
-		}
+		response.Diagnostics.Append(dg...)
 	}
 
 	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
@@ -126,42 +128,41 @@ func (o *jobTemplateSurvey) Read(ctx context.Context, request resource.ReadReque
 	}
 }
 
-// Create the survey spec for JobTemplate
+// applyMutation handles Create and Update — both POST a survey spec for the
+// parent ID. AWX returns no useful body, so we mirror the plan into state.
+func (o *jobTemplateSurvey) applyMutation(ctx context.Context, plan jobTemplateSurveyTerraformModel, operation string, diags *diag.Diagnostics) (jobTemplateSurveyTerraformModel, bool) {
+	endpoint := o.endpointFor(plan.JobTemplateID.ValueInt64())
+	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, plan.BodyRequest(), "JobTemplate/Survey", operation); framework.DiagnosticsHasError(diags, d...) {
+		return jobTemplateSurveyTerraformModel{}, false
+	}
+	return jobTemplateSurveyTerraformModel{
+		JobTemplateID: types.Int64Value(plan.JobTemplateID.ValueInt64()),
+		Spec:          types.StringValue(plan.Spec.ValueString()),
+	}, true
+}
+
 func (o *jobTemplateSurvey) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
-	var plan, state jobTemplateSurveyTerraformModel
+	var plan jobTemplateSurveyTerraformModel
 	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
-	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.JobTemplateID.ValueInt64())) + "/"
-	var bodyRequest = plan.BodyRequest()
-	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "JobTemplate/Survey", "create"); framework.DiagnosticsHasError(&response.Diagnostics, d...) {
+	state, ok := o.applyMutation(ctx, plan, "create", &response.Diagnostics)
+	if !ok {
 		return
 	}
-
-	state.Spec = types.StringValue(plan.Spec.ValueString())
-	state.JobTemplateID = types.Int64Value(plan.JobTemplateID.ValueInt64())
-	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
-		return
-	}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-// Update the survey spec for JobTemplate
 func (o *jobTemplateSurvey) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
-	var plan, state jobTemplateSurveyTerraformModel
+	var plan jobTemplateSurveyTerraformModel
 	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
 
-	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.JobTemplateID.ValueInt64())) + "/"
-	var bodyRequest = plan.BodyRequest()
-	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "JobTemplate/Survey", "update"); framework.DiagnosticsHasError(&response.Diagnostics, d...) {
+	state, ok := o.applyMutation(ctx, plan, "update", &response.Diagnostics)
+	if !ok {
 		return
 	}
-
-	state.Spec = types.StringValue(plan.Spec.ValueString())
-	state.JobTemplateID = types.Int64Value(plan.JobTemplateID.ValueInt64())
-	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
-		return
-	}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }

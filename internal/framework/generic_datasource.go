@@ -18,6 +18,9 @@ type DataSourceCfg[T any] struct {
 	SearchGroups []SearchGroup
 	// Hook is called before setting state (nil if no hook).
 	Hook HookFunc[T]
+	// OnConfigure runs once at Configure time after the client is wired up.
+	// Use it to look up values from the AWX API and cache them in a closure.
+	OnConfigure ConfigureFunc
 	// ApiVersion is passed to hook functions.
 	ApiVersion string
 	// ResourceName is used in error messages. Defaults to TypeName if empty.
@@ -37,12 +40,20 @@ func (ds *GenericDataSource[T, PT]) name() string {
 	return ds.TypeName
 }
 
-// Schema implements datasource.DataSource.
+// Configure wires the client and then runs the optional OnConfigure hook.
+// Shadows the DataSourceBase.Configure promoted method so OnConfigure actually fires.
+func (ds *GenericDataSource[T, PT]) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+	ds.DataSourceBase.Configure(ctx, req, resp)
+	if ds.Cfg.OnConfigure == nil || ds.Client == nil {
+		return
+	}
+	resp.Diagnostics.Append(ds.Cfg.OnConfigure(ctx, ds.Client)...)
+}
+
 func (ds *GenericDataSource[T, PT]) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = ds.Cfg.Schema
 }
 
-// Read implements datasource.DataSource.
 func (ds *GenericDataSource[T, PT]) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state T
 	var endpoint string

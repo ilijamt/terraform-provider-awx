@@ -54,6 +54,27 @@ var templateCmd = &cobra.Command{
 
 		for _, item := range cfg.Items {
 			if item.Enabled {
+				// Typed credential resources are sourced from credential_type
+				// payloads, not the regular API actions metadata. Route them
+				// through the credential-type pipeline.
+				if internal.IsCredentialTypeItem(item) {
+					if !item.NoTerraformResource {
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
+					}
+					if !item.NoTerraformDataSource {
+						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, item.Name)
+					}
+					payload, ok := apiResource.CredentialTypes[item.CredentialType]
+					if !ok {
+						log.Printf("Missing credential_type payload for namespace %q, skipping ...", item.CredentialType)
+						continue
+					}
+					if err = internal.GenerateCredentialTypeTfDefinition(tpl, cfg, item, resourcePath, payload); err != nil {
+						return err
+					}
+					continue
+				}
+
 				if !item.NoTerraformResource {
 					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
 					for _, adg := range item.AssociateDisassociateGroups {

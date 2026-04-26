@@ -21,35 +21,20 @@ func NewLabelResource() resource.Resource {
 		Cfg: framework.ResourceCfg[labelTerraformModel, labelBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"name": schema.StringAttribute{
-						Description:   "Name of this label.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this label.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"organization": schema.Int64Attribute{
-						Description:   "Organization this label belongs to.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Organization this label belongs to.",
+						Required:    true,
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this label.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

@@ -2,7 +2,6 @@ package helpers
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -10,12 +9,7 @@ import (
 
 func AttrValueSetJsonString(obj *types.String, data any, trim bool) (d diag.Diagnostics, err error) {
 	if obj == nil {
-		err = fmt.Errorf("obj is nil")
-		d.AddError(
-			"nil pointer passed",
-			err.Error(),
-		)
-		return d, err
+		return nilObjErr()
 	}
 
 	if data == nil {
@@ -29,12 +23,12 @@ func AttrValueSetJsonString(obj *types.String, data any, trim bool) (d diag.Diag
 		} else {
 			*obj = types.StringValue(val)
 		}
-	} else {
-		var v []byte
-		if v, err = json.Marshal(data); err == nil {
-			*obj = types.StringValue(TrimAwxString(string(v)))
-		}
+		return d, nil
 	}
 
+	v, err := json.Marshal(data)
+	if err == nil {
+		*obj = types.StringValue(TrimAwxString(string(v)))
+	}
 	return d, err
 }

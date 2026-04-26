@@ -10,28 +10,19 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// credentialInputSourceTerraformModel maps the schema for CredentialInputSource when using Data Source
 type credentialInputSourceTerraformModel struct {
-	// Description "Optional description of this credential input source."
-	Description types.String `tfsdk:"description" json:"description"`
-	// ID "Database ID for this credential input source."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// InputFieldName ""
-	InputFieldName types.String `tfsdk:"input_field_name" json:"input_field_name"`
-	// Metadata ""
-	Metadata types.String `tfsdk:"metadata" json:"metadata"`
-	// SourceCredential ""
-	SourceCredential types.Int64 `tfsdk:"source_credential" json:"source_credential"`
-	// TargetCredential ""
-	TargetCredential types.Int64 `tfsdk:"target_credential" json:"target_credential"`
+	Description      types.String `tfsdk:"description" json:"description"`
+	ID               types.Int64  `tfsdk:"id" json:"id"`
+	InputFieldName   types.String `tfsdk:"input_field_name" json:"input_field_name"`
+	Metadata         types.String `tfsdk:"metadata" json:"metadata"`
+	SourceCredential types.Int64  `tfsdk:"source_credential" json:"source_credential"`
+	TargetCredential types.Int64  `tfsdk:"target_credential" json:"target_credential"`
 }
 
-// Clone the object
 func (o *credentialInputSourceTerraformModel) Clone() credentialInputSourceTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for CredentialInputSource
 func (o *credentialInputSourceTerraformModel) BodyRequest() *credentialInputSourceBodyRequestModel {
 	var req credentialInputSourceBodyRequestModel
 	req.Description = o.Description.ValueString()
@@ -47,43 +38,20 @@ func (o *credentialInputSourceTerraformModel) UpdateFromApiData(data map[string]
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.InputFieldName, data["input_field_name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.Metadata, data["metadata"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.SourceCredential, data["source_credential"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.TargetCredential, data["target_credential"])
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetString(&o.InputFieldName, data["input_field_name"], false))
+	collect(helpers.AttrValueSetJsonString(&o.Metadata, data["metadata"], false))
+	collect(helpers.AttrValueSetInt64(&o.SourceCredential, data["source_credential"]))
+	collect(helpers.AttrValueSetInt64(&o.TargetCredential, data["target_credential"]))
 	return diags, nil
 }
 
-// credentialInputSourceBodyRequestModel maps the schema for CredentialInputSource for creating and updating the data
 type credentialInputSourceBodyRequestModel struct {
-	// Description "Optional description of this credential input source."
-	Description string `json:"description,omitempty"`
-	// InputFieldName ""
-	InputFieldName string `json:"input_field_name"`
-	// Metadata ""
-	Metadata json.RawMessage `json:"metadata,omitempty"`
-	// SourceCredential ""
-	SourceCredential int64 `json:"source_credential"`
-	// TargetCredential ""
-	TargetCredential int64 `json:"target_credential"`
+	Description      string          `json:"description,omitempty"`
+	InputFieldName   string          `json:"input_field_name"`
+	Metadata         json.RawMessage `json:"metadata,omitempty"`
+	SourceCredential int64           `json:"source_credential"`
+	TargetCredential int64           `json:"target_credential"`
 }

@@ -24,67 +24,47 @@ func NewExecutionEnvironmentResource() resource.Resource {
 		Cfg: framework.ResourceCfg[executionEnvironmentTerraformModel, executionEnvironmentBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"credential": schema.Int64Attribute{
 						Description: "Credential",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this execution environment.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"image": schema.StringAttribute{
-						Description:   "The full image location, including the container registry, image name, and version tag.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "The full image location, including the container registry, image name, and version tag.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(1024),
 						},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this execution environment.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this execution environment.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"organization": schema.Int64Attribute{
 						Description: "The organization used to determine access to this execution environment.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"pull": schema.StringAttribute{
 						Description: "Pull image before running?",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -100,24 +80,16 @@ func NewExecutionEnvironmentResource() resource.Resource {
 							),
 						},
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this execution environment.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"managed": schema.BoolAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Managed",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

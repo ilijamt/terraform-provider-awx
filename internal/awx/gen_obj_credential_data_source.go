@@ -20,25 +20,20 @@ func NewCredentialDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[credentialTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"cloud": schema.BoolAttribute{
 						Description: "Cloud",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"credential_type": schema.Int64Attribute{
 						Description: "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this credential.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -50,27 +45,22 @@ func NewCredentialDataSource() datasource.DataSource {
 					},
 					"inputs": schema.StringAttribute{
 						Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"kind": schema.StringAttribute{
 						Description: "Kind",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"kubernetes": schema.BoolAttribute{
 						Description: "Kubernetes",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"managed": schema.BoolAttribute{
 						Description: "Managed",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this credential.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -82,18 +72,15 @@ func NewCredentialDataSource() datasource.DataSource {
 					},
 					"organization": schema.Int64Attribute{
 						Description: "Inherit permissions from organization roles. If provided on creation, do not give either user or team.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"team": schema.Int64Attribute{
 						Description: "Write-only field used to add team to owner role. If provided, do not give either user or organization. Only valid for creation.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 					},
 					"user": schema.Int64Attribute{
 						Description: "Write-only field used to add user to owner role. If provided, do not give either team or organization. Only valid for creation.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 					},

@@ -29,266 +29,194 @@ func NewJobTemplateResource() resource.Resource {
 		Cfg: framework.ResourceCfg[jobTemplateTerraformModel, jobTemplateBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"allow_simultaneous": schema.BoolAttribute{
 						Description: "Allow simultaneous",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_credential_on_launch": schema.BoolAttribute{
 						Description: "Ask credential on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_diff_mode_on_launch": schema.BoolAttribute{
 						Description: "Ask diff mode on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_execution_environment_on_launch": schema.BoolAttribute{
 						Description: "Ask execution environment on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_forks_on_launch": schema.BoolAttribute{
 						Description: "Ask forks on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_instance_groups_on_launch": schema.BoolAttribute{
 						Description: "Ask instance groups on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_inventory_on_launch": schema.BoolAttribute{
 						Description: "Ask inventory on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_job_slice_count_on_launch": schema.BoolAttribute{
 						Description: "Ask job slice count on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_job_type_on_launch": schema.BoolAttribute{
 						Description: "Ask job type on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_labels_on_launch": schema.BoolAttribute{
 						Description: "Ask labels on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_limit_on_launch": schema.BoolAttribute{
 						Description: "Ask limit on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_scm_branch_on_launch": schema.BoolAttribute{
 						Description: "Ask scm branch on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_skip_tags_on_launch": schema.BoolAttribute{
 						Description: "Ask skip tags on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_tags_on_launch": schema.BoolAttribute{
 						Description: "Ask tags on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_timeout_on_launch": schema.BoolAttribute{
 						Description: "Ask timeout on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_variables_on_launch": schema.BoolAttribute{
 						Description: "Ask variables on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"ask_verbosity_on_launch": schema.BoolAttribute{
 						Description: "Ask verbosity on launch",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"become_enabled": schema.BoolAttribute{
 						Description: "Become enabled",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this job template.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"diff_mode": schema.BoolAttribute{
 						Description: "If enabled, textual changes made to any templated files on the host are shown in the standard output",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"execution_environment": schema.Int64Attribute{
 						Description: "The container image to be used for execution.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"extra_vars": schema.StringAttribute{
 						Description: "Extra vars",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"force_handlers": schema.BoolAttribute{
 						Description: "Force handlers",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"forks": schema.Int64Attribute{
 						Description: "Forks",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
@@ -301,8 +229,6 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"host_config_key": schema.StringAttribute{
 						Description: "Host config key",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -315,19 +241,14 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"job_slice_count": schema.Int64Attribute{
 						Description: "The number of jobs to slice into at runtime. Will cause the Job Template to launch a workflow if value is greater than 1.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(1),
@@ -340,20 +261,15 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"job_tags": schema.StringAttribute{
 						Description: "Job tags",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"job_type": schema.StringAttribute{
 						Description: "Job type",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`run`),
@@ -369,31 +285,22 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"limit": schema.StringAttribute{
 						Description: "Limit",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this job template.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this job template.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"playbook": schema.StringAttribute{
 						Description: "Playbook",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -406,30 +313,22 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"prevent_instance_group_fallback": schema.BoolAttribute{
 						Description: "If enabled, the job template will prevent adding any inventory or organization instance groups to the list of preferred instances groups to run on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"project": schema.Int64Attribute{
 						Description: "Project",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"scm_branch": schema.StringAttribute{
 						Description: "Branch to use in job run. Project default used if blank. Only allowed if project allow_override field is set to true.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -442,8 +341,6 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"skip_tags": schema.StringAttribute{
 						Description: "Skip tags",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -456,8 +353,6 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"start_at_task": schema.StringAttribute{
 						Description: "Start at task",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -470,19 +365,14 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"survey_enabled": schema.BoolAttribute{
 						Description: "Survey enabled",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"timeout": schema.Int64Attribute{
 						Description: "The amount of time (in seconds) to run before the task is canceled.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
@@ -495,19 +385,14 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"use_fact_cache": schema.BoolAttribute{
 						Description: "If enabled, the service will act as an Ansible Fact Cache Plugin; persisting facts at the end of a playbook run to the database and caching facts for use by Ansible.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"verbosity": schema.StringAttribute{
 						Description: "Verbosity",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`0`),
@@ -527,19 +412,14 @@ func NewJobTemplateResource() resource.Resource {
 					},
 					"webhook_credential": schema.Int64Attribute{
 						Description: "Personal Access Token for posting back the status to the service API",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"webhook_service": schema.StringAttribute{
 						Description: "Service that webhook requests will be accepted from",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
@@ -554,24 +434,16 @@ func NewJobTemplateResource() resource.Resource {
 							),
 						},
 					},
-					// Write only elements
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this job template.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"organization": schema.Int64Attribute{
 						Description: "The organization used to determine access to this template.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

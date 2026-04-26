@@ -6,7 +6,7 @@ import (
 	"net/http"
 	p "path"
 
-    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 
@@ -28,7 +28,6 @@ func New{{ .Name }}DataSource() datasource.DataSource {
                 DeprecationMessage: "This data source has been deprecated and will be removed in a future release.",
 {{- end }}
                 Attributes: map[string]schema.Attribute{
-                    // Data only elements
 {{- range $key, $value := $.ReadProperties }}
                     "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
 {{- if $value.Deprecated }}
@@ -40,13 +39,13 @@ func New{{ .Name }}DataSource() datasource.DataSource {
                         ElementType: types.StringType,
 {{- end }}
                         Description: {{ escape_quotes (or .Description .Label) }},
-                        Sensitive: {{ .IsSensitive }},
+{{- if .IsSensitive }}
+                        Sensitive:   true,
+{{- end }}
 {{- if $value.IsSearchable }}
                         Optional:    true,
-                        Computed:    true,
-{{- else }}
-                        Computed:    true,
 {{- end }}
+                        Computed:    true,
 {{- if $value.IsSearchable }}
                         Validators: []validator.{{ $value.Generated.AttributeType }}{
 {{- range $key, $attrs := $value.Generated.AttributeValidationData }}
@@ -70,7 +69,9 @@ func New{{ .Name }}DataSource() datasource.DataSource {
                         DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
                         Description: {{ escape_quotes (or .Description .Label) }},
-                        Sensitive:   {{ $value.IsSensitive }},
+{{- if $value.IsSensitive }}
+                        Sensitive:   true,
+{{- end }}
                         Optional:    true,
                         Computed:    true,
                     },
@@ -103,4 +104,3 @@ func New{{ .Name }}DataSource() datasource.DataSource {
         },
     }
 }
-

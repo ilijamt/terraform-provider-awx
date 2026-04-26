@@ -12,12 +12,10 @@ type ResourceBase struct {
 	ProviderBase
 }
 
-// Configure implements resource.ResourceWithConfigure.
 func (b *ResourceBase) Configure(_ context.Context, request resource.ConfigureRequest, _ *resource.ConfigureResponse) {
 	b.configureClient(request.ProviderData)
 }
 
-// Metadata implements resource.Resource.
 func (b *ResourceBase) Metadata(_ context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
 	response.TypeName = request.ProviderTypeName + "_" + b.TypeName
 }

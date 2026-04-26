@@ -24,11 +24,8 @@ func NewUserResource() resource.Resource {
 		Cfg: framework.ResourceCfg[userTerraformModel, userBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"email": schema.StringAttribute{
 						Description: "Email address",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
@@ -40,8 +37,6 @@ func NewUserResource() resource.Resource {
 					},
 					"first_name": schema.StringAttribute{
 						Description: "First name",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
@@ -53,30 +48,22 @@ func NewUserResource() resource.Resource {
 					},
 					"is_superuser": schema.BoolAttribute{
 						Description: "Designates that this user has all permissions without explicitly assigning them.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"is_system_auditor": schema.BoolAttribute{
 						Description: "Is system auditor",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"last_name": schema.StringAttribute{
 						Description: "Last name",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
@@ -89,64 +76,44 @@ func NewUserResource() resource.Resource {
 					"password": schema.StringAttribute{
 						Description: "Field used to change the password.",
 						Sensitive:   true,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"username": schema.StringAttribute{
-						Description:   "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(150),
 						},
 					},
-					// Write only elements
-					// Data only elements
 					"external_account": schema.StringAttribute{
 						Description: "Set if the account is managed by an external service",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this user.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"last_login": schema.StringAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Last login",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
 					},
 					"ldap_dn": schema.StringAttribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Ldap dn",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},

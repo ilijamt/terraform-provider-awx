@@ -9,26 +9,18 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsUiTerraformModel maps the schema for SettingsUI when using Data Source
 type settingsUiTerraformModel struct {
-	// CUSTOM_LOGIN_INFO "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported."
-	CUSTOM_LOGIN_INFO types.String `tfsdk:"custom_login_info" json:"CUSTOM_LOGIN_INFO"`
-	// CUSTOM_LOGO "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported."
-	CUSTOM_LOGO types.String `tfsdk:"custom_logo" json:"CUSTOM_LOGO"`
-	// MAX_UI_JOB_EVENTS "Maximum number of job events for the UI to retrieve within a single request."
-	MAX_UI_JOB_EVENTS types.Int64 `tfsdk:"max_ui_job_events" json:"MAX_UI_JOB_EVENTS"`
-	// PENDO_TRACKING_STATE "Enable or Disable User Analytics Tracking."
-	PENDO_TRACKING_STATE types.String `tfsdk:"pendo_tracking_state" json:"PENDO_TRACKING_STATE"`
-	// UI_LIVE_UPDATES_ENABLED "If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details."
-	UI_LIVE_UPDATES_ENABLED types.Bool `tfsdk:"ui_live_updates_enabled" json:"UI_LIVE_UPDATES_ENABLED"`
+	CUSTOM_LOGIN_INFO       types.String `tfsdk:"custom_login_info" json:"CUSTOM_LOGIN_INFO"`
+	CUSTOM_LOGO             types.String `tfsdk:"custom_logo" json:"CUSTOM_LOGO"`
+	MAX_UI_JOB_EVENTS       types.Int64  `tfsdk:"max_ui_job_events" json:"MAX_UI_JOB_EVENTS"`
+	PENDO_TRACKING_STATE    types.String `tfsdk:"pendo_tracking_state" json:"PENDO_TRACKING_STATE"`
+	UI_LIVE_UPDATES_ENABLED types.Bool   `tfsdk:"ui_live_updates_enabled" json:"UI_LIVE_UPDATES_ENABLED"`
 }
 
-// Clone the object
 func (o *settingsUiTerraformModel) Clone() settingsUiTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsUI
 func (o *settingsUiTerraformModel) BodyRequest() *settingsUiBodyRequestModel {
 	var req settingsUiBodyRequestModel
 	req.CUSTOM_LOGIN_INFO = o.CUSTOM_LOGIN_INFO.ValueString()
@@ -43,37 +35,18 @@ func (o *settingsUiTerraformModel) UpdateFromApiData(data map[string]any) (diags
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data["CUSTOM_LOGIN_INFO"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.CUSTOM_LOGO, data["CUSTOM_LOGO"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data["MAX_UI_JOB_EVENTS"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data["PENDO_TRACKING_STATE"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data["UI_LIVE_UPDATES_ENABLED"])
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data["CUSTOM_LOGIN_INFO"], false))
+	collect(helpers.AttrValueSetString(&o.CUSTOM_LOGO, data["CUSTOM_LOGO"], false))
+	collect(helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data["MAX_UI_JOB_EVENTS"]))
+	collect(helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data["PENDO_TRACKING_STATE"], false))
+	collect(helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data["UI_LIVE_UPDATES_ENABLED"]))
 	return diags, nil
 }
 
-// settingsUiBodyRequestModel maps the schema for SettingsUI for creating and updating the data
 type settingsUiBodyRequestModel struct {
-	// CUSTOM_LOGIN_INFO "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported."
-	CUSTOM_LOGIN_INFO string `json:"CUSTOM_LOGIN_INFO,omitempty"`
-	// CUSTOM_LOGO "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported."
-	CUSTOM_LOGO string `json:"CUSTOM_LOGO,omitempty"`
-	// MAX_UI_JOB_EVENTS "Maximum number of job events for the UI to retrieve within a single request."
-	MAX_UI_JOB_EVENTS int64 `json:"MAX_UI_JOB_EVENTS,omitempty"`
-	// UI_LIVE_UPDATES_ENABLED "If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details."
-	UI_LIVE_UPDATES_ENABLED bool `json:"UI_LIVE_UPDATES_ENABLED"`
+	CUSTOM_LOGIN_INFO       string `json:"CUSTOM_LOGIN_INFO,omitempty"`
+	CUSTOM_LOGO             string `json:"CUSTOM_LOGO,omitempty"`
+	MAX_UI_JOB_EVENTS       int64  `json:"MAX_UI_JOB_EVENTS,omitempty"`
+	UI_LIVE_UPDATES_ENABLED bool   `json:"UI_LIVE_UPDATES_ENABLED"`
 }

@@ -20,10 +20,8 @@ func NewLabelDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[labelTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this label.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -35,7 +33,6 @@ func NewLabelDataSource() datasource.DataSource {
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this label.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -49,7 +46,6 @@ func NewLabelDataSource() datasource.DataSource {
 					},
 					"organization": schema.Int64Attribute{
 						Description: "Organization this label belongs to.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{

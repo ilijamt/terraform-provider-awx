@@ -20,15 +20,12 @@ func NewTeamDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[teamTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this team.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this team.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -40,7 +37,6 @@ func NewTeamDataSource() datasource.DataSource {
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this team.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -52,7 +48,6 @@ func NewTeamDataSource() datasource.DataSource {
 					},
 					"organization": schema.Int64Attribute{
 						Description: "Organization",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

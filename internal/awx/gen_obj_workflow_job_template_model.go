@@ -10,58 +10,34 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// workflowJobTemplateTerraformModel maps the schema for WorkflowJobTemplate when using Data Source
 type workflowJobTemplateTerraformModel struct {
-	// AllowSimultaneous ""
-	AllowSimultaneous types.Bool `tfsdk:"allow_simultaneous" json:"allow_simultaneous"`
-	// AskInventoryOnLaunch ""
-	AskInventoryOnLaunch types.Bool `tfsdk:"ask_inventory_on_launch" json:"ask_inventory_on_launch"`
-	// AskLabelsOnLaunch ""
-	AskLabelsOnLaunch types.Bool `tfsdk:"ask_labels_on_launch" json:"ask_labels_on_launch"`
-	// AskLimitOnLaunch ""
-	AskLimitOnLaunch types.Bool `tfsdk:"ask_limit_on_launch" json:"ask_limit_on_launch"`
-	// AskScmBranchOnLaunch ""
-	AskScmBranchOnLaunch types.Bool `tfsdk:"ask_scm_branch_on_launch" json:"ask_scm_branch_on_launch"`
-	// AskSkipTagsOnLaunch ""
-	AskSkipTagsOnLaunch types.Bool `tfsdk:"ask_skip_tags_on_launch" json:"ask_skip_tags_on_launch"`
-	// AskTagsOnLaunch ""
-	AskTagsOnLaunch types.Bool `tfsdk:"ask_tags_on_launch" json:"ask_tags_on_launch"`
-	// AskVariablesOnLaunch ""
-	AskVariablesOnLaunch types.Bool `tfsdk:"ask_variables_on_launch" json:"ask_variables_on_launch"`
-	// Description "Optional description of this workflow job template."
-	Description types.String `tfsdk:"description" json:"description"`
-	// ExtraVars ""
-	ExtraVars types.String `tfsdk:"extra_vars" json:"extra_vars"`
-	// ID "Database ID for this workflow job template."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// Inventory "Inventory applied as a prompt, assuming job template prompts for inventory"
-	Inventory types.Int64 `tfsdk:"inventory" json:"inventory"`
-	// JobTags ""
-	JobTags types.String `tfsdk:"job_tags" json:"job_tags"`
-	// Limit ""
-	Limit types.String `tfsdk:"limit" json:"limit"`
-	// Name "Name of this workflow job template."
-	Name types.String `tfsdk:"name" json:"name"`
-	// Organization "The organization used to determine access to this template."
-	Organization types.Int64 `tfsdk:"organization" json:"organization"`
-	// ScmBranch ""
-	ScmBranch types.String `tfsdk:"scm_branch" json:"scm_branch"`
-	// SkipTags ""
-	SkipTags types.String `tfsdk:"skip_tags" json:"skip_tags"`
-	// SurveyEnabled ""
-	SurveyEnabled types.Bool `tfsdk:"survey_enabled" json:"survey_enabled"`
-	// WebhookCredential "Personal Access Token for posting back the status to the service API"
-	WebhookCredential types.Int64 `tfsdk:"webhook_credential" json:"webhook_credential"`
-	// WebhookService "Service that webhook requests will be accepted from"
-	WebhookService types.String `tfsdk:"webhook_service" json:"webhook_service"`
+	AllowSimultaneous    types.Bool   `tfsdk:"allow_simultaneous" json:"allow_simultaneous"`
+	AskInventoryOnLaunch types.Bool   `tfsdk:"ask_inventory_on_launch" json:"ask_inventory_on_launch"`
+	AskLabelsOnLaunch    types.Bool   `tfsdk:"ask_labels_on_launch" json:"ask_labels_on_launch"`
+	AskLimitOnLaunch     types.Bool   `tfsdk:"ask_limit_on_launch" json:"ask_limit_on_launch"`
+	AskScmBranchOnLaunch types.Bool   `tfsdk:"ask_scm_branch_on_launch" json:"ask_scm_branch_on_launch"`
+	AskSkipTagsOnLaunch  types.Bool   `tfsdk:"ask_skip_tags_on_launch" json:"ask_skip_tags_on_launch"`
+	AskTagsOnLaunch      types.Bool   `tfsdk:"ask_tags_on_launch" json:"ask_tags_on_launch"`
+	AskVariablesOnLaunch types.Bool   `tfsdk:"ask_variables_on_launch" json:"ask_variables_on_launch"`
+	Description          types.String `tfsdk:"description" json:"description"`
+	ExtraVars            types.String `tfsdk:"extra_vars" json:"extra_vars"`
+	ID                   types.Int64  `tfsdk:"id" json:"id"`
+	Inventory            types.Int64  `tfsdk:"inventory" json:"inventory"`
+	JobTags              types.String `tfsdk:"job_tags" json:"job_tags"`
+	Limit                types.String `tfsdk:"limit" json:"limit"`
+	Name                 types.String `tfsdk:"name" json:"name"`
+	Organization         types.Int64  `tfsdk:"organization" json:"organization"`
+	ScmBranch            types.String `tfsdk:"scm_branch" json:"scm_branch"`
+	SkipTags             types.String `tfsdk:"skip_tags" json:"skip_tags"`
+	SurveyEnabled        types.Bool   `tfsdk:"survey_enabled" json:"survey_enabled"`
+	WebhookCredential    types.Int64  `tfsdk:"webhook_credential" json:"webhook_credential"`
+	WebhookService       types.String `tfsdk:"webhook_service" json:"webhook_service"`
 }
 
-// Clone the object
 func (o *workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for WorkflowJobTemplate
 func (o *workflowJobTemplateTerraformModel) BodyRequest() *workflowJobTemplateBodyRequestModel {
 	var req workflowJobTemplateBodyRequestModel
 	req.AllowSimultaneous = o.AllowSimultaneous.ValueBool()
@@ -92,133 +68,50 @@ func (o *workflowJobTemplateTerraformModel) UpdateFromApiData(data map[string]an
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AllowSimultaneous, data["allow_simultaneous"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data["ask_inventory_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data["ask_labels_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data["ask_limit_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data["ask_scm_branch_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data["ask_skip_tags_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data["ask_tags_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data["ask_variables_on_launch"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.ExtraVars, data["extra_vars"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.JobTags, data["job_tags"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetBool(&o.SurveyEnabled, data["survey_enabled"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.WebhookCredential, data["webhook_credential"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.WebhookService, data["webhook_service"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetBool(&o.AllowSimultaneous, data["allow_simultaneous"]))
+	collect(helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data["ask_inventory_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data["ask_labels_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data["ask_limit_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data["ask_scm_branch_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data["ask_skip_tags_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data["ask_tags_on_launch"]))
+	collect(helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data["ask_variables_on_launch"]))
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetJsonString(&o.ExtraVars, data["extra_vars"], false))
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetInt64(&o.Inventory, data["inventory"]))
+	collect(helpers.AttrValueSetString(&o.JobTags, data["job_tags"], false))
+	collect(helpers.AttrValueSetString(&o.Limit, data["limit"], false))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetInt64(&o.Organization, data["organization"]))
+	collect(helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false))
+	collect(helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false))
+	collect(helpers.AttrValueSetBool(&o.SurveyEnabled, data["survey_enabled"]))
+	collect(helpers.AttrValueSetInt64(&o.WebhookCredential, data["webhook_credential"]))
+	collect(helpers.AttrValueSetString(&o.WebhookService, data["webhook_service"], false))
 	return diags, nil
 }
 
-// workflowJobTemplateBodyRequestModel maps the schema for WorkflowJobTemplate for creating and updating the data
 type workflowJobTemplateBodyRequestModel struct {
-	// AllowSimultaneous ""
-	AllowSimultaneous bool `json:"allow_simultaneous"`
-	// AskInventoryOnLaunch ""
-	AskInventoryOnLaunch bool `json:"ask_inventory_on_launch"`
-	// AskLabelsOnLaunch ""
-	AskLabelsOnLaunch bool `json:"ask_labels_on_launch"`
-	// AskLimitOnLaunch ""
-	AskLimitOnLaunch bool `json:"ask_limit_on_launch"`
-	// AskScmBranchOnLaunch ""
-	AskScmBranchOnLaunch bool `json:"ask_scm_branch_on_launch"`
-	// AskSkipTagsOnLaunch ""
-	AskSkipTagsOnLaunch bool `json:"ask_skip_tags_on_launch"`
-	// AskTagsOnLaunch ""
-	AskTagsOnLaunch bool `json:"ask_tags_on_launch"`
-	// AskVariablesOnLaunch ""
-	AskVariablesOnLaunch bool `json:"ask_variables_on_launch"`
-	// Description "Optional description of this workflow job template."
-	Description string `json:"description,omitempty"`
-	// ExtraVars ""
-	ExtraVars json.RawMessage `json:"extra_vars,omitempty"`
-	// Inventory "Inventory applied as a prompt, assuming job template prompts for inventory"
-	Inventory int64 `json:"inventory,omitempty"`
-	// JobTags ""
-	JobTags string `json:"job_tags,omitempty"`
-	// Limit ""
-	Limit string `json:"limit,omitempty"`
-	// Name "Name of this workflow job template."
-	Name string `json:"name"`
-	// Organization "The organization used to determine access to this template."
-	Organization int64 `json:"organization,omitempty"`
-	// ScmBranch ""
-	ScmBranch string `json:"scm_branch,omitempty"`
-	// SkipTags ""
-	SkipTags string `json:"skip_tags,omitempty"`
-	// SurveyEnabled ""
-	SurveyEnabled bool `json:"survey_enabled"`
-	// WebhookCredential "Personal Access Token for posting back the status to the service API"
-	WebhookCredential int64 `json:"webhook_credential,omitempty"`
-	// WebhookService "Service that webhook requests will be accepted from"
-	WebhookService string `json:"webhook_service,omitempty"`
+	AllowSimultaneous    bool            `json:"allow_simultaneous"`
+	AskInventoryOnLaunch bool            `json:"ask_inventory_on_launch"`
+	AskLabelsOnLaunch    bool            `json:"ask_labels_on_launch"`
+	AskLimitOnLaunch     bool            `json:"ask_limit_on_launch"`
+	AskScmBranchOnLaunch bool            `json:"ask_scm_branch_on_launch"`
+	AskSkipTagsOnLaunch  bool            `json:"ask_skip_tags_on_launch"`
+	AskTagsOnLaunch      bool            `json:"ask_tags_on_launch"`
+	AskVariablesOnLaunch bool            `json:"ask_variables_on_launch"`
+	Description          string          `json:"description,omitempty"`
+	ExtraVars            json.RawMessage `json:"extra_vars,omitempty"`
+	Inventory            int64           `json:"inventory,omitempty"`
+	JobTags              string          `json:"job_tags,omitempty"`
+	Limit                string          `json:"limit,omitempty"`
+	Name                 string          `json:"name"`
+	Organization         int64           `json:"organization,omitempty"`
+	ScmBranch            string          `json:"scm_branch,omitempty"`
+	SkipTags             string          `json:"skip_tags,omitempty"`
+	SurveyEnabled        bool            `json:"survey_enabled"`
+	WebhookCredential    int64           `json:"webhook_credential,omitempty"`
+	WebhookService       string          `json:"webhook_service,omitempty"`
 }

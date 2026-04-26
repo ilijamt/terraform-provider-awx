@@ -10,32 +10,21 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthGithubEnterpriseTeamTerraformModel maps the schema for SettingsAuthGithubEnterpriseTeam when using Data Source
 type settingsAuthGithubEnterpriseTeamTerraformModel struct {
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL "The API URL for your GitHub Enterprise instance, e.g.: http(s)://hostname/api/v3/. Refer to Github Enterprise documentation for more details."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL types.String `tfsdk:"social_auth_github_enterprise_team_api_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL "Create an organization-owned application at https://github.com/organizations/<yourorg>/settings/applications and obtain an OAuth2 key (Client ID) and secret (Client Secret). Provide this URL as the callback URL for your application."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL types.String `tfsdk:"social_auth_github_enterprise_team_callback_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID "Find the numeric team ID using the Github Enterprise API: http://fabian-kostadinov.github.io/2015/01/16/how-to-find-a-github-team-id/."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID types.String `tfsdk:"social_auth_github_enterprise_team_id" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY "The OAuth2 key (Client ID) from your GitHub Enterprise organization application."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY types.String `tfsdk:"social_auth_github_enterprise_team_key" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL          types.String `tfsdk:"social_auth_github_enterprise_team_api_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL     types.String `tfsdk:"social_auth_github_enterprise_team_callback_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID               types.String `tfsdk:"social_auth_github_enterprise_team_id" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY              types.String `tfsdk:"social_auth_github_enterprise_team_key" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY"`
 	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP types.String `tfsdk:"social_auth_github_enterprise_team_organization_map" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET "The OAuth2 secret (Client Secret) from your GitHub Enterprise organization application."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET types.String `tfsdk:"social_auth_github_enterprise_team_secret" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP types.String `tfsdk:"social_auth_github_enterprise_team_team_map" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL "The URL for your Github Enterprise instance, e.g.: http(s)://hostname/. Refer to Github Enterprise documentation for more details."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL types.String `tfsdk:"social_auth_github_enterprise_team_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET           types.String `tfsdk:"social_auth_github_enterprise_team_secret" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP         types.String `tfsdk:"social_auth_github_enterprise_team_team_map" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL              types.String `tfsdk:"social_auth_github_enterprise_team_url" json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL"`
 }
 
-// Clone the object
 func (o *settingsAuthGithubEnterpriseTeamTerraformModel) Clone() settingsAuthGithubEnterpriseTeamTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubEnterpriseTeam
 func (o *settingsAuthGithubEnterpriseTeamTerraformModel) BodyRequest() *settingsAuthGithubEnterpriseTeamBodyRequestModel {
 	var req settingsAuthGithubEnterpriseTeamBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL.ValueString()
@@ -53,55 +42,24 @@ func (o *settingsAuthGithubEnterpriseTeamTerraformModel) UpdateFromApiData(data 
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL"], false))
 	return diags, nil
 }
 
-// settingsAuthGithubEnterpriseTeamBodyRequestModel maps the schema for SettingsAuthGithubEnterpriseTeam for creating and updating the data
 type settingsAuthGithubEnterpriseTeamBodyRequestModel struct {
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL "The API URL for your GitHub Enterprise instance, e.g.: http(s)://hostname/api/v3/. Refer to Github Enterprise documentation for more details."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL string `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID "Find the numeric team ID using the Github Enterprise API: http://fabian-kostadinov.github.io/2015/01/16/how-to-find-a-github-team-id/."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID string `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY "The OAuth2 key (Client ID) from your GitHub Enterprise organization application."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY string `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL          string          `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_API_URL,omitempty"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID               string          `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ID,omitempty"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY              string          `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_KEY,omitempty"`
 	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET "The OAuth2 secret (Client Secret) from your GitHub Enterprise organization application."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET string `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP,omitempty"`
-	// SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL "The URL for your Github Enterprise instance, e.g.: http(s)://hostname/. Refer to Github Enterprise documentation for more details."
-	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL string `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL,omitempty"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET           string          `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET,omitempty"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP         json.RawMessage `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP,omitempty"`
+	SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL              string          `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_URL,omitempty"`
 }

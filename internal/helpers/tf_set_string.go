@@ -10,12 +10,7 @@ import (
 
 func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnostics, err error) {
 	if obj == nil {
-		err = fmt.Errorf("obj is nil")
-		d.AddError(
-			"nil pointer passed",
-			err.Error(),
-		)
-		return d, err
+		return nilObjErr()
 	}
 
 	if data == nil {
@@ -33,10 +28,7 @@ func AttrValueSetString(obj *types.String, data any, trim bool) (d diag.Diagnost
 		*obj = types.StringValue(data.String())
 	default:
 		err = fmt.Errorf("invalid data type: %T", data)
-		d.AddError(
-			"wrong data type passed requires string, json.Number, map[string]any, []any",
-			err.Error(),
-		)
+		d.AddError("wrong data type passed requires string or json.Number", err.Error())
 	}
 
 	return d, err

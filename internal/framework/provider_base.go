@@ -7,7 +7,6 @@ type ProviderBase struct {
 	TypeName string
 }
 
-// configureClient extracts the requester from provider data.
 func (b *ProviderBase) configureClient(providerData any) {
 	if providerData == nil {
 		return

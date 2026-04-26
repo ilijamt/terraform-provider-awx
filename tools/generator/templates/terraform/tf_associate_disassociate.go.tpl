@@ -16,6 +16,6 @@ func New{{ .Name }}AssociateDisassociate{{ .Type }}Resource() resource.Resource 
 		ChildName:     "{{ .Type }}",
 		ChildIDAttr:   "{{ .Type | snakeCase }}_id",
 		AssociateType: "{{ .AssociateType }}",
-		Deprecated:    {{ if .Deprecated }}true{{ else }}false{{ end }},
+		Deprecated:    {{ .Deprecated }},
 	})
 }

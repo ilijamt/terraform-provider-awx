@@ -10,26 +10,18 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// groupTerraformModel maps the schema for Group when using Data Source
 type groupTerraformModel struct {
-	// Description "Optional description of this group."
 	Description types.String `tfsdk:"description" json:"description"`
-	// ID "Database ID for this group."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// Inventory ""
-	Inventory types.Int64 `tfsdk:"inventory" json:"inventory"`
-	// Name "Name of this group."
-	Name types.String `tfsdk:"name" json:"name"`
-	// Variables "Group variables in JSON or YAML format."
-	Variables types.String `tfsdk:"variables" json:"variables"`
+	ID          types.Int64  `tfsdk:"id" json:"id"`
+	Inventory   types.Int64  `tfsdk:"inventory" json:"inventory"`
+	Name        types.String `tfsdk:"name" json:"name"`
+	Variables   types.String `tfsdk:"variables" json:"variables"`
 }
 
-// Clone the object
 func (o *groupTerraformModel) Clone() groupTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for Group
 func (o *groupTerraformModel) BodyRequest() *groupBodyRequestModel {
 	var req groupBodyRequestModel
 	req.Description = o.Description.ValueString()
@@ -44,37 +36,18 @@ func (o *groupTerraformModel) UpdateFromApiData(data map[string]any) (diags diag
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.Variables, data["variables"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetInt64(&o.Inventory, data["inventory"]))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetJsonString(&o.Variables, data["variables"], false))
 	return diags, nil
 }
 
-// groupBodyRequestModel maps the schema for Group for creating and updating the data
 type groupBodyRequestModel struct {
-	// Description "Optional description of this group."
-	Description string `json:"description,omitempty"`
-	// Inventory ""
-	Inventory int64 `json:"inventory"`
-	// Name "Name of this group."
-	Name string `json:"name"`
-	// Variables "Group variables in JSON or YAML format."
-	Variables json.RawMessage `json:"variables,omitempty"`
+	Description string          `json:"description,omitempty"`
+	Inventory   int64           `json:"inventory"`
+	Name        string          `json:"name"`
+	Variables   json.RawMessage `json:"variables,omitempty"`
 }

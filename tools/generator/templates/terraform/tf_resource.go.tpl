@@ -2,6 +2,95 @@
 {{- range $key, $value := $.WriteProperties }}
 {{- if $value.Constraints }}{{ $hasConstraints = true }}{{ end }}
 {{- end }}
+{{- /*
+attrSchema renders a single Required/Optional/Computed schema attribute. Bool
+fields are omitted when false (Go zero); PlanModifiers/Validators lists are
+omitted when empty. Used for both regular and write-only attributes.
+*/ -}}
+{{- define "attrSchema" -}}
+{{- $key := .Key }}{{ $value := .Value -}}
+"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
+{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
+	ElementType: types.ListType{ElemType: types.StringType},
+{{- else if eq $value.Generated.AttributeType "List" }}
+	ElementType: types.{{ camelCase $value.ElementType }}Type,
+{{- end }}
+{{- if $value.Deprecated }}
+	DeprecationMessage: "This field is deprecated and will be removed in a future release.",
+{{- end }}
+	Description: {{ escape_quotes (or $value.Description $value.Label) }},
+{{- if $value.IsSensitive }}
+	Sensitive:   true,
+{{- end }}
+{{- if $value.IsRequired }}
+	Required:    true,
+{{- else }}
+	Optional:    true,
+{{- end }}
+{{- if $value.IsComputed }}
+	Computed:    true,
+{{- end }}
+{{- if $value.HasDefaultValue }}
+	Default:     {{ $value.DefaultValue }},
+{{- end }}
+{{- if not $value.IsRequired }}
+	PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
+		{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
+	},
+{{- end }}
+{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
+	Validators: []validator.{{ $value.Generated.AttributeType }}{
+		stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
+{{- range $value.Constraints }}
+		// {{ .Id }}
+		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
+{{- end }}
+	},
+{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
+	Validators: []validator.{{ $value.Generated.AttributeType }}{
+		int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
+{{- range $value.Constraints }}
+		// {{ .Id }}
+		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
+{{- end }}
+	},
+{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq $value.Type "choice") }}
+	Validators: []validator.{{ $value.Generated.AttributeType }}{
+		stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+			{{ $item | quote }},
+{{- end }}
+		),
+{{- range $value.Constraints }}
+		// {{ .Id }}
+		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
+{{- end }}
+	},
+{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq $value.Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
+	Validators: []validator.{{ $value.Generated.AttributeType }}{
+{{- range $item := $value.Validators }}
+		{{ $item }},
+{{- end }}
+		listvalidator.ValueStringsAre(stringvalidator.OneOf(
+{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
+			{{ $item | quote }},
+{{- end }}
+		)),
+{{- range $value.Constraints }}
+		// {{ .Id }}
+		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
+{{- end }}
+	},
+{{- else if $value.Constraints }}
+	Validators: []validator.{{ $value.Generated.AttributeType }}{
+{{- range $value.Constraints }}
+		// {{ .Id }}
+		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
+{{- end }}
+	},
+{{- end }}
+},
+{{- end -}}
 package {{ .PackageName }}
 
 import (
@@ -18,7 +107,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-    "github.com/ilijamt/terraform-provider-awx/internal/hooks"
+	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -37,123 +126,9 @@ func New{{ .Name }}Resource() resource.Resource {
 				DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
 {{- end }}
 				Attributes: map[string]schema.Attribute{
-				// Request elements
 {{- range $key, $value := .WriteProperties }}
-{{- if not $value.IsWriteOnly }}
-					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
-						ElementType: types.ListType{ElemType: types.StringType},
-{{- else if eq $value.Generated.AttributeType "List" }}
-						ElementType: types.{{ camelCase $value.ElementType }}Type,
+					{{ template "attrSchema" (dict "Key" $key "Value" $value) }}
 {{- end }}
-{{- if $value.Deprecated }}
-						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
-{{- end }}
-						Description: {{ escape_quotes (or $value.Description $value.Label) }},
-						Sensitive:   {{ $value.IsSensitive }},
-						Required:    {{ $value.IsRequired }},
-						Optional:    {{ not $value.IsRequired }},
-						Computed:    {{ $value.IsComputed }},
-{{- if .HasDefaultValue }}
-						Default:     {{ $value.DefaultValue }},
-{{- end }}
-						PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
-{{- if not .IsRequired }}
-							{{  $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
-{{- end }}
-						},
-						Validators: []validator.{{ $value.Generated.AttributeType }}{
-{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
-							stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
-							int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
-							stringvalidator.OneOf(
-{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
-								{{ $item | quote }},
-{{- end }}
-							),
-{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq .Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
-{{- range $item := $value.Validators }}
-							{{ $item }},
-{{- end }}
-							listvalidator.ValueStringsAre(stringvalidator.OneOf(
-{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
-								{{ $item | quote }},
-{{- end }}
-							)),
-{{- end }}
-{{- range $value.Constraints }}
-							// {{ .Id }}
-							{{ .Constraint }}(
-{{- range $k := .Fields }}
-								path.MatchRoot("{{ $k }}"),
-{{- end }}
-							),
-{{- end }}
-						},
-					},
-{{- end }}
-{{- end }}
-				// Write only elements
-{{- range $key, $value := $.WriteProperties }}
-{{- if $value.IsWriteOnly }}
-					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
-						ElementType: types.ListType{ElemType: types.StringType},
-{{- else if eq $value.Generated.AttributeType "List" }}
-						ElementType: types.{{ camelCase $value.ElementType }}Type,
-{{- end }}
-{{- if $value.Deprecated }}
-						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
-{{- end }}
-						Description: {{ escape_quotes (or $value.Description $value.Label) }},
-						Sensitive:   {{ $value.IsSensitive }},
-						Required:    {{ $value.IsRequired }},
-						Optional:    {{ not $value.IsRequired }},
-						Computed:    {{ $value.IsComputed }},
-{{- if .HasDefaultValue }}
-						Default:     {{ $value.DefaultValue }},
-{{- end }}
-						PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
-{{- if not $value.IsRequired }}
-							{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
-{{- end }}
-						},
-						Validators: []validator.{{ $value.Generated.AttributeType }}{
-{{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}
-							stringvalidator.LengthAtMost({{ $value.ValidatorData.max_length }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.Int64Value") (hasKey $value.ValidatorData "min_value") (hasKey $value.ValidatorData "max_value") }}
-							int64validator.Between({{ format_number $value.ValidatorData.min_value }}, {{ format_number $value.ValidatorData.max_value }}),
-{{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "choice") }}
-							stringvalidator.OneOf(
-{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
-								{{ $item | quote }},
-{{- end }}
-							),
-{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq .Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
-{{- range $item := $value.Validators }}
-							{{ $item }},
-{{- end }}
-							listvalidator.ValueStringsAre(stringvalidator.OneOf(
-{{- range $item := $value.Generated.ValidationAvailableChoiceData }}
-								{{ $item | quote }},
-{{- end }}
-							)),
-{{- end }}
-{{- range $value.Constraints }}
-							// {{ .Id }}
-							{{ .Constraint }}(
-{{- range $k := .Fields }}
-								path.MatchRoot("{{ $k }}"),
-{{- end }}
-							),
-{{- end }}
-						},
-					},
-{{- end }}
-{{- end }}
-				// Data only elements
 {{- range $key, $value := .ReadProperties }}
 {{- if not $value.IsInWriteProperty }}
 					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
@@ -165,12 +140,12 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if $value.Deprecated }}
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
-						Description: {{ escape_quotes (or $value.Description "") }},
-						Required:    false,
-						Optional:    false,
-						Computed:    true,
-						Sensitive:   {{ .IsSensitive }},
-						PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }} {
+						Description: {{ escape_quotes (or .Description .Label) }},
+{{- if .IsSensitive }}
+						Sensitive:   true,
+{{- end }}
+						Computed: true,
+						PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
 							{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 						},
 {{- if eq .Type "choice" }}
@@ -186,7 +161,6 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- end }}
 {{- end }}
 {{- if .WaitLifecycle }}
-				// Terraform-only lifecycle controls
 					"{{ .WaitLifecycle.WaitAttribute }}": schema.BoolAttribute{
 						Description: {{ escape_quotes .WaitLifecycle.WaitDescription }},
 						Optional:    true,
@@ -279,4 +253,3 @@ func New{{ .Name }}Resource() resource.Resource {
 		},
 	}
 }
-

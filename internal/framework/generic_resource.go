@@ -57,12 +57,27 @@ type WaitLifecycleCfg[T any] struct {
 	ResolveTimeout func(ctx context.Context, plan *T, callee hooks.Callee) (time.Duration, diag.Diagnostics)
 }
 
+// ConfigureFunc runs once at Configure time after the client is wired up. Used
+// by resources/data sources that need to look something up from the AWX API at
+// startup (e.g. resolving a credential_type ID by namespace) and stash it in a
+// closure for later Create/Read/Update calls. Returning a diagnostic with errors
+// fails Configure and surfaces a real error to the user instead of panicking.
+type ConfigureFunc func(ctx context.Context, client Requester) diag.Diagnostics
+
 // ResourceCfg holds per-resource configuration for the generic CRUD handler.
 type ResourceCfg[T any, B any] struct {
 	// Schema is the Terraform resource schema.
 	Schema rschema.Schema
 	// Hook is called before setting state (nil if no hook).
 	Hook HookFunc[T]
+	// OnConfigure runs once at Configure time after the client is wired up.
+	// Use it to look up values from the AWX API and cache them in a closure.
+	OnConfigure ConfigureFunc
+	// MutateBody runs after BodyRequest() in Create and Update. Use it to
+	// inject values that are resolved at Configure time (not present on the
+	// plan) into the outbound request body — e.g. the credential_type ID
+	// looked up by namespace.
+	MutateBody func(plan *T, body *B)
 	// WriteOnlyPlanToBody copies write-only fields from plan to body request (nil if none).
 	WriteOnlyPlanToBody func(plan *T, body *B)
 	// WriteOnlyPlanToState copies write-only fields from plan to state (nil if none).
@@ -116,7 +131,19 @@ func (r *GenericResource[T, B, PT]) endpointForModel(model *T) string {
 	return EndpointWithID(r.Endpoint, r.Cfg.IDAccessor(model))
 }
 
-// Schema implements resource.Resource.
+// Configure wires the client and then runs the optional OnConfigure hook.
+// Shadows the ResourceBase.Configure promoted method so OnConfigure actually fires.
+func (r *GenericResource[T, B, PT]) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
+	r.ResourceBase.Configure(ctx, request, response)
+	if r.Cfg.OnConfigure == nil || r.Client == nil {
+		return
+	}
+	response.Diagnostics.Append(r.Cfg.OnConfigure(ctx, r.Client)...)
+}
+
+// Schema returns r.Cfg.Schema, optionally injecting a `timeouts` block when
+// EmitTimeouts is set so wait-lifecycle resources get user-tunable Create/Update
+// timeouts without templating it per-resource.
 func (r *GenericResource[T, B, PT]) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = r.Cfg.Schema
 	if r.Cfg.EmitTimeouts {
@@ -185,7 +212,6 @@ func (r *GenericResource[T, B, PT]) runWaitLifecycle(ctx context.Context, plan, 
 	)
 }
 
-// ImportState handles terraform import using IDKey + IDIsString from ResourceCfg.
 func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	if r.Cfg.NoId || r.Cfg.NoImport {
 		resp.Diagnostics.AddError(
@@ -210,16 +236,59 @@ func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resourc
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, idPath, id)...)
 }
 
-// Create implements resource.Resource.
-func (r *GenericResource[T, B, PT]) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
-	var plan, state T
-	if DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
-		return
+// applyMutation is the shared spine for Create and Update: assemble the body,
+// call the API, hydrate state from the response, run write-only/extra/hook
+// wiring, and poll the wait-lifecycle. Returns ok=false (caller should bail)
+// whenever it has appended a hard error to diags.
+func (r *GenericResource[T, B, PT]) applyMutation(
+	ctx context.Context,
+	plan *T,
+	method, endpoint, operation string,
+	callee hooks.Callee,
+	diags *diag.Diagnostics,
+) (state T, ok bool) {
+	bodyRequest := PT(plan).BodyRequest()
+	if r.Cfg.WriteOnlyPlanToBody != nil {
+		r.Cfg.WriteOnlyPlanToBody(plan, bodyRequest)
+	}
+	if r.Cfg.MutateBody != nil {
+		r.Cfg.MutateBody(plan, bodyRequest)
 	}
 
-	bodyRequest := PT(&plan).BodyRequest()
-	if r.Cfg.WriteOnlyPlanToBody != nil {
-		r.Cfg.WriteOnlyPlanToBody(&plan, bodyRequest)
+	data, d := CreateUpdateRequest(ctx, r.Client, method, endpoint, bodyRequest, r.name(), operation)
+	if DiagnosticsHasError(diags, d...) {
+		return state, false
+	}
+
+	d, err := PT(&state).UpdateFromApiData(data)
+	diags.Append(d...)
+	if err != nil || diags.HasError() {
+		return state, false
+	}
+
+	if r.Cfg.WriteOnlyPlanToState != nil {
+		r.Cfg.WriteOnlyPlanToState(plan, &state)
+	}
+	if r.Cfg.CopyExtraAttributes != nil {
+		r.Cfg.CopyExtraAttributes(plan, &state)
+	}
+	if r.Cfg.Hook != nil {
+		if HookError(diags, r.name(), r.Cfg.Hook(ctx, r.Cfg.ApiVersion, hooks.SourceResource, callee, plan, &state)) {
+			return state, false
+		}
+	}
+
+	r.runWaitLifecycle(ctx, plan, &state, callee, diags)
+	if diags.HasError() {
+		return state, false
+	}
+	return state, true
+}
+
+func (r *GenericResource[T, B, PT]) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
+	var plan T
+	if DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
+		return
 	}
 
 	method := http.MethodPost
@@ -227,56 +296,26 @@ func (r *GenericResource[T, B, PT]) Create(ctx context.Context, request resource
 		method = http.MethodPatch
 	}
 
-	endpoint := CleanEndpoint(r.Endpoint)
-	data, d := CreateUpdateRequest(ctx, r.Client, method, endpoint, bodyRequest, r.name(), "create")
-	if DiagnosticsHasError(&response.Diagnostics, d...) {
+	state, ok := r.applyMutation(ctx, &plan, method, CleanEndpoint(r.Endpoint), "create", hooks.CalleeCreate, &response.Diagnostics)
+	if !ok {
 		return
 	}
-
-	d, err := PT(&state).UpdateFromApiData(data)
-	response.Diagnostics.Append(d...)
-	if err != nil || response.Diagnostics.HasError() {
-		return
-	}
-
-	if r.Cfg.WriteOnlyPlanToState != nil {
-		r.Cfg.WriteOnlyPlanToState(&plan, &state)
-	}
-
-	if r.Cfg.CopyExtraAttributes != nil {
-		r.Cfg.CopyExtraAttributes(&plan, &state)
-	}
-
-	if r.Cfg.Hook != nil {
-		if HookError(&response.Diagnostics, r.name(), r.Cfg.Hook(ctx, r.Cfg.ApiVersion, hooks.SourceResource, hooks.CalleeCreate, &plan, &state)) {
-			return
-		}
-	}
-
-	r.runWaitLifecycle(ctx, &plan, &state, hooks.CalleeCreate, &response.Diagnostics)
-	if response.Diagnostics.HasError() {
-		return
-	}
-
-	if DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
-		return
-	}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-// Read implements resource.Resource.
 func (r *GenericResource[T, B, PT]) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
 	var state T
 	if DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) {
 		return
 	}
 
-	var orig T
+	var orig *T
 	if r.Cfg.Hook != nil {
-		orig = PT(&state).Clone()
+		o := PT(&state).Clone()
+		orig = &o
 	}
 
-	endpoint := r.endpointForModel(&state)
-	data, d := ReadRequest(ctx, r.Client, endpoint, r.name())
+	data, d := ReadRequest(ctx, r.Client, r.endpointForModel(&state), r.name())
 	if DiagnosticsHasError(&response.Diagnostics, d...) {
 		return
 	}
@@ -288,65 +327,26 @@ func (r *GenericResource[T, B, PT]) Read(ctx context.Context, request resource.R
 	}
 
 	if r.Cfg.Hook != nil {
-		if HookError(&response.Diagnostics, r.name(), r.Cfg.Hook(ctx, r.Cfg.ApiVersion, hooks.SourceResource, hooks.CalleeRead, &orig, &state)) {
+		if HookError(&response.Diagnostics, r.name(), r.Cfg.Hook(ctx, r.Cfg.ApiVersion, hooks.SourceResource, hooks.CalleeRead, orig, &state)) {
 			return
 		}
 	}
 
-	if DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
-		return
-	}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-// Update implements resource.Resource.
 func (r *GenericResource[T, B, PT]) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
-	var plan, state T
+	var plan T
 	if DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) {
 		return
 	}
-
-	bodyRequest := PT(&plan).BodyRequest()
-	if r.Cfg.WriteOnlyPlanToBody != nil {
-		r.Cfg.WriteOnlyPlanToBody(&plan, bodyRequest)
-	}
-
-	endpoint := r.endpointForModel(&plan)
-	data, d := CreateUpdateRequest(ctx, r.Client, http.MethodPatch, endpoint, bodyRequest, r.name(), "update")
-	if DiagnosticsHasError(&response.Diagnostics, d...) {
+	state, ok := r.applyMutation(ctx, &plan, http.MethodPatch, r.endpointForModel(&plan), "update", hooks.CalleeUpdate, &response.Diagnostics)
+	if !ok {
 		return
 	}
-
-	d, err := PT(&state).UpdateFromApiData(data)
-	response.Diagnostics.Append(d...)
-	if err != nil || response.Diagnostics.HasError() {
-		return
-	}
-
-	if r.Cfg.WriteOnlyPlanToState != nil {
-		r.Cfg.WriteOnlyPlanToState(&plan, &state)
-	}
-
-	if r.Cfg.CopyExtraAttributes != nil {
-		r.Cfg.CopyExtraAttributes(&plan, &state)
-	}
-
-	if r.Cfg.Hook != nil {
-		if HookError(&response.Diagnostics, r.name(), r.Cfg.Hook(ctx, r.Cfg.ApiVersion, hooks.SourceResource, hooks.CalleeUpdate, &plan, &state)) {
-			return
-		}
-	}
-
-	r.runWaitLifecycle(ctx, &plan, &state, hooks.CalleeUpdate, &response.Diagnostics)
-	if response.Diagnostics.HasError() {
-		return
-	}
-
-	if DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) {
-		return
-	}
+	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
 }
 
-// Delete implements resource.Resource.
 func (r *GenericResource[T, B, PT]) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
 	if r.Cfg.UnDeletable {
 		return

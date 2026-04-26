@@ -10,30 +10,20 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// notificationTemplateTerraformModel maps the schema for NotificationTemplate when using Data Source
 type notificationTemplateTerraformModel struct {
-	// Description "Optional description of this notification template."
-	Description types.String `tfsdk:"description" json:"description"`
-	// ID "Database ID for this notification template."
-	ID types.Int64 `tfsdk:"id" json:"id"`
-	// Messages "Optional custom messages for notification template."
-	Messages types.String `tfsdk:"messages" json:"messages"`
-	// Name "Name of this notification template."
-	Name types.String `tfsdk:"name" json:"name"`
-	// NotificationConfiguration ""
+	Description               types.String `tfsdk:"description" json:"description"`
+	ID                        types.Int64  `tfsdk:"id" json:"id"`
+	Messages                  types.String `tfsdk:"messages" json:"messages"`
+	Name                      types.String `tfsdk:"name" json:"name"`
 	NotificationConfiguration types.String `tfsdk:"notification_configuration" json:"notification_configuration"`
-	// NotificationType ""
-	NotificationType types.String `tfsdk:"notification_type" json:"notification_type"`
-	// Organization ""
-	Organization types.Int64 `tfsdk:"organization" json:"organization"`
+	NotificationType          types.String `tfsdk:"notification_type" json:"notification_type"`
+	Organization              types.Int64  `tfsdk:"organization" json:"organization"`
 }
 
-// Clone the object
 func (o *notificationTemplateTerraformModel) Clone() notificationTemplateTerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for NotificationTemplate
 func (o *notificationTemplateTerraformModel) BodyRequest() *notificationTemplateBodyRequestModel {
 	var req notificationTemplateBodyRequestModel
 	req.Description = o.Description.ValueString()
@@ -50,49 +40,22 @@ func (o *notificationTemplateTerraformModel) UpdateFromApiData(data map[string]a
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.Messages, data["messages"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.NotificationConfiguration, data["notification_configuration"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.NotificationType, data["notification_type"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetJsonString(&o.Messages, data["messages"], false))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetJsonString(&o.NotificationConfiguration, data["notification_configuration"], false))
+	collect(helpers.AttrValueSetString(&o.NotificationType, data["notification_type"], false))
+	collect(helpers.AttrValueSetInt64(&o.Organization, data["organization"]))
 	return diags, nil
 }
 
-// notificationTemplateBodyRequestModel maps the schema for NotificationTemplate for creating and updating the data
 type notificationTemplateBodyRequestModel struct {
-	// Description "Optional description of this notification template."
-	Description string `json:"description,omitempty"`
-	// Messages "Optional custom messages for notification template."
-	Messages json.RawMessage `json:"messages,omitempty"`
-	// Name "Name of this notification template."
-	Name string `json:"name"`
-	// NotificationConfiguration ""
+	Description               string          `json:"description,omitempty"`
+	Messages                  json.RawMessage `json:"messages,omitempty"`
+	Name                      string          `json:"name"`
 	NotificationConfiguration json.RawMessage `json:"notification_configuration,omitempty"`
-	// NotificationType ""
-	NotificationType string `json:"notification_type"`
-	// Organization ""
-	Organization int64 `json:"organization"`
+	NotificationType          string          `json:"notification_type"`
+	Organization              int64           `json:"organization"`
 }

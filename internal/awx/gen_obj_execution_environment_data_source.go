@@ -20,20 +20,16 @@ func NewExecutionEnvironmentDataSource() datasource.DataSource {
 		Cfg: framework.DataSourceCfg[executionEnvironmentTerraformModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Data only elements
 					"credential": schema.Int64Attribute{
 						Description: "Credential",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"description": schema.StringAttribute{
 						Description: "Optional description of this execution environment.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this execution environment.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.Int64{
@@ -45,17 +41,14 @@ func NewExecutionEnvironmentDataSource() datasource.DataSource {
 					},
 					"image": schema.StringAttribute{
 						Description: "The full image location, including the container registry, image name, and version tag.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"managed": schema.BoolAttribute{
 						Description: "Managed",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this execution environment.",
-						Sensitive:   false,
 						Optional:    true,
 						Computed:    true,
 						Validators: []validator.String{
@@ -67,12 +60,10 @@ func NewExecutionEnvironmentDataSource() datasource.DataSource {
 					},
 					"organization": schema.Int64Attribute{
 						Description: "The organization used to determine access to this execution environment.",
-						Sensitive:   false,
 						Computed:    true,
 					},
 					"pull": schema.StringAttribute{
 						Description: "Pull image before running?",
-						Sensitive:   false,
 						Computed:    true,
 					},
 				},

@@ -24,34 +24,25 @@ func NewInventoryResource() resource.Resource {
 		Cfg: framework.ResourceCfg[inventoryTerraformModel, inventoryBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"description": schema.StringAttribute{
 						Description: "Optional description of this inventory.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"host_filter": schema.StringAttribute{
 						Description: "Filter that will be applied to the hosts of this inventory.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"kind": schema.StringAttribute{
 						Description: "Kind of inventory being represented.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
@@ -67,57 +58,37 @@ func NewInventoryResource() resource.Resource {
 						},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this inventory.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this inventory.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(512),
 						},
 					},
 					"organization": schema.Int64Attribute{
-						Description:   "Organization containing this inventory.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.Int64{},
-						Validators:    []validator.Int64{},
+						Description: "Organization containing this inventory.",
+						Required:    true,
 					},
 					"prevent_instance_group_fallback": schema.BoolAttribute{
 						Description: "If enabled, the inventory will prevent adding any organization instance groups to the list of preferred instances groups to run associated job templates on.If this setting is enabled and you provided an empty list, the global instance groups will be applied.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"variables": schema.StringAttribute{
 						Description: "Inventory variables in JSON format",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
-					// Write only elements
-					// Data only elements
 					"has_active_failures": schema.BoolAttribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Flag indicating whether any hosts in this inventory have failed.",
-						Required:           false,
-						Optional:           false,
 						Computed:           true,
-						Sensitive:          false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -125,10 +96,7 @@ func NewInventoryResource() resource.Resource {
 					"has_inventory_sources": schema.BoolAttribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Flag indicating whether this inventory has any external inventory sources.",
-						Required:           false,
-						Optional:           false,
 						Computed:           true,
-						Sensitive:          false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -136,40 +104,28 @@ func NewInventoryResource() resource.Resource {
 					"hosts_with_active_failures": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Number of hosts in this inventory with active failures.",
-						Required:           false,
-						Optional:           false,
 						Computed:           true,
-						Sensitive:          false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this inventory.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"inventory_sources_with_failures": schema.Int64Attribute{
 						Description: "Number of external inventory sources in this inventory with failures.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"pending_deletion": schema.BoolAttribute{
 						Description: "Flag indicating the inventory is being deleted.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -177,10 +133,7 @@ func NewInventoryResource() resource.Resource {
 					"total_groups": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Total number of groups in this inventory.",
-						Required:           false,
-						Optional:           false,
 						Computed:           true,
-						Sensitive:          false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
@@ -188,20 +141,14 @@ func NewInventoryResource() resource.Resource {
 					"total_hosts": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Total number of hosts in this inventory.",
-						Required:           false,
-						Optional:           false,
 						Computed:           true,
-						Sensitive:          false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"total_inventory_sources": schema.Int64Attribute{
 						Description: "Total number of external inventory sources configured within this inventory.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},

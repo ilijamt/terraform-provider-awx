@@ -10,26 +10,18 @@ import (
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
-// settingsAuthAzureAdoauth2TerraformModel maps the schema for SettingsAuthAzureADOauth2 when using Data Source
 type settingsAuthAzureAdoauth2TerraformModel struct {
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail. "
-	SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL types.String `tfsdk:"social_auth_azuread_oauth2_callback_url" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_KEY "The OAuth2 key (Client ID) from your Azure AD application."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY types.String `tfsdk:"social_auth_azuread_oauth2_key" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL     types.String `tfsdk:"social_auth_azuread_oauth2_callback_url" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"`
+	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY              types.String `tfsdk:"social_auth_azuread_oauth2_key" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"`
 	SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP types.String `tfsdk:"social_auth_azuread_oauth2_organization_map" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET "The OAuth2 secret (Client Secret) from your Azure AD application."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET types.String `tfsdk:"social_auth_azuread_oauth2_secret" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP types.String `tfsdk:"social_auth_azuread_oauth2_team_map" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"`
+	SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET           types.String `tfsdk:"social_auth_azuread_oauth2_secret" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"`
+	SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP         types.String `tfsdk:"social_auth_azuread_oauth2_team_map" json:"SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"`
 }
 
-// Clone the object
 func (o *settingsAuthAzureAdoauth2TerraformModel) Clone() settingsAuthAzureAdoauth2TerraformModel {
 	return *o
 }
 
-// BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthAzureADOauth2
 func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() *settingsAuthAzureAdoauth2BodyRequestModel {
 	var req settingsAuthAzureAdoauth2BodyRequestModel
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY.ValueString()
@@ -44,37 +36,18 @@ func (o *settingsAuthAzureAdoauth2TerraformModel) UpdateFromApiData(data map[str
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL, data["SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY, data["SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET, data["SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"], false)
-		diags.Append(dg...)
-	}
-	{
-		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"], false)
-		diags.Append(dg...)
-	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL, data["SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY, data["SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"], false))
+	collect(helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET, data["SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"], false))
+	collect(helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"], false))
 	return diags, nil
 }
 
-// settingsAuthAzureAdoauth2BodyRequestModel maps the schema for SettingsAuthAzureADOauth2 for creating and updating the data
 type settingsAuthAzureAdoauth2BodyRequestModel struct {
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_KEY "The OAuth2 key (Client ID) from your Azure AD application."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY string `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,omitempty"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation."
+	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY              string          `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,omitempty"`
 	SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP json.RawMessage `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP,omitempty"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET "The OAuth2 secret (Client Secret) from your Azure AD application."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET string `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET,omitempty"`
-	// SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation."
-	SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP json.RawMessage `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP,omitempty"`
+	SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET           string          `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET,omitempty"`
+	SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP         json.RawMessage `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP,omitempty"`
 }

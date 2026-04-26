@@ -27,103 +27,75 @@ func NewInstanceGroupResource() resource.Resource {
 		Cfg: framework.ResourceCfg[instanceGroupTerraformModel, instanceGroupBodyRequestModel]{
 			Schema: schema.Schema{
 				Attributes: map[string]schema.Attribute{
-					// Request elements
 					"credential": schema.Int64Attribute{
 						Description: "Credential",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"is_container_group": schema.BoolAttribute{
 						Description: "Indicates whether instances in this group are containerized.Containerized groups have a designated Openshift or Kubernetes cluster.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Bool{},
 					},
 					"max_concurrent_jobs": schema.Int64Attribute{
 						Description: "Maximum number of concurrent jobs to run on a group. When set to zero, no maximum is enforced.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"max_forks": schema.Int64Attribute{
 						Description: "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"name": schema.StringAttribute{
-						Description:   "Name of this instance group.",
-						Sensitive:     false,
-						Required:      true,
-						Optional:      false,
-						Computed:      false,
-						PlanModifiers: []planmodifier.String{},
+						Description: "Name of this instance group.",
+						Required:    true,
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(250),
 						},
 					},
 					"pod_spec_override": schema.StringAttribute{
 						Description: "Pod spec override",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"apiVersion":"v1","kind":"Pod","metadata":{"namespace":"default"},"spec":{"automountServiceAccountToken":false,"containers":[{"args":["ansible-runner","worker","--private-data-dir=/runner"],"image":"quay.io/ansible/awx-ee:latest","name":"worker","resources":{"requests":{"cpu":"250m","memory":"100Mi"}}}],"serviceAccountName":"default"}}`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"policy_instance_list": schema.StringAttribute{
 						Description: "List of exact-match Instances that will be assigned to this group",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.String{},
 					},
 					"policy_instance_minimum": schema.Int64Attribute{
 						Description: "Static minimum number of Instances that will be automatically assign to this group when new instances come online.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
-						Validators: []validator.Int64{},
 					},
 					"policy_instance_percentage": schema.Int64Attribute{
 						Description: "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.",
-						Sensitive:   false,
-						Required:    false,
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
@@ -134,74 +106,51 @@ func NewInstanceGroupResource() resource.Resource {
 							int64validator.Between(0, 100),
 						},
 					},
-					// Write only elements
-					// Data only elements
 					"capacity": schema.Int64Attribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Capacity",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"consumed_capacity": schema.Float64Attribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Consumed capacity",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Float64{
 							float64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this instance group.",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"instances": schema.Int64Attribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Instances",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"jobs_running": schema.Int64Attribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Jobs running",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"jobs_total": schema.Int64Attribute{
 						Description: "Count of all jobs that target this instance group",
-						Required:    false,
-						Optional:    false,
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
 					},
 					"percent_capacity_remaining": schema.Float64Attribute{
-						Description: "",
-						Required:    false,
-						Optional:    false,
+						Description: "Percent capacity remaining",
 						Computed:    true,
-						Sensitive:   false,
 						PlanModifiers: []planmodifier.Float64{
 							float64planmodifier.UseStateForUnknown(),
 						},

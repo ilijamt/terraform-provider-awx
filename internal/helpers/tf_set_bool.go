@@ -9,25 +9,20 @@ import (
 
 func AttrValueSetBool(obj *types.Bool, data any) (d diag.Diagnostics, err error) {
 	if obj == nil {
-		err = fmt.Errorf("obj is nil")
-		d.AddError(
-			"nil pointer passed",
-			err.Error(),
-		)
-		return d, err
+		return nilObjErr()
 	}
 
 	if data == nil {
 		*obj = types.BoolNull()
-	} else if val, ok := data.(bool); ok {
-		*obj = types.BoolValue(val)
-	} else {
-		err = fmt.Errorf("invalid data type: %T", data)
-		d.AddError(
-			"wrong data type passed requires bool",
-			err.Error(),
-		)
+		return d, nil
 	}
 
-	return d, err
+	val, ok := data.(bool)
+	if !ok {
+		err = fmt.Errorf("invalid data type: %T", data)
+		d.AddError("wrong data type passed requires bool", err.Error())
+		return d, err
+	}
+	*obj = types.BoolValue(val)
+	return d, nil
 }
