@@ -32,16 +32,7 @@ type credentialTypeTerraformModel struct {
 
 // Clone the object
 func (o *credentialTypeTerraformModel) Clone() credentialTypeTerraformModel {
-	return credentialTypeTerraformModel{
-		Description: o.Description,
-		ID:          o.ID,
-		Injectors:   o.Injectors,
-		Inputs:      o.Inputs,
-		Kind:        o.Kind,
-		Managed:     o.Managed,
-		Name:        o.Name,
-		Namespace:   o.Namespace,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for CredentialType
@@ -55,65 +46,41 @@ func (o *credentialTypeTerraformModel) BodyRequest() *credentialTypeBodyRequestM
 	return &req
 }
 
-func (o *credentialTypeTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *credentialTypeTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *credentialTypeTerraformModel) setInjectors(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Injectors, data, false)
-}
-
-func (o *credentialTypeTerraformModel) setInputs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Inputs, data, false)
-}
-
-func (o *credentialTypeTerraformModel) setKind(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Kind, data, false)
-}
-
-func (o *credentialTypeTerraformModel) setManaged(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Managed, data)
-}
-
-func (o *credentialTypeTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *credentialTypeTerraformModel) setNamespace(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Namespace, data, false)
-}
-
 func (o *credentialTypeTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInjectors(data["injectors"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Injectors, data["injectors"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInputs(data["inputs"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Inputs, data["inputs"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setKind(data["kind"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Kind, data["kind"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setManaged(data["managed"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Managed, data["managed"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setNamespace(data["namespace"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Namespace, data["namespace"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

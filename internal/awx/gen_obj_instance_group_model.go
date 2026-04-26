@@ -48,24 +48,7 @@ type instanceGroupTerraformModel struct {
 
 // Clone the object
 func (o *instanceGroupTerraformModel) Clone() instanceGroupTerraformModel {
-	return instanceGroupTerraformModel{
-		Capacity:                 o.Capacity,
-		ConsumedCapacity:         o.ConsumedCapacity,
-		Credential:               o.Credential,
-		ID:                       o.ID,
-		Instances:                o.Instances,
-		IsContainerGroup:         o.IsContainerGroup,
-		JobsRunning:              o.JobsRunning,
-		JobsTotal:                o.JobsTotal,
-		MaxConcurrentJobs:        o.MaxConcurrentJobs,
-		MaxForks:                 o.MaxForks,
-		Name:                     o.Name,
-		PercentCapacityRemaining: o.PercentCapacityRemaining,
-		PodSpecOverride:          o.PodSpecOverride,
-		PolicyInstanceList:       o.PolicyInstanceList,
-		PolicyInstanceMinimum:    o.PolicyInstanceMinimum,
-		PolicyInstancePercentage: o.PolicyInstancePercentage,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InstanceGroup
@@ -83,121 +66,73 @@ func (o *instanceGroupTerraformModel) BodyRequest() *instanceGroupBodyRequestMod
 	return &req
 }
 
-func (o *instanceGroupTerraformModel) setCapacity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Capacity, data)
-}
-
-func (o *instanceGroupTerraformModel) setConsumedCapacity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetFloat64(&o.ConsumedCapacity, data)
-}
-
-func (o *instanceGroupTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Credential, data)
-}
-
-func (o *instanceGroupTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *instanceGroupTerraformModel) setInstances(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Instances, data)
-}
-
-func (o *instanceGroupTerraformModel) setIsContainerGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.IsContainerGroup, data)
-}
-
-func (o *instanceGroupTerraformModel) setJobsRunning(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.JobsRunning, data)
-}
-
-func (o *instanceGroupTerraformModel) setJobsTotal(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.JobsTotal, data)
-}
-
-func (o *instanceGroupTerraformModel) setMaxConcurrentJobs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MaxConcurrentJobs, data)
-}
-
-func (o *instanceGroupTerraformModel) setMaxForks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MaxForks, data)
-}
-
-func (o *instanceGroupTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *instanceGroupTerraformModel) setPercentCapacityRemaining(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetFloat64(&o.PercentCapacityRemaining, data)
-}
-
-func (o *instanceGroupTerraformModel) setPodSpecOverride(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.PodSpecOverride, data, false)
-}
-
-func (o *instanceGroupTerraformModel) setPolicyInstanceList(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.PolicyInstanceList, data, false)
-}
-
-func (o *instanceGroupTerraformModel) setPolicyInstanceMinimum(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.PolicyInstanceMinimum, data)
-}
-
-func (o *instanceGroupTerraformModel) setPolicyInstancePercentage(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.PolicyInstancePercentage, data)
-}
-
 func (o *instanceGroupTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setCapacity(data["capacity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Capacity, data["capacity"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setConsumedCapacity(data["consumed_capacity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetFloat64(&o.ConsumedCapacity, data["consumed_capacity"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCredential(data["credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInstances(data["instances"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Instances, data["instances"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setIsContainerGroup(data["is_container_group"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.IsContainerGroup, data["is_container_group"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobsRunning(data["jobs_running"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.JobsRunning, data["jobs_running"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobsTotal(data["jobs_total"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.JobsTotal, data["jobs_total"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxConcurrentJobs(data["max_concurrent_jobs"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MaxConcurrentJobs, data["max_concurrent_jobs"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxForks(data["max_forks"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MaxForks, data["max_forks"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPercentCapacityRemaining(data["percent_capacity_remaining"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetFloat64(&o.PercentCapacityRemaining, data["percent_capacity_remaining"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPodSpecOverride(data["pod_spec_override"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.PodSpecOverride, data["pod_spec_override"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPolicyInstanceList(data["policy_instance_list"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.PolicyInstanceList, data["policy_instance_list"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPolicyInstanceMinimum(data["policy_instance_minimum"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.PolicyInstanceMinimum, data["policy_instance_minimum"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPolicyInstancePercentage(data["policy_instance_percentage"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.PolicyInstancePercentage, data["policy_instance_percentage"])
 		diags.Append(dg...)
 	}
 	return diags, nil

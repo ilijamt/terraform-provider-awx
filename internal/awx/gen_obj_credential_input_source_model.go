@@ -28,14 +28,7 @@ type credentialInputSourceTerraformModel struct {
 
 // Clone the object
 func (o *credentialInputSourceTerraformModel) Clone() credentialInputSourceTerraformModel {
-	return credentialInputSourceTerraformModel{
-		Description:      o.Description,
-		ID:               o.ID,
-		InputFieldName:   o.InputFieldName,
-		Metadata:         o.Metadata,
-		SourceCredential: o.SourceCredential,
-		TargetCredential: o.TargetCredential,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for CredentialInputSource
@@ -49,51 +42,33 @@ func (o *credentialInputSourceTerraformModel) BodyRequest() *credentialInputSour
 	return &req
 }
 
-func (o *credentialInputSourceTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *credentialInputSourceTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *credentialInputSourceTerraformModel) setInputFieldName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.InputFieldName, data, false)
-}
-
-func (o *credentialInputSourceTerraformModel) setMetadata(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Metadata, data, false)
-}
-
-func (o *credentialInputSourceTerraformModel) setSourceCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SourceCredential, data)
-}
-
-func (o *credentialInputSourceTerraformModel) setTargetCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.TargetCredential, data)
-}
-
 func (o *credentialInputSourceTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInputFieldName(data["input_field_name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.InputFieldName, data["input_field_name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMetadata(data["metadata"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Metadata, data["metadata"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSourceCredential(data["source_credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SourceCredential, data["source_credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTargetCredential(data["target_credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.TargetCredential, data["target_credential"])
 		diags.Append(dg...)
 	}
 	return diags, nil

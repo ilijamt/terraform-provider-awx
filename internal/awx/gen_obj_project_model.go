@@ -53,27 +53,7 @@ type projectTerraformModel struct {
 
 // Clone the object
 func (o *projectTerraformModel) Clone() projectTerraformModel {
-	return projectTerraformModel{
-		AllowOverride:                 o.AllowOverride,
-		Credential:                    o.Credential,
-		DefaultEnvironment:            o.DefaultEnvironment,
-		Description:                   o.Description,
-		ID:                            o.ID,
-		LocalPath:                     o.LocalPath,
-		Name:                          o.Name,
-		Organization:                  o.Organization,
-		ScmBranch:                     o.ScmBranch,
-		ScmClean:                      o.ScmClean,
-		ScmDeleteOnUpdate:             o.ScmDeleteOnUpdate,
-		ScmRefspec:                    o.ScmRefspec,
-		ScmTrackSubmodules:            o.ScmTrackSubmodules,
-		ScmType:                       o.ScmType,
-		ScmUpdateCacheTimeout:         o.ScmUpdateCacheTimeout,
-		ScmUpdateOnLaunch:             o.ScmUpdateOnLaunch,
-		ScmUrl:                        o.ScmUrl,
-		SignatureValidationCredential: o.SignatureValidationCredential,
-		Timeout:                       o.Timeout,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Project
@@ -100,142 +80,85 @@ func (o *projectTerraformModel) BodyRequest() *projectBodyRequestModel {
 	return &req
 }
 
-func (o *projectTerraformModel) setAllowOverride(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AllowOverride, data)
-}
-
-func (o *projectTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Credential, data)
-}
-
-func (o *projectTerraformModel) setDefaultEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DefaultEnvironment, data)
-}
-
-func (o *projectTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *projectTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *projectTerraformModel) setLocalPath(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LocalPath, data, false)
-}
-
-func (o *projectTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *projectTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *projectTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
-}
-
-func (o *projectTerraformModel) setScmClean(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ScmClean, data)
-}
-
-func (o *projectTerraformModel) setScmDeleteOnUpdate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ScmDeleteOnUpdate, data)
-}
-
-func (o *projectTerraformModel) setScmRefspec(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmRefspec, data, false)
-}
-
-func (o *projectTerraformModel) setScmTrackSubmodules(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ScmTrackSubmodules, data)
-}
-
-func (o *projectTerraformModel) setScmType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmType, data, false)
-}
-
-func (o *projectTerraformModel) setScmUpdateCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ScmUpdateCacheTimeout, data)
-}
-
-func (o *projectTerraformModel) setScmUpdateOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ScmUpdateOnLaunch, data)
-}
-
-func (o *projectTerraformModel) setScmUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmUrl, data, false)
-}
-
-func (o *projectTerraformModel) setSignatureValidationCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SignatureValidationCredential, data)
-}
-
-func (o *projectTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Timeout, data)
-}
-
 func (o *projectTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAllowOverride(data["allow_override"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AllowOverride, data["allow_override"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCredential(data["credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultEnvironment(data["default_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DefaultEnvironment, data["default_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLocalPath(data["local_path"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LocalPath, data["local_path"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmClean(data["scm_clean"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ScmClean, data["scm_clean"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmDeleteOnUpdate(data["scm_delete_on_update"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ScmDeleteOnUpdate, data["scm_delete_on_update"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmRefspec(data["scm_refspec"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmRefspec, data["scm_refspec"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmTrackSubmodules(data["scm_track_submodules"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ScmTrackSubmodules, data["scm_track_submodules"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmType(data["scm_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmType, data["scm_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmUpdateCacheTimeout(data["scm_update_cache_timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ScmUpdateCacheTimeout, data["scm_update_cache_timeout"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmUpdateOnLaunch(data["scm_update_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ScmUpdateOnLaunch, data["scm_update_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmUrl(data["scm_url"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmUrl, data["scm_url"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSignatureValidationCredential(data["signature_validation_credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SignatureValidationCredential, data["signature_validation_credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTimeout(data["timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Timeout, data["timeout"])
 		diags.Append(dg...)
 	}
 	return diags, nil

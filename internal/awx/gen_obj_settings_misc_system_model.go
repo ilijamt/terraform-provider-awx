@@ -71,36 +71,7 @@ type settingsMiscSystemTerraformModel struct {
 
 // Clone the object
 func (o *settingsMiscSystemTerraformModel) Clone() settingsMiscSystemTerraformModel {
-	return settingsMiscSystemTerraformModel{
-		ACTIVITY_STREAM_ENABLED:                    o.ACTIVITY_STREAM_ENABLED,
-		ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC: o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC,
-		AUTOMATION_ANALYTICS_GATHER_INTERVAL:       o.AUTOMATION_ANALYTICS_GATHER_INTERVAL,
-		AUTOMATION_ANALYTICS_LAST_ENTRIES:          o.AUTOMATION_ANALYTICS_LAST_ENTRIES,
-		AUTOMATION_ANALYTICS_LAST_GATHER:           o.AUTOMATION_ANALYTICS_LAST_GATHER,
-		AUTOMATION_ANALYTICS_URL:                   o.AUTOMATION_ANALYTICS_URL,
-		CLEANUP_HOST_METRICS_LAST_TS:               o.CLEANUP_HOST_METRICS_LAST_TS,
-		CSRF_TRUSTED_ORIGINS:                       o.CSRF_TRUSTED_ORIGINS,
-		CUSTOM_VENV_PATHS:                          o.CUSTOM_VENV_PATHS,
-		DEFAULT_CONTROL_PLANE_QUEUE_NAME:           o.DEFAULT_CONTROL_PLANE_QUEUE_NAME,
-		DEFAULT_EXECUTION_ENVIRONMENT:              o.DEFAULT_EXECUTION_ENVIRONMENT,
-		DEFAULT_EXECUTION_QUEUE_NAME:               o.DEFAULT_EXECUTION_QUEUE_NAME,
-		HOST_METRIC_SUMMARY_TASK_LAST_TS:           o.HOST_METRIC_SUMMARY_TASK_LAST_TS,
-		INSIGHTS_TRACKING_STATE:                    o.INSIGHTS_TRACKING_STATE,
-		INSTALL_UUID:                               o.INSTALL_UUID,
-		IS_K8S:                                     o.IS_K8S,
-		LICENSE:                                    o.LICENSE,
-		MANAGE_ORGANIZATION_AUTH:                   o.MANAGE_ORGANIZATION_AUTH,
-		ORG_ADMINS_CAN_SEE_ALL_USERS:               o.ORG_ADMINS_CAN_SEE_ALL_USERS,
-		PROXY_IP_ALLOWED_LIST:                      o.PROXY_IP_ALLOWED_LIST,
-		REDHAT_PASSWORD:                            o.REDHAT_PASSWORD,
-		REDHAT_USERNAME:                            o.REDHAT_USERNAME,
-		REMOTE_HOST_HEADERS:                        o.REMOTE_HOST_HEADERS,
-		SUBSCRIPTIONS_PASSWORD:                     o.SUBSCRIPTIONS_PASSWORD,
-		SUBSCRIPTIONS_USERNAME:                     o.SUBSCRIPTIONS_USERNAME,
-		SUBSCRIPTION_USAGE_MODEL:                   o.SUBSCRIPTION_USAGE_MODEL,
-		TOWER_URL_BASE:                             o.TOWER_URL_BASE,
-		UI_NEXT:                                    o.UI_NEXT,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscSystem
@@ -111,36 +82,15 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() *settingsMiscSystemBody
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
 	req.AUTOMATION_ANALYTICS_LAST_ENTRIES = o.AUTOMATION_ANALYTICS_LAST_ENTRIES.ValueString()
 	req.AUTOMATION_ANALYTICS_URL = o.AUTOMATION_ANALYTICS_URL.ValueString()
-	req.CSRF_TRUSTED_ORIGINS = []string{}
-	for _, val := range o.CSRF_TRUSTED_ORIGINS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.CSRF_TRUSTED_ORIGINS = append(req.CSRF_TRUSTED_ORIGINS, val.(types.String).ValueString())
-		} else {
-			req.CSRF_TRUSTED_ORIGINS = append(req.CSRF_TRUSTED_ORIGINS, val.String())
-		}
-	}
+	req.CSRF_TRUSTED_ORIGINS = helpers.ListAsStringSlice(o.CSRF_TRUSTED_ORIGINS, false)
 	req.DEFAULT_EXECUTION_ENVIRONMENT = o.DEFAULT_EXECUTION_ENVIRONMENT.ValueInt64()
 	req.INSIGHTS_TRACKING_STATE = o.INSIGHTS_TRACKING_STATE.ValueBool()
 	req.MANAGE_ORGANIZATION_AUTH = o.MANAGE_ORGANIZATION_AUTH.ValueBool()
 	req.ORG_ADMINS_CAN_SEE_ALL_USERS = o.ORG_ADMINS_CAN_SEE_ALL_USERS.ValueBool()
-	req.PROXY_IP_ALLOWED_LIST = []string{}
-	for _, val := range o.PROXY_IP_ALLOWED_LIST.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.PROXY_IP_ALLOWED_LIST = append(req.PROXY_IP_ALLOWED_LIST, val.(types.String).ValueString())
-		} else {
-			req.PROXY_IP_ALLOWED_LIST = append(req.PROXY_IP_ALLOWED_LIST, val.String())
-		}
-	}
+	req.PROXY_IP_ALLOWED_LIST = helpers.ListAsStringSlice(o.PROXY_IP_ALLOWED_LIST, false)
 	req.REDHAT_PASSWORD = o.REDHAT_PASSWORD.ValueString()
 	req.REDHAT_USERNAME = o.REDHAT_USERNAME.ValueString()
-	req.REMOTE_HOST_HEADERS = []string{}
-	for _, val := range o.REMOTE_HOST_HEADERS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.REMOTE_HOST_HEADERS = append(req.REMOTE_HOST_HEADERS, val.(types.String).ValueString())
-		} else {
-			req.REMOTE_HOST_HEADERS = append(req.REMOTE_HOST_HEADERS, val.String())
-		}
-	}
+	req.REMOTE_HOST_HEADERS = helpers.ListAsStringSlice(o.REMOTE_HOST_HEADERS, false)
 	req.SUBSCRIPTIONS_PASSWORD = o.SUBSCRIPTIONS_PASSWORD.ValueString()
 	req.SUBSCRIPTIONS_USERNAME = o.SUBSCRIPTIONS_USERNAME.ValueString()
 	req.SUBSCRIPTION_USAGE_MODEL = o.SUBSCRIPTION_USAGE_MODEL.ValueString()
@@ -149,205 +99,121 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() *settingsMiscSystemBody
 	return &req
 }
 
-func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setActivityStreamEnabledForInventorySync(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsGatherInterval(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.AUTOMATION_ANALYTICS_GATHER_INTERVAL, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastEntries(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsLastGather(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_GATHER, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setAutomationAnalyticsUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_URL, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setCleanupHostMetricsLastTs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.CLEANUP_HOST_METRICS_LAST_TS, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setCsrfTrustedOrigins(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.CSRF_TRUSTED_ORIGINS, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setCustomVenvPaths(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.CUSTOM_VENV_PATHS, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setDefaultControlPlaneQueueName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.DEFAULT_CONTROL_PLANE_QUEUE_NAME, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setDefaultExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DEFAULT_EXECUTION_ENVIRONMENT, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setDefaultExecutionQueueName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.DEFAULT_EXECUTION_QUEUE_NAME, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setHostMetricSummaryTaskLastTs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.HOST_METRIC_SUMMARY_TASK_LAST_TS, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setInsightsTrackingState(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.INSIGHTS_TRACKING_STATE, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setInstallUuid(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.INSTALL_UUID, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setIsK8S(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.IS_K8S, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setLicense(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LICENSE, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setManageOrganizationAuth(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.MANAGE_ORGANIZATION_AUTH, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setOrgAdminsCanSeeAllUsers(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ORG_ADMINS_CAN_SEE_ALL_USERS, data)
-}
-
-func (o *settingsMiscSystemTerraformModel) setProxyIpAllowedList(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.PROXY_IP_ALLOWED_LIST, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setRedhatPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.REDHAT_PASSWORD, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setRedhatUsername(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.REDHAT_USERNAME, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setRemoteHostHeaders(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.REMOTE_HOST_HEADERS, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setSubscriptionsPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_PASSWORD, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setSubscriptionsUsername(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SUBSCRIPTIONS_USERNAME, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setSubscriptionUsageModel(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SUBSCRIPTION_USAGE_MODEL, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setTowerUrlBase(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.TOWER_URL_BASE, data, false)
-}
-
-func (o *settingsMiscSystemTerraformModel) setUiNext(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.UI_NEXT, data)
-}
-
 func (o *settingsMiscSystemTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setActivityStreamEnabled(data["ACTIVITY_STREAM_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED, data["ACTIVITY_STREAM_ENABLED"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setActivityStreamEnabledForInventorySync(data["ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC, data["ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAutomationAnalyticsGatherInterval(data["AUTOMATION_ANALYTICS_GATHER_INTERVAL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.AUTOMATION_ANALYTICS_GATHER_INTERVAL, data["AUTOMATION_ANALYTICS_GATHER_INTERVAL"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAutomationAnalyticsLastEntries(data["AUTOMATION_ANALYTICS_LAST_ENTRIES"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data["AUTOMATION_ANALYTICS_LAST_ENTRIES"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAutomationAnalyticsLastGather(data["AUTOMATION_ANALYTICS_LAST_GATHER"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_GATHER, data["AUTOMATION_ANALYTICS_LAST_GATHER"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAutomationAnalyticsUrl(data["AUTOMATION_ANALYTICS_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_URL, data["AUTOMATION_ANALYTICS_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCleanupHostMetricsLastTs(data["CLEANUP_HOST_METRICS_LAST_TS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.CLEANUP_HOST_METRICS_LAST_TS, data["CLEANUP_HOST_METRICS_LAST_TS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCsrfTrustedOrigins(data["CSRF_TRUSTED_ORIGINS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.CSRF_TRUSTED_ORIGINS, data["CSRF_TRUSTED_ORIGINS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCustomVenvPaths(data["CUSTOM_VENV_PATHS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.CUSTOM_VENV_PATHS, data["CUSTOM_VENV_PATHS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultControlPlaneQueueName(data["DEFAULT_CONTROL_PLANE_QUEUE_NAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.DEFAULT_CONTROL_PLANE_QUEUE_NAME, data["DEFAULT_CONTROL_PLANE_QUEUE_NAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultExecutionEnvironment(data["DEFAULT_EXECUTION_ENVIRONMENT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DEFAULT_EXECUTION_ENVIRONMENT, data["DEFAULT_EXECUTION_ENVIRONMENT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultExecutionQueueName(data["DEFAULT_EXECUTION_QUEUE_NAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.DEFAULT_EXECUTION_QUEUE_NAME, data["DEFAULT_EXECUTION_QUEUE_NAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHostMetricSummaryTaskLastTs(data["HOST_METRIC_SUMMARY_TASK_LAST_TS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.HOST_METRIC_SUMMARY_TASK_LAST_TS, data["HOST_METRIC_SUMMARY_TASK_LAST_TS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInsightsTrackingState(data["INSIGHTS_TRACKING_STATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.INSIGHTS_TRACKING_STATE, data["INSIGHTS_TRACKING_STATE"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInstallUuid(data["INSTALL_UUID"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.INSTALL_UUID, data["INSTALL_UUID"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setIsK8S(data["IS_K8S"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.IS_K8S, data["IS_K8S"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLicense(data["LICENSE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LICENSE, data["LICENSE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setManageOrganizationAuth(data["MANAGE_ORGANIZATION_AUTH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.MANAGE_ORGANIZATION_AUTH, data["MANAGE_ORGANIZATION_AUTH"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrgAdminsCanSeeAllUsers(data["ORG_ADMINS_CAN_SEE_ALL_USERS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ORG_ADMINS_CAN_SEE_ALL_USERS, data["ORG_ADMINS_CAN_SEE_ALL_USERS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setProxyIpAllowedList(data["PROXY_IP_ALLOWED_LIST"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.PROXY_IP_ALLOWED_LIST, data["PROXY_IP_ALLOWED_LIST"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRedhatPassword(data["REDHAT_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.REDHAT_PASSWORD, data["REDHAT_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRedhatUsername(data["REDHAT_USERNAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.REDHAT_USERNAME, data["REDHAT_USERNAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRemoteHostHeaders(data["REMOTE_HOST_HEADERS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.REMOTE_HOST_HEADERS, data["REMOTE_HOST_HEADERS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSubscriptionsPassword(data["SUBSCRIPTIONS_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SUBSCRIPTIONS_PASSWORD, data["SUBSCRIPTIONS_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSubscriptionsUsername(data["SUBSCRIPTIONS_USERNAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SUBSCRIPTIONS_USERNAME, data["SUBSCRIPTIONS_USERNAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSubscriptionUsageModel(data["SUBSCRIPTION_USAGE_MODEL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SUBSCRIPTION_USAGE_MODEL, data["SUBSCRIPTION_USAGE_MODEL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTowerUrlBase(data["TOWER_URL_BASE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.TOWER_URL_BASE, data["TOWER_URL_BASE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUiNext(data["UI_NEXT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.UI_NEXT, data["UI_NEXT"])
 		diags.Append(dg...)
 	}
 	return diags, nil

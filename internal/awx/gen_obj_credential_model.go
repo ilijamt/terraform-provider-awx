@@ -40,20 +40,7 @@ type credentialTerraformModel struct {
 
 // Clone the object
 func (o *credentialTerraformModel) Clone() credentialTerraformModel {
-	return credentialTerraformModel{
-		Cloud:          o.Cloud,
-		CredentialType: o.CredentialType,
-		Description:    o.Description,
-		ID:             o.ID,
-		Inputs:         o.Inputs,
-		Kind:           o.Kind,
-		Kubernetes:     o.Kubernetes,
-		Managed:        o.Managed,
-		Name:           o.Name,
-		Organization:   o.Organization,
-		Team:           o.Team,
-		User:           o.User,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Credential
@@ -67,79 +54,49 @@ func (o *credentialTerraformModel) BodyRequest() *credentialBodyRequestModel {
 	return &req
 }
 
-func (o *credentialTerraformModel) setCloud(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Cloud, data)
-}
-
-func (o *credentialTerraformModel) setCredentialType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.CredentialType, data)
-}
-
-func (o *credentialTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *credentialTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *credentialTerraformModel) setInputs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Inputs, data, false)
-}
-
-func (o *credentialTerraformModel) setKind(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Kind, data, false)
-}
-
-func (o *credentialTerraformModel) setKubernetes(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Kubernetes, data)
-}
-
-func (o *credentialTerraformModel) setManaged(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Managed, data)
-}
-
-func (o *credentialTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *credentialTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
 func (o *credentialTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setCloud(data["cloud"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Cloud, data["cloud"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCredentialType(data["credential_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.CredentialType, data["credential_type"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInputs(data["inputs"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Inputs, data["inputs"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setKind(data["kind"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Kind, data["kind"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setKubernetes(data["kubernetes"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Kubernetes, data["kubernetes"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setManaged(data["managed"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Managed, data["managed"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
 	return diags, nil

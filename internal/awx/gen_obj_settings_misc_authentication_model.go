@@ -50,25 +50,7 @@ type settingsMiscAuthenticationTerraformModel struct {
 
 // Clone the object
 func (o *settingsMiscAuthenticationTerraformModel) Clone() settingsMiscAuthenticationTerraformModel {
-	return settingsMiscAuthenticationTerraformModel{
-		ALLOW_METRICS_FOR_ANONYMOUS_USERS:  o.ALLOW_METRICS_FOR_ANONYMOUS_USERS,
-		ALLOW_OAUTH2_FOR_EXTERNAL_USERS:    o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS,
-		AUTHENTICATION_BACKENDS:            o.AUTHENTICATION_BACKENDS,
-		AUTH_BASIC_ENABLED:                 o.AUTH_BASIC_ENABLED,
-		DISABLE_LOCAL_AUTH:                 o.DISABLE_LOCAL_AUTH,
-		LOCAL_PASSWORD_MIN_DIGITS:          o.LOCAL_PASSWORD_MIN_DIGITS,
-		LOCAL_PASSWORD_MIN_LENGTH:          o.LOCAL_PASSWORD_MIN_LENGTH,
-		LOCAL_PASSWORD_MIN_SPECIAL:         o.LOCAL_PASSWORD_MIN_SPECIAL,
-		LOCAL_PASSWORD_MIN_UPPER:           o.LOCAL_PASSWORD_MIN_UPPER,
-		LOGIN_REDIRECT_OVERRIDE:            o.LOGIN_REDIRECT_OVERRIDE,
-		OAUTH2_PROVIDER:                    o.OAUTH2_PROVIDER,
-		SESSIONS_PER_USER:                  o.SESSIONS_PER_USER,
-		SESSION_COOKIE_AGE:                 o.SESSION_COOKIE_AGE,
-		SOCIAL_AUTH_ORGANIZATION_MAP:       o.SOCIAL_AUTH_ORGANIZATION_MAP,
-		SOCIAL_AUTH_TEAM_MAP:               o.SOCIAL_AUTH_TEAM_MAP,
-		SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL: o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL,
-		SOCIAL_AUTH_USER_FIELDS:            o.SOCIAL_AUTH_USER_FIELDS,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscAuthentication
@@ -89,83 +71,8 @@ func (o *settingsMiscAuthenticationTerraformModel) BodyRequest() *settingsMiscAu
 	req.SOCIAL_AUTH_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_TEAM_MAP.ValueString())
 	req.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL.ValueBool()
-	req.SOCIAL_AUTH_USER_FIELDS = []string{}
-	for _, val := range o.SOCIAL_AUTH_USER_FIELDS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.SOCIAL_AUTH_USER_FIELDS = append(req.SOCIAL_AUTH_USER_FIELDS, val.(types.String).ValueString())
-		} else {
-			req.SOCIAL_AUTH_USER_FIELDS = append(req.SOCIAL_AUTH_USER_FIELDS, val.String())
-		}
-	}
+	req.SOCIAL_AUTH_USER_FIELDS = helpers.ListAsStringSlice(o.SOCIAL_AUTH_USER_FIELDS, false)
 	return &req
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setAllowMetricsForAnonymousUsers(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ALLOW_METRICS_FOR_ANONYMOUS_USERS, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setAllowOauth2ForExternalUsers(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setAuthenticationBackends(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTHENTICATION_BACKENDS, data, false)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setAuthBasicEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_BASIC_ENABLED, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setDisableLocalAuth(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.DISABLE_LOCAL_AUTH, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinDigits(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_DIGITS, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinLength(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_LENGTH, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinSpecial(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_SPECIAL, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setLocalPasswordMinUpper(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_UPPER, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setLoginRedirectOverride(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOGIN_REDIRECT_OVERRIDE, data, false)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setOauth2Provider(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.OAUTH2_PROVIDER, data, false)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSessionsPerUser(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SESSIONS_PER_USER, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSessionCookieAge(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SESSION_COOKIE_AGE, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthTeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_TEAM_MAP, data, false)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUsernameIsFullEmail(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL, data)
-}
-
-func (o *settingsMiscAuthenticationTerraformModel) setSocialAuthUserFields(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_USER_FIELDS, data, false)
 }
 
 func (o *settingsMiscAuthenticationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
@@ -173,55 +80,72 @@ func (o *settingsMiscAuthenticationTerraformModel) UpdateFromApiData(data map[st
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAllowMetricsForAnonymousUsers(data["ALLOW_METRICS_FOR_ANONYMOUS_USERS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ALLOW_METRICS_FOR_ANONYMOUS_USERS, data["ALLOW_METRICS_FOR_ANONYMOUS_USERS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAllowOauth2ForExternalUsers(data["ALLOW_OAUTH2_FOR_EXTERNAL_USERS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ALLOW_OAUTH2_FOR_EXTERNAL_USERS, data["ALLOW_OAUTH2_FOR_EXTERNAL_USERS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthenticationBackends(data["AUTHENTICATION_BACKENDS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTHENTICATION_BACKENDS, data["AUTHENTICATION_BACKENDS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthBasicEnabled(data["AUTH_BASIC_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_BASIC_ENABLED, data["AUTH_BASIC_ENABLED"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDisableLocalAuth(data["DISABLE_LOCAL_AUTH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.DISABLE_LOCAL_AUTH, data["DISABLE_LOCAL_AUTH"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLocalPasswordMinDigits(data["LOCAL_PASSWORD_MIN_DIGITS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_DIGITS, data["LOCAL_PASSWORD_MIN_DIGITS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLocalPasswordMinLength(data["LOCAL_PASSWORD_MIN_LENGTH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_LENGTH, data["LOCAL_PASSWORD_MIN_LENGTH"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLocalPasswordMinSpecial(data["LOCAL_PASSWORD_MIN_SPECIAL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_SPECIAL, data["LOCAL_PASSWORD_MIN_SPECIAL"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLocalPasswordMinUpper(data["LOCAL_PASSWORD_MIN_UPPER"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOCAL_PASSWORD_MIN_UPPER, data["LOCAL_PASSWORD_MIN_UPPER"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLoginRedirectOverride(data["LOGIN_REDIRECT_OVERRIDE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOGIN_REDIRECT_OVERRIDE, data["LOGIN_REDIRECT_OVERRIDE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOauth2Provider(data["OAUTH2_PROVIDER"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.OAUTH2_PROVIDER, data["OAUTH2_PROVIDER"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSessionsPerUser(data["SESSIONS_PER_USER"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SESSIONS_PER_USER, data["SESSIONS_PER_USER"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSessionCookieAge(data["SESSION_COOKIE_AGE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SESSION_COOKIE_AGE, data["SESSION_COOKIE_AGE"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthOrganizationMap(data["SOCIAL_AUTH_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_ORGANIZATION_MAP, data["SOCIAL_AUTH_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthTeamMap(data["SOCIAL_AUTH_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_TEAM_MAP, data["SOCIAL_AUTH_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthUsernameIsFullEmail(data["SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL, data["SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthUserFields(data["SOCIAL_AUTH_USER_FIELDS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.SOCIAL_AUTH_USER_FIELDS, data["SOCIAL_AUTH_USER_FIELDS"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

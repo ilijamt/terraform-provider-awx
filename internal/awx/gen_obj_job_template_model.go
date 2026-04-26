@@ -106,53 +106,7 @@ type jobTemplateTerraformModel struct {
 
 // Clone the object
 func (o *jobTemplateTerraformModel) Clone() jobTemplateTerraformModel {
-	return jobTemplateTerraformModel{
-		AllowSimultaneous:               o.AllowSimultaneous,
-		AskCredentialOnLaunch:           o.AskCredentialOnLaunch,
-		AskDiffModeOnLaunch:             o.AskDiffModeOnLaunch,
-		AskExecutionEnvironmentOnLaunch: o.AskExecutionEnvironmentOnLaunch,
-		AskForksOnLaunch:                o.AskForksOnLaunch,
-		AskInstanceGroupsOnLaunch:       o.AskInstanceGroupsOnLaunch,
-		AskInventoryOnLaunch:            o.AskInventoryOnLaunch,
-		AskJobSliceCountOnLaunch:        o.AskJobSliceCountOnLaunch,
-		AskJobTypeOnLaunch:              o.AskJobTypeOnLaunch,
-		AskLabelsOnLaunch:               o.AskLabelsOnLaunch,
-		AskLimitOnLaunch:                o.AskLimitOnLaunch,
-		AskScmBranchOnLaunch:            o.AskScmBranchOnLaunch,
-		AskSkipTagsOnLaunch:             o.AskSkipTagsOnLaunch,
-		AskTagsOnLaunch:                 o.AskTagsOnLaunch,
-		AskTimeoutOnLaunch:              o.AskTimeoutOnLaunch,
-		AskVariablesOnLaunch:            o.AskVariablesOnLaunch,
-		AskVerbosityOnLaunch:            o.AskVerbosityOnLaunch,
-		BecomeEnabled:                   o.BecomeEnabled,
-		Description:                     o.Description,
-		DiffMode:                        o.DiffMode,
-		ExecutionEnvironment:            o.ExecutionEnvironment,
-		ExtraVars:                       o.ExtraVars,
-		ForceHandlers:                   o.ForceHandlers,
-		Forks:                           o.Forks,
-		HostConfigKey:                   o.HostConfigKey,
-		ID:                              o.ID,
-		Inventory:                       o.Inventory,
-		JobSliceCount:                   o.JobSliceCount,
-		JobTags:                         o.JobTags,
-		JobType:                         o.JobType,
-		Limit:                           o.Limit,
-		Name:                            o.Name,
-		Organization:                    o.Organization,
-		Playbook:                        o.Playbook,
-		PreventInstanceGroupFallback:    o.PreventInstanceGroupFallback,
-		Project:                         o.Project,
-		ScmBranch:                       o.ScmBranch,
-		SkipTags:                        o.SkipTags,
-		StartAtTask:                     o.StartAtTask,
-		SurveyEnabled:                   o.SurveyEnabled,
-		Timeout:                         o.Timeout,
-		UseFactCache:                    o.UseFactCache,
-		Verbosity:                       o.Verbosity,
-		WebhookCredential:               o.WebhookCredential,
-		WebhookService:                  o.WebhookService,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for JobTemplate
@@ -204,324 +158,189 @@ func (o *jobTemplateTerraformModel) BodyRequest() *jobTemplateBodyRequestModel {
 	return &req
 }
 
-func (o *jobTemplateTerraformModel) setAllowSimultaneous(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AllowSimultaneous, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskCredentialOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskCredentialOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskDiffModeOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskDiffModeOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskExecutionEnvironmentOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskExecutionEnvironmentOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskForksOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskForksOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskInstanceGroupsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskInstanceGroupsOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskJobSliceCountOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskJobSliceCountOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskJobTypeOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskJobTypeOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskLimitOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskTimeoutOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskTimeoutOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setAskVerbosityOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskVerbosityOnLaunch, data)
-}
-
-func (o *jobTemplateTerraformModel) setBecomeEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
-}
-
-func (o *jobTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.DiffMode, data)
-}
-
-func (o *jobTemplateTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
-}
-
-func (o *jobTemplateTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setForceHandlers(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.ForceHandlers, data)
-}
-
-func (o *jobTemplateTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Forks, data)
-}
-
-func (o *jobTemplateTerraformModel) setHostConfigKey(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.HostConfigKey, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *jobTemplateTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *jobTemplateTerraformModel) setJobSliceCount(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
-}
-
-func (o *jobTemplateTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobTags, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobType, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Limit, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *jobTemplateTerraformModel) setPlaybook(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Playbook, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setPreventInstanceGroupFallback(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
-}
-
-func (o *jobTemplateTerraformModel) setProject(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Project, data)
-}
-
-func (o *jobTemplateTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SkipTags, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setStartAtTask(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.StartAtTask, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setSurveyEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SurveyEnabled, data)
-}
-
-func (o *jobTemplateTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Timeout, data)
-}
-
-func (o *jobTemplateTerraformModel) setUseFactCache(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.UseFactCache, data)
-}
-
-func (o *jobTemplateTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Verbosity, data, false)
-}
-
-func (o *jobTemplateTerraformModel) setWebhookCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.WebhookCredential, data)
-}
-
-func (o *jobTemplateTerraformModel) setWebhookService(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.WebhookService, data, false)
-}
-
 func (o *jobTemplateTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAllowSimultaneous(data["allow_simultaneous"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AllowSimultaneous, data["allow_simultaneous"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskCredentialOnLaunch(data["ask_credential_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskCredentialOnLaunch, data["ask_credential_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskDiffModeOnLaunch(data["ask_diff_mode_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskDiffModeOnLaunch, data["ask_diff_mode_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskExecutionEnvironmentOnLaunch(data["ask_execution_environment_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskExecutionEnvironmentOnLaunch, data["ask_execution_environment_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskForksOnLaunch(data["ask_forks_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskForksOnLaunch, data["ask_forks_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskInstanceGroupsOnLaunch(data["ask_instance_groups_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskInstanceGroupsOnLaunch, data["ask_instance_groups_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskInventoryOnLaunch(data["ask_inventory_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data["ask_inventory_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskJobSliceCountOnLaunch(data["ask_job_slice_count_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskJobSliceCountOnLaunch, data["ask_job_slice_count_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskJobTypeOnLaunch(data["ask_job_type_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskJobTypeOnLaunch, data["ask_job_type_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskLabelsOnLaunch(data["ask_labels_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data["ask_labels_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskLimitOnLaunch(data["ask_limit_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data["ask_limit_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskScmBranchOnLaunch(data["ask_scm_branch_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data["ask_scm_branch_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskSkipTagsOnLaunch(data["ask_skip_tags_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data["ask_skip_tags_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskTagsOnLaunch(data["ask_tags_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data["ask_tags_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskTimeoutOnLaunch(data["ask_timeout_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskTimeoutOnLaunch, data["ask_timeout_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskVariablesOnLaunch(data["ask_variables_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data["ask_variables_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskVerbosityOnLaunch(data["ask_verbosity_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskVerbosityOnLaunch, data["ask_verbosity_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setBecomeEnabled(data["become_enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.BecomeEnabled, data["become_enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDiffMode(data["diff_mode"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.DiffMode, data["diff_mode"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExecutionEnvironment(data["execution_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExtraVars(data["extra_vars"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.ExtraVars, data["extra_vars"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setForceHandlers(data["force_handlers"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.ForceHandlers, data["force_handlers"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setForks(data["forks"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Forks, data["forks"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHostConfigKey(data["host_config_key"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.HostConfigKey, data["host_config_key"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobSliceCount(data["job_slice_count"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.JobSliceCount, data["job_slice_count"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobTags(data["job_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobTags, data["job_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobType(data["job_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobType, data["job_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPlaybook(data["playbook"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Playbook, data["playbook"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPreventInstanceGroupFallback(data["prevent_instance_group_fallback"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data["prevent_instance_group_fallback"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setProject(data["project"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Project, data["project"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSkipTags(data["skip_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setStartAtTask(data["start_at_task"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.StartAtTask, data["start_at_task"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSurveyEnabled(data["survey_enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SurveyEnabled, data["survey_enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTimeout(data["timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Timeout, data["timeout"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUseFactCache(data["use_fact_cache"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.UseFactCache, data["use_fact_cache"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVerbosity(data["verbosity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setWebhookCredential(data["webhook_credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.WebhookCredential, data["webhook_credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setWebhookService(data["webhook_service"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.WebhookService, data["webhook_service"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

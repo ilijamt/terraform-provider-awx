@@ -23,12 +23,7 @@ type settingsOpenIdconnectTerraformModel struct {
 
 // Clone the object
 func (o *settingsOpenIdconnectTerraformModel) Clone() settingsOpenIdconnectTerraformModel {
-	return settingsOpenIdconnectTerraformModel{
-		SOCIAL_AUTH_OIDC_KEY:           o.SOCIAL_AUTH_OIDC_KEY,
-		SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT,
-		SOCIAL_AUTH_OIDC_SECRET:        o.SOCIAL_AUTH_OIDC_SECRET,
-		SOCIAL_AUTH_OIDC_VERIFY_SSL:    o.SOCIAL_AUTH_OIDC_VERIFY_SSL,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsOpenIDConnect
@@ -41,37 +36,25 @@ func (o *settingsOpenIdconnectTerraformModel) BodyRequest() *settingsOpenIdconne
 	return &req
 }
 
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcKey(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_KEY, data, false)
-}
-
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcOidcEndpoint(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT, data, false)
-}
-
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcSecret(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_SECRET, data, false)
-}
-
-func (o *settingsOpenIdconnectTerraformModel) setSocialAuthOidcVerifySsl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data)
-}
-
 func (o *settingsOpenIdconnectTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setSocialAuthOidcKey(data["SOCIAL_AUTH_OIDC_KEY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_KEY, data["SOCIAL_AUTH_OIDC_KEY"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthOidcOidcEndpoint(data["SOCIAL_AUTH_OIDC_OIDC_ENDPOINT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT, data["SOCIAL_AUTH_OIDC_OIDC_ENDPOINT"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthOidcSecret(data["SOCIAL_AUTH_OIDC_SECRET"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_OIDC_SECRET, data["SOCIAL_AUTH_OIDC_SECRET"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthOidcVerifySsl(data["SOCIAL_AUTH_OIDC_VERIFY_SSL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SOCIAL_AUTH_OIDC_VERIFY_SSL, data["SOCIAL_AUTH_OIDC_VERIFY_SSL"])
 		diags.Append(dg...)
 	}
 	return diags, nil

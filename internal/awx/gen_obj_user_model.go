@@ -37,19 +37,7 @@ type userTerraformModel struct {
 
 // Clone the object
 func (o *userTerraformModel) Clone() userTerraformModel {
-	return userTerraformModel{
-		Email:           o.Email,
-		ExternalAccount: o.ExternalAccount,
-		FirstName:       o.FirstName,
-		ID:              o.ID,
-		IsSuperuser:     o.IsSuperuser,
-		IsSystemAuditor: o.IsSystemAuditor,
-		LastLogin:       o.LastLogin,
-		LastName:        o.LastName,
-		LdapDn:          o.LdapDn,
-		Password:        o.Password,
-		Username:        o.Username,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for User
@@ -65,86 +53,53 @@ func (o *userTerraformModel) BodyRequest() *userBodyRequestModel {
 	return &req
 }
 
-func (o *userTerraformModel) setEmail(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Email, data, false)
-}
-
-func (o *userTerraformModel) setExternalAccount(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ExternalAccount, data, false)
-}
-
-func (o *userTerraformModel) setFirstName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.FirstName, data, false)
-}
-
-func (o *userTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *userTerraformModel) setIsSuperuser(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.IsSuperuser, data)
-}
-
-func (o *userTerraformModel) setIsSystemAuditor(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.IsSystemAuditor, data)
-}
-
-func (o *userTerraformModel) setLastLogin(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LastLogin, data, false)
-}
-
-func (o *userTerraformModel) setLastName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LastName, data, false)
-}
-
-func (o *userTerraformModel) setLdapDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LdapDn, data, false)
-}
-
-func (o *userTerraformModel) setPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Password, data, false)
-}
-
-func (o *userTerraformModel) setUsername(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Username, data, false)
-}
-
 func (o *userTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setEmail(data["email"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Email, data["email"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExternalAccount(data["external_account"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ExternalAccount, data["external_account"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setFirstName(data["first_name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.FirstName, data["first_name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setIsSuperuser(data["is_superuser"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.IsSuperuser, data["is_superuser"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setIsSystemAuditor(data["is_system_auditor"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.IsSystemAuditor, data["is_system_auditor"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLastLogin(data["last_login"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LastLogin, data["last_login"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLastName(data["last_name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LastName, data["last_name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLdapDn(data["ldap_dn"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LdapDn, data["ldap_dn"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPassword(data["password"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Password, data["password"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUsername(data["username"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Username, data["username"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

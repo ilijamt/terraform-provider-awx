@@ -31,16 +31,7 @@ type executionEnvironmentTerraformModel struct {
 
 // Clone the object
 func (o *executionEnvironmentTerraformModel) Clone() executionEnvironmentTerraformModel {
-	return executionEnvironmentTerraformModel{
-		Credential:   o.Credential,
-		Description:  o.Description,
-		ID:           o.ID,
-		Image:        o.Image,
-		Managed:      o.Managed,
-		Name:         o.Name,
-		Organization: o.Organization,
-		Pull:         o.Pull,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for ExecutionEnvironment
@@ -55,65 +46,41 @@ func (o *executionEnvironmentTerraformModel) BodyRequest() *executionEnvironment
 	return &req
 }
 
-func (o *executionEnvironmentTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Credential, data)
-}
-
-func (o *executionEnvironmentTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *executionEnvironmentTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *executionEnvironmentTerraformModel) setImage(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Image, data, false)
-}
-
-func (o *executionEnvironmentTerraformModel) setManaged(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Managed, data)
-}
-
-func (o *executionEnvironmentTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *executionEnvironmentTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *executionEnvironmentTerraformModel) setPull(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Pull, data, false)
-}
-
 func (o *executionEnvironmentTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setCredential(data["credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setImage(data["image"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Image, data["image"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setManaged(data["managed"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Managed, data["managed"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPull(data["pull"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Pull, data["pull"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

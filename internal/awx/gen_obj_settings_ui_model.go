@@ -25,13 +25,7 @@ type settingsUiTerraformModel struct {
 
 // Clone the object
 func (o *settingsUiTerraformModel) Clone() settingsUiTerraformModel {
-	return settingsUiTerraformModel{
-		CUSTOM_LOGIN_INFO:       o.CUSTOM_LOGIN_INFO,
-		CUSTOM_LOGO:             o.CUSTOM_LOGO,
-		MAX_UI_JOB_EVENTS:       o.MAX_UI_JOB_EVENTS,
-		PENDO_TRACKING_STATE:    o.PENDO_TRACKING_STATE,
-		UI_LIVE_UPDATES_ENABLED: o.UI_LIVE_UPDATES_ENABLED,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsUI
@@ -44,44 +38,29 @@ func (o *settingsUiTerraformModel) BodyRequest() *settingsUiBodyRequestModel {
 	return &req
 }
 
-func (o *settingsUiTerraformModel) setCustomLoginInfo(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data, false)
-}
-
-func (o *settingsUiTerraformModel) setCustomLogo(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.CUSTOM_LOGO, data, false)
-}
-
-func (o *settingsUiTerraformModel) setMaxUiJobEvents(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data)
-}
-
-func (o *settingsUiTerraformModel) setPendoTrackingState(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data, false)
-}
-
-func (o *settingsUiTerraformModel) setUiLiveUpdatesEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data)
-}
-
 func (o *settingsUiTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setCustomLoginInfo(data["CUSTOM_LOGIN_INFO"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.CUSTOM_LOGIN_INFO, data["CUSTOM_LOGIN_INFO"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCustomLogo(data["CUSTOM_LOGO"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.CUSTOM_LOGO, data["CUSTOM_LOGO"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxUiJobEvents(data["MAX_UI_JOB_EVENTS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MAX_UI_JOB_EVENTS, data["MAX_UI_JOB_EVENTS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPendoTrackingState(data["PENDO_TRACKING_STATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.PENDO_TRACKING_STATE, data["PENDO_TRACKING_STATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUiLiveUpdatesEnabled(data["UI_LIVE_UPDATES_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.UI_LIVE_UPDATES_ENABLED, data["UI_LIVE_UPDATES_ENABLED"])
 		diags.Append(dg...)
 	}
 	return diags, nil
