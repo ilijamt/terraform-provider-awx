@@ -1,10 +1,6 @@
 package awx
 
 import (
-	"context"
-	"fmt"
-	"strconv"
-
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -184,9 +180,9 @@ func NewCredentialResource() resource.Resource {
 					},
 				},
 			},
-			IDAccessor:      func(m *credentialTerraformModel) any { return m.ID.ValueInt64() },
-			ImportStateFunc: credentialResourceImportState,
-			Hook:            hookCredential,
+			IDAccessor: func(m *credentialTerraformModel) any { return m.ID.ValueInt64() },
+			IDKey:      "id",
+			Hook:       hookCredential,
 			WriteOnlyPlanToBody: func(plan *credentialTerraformModel, body *credentialBodyRequestModel) {
 				body.Team = plan.Team.ValueInt64()
 				body.User = plan.User.ValueInt64()
@@ -199,16 +195,4 @@ func NewCredentialResource() resource.Resource {
 			ResourceName: "Credential",
 		},
 	}
-}
-
-func credentialResourceImportState(_ context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
-	var id, err = strconv.ParseInt(request.ID, 10, 64)
-	if err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the Credential.", request.ID),
-			err.Error(),
-		)
-		return
-	}
-	response.Diagnostics.Append(response.State.SetAttribute(context.Background(), path.Root("id"), id)...)
 }

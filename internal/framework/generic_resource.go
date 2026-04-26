@@ -2,9 +2,12 @@ package framework
 
 import (
 	"context"
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	rschema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
 
@@ -37,10 +40,13 @@ type ResourceCfg[T any, B any] struct {
 	WriteOnlyPlanToBody func(plan *T, body *B)
 	// WriteOnlyPlanToState copies write-only fields from plan to state (nil if none).
 	WriteOnlyPlanToState func(plan, state *T)
-	// ImportStateFunc handles terraform import (nil for NoId resources).
-	ImportStateFunc func(context.Context, resource.ImportStateRequest, *resource.ImportStateResponse)
 	// IDAccessor returns the ID value from a model instance for endpoint construction (nil for NoId).
 	IDAccessor func(model *T) any
+	// IDKey is the schema attribute name carrying the imported ID (typically "id"). Empty when NoId.
+	IDKey string
+	// IDIsString true → the ID schema attribute is a string (passthrough import).
+	// false → parse req.ID as int64 before setting (default for AWX numeric IDs).
+	IDIsString bool
 	// NoId means the resource has no ID field (settings-style). Create uses PATCH, endpoints have no ID.
 	NoId bool
 	// UnDeletable means Delete is a no-op.
@@ -76,11 +82,25 @@ func (r *GenericResource[T, B, PT]) Schema(_ context.Context, _ resource.SchemaR
 	resp.Schema = r.Cfg.Schema
 }
 
-// ImportState delegates to the per-resource import function if available.
+// ImportState handles terraform import using IDKey + IDIsString from ResourceCfg.
 func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	if r.Cfg.ImportStateFunc != nil {
-		r.Cfg.ImportStateFunc(ctx, req, resp)
+	if r.Cfg.NoId {
+		return
 	}
+	idPath := path.Root(r.Cfg.IDKey)
+	if r.Cfg.IDIsString {
+		resource.ImportStatePassthroughID(ctx, idPath, req, resp)
+		return
+	}
+	id, err := strconv.ParseInt(req.ID, 10, 64)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the %s.", req.ID, r.name()),
+			err.Error(),
+		)
+		return
+	}
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, idPath, id)...)
 }
 
 // Create implements resource.Resource.

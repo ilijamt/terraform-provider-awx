@@ -1,12 +1,7 @@
 package awx
 
 import (
-	"context"
-	"fmt"
-	"strconv"
-
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
-	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -158,23 +153,11 @@ func NewUserResource() resource.Resource {
 					},
 				},
 			},
-			IDAccessor:      func(m *userTerraformModel) any { return m.ID.ValueInt64() },
-			ImportStateFunc: userResourceImportState,
-			Hook:            hookUser,
-			ApiVersion:      ApiVersion,
-			ResourceName:    "User",
+			IDAccessor:   func(m *userTerraformModel) any { return m.ID.ValueInt64() },
+			IDKey:        "id",
+			Hook:         hookUser,
+			ApiVersion:   ApiVersion,
+			ResourceName: "User",
 		},
 	}
-}
-
-func userResourceImportState(_ context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
-	var id, err = strconv.ParseInt(request.ID, 10, 64)
-	if err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the User.", request.ID),
-			err.Error(),
-		)
-		return
-	}
-	response.Diagnostics.Append(response.State.SetAttribute(context.Background(), path.Root("id"), id)...)
 }

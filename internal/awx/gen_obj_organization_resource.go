@@ -1,13 +1,8 @@
 package awx
 
 import (
-	"context"
-	"fmt"
-	"strconv"
-
 	"github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
-	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -93,22 +88,10 @@ func NewOrganizationResource() resource.Resource {
 					},
 				},
 			},
-			IDAccessor:      func(m *organizationTerraformModel) any { return m.ID.ValueInt64() },
-			ImportStateFunc: organizationResourceImportState,
-			ApiVersion:      ApiVersion,
-			ResourceName:    "Organization",
+			IDAccessor:   func(m *organizationTerraformModel) any { return m.ID.ValueInt64() },
+			IDKey:        "id",
+			ApiVersion:   ApiVersion,
+			ResourceName: "Organization",
 		},
 	}
-}
-
-func organizationResourceImportState(_ context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
-	var id, err = strconv.ParseInt(request.ID, 10, 64)
-	if err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the Organization.", request.ID),
-			err.Error(),
-		)
-		return
-	}
-	response.Diagnostics.Append(response.State.SetAttribute(context.Background(), path.Root("id"), id)...)
 }

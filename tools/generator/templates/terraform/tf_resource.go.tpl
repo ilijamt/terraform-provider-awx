@@ -1,13 +1,16 @@
+{{- $hasConstraints := false }}
+{{- range $key, $value := $.WriteProperties }}
+{{- if $value.Constraints }}{{ $hasConstraints = true }}{{ end }}
+{{- end }}
 package {{ .PackageName }}
 
 import (
-	"context"
-	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+{{- if $hasConstraints }}
 	"github.com/hashicorp/terraform-plugin-framework/path"
+{{- end }}
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -186,7 +189,10 @@ func New{{ .Name }}Resource() resource.Resource {
 			},
 {{- if not .NoId }}
 			IDAccessor: func(m *{{ .Name | lowerCamelCase }}TerraformModel) any { return m.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}() },
-			ImportStateFunc: {{ .Name | lowerCamelCase }}ResourceImportState,
+			IDKey: "{{ $.IdKey }}",
+{{- if eq $.IdProperty.Generated.AwxGoValue "types.StringValue" }}
+			IDIsString: true,
+{{- end }}
 {{- end }}
 {{- if .NoId }}
 			NoId: true,
@@ -231,22 +237,3 @@ func New{{ .Name }}Resource() resource.Resource {
 	}
 }
 
-{{ if not .NoId }}
-func {{ $.Name | lowerCamelCase }}ResourceImportState(_ context.Context, request resource.ImportStateRequest, response *resource.ImportStateResponse) {
-{{- with $.IdProperty }}
-{{- if eq .Generated.AwxGoValue "types.Int64Value" }}
-	var id, err = strconv.ParseInt(request.ID, 10, 64)
-	if err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the ID for the {{ $.Name }}.", request.ID),
-			err.Error(),
-		)
-		return
-	}
-	response.Diagnostics.Append(response.State.SetAttribute(context.Background(), path.Root("{{ $.IdKey }}"), id)...)
-{{- else if eq .Generated.AwxGoValue "types.StringValue" }}
-	resource.ImportStatePassthroughID(context.Background(), path.Root("{{ $.IdKey }}"), request, response)
-{{- end }}
-{{- end }}
-}
-{{- end }}
