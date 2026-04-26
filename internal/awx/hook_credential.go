@@ -24,6 +24,11 @@ func hookCredential(ctx context.Context, apiVersion string, source hooks.Source,
 		if !strings.Contains(state.Inputs.ValueString(), "$encrypted$") {
 			return nil
 		}
+		// On import there is no prior config to merge encrypted placeholders
+		// from — leave state as AWX returned it.
+		if orig.Inputs.IsNull() || orig.Inputs.ValueString() == "" {
+			return nil
+		}
 		if dirty, msg, err := helpers.ProcessJsonEncryptedValues(orig.Inputs, state.Inputs); err != nil {
 			return err
 		} else if dirty {
