@@ -16,8 +16,19 @@ data "awx_credential_type" "machine" {
   name = "Machine"
 }
 
+resource "awx_credential" "ansible_galaxy" {
+  name            = "Ansible Galaxy"
+  organization    = awx_organization.demo_organization.id
+  credential_type = data.awx_credential_type.ansible_galaxy.id
+
+  inputs = jsonencode({
+    url = "https://galaxy.ansible.com/"
+  })
+}
+
 data "awx_credential" "ansible_galaxy" {
-  name = "Ansible Galaxy"
+  name       = "Ansible Galaxy"
+  depends_on = [awx_credential.ansible_galaxy]
 }
 
 resource "awx_credential" "demo_credential" {
