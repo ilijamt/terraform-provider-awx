@@ -304,7 +304,7 @@ var FuncMap = template.FuncMap{
 			if i > 0 {
 				b.WriteString(", ")
 			}
-			b.WriteString(fmt.Sprintf("%q", v))
+			fmt.Fprintf(&b, "%q", v)
 		}
 		b.WriteString("}")
 		return b.String()
