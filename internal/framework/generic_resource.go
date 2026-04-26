@@ -132,8 +132,9 @@ func (r *GenericResource[T, B, PT]) Create(ctx context.Context, request resource
 		return
 	}
 
-	if d, err := PT(&state).UpdateFromApiData(data); err != nil {
-		response.Diagnostics.Append(d...)
+	d, err := PT(&state).UpdateFromApiData(data)
+	response.Diagnostics.Append(d...)
+	if err != nil || response.Diagnostics.HasError() {
 		return
 	}
 
@@ -170,8 +171,9 @@ func (r *GenericResource[T, B, PT]) Read(ctx context.Context, request resource.R
 		return
 	}
 
-	if d, err := PT(&state).UpdateFromApiData(data); err != nil {
-		response.Diagnostics.Append(d...)
+	d, err := PT(&state).UpdateFromApiData(data)
+	response.Diagnostics.Append(d...)
+	if err != nil || response.Diagnostics.HasError() {
 		return
 	}
 
@@ -204,8 +206,9 @@ func (r *GenericResource[T, B, PT]) Update(ctx context.Context, request resource
 		return
 	}
 
-	if d, err := PT(&state).UpdateFromApiData(data); err != nil {
-		response.Diagnostics.Append(d...)
+	d, err := PT(&state).UpdateFromApiData(data)
+	response.Diagnostics.Append(d...)
+	if err != nil || response.Diagnostics.HasError() {
 		return
 	}
 

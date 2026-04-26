@@ -79,14 +79,11 @@ func (o *ObjectRolesDataSource) Schema(_ context.Context, _ datasource.SchemaReq
 // Read refreshes the Terraform state with the latest data.
 func (o *ObjectRolesDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var state ObjectRolesModel
-	var id types.Int64
-
-	if DiagnosticsHasError(&resp.Diagnostics, req.Config.GetAttribute(ctx, path.Root("id"), &id)...) {
+	if DiagnosticsHasError(&resp.Diagnostics, req.Config.GetAttribute(ctx, path.Root("id"), &state.ID)...) {
 		return
 	}
-	state.ID = types.Int64Value(id.ValueInt64())
 
-	endpoint := fmt.Sprintf(o.Endpoint, id.ValueInt64())
+	endpoint := fmt.Sprintf(o.Endpoint, state.ID.ValueInt64())
 	data, d := ReadRequest(ctx, o.Client, endpoint, fmt.Sprintf("%s/ObjectRoles", o.DisplayName))
 	if DiagnosticsHasError(&resp.Diagnostics, d...) {
 		return

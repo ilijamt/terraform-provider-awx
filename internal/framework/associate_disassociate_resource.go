@@ -1,9 +1,7 @@
 package framework
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"net/http"
 	p "path"
@@ -22,7 +20,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	"github.com/ilijamt/terraform-provider-awx/internal/models"
 )
@@ -67,13 +64,6 @@ func (c AssociateDisassociateConfig) optionValues() []string {
 
 func (c AssociateDisassociateConfig) hasOption() bool {
 	return c.AssociateType == "notification_job_template" || c.AssociateType == "notification_job_workflow_template"
-}
-
-func (c AssociateDisassociateConfig) associateTypeName() string {
-	if c.AssociateType == "" {
-		return "default"
-	}
-	return c.AssociateType
 }
 
 var (
@@ -260,56 +250,20 @@ func (o *AssociateDisassociateResource) readIDs(ctx context.Context, src attribu
 
 // sendAssoc builds and sends the associate/disassociate POST.
 func (o *AssociateDisassociateResource) sendAssoc(ctx context.Context, parentID, childID int64, option string, disassociate bool, diags *diag.Diagnostics) bool {
-	var endpoint string
+	args := []any{parentID}
 	if o.cfg.hasOption() {
-		endpoint = p.Clean(fmt.Sprintf(o.Endpoint, parentID, option)) + "/"
-	} else {
-		endpoint = p.Clean(fmt.Sprintf(o.Endpoint, parentID)) + "/"
+		args = append(args, option)
+	}
+	endpoint := p.Clean(fmt.Sprintf(o.Endpoint, args...)) + "/"
+
+	op := "associate"
+	if disassociate {
+		op = "disassociate"
 	}
 
 	body := models.AssociateDisassociateRequestModel{ID: childID, Disassociate: disassociate}
-
-	op := "Create/Associate"
-	if disassociate {
-		op = "Delete/Disassociate"
-	}
-	tflog.Debug(ctx, fmt.Sprintf("[%s/%s] Making a request", o.cfg.ParentName, op), map[string]any{
-		"payload":  body,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
-
-	var buf bytes.Buffer
-	_ = json.NewEncoder(&buf).Encode(body)
-
-	req, err := o.Client.NewRequest(ctx, http.MethodPost, endpoint, &buf)
-	if err != nil {
-		verb := "create"
-		if disassociate {
-			verb = "delete"
-		}
-		diags.AddError(
-			fmt.Sprintf("Unable to create a new request for %s on %s for %s of type '%s'", o.cfg.ParentName, endpoint, verb, o.cfg.associateTypeName()),
-			err.Error(),
-		)
-		return false
-	}
-
-	if _, err = o.Client.Do(ctx, req); err != nil {
-		if disassociate {
-			diags.AddError(
-				fmt.Sprintf("Unable to disassociate for %s on %s", o.cfg.ParentName, o.Endpoint),
-				err.Error(),
-			)
-		} else {
-			diags.AddError(
-				fmt.Sprintf("Unable to associate for %s on %s with a payload of %#v", o.cfg.ParentName, endpoint, body),
-				err.Error(),
-			)
-		}
-		return false
-	}
-	return true
+	_, d := CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, body, o.cfg.ParentName, op)
+	return !DiagnosticsHasError(diags, d...)
 }
 
 // Compile-time check that tfsdk.Plan and tfsdk.State satisfy our attributeReader.

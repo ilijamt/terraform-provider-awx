@@ -66,14 +66,16 @@ func (ds *GenericDataSource[T, PT]) Read(ctx context.Context, req datasource.Rea
 
 	if hasSearch {
 		var err error
-		if data, d, err = helpers.ExtractDataIfSearchResult(data); err != nil {
-			resp.Diagnostics.Append(d...)
+		data, d, err = helpers.ExtractDataIfSearchResult(data)
+		resp.Diagnostics.Append(d...)
+		if err != nil || resp.Diagnostics.HasError() {
 			return
 		}
 	}
 
-	if d, err := PT(&state).UpdateFromApiData(data); err != nil {
-		resp.Diagnostics.Append(d...)
+	d, err := PT(&state).UpdateFromApiData(data)
+	resp.Diagnostics.Append(d...)
+	if err != nil || resp.Diagnostics.HasError() {
 		return
 	}
 
