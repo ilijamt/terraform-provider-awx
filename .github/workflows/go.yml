@@ -14,8 +14,39 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+      - name: Display Go version
+        run: go version
+      - name: Test
+        run: |
+          mkdir -p coverage
+          go test ./internal/... -count=1 -coverpkg=./internal/... -coverprofile=coverage/unit.out -v
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-unit
+          path: coverage/unit.out
+          if-no-files-found: error
+
+  integration:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with TestIntegration_* functions under tests/examples/.
+        # Adding a new integration test? Add its name here.
+        test:
+          - TestIntegration_Inventory
+          - TestIntegration_Credentials
+          - TestIntegration_ObjectRoles
+          - TestIntegration_PreloadData
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
@@ -27,10 +58,41 @@ jobs:
         with:
           terraform_version: 1.14.9
           terraform_wrapper: false
-      - name: Display Go version
-        run: go version
-      - name: Test
-        run: go test -cover -coverprofile=coverage.out -v ./...
+      - name: Run ${{ matrix.test }} (replay)
+        run: |
+          mkdir -p coverage
+          TF_ACC=1 go test -tags=integration ./tests/examples/... \
+            -run "^${{ matrix.test }}$" -count=1 -v \
+            -coverpkg=./internal/... \
+            -coverprofile=coverage/${{ matrix.test }}.out
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.test }}
+          path: coverage/${{ matrix.test }}.out
+          if-no-files-found: error
+
+  coverage:
+    needs: [unit, integration]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: coverage
+          pattern: coverage-*
+          merge-multiple: true
+      - name: Merge coverage profiles
+        run: |
+          set -euo pipefail
+          ls -la coverage
+          go run github.com/wadey/gocovmerge@latest coverage/*.out > coverage.out
+          go tool cover -func=coverage.out | tail -n 1
       - name: Upload coverage reports to Codecov
         if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         uses: codecov/codecov-action@v5
@@ -38,8 +100,8 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           files: ./coverage.out
-          flags: unittests
           fail_ci_if_error: false
+
   build:
     runs-on: ubuntu-latest
     steps:
