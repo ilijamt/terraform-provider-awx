@@ -1,0 +1,53 @@
+name: Integration (VCR)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+
+      # Fail fast if any fixture directory under tests/examples/testdata/
+      # lacks a matching cassette in tests/examples/testdata/cassettes/.
+      # Replay-mode tests would error eventually, but this surfaces missing
+      # recordings up front with a clear message.
+      - name: Verify cassettes exist for every fixture
+        run: |
+          set -euo pipefail
+          fixtures_dir=tests/examples/testdata
+          cassettes_dir=$fixtures_dir/cassettes
+          missing=0
+          for dir in "$fixtures_dir"/*/; do
+            name=$(basename "$dir")
+            if [ "$name" = "cassettes" ]; then
+              continue
+            fi
+            cassette="$cassettes_dir/$name.yaml"
+            if [ ! -f "$cassette" ]; then
+              echo "::error file=$cassette::missing cassette for fixture '$name' — run 'make test-integration-record' against a bootstrapped local AWX"
+              missing=$((missing + 1))
+            fi
+          done
+          if [ "$missing" -gt 0 ]; then
+            echo "$missing fixture(s) without recorded cassettes" >&2
+            exit 1
+          fi
+
+      - name: Run integration tests (replay only)
+        run: make test-integration

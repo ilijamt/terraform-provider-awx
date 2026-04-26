@@ -73,3 +73,10 @@ fabric.properties
 /resources/run.sh
 /.terraformrc
 /node_modules/
+
+# VCR test bootstrap artifacts
+/tests/.bootstrap-token
+/tests/bootstrap/.terraform/
+/tests/bootstrap/.terraform.lock.hcl
+/tests/bootstrap/terraform.tfstate
+/tests/bootstrap/terraform.tfstate.backup
