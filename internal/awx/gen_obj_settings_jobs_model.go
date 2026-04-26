@@ -66,78 +66,25 @@ type settingsJobsTerraformModel struct {
 
 // Clone the object
 func (o *settingsJobsTerraformModel) Clone() settingsJobsTerraformModel {
-	return settingsJobsTerraformModel{
-		AD_HOC_COMMANDS:                  o.AD_HOC_COMMANDS,
-		ALLOW_JINJA_IN_EXTRA_VARS:        o.ALLOW_JINJA_IN_EXTRA_VARS,
-		ANSIBLE_FACT_CACHE_TIMEOUT:       o.ANSIBLE_FACT_CACHE_TIMEOUT,
-		AWX_ANSIBLE_CALLBACK_PLUGINS:     o.AWX_ANSIBLE_CALLBACK_PLUGINS,
-		AWX_COLLECTIONS_ENABLED:          o.AWX_COLLECTIONS_ENABLED,
-		AWX_ISOLATION_BASE_PATH:          o.AWX_ISOLATION_BASE_PATH,
-		AWX_ISOLATION_SHOW_PATHS:         o.AWX_ISOLATION_SHOW_PATHS,
-		AWX_MOUNT_ISOLATED_PATHS_ON_K8S:  o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S,
-		AWX_ROLES_ENABLED:                o.AWX_ROLES_ENABLED,
-		AWX_RUNNER_KEEPALIVE_SECONDS:     o.AWX_RUNNER_KEEPALIVE_SECONDS,
-		AWX_SHOW_PLAYBOOK_LINKS:          o.AWX_SHOW_PLAYBOOK_LINKS,
-		AWX_TASK_ENV:                     o.AWX_TASK_ENV,
-		DEFAULT_CONTAINER_RUN_OPTIONS:    o.DEFAULT_CONTAINER_RUN_OPTIONS,
-		DEFAULT_INVENTORY_UPDATE_TIMEOUT: o.DEFAULT_INVENTORY_UPDATE_TIMEOUT,
-		DEFAULT_JOB_IDLE_TIMEOUT:         o.DEFAULT_JOB_IDLE_TIMEOUT,
-		DEFAULT_JOB_TIMEOUT:              o.DEFAULT_JOB_TIMEOUT,
-		DEFAULT_PROJECT_UPDATE_TIMEOUT:   o.DEFAULT_PROJECT_UPDATE_TIMEOUT,
-		EVENT_STDOUT_MAX_BYTES_DISPLAY:   o.EVENT_STDOUT_MAX_BYTES_DISPLAY,
-		GALAXY_IGNORE_CERTS:              o.GALAXY_IGNORE_CERTS,
-		GALAXY_TASK_ENV:                  o.GALAXY_TASK_ENV,
-		MAX_FORKS:                        o.MAX_FORKS,
-		MAX_WEBSOCKET_EVENT_RATE:         o.MAX_WEBSOCKET_EVENT_RATE,
-		PROJECT_UPDATE_VVV:               o.PROJECT_UPDATE_VVV,
-		SCHEDULE_MAX_JOBS:                o.SCHEDULE_MAX_JOBS,
-		STDOUT_MAX_BYTES_DISPLAY:         o.STDOUT_MAX_BYTES_DISPLAY,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsJobs
-func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestModel) {
-	req.AD_HOC_COMMANDS = []string{}
-	for _, val := range o.AD_HOC_COMMANDS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AD_HOC_COMMANDS = append(req.AD_HOC_COMMANDS, val.(types.String).ValueString())
-		} else {
-			req.AD_HOC_COMMANDS = append(req.AD_HOC_COMMANDS, val.String())
-		}
-	}
+func (o *settingsJobsTerraformModel) BodyRequest() *settingsJobsBodyRequestModel {
+	var req settingsJobsBodyRequestModel
+	req.AD_HOC_COMMANDS = helpers.ListAsStringSlice(o.AD_HOC_COMMANDS, false)
 	req.ALLOW_JINJA_IN_EXTRA_VARS = o.ALLOW_JINJA_IN_EXTRA_VARS.ValueString()
 	req.ANSIBLE_FACT_CACHE_TIMEOUT = o.ANSIBLE_FACT_CACHE_TIMEOUT.ValueInt64()
-	req.AWX_ANSIBLE_CALLBACK_PLUGINS = []string{}
-	for _, val := range o.AWX_ANSIBLE_CALLBACK_PLUGINS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AWX_ANSIBLE_CALLBACK_PLUGINS = append(req.AWX_ANSIBLE_CALLBACK_PLUGINS, val.(types.String).ValueString())
-		} else {
-			req.AWX_ANSIBLE_CALLBACK_PLUGINS = append(req.AWX_ANSIBLE_CALLBACK_PLUGINS, val.String())
-		}
-	}
+	req.AWX_ANSIBLE_CALLBACK_PLUGINS = helpers.ListAsStringSlice(o.AWX_ANSIBLE_CALLBACK_PLUGINS, false)
 	req.AWX_COLLECTIONS_ENABLED = o.AWX_COLLECTIONS_ENABLED.ValueBool()
 	req.AWX_ISOLATION_BASE_PATH = o.AWX_ISOLATION_BASE_PATH.ValueString()
-	req.AWX_ISOLATION_SHOW_PATHS = []string{}
-	for _, val := range o.AWX_ISOLATION_SHOW_PATHS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AWX_ISOLATION_SHOW_PATHS = append(req.AWX_ISOLATION_SHOW_PATHS, val.(types.String).ValueString())
-		} else {
-			req.AWX_ISOLATION_SHOW_PATHS = append(req.AWX_ISOLATION_SHOW_PATHS, val.String())
-		}
-	}
+	req.AWX_ISOLATION_SHOW_PATHS = helpers.ListAsStringSlice(o.AWX_ISOLATION_SHOW_PATHS, false)
 	req.AWX_MOUNT_ISOLATED_PATHS_ON_K8S = o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S.ValueBool()
 	req.AWX_ROLES_ENABLED = o.AWX_ROLES_ENABLED.ValueBool()
 	req.AWX_RUNNER_KEEPALIVE_SECONDS = o.AWX_RUNNER_KEEPALIVE_SECONDS.ValueInt64()
 	req.AWX_SHOW_PLAYBOOK_LINKS = o.AWX_SHOW_PLAYBOOK_LINKS.ValueBool()
 	req.AWX_TASK_ENV = json.RawMessage(o.AWX_TASK_ENV.ValueString())
-	req.DEFAULT_CONTAINER_RUN_OPTIONS = []string{}
-	for _, val := range o.DEFAULT_CONTAINER_RUN_OPTIONS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.DEFAULT_CONTAINER_RUN_OPTIONS = append(req.DEFAULT_CONTAINER_RUN_OPTIONS, val.(types.String).ValueString())
-		} else {
-			req.DEFAULT_CONTAINER_RUN_OPTIONS = append(req.DEFAULT_CONTAINER_RUN_OPTIONS, val.String())
-		}
-	}
+	req.DEFAULT_CONTAINER_RUN_OPTIONS = helpers.ListAsStringSlice(o.DEFAULT_CONTAINER_RUN_OPTIONS, false)
 	req.DEFAULT_INVENTORY_UPDATE_TIMEOUT = o.DEFAULT_INVENTORY_UPDATE_TIMEOUT.ValueInt64()
 	req.DEFAULT_JOB_IDLE_TIMEOUT = o.DEFAULT_JOB_IDLE_TIMEOUT.ValueInt64()
 	req.DEFAULT_JOB_TIMEOUT = o.DEFAULT_JOB_TIMEOUT.ValueInt64()
@@ -150,187 +97,112 @@ func (o *settingsJobsTerraformModel) BodyRequest() (req settingsJobsBodyRequestM
 	req.PROJECT_UPDATE_VVV = o.PROJECT_UPDATE_VVV.ValueBool()
 	req.SCHEDULE_MAX_JOBS = o.SCHEDULE_MAX_JOBS.ValueInt64()
 	req.STDOUT_MAX_BYTES_DISPLAY = o.STDOUT_MAX_BYTES_DISPLAY.ValueInt64()
-	return
+	return &req
 }
 
-func (o *settingsJobsTerraformModel) setAdHocCommands(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AD_HOC_COMMANDS, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setAllowJinjaInExtraVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ALLOW_JINJA_IN_EXTRA_VARS, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setAnsibleFactCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ANSIBLE_FACT_CACHE_TIMEOUT, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxAnsibleCallbackPlugins(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AWX_ANSIBLE_CALLBACK_PLUGINS, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setAwxCollectionsEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AWX_COLLECTIONS_ENABLED, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxIsolationBasePath(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AWX_ISOLATION_BASE_PATH, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setAwxIsolationShowPaths(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AWX_ISOLATION_SHOW_PATHS, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setAwxMountIsolatedPathsOnK8S(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxRolesEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AWX_ROLES_ENABLED, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxRunnerKeepaliveSeconds(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.AWX_RUNNER_KEEPALIVE_SECONDS, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxShowPlaybookLinks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AWX_SHOW_PLAYBOOK_LINKS, data)
-}
-
-func (o *settingsJobsTerraformModel) setAwxTaskEnv(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AWX_TASK_ENV, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setDefaultContainerRunOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.DEFAULT_CONTAINER_RUN_OPTIONS, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setDefaultInventoryUpdateTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DEFAULT_INVENTORY_UPDATE_TIMEOUT, data)
-}
-
-func (o *settingsJobsTerraformModel) setDefaultJobIdleTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_IDLE_TIMEOUT, data)
-}
-
-func (o *settingsJobsTerraformModel) setDefaultJobTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DEFAULT_JOB_TIMEOUT, data)
-}
-
-func (o *settingsJobsTerraformModel) setDefaultProjectUpdateTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DEFAULT_PROJECT_UPDATE_TIMEOUT, data)
-}
-
-func (o *settingsJobsTerraformModel) setEventStdoutMaxBytesDisplay(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.EVENT_STDOUT_MAX_BYTES_DISPLAY, data)
-}
-
-func (o *settingsJobsTerraformModel) setGalaxyIgnoreCerts(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.GALAXY_IGNORE_CERTS, data)
-}
-
-func (o *settingsJobsTerraformModel) setGalaxyTaskEnv(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.GALAXY_TASK_ENV, data, false)
-}
-
-func (o *settingsJobsTerraformModel) setMaxForks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MAX_FORKS, data)
-}
-
-func (o *settingsJobsTerraformModel) setMaxWebsocketEventRate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MAX_WEBSOCKET_EVENT_RATE, data)
-}
-
-func (o *settingsJobsTerraformModel) setProjectUpdateVvv(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.PROJECT_UPDATE_VVV, data)
-}
-
-func (o *settingsJobsTerraformModel) setScheduleMaxJobs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SCHEDULE_MAX_JOBS, data)
-}
-
-func (o *settingsJobsTerraformModel) setStdoutMaxBytesDisplay(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.STDOUT_MAX_BYTES_DISPLAY, data)
-}
-
-func (o *settingsJobsTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsJobsTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAdHocCommands(data["AD_HOC_COMMANDS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AD_HOC_COMMANDS, data["AD_HOC_COMMANDS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAllowJinjaInExtraVars(data["ALLOW_JINJA_IN_EXTRA_VARS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ALLOW_JINJA_IN_EXTRA_VARS, data["ALLOW_JINJA_IN_EXTRA_VARS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAnsibleFactCacheTimeout(data["ANSIBLE_FACT_CACHE_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ANSIBLE_FACT_CACHE_TIMEOUT, data["ANSIBLE_FACT_CACHE_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxAnsibleCallbackPlugins(data["AWX_ANSIBLE_CALLBACK_PLUGINS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AWX_ANSIBLE_CALLBACK_PLUGINS, data["AWX_ANSIBLE_CALLBACK_PLUGINS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxCollectionsEnabled(data["AWX_COLLECTIONS_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AWX_COLLECTIONS_ENABLED, data["AWX_COLLECTIONS_ENABLED"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxIsolationBasePath(data["AWX_ISOLATION_BASE_PATH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AWX_ISOLATION_BASE_PATH, data["AWX_ISOLATION_BASE_PATH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxIsolationShowPaths(data["AWX_ISOLATION_SHOW_PATHS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AWX_ISOLATION_SHOW_PATHS, data["AWX_ISOLATION_SHOW_PATHS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxMountIsolatedPathsOnK8S(data["AWX_MOUNT_ISOLATED_PATHS_ON_K8S"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AWX_MOUNT_ISOLATED_PATHS_ON_K8S, data["AWX_MOUNT_ISOLATED_PATHS_ON_K8S"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxRolesEnabled(data["AWX_ROLES_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AWX_ROLES_ENABLED, data["AWX_ROLES_ENABLED"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxRunnerKeepaliveSeconds(data["AWX_RUNNER_KEEPALIVE_SECONDS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.AWX_RUNNER_KEEPALIVE_SECONDS, data["AWX_RUNNER_KEEPALIVE_SECONDS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxShowPlaybookLinks(data["AWX_SHOW_PLAYBOOK_LINKS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AWX_SHOW_PLAYBOOK_LINKS, data["AWX_SHOW_PLAYBOOK_LINKS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAwxTaskEnv(data["AWX_TASK_ENV"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AWX_TASK_ENV, data["AWX_TASK_ENV"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultContainerRunOptions(data["DEFAULT_CONTAINER_RUN_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.DEFAULT_CONTAINER_RUN_OPTIONS, data["DEFAULT_CONTAINER_RUN_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultInventoryUpdateTimeout(data["DEFAULT_INVENTORY_UPDATE_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DEFAULT_INVENTORY_UPDATE_TIMEOUT, data["DEFAULT_INVENTORY_UPDATE_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultJobIdleTimeout(data["DEFAULT_JOB_IDLE_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DEFAULT_JOB_IDLE_TIMEOUT, data["DEFAULT_JOB_IDLE_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultJobTimeout(data["DEFAULT_JOB_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DEFAULT_JOB_TIMEOUT, data["DEFAULT_JOB_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDefaultProjectUpdateTimeout(data["DEFAULT_PROJECT_UPDATE_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DEFAULT_PROJECT_UPDATE_TIMEOUT, data["DEFAULT_PROJECT_UPDATE_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setEventStdoutMaxBytesDisplay(data["EVENT_STDOUT_MAX_BYTES_DISPLAY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.EVENT_STDOUT_MAX_BYTES_DISPLAY, data["EVENT_STDOUT_MAX_BYTES_DISPLAY"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setGalaxyIgnoreCerts(data["GALAXY_IGNORE_CERTS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.GALAXY_IGNORE_CERTS, data["GALAXY_IGNORE_CERTS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setGalaxyTaskEnv(data["GALAXY_TASK_ENV"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.GALAXY_TASK_ENV, data["GALAXY_TASK_ENV"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxForks(data["MAX_FORKS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MAX_FORKS, data["MAX_FORKS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxWebsocketEventRate(data["MAX_WEBSOCKET_EVENT_RATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MAX_WEBSOCKET_EVENT_RATE, data["MAX_WEBSOCKET_EVENT_RATE"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setProjectUpdateVvv(data["PROJECT_UPDATE_VVV"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.PROJECT_UPDATE_VVV, data["PROJECT_UPDATE_VVV"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScheduleMaxJobs(data["SCHEDULE_MAX_JOBS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SCHEDULE_MAX_JOBS, data["SCHEDULE_MAX_JOBS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setStdoutMaxBytesDisplay(data["STDOUT_MAX_BYTES_DISPLAY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.STDOUT_MAX_BYTES_DISPLAY, data["STDOUT_MAX_BYTES_DISPLAY"])
 		diags.Append(dg...)
 	}
 	return diags, nil

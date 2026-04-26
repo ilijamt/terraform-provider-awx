@@ -13,6 +13,7 @@
   "enabled": true,
   "name": "SettingsAuthGithubEnterpriseOrg",
   "no_id": true,
+  "no_import": false,
   "read_properties": {
     "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_API_URL": {
       "id_key": "",

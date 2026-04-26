@@ -51,30 +51,12 @@ type settingsMiscLoggingTerraformModel struct {
 
 // Clone the object
 func (o *settingsMiscLoggingTerraformModel) Clone() settingsMiscLoggingTerraformModel {
-	return settingsMiscLoggingTerraformModel{
-		API_400_ERROR_LOG_FORMAT:                o.API_400_ERROR_LOG_FORMAT,
-		LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB: o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB,
-		LOG_AGGREGATOR_ACTION_QUEUE_SIZE:        o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE,
-		LOG_AGGREGATOR_ENABLED:                  o.LOG_AGGREGATOR_ENABLED,
-		LOG_AGGREGATOR_HOST:                     o.LOG_AGGREGATOR_HOST,
-		LOG_AGGREGATOR_INDIVIDUAL_FACTS:         o.LOG_AGGREGATOR_INDIVIDUAL_FACTS,
-		LOG_AGGREGATOR_LEVEL:                    o.LOG_AGGREGATOR_LEVEL,
-		LOG_AGGREGATOR_LOGGERS:                  o.LOG_AGGREGATOR_LOGGERS,
-		LOG_AGGREGATOR_MAX_DISK_USAGE_PATH:      o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH,
-		LOG_AGGREGATOR_PASSWORD:                 o.LOG_AGGREGATOR_PASSWORD,
-		LOG_AGGREGATOR_PORT:                     o.LOG_AGGREGATOR_PORT,
-		LOG_AGGREGATOR_PROTOCOL:                 o.LOG_AGGREGATOR_PROTOCOL,
-		LOG_AGGREGATOR_RSYSLOGD_DEBUG:           o.LOG_AGGREGATOR_RSYSLOGD_DEBUG,
-		LOG_AGGREGATOR_TCP_TIMEOUT:              o.LOG_AGGREGATOR_TCP_TIMEOUT,
-		LOG_AGGREGATOR_TOWER_UUID:               o.LOG_AGGREGATOR_TOWER_UUID,
-		LOG_AGGREGATOR_TYPE:                     o.LOG_AGGREGATOR_TYPE,
-		LOG_AGGREGATOR_USERNAME:                 o.LOG_AGGREGATOR_USERNAME,
-		LOG_AGGREGATOR_VERIFY_CERT:              o.LOG_AGGREGATOR_VERIFY_CERT,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsMiscLogging
-func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggingBodyRequestModel) {
+func (o *settingsMiscLoggingTerraformModel) BodyRequest() *settingsMiscLoggingBodyRequestModel {
+	var req settingsMiscLoggingBodyRequestModel
 	req.API_400_ERROR_LOG_FORMAT = o.API_400_ERROR_LOG_FORMAT.ValueString()
 	req.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB = o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB.ValueInt64()
 	req.LOG_AGGREGATOR_ACTION_QUEUE_SIZE = o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE.ValueInt64()
@@ -82,14 +64,7 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 	req.LOG_AGGREGATOR_HOST = o.LOG_AGGREGATOR_HOST.ValueString()
 	req.LOG_AGGREGATOR_INDIVIDUAL_FACTS = o.LOG_AGGREGATOR_INDIVIDUAL_FACTS.ValueBool()
 	req.LOG_AGGREGATOR_LEVEL = o.LOG_AGGREGATOR_LEVEL.ValueString()
-	req.LOG_AGGREGATOR_LOGGERS = []string{}
-	for _, val := range o.LOG_AGGREGATOR_LOGGERS.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.LOG_AGGREGATOR_LOGGERS = append(req.LOG_AGGREGATOR_LOGGERS, val.(types.String).ValueString())
-		} else {
-			req.LOG_AGGREGATOR_LOGGERS = append(req.LOG_AGGREGATOR_LOGGERS, val.String())
-		}
-	}
+	req.LOG_AGGREGATOR_LOGGERS = helpers.ListAsStringSlice(o.LOG_AGGREGATOR_LOGGERS, false)
 	req.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH = o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH.ValueString()
 	req.LOG_AGGREGATOR_PASSWORD = o.LOG_AGGREGATOR_PASSWORD.ValueString()
 	req.LOG_AGGREGATOR_PORT = o.LOG_AGGREGATOR_PORT.ValueInt64()
@@ -100,138 +75,84 @@ func (o *settingsMiscLoggingTerraformModel) BodyRequest() (req settingsMiscLoggi
 	req.LOG_AGGREGATOR_TYPE = o.LOG_AGGREGATOR_TYPE.ValueString()
 	req.LOG_AGGREGATOR_USERNAME = o.LOG_AGGREGATOR_USERNAME.ValueString()
 	req.LOG_AGGREGATOR_VERIFY_CERT = o.LOG_AGGREGATOR_VERIFY_CERT.ValueBool()
-	return
+	return &req
 }
 
-func (o *settingsMiscLoggingTerraformModel) setApi400ErrorLogFormat(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.API_400_ERROR_LOG_FORMAT, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionMaxDiskUsageGb(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorActionQueueSize(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_ENABLED, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorHost(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_HOST, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorIndividualFacts(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_INDIVIDUAL_FACTS, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLevel(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_LEVEL, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorLoggers(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.LOG_AGGREGATOR_LOGGERS, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorMaxDiskUsagePath(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PASSWORD, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorPort(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_PORT, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorProtocol(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PROTOCOL, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorRsyslogdDebug(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_RSYSLOGD_DEBUG, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTcpTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_TCP_TIMEOUT, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorTowerUuid(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TOWER_UUID, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TYPE, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorUsername(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LOG_AGGREGATOR_USERNAME, data, false)
-}
-
-func (o *settingsMiscLoggingTerraformModel) setLogAggregatorVerifyCert(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_VERIFY_CERT, data)
-}
-
-func (o *settingsMiscLoggingTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsMiscLoggingTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setApi400ErrorLogFormat(data["API_400_ERROR_LOG_FORMAT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.API_400_ERROR_LOG_FORMAT, data["API_400_ERROR_LOG_FORMAT"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorActionMaxDiskUsageGb(data["LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB, data["LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorActionQueueSize(data["LOG_AGGREGATOR_ACTION_QUEUE_SIZE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_ACTION_QUEUE_SIZE, data["LOG_AGGREGATOR_ACTION_QUEUE_SIZE"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorEnabled(data["LOG_AGGREGATOR_ENABLED"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_ENABLED, data["LOG_AGGREGATOR_ENABLED"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorHost(data["LOG_AGGREGATOR_HOST"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_HOST, data["LOG_AGGREGATOR_HOST"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorIndividualFacts(data["LOG_AGGREGATOR_INDIVIDUAL_FACTS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_INDIVIDUAL_FACTS, data["LOG_AGGREGATOR_INDIVIDUAL_FACTS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorLevel(data["LOG_AGGREGATOR_LEVEL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_LEVEL, data["LOG_AGGREGATOR_LEVEL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorLoggers(data["LOG_AGGREGATOR_LOGGERS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.LOG_AGGREGATOR_LOGGERS, data["LOG_AGGREGATOR_LOGGERS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorMaxDiskUsagePath(data["LOG_AGGREGATOR_MAX_DISK_USAGE_PATH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_MAX_DISK_USAGE_PATH, data["LOG_AGGREGATOR_MAX_DISK_USAGE_PATH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorPassword(data["LOG_AGGREGATOR_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PASSWORD, data["LOG_AGGREGATOR_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorPort(data["LOG_AGGREGATOR_PORT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_PORT, data["LOG_AGGREGATOR_PORT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorProtocol(data["LOG_AGGREGATOR_PROTOCOL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_PROTOCOL, data["LOG_AGGREGATOR_PROTOCOL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorRsyslogdDebug(data["LOG_AGGREGATOR_RSYSLOGD_DEBUG"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_RSYSLOGD_DEBUG, data["LOG_AGGREGATOR_RSYSLOGD_DEBUG"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorTcpTimeout(data["LOG_AGGREGATOR_TCP_TIMEOUT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LOG_AGGREGATOR_TCP_TIMEOUT, data["LOG_AGGREGATOR_TCP_TIMEOUT"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorTowerUuid(data["LOG_AGGREGATOR_TOWER_UUID"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TOWER_UUID, data["LOG_AGGREGATOR_TOWER_UUID"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorType(data["LOG_AGGREGATOR_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_TYPE, data["LOG_AGGREGATOR_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorUsername(data["LOG_AGGREGATOR_USERNAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LOG_AGGREGATOR_USERNAME, data["LOG_AGGREGATOR_USERNAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLogAggregatorVerifyCert(data["LOG_AGGREGATOR_VERIFY_CERT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.LOG_AGGREGATOR_VERIFY_CERT, data["LOG_AGGREGATOR_VERIFY_CERT"])
 		diags.Append(dg...)
 	}
 	return diags, nil

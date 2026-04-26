@@ -48,28 +48,12 @@ type inventoryTerraformModel struct {
 
 // Clone the object
 func (o *inventoryTerraformModel) Clone() inventoryTerraformModel {
-	return inventoryTerraformModel{
-		Description:                  o.Description,
-		HasActiveFailures:            o.HasActiveFailures,
-		HasInventorySources:          o.HasInventorySources,
-		HostFilter:                   o.HostFilter,
-		HostsWithActiveFailures:      o.HostsWithActiveFailures,
-		ID:                           o.ID,
-		InventorySourcesWithFailures: o.InventorySourcesWithFailures,
-		Kind:                         o.Kind,
-		Name:                         o.Name,
-		Organization:                 o.Organization,
-		PendingDeletion:              o.PendingDeletion,
-		PreventInstanceGroupFallback: o.PreventInstanceGroupFallback,
-		TotalGroups:                  o.TotalGroups,
-		TotalHosts:                   o.TotalHosts,
-		TotalInventorySources:        o.TotalInventorySources,
-		Variables:                    o.Variables,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Inventory
-func (o *inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) {
+func (o *inventoryTerraformModel) BodyRequest() *inventoryBodyRequestModel {
+	var req inventoryBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.HostFilter = o.HostFilter.ValueString()
 	req.Kind = o.Kind.ValueString()
@@ -77,124 +61,76 @@ func (o *inventoryTerraformModel) BodyRequest() (req inventoryBodyRequestModel) 
 	req.Organization = o.Organization.ValueInt64()
 	req.PreventInstanceGroupFallback = o.PreventInstanceGroupFallback.ValueBool()
 	req.Variables = json.RawMessage(o.Variables.String())
-	return
+	return &req
 }
 
-func (o *inventoryTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *inventoryTerraformModel) setHasActiveFailures(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.HasActiveFailures, data)
-}
-
-func (o *inventoryTerraformModel) setHasInventorySources(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.HasInventorySources, data)
-}
-
-func (o *inventoryTerraformModel) setHostFilter(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.HostFilter, data, false)
-}
-
-func (o *inventoryTerraformModel) setHostsWithActiveFailures(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.HostsWithActiveFailures, data)
-}
-
-func (o *inventoryTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *inventoryTerraformModel) setInventorySourcesWithFailures(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.InventorySourcesWithFailures, data)
-}
-
-func (o *inventoryTerraformModel) setKind(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Kind, data, false)
-}
-
-func (o *inventoryTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *inventoryTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *inventoryTerraformModel) setPendingDeletion(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.PendingDeletion, data)
-}
-
-func (o *inventoryTerraformModel) setPreventInstanceGroupFallback(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data)
-}
-
-func (o *inventoryTerraformModel) setTotalGroups(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.TotalGroups, data)
-}
-
-func (o *inventoryTerraformModel) setTotalHosts(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.TotalHosts, data)
-}
-
-func (o *inventoryTerraformModel) setTotalInventorySources(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.TotalInventorySources, data)
-}
-
-func (o *inventoryTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonYamlString(&o.Variables, data, false)
-}
-
-func (o *inventoryTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *inventoryTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHasActiveFailures(data["has_active_failures"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.HasActiveFailures, data["has_active_failures"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHasInventorySources(data["has_inventory_sources"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.HasInventorySources, data["has_inventory_sources"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHostFilter(data["host_filter"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.HostFilter, data["host_filter"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHostsWithActiveFailures(data["hosts_with_active_failures"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.HostsWithActiveFailures, data["hosts_with_active_failures"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventorySourcesWithFailures(data["inventory_sources_with_failures"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.InventorySourcesWithFailures, data["inventory_sources_with_failures"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setKind(data["kind"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Kind, data["kind"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPendingDeletion(data["pending_deletion"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.PendingDeletion, data["pending_deletion"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setPreventInstanceGroupFallback(data["prevent_instance_group_fallback"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.PreventInstanceGroupFallback, data["prevent_instance_group_fallback"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTotalGroups(data["total_groups"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.TotalGroups, data["total_groups"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTotalHosts(data["total_hosts"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.TotalHosts, data["total_hosts"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTotalInventorySources(data["total_inventory_sources"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.TotalInventorySources, data["total_inventory_sources"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVariables(data["variables"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonYamlString(&o.Variables, data["variables"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil
@@ -216,9 +152,4 @@ type inventoryBodyRequestModel struct {
 	PreventInstanceGroupFallback bool `json:"prevent_instance_group_fallback"`
 	// Variables "Inventory variables in JSON format"
 	Variables json.RawMessage `json:"variables,omitempty"`
-}
-
-type inventoryObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
 }

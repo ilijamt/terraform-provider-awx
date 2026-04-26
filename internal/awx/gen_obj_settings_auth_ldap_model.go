@@ -208,120 +208,17 @@ type settingsAuthLdapTerraformModel struct {
 
 // Clone the object
 func (o *settingsAuthLdapTerraformModel) Clone() settingsAuthLdapTerraformModel {
-	return settingsAuthLdapTerraformModel{
-		AUTH_LDAP_1_BIND_DN:             o.AUTH_LDAP_1_BIND_DN,
-		AUTH_LDAP_1_BIND_PASSWORD:       o.AUTH_LDAP_1_BIND_PASSWORD,
-		AUTH_LDAP_1_CONNECTION_OPTIONS:  o.AUTH_LDAP_1_CONNECTION_OPTIONS,
-		AUTH_LDAP_1_DENY_GROUP:          o.AUTH_LDAP_1_DENY_GROUP,
-		AUTH_LDAP_1_GROUP_SEARCH:        o.AUTH_LDAP_1_GROUP_SEARCH,
-		AUTH_LDAP_1_GROUP_TYPE:          o.AUTH_LDAP_1_GROUP_TYPE,
-		AUTH_LDAP_1_GROUP_TYPE_PARAMS:   o.AUTH_LDAP_1_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_1_ORGANIZATION_MAP:    o.AUTH_LDAP_1_ORGANIZATION_MAP,
-		AUTH_LDAP_1_REQUIRE_GROUP:       o.AUTH_LDAP_1_REQUIRE_GROUP,
-		AUTH_LDAP_1_SERVER_URI:          o.AUTH_LDAP_1_SERVER_URI,
-		AUTH_LDAP_1_START_TLS:           o.AUTH_LDAP_1_START_TLS,
-		AUTH_LDAP_1_TEAM_MAP:            o.AUTH_LDAP_1_TEAM_MAP,
-		AUTH_LDAP_1_USER_ATTR_MAP:       o.AUTH_LDAP_1_USER_ATTR_MAP,
-		AUTH_LDAP_1_USER_DN_TEMPLATE:    o.AUTH_LDAP_1_USER_DN_TEMPLATE,
-		AUTH_LDAP_1_USER_FLAGS_BY_GROUP: o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_1_USER_SEARCH:         o.AUTH_LDAP_1_USER_SEARCH,
-		AUTH_LDAP_2_BIND_DN:             o.AUTH_LDAP_2_BIND_DN,
-		AUTH_LDAP_2_BIND_PASSWORD:       o.AUTH_LDAP_2_BIND_PASSWORD,
-		AUTH_LDAP_2_CONNECTION_OPTIONS:  o.AUTH_LDAP_2_CONNECTION_OPTIONS,
-		AUTH_LDAP_2_DENY_GROUP:          o.AUTH_LDAP_2_DENY_GROUP,
-		AUTH_LDAP_2_GROUP_SEARCH:        o.AUTH_LDAP_2_GROUP_SEARCH,
-		AUTH_LDAP_2_GROUP_TYPE:          o.AUTH_LDAP_2_GROUP_TYPE,
-		AUTH_LDAP_2_GROUP_TYPE_PARAMS:   o.AUTH_LDAP_2_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_2_ORGANIZATION_MAP:    o.AUTH_LDAP_2_ORGANIZATION_MAP,
-		AUTH_LDAP_2_REQUIRE_GROUP:       o.AUTH_LDAP_2_REQUIRE_GROUP,
-		AUTH_LDAP_2_SERVER_URI:          o.AUTH_LDAP_2_SERVER_URI,
-		AUTH_LDAP_2_START_TLS:           o.AUTH_LDAP_2_START_TLS,
-		AUTH_LDAP_2_TEAM_MAP:            o.AUTH_LDAP_2_TEAM_MAP,
-		AUTH_LDAP_2_USER_ATTR_MAP:       o.AUTH_LDAP_2_USER_ATTR_MAP,
-		AUTH_LDAP_2_USER_DN_TEMPLATE:    o.AUTH_LDAP_2_USER_DN_TEMPLATE,
-		AUTH_LDAP_2_USER_FLAGS_BY_GROUP: o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_2_USER_SEARCH:         o.AUTH_LDAP_2_USER_SEARCH,
-		AUTH_LDAP_3_BIND_DN:             o.AUTH_LDAP_3_BIND_DN,
-		AUTH_LDAP_3_BIND_PASSWORD:       o.AUTH_LDAP_3_BIND_PASSWORD,
-		AUTH_LDAP_3_CONNECTION_OPTIONS:  o.AUTH_LDAP_3_CONNECTION_OPTIONS,
-		AUTH_LDAP_3_DENY_GROUP:          o.AUTH_LDAP_3_DENY_GROUP,
-		AUTH_LDAP_3_GROUP_SEARCH:        o.AUTH_LDAP_3_GROUP_SEARCH,
-		AUTH_LDAP_3_GROUP_TYPE:          o.AUTH_LDAP_3_GROUP_TYPE,
-		AUTH_LDAP_3_GROUP_TYPE_PARAMS:   o.AUTH_LDAP_3_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_3_ORGANIZATION_MAP:    o.AUTH_LDAP_3_ORGANIZATION_MAP,
-		AUTH_LDAP_3_REQUIRE_GROUP:       o.AUTH_LDAP_3_REQUIRE_GROUP,
-		AUTH_LDAP_3_SERVER_URI:          o.AUTH_LDAP_3_SERVER_URI,
-		AUTH_LDAP_3_START_TLS:           o.AUTH_LDAP_3_START_TLS,
-		AUTH_LDAP_3_TEAM_MAP:            o.AUTH_LDAP_3_TEAM_MAP,
-		AUTH_LDAP_3_USER_ATTR_MAP:       o.AUTH_LDAP_3_USER_ATTR_MAP,
-		AUTH_LDAP_3_USER_DN_TEMPLATE:    o.AUTH_LDAP_3_USER_DN_TEMPLATE,
-		AUTH_LDAP_3_USER_FLAGS_BY_GROUP: o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_3_USER_SEARCH:         o.AUTH_LDAP_3_USER_SEARCH,
-		AUTH_LDAP_4_BIND_DN:             o.AUTH_LDAP_4_BIND_DN,
-		AUTH_LDAP_4_BIND_PASSWORD:       o.AUTH_LDAP_4_BIND_PASSWORD,
-		AUTH_LDAP_4_CONNECTION_OPTIONS:  o.AUTH_LDAP_4_CONNECTION_OPTIONS,
-		AUTH_LDAP_4_DENY_GROUP:          o.AUTH_LDAP_4_DENY_GROUP,
-		AUTH_LDAP_4_GROUP_SEARCH:        o.AUTH_LDAP_4_GROUP_SEARCH,
-		AUTH_LDAP_4_GROUP_TYPE:          o.AUTH_LDAP_4_GROUP_TYPE,
-		AUTH_LDAP_4_GROUP_TYPE_PARAMS:   o.AUTH_LDAP_4_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_4_ORGANIZATION_MAP:    o.AUTH_LDAP_4_ORGANIZATION_MAP,
-		AUTH_LDAP_4_REQUIRE_GROUP:       o.AUTH_LDAP_4_REQUIRE_GROUP,
-		AUTH_LDAP_4_SERVER_URI:          o.AUTH_LDAP_4_SERVER_URI,
-		AUTH_LDAP_4_START_TLS:           o.AUTH_LDAP_4_START_TLS,
-		AUTH_LDAP_4_TEAM_MAP:            o.AUTH_LDAP_4_TEAM_MAP,
-		AUTH_LDAP_4_USER_ATTR_MAP:       o.AUTH_LDAP_4_USER_ATTR_MAP,
-		AUTH_LDAP_4_USER_DN_TEMPLATE:    o.AUTH_LDAP_4_USER_DN_TEMPLATE,
-		AUTH_LDAP_4_USER_FLAGS_BY_GROUP: o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_4_USER_SEARCH:         o.AUTH_LDAP_4_USER_SEARCH,
-		AUTH_LDAP_5_BIND_DN:             o.AUTH_LDAP_5_BIND_DN,
-		AUTH_LDAP_5_BIND_PASSWORD:       o.AUTH_LDAP_5_BIND_PASSWORD,
-		AUTH_LDAP_5_CONNECTION_OPTIONS:  o.AUTH_LDAP_5_CONNECTION_OPTIONS,
-		AUTH_LDAP_5_DENY_GROUP:          o.AUTH_LDAP_5_DENY_GROUP,
-		AUTH_LDAP_5_GROUP_SEARCH:        o.AUTH_LDAP_5_GROUP_SEARCH,
-		AUTH_LDAP_5_GROUP_TYPE:          o.AUTH_LDAP_5_GROUP_TYPE,
-		AUTH_LDAP_5_GROUP_TYPE_PARAMS:   o.AUTH_LDAP_5_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_5_ORGANIZATION_MAP:    o.AUTH_LDAP_5_ORGANIZATION_MAP,
-		AUTH_LDAP_5_REQUIRE_GROUP:       o.AUTH_LDAP_5_REQUIRE_GROUP,
-		AUTH_LDAP_5_SERVER_URI:          o.AUTH_LDAP_5_SERVER_URI,
-		AUTH_LDAP_5_START_TLS:           o.AUTH_LDAP_5_START_TLS,
-		AUTH_LDAP_5_TEAM_MAP:            o.AUTH_LDAP_5_TEAM_MAP,
-		AUTH_LDAP_5_USER_ATTR_MAP:       o.AUTH_LDAP_5_USER_ATTR_MAP,
-		AUTH_LDAP_5_USER_DN_TEMPLATE:    o.AUTH_LDAP_5_USER_DN_TEMPLATE,
-		AUTH_LDAP_5_USER_FLAGS_BY_GROUP: o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_5_USER_SEARCH:         o.AUTH_LDAP_5_USER_SEARCH,
-		AUTH_LDAP_BIND_DN:               o.AUTH_LDAP_BIND_DN,
-		AUTH_LDAP_BIND_PASSWORD:         o.AUTH_LDAP_BIND_PASSWORD,
-		AUTH_LDAP_CONNECTION_OPTIONS:    o.AUTH_LDAP_CONNECTION_OPTIONS,
-		AUTH_LDAP_DENY_GROUP:            o.AUTH_LDAP_DENY_GROUP,
-		AUTH_LDAP_GROUP_SEARCH:          o.AUTH_LDAP_GROUP_SEARCH,
-		AUTH_LDAP_GROUP_TYPE:            o.AUTH_LDAP_GROUP_TYPE,
-		AUTH_LDAP_GROUP_TYPE_PARAMS:     o.AUTH_LDAP_GROUP_TYPE_PARAMS,
-		AUTH_LDAP_ORGANIZATION_MAP:      o.AUTH_LDAP_ORGANIZATION_MAP,
-		AUTH_LDAP_REQUIRE_GROUP:         o.AUTH_LDAP_REQUIRE_GROUP,
-		AUTH_LDAP_SERVER_URI:            o.AUTH_LDAP_SERVER_URI,
-		AUTH_LDAP_START_TLS:             o.AUTH_LDAP_START_TLS,
-		AUTH_LDAP_TEAM_MAP:              o.AUTH_LDAP_TEAM_MAP,
-		AUTH_LDAP_USER_ATTR_MAP:         o.AUTH_LDAP_USER_ATTR_MAP,
-		AUTH_LDAP_USER_DN_TEMPLATE:      o.AUTH_LDAP_USER_DN_TEMPLATE,
-		AUTH_LDAP_USER_FLAGS_BY_GROUP:   o.AUTH_LDAP_USER_FLAGS_BY_GROUP,
-		AUTH_LDAP_USER_SEARCH:           o.AUTH_LDAP_USER_SEARCH,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthLDAP
-func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBodyRequestModel) {
+func (o *settingsAuthLdapTerraformModel) BodyRequest() *settingsAuthLdapBodyRequestModel {
+	var req settingsAuthLdapBodyRequestModel
 	req.AUTH_LDAP_1_BIND_DN = o.AUTH_LDAP_1_BIND_DN.ValueString()
 	req.AUTH_LDAP_1_BIND_PASSWORD = o.AUTH_LDAP_1_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_1_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_1_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_1_DENY_GROUP = o.AUTH_LDAP_1_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_1_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_1_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_1_GROUP_SEARCH = append(req.AUTH_LDAP_1_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_1_GROUP_SEARCH = append(req.AUTH_LDAP_1_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_1_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_1_GROUP_SEARCH, false)
 	req.AUTH_LDAP_1_GROUP_TYPE = o.AUTH_LDAP_1_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_1_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_1_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_1_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_1_ORGANIZATION_MAP.ValueString())
@@ -332,26 +229,12 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_1_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_1_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_1_USER_DN_TEMPLATE = o.AUTH_LDAP_1_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_1_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_1_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_1_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_1_USER_SEARCH = append(req.AUTH_LDAP_1_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_1_USER_SEARCH = append(req.AUTH_LDAP_1_USER_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_1_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_1_USER_SEARCH, false)
 	req.AUTH_LDAP_2_BIND_DN = o.AUTH_LDAP_2_BIND_DN.ValueString()
 	req.AUTH_LDAP_2_BIND_PASSWORD = o.AUTH_LDAP_2_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_2_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_2_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_2_DENY_GROUP = o.AUTH_LDAP_2_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_2_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_2_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_2_GROUP_SEARCH = append(req.AUTH_LDAP_2_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_2_GROUP_SEARCH = append(req.AUTH_LDAP_2_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_2_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_2_GROUP_SEARCH, false)
 	req.AUTH_LDAP_2_GROUP_TYPE = o.AUTH_LDAP_2_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_2_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_2_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_2_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_2_ORGANIZATION_MAP.ValueString())
@@ -362,26 +245,12 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_2_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_2_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_2_USER_DN_TEMPLATE = o.AUTH_LDAP_2_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_2_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_2_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_2_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_2_USER_SEARCH = append(req.AUTH_LDAP_2_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_2_USER_SEARCH = append(req.AUTH_LDAP_2_USER_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_2_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_2_USER_SEARCH, false)
 	req.AUTH_LDAP_3_BIND_DN = o.AUTH_LDAP_3_BIND_DN.ValueString()
 	req.AUTH_LDAP_3_BIND_PASSWORD = o.AUTH_LDAP_3_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_3_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_3_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_3_DENY_GROUP = o.AUTH_LDAP_3_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_3_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_3_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_3_GROUP_SEARCH = append(req.AUTH_LDAP_3_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_3_GROUP_SEARCH = append(req.AUTH_LDAP_3_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_3_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_3_GROUP_SEARCH, false)
 	req.AUTH_LDAP_3_GROUP_TYPE = o.AUTH_LDAP_3_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_3_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_3_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_3_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_3_ORGANIZATION_MAP.ValueString())
@@ -392,26 +261,12 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_3_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_3_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_3_USER_DN_TEMPLATE = o.AUTH_LDAP_3_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_3_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_3_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_3_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_3_USER_SEARCH = append(req.AUTH_LDAP_3_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_3_USER_SEARCH = append(req.AUTH_LDAP_3_USER_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_3_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_3_USER_SEARCH, false)
 	req.AUTH_LDAP_4_BIND_DN = o.AUTH_LDAP_4_BIND_DN.ValueString()
 	req.AUTH_LDAP_4_BIND_PASSWORD = o.AUTH_LDAP_4_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_4_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_4_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_4_DENY_GROUP = o.AUTH_LDAP_4_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_4_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_4_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_4_GROUP_SEARCH = append(req.AUTH_LDAP_4_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_4_GROUP_SEARCH = append(req.AUTH_LDAP_4_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_4_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_4_GROUP_SEARCH, false)
 	req.AUTH_LDAP_4_GROUP_TYPE = o.AUTH_LDAP_4_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_4_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_4_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_4_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_4_ORGANIZATION_MAP.ValueString())
@@ -422,26 +277,12 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_4_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_4_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_4_USER_DN_TEMPLATE = o.AUTH_LDAP_4_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_4_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_4_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_4_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_4_USER_SEARCH = append(req.AUTH_LDAP_4_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_4_USER_SEARCH = append(req.AUTH_LDAP_4_USER_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_4_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_4_USER_SEARCH, false)
 	req.AUTH_LDAP_5_BIND_DN = o.AUTH_LDAP_5_BIND_DN.ValueString()
 	req.AUTH_LDAP_5_BIND_PASSWORD = o.AUTH_LDAP_5_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_5_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_5_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_5_DENY_GROUP = o.AUTH_LDAP_5_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_5_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_5_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_5_GROUP_SEARCH = append(req.AUTH_LDAP_5_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_5_GROUP_SEARCH = append(req.AUTH_LDAP_5_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_5_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_5_GROUP_SEARCH, false)
 	req.AUTH_LDAP_5_GROUP_TYPE = o.AUTH_LDAP_5_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_5_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_5_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_5_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_5_ORGANIZATION_MAP.ValueString())
@@ -452,26 +293,12 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_5_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_5_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_5_USER_DN_TEMPLATE = o.AUTH_LDAP_5_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_5_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_5_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_5_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_5_USER_SEARCH = append(req.AUTH_LDAP_5_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_5_USER_SEARCH = append(req.AUTH_LDAP_5_USER_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_5_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_5_USER_SEARCH, false)
 	req.AUTH_LDAP_BIND_DN = o.AUTH_LDAP_BIND_DN.ValueString()
 	req.AUTH_LDAP_BIND_PASSWORD = o.AUTH_LDAP_BIND_PASSWORD.ValueString()
 	req.AUTH_LDAP_CONNECTION_OPTIONS = json.RawMessage(o.AUTH_LDAP_CONNECTION_OPTIONS.ValueString())
 	req.AUTH_LDAP_DENY_GROUP = o.AUTH_LDAP_DENY_GROUP.ValueString()
-	req.AUTH_LDAP_GROUP_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_GROUP_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_GROUP_SEARCH = append(req.AUTH_LDAP_GROUP_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_GROUP_SEARCH = append(req.AUTH_LDAP_GROUP_SEARCH, val.String())
-		}
-	}
+	req.AUTH_LDAP_GROUP_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_GROUP_SEARCH, false)
 	req.AUTH_LDAP_GROUP_TYPE = o.AUTH_LDAP_GROUP_TYPE.ValueString()
 	req.AUTH_LDAP_GROUP_TYPE_PARAMS = json.RawMessage(o.AUTH_LDAP_GROUP_TYPE_PARAMS.ValueString())
 	req.AUTH_LDAP_ORGANIZATION_MAP = json.RawMessage(o.AUTH_LDAP_ORGANIZATION_MAP.ValueString())
@@ -482,692 +309,397 @@ func (o *settingsAuthLdapTerraformModel) BodyRequest() (req settingsAuthLdapBody
 	req.AUTH_LDAP_USER_ATTR_MAP = json.RawMessage(o.AUTH_LDAP_USER_ATTR_MAP.ValueString())
 	req.AUTH_LDAP_USER_DN_TEMPLATE = o.AUTH_LDAP_USER_DN_TEMPLATE.ValueString()
 	req.AUTH_LDAP_USER_FLAGS_BY_GROUP = json.RawMessage(o.AUTH_LDAP_USER_FLAGS_BY_GROUP.ValueString())
-	req.AUTH_LDAP_USER_SEARCH = []string{}
-	for _, val := range o.AUTH_LDAP_USER_SEARCH.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.AUTH_LDAP_USER_SEARCH = append(req.AUTH_LDAP_USER_SEARCH, val.(types.String).ValueString())
-		} else {
-			req.AUTH_LDAP_USER_SEARCH = append(req.AUTH_LDAP_USER_SEARCH, val.String())
-		}
-	}
-	return
+	req.AUTH_LDAP_USER_SEARCH = helpers.ListAsStringSlice(o.AUTH_LDAP_USER_SEARCH, false)
+	return &req
 }
 
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1BindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1BindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1ConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1DenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1GroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1RequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1ServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1StartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_1_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_1_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap1UserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_1_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2BindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2BindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2ConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2DenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2GroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2RequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2ServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2StartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_2_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_2_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap2UserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_2_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3BindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3BindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3ConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3DenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3GroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3RequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3ServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3StartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_3_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_3_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap3UserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_3_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4BindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4BindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4ConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4DenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4GroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4RequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4ServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4StartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_4_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_4_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap4UserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_4_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5BindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5BindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5ConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5DenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5GroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5RequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5ServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5StartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_5_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_5_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdap5UserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_5_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapBindDn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_DN, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapBindPassword(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_PASSWORD, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapConnectionOptions(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_CONNECTION_OPTIONS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapDenyGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_DENY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_GROUP_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_GROUP_TYPE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapGroupTypeParams(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_GROUP_TYPE_PARAMS, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapRequireGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_REQUIRE_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapServerUri(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_SERVER_URI, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapStartTls(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AUTH_LDAP_START_TLS, data)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapTeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapUserAttrMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_ATTR_MAP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapUserDnTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AUTH_LDAP_USER_DN_TEMPLATE, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapUserFlagsByGroup(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_FLAGS_BY_GROUP, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) setAuthLdapUserSearch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.AUTH_LDAP_USER_SEARCH, data, false)
-}
-
-func (o *settingsAuthLdapTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthLdapTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAuthLdap1BindDn(data["AUTH_LDAP_1_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_DN, data["AUTH_LDAP_1_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1BindPassword(data["AUTH_LDAP_1_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_BIND_PASSWORD, data["AUTH_LDAP_1_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1ConnectionOptions(data["AUTH_LDAP_1_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_CONNECTION_OPTIONS, data["AUTH_LDAP_1_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1DenyGroup(data["AUTH_LDAP_1_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_DENY_GROUP, data["AUTH_LDAP_1_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1GroupSearch(data["AUTH_LDAP_1_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_1_GROUP_SEARCH, data["AUTH_LDAP_1_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1GroupType(data["AUTH_LDAP_1_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_GROUP_TYPE, data["AUTH_LDAP_1_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1GroupTypeParams(data["AUTH_LDAP_1_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_GROUP_TYPE_PARAMS, data["AUTH_LDAP_1_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1OrganizationMap(data["AUTH_LDAP_1_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_ORGANIZATION_MAP, data["AUTH_LDAP_1_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1RequireGroup(data["AUTH_LDAP_1_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_REQUIRE_GROUP, data["AUTH_LDAP_1_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1ServerUri(data["AUTH_LDAP_1_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_SERVER_URI, data["AUTH_LDAP_1_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1StartTls(data["AUTH_LDAP_1_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_1_START_TLS, data["AUTH_LDAP_1_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1TeamMap(data["AUTH_LDAP_1_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_TEAM_MAP, data["AUTH_LDAP_1_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1UserAttrMap(data["AUTH_LDAP_1_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_ATTR_MAP, data["AUTH_LDAP_1_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1UserDnTemplate(data["AUTH_LDAP_1_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_1_USER_DN_TEMPLATE, data["AUTH_LDAP_1_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1UserFlagsByGroup(data["AUTH_LDAP_1_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_1_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_1_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap1UserSearch(data["AUTH_LDAP_1_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_1_USER_SEARCH, data["AUTH_LDAP_1_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2BindDn(data["AUTH_LDAP_2_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_DN, data["AUTH_LDAP_2_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2BindPassword(data["AUTH_LDAP_2_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_BIND_PASSWORD, data["AUTH_LDAP_2_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2ConnectionOptions(data["AUTH_LDAP_2_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_CONNECTION_OPTIONS, data["AUTH_LDAP_2_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2DenyGroup(data["AUTH_LDAP_2_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_DENY_GROUP, data["AUTH_LDAP_2_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2GroupSearch(data["AUTH_LDAP_2_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_2_GROUP_SEARCH, data["AUTH_LDAP_2_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2GroupType(data["AUTH_LDAP_2_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_GROUP_TYPE, data["AUTH_LDAP_2_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2GroupTypeParams(data["AUTH_LDAP_2_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_GROUP_TYPE_PARAMS, data["AUTH_LDAP_2_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2OrganizationMap(data["AUTH_LDAP_2_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_ORGANIZATION_MAP, data["AUTH_LDAP_2_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2RequireGroup(data["AUTH_LDAP_2_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_REQUIRE_GROUP, data["AUTH_LDAP_2_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2ServerUri(data["AUTH_LDAP_2_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_SERVER_URI, data["AUTH_LDAP_2_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2StartTls(data["AUTH_LDAP_2_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_2_START_TLS, data["AUTH_LDAP_2_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2TeamMap(data["AUTH_LDAP_2_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_TEAM_MAP, data["AUTH_LDAP_2_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2UserAttrMap(data["AUTH_LDAP_2_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_ATTR_MAP, data["AUTH_LDAP_2_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2UserDnTemplate(data["AUTH_LDAP_2_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_2_USER_DN_TEMPLATE, data["AUTH_LDAP_2_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2UserFlagsByGroup(data["AUTH_LDAP_2_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_2_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_2_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap2UserSearch(data["AUTH_LDAP_2_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_2_USER_SEARCH, data["AUTH_LDAP_2_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3BindDn(data["AUTH_LDAP_3_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_DN, data["AUTH_LDAP_3_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3BindPassword(data["AUTH_LDAP_3_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_BIND_PASSWORD, data["AUTH_LDAP_3_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3ConnectionOptions(data["AUTH_LDAP_3_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_CONNECTION_OPTIONS, data["AUTH_LDAP_3_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3DenyGroup(data["AUTH_LDAP_3_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_DENY_GROUP, data["AUTH_LDAP_3_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3GroupSearch(data["AUTH_LDAP_3_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_3_GROUP_SEARCH, data["AUTH_LDAP_3_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3GroupType(data["AUTH_LDAP_3_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_GROUP_TYPE, data["AUTH_LDAP_3_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3GroupTypeParams(data["AUTH_LDAP_3_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_GROUP_TYPE_PARAMS, data["AUTH_LDAP_3_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3OrganizationMap(data["AUTH_LDAP_3_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_ORGANIZATION_MAP, data["AUTH_LDAP_3_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3RequireGroup(data["AUTH_LDAP_3_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_REQUIRE_GROUP, data["AUTH_LDAP_3_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3ServerUri(data["AUTH_LDAP_3_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_SERVER_URI, data["AUTH_LDAP_3_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3StartTls(data["AUTH_LDAP_3_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_3_START_TLS, data["AUTH_LDAP_3_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3TeamMap(data["AUTH_LDAP_3_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_TEAM_MAP, data["AUTH_LDAP_3_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3UserAttrMap(data["AUTH_LDAP_3_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_ATTR_MAP, data["AUTH_LDAP_3_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3UserDnTemplate(data["AUTH_LDAP_3_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_3_USER_DN_TEMPLATE, data["AUTH_LDAP_3_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3UserFlagsByGroup(data["AUTH_LDAP_3_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_3_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_3_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap3UserSearch(data["AUTH_LDAP_3_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_3_USER_SEARCH, data["AUTH_LDAP_3_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4BindDn(data["AUTH_LDAP_4_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_DN, data["AUTH_LDAP_4_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4BindPassword(data["AUTH_LDAP_4_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_BIND_PASSWORD, data["AUTH_LDAP_4_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4ConnectionOptions(data["AUTH_LDAP_4_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_CONNECTION_OPTIONS, data["AUTH_LDAP_4_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4DenyGroup(data["AUTH_LDAP_4_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_DENY_GROUP, data["AUTH_LDAP_4_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4GroupSearch(data["AUTH_LDAP_4_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_4_GROUP_SEARCH, data["AUTH_LDAP_4_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4GroupType(data["AUTH_LDAP_4_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_GROUP_TYPE, data["AUTH_LDAP_4_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4GroupTypeParams(data["AUTH_LDAP_4_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_GROUP_TYPE_PARAMS, data["AUTH_LDAP_4_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4OrganizationMap(data["AUTH_LDAP_4_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_ORGANIZATION_MAP, data["AUTH_LDAP_4_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4RequireGroup(data["AUTH_LDAP_4_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_REQUIRE_GROUP, data["AUTH_LDAP_4_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4ServerUri(data["AUTH_LDAP_4_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_SERVER_URI, data["AUTH_LDAP_4_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4StartTls(data["AUTH_LDAP_4_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_4_START_TLS, data["AUTH_LDAP_4_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4TeamMap(data["AUTH_LDAP_4_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_TEAM_MAP, data["AUTH_LDAP_4_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4UserAttrMap(data["AUTH_LDAP_4_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_ATTR_MAP, data["AUTH_LDAP_4_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4UserDnTemplate(data["AUTH_LDAP_4_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_4_USER_DN_TEMPLATE, data["AUTH_LDAP_4_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4UserFlagsByGroup(data["AUTH_LDAP_4_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_4_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_4_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap4UserSearch(data["AUTH_LDAP_4_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_4_USER_SEARCH, data["AUTH_LDAP_4_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5BindDn(data["AUTH_LDAP_5_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_DN, data["AUTH_LDAP_5_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5BindPassword(data["AUTH_LDAP_5_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_BIND_PASSWORD, data["AUTH_LDAP_5_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5ConnectionOptions(data["AUTH_LDAP_5_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_CONNECTION_OPTIONS, data["AUTH_LDAP_5_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5DenyGroup(data["AUTH_LDAP_5_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_DENY_GROUP, data["AUTH_LDAP_5_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5GroupSearch(data["AUTH_LDAP_5_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_5_GROUP_SEARCH, data["AUTH_LDAP_5_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5GroupType(data["AUTH_LDAP_5_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_GROUP_TYPE, data["AUTH_LDAP_5_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5GroupTypeParams(data["AUTH_LDAP_5_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_GROUP_TYPE_PARAMS, data["AUTH_LDAP_5_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5OrganizationMap(data["AUTH_LDAP_5_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_ORGANIZATION_MAP, data["AUTH_LDAP_5_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5RequireGroup(data["AUTH_LDAP_5_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_REQUIRE_GROUP, data["AUTH_LDAP_5_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5ServerUri(data["AUTH_LDAP_5_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_SERVER_URI, data["AUTH_LDAP_5_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5StartTls(data["AUTH_LDAP_5_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_5_START_TLS, data["AUTH_LDAP_5_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5TeamMap(data["AUTH_LDAP_5_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_TEAM_MAP, data["AUTH_LDAP_5_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5UserAttrMap(data["AUTH_LDAP_5_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_ATTR_MAP, data["AUTH_LDAP_5_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5UserDnTemplate(data["AUTH_LDAP_5_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_5_USER_DN_TEMPLATE, data["AUTH_LDAP_5_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5UserFlagsByGroup(data["AUTH_LDAP_5_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_5_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_5_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdap5UserSearch(data["AUTH_LDAP_5_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_5_USER_SEARCH, data["AUTH_LDAP_5_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapBindDn(data["AUTH_LDAP_BIND_DN"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_DN, data["AUTH_LDAP_BIND_DN"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapBindPassword(data["AUTH_LDAP_BIND_PASSWORD"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_BIND_PASSWORD, data["AUTH_LDAP_BIND_PASSWORD"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapConnectionOptions(data["AUTH_LDAP_CONNECTION_OPTIONS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_CONNECTION_OPTIONS, data["AUTH_LDAP_CONNECTION_OPTIONS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapDenyGroup(data["AUTH_LDAP_DENY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_DENY_GROUP, data["AUTH_LDAP_DENY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapGroupSearch(data["AUTH_LDAP_GROUP_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_GROUP_SEARCH, data["AUTH_LDAP_GROUP_SEARCH"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapGroupType(data["AUTH_LDAP_GROUP_TYPE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_GROUP_TYPE, data["AUTH_LDAP_GROUP_TYPE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapGroupTypeParams(data["AUTH_LDAP_GROUP_TYPE_PARAMS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_GROUP_TYPE_PARAMS, data["AUTH_LDAP_GROUP_TYPE_PARAMS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapOrganizationMap(data["AUTH_LDAP_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_ORGANIZATION_MAP, data["AUTH_LDAP_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapRequireGroup(data["AUTH_LDAP_REQUIRE_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_REQUIRE_GROUP, data["AUTH_LDAP_REQUIRE_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapServerUri(data["AUTH_LDAP_SERVER_URI"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_SERVER_URI, data["AUTH_LDAP_SERVER_URI"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapStartTls(data["AUTH_LDAP_START_TLS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AUTH_LDAP_START_TLS, data["AUTH_LDAP_START_TLS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapTeamMap(data["AUTH_LDAP_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_TEAM_MAP, data["AUTH_LDAP_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapUserAttrMap(data["AUTH_LDAP_USER_ATTR_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_ATTR_MAP, data["AUTH_LDAP_USER_ATTR_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapUserDnTemplate(data["AUTH_LDAP_USER_DN_TEMPLATE"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AUTH_LDAP_USER_DN_TEMPLATE, data["AUTH_LDAP_USER_DN_TEMPLATE"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapUserFlagsByGroup(data["AUTH_LDAP_USER_FLAGS_BY_GROUP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTH_LDAP_USER_FLAGS_BY_GROUP, data["AUTH_LDAP_USER_FLAGS_BY_GROUP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAuthLdapUserSearch(data["AUTH_LDAP_USER_SEARCH"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.AUTH_LDAP_USER_SEARCH, data["AUTH_LDAP_USER_SEARCH"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

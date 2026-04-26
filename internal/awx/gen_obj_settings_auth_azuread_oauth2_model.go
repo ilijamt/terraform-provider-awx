@@ -26,62 +26,42 @@ type settingsAuthAzureAdoauth2TerraformModel struct {
 
 // Clone the object
 func (o *settingsAuthAzureAdoauth2TerraformModel) Clone() settingsAuthAzureAdoauth2TerraformModel {
-	return settingsAuthAzureAdoauth2TerraformModel{
-		SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL:     o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL,
-		SOCIAL_AUTH_AZUREAD_OAUTH2_KEY:              o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY,
-		SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP: o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP,
-		SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET:           o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET,
-		SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP:         o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthAzureADOauth2
-func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() (req settingsAuthAzureAdoauth2BodyRequestModel) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) BodyRequest() *settingsAuthAzureAdoauth2BodyRequestModel {
+	var req settingsAuthAzureAdoauth2BodyRequestModel
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET.ValueString()
 	req.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP.ValueString())
-	return
+	return &req
 }
 
-func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2CallbackUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL, data, false)
-}
-
-func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2Key(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY, data, false)
-}
-
-func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2OrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2Secret(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET, data, false)
-}
-
-func (o *settingsAuthAzureAdoauth2TerraformModel) setSocialAuthAzureadOauth2TeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthAzureAdoauth2TerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthAzureAdoauth2TerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setSocialAuthAzureadOauth2CallbackUrl(data["SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL, data["SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthAzureadOauth2Key(data["SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_KEY, data["SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthAzureadOauth2OrganizationMap(data["SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthAzureadOauth2Secret(data["SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET, data["SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthAzureadOauth2TeamMap(data["SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP, data["SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

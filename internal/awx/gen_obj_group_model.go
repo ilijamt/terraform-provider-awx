@@ -26,62 +26,42 @@ type groupTerraformModel struct {
 
 // Clone the object
 func (o *groupTerraformModel) Clone() groupTerraformModel {
-	return groupTerraformModel{
-		Description: o.Description,
-		ID:          o.ID,
-		Inventory:   o.Inventory,
-		Name:        o.Name,
-		Variables:   o.Variables,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Group
-func (o *groupTerraformModel) BodyRequest() (req groupBodyRequestModel) {
+func (o *groupTerraformModel) BodyRequest() *groupBodyRequestModel {
+	var req groupBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
 	req.Variables = json.RawMessage(o.Variables.String())
-	return
+	return &req
 }
 
-func (o *groupTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *groupTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *groupTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *groupTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *groupTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
-}
-
-func (o *groupTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *groupTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVariables(data["variables"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Variables, data["variables"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

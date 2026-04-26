@@ -31,85 +31,53 @@ type tokensTerraformModel struct {
 
 // Clone the object
 func (o *tokensTerraformModel) Clone() tokensTerraformModel {
-	return tokensTerraformModel{
-		Application:  o.Application,
-		Description:  o.Description,
-		Expires:      o.Expires,
-		ID:           o.ID,
-		RefreshToken: o.RefreshToken,
-		Scope:        o.Scope,
-		Token:        o.Token,
-		User:         o.User,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Tokens
-func (o *tokensTerraformModel) BodyRequest() (req tokensBodyRequestModel) {
+func (o *tokensTerraformModel) BodyRequest() *tokensBodyRequestModel {
+	var req tokensBodyRequestModel
 	req.Application = o.Application.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.Scope = o.Scope.ValueString()
-	return
+	return &req
 }
 
-func (o *tokensTerraformModel) setApplication(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Application, data)
-}
-
-func (o *tokensTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *tokensTerraformModel) setExpires(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Expires, data, false)
-}
-
-func (o *tokensTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *tokensTerraformModel) setRefreshToken(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.RefreshToken, data, false)
-}
-
-func (o *tokensTerraformModel) setScope(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Scope, data, false)
-}
-
-func (o *tokensTerraformModel) setToken(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Token, data, false)
-}
-
-func (o *tokensTerraformModel) setUser(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.User, data)
-}
-
-func (o *tokensTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *tokensTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setApplication(data["application"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Application, data["application"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExpires(data["expires"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Expires, data["expires"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRefreshToken(data["refresh_token"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.RefreshToken, data["refresh_token"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScope(data["scope"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Scope, data["scope"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setToken(data["token"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Token, data["token"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUser(data["user"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.User, data["user"])
 		diags.Append(dg...)
 	}
 	return diags, nil

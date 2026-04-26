@@ -25,6 +25,7 @@
   "enabled": true,
   "name": "Schedule",
   "no_id": false,
+  "no_import": false,
   "read_properties": {
     "description": {
       "id_key": "",

@@ -6,8 +6,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -15,31 +22,108 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
-          cache: true
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.9
+          terraform_wrapper: false
       - name: Display Go version
         run: go version
       - name: Test
-        run: go test -cover -coverprofile=coverage.out -v ./...
+        run: |
+          mkdir -p covdata/unit
+          go test ./internal/... -count=1 -cover -coverpkg=./internal/... -v \
+            -args -test.gocoverdir=$PWD/covdata/unit
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: covdata-unit
+          path: covdata/unit
+          if-no-files-found: error
+
+  integration:
+    name: Integration / ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with TestIntegration_* functions under tests/examples/.
+        # Adding a new integration test? Add an entry here.
+        include:
+          - name: Inventory
+            test: TestIntegration_Inventory
+          - name: Credentials
+            test: TestIntegration_Credentials
+          - name: Object Roles
+            test: TestIntegration_ObjectRoles
+          - name: Preload Data
+            test: TestIntegration_PreloadData
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.9
+          terraform_wrapper: false
+      - name: Run ${{ matrix.test }} (replay)
+        run: |
+          mkdir -p covdata/${{ matrix.test }}
+          TF_ACC=1 go test -tags=integration ./tests/examples/... \
+            -run "^${{ matrix.test }}$" -count=1 -v \
+            -cover -coverpkg=./internal/... \
+            -args -test.gocoverdir=$PWD/covdata/${{ matrix.test }}
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: covdata-${{ matrix.test }}
+          path: covdata/${{ matrix.test }}
+          if-no-files-found: error
+
+  coverage:
+    needs: [unit, integration]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: covdata
+          pattern: covdata-*
+      - name: Merge coverage profiles
+        run: |
+          set -euo pipefail
+          ls -la covdata
+          inputs=$(find covdata -mindepth 1 -maxdepth 1 -type d | paste -sd, -)
+          mkdir -p covdata-merged
+          go tool covdata merge -i="$inputs" -o=covdata-merged
+          go tool covdata textfmt -i=covdata-merged -o=coverage.out
+          go tool cover -func=coverage.out | tail -n 1
       - name: Upload coverage reports to Codecov
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           files: ./coverage.out
-          flags: unittests
+          fail_ci_if_error: false
+
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        provider: [ 'provider' ]
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
-          cache: true
       - name: Display Go version
         run: go version
       - name: Build
-        run: go build -v ./cmd/${{ matrix.provider }}
+        run: go build -v ./cmd/provider

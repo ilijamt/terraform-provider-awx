@@ -28,71 +28,47 @@ type settingsAuthGithubOrgTerraformModel struct {
 
 // Clone the object
 func (o *settingsAuthGithubOrgTerraformModel) Clone() settingsAuthGithubOrgTerraformModel {
-	return settingsAuthGithubOrgTerraformModel{
-		SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL:     o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL,
-		SOCIAL_AUTH_GITHUB_ORG_KEY:              o.SOCIAL_AUTH_GITHUB_ORG_KEY,
-		SOCIAL_AUTH_GITHUB_ORG_NAME:             o.SOCIAL_AUTH_GITHUB_ORG_NAME,
-		SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP: o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP,
-		SOCIAL_AUTH_GITHUB_ORG_SECRET:           o.SOCIAL_AUTH_GITHUB_ORG_SECRET,
-		SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP:         o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubOrg
-func (o *settingsAuthGithubOrgTerraformModel) BodyRequest() (req settingsAuthGithubOrgBodyRequestModel) {
+func (o *settingsAuthGithubOrgTerraformModel) BodyRequest() *settingsAuthGithubOrgBodyRequestModel {
+	var req settingsAuthGithubOrgBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_ORG_KEY = o.SOCIAL_AUTH_GITHUB_ORG_KEY.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ORG_NAME = o.SOCIAL_AUTH_GITHUB_ORG_NAME.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_GITHUB_ORG_SECRET = o.SOCIAL_AUTH_GITHUB_ORG_SECRET.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP.ValueString())
-	return
+	return &req
 }
 
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgKey(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_KEY, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_NAME, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgSecret(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_SECRET, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) setSocialAuthGithubOrgTeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthGithubOrgTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthGithubOrgTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setSocialAuthGithubOrgCallbackUrl(data["SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubOrgKey(data["SOCIAL_AUTH_GITHUB_ORG_KEY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_KEY, data["SOCIAL_AUTH_GITHUB_ORG_KEY"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubOrgName(data["SOCIAL_AUTH_GITHUB_ORG_NAME"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_NAME, data["SOCIAL_AUTH_GITHUB_ORG_NAME"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubOrgOrganizationMap(data["SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubOrgSecret(data["SOCIAL_AUTH_GITHUB_ORG_SECRET"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ORG_SECRET, data["SOCIAL_AUTH_GITHUB_ORG_SECRET"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubOrgTeamMap(data["SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

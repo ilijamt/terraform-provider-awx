@@ -58,33 +58,12 @@ type inventorySourceTerraformModel struct {
 
 // Clone the object
 func (o *inventorySourceTerraformModel) Clone() inventorySourceTerraformModel {
-	return inventorySourceTerraformModel{
-		Credential:           o.Credential,
-		Description:          o.Description,
-		EnabledValue:         o.EnabledValue,
-		EnabledVar:           o.EnabledVar,
-		ExecutionEnvironment: o.ExecutionEnvironment,
-		HostFilter:           o.HostFilter,
-		ID:                   o.ID,
-		Inventory:            o.Inventory,
-		Limit:                o.Limit,
-		Name:                 o.Name,
-		Overwrite:            o.Overwrite,
-		OverwriteVars:        o.OverwriteVars,
-		ScmBranch:            o.ScmBranch,
-		Source:               o.Source,
-		SourcePath:           o.SourcePath,
-		SourceProject:        o.SourceProject,
-		SourceVars:           o.SourceVars,
-		Timeout:              o.Timeout,
-		UpdateCacheTimeout:   o.UpdateCacheTimeout,
-		UpdateOnLaunch:       o.UpdateOnLaunch,
-		Verbosity:            o.Verbosity,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for InventorySource
-func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRequestModel) {
+func (o *inventorySourceTerraformModel) BodyRequest() *inventorySourceBodyRequestModel {
+	var req inventorySourceBodyRequestModel
 	req.Credential = o.Credential.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.EnabledValue = o.EnabledValue.ValueString()
@@ -105,159 +84,96 @@ func (o *inventorySourceTerraformModel) BodyRequest() (req inventorySourceBodyRe
 	req.UpdateCacheTimeout = o.UpdateCacheTimeout.ValueInt64()
 	req.UpdateOnLaunch = o.UpdateOnLaunch.ValueBool()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
-func (o *inventorySourceTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Credential, data)
-}
-
-func (o *inventorySourceTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setEnabledValue(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.EnabledValue, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setEnabledVar(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.EnabledVar, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
-}
-
-func (o *inventorySourceTerraformModel) setHostFilter(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.HostFilter, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *inventorySourceTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *inventorySourceTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Limit, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setOverwrite(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Overwrite, data)
-}
-
-func (o *inventorySourceTerraformModel) setOverwriteVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.OverwriteVars, data)
-}
-
-func (o *inventorySourceTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setSource(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Source, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setSourcePath(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SourcePath, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setSourceProject(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.SourceProject, data)
-}
-
-func (o *inventorySourceTerraformModel) setSourceVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SourceVars, data, false)
-}
-
-func (o *inventorySourceTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Timeout, data)
-}
-
-func (o *inventorySourceTerraformModel) setUpdateCacheTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data)
-}
-
-func (o *inventorySourceTerraformModel) setUpdateOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.UpdateOnLaunch, data)
-}
-
-func (o *inventorySourceTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Verbosity, data, false)
-}
-
-func (o *inventorySourceTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *inventorySourceTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setCredential(data["credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setEnabledValue(data["enabled_value"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.EnabledValue, data["enabled_value"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setEnabledVar(data["enabled_var"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.EnabledVar, data["enabled_var"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExecutionEnvironment(data["execution_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setHostFilter(data["host_filter"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.HostFilter, data["host_filter"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOverwrite(data["overwrite"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Overwrite, data["overwrite"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOverwriteVars(data["overwrite_vars"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.OverwriteVars, data["overwrite_vars"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSource(data["source"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Source, data["source"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSourcePath(data["source_path"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SourcePath, data["source_path"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSourceProject(data["source_project"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.SourceProject, data["source_project"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSourceVars(data["source_vars"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SourceVars, data["source_vars"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTimeout(data["timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Timeout, data["timeout"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUpdateCacheTimeout(data["update_cache_timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.UpdateCacheTimeout, data["update_cache_timeout"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUpdateOnLaunch(data["update_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.UpdateOnLaunch, data["update_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVerbosity(data["verbosity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

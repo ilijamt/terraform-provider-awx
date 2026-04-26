@@ -30,80 +30,52 @@ type settingsAuthGithubEnterpriseTerraformModel struct {
 
 // Clone the object
 func (o *settingsAuthGithubEnterpriseTerraformModel) Clone() settingsAuthGithubEnterpriseTerraformModel {
-	return settingsAuthGithubEnterpriseTerraformModel{
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL:          o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL:     o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY:              o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP: o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET:           o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP:         o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP,
-		SOCIAL_AUTH_GITHUB_ENTERPRISE_URL:              o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthGithubEnterprise
-func (o *settingsAuthGithubEnterpriseTerraformModel) BodyRequest() (req settingsAuthGithubEnterpriseBodyRequestModel) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) BodyRequest() *settingsAuthGithubEnterpriseBodyRequestModel {
+	var req settingsAuthGithubEnterpriseBodyRequestModel
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET.ValueString()
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP.ValueString())
 	req.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL = o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL.ValueString()
-	return
+	return &req
 }
 
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseApiUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseKey(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseSecret(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseTeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) setSocialAuthGithubEnterpriseUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL, data, false)
-}
-
-func (o *settingsAuthGithubEnterpriseTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthGithubEnterpriseTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseApiUrl(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseCallbackUrl(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseKey(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseOrganizationMap(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseSecret(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseTeamMap(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthGithubEnterpriseUrl(data["SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_GITHUB_ENTERPRISE_URL, data["SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

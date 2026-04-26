@@ -52,40 +52,15 @@ type settingsAuthSamlTerraformModel struct {
 
 // Clone the object
 func (o *settingsAuthSamlTerraformModel) Clone() settingsAuthSamlTerraformModel {
-	return settingsAuthSamlTerraformModel{
-		SAML_AUTO_CREATE_OBJECTS:            o.SAML_AUTO_CREATE_OBJECTS,
-		SOCIAL_AUTH_SAML_CALLBACK_URL:       o.SOCIAL_AUTH_SAML_CALLBACK_URL,
-		SOCIAL_AUTH_SAML_ENABLED_IDPS:       o.SOCIAL_AUTH_SAML_ENABLED_IDPS,
-		SOCIAL_AUTH_SAML_EXTRA_DATA:         o.SOCIAL_AUTH_SAML_EXTRA_DATA,
-		SOCIAL_AUTH_SAML_METADATA_URL:       o.SOCIAL_AUTH_SAML_METADATA_URL,
-		SOCIAL_AUTH_SAML_ORGANIZATION_ATTR:  o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR,
-		SOCIAL_AUTH_SAML_ORGANIZATION_MAP:   o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP,
-		SOCIAL_AUTH_SAML_ORG_INFO:           o.SOCIAL_AUTH_SAML_ORG_INFO,
-		SOCIAL_AUTH_SAML_SECURITY_CONFIG:    o.SOCIAL_AUTH_SAML_SECURITY_CONFIG,
-		SOCIAL_AUTH_SAML_SP_ENTITY_ID:       o.SOCIAL_AUTH_SAML_SP_ENTITY_ID,
-		SOCIAL_AUTH_SAML_SP_EXTRA:           o.SOCIAL_AUTH_SAML_SP_EXTRA,
-		SOCIAL_AUTH_SAML_SP_PRIVATE_KEY:     o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY,
-		SOCIAL_AUTH_SAML_SP_PUBLIC_CERT:     o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT,
-		SOCIAL_AUTH_SAML_SUPPORT_CONTACT:    o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT,
-		SOCIAL_AUTH_SAML_TEAM_ATTR:          o.SOCIAL_AUTH_SAML_TEAM_ATTR,
-		SOCIAL_AUTH_SAML_TEAM_MAP:           o.SOCIAL_AUTH_SAML_TEAM_MAP,
-		SOCIAL_AUTH_SAML_TECHNICAL_CONTACT:  o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT,
-		SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR: o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for SettingsAuthSAML
-func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBodyRequestModel) {
+func (o *settingsAuthSamlTerraformModel) BodyRequest() *settingsAuthSamlBodyRequestModel {
+	var req settingsAuthSamlBodyRequestModel
 	req.SAML_AUTO_CREATE_OBJECTS = o.SAML_AUTO_CREATE_OBJECTS.ValueBool()
 	req.SOCIAL_AUTH_SAML_ENABLED_IDPS = json.RawMessage(o.SOCIAL_AUTH_SAML_ENABLED_IDPS.ValueString())
-	req.SOCIAL_AUTH_SAML_EXTRA_DATA = []string{}
-	for _, val := range o.SOCIAL_AUTH_SAML_EXTRA_DATA.Elements() {
-		if _, ok := val.(types.String); ok {
-			req.SOCIAL_AUTH_SAML_EXTRA_DATA = append(req.SOCIAL_AUTH_SAML_EXTRA_DATA, val.(types.String).ValueString())
-		} else {
-			req.SOCIAL_AUTH_SAML_EXTRA_DATA = append(req.SOCIAL_AUTH_SAML_EXTRA_DATA, val.String())
-		}
-	}
+	req.SOCIAL_AUTH_SAML_EXTRA_DATA = helpers.ListAsStringSlice(o.SOCIAL_AUTH_SAML_EXTRA_DATA, false)
 	req.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR = json.RawMessage(o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR.ValueString())
 	req.SOCIAL_AUTH_SAML_ORGANIZATION_MAP = json.RawMessage(o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP.ValueString())
 	req.SOCIAL_AUTH_SAML_ORG_INFO = json.RawMessage(o.SOCIAL_AUTH_SAML_ORG_INFO.ValueString())
@@ -99,138 +74,84 @@ func (o *settingsAuthSamlTerraformModel) BodyRequest() (req settingsAuthSamlBody
 	req.SOCIAL_AUTH_SAML_TEAM_MAP = json.RawMessage(o.SOCIAL_AUTH_SAML_TEAM_MAP.ValueString())
 	req.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = json.RawMessage(o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT.ValueString())
 	req.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR = json.RawMessage(o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR.ValueString())
-	return
+	return &req
 }
 
-func (o *settingsAuthSamlTerraformModel) setSamlAutoCreateObjects(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SAML_AUTO_CREATE_OBJECTS, data)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlCallbackUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_CALLBACK_URL, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlEnabledIdps(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ENABLED_IDPS, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlExtraData(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetListString(&o.SOCIAL_AUTH_SAML_EXTRA_DATA, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlMetadataUrl(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_METADATA_URL, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationAttr(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrganizationMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlOrgInfo(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORG_INFO, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSecurityConfig(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SECURITY_CONFIG, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpEntityId(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_ENTITY_ID, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpExtra(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SP_EXTRA, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPrivateKey(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY, data, true)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSpPublicCert(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT, data, true)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlSupportContact(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamAttr(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_ATTR, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTeamMap(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_MAP, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlTechnicalContact(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) setSocialAuthSamlUserFlagsByAttr(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data, false)
-}
-
-func (o *settingsAuthSamlTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *settingsAuthSamlTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setSamlAutoCreateObjects(data["SAML_AUTO_CREATE_OBJECTS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SAML_AUTO_CREATE_OBJECTS, data["SAML_AUTO_CREATE_OBJECTS"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlCallbackUrl(data["SOCIAL_AUTH_SAML_CALLBACK_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_CALLBACK_URL, data["SOCIAL_AUTH_SAML_CALLBACK_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlEnabledIdps(data["SOCIAL_AUTH_SAML_ENABLED_IDPS"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ENABLED_IDPS, data["SOCIAL_AUTH_SAML_ENABLED_IDPS"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlExtraData(data["SOCIAL_AUTH_SAML_EXTRA_DATA"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetListString(&o.SOCIAL_AUTH_SAML_EXTRA_DATA, data["SOCIAL_AUTH_SAML_EXTRA_DATA"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlMetadataUrl(data["SOCIAL_AUTH_SAML_METADATA_URL"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_METADATA_URL, data["SOCIAL_AUTH_SAML_METADATA_URL"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlOrganizationAttr(data["SOCIAL_AUTH_SAML_ORGANIZATION_ATTR"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_ATTR, data["SOCIAL_AUTH_SAML_ORGANIZATION_ATTR"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlOrganizationMap(data["SOCIAL_AUTH_SAML_ORGANIZATION_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORGANIZATION_MAP, data["SOCIAL_AUTH_SAML_ORGANIZATION_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlOrgInfo(data["SOCIAL_AUTH_SAML_ORG_INFO"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_ORG_INFO, data["SOCIAL_AUTH_SAML_ORG_INFO"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSecurityConfig(data["SOCIAL_AUTH_SAML_SECURITY_CONFIG"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SECURITY_CONFIG, data["SOCIAL_AUTH_SAML_SECURITY_CONFIG"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSpEntityId(data["SOCIAL_AUTH_SAML_SP_ENTITY_ID"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_ENTITY_ID, data["SOCIAL_AUTH_SAML_SP_ENTITY_ID"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSpExtra(data["SOCIAL_AUTH_SAML_SP_EXTRA"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SP_EXTRA, data["SOCIAL_AUTH_SAML_SP_EXTRA"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSpPrivateKey(data["SOCIAL_AUTH_SAML_SP_PRIVATE_KEY"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PRIVATE_KEY, data["SOCIAL_AUTH_SAML_SP_PRIVATE_KEY"], true)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSpPublicCert(data["SOCIAL_AUTH_SAML_SP_PUBLIC_CERT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SOCIAL_AUTH_SAML_SP_PUBLIC_CERT, data["SOCIAL_AUTH_SAML_SP_PUBLIC_CERT"], true)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlSupportContact(data["SOCIAL_AUTH_SAML_SUPPORT_CONTACT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_SUPPORT_CONTACT, data["SOCIAL_AUTH_SAML_SUPPORT_CONTACT"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlTeamAttr(data["SOCIAL_AUTH_SAML_TEAM_ATTR"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_ATTR, data["SOCIAL_AUTH_SAML_TEAM_ATTR"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlTeamMap(data["SOCIAL_AUTH_SAML_TEAM_MAP"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TEAM_MAP, data["SOCIAL_AUTH_SAML_TEAM_MAP"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlTechnicalContact(data["SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_TECHNICAL_CONTACT, data["SOCIAL_AUTH_SAML_TECHNICAL_CONTACT"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSocialAuthSamlUserFlagsByAttr(data["SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR, data["SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

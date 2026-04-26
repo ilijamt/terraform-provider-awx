@@ -1,0 +1,3408 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:06:56 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f70dbcfbc13b41548ffeb1ff30b75596
+            X-Api-Time:
+                - 0.067s
+            X-Api-Total-Time:
+                - 0.169s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 5.196559333s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 45
+        host: awx.local
+        body: |
+            {"default_environment":1,"name":"Inventory"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3779
+        body: '{"id":6,"type":"organization","url":"/api/v2/organizations/6/","related":{"named_url":"/api/v2/organizations/Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/6/execution_environments/","projects":"/api/v2/organizations/6/projects/","inventories":"/api/v2/organizations/6/inventories/","job_templates":"/api/v2/organizations/6/job_templates/","workflow_job_templates":"/api/v2/organizations/6/workflow_job_templates/","users":"/api/v2/organizations/6/users/","admins":"/api/v2/organizations/6/admins/","teams":"/api/v2/organizations/6/teams/","credentials":"/api/v2/organizations/6/credentials/","applications":"/api/v2/organizations/6/applications/","activity_stream":"/api/v2/organizations/6/activity_stream/","notification_templates":"/api/v2/organizations/6/notification_templates/","notification_templates_started":"/api/v2/organizations/6/notification_templates_started/","notification_templates_success":"/api/v2/organizations/6/notification_templates_success/","notification_templates_error":"/api/v2/organizations/6/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/6/notification_templates_approvals/","object_roles":"/api/v2/organizations/6/object_roles/","access_list":"/api/v2/organizations/6/access_list/","instance_groups":"/api/v2/organizations/6/instance_groups/","galaxy_credentials":"/api/v2/organizations/6/galaxy_credentials/","default_environment":"/api/v2/execution_environments/1/"},"summary_fields":{"default_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"resource":{"ansible_id":"2eed5ec7-1691-42fe-a3f9-09f943870241","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":99,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":100},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":101},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":102},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":103},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":104},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":105},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":106},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":107},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":108},"member_role":{"description":"User is a member of the organization","name":"Member","id":109,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":110},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":111}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-04-26T00:07:01.555773Z","modified":"2026-04-26T00:07:01.555787Z","name":"Inventory","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":1}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3779"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:01 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/organizations/6/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 4d75fdc3aa6541c9aaa8a57d46092e1f
+            X-Api-Time:
+                - 0.297s
+            X-Api-Total-Time:
+                - 0.351s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 365.901958ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 223
+        host: awx.local
+        body: |
+            {"name":"Example inventory","organization":6,"prevent_instance_group_fallback":false,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":true,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2420
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:02.311005Z","name":"Example inventory","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":true,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2420"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:02 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/inventories/6/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 42b4686301f14e81878952a122b0e088
+            X-Api-Time:
+                - 0.198s
+            X-Api-Total-Time:
+                - 0.247s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 256.210042ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1942
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1942"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 7f26a2eaa07d4198b23e9191ad8d1683
+            X-Api-Time:
+                - 0.052s
+            X-Api-Total-Time:
+                - 0.089s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 97.131292ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 88
+        host: awx.local
+        body: |
+            {"inventory":6,"name":"group-vars","variables":"{\"grp1\":\"val1\",\"grp2\":\"val2\"}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1431
+        body: '{"id":11,"type":"group","url":"/api/v2/groups/11/","related":{"named_url":"/api/v2/groups/group-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/11/variable_data/","hosts":"/api/v2/groups/11/hosts/","potential_children":"/api/v2/groups/11/potential_children/","children":"/api/v2/groups/11/children/","all_hosts":"/api/v2/groups/11/all_hosts/","job_events":"/api/v2/groups/11/job_events/","job_host_summaries":"/api/v2/groups/11/job_host_summaries/","activity_stream":"/api/v2/groups/11/activity_stream/","inventory_sources":"/api/v2/groups/11/inventory_sources/","ad_hoc_commands":"/api/v2/groups/11/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:02.949528Z","modified":"2026-04-26T00:07:02.949583Z","name":"group-vars","description":"","inventory":6,"variables":"{\"grp1\":\"val1\",\"grp2\":\"val2\"}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1431"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:03 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/groups/11/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3590539a132142baa054f22cb8d77554
+            X-Api-Time:
+                - 0.089s
+            X-Api-Total-Time:
+                - 0.151s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 256.956125ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 56
+        host: awx.local
+        body: |
+            {"inventory":6,"name":"group-no-vars","variables":"{}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1402
+        body: '{"id":12,"type":"group","url":"/api/v2/groups/12/","related":{"named_url":"/api/v2/groups/group-no-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/12/variable_data/","hosts":"/api/v2/groups/12/hosts/","potential_children":"/api/v2/groups/12/potential_children/","children":"/api/v2/groups/12/children/","all_hosts":"/api/v2/groups/12/all_hosts/","job_events":"/api/v2/groups/12/job_events/","job_host_summaries":"/api/v2/groups/12/job_host_summaries/","activity_stream":"/api/v2/groups/12/activity_stream/","inventory_sources":"/api/v2/groups/12/inventory_sources/","ad_hoc_commands":"/api/v2/groups/12/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:03.107091Z","modified":"2026-04-26T00:07:03.107109Z","name":"group-no-vars","description":"","inventory":6,"variables":"{}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1402"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:03 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/groups/12/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 348a9e3984364734b3da6137bd0ea0f4
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.120s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 389.053583ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 112
+        host: awx.local
+        body: |
+            {"enabled":false,"inventory":6,"name":"vars.example.com","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1715
+        body: '{"id":11,"type":"host","url":"/api/v2/hosts/11/","related":{"named_url":"/api/v2/hosts/vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/11/variable_data/","groups":"/api/v2/hosts/11/groups/","all_groups":"/api/v2/hosts/11/all_groups/","job_events":"/api/v2/hosts/11/job_events/","job_host_summaries":"/api/v2/hosts/11/job_host_summaries/","activity_stream":"/api/v2/hosts/11/activity_stream/","inventory_sources":"/api/v2/hosts/11/inventory_sources/","smart_inventories":"/api/v2/hosts/11/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/11/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/11/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/11/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":1,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":0,"results":[]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.239893Z","modified":"2026-04-26T00:07:03.239945Z","name":"vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1715"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:03 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/hosts/11/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 93bb25147b9e441d9d4fab328e59e865
+            X-Api-Time:
+                - 0.109s
+            X-Api-Total-Time:
+                - 0.158s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 561.016708ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 78
+        host: awx.local
+        body: |
+            {"enabled":false,"inventory":6,"name":"no-vars.example.com","variables":"{}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1684
+        body: '{"id":12,"type":"host","url":"/api/v2/hosts/12/","related":{"named_url":"/api/v2/hosts/no-vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/12/variable_data/","groups":"/api/v2/hosts/12/groups/","all_groups":"/api/v2/hosts/12/all_groups/","job_events":"/api/v2/hosts/12/job_events/","job_host_summaries":"/api/v2/hosts/12/job_host_summaries/","activity_stream":"/api/v2/hosts/12/activity_stream/","inventory_sources":"/api/v2/hosts/12/inventory_sources/","smart_inventories":"/api/v2/hosts/12/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/12/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/12/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/12/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":0,"results":[]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.400776Z","modified":"2026-04-26T00:07:03.400792Z","name":"no-vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1684"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:03 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/hosts/12/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 61fa72d9e2fc4180b640cf564bdc6648
+            X-Api-Time:
+                - 0.092s
+            X-Api-Total-Time:
+                - 0.143s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 714.334916ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 10
+        host: awx.local
+        body: |
+            {"id":11}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2a6323457e374393968be5d717698f30
+            X-Api-Time:
+                - 0.099s
+            X-Api-Total-Time:
+                - 0.173s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 182.383083ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 10
+        host: awx.local
+        body: |
+            {"id":12}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 437ca31ea85445eeb1063b595c35eb0d
+            X-Api-Time:
+                - 0.073s
+            X-Api-Total-Time:
+                - 0.124s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 131.96425ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6230e2e6fedd4dd09020e711aef222e4
+            X-Api-Time:
+                - 0.045s
+            X-Api-Total-Time:
+                - 0.096s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 103.902167ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1942
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1942"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0b02dfa29c26442ca53d59dc2ee23774
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.105s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 112.626417ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:05 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e091748830c6440b992aef8993726fd6
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.119s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 126.960666ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3789
+        body: '{"id":6,"type":"organization","url":"/api/v2/organizations/6/","related":{"named_url":"/api/v2/organizations/Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/6/execution_environments/","projects":"/api/v2/organizations/6/projects/","inventories":"/api/v2/organizations/6/inventories/","job_templates":"/api/v2/organizations/6/job_templates/","workflow_job_templates":"/api/v2/organizations/6/workflow_job_templates/","users":"/api/v2/organizations/6/users/","admins":"/api/v2/organizations/6/admins/","teams":"/api/v2/organizations/6/teams/","credentials":"/api/v2/organizations/6/credentials/","applications":"/api/v2/organizations/6/applications/","activity_stream":"/api/v2/organizations/6/activity_stream/","notification_templates":"/api/v2/organizations/6/notification_templates/","notification_templates_started":"/api/v2/organizations/6/notification_templates_started/","notification_templates_success":"/api/v2/organizations/6/notification_templates_success/","notification_templates_error":"/api/v2/organizations/6/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/6/notification_templates_approvals/","object_roles":"/api/v2/organizations/6/object_roles/","access_list":"/api/v2/organizations/6/access_list/","instance_groups":"/api/v2/organizations/6/instance_groups/","galaxy_credentials":"/api/v2/organizations/6/galaxy_credentials/","default_environment":"/api/v2/execution_environments/1/"},"summary_fields":{"default_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"resource":{"ansible_id":"2eed5ec7-1691-42fe-a3f9-09f943870241","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":99,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":100},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":101},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":102},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":103},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":104},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":105},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":106},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":107},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":108},"member_role":{"description":"User is a member of the organization","name":"Member","id":109,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":110},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":111}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":2}},"created":"2026-04-26T00:07:01.555773Z","modified":"2026-04-26T00:07:01.555787Z","name":"Inventory","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":1}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3789"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:05 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f27732cfde1c41149107b5fcfaa4b9f7
+            X-Api-Time:
+                - 0.080s
+            X-Api-Total-Time:
+                - 0.125s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 134.629834ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2420
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:02.311005Z","name":"Example inventory","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":true,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2420"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:05 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ad9d31ea46df437896d0a5fbf3ce7b18
+            X-Api-Time:
+                - 0.048s
+            X-Api-Total-Time:
+                - 0.091s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 99.435916ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1402
+        body: '{"id":12,"type":"group","url":"/api/v2/groups/12/","related":{"named_url":"/api/v2/groups/group-no-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/12/variable_data/","hosts":"/api/v2/groups/12/hosts/","potential_children":"/api/v2/groups/12/potential_children/","children":"/api/v2/groups/12/children/","all_hosts":"/api/v2/groups/12/all_hosts/","job_events":"/api/v2/groups/12/job_events/","job_host_summaries":"/api/v2/groups/12/job_host_summaries/","activity_stream":"/api/v2/groups/12/activity_stream/","inventory_sources":"/api/v2/groups/12/inventory_sources/","ad_hoc_commands":"/api/v2/groups/12/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:03.107091Z","modified":"2026-04-26T00:07:03.107109Z","name":"group-no-vars","description":"","inventory":6,"variables":"{}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1402"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:05 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b05abe57d0694c868c9448649e9c76d7
+            X-Api-Time:
+                - 0.073s
+            X-Api-Total-Time:
+                - 0.131s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 140.388666ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1431
+        body: '{"id":11,"type":"group","url":"/api/v2/groups/11/","related":{"named_url":"/api/v2/groups/group-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/11/variable_data/","hosts":"/api/v2/groups/11/hosts/","potential_children":"/api/v2/groups/11/potential_children/","children":"/api/v2/groups/11/children/","all_hosts":"/api/v2/groups/11/all_hosts/","job_events":"/api/v2/groups/11/job_events/","job_host_summaries":"/api/v2/groups/11/job_host_summaries/","activity_stream":"/api/v2/groups/11/activity_stream/","inventory_sources":"/api/v2/groups/11/inventory_sources/","ad_hoc_commands":"/api/v2/groups/11/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:02.949528Z","modified":"2026-04-26T00:07:02.949583Z","name":"group-vars","description":"","inventory":6,"variables":"{\"grp1\":\"val1\",\"grp2\":\"val2\"}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1431"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:06 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 31c950efb84f436099e60f2a33bb0e80
+            X-Api-Time:
+                - 0.084s
+            X-Api-Total-Time:
+                - 0.152s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 304.591333ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1744
+        body: '{"id":11,"type":"host","url":"/api/v2/hosts/11/","related":{"named_url":"/api/v2/hosts/vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/11/variable_data/","groups":"/api/v2/hosts/11/groups/","all_groups":"/api/v2/hosts/11/all_groups/","job_events":"/api/v2/hosts/11/job_events/","job_host_summaries":"/api/v2/hosts/11/job_host_summaries/","activity_stream":"/api/v2/hosts/11/activity_stream/","inventory_sources":"/api/v2/hosts/11/inventory_sources/","smart_inventories":"/api/v2/hosts/11/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/11/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/11/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/11/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":11,"name":"group-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.239893Z","modified":"2026-04-26T00:07:03.239945Z","name":"vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1744"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:06 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - bcd85a1ce45d45869c68733c324e2994
+            X-Api-Time:
+                - 0.090s
+            X-Api-Total-Time:
+                - 0.132s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 445.259875ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1716
+        body: '{"id":12,"type":"host","url":"/api/v2/hosts/12/","related":{"named_url":"/api/v2/hosts/no-vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/12/variable_data/","groups":"/api/v2/hosts/12/groups/","all_groups":"/api/v2/hosts/12/all_groups/","job_events":"/api/v2/hosts/12/job_events/","job_host_summaries":"/api/v2/hosts/12/job_host_summaries/","activity_stream":"/api/v2/hosts/12/activity_stream/","inventory_sources":"/api/v2/hosts/12/inventory_sources/","smart_inventories":"/api/v2/hosts/12/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/12/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/12/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/12/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":12,"name":"group-no-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.400776Z","modified":"2026-04-26T00:07:03.400792Z","name":"no-vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1716"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:06 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1ceb78e47a8e4d478bb9e3990559c3ae
+            X-Api-Time:
+                - 0.153s
+            X-Api-Total-Time:
+                - 0.200s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 654.712583ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1942
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1942"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:06 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b1f9a7c29d30474283303f56f608d592
+            X-Api-Time:
+                - 0.060s
+            X-Api-Total-Time:
+                - 0.103s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 767.566709ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:07 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 755e6dbd27394e1d94c7c16863184525
+            X-Api-Time:
+                - 0.059s
+            X-Api-Total-Time:
+                - 0.124s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 142.0185ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3789
+        body: '{"id":6,"type":"organization","url":"/api/v2/organizations/6/","related":{"named_url":"/api/v2/organizations/Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/6/execution_environments/","projects":"/api/v2/organizations/6/projects/","inventories":"/api/v2/organizations/6/inventories/","job_templates":"/api/v2/organizations/6/job_templates/","workflow_job_templates":"/api/v2/organizations/6/workflow_job_templates/","users":"/api/v2/organizations/6/users/","admins":"/api/v2/organizations/6/admins/","teams":"/api/v2/organizations/6/teams/","credentials":"/api/v2/organizations/6/credentials/","applications":"/api/v2/organizations/6/applications/","activity_stream":"/api/v2/organizations/6/activity_stream/","notification_templates":"/api/v2/organizations/6/notification_templates/","notification_templates_started":"/api/v2/organizations/6/notification_templates_started/","notification_templates_success":"/api/v2/organizations/6/notification_templates_success/","notification_templates_error":"/api/v2/organizations/6/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/6/notification_templates_approvals/","object_roles":"/api/v2/organizations/6/object_roles/","access_list":"/api/v2/organizations/6/access_list/","instance_groups":"/api/v2/organizations/6/instance_groups/","galaxy_credentials":"/api/v2/organizations/6/galaxy_credentials/","default_environment":"/api/v2/execution_environments/1/"},"summary_fields":{"default_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"resource":{"ansible_id":"2eed5ec7-1691-42fe-a3f9-09f943870241","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":99,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":100},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":101},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":102},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":103},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":104},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":105},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":106},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":107},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":108},"member_role":{"description":"User is a member of the organization","name":"Member","id":109,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":110},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":111}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":2}},"created":"2026-04-26T00:07:01.555773Z","modified":"2026-04-26T00:07:01.555787Z","name":"Inventory","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":1}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3789"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:07 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3f20aa76594e4597a90af28f0c60a0a6
+            X-Api-Time:
+                - 0.140s
+            X-Api-Total-Time:
+                - 0.208s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 217.039792ms
+    - id: 22
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2420
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:02.311005Z","name":"Example inventory","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":true,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2420"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:08 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 9ca2cbccb100415894a25458dfaa31c6
+            X-Api-Time:
+                - 0.090s
+            X-Api-Total-Time:
+                - 0.143s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 155.252958ms
+    - id: 23
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1431
+        body: '{"id":11,"type":"group","url":"/api/v2/groups/11/","related":{"named_url":"/api/v2/groups/group-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/11/variable_data/","hosts":"/api/v2/groups/11/hosts/","potential_children":"/api/v2/groups/11/potential_children/","children":"/api/v2/groups/11/children/","all_hosts":"/api/v2/groups/11/all_hosts/","job_events":"/api/v2/groups/11/job_events/","job_host_summaries":"/api/v2/groups/11/job_host_summaries/","activity_stream":"/api/v2/groups/11/activity_stream/","inventory_sources":"/api/v2/groups/11/inventory_sources/","ad_hoc_commands":"/api/v2/groups/11/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:02.949528Z","modified":"2026-04-26T00:07:02.949583Z","name":"group-vars","description":"","inventory":6,"variables":"{\"grp1\":\"val1\",\"grp2\":\"val2\"}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1431"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:08 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 62f915558c6a499fbfddd43dd21d0e75
+            X-Api-Time:
+                - 0.074s
+            X-Api-Total-Time:
+                - 0.138s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 159.249083ms
+    - id: 24
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1716
+        body: '{"id":12,"type":"host","url":"/api/v2/hosts/12/","related":{"named_url":"/api/v2/hosts/no-vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/12/variable_data/","groups":"/api/v2/hosts/12/groups/","all_groups":"/api/v2/hosts/12/all_groups/","job_events":"/api/v2/hosts/12/job_events/","job_host_summaries":"/api/v2/hosts/12/job_host_summaries/","activity_stream":"/api/v2/hosts/12/activity_stream/","inventory_sources":"/api/v2/hosts/12/inventory_sources/","smart_inventories":"/api/v2/hosts/12/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/12/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/12/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/12/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":12,"name":"group-no-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.400776Z","modified":"2026-04-26T00:07:03.400792Z","name":"no-vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1716"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:08 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 24dcce24b8de4a40b18c6ceaa0f651a5
+            X-Api-Time:
+                - 0.103s
+            X-Api-Total-Time:
+                - 0.145s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 159.372458ms
+    - id: 25
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1402
+        body: '{"id":12,"type":"group","url":"/api/v2/groups/12/","related":{"named_url":"/api/v2/groups/group-no-vars++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/12/variable_data/","hosts":"/api/v2/groups/12/hosts/","potential_children":"/api/v2/groups/12/potential_children/","children":"/api/v2/groups/12/children/","all_hosts":"/api/v2/groups/12/all_hosts/","job_events":"/api/v2/groups/12/job_events/","job_host_summaries":"/api/v2/groups/12/job_host_summaries/","activity_stream":"/api/v2/groups/12/activity_stream/","inventory_sources":"/api/v2/groups/12/inventory_sources/","ad_hoc_commands":"/api/v2/groups/12/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:03.107091Z","modified":"2026-04-26T00:07:03.107109Z","name":"group-no-vars","description":"","inventory":6,"variables":"{}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1402"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:08 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f295bf80c9de40b4b2f442d130c5caef
+            X-Api-Time:
+                - 0.078s
+            X-Api-Total-Time:
+                - 0.135s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 302.881041ms
+    - id: 26
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1744
+        body: '{"id":11,"type":"host","url":"/api/v2/hosts/11/","related":{"named_url":"/api/v2/hosts/vars.example.com++Example inventory++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/11/variable_data/","groups":"/api/v2/hosts/11/groups/","all_groups":"/api/v2/hosts/11/all_groups/","job_events":"/api/v2/hosts/11/job_events/","job_host_summaries":"/api/v2/hosts/11/job_host_summaries/","activity_stream":"/api/v2/hosts/11/activity_stream/","inventory_sources":"/api/v2/hosts/11/inventory_sources/","smart_inventories":"/api/v2/hosts/11/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/11/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/11/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/11/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":11,"name":"group-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.239893Z","modified":"2026-04-26T00:07:03.239945Z","name":"vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1744"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:08 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2a9b4d6a8bd94b28be0b167f52ac16e3
+            X-Api-Time:
+                - 0.117s
+            X-Api-Total-Time:
+                - 0.160s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 329.213208ms
+    - id: 27
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 234
+        host: awx.local
+        body: |
+            {"name":"Example inventory (updated)","organization":6,"prevent_instance_group_fallback":false,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":false,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2441
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:09.414879Z","name":"Example inventory (updated)","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":false,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2441"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:09 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0cb6306c5b544486b8976c3289e06038
+            X-Api-Time:
+                - 0.131s
+            X-Api-Total-Time:
+                - 0.177s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 190.040833ms
+    - id: 28
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1992
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1992"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:09 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ebf341ffa4464795b798314404d12a6b
+            X-Api-Time:
+                - 0.109s
+            X-Api-Total-Time:
+                - 0.161s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 177.215709ms
+    - id: 29
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 120
+        host: awx.local
+        body: |
+            {"enabled":false,"inventory":6,"name":"vars-updated.example.com","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1780
+        body: '{"id":11,"type":"host","url":"/api/v2/hosts/11/","related":{"named_url":"/api/v2/hosts/vars-updated.example.com++Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/11/variable_data/","groups":"/api/v2/hosts/11/groups/","all_groups":"/api/v2/hosts/11/all_groups/","job_events":"/api/v2/hosts/11/job_events/","job_host_summaries":"/api/v2/hosts/11/job_host_summaries/","activity_stream":"/api/v2/hosts/11/activity_stream/","inventory_sources":"/api/v2/hosts/11/inventory_sources/","smart_inventories":"/api/v2/hosts/11/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/11/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/11/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/11/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory (updated)","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":11,"name":"group-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.239893Z","modified":"2026-04-26T00:07:09.819418Z","name":"vars-updated.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1780"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:09 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a266976e65d54407b6b73eb1144e8b7b
+            X-Api-Time:
+                - 0.147s
+            X-Api-Total-Time:
+                - 0.190s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 201.564042ms
+    - id: 30
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:10 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6ea58e3427d6499399ec5f34e34b49cd
+            X-Api-Time:
+                - 0.061s
+            X-Api-Total-Time:
+                - 0.130s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 138.35875ms
+    - id: 31
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1992
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1992"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:10 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ebd587d017794a15a885f1999854451e
+            X-Api-Time:
+                - 0.108s
+            X-Api-Total-Time:
+                - 0.157s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 166.752833ms
+    - id: 32
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3fcf083a35ab443d8db06c82ac080131
+            X-Api-Time:
+                - 0.060s
+            X-Api-Total-Time:
+                - 0.123s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 135.965042ms
+    - id: 33
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3789
+        body: '{"id":6,"type":"organization","url":"/api/v2/organizations/6/","related":{"named_url":"/api/v2/organizations/Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/6/execution_environments/","projects":"/api/v2/organizations/6/projects/","inventories":"/api/v2/organizations/6/inventories/","job_templates":"/api/v2/organizations/6/job_templates/","workflow_job_templates":"/api/v2/organizations/6/workflow_job_templates/","users":"/api/v2/organizations/6/users/","admins":"/api/v2/organizations/6/admins/","teams":"/api/v2/organizations/6/teams/","credentials":"/api/v2/organizations/6/credentials/","applications":"/api/v2/organizations/6/applications/","activity_stream":"/api/v2/organizations/6/activity_stream/","notification_templates":"/api/v2/organizations/6/notification_templates/","notification_templates_started":"/api/v2/organizations/6/notification_templates_started/","notification_templates_success":"/api/v2/organizations/6/notification_templates_success/","notification_templates_error":"/api/v2/organizations/6/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/6/notification_templates_approvals/","object_roles":"/api/v2/organizations/6/object_roles/","access_list":"/api/v2/organizations/6/access_list/","instance_groups":"/api/v2/organizations/6/instance_groups/","galaxy_credentials":"/api/v2/organizations/6/galaxy_credentials/","default_environment":"/api/v2/execution_environments/1/"},"summary_fields":{"default_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"resource":{"ansible_id":"2eed5ec7-1691-42fe-a3f9-09f943870241","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":99,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":100},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":101},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":102},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":103},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":104},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":105},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":106},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":107},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":108},"member_role":{"description":"User is a member of the organization","name":"Member","id":109,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":110},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":111}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":2}},"created":"2026-04-26T00:07:01.555773Z","modified":"2026-04-26T00:07:01.555787Z","name":"Inventory","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":1}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3789"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d53a1acc72914f849a93a72897b482eb
+            X-Api-Time:
+                - 0.118s
+            X-Api-Total-Time:
+                - 0.162s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 171.706ms
+    - id: 34
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2441
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:09.414879Z","name":"Example inventory (updated)","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":false,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2441"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 58ab19e0137c44838bcb6aa38b8cdb5c
+            X-Api-Time:
+                - 0.047s
+            X-Api-Total-Time:
+                - 0.091s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 99.149ms
+    - id: 35
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1422
+        body: '{"id":12,"type":"group","url":"/api/v2/groups/12/","related":{"named_url":"/api/v2/groups/group-no-vars++Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/12/variable_data/","hosts":"/api/v2/groups/12/hosts/","potential_children":"/api/v2/groups/12/potential_children/","children":"/api/v2/groups/12/children/","all_hosts":"/api/v2/groups/12/all_hosts/","job_events":"/api/v2/groups/12/job_events/","job_host_summaries":"/api/v2/groups/12/job_host_summaries/","activity_stream":"/api/v2/groups/12/activity_stream/","inventory_sources":"/api/v2/groups/12/inventory_sources/","ad_hoc_commands":"/api/v2/groups/12/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory (updated)","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:03.107091Z","modified":"2026-04-26T00:07:03.107109Z","name":"group-no-vars","description":"","inventory":6,"variables":"{}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1422"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 86d8d67da80f4a18b3ea5bd285dc6221
+            X-Api-Time:
+                - 0.041s
+            X-Api-Total-Time:
+                - 0.094s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 107.127167ms
+    - id: 36
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1992
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1992"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 823852edf4f448a897411a06d2e62159
+            X-Api-Time:
+                - 0.092s
+            X-Api-Total-Time:
+                - 0.135s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 146.449166ms
+    - id: 37
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1451
+        body: '{"id":11,"type":"group","url":"/api/v2/groups/11/","related":{"named_url":"/api/v2/groups/group-vars++Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/groups/11/variable_data/","hosts":"/api/v2/groups/11/hosts/","potential_children":"/api/v2/groups/11/potential_children/","children":"/api/v2/groups/11/children/","all_hosts":"/api/v2/groups/11/all_hosts/","job_events":"/api/v2/groups/11/job_events/","job_host_summaries":"/api/v2/groups/11/job_host_summaries/","activity_stream":"/api/v2/groups/11/activity_stream/","inventory_sources":"/api/v2/groups/11/inventory_sources/","ad_hoc_commands":"/api/v2/groups/11/ad_hoc_commands/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory (updated)","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-26T00:07:02.949528Z","modified":"2026-04-26T00:07:02.949583Z","name":"group-vars","description":"","inventory":6,"variables":"{\"grp1\":\"val1\",\"grp2\":\"val2\"}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1451"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:11 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2d24252e37c449a098082cea73d2edc2
+            X-Api-Time:
+                - 0.043s
+            X-Api-Total-Time:
+                - 0.082s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 198.221875ms
+    - id: 38
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1736
+        body: '{"id":12,"type":"host","url":"/api/v2/hosts/12/","related":{"named_url":"/api/v2/hosts/no-vars.example.com++Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/12/variable_data/","groups":"/api/v2/hosts/12/groups/","all_groups":"/api/v2/hosts/12/all_groups/","job_events":"/api/v2/hosts/12/job_events/","job_host_summaries":"/api/v2/hosts/12/job_host_summaries/","activity_stream":"/api/v2/hosts/12/activity_stream/","inventory_sources":"/api/v2/hosts/12/inventory_sources/","smart_inventories":"/api/v2/hosts/12/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/12/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/12/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/12/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory (updated)","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":12,"name":"group-no-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.400776Z","modified":"2026-04-26T00:07:03.400792Z","name":"no-vars.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1736"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 213497f2f4a84f10b0895f29c888cd5b
+            X-Api-Time:
+                - 0.105s
+            X-Api-Total-Time:
+                - 0.153s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 310.417375ms
+    - id: 39
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1780
+        body: '{"id":11,"type":"host","url":"/api/v2/hosts/11/","related":{"named_url":"/api/v2/hosts/vars-updated.example.com++Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","variable_data":"/api/v2/hosts/11/variable_data/","groups":"/api/v2/hosts/11/groups/","all_groups":"/api/v2/hosts/11/all_groups/","job_events":"/api/v2/hosts/11/job_events/","job_host_summaries":"/api/v2/hosts/11/job_host_summaries/","activity_stream":"/api/v2/hosts/11/activity_stream/","inventory_sources":"/api/v2/hosts/11/inventory_sources/","smart_inventories":"/api/v2/hosts/11/smart_inventories/","ad_hoc_commands":"/api/v2/hosts/11/ad_hoc_commands/","ad_hoc_command_events":"/api/v2/hosts/11/ad_hoc_command_events/","ansible_facts":"/api/v2/hosts/11/ansible_facts/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"inventory":{"id":6,"name":"Example inventory (updated)","description":"","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":6,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"groups":{"count":1,"results":[{"id":11,"name":"group-vars"}]},"recent_jobs":[]},"created":"2026-04-26T00:07:03.239893Z","modified":"2026-04-26T00:07:09.819418Z","name":"vars-updated.example.com","description":"","inventory":6,"enabled":false,"instance_id":"","variables":"{\"host1\":\"val1\",\"host2\":\"val2\"}","has_active_failures":false,"has_inventory_sources":false,"last_job":null,"last_job_host_summary":null,"ansible_facts_modified":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1780"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 8f24ff305f3a4aeea8693c427349cb46
+            X-Api-Time:
+                - 0.085s
+            X-Api-Total-Time:
+                - 0.120s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 324.728625ms
+    - id: 40
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 8ed57128830644b98464fbe00493b70d
+            X-Api-Time:
+                - 0.022s
+            X-Api-Total-Time:
+                - 0.060s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 74.61025ms
+    - id: 41
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2441
+        body: '{"id":6,"type":"inventory","url":"/api/v2/inventories/6/","related":{"named_url":"/api/v2/inventories/Example inventory (updated)++Inventory/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/6/hosts/","variable_data":"/api/v2/inventories/6/variable_data/","script":"/api/v2/inventories/6/script/","activity_stream":"/api/v2/inventories/6/activity_stream/","job_templates":"/api/v2/inventories/6/job_templates/","ad_hoc_commands":"/api/v2/inventories/6/ad_hoc_commands/","access_list":"/api/v2/inventories/6/access_list/","object_roles":"/api/v2/inventories/6/object_roles/","instance_groups":"/api/v2/inventories/6/instance_groups/","copy":"/api/v2/inventories/6/copy/","labels":"/api/v2/inventories/6/labels/","groups":"/api/v2/inventories/6/groups/","root_groups":"/api/v2/inventories/6/root_groups/","update_inventory_sources":"/api/v2/inventories/6/update_inventory_sources/","inventory_sources":"/api/v2/inventories/6/inventory_sources/","tree":"/api/v2/inventories/6/tree/","organization":"/api/v2/organizations/6/"},"summary_fields":{"organization":{"id":6,"name":"Inventory","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":112},"update_role":{"description":"May update the inventory","name":"Update","id":113},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":114},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":115},"read_role":{"description":"May view settings for the inventory","name":"Read","id":116}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-26T00:07:02.310946Z","modified":"2026-04-26T00:07:09.414879Z","name":"Example inventory (updated)","description":"","organization":6,"kind":"","host_filter":null,"variables":"{\"ansible_connection\":\"local\",\"ansible_debug\":false,\"ansible_python_interpreter\":\"{{ ansible_playbook_python }}\"}","has_active_failures":false,"total_hosts":2,"hosts_with_active_failures":0,"total_groups":2,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2441"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a672472528b54223827ce790daa2abe6
+            X-Api-Time:
+                - 0.032s
+            X-Api-Total-Time:
+                - 0.063s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 76.744084ms
+    - id: 42
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1992
+        body: '{"count":5,"next":null,"previous":null,"results":[{"id":112,"type":"role","url":"/api/v2/roles/112/","related":{"users":"/api/v2/roles/112/users/","teams":"/api/v2/roles/112/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Admin","description":"Can manage all aspects of the inventory"},{"id":113,"type":"role","url":"/api/v2/roles/113/","related":{"users":"/api/v2/roles/113/users/","teams":"/api/v2/roles/113/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Update","description":"May update the inventory"},{"id":114,"type":"role","url":"/api/v2/roles/114/","related":{"users":"/api/v2/roles/114/users/","teams":"/api/v2/roles/114/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Ad Hoc","description":"May run ad hoc commands on the inventory"},{"id":115,"type":"role","url":"/api/v2/roles/115/","related":{"users":"/api/v2/roles/115/users/","teams":"/api/v2/roles/115/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Use","description":"Can use the inventory in a job template"},{"id":116,"type":"role","url":"/api/v2/roles/116/","related":{"users":"/api/v2/roles/116/users/","teams":"/api/v2/roles/116/teams/","inventory":"/api/v2/inventories/6/"},"summary_fields":{"resource_name":"Example inventory (updated)","resource_type":"inventory","resource_type_display_name":"Inventory","resource_id":6},"name":"Read","description":"May view settings for the inventory"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1992"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e80c2c2e11ab408ab3047210463c1275
+            X-Api-Time:
+                - 0.059s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 111.9315ms
+    - id: 43
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 30
+        host: awx.local
+        body: |
+            {"id":12,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 55334c9f8f274a3293a2eebfe785c8c1
+            X-Api-Time:
+                - 0.080s
+            X-Api-Total-Time:
+                - 0.162s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 176.980583ms
+    - id: 44
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 30
+        host: awx.local
+        body: |
+            {"id":11,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a0b9292ac96c41d2ba93933387d96135
+            X-Api-Time:
+                - 0.064s
+            X-Api-Total-Time:
+                - 0.278s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 292.372833ms
+    - id: 45
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/12/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d88614fbf57f404d982b690230e12876
+            X-Api-Time:
+                - 0.129s
+            X-Api-Total-Time:
+                - 0.195s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 207.255667ms
+    - id: 46
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/12/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ad53a18d4b5544b6b23694ed92b61f74
+            X-Api-Time:
+                - 0.171s
+            X-Api-Total-Time:
+                - 0.224s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 233.078416ms
+    - id: 47
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/groups/11/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 360eb7ddc0474fa2999452ffb84ea8e5
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.093s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 100.719625ms
+    - id: 48
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/hosts/11/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:14 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d1fd06b402674d638982a72953d73019
+            X-Api-Time:
+                - 0.110s
+            X-Api-Total-Time:
+                - 0.147s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 162.624209ms
+    - id: 49
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/6/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:14 GMT
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - db691515dd16459284c513b0cf9924b3
+            X-Api-Time:
+                - 0.168s
+            X-Api-Total-Time:
+                - 0.236s
+        status: 202 Accepted
+        code: 202
+        duration: 250.655375ms
+    - id: 50
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/6/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Sun, 26 Apr 2026 00:07:15 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d452d1a018344017bca86acbe64f55b0
+            X-Api-Time:
+                - 0.209s
+            X-Api-Total-Time:
+                - 0.309s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 322.904083ms

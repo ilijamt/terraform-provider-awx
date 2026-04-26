@@ -26,6 +26,7 @@ type ModelConfig struct {
 	Enabled                     bool                         `json:"enabled" yaml:"enabled"`
 	Name                        string                       `json:"name" yaml:"name"`
 	NoId                        bool                         `json:"no_id" yaml:"no_id"`
+	NoImport                    bool                         `json:"no_import" yaml:"no_import"`
 	ReadProperties              map[string]*Property         `json:"read_properties" yaml:"read_properties"`
 	WriteProperties             map[string]*Property         `json:"write_properties" yaml:"write_properties"`
 	IdProperty                  *Property                    `json:"id_property" yaml:"id_property"`
@@ -39,6 +40,7 @@ type ModelConfig struct {
 	DeprecatedParts             map[string]bool              `json:"deprecated_parts" yaml:"deprecated_parts"`
 	DeprecatedReadProperties    []string                     `json:"deprecated_read_properties" yaml:"deprecated_read_properties"`
 	DeprecatedWriteProperties   []string                     `json:"deprecated_write_properties" yaml:"deprecated_write_properties"`
+	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
 }
 
 // Property represents a single property in the model
@@ -204,7 +206,7 @@ func (p *Property) setWriteOnly(values map[string]any, override PropertyOverride
 }
 
 func (p *Property) setDefaultValue(values map[string]any, override PropertyOverride) {
-	if "" != override.DefaultValue {
+	if override.DefaultValue != "" {
 		values["default"] = override.DefaultValue
 	}
 
@@ -239,7 +241,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 }
 
 func (p *Property) setElementType(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.ElementType) {
+	if strings.TrimSpace(override.ElementType) != "" {
 		values["element_type"] = override.ElementType
 	} else if v, err := getItemElementListType(values); err == nil {
 		values["element_type"] = v
@@ -260,7 +262,7 @@ func (p *Property) setRequired(values map[string]any, override PropertyOverride)
 }
 
 func (p *Property) setType(values map[string]any, override PropertyOverride) {
-	if "" != override.Type {
+	if override.Type != "" {
 		values["type"] = override.Type
 	}
 	if val, ok := values["type"].(string); ok {
@@ -285,7 +287,7 @@ func (p *Property) setLabel(values map[string]any, override PropertyOverride) {
 
 }
 func (p *Property) setDescription(values map[string]any, override PropertyOverride) {
-	if "" != strings.TrimSpace(override.Description) {
+	if strings.TrimSpace(override.Description) != "" {
 		values["help_text"] = override.Description
 	}
 	if val, ok := values["help_text"].(string); ok {
@@ -303,10 +305,12 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.Enabled = item.Enabled
 	c.UnDeletable = item.Undeletable
 	c.PreStateSetHookFunction = item.PreStateSetHookFunction
+	c.WaitLifecycle = item.WaitLifecycle
 	c.PackageName = config.PackageName("awx")
 	c.ApiVersion = config.ApiVersion
 	c.RenderApiDocs = config.RenderApiDocs
 	c.NoId = item.NoId
+	c.NoImport = item.NoImport
 	c.IdKey = item.IdKey
 	c.FieldConstraints = item.FieldConstraints
 	c.AssociateDisassociateGroups = item.AssociateDisassociateGroups

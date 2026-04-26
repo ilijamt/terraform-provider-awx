@@ -58,33 +58,12 @@ type workflowJobTemplateTerraformModel struct {
 
 // Clone the object
 func (o *workflowJobTemplateTerraformModel) Clone() workflowJobTemplateTerraformModel {
-	return workflowJobTemplateTerraformModel{
-		AllowSimultaneous:    o.AllowSimultaneous,
-		AskInventoryOnLaunch: o.AskInventoryOnLaunch,
-		AskLabelsOnLaunch:    o.AskLabelsOnLaunch,
-		AskLimitOnLaunch:     o.AskLimitOnLaunch,
-		AskScmBranchOnLaunch: o.AskScmBranchOnLaunch,
-		AskSkipTagsOnLaunch:  o.AskSkipTagsOnLaunch,
-		AskTagsOnLaunch:      o.AskTagsOnLaunch,
-		AskVariablesOnLaunch: o.AskVariablesOnLaunch,
-		Description:          o.Description,
-		ExtraVars:            o.ExtraVars,
-		ID:                   o.ID,
-		Inventory:            o.Inventory,
-		JobTags:              o.JobTags,
-		Limit:                o.Limit,
-		Name:                 o.Name,
-		Organization:         o.Organization,
-		ScmBranch:            o.ScmBranch,
-		SkipTags:             o.SkipTags,
-		SurveyEnabled:        o.SurveyEnabled,
-		WebhookCredential:    o.WebhookCredential,
-		WebhookService:       o.WebhookService,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for WorkflowJobTemplate
-func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTemplateBodyRequestModel) {
+func (o *workflowJobTemplateTerraformModel) BodyRequest() *workflowJobTemplateBodyRequestModel {
+	var req workflowJobTemplateBodyRequestModel
 	req.AllowSimultaneous = o.AllowSimultaneous.ValueBool()
 	req.AskInventoryOnLaunch = o.AskInventoryOnLaunch.ValueBool()
 	req.AskLabelsOnLaunch = o.AskLabelsOnLaunch.ValueBool()
@@ -105,159 +84,96 @@ func (o *workflowJobTemplateTerraformModel) BodyRequest() (req workflowJobTempla
 	req.SurveyEnabled = o.SurveyEnabled.ValueBool()
 	req.WebhookCredential = o.WebhookCredential.ValueInt64()
 	req.WebhookService = o.WebhookService.ValueString()
-	return
+	return &req
 }
 
-func (o *workflowJobTemplateTerraformModel) setAllowSimultaneous(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AllowSimultaneous, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskInventoryOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskLabelsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskLimitOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskScmBranchOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskSkipTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskTagsOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setAskVariablesOnLaunch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobTags, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Limit, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SkipTags, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) setSurveyEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SurveyEnabled, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setWebhookCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.WebhookCredential, data)
-}
-
-func (o *workflowJobTemplateTerraformModel) setWebhookService(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.WebhookService, data, false)
-}
-
-func (o *workflowJobTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *workflowJobTemplateTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAllowSimultaneous(data["allow_simultaneous"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AllowSimultaneous, data["allow_simultaneous"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskInventoryOnLaunch(data["ask_inventory_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskInventoryOnLaunch, data["ask_inventory_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskLabelsOnLaunch(data["ask_labels_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskLabelsOnLaunch, data["ask_labels_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskLimitOnLaunch(data["ask_limit_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskLimitOnLaunch, data["ask_limit_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskScmBranchOnLaunch(data["ask_scm_branch_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskScmBranchOnLaunch, data["ask_scm_branch_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskSkipTagsOnLaunch(data["ask_skip_tags_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskSkipTagsOnLaunch, data["ask_skip_tags_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskTagsOnLaunch(data["ask_tags_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskTagsOnLaunch, data["ask_tags_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setAskVariablesOnLaunch(data["ask_variables_on_launch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.AskVariablesOnLaunch, data["ask_variables_on_launch"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExtraVars(data["extra_vars"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.ExtraVars, data["extra_vars"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobTags(data["job_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobTags, data["job_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSkipTags(data["skip_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSurveyEnabled(data["survey_enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SurveyEnabled, data["survey_enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setWebhookCredential(data["webhook_credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.WebhookCredential, data["webhook_credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setWebhookService(data["webhook_service"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.WebhookService, data["webhook_service"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil
@@ -305,9 +221,4 @@ type workflowJobTemplateBodyRequestModel struct {
 	WebhookCredential int64 `json:"webhook_credential,omitempty"`
 	// WebhookService "Service that webhook requests will be accepted from"
 	WebhookService string `json:"webhook_service,omitempty"`
-}
-
-type workflowJobTemplateObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
 }

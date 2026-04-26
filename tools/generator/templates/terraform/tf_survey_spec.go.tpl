@@ -16,7 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	c "github.com/ilijamt/terraform-provider-awx/internal/client"
+	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
 )
 
@@ -52,25 +52,11 @@ type {{ .Name | lowerCamelCase }}SurveyModel struct {
 
 // New{{ .Name }}SurveyResource is a helper function to simplify the provider implementation.
 func New{{ .Name }}SurveyResource() resource.Resource {
-	return &{{ .Name | lowerCamelCase }}Survey{}
+	return &{{ .Name | lowerCamelCase }}Survey{ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "{{ .Name | snakeCase }}_survey_spec", Endpoint: "{{ .Endpoint | url_path_clean }}/%d/survey_spec/"}}}
 }
 
 type {{ .Name | lowerCamelCase }}Survey struct {
-    client   c.Client
-    endpoint string
-}
-
-func (o *{{ .Name | lowerCamelCase }}Survey) Configure(ctx context.Context, request resource.ConfigureRequest, response *resource.ConfigureResponse) {
-    if request.ProviderData == nil {
-        return
-    }
-
-    o.client = request.ProviderData.(c.Client)
-    o.endpoint = "{{ .Endpoint | url_path_clean }}/%d/survey_spec/"
-}
-
-func (o *{{ .Name | lowerCamelCase }}Survey) Metadata(ctx context.Context, request resource.MetadataRequest, response *resource.MetadataResponse) {
-    response.TypeName = request.ProviderTypeName + "_{{ .Name | snakeCase }}_survey_spec"
+    framework.ResourceBase
 }
 
 func (o *{{ .Name | lowerCamelCase }}Survey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -106,60 +92,21 @@ func (o *{{ .Name | lowerCamelCase }}Survey) ImportState(ctx context.Context, re
 
 // Delete the survey spec for {{ .Name }}
 func (o *{{ .Name | lowerCamelCase }}Survey) Delete(ctx context.Context, request resource.DeleteRequest, response *resource.DeleteResponse) {
-	var err error
-
 	var state {{ .Name | lowerCamelCase }}SurveyTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) { return }
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
-	if r, err = o.client.NewRequest(ctx, http.MethodDelete, endpoint, nil); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to delete resource for {{ .Name }}/Survey on %s", endpoint),
-			err.Error(),
-		)
-		return
-	}
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
+	if framework.DiagnosticsHasError(&response.Diagnostics, framework.DeleteRequest(ctx, o.Client, endpoint, "{{ .Name }}/Survey")...) { return }
 }
 
 // Read the survey spec for {{ .Name }}
 func (o *{{ .Name | lowerCamelCase }}Survey) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
-	var err error
 	var state {{ .Name | lowerCamelCase }}SurveyTerraformModel
-	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.State.Get(ctx, &state)...) { return }
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
-	if r, err = o.client.NewRequest(ctx, http.MethodGet, endpoint, nil); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-    var data map[string]any
-	if data, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for {{ .Name }}/Survey on %s", endpoint),
-			err.Error(),
-		)
-		return
-	}
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, state.{{ .Name }}ID.ValueInt64())) + "/"
+	data, d := framework.ReadRequest(ctx, o.Client, endpoint, "{{ .Name }}/Survey")
+	if framework.DiagnosticsHasError(&response.Diagnostics, d...) { return }
 
 	if val, ok := data["spec"]; ok {
 		dg, _ := helpers.AttrValueSetJsonString(&state.Spec, val, {{ or .Trim false }})
@@ -168,94 +115,33 @@ func (o *{{ .Name | lowerCamelCase }}Survey) Read(ctx context.Context, request r
 		}
 	}
 
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) { return }
 }
 
 // Create the survey spec for {{ .Name }}
 func (o *{{ .Name | lowerCamelCase }}Survey) Create(ctx context.Context, request resource.CreateRequest, response *resource.CreateResponse) {
-    var err error
 	var plan, state {{ .Name | lowerCamelCase }}SurveyTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) { return }
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
-	var buf bytes.Buffer
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[{{.Name}}/Create/Survey] Making a request", map[string]any{
-		"payload":  bodyRequest,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
-	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for {{ .Name }}/Survey on %s", endpoint),
-			err.Error(),
-		)
-		return
-	}
+	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "{{ .Name }}/Survey", "create"); framework.DiagnosticsHasError(&response.Diagnostics, d...) { return }
 
     state.Spec = types.StringValue(plan.Spec.ValueString())
 	state.{{ .Name }}ID = types.Int64Value(plan.{{ .Name }}ID.ValueInt64())
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) { return }
 }
 
 // Update the survey spec for {{ .Name }}
 func (o *{{ .Name | lowerCamelCase }}Survey) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
-    var err error
 	var plan, state {{ .Name | lowerCamelCase }}SurveyTerraformModel
-	response.Diagnostics.Append(request.Plan.Get(ctx, &plan)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, request.Plan.Get(ctx, &plan)...) { return }
 
-	var r *http.Request
-	var endpoint = p.Clean(fmt.Sprintf(o.endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
-	var buf bytes.Buffer
+	var endpoint = p.Clean(fmt.Sprintf(o.Endpoint, plan.{{ .Name }}ID.ValueInt64())) + "/"
 	var bodyRequest = plan.BodyRequest()
-	tflog.Debug(ctx, "[{{.Name}}/Update/SurveySpec] Making a request", map[string]any{
-		"payload":  bodyRequest,
-		"method":   http.MethodPost,
-		"endpoint": endpoint,
-	})
-	_ = json.NewEncoder(&buf).Encode(bodyRequest)
-	if r, err = o.client.NewRequest(ctx, http.MethodPost, endpoint, &buf); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to create a new request for {{ .Name }} on %s for delete", endpoint),
-			err.Error(),
-		)
-		return
-	}
-
-	if _, err = o.client.Do(ctx, r); err != nil {
-		response.Diagnostics.AddError(
-			fmt.Sprintf("Unable to read resource for {{ .Name }}/Survey on %s", endpoint),
-			err.Error(),
-		)
-		return
-	}
+	if _, d := framework.CreateUpdateRequest(ctx, o.Client, http.MethodPost, endpoint, bodyRequest, "{{ .Name }}/Survey", "update"); framework.DiagnosticsHasError(&response.Diagnostics, d...) { return }
 
     state.Spec = types.StringValue(plan.Spec.ValueString())
 	state.{{ .Name }}ID = types.Int64Value(plan.{{ .Name }}ID.ValueInt64())
-	response.Diagnostics.Append(response.State.Set(ctx, &state)...)
-	if response.Diagnostics.HasError() {
-		return
-	}
+	if framework.DiagnosticsHasError(&response.Diagnostics, response.State.Set(ctx, &state)...) { return }
 }

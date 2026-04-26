@@ -10,6 +10,13 @@ spec:
   create_preload_data: false
   replicas: 1
   image_pull_policy: Always
+  image_version: 24.6.1
+  image: quay.io/ansible/awx
   extra_settings:
   - setting: TOWER_URL_BASE
     value: '"http://awx.local"'
+  ipv6_disabled: true
+  postgres_data_volume_init: true
+  postgres_init_container_commands: |
+    chown 26:0 /var/lib/pgsql/data
+    chmod 700 /var/lib/pgsql/data

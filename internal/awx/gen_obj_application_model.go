@@ -35,22 +35,12 @@ type applicationTerraformModel struct {
 
 // Clone the object
 func (o *applicationTerraformModel) Clone() applicationTerraformModel {
-	return applicationTerraformModel{
-		AuthorizationGrantType: o.AuthorizationGrantType,
-		ClientId:               o.ClientId,
-		ClientSecret:           o.ClientSecret,
-		ClientType:             o.ClientType,
-		Description:            o.Description,
-		ID:                     o.ID,
-		Name:                   o.Name,
-		Organization:           o.Organization,
-		RedirectUris:           o.RedirectUris,
-		SkipAuthorization:      o.SkipAuthorization,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Application
-func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestModel) {
+func (o *applicationTerraformModel) BodyRequest() *applicationBodyRequestModel {
+	var req applicationBodyRequestModel
 	req.AuthorizationGrantType = o.AuthorizationGrantType.ValueString()
 	req.ClientType = o.ClientType.ValueString()
 	req.Description = o.Description.ValueString()
@@ -58,82 +48,52 @@ func (o *applicationTerraformModel) BodyRequest() (req applicationBodyRequestMod
 	req.Organization = o.Organization.ValueInt64()
 	req.RedirectUris = o.RedirectUris.ValueString()
 	req.SkipAuthorization = o.SkipAuthorization.ValueBool()
-	return
+	return &req
 }
 
-func (o *applicationTerraformModel) setAuthorizationGrantType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.AuthorizationGrantType, data, false)
-}
-
-func (o *applicationTerraformModel) setClientId(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ClientId, data, false)
-}
-
-func (o *applicationTerraformModel) setClientSecret(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ClientSecret, data, false)
-}
-
-func (o *applicationTerraformModel) setClientType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ClientType, data, false)
-}
-
-func (o *applicationTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *applicationTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *applicationTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *applicationTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *applicationTerraformModel) setRedirectUris(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.RedirectUris, data, false)
-}
-
-func (o *applicationTerraformModel) setSkipAuthorization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.SkipAuthorization, data)
-}
-
-func (o *applicationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *applicationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setAuthorizationGrantType(data["authorization_grant_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.AuthorizationGrantType, data["authorization_grant_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setClientId(data["client_id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ClientId, data["client_id"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setClientSecret(data["client_secret"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ClientSecret, data["client_secret"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setClientType(data["client_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ClientType, data["client_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRedirectUris(data["redirect_uris"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.RedirectUris, data["redirect_uris"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSkipAuthorization(data["skip_authorization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.SkipAuthorization, data["skip_authorization"])
 		diags.Append(dg...)
 	}
 	return diags, nil

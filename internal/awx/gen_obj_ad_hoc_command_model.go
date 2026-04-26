@@ -68,38 +68,12 @@ type adHocCommandTerraformModel struct {
 
 // Clone the object
 func (o *adHocCommandTerraformModel) Clone() adHocCommandTerraformModel {
-	return adHocCommandTerraformModel{
-		BecomeEnabled:        o.BecomeEnabled,
-		CanceledOn:           o.CanceledOn,
-		ControllerNode:       o.ControllerNode,
-		Credential:           o.Credential,
-		DiffMode:             o.DiffMode,
-		Elapsed:              o.Elapsed,
-		ExecutionEnvironment: o.ExecutionEnvironment,
-		ExecutionNode:        o.ExecutionNode,
-		ExtraVars:            o.ExtraVars,
-		Failed:               o.Failed,
-		Finished:             o.Finished,
-		Forks:                o.Forks,
-		ID:                   o.ID,
-		Inventory:            o.Inventory,
-		JobExplanation:       o.JobExplanation,
-		JobType:              o.JobType,
-		LaunchType:           o.LaunchType,
-		LaunchedBy:           o.LaunchedBy,
-		Limit:                o.Limit,
-		ModuleArgs:           o.ModuleArgs,
-		ModuleName:           o.ModuleName,
-		Name:                 o.Name,
-		Started:              o.Started,
-		Status:               o.Status,
-		Verbosity:            o.Verbosity,
-		WorkUnitId:           o.WorkUnitId,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for AdHocCommand
-func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestModel) {
+func (o *adHocCommandTerraformModel) BodyRequest() *adHocCommandBodyRequestModel {
+	var req adHocCommandBodyRequestModel
 	req.BecomeEnabled = o.BecomeEnabled.ValueBool()
 	req.Credential = o.Credential.ValueInt64()
 	req.DiffMode = o.DiffMode.ValueBool()
@@ -112,194 +86,116 @@ func (o *adHocCommandTerraformModel) BodyRequest() (req adHocCommandBodyRequestM
 	req.ModuleArgs = o.ModuleArgs.ValueString()
 	req.ModuleName = o.ModuleName.ValueString()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
-func (o *adHocCommandTerraformModel) setBecomeEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.BecomeEnabled, data)
-}
-
-func (o *adHocCommandTerraformModel) setCanceledOn(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.CanceledOn, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setControllerNode(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ControllerNode, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setCredential(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Credential, data)
-}
-
-func (o *adHocCommandTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.DiffMode, data)
-}
-
-func (o *adHocCommandTerraformModel) setElapsed(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetFloat64(&o.Elapsed, data)
-}
-
-func (o *adHocCommandTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
-}
-
-func (o *adHocCommandTerraformModel) setExecutionNode(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ExecutionNode, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setExtraVars(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.ExtraVars, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setFailed(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Failed, data)
-}
-
-func (o *adHocCommandTerraformModel) setFinished(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Finished, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Forks, data)
-}
-
-func (o *adHocCommandTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *adHocCommandTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *adHocCommandTerraformModel) setJobExplanation(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobExplanation, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobType, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setLaunchType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.LaunchType, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setLaunchedBy(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LaunchedBy, data)
-}
-
-func (o *adHocCommandTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Limit, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setModuleArgs(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ModuleArgs, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setModuleName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ModuleName, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setStarted(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Started, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setStatus(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Status, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Verbosity, data, false)
-}
-
-func (o *adHocCommandTerraformModel) setWorkUnitId(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.WorkUnitId, data, false)
-}
-
-func (o *adHocCommandTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *adHocCommandTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setBecomeEnabled(data["become_enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.BecomeEnabled, data["become_enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCanceledOn(data["canceled_on"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.CanceledOn, data["canceled_on"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setControllerNode(data["controller_node"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ControllerNode, data["controller_node"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setCredential(data["credential"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Credential, data["credential"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDiffMode(data["diff_mode"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.DiffMode, data["diff_mode"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setElapsed(data["elapsed"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetFloat64(&o.Elapsed, data["elapsed"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExecutionEnvironment(data["execution_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExecutionNode(data["execution_node"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ExecutionNode, data["execution_node"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExtraVars(data["extra_vars"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.ExtraVars, data["extra_vars"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setFailed(data["failed"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Failed, data["failed"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setFinished(data["finished"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Finished, data["finished"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setForks(data["forks"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Forks, data["forks"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobExplanation(data["job_explanation"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobExplanation, data["job_explanation"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobType(data["job_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobType, data["job_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLaunchType(data["launch_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.LaunchType, data["launch_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLaunchedBy(data["launched_by"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LaunchedBy, data["launched_by"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setModuleArgs(data["module_args"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ModuleArgs, data["module_args"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setModuleName(data["module_name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ModuleName, data["module_name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setStarted(data["started"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Started, data["started"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setStatus(data["status"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Status, data["status"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVerbosity(data["verbosity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setWorkUnitId(data["work_unit_id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.WorkUnitId, data["work_unit_id"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

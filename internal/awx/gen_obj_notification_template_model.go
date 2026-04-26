@@ -30,80 +30,52 @@ type notificationTemplateTerraformModel struct {
 
 // Clone the object
 func (o *notificationTemplateTerraformModel) Clone() notificationTemplateTerraformModel {
-	return notificationTemplateTerraformModel{
-		Description:               o.Description,
-		ID:                        o.ID,
-		Messages:                  o.Messages,
-		Name:                      o.Name,
-		NotificationConfiguration: o.NotificationConfiguration,
-		NotificationType:          o.NotificationType,
-		Organization:              o.Organization,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for NotificationTemplate
-func (o *notificationTemplateTerraformModel) BodyRequest() (req notificationTemplateBodyRequestModel) {
+func (o *notificationTemplateTerraformModel) BodyRequest() *notificationTemplateBodyRequestModel {
+	var req notificationTemplateBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Messages = json.RawMessage(o.Messages.ValueString())
 	req.Name = o.Name.ValueString()
 	req.NotificationConfiguration = json.RawMessage(o.NotificationConfiguration.ValueString())
 	req.NotificationType = o.NotificationType.ValueString()
 	req.Organization = o.Organization.ValueInt64()
-	return
+	return &req
 }
 
-func (o *notificationTemplateTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *notificationTemplateTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *notificationTemplateTerraformModel) setMessages(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Messages, data, false)
-}
-
-func (o *notificationTemplateTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *notificationTemplateTerraformModel) setNotificationConfiguration(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.NotificationConfiguration, data, false)
-}
-
-func (o *notificationTemplateTerraformModel) setNotificationType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.NotificationType, data, false)
-}
-
-func (o *notificationTemplateTerraformModel) setOrganization(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Organization, data)
-}
-
-func (o *notificationTemplateTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *notificationTemplateTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMessages(data["messages"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Messages, data["messages"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setNotificationConfiguration(data["notification_configuration"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.NotificationConfiguration, data["notification_configuration"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setNotificationType(data["notification_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.NotificationType, data["notification_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setOrganization(data["organization"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Organization, data["organization"])
 		diags.Append(dg...)
 	}
 	return diags, nil

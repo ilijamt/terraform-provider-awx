@@ -25,62 +25,42 @@ type organizationTerraformModel struct {
 
 // Clone the object
 func (o *organizationTerraformModel) Clone() organizationTerraformModel {
-	return organizationTerraformModel{
-		DefaultEnvironment: o.DefaultEnvironment,
-		Description:        o.Description,
-		ID:                 o.ID,
-		MaxHosts:           o.MaxHosts,
-		Name:               o.Name,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Organization
-func (o *organizationTerraformModel) BodyRequest() (req organizationBodyRequestModel) {
+func (o *organizationTerraformModel) BodyRequest() *organizationBodyRequestModel {
+	var req organizationBodyRequestModel
 	req.DefaultEnvironment = o.DefaultEnvironment.ValueInt64()
 	req.Description = o.Description.ValueString()
 	req.MaxHosts = o.MaxHosts.ValueInt64()
 	req.Name = o.Name.ValueString()
-	return
+	return &req
 }
 
-func (o *organizationTerraformModel) setDefaultEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.DefaultEnvironment, data)
-}
-
-func (o *organizationTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *organizationTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *organizationTerraformModel) setMaxHosts(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.MaxHosts, data)
-}
-
-func (o *organizationTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *organizationTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *organizationTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDefaultEnvironment(data["default_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.DefaultEnvironment, data["default_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setMaxHosts(data["max_hosts"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.MaxHosts, data["max_hosts"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil
@@ -96,9 +76,4 @@ type organizationBodyRequestModel struct {
 	MaxHosts int64 `json:"max_hosts,omitempty"`
 	// Name "Name of this organization."
 	Name string `json:"name"`
-}
-
-type organizationObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
 }

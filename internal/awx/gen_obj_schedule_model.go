@@ -64,36 +64,12 @@ type scheduleTerraformModel struct {
 
 // Clone the object
 func (o *scheduleTerraformModel) Clone() scheduleTerraformModel {
-	return scheduleTerraformModel{
-		Description:          o.Description,
-		DiffMode:             o.DiffMode,
-		Dtend:                o.Dtend,
-		Dtstart:              o.Dtstart,
-		Enabled:              o.Enabled,
-		ExecutionEnvironment: o.ExecutionEnvironment,
-		ExtraData:            o.ExtraData,
-		Forks:                o.Forks,
-		ID:                   o.ID,
-		Inventory:            o.Inventory,
-		JobSliceCount:        o.JobSliceCount,
-		JobTags:              o.JobTags,
-		JobType:              o.JobType,
-		Limit:                o.Limit,
-		Name:                 o.Name,
-		NextRun:              o.NextRun,
-		Rrule:                o.Rrule,
-		ScmBranch:            o.ScmBranch,
-		SkipTags:             o.SkipTags,
-		Timeout:              o.Timeout,
-		Timezone:             o.Timezone,
-		UnifiedJobTemplate:   o.UnifiedJobTemplate,
-		Until:                o.Until,
-		Verbosity:            o.Verbosity,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Schedule
-func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
+func (o *scheduleTerraformModel) BodyRequest() *scheduleBodyRequestModel {
+	var req scheduleBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.DiffMode = o.DiffMode.ValueBool()
 	req.Enabled = o.Enabled.ValueBool()
@@ -112,180 +88,108 @@ func (o *scheduleTerraformModel) BodyRequest() (req scheduleBodyRequestModel) {
 	req.Timeout = o.Timeout.ValueInt64()
 	req.UnifiedJobTemplate = o.UnifiedJobTemplate.ValueInt64()
 	req.Verbosity = o.Verbosity.ValueString()
-	return
+	return &req
 }
 
-func (o *scheduleTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *scheduleTerraformModel) setDiffMode(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.DiffMode, data)
-}
-
-func (o *scheduleTerraformModel) setDtend(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Dtend, data, false)
-}
-
-func (o *scheduleTerraformModel) setDtstart(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Dtstart, data, false)
-}
-
-func (o *scheduleTerraformModel) setEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Enabled, data)
-}
-
-func (o *scheduleTerraformModel) setExecutionEnvironment(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data)
-}
-
-func (o *scheduleTerraformModel) setExtraData(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.ExtraData, data, false)
-}
-
-func (o *scheduleTerraformModel) setForks(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Forks, data)
-}
-
-func (o *scheduleTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *scheduleTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *scheduleTerraformModel) setJobSliceCount(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.JobSliceCount, data)
-}
-
-func (o *scheduleTerraformModel) setJobTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobTags, data, false)
-}
-
-func (o *scheduleTerraformModel) setJobType(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.JobType, data, false)
-}
-
-func (o *scheduleTerraformModel) setLimit(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Limit, data, false)
-}
-
-func (o *scheduleTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *scheduleTerraformModel) setNextRun(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.NextRun, data, false)
-}
-
-func (o *scheduleTerraformModel) setRrule(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Rrule, data, false)
-}
-
-func (o *scheduleTerraformModel) setScmBranch(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.ScmBranch, data, false)
-}
-
-func (o *scheduleTerraformModel) setSkipTags(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.SkipTags, data, false)
-}
-
-func (o *scheduleTerraformModel) setTimeout(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Timeout, data)
-}
-
-func (o *scheduleTerraformModel) setTimezone(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Timezone, data, false)
-}
-
-func (o *scheduleTerraformModel) setUnifiedJobTemplate(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.UnifiedJobTemplate, data)
-}
-
-func (o *scheduleTerraformModel) setUntil(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Until, data, false)
-}
-
-func (o *scheduleTerraformModel) setVerbosity(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Verbosity, data, false)
-}
-
-func (o *scheduleTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *scheduleTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDiffMode(data["diff_mode"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.DiffMode, data["diff_mode"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDtend(data["dtend"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Dtend, data["dtend"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setDtstart(data["dtstart"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Dtstart, data["dtstart"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setEnabled(data["enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Enabled, data["enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExecutionEnvironment(data["execution_environment"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setExtraData(data["extra_data"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.ExtraData, data["extra_data"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setForks(data["forks"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Forks, data["forks"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobSliceCount(data["job_slice_count"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.JobSliceCount, data["job_slice_count"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobTags(data["job_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobTags, data["job_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setJobType(data["job_type"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.JobType, data["job_type"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLimit(data["limit"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Limit, data["limit"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setNextRun(data["next_run"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.NextRun, data["next_run"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setRrule(data["rrule"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Rrule, data["rrule"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setScmBranch(data["scm_branch"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setSkipTags(data["skip_tags"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTimeout(data["timeout"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Timeout, data["timeout"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setTimezone(data["timezone"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Timezone, data["timezone"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUnifiedJobTemplate(data["unified_job_template"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.UnifiedJobTemplate, data["unified_job_template"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setUntil(data["until"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Until, data["until"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVerbosity(data["verbosity"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil

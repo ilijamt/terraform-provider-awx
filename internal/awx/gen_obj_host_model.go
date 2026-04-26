@@ -34,96 +34,60 @@ type hostTerraformModel struct {
 
 // Clone the object
 func (o *hostTerraformModel) Clone() hostTerraformModel {
-	return hostTerraformModel{
-		Description:        o.Description,
-		Enabled:            o.Enabled,
-		ID:                 o.ID,
-		InstanceId:         o.InstanceId,
-		Inventory:          o.Inventory,
-		LastJob:            o.LastJob,
-		LastJobHostSummary: o.LastJobHostSummary,
-		Name:               o.Name,
-		Variables:          o.Variables,
-	}
+	return *o
 }
 
 // BodyRequest returns the required data, so we can call the endpoint in AWX for Host
-func (o *hostTerraformModel) BodyRequest() (req hostBodyRequestModel) {
+func (o *hostTerraformModel) BodyRequest() *hostBodyRequestModel {
+	var req hostBodyRequestModel
 	req.Description = o.Description.ValueString()
 	req.Enabled = o.Enabled.ValueBool()
 	req.InstanceId = o.InstanceId.ValueString()
 	req.Inventory = o.Inventory.ValueInt64()
 	req.Name = o.Name.ValueString()
 	req.Variables = json.RawMessage(o.Variables.String())
-	return
+	return &req
 }
 
-func (o *hostTerraformModel) setDescription(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Description, data, false)
-}
-
-func (o *hostTerraformModel) setEnabled(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetBool(&o.Enabled, data)
-}
-
-func (o *hostTerraformModel) setID(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.ID, data)
-}
-
-func (o *hostTerraformModel) setInstanceId(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.InstanceId, data, false)
-}
-
-func (o *hostTerraformModel) setInventory(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.Inventory, data)
-}
-
-func (o *hostTerraformModel) setLastJob(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LastJob, data)
-}
-
-func (o *hostTerraformModel) setLastJobHostSummary(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetInt64(&o.LastJobHostSummary, data)
-}
-
-func (o *hostTerraformModel) setName(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetString(&o.Name, data, false)
-}
-
-func (o *hostTerraformModel) setVariables(data any) (_ diag.Diagnostics, _ error) {
-	return helpers.AttrValueSetJsonString(&o.Variables, data, false)
-}
-
-func (o *hostTerraformModel) updateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
+func (o *hostTerraformModel) UpdateFromApiData(data map[string]any) (diags diag.Diagnostics, _ error) {
 	diags = make(diag.Diagnostics, 0)
 	if data == nil {
 		return diags, fmt.Errorf("no data passed")
 	}
-	if dg, _ := o.setDescription(data["description"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Description, data["description"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setEnabled(data["enabled"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetBool(&o.Enabled, data["enabled"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setID(data["id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.ID, data["id"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInstanceId(data["instance_id"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.InstanceId, data["instance_id"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setInventory(data["inventory"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.Inventory, data["inventory"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLastJob(data["last_job"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LastJob, data["last_job"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setLastJobHostSummary(data["last_job_host_summary"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetInt64(&o.LastJobHostSummary, data["last_job_host_summary"])
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setName(data["name"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetString(&o.Name, data["name"], false)
 		diags.Append(dg...)
 	}
-	if dg, _ := o.setVariables(data["variables"]); dg.HasError() {
+	{
+		dg, _ := helpers.AttrValueSetJsonString(&o.Variables, data["variables"], false)
 		diags.Append(dg...)
 	}
 	return diags, nil
@@ -143,9 +107,4 @@ type hostBodyRequestModel struct {
 	Name string `json:"name"`
 	// Variables "Host variables in JSON or YAML format."
 	Variables json.RawMessage `json:"variables,omitempty"`
-}
-
-type hostObjectRolesModel struct {
-	ID    types.Int64 `tfsdk:"id"`
-	Roles types.Map   `tfsdk:"roles"`
 }

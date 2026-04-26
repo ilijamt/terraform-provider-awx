@@ -38,7 +38,17 @@ description: |-
 - `scm_url` (String) The location where the project is stored.
 - `signature_validation_credential` (Number) An optional credential used for validating files in the project against unexpected changes.
 - `timeout` (Number) The amount of time (in seconds) to run before the task is canceled.
+- `timeouts` (Block, Optional) (see [below for nested schema](#nestedblock--timeouts))
+- `wait_for_sync` (Boolean) If true, wait for AWX to finish the SCM update kicked off on create or update before returning. Configure the maximum wait via the timeouts block.
 
 ### Read-Only
 
 - `id` (Number) Database ID for this project.
+
+<a id="nestedblock--timeouts"></a>
+### Nested Schema for `timeouts`
+
+Optional:
+
+- `create` (String) A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+- `update` (String) A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
