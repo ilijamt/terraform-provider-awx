@@ -22,6 +22,11 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.9
+          terraform_wrapper: false
       - name: Display Go version
         run: go version
       - name: Test
@@ -36,17 +41,22 @@ jobs:
           if-no-files-found: error
 
   integration:
+    name: Integration / ${{ matrix.name }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         # Keep in sync with TestIntegration_* functions under tests/examples/.
-        # Adding a new integration test? Add its name here.
-        test:
-          - TestIntegration_Inventory
-          - TestIntegration_Credentials
-          - TestIntegration_ObjectRoles
-          - TestIntegration_PreloadData
+        # Adding a new integration test? Add an entry here.
+        include:
+          - name: Inventory
+            test: TestIntegration_Inventory
+          - name: Credentials
+            test: TestIntegration_Credentials
+          - name: Object Roles
+            test: TestIntegration_ObjectRoles
+          - name: Preload Data
+            test: TestIntegration_PreloadData
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
