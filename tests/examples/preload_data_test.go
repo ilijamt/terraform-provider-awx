@@ -61,6 +61,7 @@ func TestIntegration_PreloadData(t *testing.T) {
 
 					resource.TestCheckResourceAttr("awx_job_template.demo_job_template", "name", "Demo Job Template"),
 					resource.TestCheckResourceAttr("awx_job_template.demo_job_template", "verbosity", "0"),
+					resource.TestCheckResourceAttrPair("awx_job_template_survey_spec.demo_job_template", "job_template_id", "awx_job_template.demo_job_template", "id"),
 					resource.TestCheckResourceAttr("awx_workflow_job_template.demo_workflow_template", "name", "Demo Workflow Job"),
 					resource.TestCheckResourceAttr("awx_notification_template.demo_webhook_notification", "name", "Demo Webhook Notification"),
 					resource.TestCheckResourceAttr("awx_schedule.demo_job", "name", "Run Demo Job every month"),

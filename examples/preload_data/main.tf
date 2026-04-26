@@ -145,21 +145,21 @@ resource "awx_job_template" "demo_job_template" {
   allow_simultaneous = true
 }
 
-# resource "awx_job_template_survey_spec" "demo_job_template" {
-#   job_template_id = awx_job_template.demo_job_template.id
-#   spec = jsonencode([{
-#     type                 = "float"
-#     max                  = 1024
-#     min                  = 0
-#     choices              = ""
-#     default              = ""
-#     question_description = ""
-#     new_question         = true
-#     question_name        = "What is the percentage of failure?"
-#     required             = true
-#     variable             = "pct_failure"
-#   }])
-# }
+resource "awx_job_template_survey_spec" "demo_job_template" {
+  job_template_id = awx_job_template.demo_job_template.id
+  spec = jsonencode([{
+    type                 = "float"
+    max                  = 1024
+    min                  = 0
+    choices              = ""
+    default              = ""
+    question_description = ""
+    new_question         = true
+    question_name        = "What is the percentage of failure?"
+    required             = true
+    variable             = "pct_failure"
+  }])
+}
 
 resource "awx_job_template_associate_notification_template" "demo_job_template" {
   notification_template_id = awx_notification_template.demo_webhook_notification.id

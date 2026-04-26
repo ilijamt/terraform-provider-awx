@@ -141,6 +141,22 @@ resource "awx_job_template_associate_notification_template" "demo_job_template" 
   job_template_id          = awx_job_template.demo_job_template.id
 }
 
+resource "awx_job_template_survey_spec" "demo_job_template" {
+  job_template_id = awx_job_template.demo_job_template.id
+  spec = jsonencode([{
+    type                 = "float"
+    max                  = 1024
+    min                  = 0
+    choices              = ""
+    default              = ""
+    question_description = ""
+    new_question         = true
+    question_name        = "What is the percentage of failure?"
+    required             = true
+    variable             = "pct_failure"
+  }])
+}
+
 resource "awx_schedule" "demo_job" {
   enabled              = true
   name                 = "Run Demo Job every month"
