@@ -16,7 +16,10 @@
   ],
   "property_overrides": {
     "LICENSE": {
-      "type": "string"
+      "type": "json"
+    },
+    "AUTOMATION_ANALYTICS_LAST_ENTRIES": {
+      "type": "json"
     },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
       "type": "id"

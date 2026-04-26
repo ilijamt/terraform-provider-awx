@@ -1,6 +1,7 @@
 package awx
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -80,7 +81,7 @@ func (o *settingsMiscSystemTerraformModel) BodyRequest() *settingsMiscSystemBody
 	req.ACTIVITY_STREAM_ENABLED = o.ACTIVITY_STREAM_ENABLED.ValueBool()
 	req.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC = o.ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC.ValueBool()
 	req.AUTOMATION_ANALYTICS_GATHER_INTERVAL = o.AUTOMATION_ANALYTICS_GATHER_INTERVAL.ValueInt64()
-	req.AUTOMATION_ANALYTICS_LAST_ENTRIES = o.AUTOMATION_ANALYTICS_LAST_ENTRIES.ValueString()
+	req.AUTOMATION_ANALYTICS_LAST_ENTRIES = json.RawMessage(o.AUTOMATION_ANALYTICS_LAST_ENTRIES.ValueString())
 	req.AUTOMATION_ANALYTICS_URL = o.AUTOMATION_ANALYTICS_URL.ValueString()
 	req.CSRF_TRUSTED_ORIGINS = helpers.ListAsStringSlice(o.CSRF_TRUSTED_ORIGINS, false)
 	req.DEFAULT_EXECUTION_ENVIRONMENT = o.DEFAULT_EXECUTION_ENVIRONMENT.ValueInt64()
@@ -117,7 +118,7 @@ func (o *settingsMiscSystemTerraformModel) UpdateFromApiData(data map[string]any
 		diags.Append(dg...)
 	}
 	{
-		dg, _ := helpers.AttrValueSetString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data["AUTOMATION_ANALYTICS_LAST_ENTRIES"], false)
+		dg, _ := helpers.AttrValueSetJsonString(&o.AUTOMATION_ANALYTICS_LAST_ENTRIES, data["AUTOMATION_ANALYTICS_LAST_ENTRIES"], false)
 		diags.Append(dg...)
 	}
 	{
@@ -169,7 +170,7 @@ func (o *settingsMiscSystemTerraformModel) UpdateFromApiData(data map[string]any
 		diags.Append(dg...)
 	}
 	{
-		dg, _ := helpers.AttrValueSetString(&o.LICENSE, data["LICENSE"], false)
+		dg, _ := helpers.AttrValueSetJsonString(&o.LICENSE, data["LICENSE"], false)
 		diags.Append(dg...)
 	}
 	{
@@ -228,7 +229,7 @@ type settingsMiscSystemBodyRequestModel struct {
 	// AUTOMATION_ANALYTICS_GATHER_INTERVAL "Interval (in seconds) between data gathering."
 	AUTOMATION_ANALYTICS_GATHER_INTERVAL int64 `json:"AUTOMATION_ANALYTICS_GATHER_INTERVAL,omitempty"`
 	// AUTOMATION_ANALYTICS_LAST_ENTRIES ""
-	AUTOMATION_ANALYTICS_LAST_ENTRIES string `json:"AUTOMATION_ANALYTICS_LAST_ENTRIES,omitempty"`
+	AUTOMATION_ANALYTICS_LAST_ENTRIES json.RawMessage `json:"AUTOMATION_ANALYTICS_LAST_ENTRIES,omitempty"`
 	// AUTOMATION_ANALYTICS_URL "This setting is used to to configure the upload URL for data collection for Automation Analytics."
 	AUTOMATION_ANALYTICS_URL string `json:"AUTOMATION_ANALYTICS_URL,omitempty"`
 	// CSRF_TRUSTED_ORIGINS "If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values. "
