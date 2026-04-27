@@ -1,0 +1,2483 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:41 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0c6ceaf2532d4ad3979c950e071a8cac
+            X-Api-Time:
+                - 0.051s
+            X-Api-Total-Time:
+                - 0.115s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 5.14478725s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 38
+        host: awx.local
+        body: |
+            {"SOCIAL_AUTH_OIDC_VERIFY_SSL":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/oidc/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 130
+        body: '{"SOCIAL_AUTH_OIDC_KEY":null,"SOCIAL_AUTH_OIDC_SECRET":"","SOCIAL_AUTH_OIDC_OIDC_ENDPOINT":"","SOCIAL_AUTH_OIDC_VERIFY_SSL":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "130"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 053cec07a43d40d087134d0ec544bd9f
+            X-Api-Time:
+                - 0.027s
+            X-Api-Total-Time:
+                - 0.077s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 86.756375ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 58
+        host: awx.local
+        body: |
+            {"MAX_UI_JOB_EVENTS":2000,"UI_LIVE_UPDATES_ENABLED":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/ui/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 126
+        body: '{"PENDO_TRACKING_STATE":"off","CUSTOM_LOGIN_INFO":"","CUSTOM_LOGO":"","MAX_UI_JOB_EVENTS":2000,"UI_LIVE_UPDATES_ENABLED":true}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "126"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 44e3d24ace0b4a0b92306e068e1f8128
+            X-Api-Time:
+                - 0.029s
+            X-Api-Total-Time:
+                - 0.067s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 164.42075ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 373
+        host: awx.local
+        body: |
+            {"ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":false,"AUTH_BASIC_ENABLED":true,"DISABLE_LOCAL_AUTH":false,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":31536000000,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000},"SESSIONS_PER_USER":-1,"SESSION_COOKIE_AGE":1800000,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/authentication/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1103
+        body: '{"SESSION_COOKIE_AGE":1800000,"SESSIONS_PER_USER":-1,"DISABLE_LOCAL_AUTH":false,"AUTH_BASIC_ENABLED":true,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":31536000000,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000},"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":false,"LOGIN_REDIRECT_OVERRIDE":"","ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"AUTHENTICATION_BACKENDS":["awx.sso.backends.TACACSPlusBackend","social_core.backends.google.GoogleOAuth2","social_core.backends.github.GithubOAuth2","social_core.backends.github.GithubTeamOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOrganizationOAuth2","social_core.backends.github_enterprise.GithubEnterpriseTeamOAuth2","social_core.backends.azuread.AzureADOAuth2","awx.main.backends.AWXModelBackend"],"SOCIAL_AUTH_ORGANIZATION_MAP":null,"SOCIAL_AUTH_TEAM_MAP":null,"SOCIAL_AUTH_USER_FIELDS":null,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false,"LOCAL_PASSWORD_MIN_LENGTH":0,"LOCAL_PASSWORD_MIN_DIGITS":0,"LOCAL_PASSWORD_MIN_UPPER":0,"LOCAL_PASSWORD_MIN_SPECIAL":0}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1103"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 59f65cae48254a8db25002dfbdf9eff0
+            X-Api-Time:
+                - 0.073s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 361.153125ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 590
+        host: awx.local
+        body: |
+            {"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}","LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":1,"LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_INDIVIDUAL_FACTS":false,"LOG_AGGREGATOR_LEVEL":"INFO","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events","system_tracking"],"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"LOG_AGGREGATOR_TCP_TIMEOUT":5,"LOG_AGGREGATOR_VERIFY_CERT":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/logging/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 759
+        body: '{"LOG_AGGREGATOR_HOST":null,"LOG_AGGREGATOR_PORT":null,"LOG_AGGREGATOR_TYPE":null,"LOG_AGGREGATOR_USERNAME":"","LOG_AGGREGATOR_PASSWORD":"","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events","system_tracking"],"LOG_AGGREGATOR_INDIVIDUAL_FACTS":false,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_TOWER_UUID":"","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_TCP_TIMEOUT":5,"LOG_AGGREGATOR_VERIFY_CERT":true,"LOG_AGGREGATOR_LEVEL":"INFO","LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":1,"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "759"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 7b8d7020e81d4ab181a5ae0de94ab525
+            X-Api-Time:
+                - 0.052s
+            X-Api-Total-Time:
+                - 0.086s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 457.606625ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 439
+        host: awx.local
+        body: |
+            {"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"AUTOMATION_ANALYTICS_URL":"https://example.com","DEFAULT_EXECUTION_ENVIRONMENT":1,"INSIGHTS_TRACKING_STATE":false,"MANAGE_ORGANIZATION_AUTH":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"TOWER_URL_BASE":"http://awx.local","UI_NEXT":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 96d362ee162b4afcaac0279d10b66663
+            X-Api-Time:
+                - 0.054s
+            X-Api-Total-Time:
+                - 0.087s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 556.635458ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 871f66278fb34f55a15a1b43e6fb7a35
+            X-Api-Time:
+                - 0.027s
+            X-Api-Total-Time:
+                - 0.070s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 81.179583ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 014189b575854837b35d9996a09af46b
+            X-Api-Time:
+                - 0.046s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 110.87975ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f139f626b9674af0ad6645056eecaafc
+            X-Api-Time:
+                - 0.029s
+            X-Api-Total-Time:
+                - 0.070s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 82.400625ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 4eb2a4436fa04b95bd3dd44db35ddda2
+            X-Api-Time:
+                - 0.048s
+            X-Api-Total-Time:
+                - 0.104s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 112.432208ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/oidc/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 130
+        body: '{"SOCIAL_AUTH_OIDC_KEY":null,"SOCIAL_AUTH_OIDC_SECRET":"","SOCIAL_AUTH_OIDC_OIDC_ENDPOINT":"","SOCIAL_AUTH_OIDC_VERIFY_SSL":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "130"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - bebee89a0823489fb85625e278fe3bc6
+            X-Api-Time:
+                - 0.042s
+            X-Api-Total-Time:
+                - 0.108s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 235.265917ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/ui/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 126
+        body: '{"PENDO_TRACKING_STATE":"off","CUSTOM_LOGIN_INFO":"","CUSTOM_LOGO":"","MAX_UI_JOB_EVENTS":2000,"UI_LIVE_UPDATES_ENABLED":true}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "126"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 7d92f5e397e94e31a0ef8552103e0dc4
+            X-Api-Time:
+                - 0.045s
+            X-Api-Total-Time:
+                - 0.111s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 356.747292ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/logging/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 759
+        body: '{"LOG_AGGREGATOR_HOST":null,"LOG_AGGREGATOR_PORT":null,"LOG_AGGREGATOR_TYPE":null,"LOG_AGGREGATOR_USERNAME":"","LOG_AGGREGATOR_PASSWORD":"","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events","system_tracking"],"LOG_AGGREGATOR_INDIVIDUAL_FACTS":false,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_TOWER_UUID":"","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_TCP_TIMEOUT":5,"LOG_AGGREGATOR_VERIFY_CERT":true,"LOG_AGGREGATOR_LEVEL":"INFO","LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":1,"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "759"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cccad8d2a9174e4b9ec125ee63a55cd5
+            X-Api-Time:
+                - 0.051s
+            X-Api-Total-Time:
+                - 0.118s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 485.977042ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/authentication/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1103
+        body: '{"SESSION_COOKIE_AGE":1800000,"SESSIONS_PER_USER":-1,"DISABLE_LOCAL_AUTH":false,"AUTH_BASIC_ENABLED":true,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":31536000000,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600},"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":false,"LOGIN_REDIRECT_OVERRIDE":"","ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"AUTHENTICATION_BACKENDS":["awx.sso.backends.TACACSPlusBackend","social_core.backends.google.GoogleOAuth2","social_core.backends.github.GithubOAuth2","social_core.backends.github.GithubTeamOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOrganizationOAuth2","social_core.backends.github_enterprise.GithubEnterpriseTeamOAuth2","social_core.backends.azuread.AzureADOAuth2","awx.main.backends.AWXModelBackend"],"SOCIAL_AUTH_ORGANIZATION_MAP":null,"SOCIAL_AUTH_TEAM_MAP":null,"SOCIAL_AUTH_USER_FIELDS":null,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false,"LOCAL_PASSWORD_MIN_LENGTH":0,"LOCAL_PASSWORD_MIN_DIGITS":0,"LOCAL_PASSWORD_MIN_UPPER":0,"LOCAL_PASSWORD_MIN_SPECIAL":0}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1103"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 9c6865c1292140cea8fb46db5ef55acc
+            X-Api-Time:
+                - 0.096s
+            X-Api-Total-Time:
+                - 0.143s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 639.953208ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 16b2222c68bd4ded8a5a370424889a79
+            X-Api-Time:
+                - 0.027s
+            X-Api-Total-Time:
+                - 0.063s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 479.617833ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:50 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 4b864be37a20484ead8ffed5d016f0b3
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.125s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 145.411417ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/oidc/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 130
+        body: '{"SOCIAL_AUTH_OIDC_KEY":null,"SOCIAL_AUTH_OIDC_SECRET":"","SOCIAL_AUTH_OIDC_OIDC_ENDPOINT":"","SOCIAL_AUTH_OIDC_VERIFY_SSL":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "130"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:50 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e0ec7195e95944ad89cee3efd8253b5f
+            X-Api-Time:
+                - 0.034s
+            X-Api-Total-Time:
+                - 0.092s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 104.86025ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/ui/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 126
+        body: '{"PENDO_TRACKING_STATE":"off","CUSTOM_LOGIN_INFO":"","CUSTOM_LOGO":"","MAX_UI_JOB_EVENTS":2000,"UI_LIVE_UPDATES_ENABLED":true}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "126"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:50 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6ab9a67187884469a06b8542d0e4ca59
+            X-Api-Time:
+                - 0.050s
+            X-Api-Total-Time:
+                - 0.108s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 223.601375ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:51 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1698e5e56bc7497d90b6d778e8859f28
+            X-Api-Time:
+                - 0.041s
+            X-Api-Total-Time:
+                - 0.087s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 317.041125ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/authentication/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1103
+        body: '{"SESSION_COOKIE_AGE":1800000,"SESSIONS_PER_USER":-1,"DISABLE_LOCAL_AUTH":false,"AUTH_BASIC_ENABLED":true,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":31536000000,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600},"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":false,"LOGIN_REDIRECT_OVERRIDE":"","ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"AUTHENTICATION_BACKENDS":["awx.sso.backends.TACACSPlusBackend","social_core.backends.google.GoogleOAuth2","social_core.backends.github.GithubOAuth2","social_core.backends.github.GithubTeamOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOrganizationOAuth2","social_core.backends.github_enterprise.GithubEnterpriseTeamOAuth2","social_core.backends.azuread.AzureADOAuth2","awx.main.backends.AWXModelBackend"],"SOCIAL_AUTH_ORGANIZATION_MAP":null,"SOCIAL_AUTH_TEAM_MAP":null,"SOCIAL_AUTH_USER_FIELDS":null,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false,"LOCAL_PASSWORD_MIN_LENGTH":0,"LOCAL_PASSWORD_MIN_DIGITS":0,"LOCAL_PASSWORD_MIN_UPPER":0,"LOCAL_PASSWORD_MIN_SPECIAL":0}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1103"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:51 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 758d1116d0a640eea52eb374c1bca0db
+            X-Api-Time:
+                - 0.059s
+            X-Api-Total-Time:
+                - 0.099s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 423.978125ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/logging/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 759
+        body: '{"LOG_AGGREGATOR_HOST":null,"LOG_AGGREGATOR_PORT":null,"LOG_AGGREGATOR_TYPE":null,"LOG_AGGREGATOR_USERNAME":"","LOG_AGGREGATOR_PASSWORD":"","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events","system_tracking"],"LOG_AGGREGATOR_INDIVIDUAL_FACTS":false,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_TOWER_UUID":"","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_TCP_TIMEOUT":5,"LOG_AGGREGATOR_VERIFY_CERT":true,"LOG_AGGREGATOR_LEVEL":"INFO","LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":1,"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "759"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:51 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a377bb7e32db43d1b1406d412c468ee4
+            X-Api-Time:
+                - 0.026s
+            X-Api-Total-Time:
+                - 0.065s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 506.270125ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1019
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":false,"ORG_ADMINS_CAN_SEE_ALL_USERS":true,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","REMOTE_HOST","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":14400,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1019"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:51 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 58f06760e8f9477881e6498d76e290f7
+            X-Api-Time:
+                - 0.028s
+            X-Api-Total-Time:
+                - 0.068s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 79.257084ms
+    - id: 22
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 37
+        host: awx.local
+        body: |
+            {"SOCIAL_AUTH_OIDC_VERIFY_SSL":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/oidc/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 129
+        body: '{"SOCIAL_AUTH_OIDC_KEY":null,"SOCIAL_AUTH_OIDC_SECRET":"","SOCIAL_AUTH_OIDC_OIDC_ENDPOINT":"","SOCIAL_AUTH_OIDC_VERIFY_SSL":true}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "129"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:51 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 93ec30136b4e4188ade9ca879c415a1d
+            X-Api-Time:
+                - 0.040s
+            X-Api-Total-Time:
+                - 0.086s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 205.686625ms
+    - id: 23
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 96
+        host: awx.local
+        body: |
+            {"CUSTOM_LOGIN_INFO":"Welcome to AWX","MAX_UI_JOB_EVENTS":4000,"UI_LIVE_UPDATES_ENABLED":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/ui/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 141
+        body: '{"PENDO_TRACKING_STATE":"off","CUSTOM_LOGIN_INFO":"Welcome to AWX","CUSTOM_LOGO":"","MAX_UI_JOB_EVENTS":4000,"UI_LIVE_UPDATES_ENABLED":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "141"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:52 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 8492d54e946644068ac24e4f5a15f69c
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.108s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 327.093416ms
+    - id: 24
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 575
+        host: awx.local
+        body: |
+            {"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}","LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":2,"LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_INDIVIDUAL_FACTS":true,"LOG_AGGREGATOR_LEVEL":"WARNING","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events"],"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"LOG_AGGREGATOR_TCP_TIMEOUT":10,"LOG_AGGREGATOR_VERIFY_CERT":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/logging/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 744
+        body: '{"LOG_AGGREGATOR_HOST":null,"LOG_AGGREGATOR_PORT":null,"LOG_AGGREGATOR_TYPE":null,"LOG_AGGREGATOR_USERNAME":"","LOG_AGGREGATOR_PASSWORD":"","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events"],"LOG_AGGREGATOR_INDIVIDUAL_FACTS":true,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_TOWER_UUID":"","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_TCP_TIMEOUT":10,"LOG_AGGREGATOR_VERIFY_CERT":true,"LOG_AGGREGATOR_LEVEL":"WARNING","LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":2,"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "744"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:52 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 22f9f883b6ff4974841700b1bb0ff460
+            X-Api-Time:
+                - 0.147s
+            X-Api-Total-Time:
+                - 0.230s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 620.952375ms
+    - id: 25
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 362
+        host: awx.local
+        body: |
+            {"ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":true,"AUTH_BASIC_ENABLED":true,"DISABLE_LOCAL_AUTH":false,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":3600,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000},"SESSIONS_PER_USER":-1,"SESSION_COOKIE_AGE":3600,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/authentication/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1092
+        body: '{"SESSION_COOKIE_AGE":3600,"SESSIONS_PER_USER":-1,"DISABLE_LOCAL_AUTH":false,"AUTH_BASIC_ENABLED":true,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":3600,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000},"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":true,"LOGIN_REDIRECT_OVERRIDE":"","ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"AUTHENTICATION_BACKENDS":["awx.sso.backends.TACACSPlusBackend","social_core.backends.google.GoogleOAuth2","social_core.backends.github.GithubOAuth2","social_core.backends.github.GithubTeamOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOrganizationOAuth2","social_core.backends.github_enterprise.GithubEnterpriseTeamOAuth2","social_core.backends.azuread.AzureADOAuth2","awx.main.backends.AWXModelBackend"],"SOCIAL_AUTH_ORGANIZATION_MAP":null,"SOCIAL_AUTH_TEAM_MAP":null,"SOCIAL_AUTH_USER_FIELDS":null,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false,"LOCAL_PASSWORD_MIN_LENGTH":0,"LOCAL_PASSWORD_MIN_DIGITS":0,"LOCAL_PASSWORD_MIN_UPPER":0,"LOCAL_PASSWORD_MIN_SPECIAL":0}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1092"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:52 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d1960d1cde9f4af5b45dce9df0c6eae1
+            X-Api-Time:
+                - 0.150s
+            X-Api-Total-Time:
+                - 0.210s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 620.917375ms
+    - id: 26
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 433
+        host: awx.local
+        body: |
+            {"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"AUTOMATION_ANALYTICS_URL":"https://updated.example.com","DEFAULT_EXECUTION_ENVIRONMENT":1,"INSIGHTS_TRACKING_STATE":false,"MANAGE_ORGANIZATION_AUTH":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"TOWER_URL_BASE":"http://awx.local","UI_NEXT":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1013
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://updated.example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1013"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:52 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 849c000efa6a418fae500c2a0f30e2bc
+            X-Api-Time:
+                - 0.224s
+            X-Api-Total-Time:
+                - 0.282s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 652.9685ms
+    - id: 27
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1013
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://updated.example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1013"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 30c706a2c25941ccaec257f5d8ef30a8
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.119s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 137.007583ms
+    - id: 28
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d5a62a9d6499492dbc538f81555544c2
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.125s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 140.800875ms
+    - id: 29
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1013
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://updated.example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1013"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e0fc3ea224004c588d8f2657295aea52
+            X-Api-Time:
+                - 0.047s
+            X-Api-Total-Time:
+                - 0.093s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 103.902667ms
+    - id: 30
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/ui/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 141
+        body: '{"PENDO_TRACKING_STATE":"off","CUSTOM_LOGIN_INFO":"Welcome to AWX","CUSTOM_LOGO":"","MAX_UI_JOB_EVENTS":4000,"UI_LIVE_UPDATES_ENABLED":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "141"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 286628d1fc3c481493f34f1511a60d3d
+            X-Api-Time:
+                - 0.034s
+            X-Api-Total-Time:
+                - 0.089s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 100.083625ms
+    - id: 31
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - AWX EE (latest)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/execution_environments/?name__exact=AWX%20EE%20%28latest%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 651
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"execution_environment","url":"/api/v2/execution_environments/1/","related":{"activity_stream":"/api/v2/execution_environments/1/activity_stream/","unified_job_templates":"/api/v2/execution_environments/1/unified_job_templates/","copy":"/api/v2/execution_environments/1/copy/"},"summary_fields":{"user_capabilities":{"edit":true,"delete":true,"copy":true}},"created":"2026-04-25T23:23:18.463595Z","modified":"2026-04-25T23:23:18.511324Z","name":"AWX EE (latest)","description":"","organization":null,"image":"quay.io/ansible/awx-ee:latest","managed":false,"credential":null,"pull":""}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "651"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 139795e9730f4fbe9ca34e3e9aad9c56
+            X-Api-Time:
+                - 0.048s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 123.253041ms
+    - id: 32
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/oidc/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 129
+        body: '{"SOCIAL_AUTH_OIDC_KEY":null,"SOCIAL_AUTH_OIDC_SECRET":"","SOCIAL_AUTH_OIDC_OIDC_ENDPOINT":"","SOCIAL_AUTH_OIDC_VERIFY_SSL":true}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "129"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 83dd704e98ab428ba5349d4ddc4af70c
+            X-Api-Time:
+                - 0.037s
+            X-Api-Total-Time:
+                - 0.097s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 206.809125ms
+    - id: 33
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/authentication/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1092
+        body: '{"SESSION_COOKIE_AGE":3600,"SESSIONS_PER_USER":-1,"DISABLE_LOCAL_AUTH":false,"AUTH_BASIC_ENABLED":true,"OAUTH2_PROVIDER":{"ACCESS_TOKEN_EXPIRE_SECONDS":3600,"REFRESH_TOKEN_EXPIRE_SECONDS":2628000,"AUTHORIZATION_CODE_EXPIRE_SECONDS":600},"ALLOW_OAUTH2_FOR_EXTERNAL_USERS":true,"LOGIN_REDIRECT_OVERRIDE":"","ALLOW_METRICS_FOR_ANONYMOUS_USERS":false,"AUTHENTICATION_BACKENDS":["awx.sso.backends.TACACSPlusBackend","social_core.backends.google.GoogleOAuth2","social_core.backends.github.GithubOAuth2","social_core.backends.github.GithubTeamOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOAuth2","social_core.backends.github_enterprise.GithubEnterpriseOrganizationOAuth2","social_core.backends.github_enterprise.GithubEnterpriseTeamOAuth2","social_core.backends.azuread.AzureADOAuth2","awx.main.backends.AWXModelBackend"],"SOCIAL_AUTH_ORGANIZATION_MAP":null,"SOCIAL_AUTH_TEAM_MAP":null,"SOCIAL_AUTH_USER_FIELDS":null,"SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL":false,"LOCAL_PASSWORD_MIN_LENGTH":0,"LOCAL_PASSWORD_MIN_DIGITS":0,"LOCAL_PASSWORD_MIN_UPPER":0,"LOCAL_PASSWORD_MIN_SPECIAL":0}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1092"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b9cb1431158c42418baef9371d260327
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.104s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 242.098417ms
+    - id: 34
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/logging/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 744
+        body: '{"LOG_AGGREGATOR_HOST":null,"LOG_AGGREGATOR_PORT":null,"LOG_AGGREGATOR_TYPE":null,"LOG_AGGREGATOR_USERNAME":"","LOG_AGGREGATOR_PASSWORD":"","LOG_AGGREGATOR_LOGGERS":["awx","activity_stream","job_events"],"LOG_AGGREGATOR_INDIVIDUAL_FACTS":true,"LOG_AGGREGATOR_ENABLED":false,"LOG_AGGREGATOR_TOWER_UUID":"","LOG_AGGREGATOR_PROTOCOL":"https","LOG_AGGREGATOR_TCP_TIMEOUT":10,"LOG_AGGREGATOR_VERIFY_CERT":true,"LOG_AGGREGATOR_LEVEL":"WARNING","LOG_AGGREGATOR_ACTION_QUEUE_SIZE":131072,"LOG_AGGREGATOR_ACTION_MAX_DISK_USAGE_GB":2,"LOG_AGGREGATOR_MAX_DISK_USAGE_PATH":"/var/lib/awx","LOG_AGGREGATOR_RSYSLOGD_DEBUG":false,"API_400_ERROR_LOG_FORMAT":"status {status_code} received by user {user_name} attempting to access {url_path} from {remote_addr}"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "744"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - df962df8cbfb49eda809ea5d9c62f1f8
+            X-Api-Time:
+                - 0.038s
+            X-Api-Total-Time:
+                - 0.081s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 298.355458ms
+    - id: 35
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1013
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://updated.example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1013"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d9336660bb1b4290bca66571ac3ee1a9
+            X-Api-Time:
+                - 0.057s
+            X-Api-Total-Time:
+                - 0.123s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 135.387334ms
+    - id: 36
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/settings/system/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1013
+        body: '{"ACTIVITY_STREAM_ENABLED":true,"ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC":true,"ORG_ADMINS_CAN_SEE_ALL_USERS":false,"MANAGE_ORGANIZATION_AUTH":true,"TOWER_URL_BASE":"http://awx.local","REMOTE_HOST_HEADERS":["REMOTE_ADDR","HTTP_X_FORWARDED_FOR"],"PROXY_IP_ALLOWED_LIST":[],"CSRF_TRUSTED_ORIGINS":[],"LICENSE":{},"REDHAT_USERNAME":"","REDHAT_PASSWORD":"","SUBSCRIPTIONS_USERNAME":"","SUBSCRIPTIONS_PASSWORD":"","AUTOMATION_ANALYTICS_URL":"https://updated.example.com","INSTALL_UUID":"84663e24-bac5-4752-a9dc-30f9c696f866","DEFAULT_CONTROL_PLANE_QUEUE_NAME":"controlplane","DEFAULT_EXECUTION_QUEUE_NAME":"default","DEFAULT_EXECUTION_ENVIRONMENT":1,"CUSTOM_VENV_PATHS":[],"INSIGHTS_TRACKING_STATE":false,"AUTOMATION_ANALYTICS_LAST_GATHER":null,"AUTOMATION_ANALYTICS_LAST_ENTRIES":"","AUTOMATION_ANALYTICS_GATHER_INTERVAL":28800,"IS_K8S":true,"UI_NEXT":false,"SUBSCRIPTION_USAGE_MODEL":"","CLEANUP_HOST_METRICS_LAST_TS":"2026-04-26T02:56:16.392499Z","HOST_METRIC_SUMMARY_TASK_LAST_TS":"2026-04-26T03:26:18.371435Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1013"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:34:54 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f258d99be5394426b06e2ee10610c175
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.119s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 128.14975ms

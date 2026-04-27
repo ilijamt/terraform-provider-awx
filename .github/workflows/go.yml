@@ -64,6 +64,8 @@ jobs:
             test: TestIntegration_Application
           - name: Instance Groups
             test: TestIntegration_InstanceGroups
+          - name: Settings/Misc
+            test: TestIntegration_SettingsMisc
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
