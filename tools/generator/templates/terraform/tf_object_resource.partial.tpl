@@ -212,6 +212,14 @@ func New{{ .Name }}Resource() resource.Resource {
 					return !plan.{{ .WaitLifecycle.WaitAttribute | camelCase }}.IsNull() && plan.{{ .WaitLifecycle.WaitAttribute | camelCase }}.ValueBool()
 				},
 				EndpointForModel: func(m *{{ .Name | lowerCamelCase }}TerraformModel) string {
+					if m.{{ camelCase $.IdKey }}.IsNull() || m.{{ camelCase $.IdKey }}.IsUnknown() {
+						return ""
+					}
+{{- if eq $.IdProperty.Generated.AwxGoValue "types.Int64Value" }}
+					if m.{{ camelCase $.IdKey }}.ValueInt64() == 0 {
+						return ""
+					}
+{{- end }}
 					return framework.EndpointWithID("{{ $.Endpoint }}", m.{{ camelCase $.IdKey }}.{{ $.IdProperty.Generated.TfGoPrimitiveValue }}())
 				},
 				Field:          {{ .WaitLifecycle.StatusField | quote }},

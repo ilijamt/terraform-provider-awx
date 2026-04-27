@@ -346,6 +346,12 @@ func NewProjectResource() resource.Resource {
 					return !plan.WaitForSync.IsNull() && plan.WaitForSync.ValueBool()
 				},
 				EndpointForModel: func(m *projectTerraformModel) string {
+					if m.ID.IsNull() || m.ID.IsUnknown() {
+						return ""
+					}
+					if m.ID.ValueInt64() == 0 {
+						return ""
+					}
 					return framework.EndpointWithID("/api/v2/projects/", m.ID.ValueInt64())
 				},
 				Field:          "status",

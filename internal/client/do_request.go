@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 func doRequest(client *http.Client, ctx context.Context, req *http.Request) (data map[string]any, err error) {
@@ -26,6 +28,15 @@ func doRequest(client *http.Client, ctx context.Context, req *http.Request) (dat
 	if payload, err = io.ReadAll(resp.Body); err != nil {
 		return data, err
 	}
+
+	tflog.Trace(ctx, "HTTP response", map[string]any{
+		"method":           req.Method,
+		"url":              req.URL.String(),
+		"status":           resp.StatusCode,
+		"final_method":     resp.Request.Method,
+		"final_url":        resp.Request.URL.String(),
+		"redirect_applied": req.URL.String() != resp.Request.URL.String() || req.Method != resp.Request.Method,
+	})
 
 	dec := json.NewDecoder(bytes.NewReader(payload))
 	dec.UseNumber()

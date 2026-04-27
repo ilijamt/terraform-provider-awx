@@ -26,12 +26,24 @@ func doRequest(ctx context.Context, r Requester, method string, endpoint string,
 
 	data, err := r.Do(ctx, req)
 	if err != nil {
+		tflog.Trace(ctx, fmt.Sprintf("[%s/%s] Request failed", resourceName, operation), map[string]any{
+			"method":   method,
+			"endpoint": endpoint,
+			"response": data,
+			"error":    err.Error(),
+		})
 		diags.AddError(
 			fmt.Sprintf("Unable to %s resource for %s on %s", operation, resourceName, endpoint),
 			err.Error(),
 		)
 		return nil, diags
 	}
+
+	tflog.Trace(ctx, fmt.Sprintf("[%s/%s] Request succeeded", resourceName, operation), map[string]any{
+		"method":   method,
+		"endpoint": endpoint,
+		"response": data,
+	})
 
 	return data, diags
 }

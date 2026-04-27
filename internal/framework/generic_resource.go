@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	rschema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 
 	"github.com/ilijamt/terraform-provider-awx/internal/hooks"
 )
@@ -184,6 +185,20 @@ func (r *GenericResource[T, B, PT]) runWaitLifecycle(ctx context.Context, plan, 
 	}
 
 	endpoint := wl.EndpointForModel(state)
+	if endpoint == "" {
+		diags.AddError(
+			fmt.Sprintf("Cannot wait for %s: missing resource ID", r.name()),
+			"The API response did not include a usable ID, so the framework cannot construct a polling URL. Re-run with TF_LOG=DEBUG to inspect the response payload.",
+		)
+		return
+	}
+
+	tflog.Debug(ctx, fmt.Sprintf("[%s/wait] polling for terminal status", r.name()), map[string]any{
+		"endpoint": endpoint,
+		"field":    wl.Field,
+		"timeout":  timeout.String(),
+	})
+
 	waitCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
