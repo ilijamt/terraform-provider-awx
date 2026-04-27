@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Bug Fixes
+
+- When host is set to http but it redirects to https it breaks the redirect flow
+
 ### CI/CD
 
 - *(workflows)* Introduced changelog generation for automated release notes
@@ -15,6 +19,7 @@ All notable changes to this project will be documented in this file.
 ### Documentation
 
 - *(resources)* Documented AWX AWS credential resource details
+- *(changelog)* Regenerate CHANGELOG.md [skip ci]
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
 
 ### Features
