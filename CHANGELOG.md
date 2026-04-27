@@ -15,6 +15,11 @@ All notable changes to this project will be documented in this file.
 ### Documentation
 
 - *(resources)* Documented AWX AWS credential resource details
+- *(changelog)* Regenerate CHANGELOG.md [skip ci]
+
+### Features
+
+- *(testdata)* Introduced AWX settings resources for comprehensive tests
 
 ### Miscellaneous
 
@@ -29,6 +34,9 @@ All notable changes to this project will be documented in this file.
 ### Testing
 
 - Updated VCR test example to include request latency simulation
+- *(testdata/cassettes)* Added awx resources and tests to testdata
+- *(testdata/cassettes)* Added instance group integration tests
+- *(testdata)* Added integration test for job template survey spec
 
 ## [24.6.1-1] - 2026-04-26
 
