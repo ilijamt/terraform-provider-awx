@@ -36,13 +36,13 @@ description: |-
 - `controller_node` (String) The instance that managed the execution environment.
 - `elapsed` (Number) Elapsed time in seconds that the job ran.
 - `execution_node` (String) The node the job executed on.
-- `failed` (Boolean)
+- `failed` (Boolean) Failed
 - `finished` (String) The date and time the job finished execution.
 - `id` (Number) Database ID for this ad hoc command.
 - `job_explanation` (String) A status field to indicate the state of the job if it wasn't able to run and capture stdout
-- `launch_type` (String)
-- `launched_by` (Number)
+- `launch_type` (String) Launch type
+- `launched_by` (Number) Launched by
 - `name` (String) Name of this ad hoc command.
 - `started` (String) The date and time the job was queued for starting.
-- `status` (String)
+- `status` (String) Status
 - `work_unit_id` (String) The Receptor work unit ID associated with this job.

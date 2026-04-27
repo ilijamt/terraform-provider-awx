@@ -30,6 +30,6 @@ description: |-
 
 ### Read-Only
 
-- `client_id` (String)
+- `client_id` (String) Client id
 - `client_secret` (String, Sensitive) Used for more stringent verification of access to an application when creating a token.
 - `id` (Number) Database ID for this application.

@@ -32,5 +32,5 @@ description: |-
 
 - `external_account` (String) Set if the account is managed by an external service
 - `id` (Number) Database ID for this user.
-- `last_login` (String)
-- `ldap_dn` (String)
+- `last_login` (String) Last login
+- `ldap_dn` (String) Ldap dn

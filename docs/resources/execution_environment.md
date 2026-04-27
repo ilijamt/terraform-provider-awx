@@ -30,4 +30,4 @@ description: |-
 ### Read-Only
 
 - `id` (Number) Database ID for this execution environment.
-- `managed` (Boolean)
+- `managed` (Boolean) Managed

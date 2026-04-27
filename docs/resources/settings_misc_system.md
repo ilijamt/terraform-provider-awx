@@ -39,12 +39,12 @@ description: |-
 
 ### Read-Only
 
-- `automation_analytics_last_gather` (String)
-- `cleanup_host_metrics_last_ts` (String)
+- `automation_analytics_last_gather` (String) Last gather date for Automation Analytics.
+- `cleanup_host_metrics_last_ts` (String) Last cleanup date for HostMetrics
 - `custom_venv_paths` (List of String) Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line.
-- `default_control_plane_queue_name` (String)
-- `default_execution_queue_name` (String)
-- `host_metric_summary_task_last_ts` (String)
-- `install_uuid` (String)
+- `default_control_plane_queue_name` (String) The instance group where control plane tasks run
+- `default_execution_queue_name` (String) The instance group where user jobs run (currently only on non-VM installs)
+- `host_metric_summary_task_last_ts` (String) Last computing date of HostMetricSummaryMonthly
+- `install_uuid` (String) Unique identifier for an installation
 - `is_k8s` (Boolean) Indicates whether the instance is part of a kubernetes-based deployment.
 - `license` (String) The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license.

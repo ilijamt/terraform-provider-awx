@@ -32,10 +32,10 @@ description: |-
 
 ### Read-Only
 
-- `capacity` (Number)
-- `consumed_capacity` (Number)
+- `capacity` (Number) Capacity
+- `consumed_capacity` (Number) Consumed capacity
 - `id` (Number) Database ID for this instance group.
-- `instances` (Number)
-- `jobs_running` (Number)
+- `instances` (Number) Instances
+- `jobs_running` (Number) Jobs running
 - `jobs_total` (Number) Count of all jobs that target this instance group
-- `percent_capacity_remaining` (Number)
+- `percent_capacity_remaining` (Number) Percent capacity remaining

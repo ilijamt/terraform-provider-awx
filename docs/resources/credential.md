@@ -30,8 +30,8 @@ description: |-
 
 ### Read-Only
 
-- `cloud` (Boolean)
+- `cloud` (Boolean) Cloud
 - `id` (Number) Database ID for this credential.
-- `kind` (String)
-- `kubernetes` (Boolean)
-- `managed` (Boolean)
+- `kind` (String) Kind
+- `kubernetes` (Boolean) Kubernetes
+- `managed` (Boolean) Managed

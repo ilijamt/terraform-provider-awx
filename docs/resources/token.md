@@ -23,8 +23,8 @@ description: |-
 
 ### Read-Only
 
-- `expires` (String)
+- `expires` (String) Expires
 - `id` (Number) Database ID for this access token.
-- `refresh_token` (String)
-- `token` (String)
+- `refresh_token` (String) Refresh token
+- `token` (String) Token
 - `user` (Number) The user representing the token owner

@@ -30,5 +30,5 @@ description: |-
 ### Read-Only
 
 - `id` (Number) Database ID for this host.
-- `last_job` (Number)
-- `last_job_host_summary` (Number)
+- `last_job` (Number) Last job
+- `last_job_host_summary` (Number) Last job host summary
