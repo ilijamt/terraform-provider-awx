@@ -103,21 +103,13 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		Data     map[string]any
 	}{
 		{
-			Filename: fmt.Sprintf("%s/gen_obj_%s_model.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_model.go.tpl",
+			// One file per object: model + resource + data source. Sections
+			// inside tf_object.go.tpl are gated by NoTerraformResource /
+			// NoTerraformDataSource so the consolidated file works for
+			// data-source-only objects (e.g. Me) too.
+			Filename: fmt.Sprintf("%s/gen_obj_%s.go", resourcePath, strings.ToLower(val.TypeName)),
+			Template: "tf_object.go.tpl",
 			Render:   true,
-			IsNew:    true,
-		},
-		{
-			Filename: fmt.Sprintf("%s/gen_obj_%s_data_source.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_data_source.go.tpl",
-			Render:   !item.NoTerraformDataSource,
-			IsNew:    true,
-		},
-		{
-			Filename: fmt.Sprintf("%s/gen_obj_%s_resource.go", resourcePath, strings.ToLower(val.TypeName)),
-			Template: "tf_resource.go.tpl",
-			Render:   !item.NoTerraformResource,
 			IsNew:    true,
 		},
 		{
