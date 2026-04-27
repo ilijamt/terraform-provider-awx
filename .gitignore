@@ -31,6 +31,7 @@ website/vendor
 # Test exclusions
 !command/test-fixtures/**/*.tfstate
 !command/test-fixtures/**/.terraform/
+.terraform.tfstate.lock.info
 
 # Keep windows files with windows line endings
 *.winfile eol=crlf
