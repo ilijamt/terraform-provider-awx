@@ -66,6 +66,8 @@ jobs:
             test: TestIntegration_InstanceGroups
           - name: Settings/Misc
             test: TestIntegration_SettingsMisc
+          - name: Job Template Survey Spec
+            test: TestIntegration_JobTemplateSurveySpec
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
