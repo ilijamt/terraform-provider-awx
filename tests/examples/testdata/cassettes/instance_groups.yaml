@@ -1,0 +1,1428 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 466
+        host: awx.local
+        body: |
+            {"is_container_group":true,"name":"Demo Instance Group","pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1516
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1516"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:38 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instance_groups/5/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b184acf43402428aa923341cf0c578e0
+            X-Api-Time:
+                - 0.121s
+            X-Api-Total-Time:
+                - 0.207s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.343233959s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1268
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1268"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:43 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ae95306c2d6c495480ce25bce1c0d608
+            X-Api-Time:
+                - 0.087s
+            X-Api-Total-Time:
+                - 0.147s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 162.560375ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1509
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1509"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:43 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3358c00c106749f4a5ddadca0bf177ae
+            X-Api-Time:
+                - 0.057s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 282.156208ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1268
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1268"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:44 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cce11d21dc3648a480ea90372a4eae0c
+            X-Api-Time:
+                - 0.061s
+            X-Api-Total-Time:
+                - 0.110s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 124.888208ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1509
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1509"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:44 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 220d1a0a75444f9299d8fed9793b2f2e
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.104s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 237.693625ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1516
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1516"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:44 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 09e64ee6a3a741ad996b82ccf5824688
+            X-Api-Time:
+                - 0.107s
+            X-Api-Total-Time:
+                - 0.176s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 185.343416ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1268
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1268"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:45 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0e2e36d0a8b841bdb7afae9aa634e2d4
+            X-Api-Time:
+                - 0.068s
+            X-Api-Total-Time:
+                - 0.156s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 167.41825ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1509
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1509"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:45 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - d0b4e81b757a47ffa60091d7edb5ef28
+            X-Api-Time:
+                - 0.074s
+            X-Api-Total-Time:
+                - 0.133s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 310.678625ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1516
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:37.932609Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1516"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:46 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cc61aed058c84208a228ac9422015398
+            X-Api-Time:
+                - 0.070s
+            X-Api-Total-Time:
+                - 0.130s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 145.737083ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 502
+        host: awx.local
+        body: |
+            {"is_container_group":true,"name":"Demo Instance Group (updated)","pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","policy_instance_list":[]}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1536
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group (updated)/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1536"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:46 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cb56430dfa284603b4b7051743230481
+            X-Api-Time:
+                - 0.147s
+            X-Api-Total-Time:
+                - 0.207s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 240.487834ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1298
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1298"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:46 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a542a935f8bd4db481cf007db988149d
+            X-Api-Time:
+                - 0.035s
+            X-Api-Total-Time:
+                - 0.084s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 101.317875ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group (updated)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group%20%28updated%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1519
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1519"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:46 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e3a5d59e126d4804bfc4a650b50697fd
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.106s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 220.078167ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1298
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1298"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 949e3d2d032f4eb1aa68d1c152dd578d
+            X-Api-Time:
+                - 0.083s
+            X-Api-Total-Time:
+                - 0.133s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 151.968875ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group (updated)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group%20%28updated%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1519
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1519"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 561bbfb1f44146b58365e449cb048f23
+            X-Api-Time:
+                - 0.030s
+            X-Api-Total-Time:
+                - 0.056s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 227.44975ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1536
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group (updated)/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1536"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:47 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 83a923e529ab4263bff8697e7c17c28b
+            X-Api-Time:
+                - 0.054s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 123.215292ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1298
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1298"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - fdeacd0e80ad44dab788f38c4ba6421d
+            X-Api-Time:
+                - 0.057s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 127.419208ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group (updated)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group%20%28updated%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1519
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1519"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cbc10af0fee545398398a2a35f9565f5
+            X-Api-Time:
+                - 0.054s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 248.658458ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1536
+        body: '{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"named_url":"/api/v2/instance_groups/Demo Instance Group (updated)/","jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1536"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:48 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cd19accde0a544dca19e8bc694b44a99
+            X-Api-Time:
+                - 0.083s
+            X-Api-Total-Time:
+                - 0.135s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 146.43825ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/object_roles/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1298
+        body: '{"count":3,"next":null,"previous":null,"results":[{"id":956,"type":"role","url":"/api/v2/roles/956/","related":{"users":"/api/v2/roles/956/users/","teams":"/api/v2/roles/956/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Admin","description":"Can manage all aspects of the instance group"},{"id":957,"type":"role","url":"/api/v2/roles/957/","related":{"users":"/api/v2/roles/957/users/","teams":"/api/v2/roles/957/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Use","description":"Can use the instance group in a job template"},{"id":958,"type":"role","url":"/api/v2/roles/958/","related":{"users":"/api/v2/roles/958/users/","teams":"/api/v2/roles/958/teams/","instance_group":"/api/v2/instance_groups/5/"},"summary_fields":{"resource_name":"Demo Instance Group (updated)","resource_type":"instance_group","resource_type_display_name":"Instance Group","resource_id":5},"name":"Read","description":"May view settings for the instance group"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1298"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            Warning:
+                - 299 awx "This resource has been deprecated and will be removed in a future release."
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0720ef34dae94ed6b558684a75274cbc
+            X-Api-Time:
+                - 0.037s
+            X-Api-Total-Time:
+                - 0.083s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 92.406666ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            name__exact:
+                - Demo Instance Group (updated)
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/?name__exact=Demo%20Instance%20Group%20%28updated%29
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1519
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":5,"type":"instance_group","url":"/api/v2/instance_groups/5/","related":{"jobs":"/api/v2/instance_groups/5/jobs/","instances":"/api/v2/instance_groups/5/instances/","access_list":"/api/v2/instance_groups/5/access_list/","object_roles":"/api/v2/instance_groups/5/object_roles/"},"name":"Demo Instance Group (updated)","created":"2026-04-27T07:30:37.932560Z","modified":"2026-04-27T07:30:46.356067Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":true,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"awx\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"}}}],\"serviceAccountName\":\"default\"}}","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":956},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":957},"read_role":{"description":"May view settings for the instance group","name":"Read","id":958}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1519"
+            Content-Type:
+                - application/json
+            Date:
+                - Mon, 27 Apr 2026 07:30:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 46fc03232cf444349fb997034d6d6bc3
+            X-Api-Time:
+                - 0.096s
+            X-Api-Total-Time:
+                - 0.158s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 168.016167ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/5/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Mon, 27 Apr 2026 07:30:49 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6557b8c559-8gvmk
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6f2c0d409bb441738a4e112695764b9f
+            X-Api-Time:
+                - 0.184s
+            X-Api-Total-Time:
+                - 0.251s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 297.249375ms

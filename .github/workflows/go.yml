@@ -62,6 +62,8 @@ jobs:
             test: TestIntegration_SettingsJobsZeroDefaults
           - name: Application
             test: TestIntegration_Application
+          - name: Instance Groups
+            test: TestIntegration_InstanceGroups
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
