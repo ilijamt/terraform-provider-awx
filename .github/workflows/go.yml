@@ -60,6 +60,8 @@ jobs:
             test: TestIntegration_PreloadData
           - name: Settings Jobs Zero Defaults
             test: TestIntegration_SettingsJobsZeroDefaults
+          - name: Application
+            test: TestIntegration_Application
     steps:
       - uses: actions/checkout@v6
       - name: Setup Go
