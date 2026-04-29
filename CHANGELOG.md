@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [24.6.1-2] - 2026-04-29
 
 ### Bug Fixes
 
@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
+- *(changelog)* Regenerate CHANGELOG.md [skip ci]
 
 ### Features
 
@@ -32,6 +33,8 @@ All notable changes to this project will be documented in this file.
 
 - Added .gitignore entry for temporary build files
 - *(config)* Organized git-cliff config for changelog generation
+- Updated .gitignore to exclude temporary build files
+- Updated versions.yaml
 
 ### Refactor
 
