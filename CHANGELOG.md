@@ -15,10 +15,12 @@ All notable changes to this project will be documented in this file.
 ### Dependencies
 
 - *(deps)* Updated dependencies in package.json and package-lock.json
+- *(deps)* Bump the actions group with 3 updates (#178)
 
 ### Documentation
 
 - *(resources)* Documented AWX AWS credential resource details
+- *(changelog)* Regenerate CHANGELOG.md [skip ci]
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
 - *(changelog)* Regenerate CHANGELOG.md [skip ci]
 
