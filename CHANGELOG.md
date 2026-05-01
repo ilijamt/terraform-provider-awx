@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### Documentation
+
+- *(changelog)* Regenerate CHANGELOG.md [skip ci]
+
+### Testing
+
+- Remove internal/awx from ignore
+
 ## [24.6.1-2] - 2026-04-29
 
 ### Bug Fixes
