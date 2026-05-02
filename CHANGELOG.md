@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Documentation
 
-- *(changelog)* Regenerate CHANGELOG.md [skip ci]
+- Add skip rule for CHANGELOG regeneration
 
 ### Testing
 
@@ -30,10 +30,6 @@ All notable changes to this project will be documented in this file.
 ### Documentation
 
 - *(resources)* Documented AWX AWS credential resource details
-- *(changelog)* Regenerate CHANGELOG.md [skip ci]
-- *(changelog)* Regenerate CHANGELOG.md [skip ci]
-- *(changelog)* Regenerate CHANGELOG.md [skip ci]
-- *(changelog)* Regenerate CHANGELOG.md [skip ci]
 
 ### Features
 
