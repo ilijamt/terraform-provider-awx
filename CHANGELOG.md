@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - *(deps)* Bump the actions group across 1 directory with 2 updates (#183)
 - *(deps)* Bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.5.0 (#179)
 - *(deps)* Bump codecov/codecov-action in the actions group (#184)
+- *(deps)* Bump actions/checkout from 6 to 7 in the actions group (#185)
 
 ### Documentation
 
