@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - *(deps)* Bump codecov/codecov-action in the actions group (#184)
 - *(deps)* Bump actions/checkout from 6 to 7 in the actions group (#185)
 - *(deps)* Bump goreleaser/goreleaser-action in the actions group (#187)
+- *(deps)* Bump the actions group across 1 directory with 3 updates (#190)
 
 ### Documentation
 
