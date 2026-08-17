@@ -3,7 +3,7 @@
   "api_version": "24.6.1",
   "endpoint": "/api/v2/settings/system/",
   "type_name": "settings_misc_system",
-  "description": "# Retrieve a Setting:\n\nMake GET request to this resource to retrieve a single setting\nrecord containing the following fields:\n\n* `ACTIVITY_STREAM_ENABLED`: Enable capturing activity for the activity stream. (boolean)\n* `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean)\n* `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean)\n* `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean)\n* `TOWER_URL_BASE`: This setting is used by services like notifications to render a valid url to the service. (string)\n* `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as \u0026quot;HTTP_X_FORWARDED_FOR\u0026quot;, if behind a reverse proxy. See the \u0026quot;Proxy Support\u0026quot; section of the AAP Installation guide for more details. (list)\n* `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally\u0026#x27;) (list)\n* `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list)\n* `LICENSE`: The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license. (nested object)\n* `REDHAT_USERNAME`: This username is used to send data to Automation Analytics (string)\n* `REDHAT_PASSWORD`: This password is used to send data to Automation Analytics (string)\n* `SUBSCRIPTIONS_USERNAME`: This username is used to retrieve subscription and content information (string)\n* `SUBSCRIPTIONS_PASSWORD`: This password is used to retrieve subscription and content information (string)\n* `AUTOMATION_ANALYTICS_URL`: This setting is used to to configure the upload URL for data collection for Automation Analytics. (string)\n* `INSTALL_UUID`:  (string)\n* `DEFAULT_CONTROL_PLANE_QUEUE_NAME`:  (string)\n* `DEFAULT_EXECUTION_QUEUE_NAME`:  (string)\n* `DEFAULT_EXECUTION_ENVIRONMENT`: The Execution Environment to be used when one has not been configured for a job template. (field)\n* `CUSTOM_VENV_PATHS`: Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line. (list)\n* `INSIGHTS_TRACKING_STATE`: Enables the service to gather data on automation and send it to Automation Analytics. (boolean)\n* `AUTOMATION_ANALYTICS_LAST_GATHER`:  (datetime)\n* `AUTOMATION_ANALYTICS_LAST_ENTRIES`:  (string)\n* `AUTOMATION_ANALYTICS_GATHER_INTERVAL`: Interval (in seconds) between data gathering. (integer)\n* `IS_K8S`: Indicates whether the instance is part of a kubernetes-based deployment. (boolean)\n* `UI_NEXT`: Enable preview of new user interface. (boolean)\n* `SUBSCRIPTION_USAGE_MODEL`:  (choice)\n    - `\"\"`: Default model for AWX - no subscription. Deletion of host_metrics will not be considered for purposes of managed host counting\n    - `unique_managed_hosts`: Usage based on unique managed nodes in a large historical time frame and delete functionality for no longer used managed nodes\n* `CLEANUP_HOST_METRICS_LAST_TS`:  (datetime)\n* `HOST_METRIC_SUMMARY_TASK_LAST_TS`:  (datetime)\n\n\n\n\n\n# Update a Setting:\n\nMake a PUT or PATCH request to this resource to update this\nsetting.  The following fields may be modified:\n\n\n* `ACTIVITY_STREAM_ENABLED`: Enable capturing activity for the activity stream. (boolean, required)\n* `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean, required)\n* `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean, required)\n* `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean, required)\n* `TOWER_URL_BASE`: This setting is used by services like notifications to render a valid url to the service. (string, required)\n* `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as \u0026quot;HTTP_X_FORWARDED_FOR\u0026quot;, if behind a reverse proxy. See the \u0026quot;Proxy Support\u0026quot; section of the AAP Installation guide for more details. (list, required)\n* `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally\u0026#x27;) (list, default=`[]`)\n* `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list, default=`[]`)\n\n* `REDHAT_USERNAME`: This username is used to send data to Automation Analytics (string, default=`\"\"`)\n* `REDHAT_PASSWORD`: This password is used to send data to Automation Analytics (string, default=`\"\"`)\n* `SUBSCRIPTIONS_USERNAME`: This username is used to retrieve subscription and content information (string, default=`\"\"`)\n* `SUBSCRIPTIONS_PASSWORD`: This password is used to retrieve subscription and content information (string, default=`\"\"`)\n* `AUTOMATION_ANALYTICS_URL`: This setting is used to to configure the upload URL for data collection for Automation Analytics. (string, default=`\"https://example.com\"`)\n\n\n\n* `DEFAULT_EXECUTION_ENVIRONMENT`: The Execution Environment to be used when one has not been configured for a job template. (field, default=`None`)\n* `CUSTOM_VENV_PATHS`: Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line. (list, default=`[]`)\n* `INSIGHTS_TRACKING_STATE`: Enables the service to gather data on automation and send it to Automation Analytics. (boolean, default=`False`)\n* `AUTOMATION_ANALYTICS_LAST_GATHER`:  (datetime, default=`None`)\n* `AUTOMATION_ANALYTICS_LAST_ENTRIES`:  (string, default=`\"\"`)\n* `AUTOMATION_ANALYTICS_GATHER_INTERVAL`: Interval (in seconds) between data gathering. (integer, default=`14400`)\n\n* `UI_NEXT`: Enable preview of new user interface. (boolean, default=`True`)\n* `SUBSCRIPTION_USAGE_MODEL`:  (choice)\n    - `\"\"`: Default model for AWX - no subscription. Deletion of host_metrics will not be considered for purposes of managed host counting (default)\n    - `unique_managed_hosts`: Usage based on unique managed nodes in a large historical time frame and delete functionality for no longer used managed nodes\n* `CLEANUP_HOST_METRICS_LAST_TS`:  (datetime, required)\n* `HOST_METRIC_SUMMARY_TASK_LAST_TS`:  (datetime, required)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Setting:\n\nMake a DELETE request to this resource to delete this setting.",
+  "description": "# Retrieve a Setting:\n\nMake GET request to this resource to retrieve a single setting\nrecord containing the following fields:\n\n* `ACTIVITY_STREAM_ENABLED`: Enable capturing activity for the activity stream. (boolean)\n* `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean)\n* `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean)\n* `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean)\n* `TOWER_URL_BASE`: This value has been set manually in a settings file.\n\nThis setting is used by services like notifications to render a valid url to the service. (string)\n* `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as \u0026quot;HTTP_X_FORWARDED_FOR\u0026quot;, if behind a reverse proxy. See the \u0026quot;Proxy Support\u0026quot; section of the AAP Installation guide for more details. (list)\n* `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally\u0026#x27;) (list)\n* `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list)\n* `LICENSE`: The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license. (nested object)\n* `REDHAT_USERNAME`: This username is used to send data to Automation Analytics (string)\n* `REDHAT_PASSWORD`: This password is used to send data to Automation Analytics (string)\n* `SUBSCRIPTIONS_USERNAME`: This username is used to retrieve subscription and content information (string)\n* `SUBSCRIPTIONS_PASSWORD`: This password is used to retrieve subscription and content information (string)\n* `AUTOMATION_ANALYTICS_URL`: This setting is used to to configure the upload URL for data collection for Automation Analytics. (string)\n* `INSTALL_UUID`:  (string)\n* `DEFAULT_CONTROL_PLANE_QUEUE_NAME`:  (string)\n* `DEFAULT_EXECUTION_QUEUE_NAME`:  (string)\n* `DEFAULT_EXECUTION_ENVIRONMENT`: The Execution Environment to be used when one has not been configured for a job template. (field)\n* `CUSTOM_VENV_PATHS`: Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line. (list)\n* `INSIGHTS_TRACKING_STATE`: Enables the service to gather data on automation and send it to Automation Analytics. (boolean)\n* `AUTOMATION_ANALYTICS_LAST_GATHER`:  (datetime)\n* `AUTOMATION_ANALYTICS_LAST_ENTRIES`:  (string)\n* `AUTOMATION_ANALYTICS_GATHER_INTERVAL`: Interval (in seconds) between data gathering. (integer)\n* `IS_K8S`: Indicates whether the instance is part of a kubernetes-based deployment. (boolean)\n* `UI_NEXT`: Enable preview of new user interface. (boolean)\n* `SUBSCRIPTION_USAGE_MODEL`:  (choice)\n    - `\"\"`: Default model for AWX - no subscription. Deletion of host_metrics will not be considered for purposes of managed host counting\n    - `unique_managed_hosts`: Usage based on unique managed nodes in a large historical time frame and delete functionality for no longer used managed nodes\n* `CLEANUP_HOST_METRICS_LAST_TS`:  (datetime)\n* `HOST_METRIC_SUMMARY_TASK_LAST_TS`:  (datetime)\n\n\n\n\n\n# Update a Setting:\n\nMake a PUT or PATCH request to this resource to update this\nsetting.  The following fields may be modified:\n\n\n* `ACTIVITY_STREAM_ENABLED`: Enable capturing activity for the activity stream. (boolean, required)\n* `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean, required)\n* `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean, required)\n* `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean, required)\n\n* `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as \u0026quot;HTTP_X_FORWARDED_FOR\u0026quot;, if behind a reverse proxy. See the \u0026quot;Proxy Support\u0026quot; section of the AAP Installation guide for more details. (list, required)\n* `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally\u0026#x27;) (list, default=`[]`)\n* `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list, default=`[]`)\n\n* `REDHAT_USERNAME`: This username is used to send data to Automation Analytics (string, default=`\"\"`)\n* `REDHAT_PASSWORD`: This password is used to send data to Automation Analytics (string, default=`\"\"`)\n* `SUBSCRIPTIONS_USERNAME`: This username is used to retrieve subscription and content information (string, default=`\"\"`)\n* `SUBSCRIPTIONS_PASSWORD`: This password is used to retrieve subscription and content information (string, default=`\"\"`)\n* `AUTOMATION_ANALYTICS_URL`: This setting is used to to configure the upload URL for data collection for Automation Analytics. (string, default=`\"https://example.com\"`)\n\n\n\n* `DEFAULT_EXECUTION_ENVIRONMENT`: The Execution Environment to be used when one has not been configured for a job template. (field, default=`None`)\n* `CUSTOM_VENV_PATHS`: Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line. (list, default=`[]`)\n* `INSIGHTS_TRACKING_STATE`: Enables the service to gather data on automation and send it to Automation Analytics. (boolean, default=`False`)\n* `AUTOMATION_ANALYTICS_LAST_GATHER`:  (datetime, default=`None`)\n* `AUTOMATION_ANALYTICS_LAST_ENTRIES`:  (string, default=`\"\"`)\n* `AUTOMATION_ANALYTICS_GATHER_INTERVAL`: Interval (in seconds) between data gathering. (integer, default=`14400`)\n\n* `UI_NEXT`: Enable preview of new user interface. (boolean, default=`True`)\n* `SUBSCRIPTION_USAGE_MODEL`:  (choice)\n    - `\"\"`: Default model for AWX - no subscription. Deletion of host_metrics will not be considered for purposes of managed host counting (default)\n    - `unique_managed_hosts`: Usage based on unique managed nodes in a large historical time frame and delete functionality for no longer used managed nodes\n* `CLEANUP_HOST_METRICS_LAST_TS`:  (datetime, required)\n* `HOST_METRIC_SUMMARY_TASK_LAST_TS`:  (datetime, required)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Setting:\n\nMake a DELETE request to this resource to delete this setting.",
   "has_object_roles": false,
   "has_survey_spec": false,
   "render_api_docs": true,
@@ -41,6 +41,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -83,6 +84,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -125,6 +127,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -169,6 +172,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -211,6 +215,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -253,6 +258,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -295,6 +301,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -337,6 +344,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -379,6 +387,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -421,6 +430,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -463,6 +473,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -505,6 +516,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -547,6 +559,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -589,6 +602,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -631,6 +645,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -673,6 +688,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -715,6 +731,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -757,6 +774,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -799,6 +817,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -841,6 +860,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -883,6 +903,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -925,6 +946,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -967,6 +989,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -1009,6 +1032,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1051,6 +1075,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1093,6 +1118,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1129,8 +1155,8 @@
       "label": "Base URL of the service",
       "description": "This setting is used by services like notifications to render a valid url to the service.",
       "type": "string",
-      "has_default_value": false,
-      "default_value": "",
+      "has_default_value": true,
+      "default_value": "stringdefault.StaticString(`https://localhost:8043`)",
       "element_type": "",
       "is_sensitive": false,
       "is_required": false,
@@ -1149,6 +1175,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1191,6 +1218,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1235,6 +1263,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1277,6 +1306,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1319,6 +1349,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1363,6 +1394,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1405,6 +1437,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1447,6 +1480,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -1489,6 +1523,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1531,6 +1566,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1573,6 +1609,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1615,6 +1652,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -1657,6 +1695,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -1699,6 +1738,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1741,6 +1781,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1783,6 +1824,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.List",
         "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
@@ -1825,6 +1867,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1867,6 +1910,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1909,6 +1953,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1965,6 +2010,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -2007,6 +2053,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",

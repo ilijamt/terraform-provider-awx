@@ -48,7 +48,7 @@ setting.  The following fields may be modified:
     - `never`: Never
     - `template`: Only On Job Template Definitions (default)
 * `AWX_ISOLATION_BASE_PATH`: The directory in which the service will create new temporary directories for job execution and isolation (such as credential files). (string, required)
-* `AWX_ISOLATION_SHOW_PATHS`: List of paths that would otherwise be hidden to expose to isolated jobs. Enter one path per line. Volumes will be mounted from the execution node to the container. The supported format is HOST-DIR[:CONTAINER-DIR[:OPTIONS]].  (list, default=`[]`)
+* `AWX_ISOLATION_SHOW_PATHS`: List of paths that would otherwise be hidden to expose to isolated jobs. Enter one path per line. Volumes will be mounted from the execution node to the container. The supported format is HOST-DIR[:CONTAINER-DIR[:OPTIONS]].  (list, default=`[&#x27;/etc/pki/ca-trust:/etc/pki/ca-trust:O&#x27;, &#x27;/usr/share/pki:/usr/share/pki:O&#x27;]`)
 * `AWX_TASK_ENV`: Additional environment variables set for playbook runs, inventory updates, project updates, and notification sending. (nested object, default=`{}`)
 * `AWX_RUNNER_KEEPALIVE_SECONDS`: Only applies to jobs running in a Container Group. If not 0, send a message every so-many seconds to keep connection open. (integer, required)
 * `GALAXY_TASK_ENV`: Additional environment variables set for invocations of ansible-galaxy within project updates. Useful if you must use a proxy server for ansible-galaxy but not git. (nested object, required)

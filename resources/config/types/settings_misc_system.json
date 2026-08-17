@@ -14,6 +14,18 @@
     "AUTOMATION_ANALYTICS_LAST_GATHER",
     "CUSTOM_VENV_PATHS"
   ],
+  "api_data_override": {
+    "TOWER_URL_BASE": {
+      "category": "System",
+      "category_slug": "system",
+      "default": "https://localhost:8043",
+      "help_text": "This setting is used by services like notifications to render a valid url to the service.",
+      "hidden": false,
+      "label": "Base URL of the service",
+      "required": true,
+      "type": "string"
+    }
+  },
   "property_overrides": {
     "LICENSE": {
       "type": "json"

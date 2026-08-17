@@ -7,7 +7,9 @@ record containing the following fields:
 * `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean)
 * `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean)
 * `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean)
-* `TOWER_URL_BASE`: This setting is used by services like notifications to render a valid url to the service. (string)
+* `TOWER_URL_BASE`: This value has been set manually in a settings file.
+
+This setting is used by services like notifications to render a valid url to the service. (string)
 * `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as &quot;HTTP_X_FORWARDED_FOR&quot;, if behind a reverse proxy. See the &quot;Proxy Support&quot; section of the AAP Installation guide for more details. (list)
 * `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally&#x27;) (list)
 * `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list)
@@ -48,7 +50,7 @@ setting.  The following fields may be modified:
 * `ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC`: Enable capturing activity for the activity stream when running inventory sync. (boolean, required)
 * `ORG_ADMINS_CAN_SEE_ALL_USERS`: Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization. (boolean, required)
 * `MANAGE_ORGANIZATION_AUTH`: Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration. (boolean, required)
-* `TOWER_URL_BASE`: This setting is used by services like notifications to render a valid url to the service. (string, required)
+
 * `REMOTE_HOST_HEADERS`: HTTP headers and meta keys to search to determine remote host name or IP. Add additional items to this list, such as &quot;HTTP_X_FORWARDED_FOR&quot;, if behind a reverse proxy. See the &quot;Proxy Support&quot; section of the AAP Installation guide for more details. (list, required)
 * `PROXY_IP_ALLOWED_LIST`: If the service is behind a reverse proxy/load balancer, use this setting to configure the proxy IP addresses from which the service should trust custom REMOTE_HOST_HEADERS header values. If this setting is an empty list (the default), the headers specified by REMOTE_HOST_HEADERS will be trusted unconditionally&#x27;) (list, default=`[]`)
 * `CSRF_TRUSTED_ORIGINS`: If the service is behind a reverse proxy/load balancer, use this setting to configure the schema://addresses from which the service should trust Origin header values.  (list, default=`[]`)

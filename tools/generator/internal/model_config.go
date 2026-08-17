@@ -70,6 +70,7 @@ type Property struct {
 	OmitEmpty          bool              `json:"omit_empty" yaml:"omit_empty"`
 	Nullable           bool              `json:"nullable" yaml:"nullable"`
 	UseStateForUnknown bool              `json:"use_state_for_unknown" yaml:"use_state_for_unknown"`
+	RequiresReplace    bool              `json:"requires_replace" yaml:"requires_replace"`
 	Generated          PropertyGenerated `json:"generated" yaml:"generated"`
 	ValidatorData      map[string]any    `json:"validator_data" yaml:"validator_data"`
 	Constraints        []FieldConstraint `json:"constraints" yaml:"constraints"`
@@ -110,6 +111,7 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	if override.UseStateForUnknown != nil {
 		p.UseStateForUnknown = *override.UseStateForUnknown
 	}
+	p.RequiresReplace = override.RequiresReplace
 	p.Validators = make([]string, 0)
 	p.Generated.ValidationAvailableChoiceData = make([]string, 0)
 	p.Generated.AttributeValidationData = make(map[string][]string)
@@ -227,6 +229,9 @@ func (p *Property) setWriteOnly(values map[string]any, override PropertyOverride
 func (p *Property) setDefaultValue(values map[string]any, override PropertyOverride) {
 	if override.DefaultValue != "" {
 		values["default"] = override.DefaultValue
+	}
+	if override.NoDefault {
+		delete(values, "default")
 	}
 
 	var hasDefault bool

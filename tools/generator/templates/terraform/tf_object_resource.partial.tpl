@@ -29,9 +29,15 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- if $value.HasDefaultValue }}
 	Default:     {{ $value.DefaultValue }},
 {{- end }}
-{{- if and (not $value.IsRequired) $value.UseStateForUnknown }}
+{{- $useState := and (not $value.IsRequired) $value.UseStateForUnknown }}
+{{- if or $useState $value.RequiresReplace }}
 	PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
+{{- if $useState }}
 		{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
+{{- end }}
+{{- if $value.RequiresReplace }}
+		{{ $value.Generated.AttributeType | lowerCase }}planmodifier.RequiresReplace(),
+{{- end }}
 	},
 {{- end }}
 {{- if and (eq $value.Generated.AwxGoValue "types.StringValue") (hasKey $value.ValidatorData "max_length") }}

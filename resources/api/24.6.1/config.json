@@ -368,6 +368,9 @@
       "id_key": "id",
       "has_object_roles": true,
       "property_overrides": {
+        "pod_spec_override": {
+          "no_default": true
+        },
         "capacity": {
           "type": "integer"
         },
@@ -1314,6 +1317,18 @@
         "AUTOMATION_ANALYTICS_LAST_GATHER",
         "CUSTOM_VENV_PATHS"
       ],
+      "api_data_override": {
+        "TOWER_URL_BASE": {
+          "category": "System",
+          "category_slug": "system",
+          "default": "https://localhost:8043",
+          "help_text": "This setting is used by services like notifications to render a valid url to the service.",
+          "hidden": false,
+          "label": "Base URL of the service",
+          "required": true,
+          "type": "string"
+        }
+      },
       "property_overrides": {
         "LICENSE": {
           "type": "json"
@@ -1521,6 +1536,17 @@
       "type_name": "workflow_job_template_node",
       "id_key": "id",
       "enabled": false,
+      "property_overrides": {
+        "identifier": {
+          "no_default": true
+        },
+        "workflow_job_template": {
+          "requires_replace": true
+        },
+        "diff_mode": {
+          "nullable": true
+        }
+      },
       "search_fields": [
         {
           "url_suffix": "%d/",

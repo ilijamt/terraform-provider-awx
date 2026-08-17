@@ -64,6 +64,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -106,6 +107,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Float64",
         "awx_go_value": "types.Float64Value",
@@ -148,6 +150,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -190,6 +193,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -237,6 +241,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -279,6 +284,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -321,6 +327,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -363,6 +370,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -405,6 +413,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -449,6 +458,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -493,6 +503,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -540,6 +551,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Float64",
         "awx_go_value": "types.Float64Value",
@@ -582,6 +594,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -624,6 +637,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -666,6 +680,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -710,6 +725,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -757,6 +773,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -799,6 +816,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Bool",
         "awx_go_value": "types.BoolValue",
@@ -841,6 +859,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -885,6 +904,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -929,6 +949,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -958,8 +979,8 @@
       "label": "Pod spec override",
       "description": "",
       "type": "string",
-      "has_default_value": true,
-      "default_value": "stringdefault.StaticString(`{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"namespace\":\"default\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"ansible-runner\",\"worker\",\"--private-data-dir=/runner\"],\"image\":\"quay.io/ansible/awx-ee:latest\",\"name\":\"worker\",\"resources\":{\"requests\":{\"cpu\":\"250m\",\"memory\":\"100Mi\"}}}],\"serviceAccountName\":\"default\"}}`)",
+      "has_default_value": false,
+      "default_value": "",
       "element_type": "",
       "is_sensitive": false,
       "is_required": false,
@@ -978,6 +999,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1020,6 +1042,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.String",
         "awx_go_value": "types.StringValue",
@@ -1062,6 +1085,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1106,6 +1130,7 @@
       "omit_empty": true,
       "nullable": false,
       "use_state_for_unknown": true,
+      "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
         "awx_go_value": "types.Int64Value",
@@ -1152,6 +1177,7 @@
     "omit_empty": true,
     "nullable": false,
     "use_state_for_unknown": true,
+    "requires_replace": false,
     "generated": {
       "awx_go_type": "types.Int64",
       "awx_go_value": "types.Int64Value",

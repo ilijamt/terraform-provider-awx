@@ -5,6 +5,9 @@
   "id_key": "id",
   "has_object_roles": true,
   "property_overrides": {
+    "pod_spec_override": {
+      "no_default": true
+    },
     "capacity": {
       "type": "integer"
     },

@@ -10,6 +10,24 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
+// applyApiDataOverride creates the field when the source instance never
+// reported it. A deployment that pins a setting in a config file drops it from
+// the write action entirely (TOWER_URL_BASE arrives with defined_in_file true
+// and no PUT entry), which would delete the attribute from the schema. Runs
+// after the remove_fields_* pruning so the override wins.
+func applyApiDataOverride(props map[string]any, overrides map[string]map[string]any) {
+	for key, override := range overrides {
+		field, ok := props[key].(map[string]any)
+		if !ok {
+			field = make(map[string]any)
+			props[key] = field
+		}
+		for k, v := range override {
+			field[k] = v
+		}
+	}
+}
+
 func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, dr Deprecated, err error) {
 	log.Printf("Generating resources for %s", name)
 
@@ -40,6 +58,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		for _, field := range append(config.DefaultRemoveApiDataSource, val.RemoveFieldsDataSource...) {
 			delete(props, field)
 		}
+		applyApiDataOverride(props, val.ApiDataOverride)
 
 		for key, value := range props {
 			value.(map[string]any)["name"] = key
@@ -56,6 +75,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 		for _, field := range append(config.DefaultRemoveApiResource, val.RemoveFieldsResource...) {
 			delete(props, field)
 		}
+		applyApiDataOverride(props, val.ApiDataOverride)
 
 		for key, value := range props {
 			value.(map[string]any)["name"] = key

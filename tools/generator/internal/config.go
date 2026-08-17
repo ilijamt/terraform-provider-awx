@@ -33,6 +33,21 @@ type PropertyOverride struct {
 	// prior state value there yields "Provider produced inconsistent result
 	// after apply".
 	UseStateForUnknown *bool `json:"use_state_for_unknown,omitempty" yaml:"use_state_for_unknown,omitempty"`
+	// NoDefault discards a default reported by AWX rather than pinning it into
+	// the schema, leaving the attribute Optional+Computed so the server supplies
+	// the value. AWX renders a callable model default as one fixed sample, so a
+	// uuid4 default arrives as the literal "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+	// (awx/api/metadata.py). Pinning it hands every resource the same value,
+	// which collides with the per-workflow unique constraint on a node
+	// identifier. Also set on values that describe the source deployment rather
+	// than AWX itself, such as the k8s namespace in an instance group pod spec.
+	NoDefault bool `json:"no_default,omitempty" yaml:"no_default,omitempty"`
+	// RequiresReplace marks an attribute AWX accepts on create but ignores on
+	// update, so Terraform has to recreate instead of PATCH. The node serializer
+	// turns workflow_job_template read_only once the instance exists; without
+	// this the PATCH returns the old value and Terraform reports "Provider
+	// produced inconsistent result after apply".
+	RequiresReplace bool `json:"requires_replace,omitempty" yaml:"requires_replace,omitempty"`
 }
 
 type SearchField struct {

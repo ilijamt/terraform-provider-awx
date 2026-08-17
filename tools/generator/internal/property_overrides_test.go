@@ -55,6 +55,37 @@ func TestPropertyNullable(t *testing.T) {
 	}
 }
 
+func TestPropertyNoDefault(t *testing.T) {
+	const awxSample = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+	t.Run("a reported default is pinned by default", func(t *testing.T) {
+		var p Property
+		p.Name = "identifier"
+		values := map[string]any{"type": "string", "label": "Identifier", "default": awxSample}
+		require.NoError(t, p.Update(TypeWrite, PropertyOverride{}, values, Item{Name: "WorkflowJobTemplateNode"}))
+		require.True(t, p.HasDefaultValue)
+		require.Contains(t, p.DefaultValue, awxSample)
+	})
+
+	t.Run("no_default drops it and leaves the attribute computed", func(t *testing.T) {
+		var p Property
+		p.Name = "identifier"
+		values := map[string]any{"type": "string", "label": "Identifier", "default": awxSample}
+		require.NoError(t, p.Update(TypeWrite, PropertyOverride{NoDefault: true}, values, Item{Name: "WorkflowJobTemplateNode"}))
+		require.False(t, p.HasDefaultValue)
+		require.Empty(t, p.DefaultValue)
+		require.False(t, p.IsRequired)
+		require.True(t, p.IsComputed)
+	})
+}
+
+func TestPropertyRequiresReplace(t *testing.T) {
+	require.False(t, updateProperty(t, "workflow_job_template", "id", PropertyOverride{}).RequiresReplace)
+	require.True(t, updateProperty(t, "workflow_job_template", "id", PropertyOverride{
+		RequiresReplace: true,
+	}).RequiresReplace)
+}
+
 func TestPropertyUseStateForUnknown(t *testing.T) {
 	require.True(t, updateProperty(t, "next_run", "datetime", PropertyOverride{}).UseStateForUnknown)
 	require.False(t, updateProperty(t, "next_run", "datetime", PropertyOverride{

@@ -4,6 +4,17 @@
   "type_name": "workflow_job_template_node",
   "id_key": "id",
   "enabled": false,
+  "property_overrides": {
+    "identifier": {
+      "no_default": true
+    },
+    "workflow_job_template": {
+      "requires_replace": true
+    },
+    "diff_mode": {
+      "nullable": true
+    }
+  },
   "search_fields": [
     {
       "url_suffix": "%d/",
