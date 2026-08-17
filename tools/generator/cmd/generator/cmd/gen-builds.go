@@ -29,25 +29,24 @@ var genBuilds = &cobra.Command{
 		var versions, _ = cmd.Flags().GetStringSlice("version")
 
 		for _, b := range *buildConfig {
-			func(b *internal.BuildConfigVersion) {
-				var process = slices.Contains(versions, b.Version) || len(versions) == 0
-				if !b.Active || !process {
-					return
-				}
-				defer func() {
-					if !dryRun && b.Active && process {
-						b.Inc()
-					}
-				}()
-				v := b.GetBuildVersion()
-				cmds = append(cmds,
-					fmt.Sprintf("make generate build VERSION=%s", b.Version),
-					fmt.Sprintf("git add internal docs resources/api/%s", b.Version),
-					fmt.Sprintf("git commit -m'chore: generated version %s with tag v%s'", b.Version, b.GetBuildVersion()),
-					fmt.Sprintf("git tag v%s", v),
-					fmt.Sprintf("git push origin refs/tags/v%s", v),
-				)
-			}(b)
+			var process = slices.Contains(versions, b.Version) || len(versions) == 0
+			if !b.Active || !process {
+				continue
+			}
+			v, err := b.GetBuildVersion()
+			if err != nil {
+				return err
+			}
+			cmds = append(cmds,
+				fmt.Sprintf("make generate build VERSION=%s", b.Version),
+				fmt.Sprintf("git add internal docs resources/api/%s", b.Version),
+				fmt.Sprintf("git commit -m'chore: generated version %s with tag v%s'", b.Version, v),
+				fmt.Sprintf("git tag v%s", v),
+				fmt.Sprintf("git push origin refs/tags/v%s", v),
+			)
+			if !dryRun {
+				b.Inc()
+			}
 		}
 
 		if !dryRun {

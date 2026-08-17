@@ -16,6 +16,31 @@ Currently, built provider versions for AWX.
 * 24.6.1
     * [Deprecations](resources/api/24.6.1/deprecated.md)
 
+Provider versioning
+-------------------
+
+A provider release tag encodes the AWX version it was generated from plus a
+build counter, with the counter folded into the patch component:
+
+```
+AWX 24.6.1, build 3   ->   v24.6.103
+AWX 24.6.1, build 4   ->   v24.6.104
+AWX 24.6.2, build 0   ->   v24.6.200
+```
+
+Read it back with `patch / 100` for the AWX patch and `patch % 100` for the
+build. The counter lives in [versions.yaml](versions.yaml) and is capped at 99
+per AWX patch release.
+
+Releases before `v24.6.103` used a `v<awx-version>-<build>` form (`v24.6.1-2`).
+That is a semver *prerelease*, which Terraform skips when resolving any range
+constraint, so those versions are only reachable by pinning them exactly:
+
+```hcl
+# resolves under the current scheme, skips every pre-24.6.103 tag
+version = "~> 24.6.103"
+```
+
 Download a new version of the API
 ---------------------------------
 

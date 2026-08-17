@@ -22,7 +22,7 @@ mkdir -p $COVERAGEDIR
 cd $TARGETDIR
 bash $ROOTDIR/tools/examples-clean.sh
 cd $ROOTDIR
-make build-debug
+make build-cover
 
 run application
 run credential_with_input_source
@@ -33,6 +33,7 @@ run inventory
 # run job_template_survey_spec
 # run preload_data
 # run objectroles
+run schedule
 run roles
 run settings
 run settings_authentication

@@ -11,7 +11,7 @@ import (
 )
 
 func TestProviderConfigureFromEnvironment(t *testing.T) {
-	var defaultEnvs = []string{"AWX_HOST", "AWX_USERNAME", "AWX_PASSWORD", "TOWER_HOST", "TOWER_PASSWORD", "TOWER_USERNAME", "TOWER_AUTH_TOKEN", "AWX_AUTH_TOKEN"}
+	var defaultEnvs = []string{"AWX_HOST", "AWX_USERNAME", "AWX_PASSWORD", "AWX_AUTH_TOKEN", "AWX_VERIFY_SSL", "TOWER_HOST", "TOWER_USERNAME", "TOWER_PASSWORD", "TOWER_AUTH_TOKEN", "TOWER_VERIFY_SSL"}
 	var tests = []struct {
 		in   map[string]string
 		null []string

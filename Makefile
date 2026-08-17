@@ -9,12 +9,18 @@ TOWER_HOST ?= http://awx.local
 TOWER_USERNAME ?= admin
 TOWER_PASSWORD ?= admin
 
+BIN := ./build/terraform-provider-awx
+MODULE := github.com/ilijamt/terraform-provider-awx
+
+GIT_VERSION ?= $(patsubst v%,%,$(shell git describe --tags --always --dirty 2>/dev/null || echo dev))
+STAMP := -X $(MODULE)/version.Version=$(GIT_VERSION)
+
 .PHONY: generate-config
 generate-config:
 	node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/resources/api/$(VERSION)
 
 .PHONY: download-api
-download-api:
+download-api: generate-config
 	mkdir -p resources/api/$(VERSION)/config resources/api/$(VERSION)/gen-data
 	go run ./tools/generator/cmd/generator/main.go fetch-api-resources resources/api/$(VERSION) \
 		--host $(TOWER_HOST) --password $(TOWER_PASSWORD) --username $(TOWER_USERNAME) --insecure-skip-verify
@@ -43,20 +49,24 @@ generate-tfplugindocs:
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs
 
-.PHONY: build-cover
-build-cover:
-	go build -cover -trimpath -o ./build/terraform-provider-awx ./cmd/provider
-
 .PHONY: build
 build:
-	go build -trimpath -o ./build/terraform-provider-awx -ldflags "-s -w" ./cmd/provider
+	@mkdir -p build
+	CGO_ENABLED=0 go build -trimpath -ldflags "-s -w $(STAMP)" -o $(BIN) ./cmd/provider
+
+.PHONY: build-cover
+build-cover:
+	@mkdir -p build
+	CGO_ENABLED=0 go build -cover -covermode=atomic -trimpath -ldflags "-s -w $(STAMP)" -o $(BIN) ./cmd/provider
 
 .PHONY: build-debug
 build-debug:
-	go build -cover -covermode=atomic -trimpath -o ./build/terraform-provider-awx ./cmd/provider
+	@mkdir -p build
+	go build -gcflags 'all=-N -l' -ldflags "$(STAMP)" -o $(BIN) ./cmd/provider
 
 .PHONY: test
 test:
+	@mkdir -p build
 	go test ./internal/... -count=1 -parallel=4 -cover -coverprofile=build/coverage.out
 	go tool cover -html=build/coverage.out -o build/coverage.html
 
