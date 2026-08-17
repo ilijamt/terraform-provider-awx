@@ -29,7 +29,7 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- if $value.HasDefaultValue }}
 	Default:     {{ $value.DefaultValue }},
 {{- end }}
-{{- if not $value.IsRequired }}
+{{- if and (not $value.IsRequired) $value.UseStateForUnknown }}
 	PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
 		{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 	},
@@ -124,9 +124,11 @@ func New{{ .Name }}Resource() resource.Resource {
 						Sensitive:   true,
 {{- end }}
 						Computed: true,
+{{- if $value.UseStateForUnknown }}
 						PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
 							{{ $value.Generated.AttributeType | lowerCase }}planmodifier.UseStateForUnknown(),
 						},
+{{- end }}
 {{- if eq .Type "choice" }}
 						Validators: []validator.{{ $value.Generated.AttributeType }}{
 							stringvalidator.OneOf(

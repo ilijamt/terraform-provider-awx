@@ -45,33 +45,35 @@ type ModelConfig struct {
 
 // Property represents a single property in the model
 type Property struct {
-	IdKey             string            `json:"id_key" yaml:"id_key"`
-	Name              string            `json:"name" yaml:"name"`               // The name of the property (e.g., "id", "name")
-	Label             string            `json:"label" yaml:"label"`             // The label of the property
-	Description       string            `json:"description" yaml:"description"` // The description of the property
-	Type              string            `json:"type" yaml:"type"`               // The type for the property
-	HasDefaultValue   bool              `json:"has_default_value" yaml:"has_default_value"`
-	DefaultValue      string            `json:"default_value" yaml:"default_value"`  // The default value for the property
-	ElementType       string            `json:"element_type" yaml:"element_type"`    // The element type of the property
-	IsSensitive       bool              `json:"is_sensitive" yaml:"is_sensitive"`    // Indicates if the property is sensitive
-	IsRequired        bool              `json:"is_required" yaml:"is_required" `     // Indicates if the property is required in the schema
-	IsWriteOnly       bool              `json:"is_write_only" yaml:"is_write_only" ` // Indicates if the property is write-only (used only in requests)
-	IsReadOnly        bool              `json:"is_read_only" yaml:"is_read_only"`    // Indicates if the property is read-only (used only in responses)
-	IsComputed        bool              `json:"is_computed" yaml:"is_computed" `     // Indicates if the property is computed
-	IsTypeRead        bool              `json:"is_type_read" yaml:"is_type_read" `   // Indicates if the property is a read type
-	IsTypeWrite       bool              `json:"is_type_write" yaml:"is_type_write" ` // Indicates if the property is a write type
-	IsInReadProperty  bool              `json:"is_in_read_property" yaml:"is_in_read_property" `
-	IsInWriteProperty bool              `json:"is_in_write_property" yaml:"is_in_write_property" `
-	Validators        []string          `json:"validators" yaml:"validators"`
-	IsHidden          bool              `json:"is_hidden" yaml:"is_hidden"`
-	PostWrap          bool              `json:"post_wrap" yaml:"post_wrap"`
-	Trim              bool              `json:"trim" yaml:"trim"`
-	IsSearchable      bool              `json:"is_searchable" yaml:"is_searchable"`
-	OmitEmpty         bool              `json:"omit_empty" yaml:"omit_empty"`
-	Generated         PropertyGenerated `json:"generated" yaml:"generated"`
-	ValidatorData     map[string]any    `json:"validator_data" yaml:"validator_data"`
-	Constraints       []FieldConstraint `json:"constraints" yaml:"constraints"`
-	Deprecated        bool              `json:"deprecated" yaml:"deprecated"`
+	IdKey              string            `json:"id_key" yaml:"id_key"`
+	Name               string            `json:"name" yaml:"name"`               // The name of the property (e.g., "id", "name")
+	Label              string            `json:"label" yaml:"label"`             // The label of the property
+	Description        string            `json:"description" yaml:"description"` // The description of the property
+	Type               string            `json:"type" yaml:"type"`               // The type for the property
+	HasDefaultValue    bool              `json:"has_default_value" yaml:"has_default_value"`
+	DefaultValue       string            `json:"default_value" yaml:"default_value"`  // The default value for the property
+	ElementType        string            `json:"element_type" yaml:"element_type"`    // The element type of the property
+	IsSensitive        bool              `json:"is_sensitive" yaml:"is_sensitive"`    // Indicates if the property is sensitive
+	IsRequired         bool              `json:"is_required" yaml:"is_required" `     // Indicates if the property is required in the schema
+	IsWriteOnly        bool              `json:"is_write_only" yaml:"is_write_only" ` // Indicates if the property is write-only (used only in requests)
+	IsReadOnly         bool              `json:"is_read_only" yaml:"is_read_only"`    // Indicates if the property is read-only (used only in responses)
+	IsComputed         bool              `json:"is_computed" yaml:"is_computed" `     // Indicates if the property is computed
+	IsTypeRead         bool              `json:"is_type_read" yaml:"is_type_read" `   // Indicates if the property is a read type
+	IsTypeWrite        bool              `json:"is_type_write" yaml:"is_type_write" ` // Indicates if the property is a write type
+	IsInReadProperty   bool              `json:"is_in_read_property" yaml:"is_in_read_property" `
+	IsInWriteProperty  bool              `json:"is_in_write_property" yaml:"is_in_write_property" `
+	Validators         []string          `json:"validators" yaml:"validators"`
+	IsHidden           bool              `json:"is_hidden" yaml:"is_hidden"`
+	PostWrap           bool              `json:"post_wrap" yaml:"post_wrap"`
+	Trim               bool              `json:"trim" yaml:"trim"`
+	IsSearchable       bool              `json:"is_searchable" yaml:"is_searchable"`
+	OmitEmpty          bool              `json:"omit_empty" yaml:"omit_empty"`
+	Nullable           bool              `json:"nullable" yaml:"nullable"`
+	UseStateForUnknown bool              `json:"use_state_for_unknown" yaml:"use_state_for_unknown"`
+	Generated          PropertyGenerated `json:"generated" yaml:"generated"`
+	ValidatorData      map[string]any    `json:"validator_data" yaml:"validator_data"`
+	Constraints        []FieldConstraint `json:"constraints" yaml:"constraints"`
+	Deprecated         bool              `json:"deprecated" yaml:"deprecated"`
 }
 
 type PropertyGenerated struct {
@@ -102,6 +104,11 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	p.OmitEmpty = true
 	if override.OmitEmpty != nil {
 		p.OmitEmpty = *override.OmitEmpty
+	}
+	p.Nullable = override.Nullable != nil && *override.Nullable
+	p.UseStateForUnknown = true
+	if override.UseStateForUnknown != nil {
+		p.UseStateForUnknown = *override.UseStateForUnknown
 	}
 	p.Validators = make([]string, 0)
 	p.Generated.ValidationAvailableChoiceData = make([]string, 0)
@@ -183,6 +190,13 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 	} else {
 		p.Generated.BodyRequestModelType = awxPrimitiveType(p.Type)
 		p.Generated.ModelBodyRequestValue = fmt.Sprintf("o.%s.%s()", p.Generated.PropertyName, p.Generated.TfGoPrimitiveValue)
+	}
+
+	// The template denies `,omitempty` to a plain bool so an explicit false
+	// still reaches the API. A *bool falls outside that exclusion.
+	if p.Nullable && p.Generated.BodyRequestModelType == "bool" {
+		p.Generated.BodyRequestModelType = "*bool"
+		p.Generated.ModelBodyRequestValue = fmt.Sprintf("helpers.AttrBoolPointer(o.%s)", p.Generated.PropertyName)
 	}
 
 	switch p.Type {

@@ -23,6 +23,16 @@ type PropertyOverride struct {
 	// the server keeps its existing default, causing "Provider produced
 	// inconsistent result after apply".
 	OmitEmpty *bool `json:"omit_empty,omitempty" yaml:"omit_empty,omitempty"`
+	// Nullable makes the body-request field a pointer so an unset attribute is
+	// dropped rather than sent as its zero value. Set on bool launch prompts
+	// (schedule diff_mode): AWX rejects those with "Field is not allowed on
+	// launch" when the unified job template does not prompt for them.
+	Nullable *bool `json:"nullable,omitempty" yaml:"nullable,omitempty"`
+	// UseStateForUnknown defaults to true. Set false for values AWX recomputes
+	// server-side, such as schedule next_run derived from rrule. Promising the
+	// prior state value there yields "Provider produced inconsistent result
+	// after apply".
+	UseStateForUnknown *bool `json:"use_state_for_unknown,omitempty" yaml:"use_state_for_unknown,omitempty"`
 }
 
 type SearchField struct {

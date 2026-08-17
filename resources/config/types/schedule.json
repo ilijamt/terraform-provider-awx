@@ -4,11 +4,25 @@
   "type_name": "schedule",
   "id_key": "id",
   "property_overrides": {
+    "diff_mode": {
+      "nullable": true
+    },
+    "dtend": {
+      "use_state_for_unknown": false
+    },
+    "dtstart": {
+      "use_state_for_unknown": false
+    },
+    "next_run": {
+      "use_state_for_unknown": false
+    },
     "timezone": {
-      "type": "string"
+      "type": "string",
+      "use_state_for_unknown": false
     },
     "until": {
-      "type": "string"
+      "type": "string",
+      "use_state_for_unknown": false
     }
   },
   "enabled": true,

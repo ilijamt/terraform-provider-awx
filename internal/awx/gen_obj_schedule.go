@@ -58,7 +58,7 @@ func (o *scheduleTerraformModel) Clone() scheduleTerraformModel {
 func (o *scheduleTerraformModel) BodyRequest() *scheduleBodyRequestModel {
 	var req scheduleBodyRequestModel
 	req.Description = o.Description.ValueString()
-	req.DiffMode = o.DiffMode.ValueBool()
+	req.DiffMode = helpers.AttrBoolPointer(o.DiffMode)
 	req.Enabled = o.Enabled.ValueBool()
 	req.ExecutionEnvironment = o.ExecutionEnvironment.ValueInt64()
 	req.ExtraData = json.RawMessage(o.ExtraData.ValueString())
@@ -113,7 +113,7 @@ func (o *scheduleTerraformModel) UpdateFromApiData(data map[string]any) (diags d
 
 type scheduleBodyRequestModel struct {
 	Description          string          `json:"description,omitempty"`
-	DiffMode             bool            `json:"diff_mode"`
+	DiffMode             *bool           `json:"diff_mode,omitempty"`
 	Enabled              bool            `json:"enabled"`
 	ExecutionEnvironment int64           `json:"execution_environment,omitempty"`
 	ExtraData            json.RawMessage `json:"extra_data,omitempty"`
@@ -298,16 +298,10 @@ func NewScheduleResource() resource.Resource {
 					"dtend": schema.StringAttribute{
 						Description: "The last occurrence of the schedule occurs before this time, aftewards the schedule expires.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"dtstart": schema.StringAttribute{
 						Description: "The first occurrence of the schedule occurs on or after this time.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this schedule.",
@@ -319,23 +313,14 @@ func NewScheduleResource() resource.Resource {
 					"next_run": schema.StringAttribute{
 						Description: "The next time that the scheduled action will run.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"timezone": schema.StringAttribute{
 						Description: "The timezone this schedule runs in. This field is extracted from the RRULE. If the timezone in the RRULE is a link to another timezone, the link will be reflected in this field.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"until": schema.StringAttribute{
 						Description: "The date this schedule will end. This field is computed from the RRULE. If the schedule does not end an empty string will be returned",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},
