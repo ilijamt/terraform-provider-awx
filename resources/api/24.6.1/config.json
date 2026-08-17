@@ -1514,6 +1514,34 @@
         "custom_virtualenv",
         "status"
       ]
+    },
+    {
+      "endpoint": "/api/v2/workflow_job_template_nodes/",
+      "name": "WorkflowJobTemplateNode",
+      "type_name": "workflow_job_template_node",
+      "id_key": "id",
+      "enabled": false,
+      "search_fields": [
+        {
+          "url_suffix": "%d/",
+          "name": "by_id",
+          "fields": [
+            {
+              "name": "id"
+            }
+          ]
+        }
+      ],
+      "remove_fields_data_source": [
+        "success_nodes",
+        "failure_nodes",
+        "always_nodes"
+      ],
+      "remove_fields_resource": [
+        "success_nodes",
+        "failure_nodes",
+        "always_nodes"
+      ]
     }
   ]
 }
