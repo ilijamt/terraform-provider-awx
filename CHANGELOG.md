@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Bug Fixes
+
+- *(schedule)* Omit unset diff_mode and unpin recomputed fields 
+
 ### Dependencies
 
 - *(deps)* Bump the actions group across 1 directory with 2 updates (#183)
