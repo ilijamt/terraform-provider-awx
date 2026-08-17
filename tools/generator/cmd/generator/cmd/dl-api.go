@@ -141,7 +141,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 
 			for _, ct := range sr.Results {
 				if val, ok := ct["namespace"].(string); ok {
-					data.CredentialTypes[val] = ct
+					data.CredentialTypes[val] = internal.NormalizeCredentialTypePayload(ct)
 					dataInfo.CredentialTypes[val] = strings.ToLower(fmt.Sprintf("payload/credential_type_%s.json", val))
 				}
 			}
