@@ -227,8 +227,8 @@
     "application/json"
   ],
   "related_search_fields": [
-    "user__search",
-    "organization__search"
+    "organization__search",
+    "user__search"
   ],
   "renders": [
     "application/json",

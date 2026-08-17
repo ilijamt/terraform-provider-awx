@@ -189,19 +189,19 @@
     "application/json"
   ],
   "related_search_fields": [
-    "main_oauth2application__search",
-    "main_oauth2accesstoken__search",
+    "activity_stream__search",
+    "enterprise_auth__search",
     "has_roles__search",
-    "oauth2_provider_refreshtoken__search",
-    "resource__search",
-    "role_assignments__search",
+    "main_oauth2accesstoken__search",
+    "main_oauth2application__search",
     "oauth2_provider_grant__search",
     "oauth2_provider_idtoken__search",
-    "social_auth__search",
-    "enterprise_auth__search",
+    "oauth2_provider_refreshtoken__search",
     "profile__search",
-    "activity_stream__search",
-    "roles__search"
+    "resource__search",
+    "role_assignments__search",
+    "roles__search",
+    "social_auth__search"
   ],
   "renders": [
     "application/json",

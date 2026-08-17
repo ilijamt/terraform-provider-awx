@@ -5,6 +5,7 @@
     "Application": "payload/resource_application.json",
     "ConstructedInventories": "payload/resource_constructedinventories.json",
     "Credential": "payload/resource_credential.json",
+    "CredentialAws": "payload/resource_credentialaws.json",
     "CredentialInputSource": "payload/resource_credentialinputsource.json",
     "CredentialType": "payload/resource_credentialtype.json",
     "ExecutionEnvironment": "payload/resource_executionenvironment.json",
@@ -42,7 +43,8 @@
     "Team": "payload/resource_team.json",
     "Tokens": "payload/resource_tokens.json",
     "User": "payload/resource_user.json",
-    "WorkflowJobTemplate": "payload/resource_workflowjobtemplate.json"
+    "WorkflowJobTemplate": "payload/resource_workflowjobtemplate.json",
+    "WorkflowJobTemplateNode": "payload/resource_workflowjobtemplatenode.json"
   },
   "credential_types": {
     "aim": "payload/credential_type_aim.json",
