@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - *(deps)* Bump goreleaser/goreleaser-action in the actions group (#187)
 - *(deps)* Bump the actions group across 1 directory with 3 updates (#190)
 - *(deps)* Bump github.com/hashicorp/terraform-plugin-log (#191)
+- *(deps)* Bump gopkg.in/dnaeon/go-vcr.v4 from 4.0.6 to 4.0.7 (#186)
 
 ### Documentation
 
