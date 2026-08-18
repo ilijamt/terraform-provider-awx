@@ -62,13 +62,14 @@ func DataSources() []func() datasource.DataSource {
 		NewUserDataSource,
 		NewWorkflowJobTemplateDataSource,
 		NewWorkflowJobTemplateNodeDataSource,
+		NewWorkflowJobTemplateNodeApprovalDataSource,
 		NewWorkflowJobTemplateObjectRolesDataSource,
 	}
 }
 
 // Resources is a helper function to return all defined resources.
 func Resources() []func() resource.Resource {
-	return append([]func() resource.Resource{
+	return []func() resource.Resource{
 		NewAdHocCommandResource,
 		NewApplicationResource,
 		NewConstructedInventoriesResource,
@@ -119,9 +120,10 @@ func Resources() []func() resource.Resource {
 		NewWorkflowJobTemplateResource,
 		NewWorkflowJobTemplateAssociateDisassociateNotificationTemplateResource,
 		NewWorkflowJobTemplateNodeResource,
+		NewWorkflowJobTemplateNodeApprovalResource,
 		NewWorkflowJobTemplateNodeAssociateDisassociateAlwaysNodeResource,
 		NewWorkflowJobTemplateNodeAssociateDisassociateFailureNodeResource,
 		NewWorkflowJobTemplateNodeAssociateDisassociateSuccessNodeResource,
 		NewWorkflowJobTemplateSurveyResource,
-	}, additionalResources()...)
+	}
 }

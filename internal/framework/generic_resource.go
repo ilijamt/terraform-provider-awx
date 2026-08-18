@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework-timeouts/resource/timeouts"
@@ -93,6 +94,16 @@ type ResourceCfg[T any, B any] struct {
 	// WaitLifecycle, when non-nil, polls the resource after Create/Update
 	// until the configured field reaches a terminal value.
 	WaitLifecycle *WaitLifecycleCfg[T]
+	// CreateEndpoint returns the POST target when the API creates the object at
+	// a parent-scoped URL but manages it elsewhere. Create then reconciles with
+	// a PATCH against the regular endpoint, because those URLs take only the
+	// fields that bring the object into existence and drop the rest silently.
+	CreateEndpoint func(plan *T) string
+	// ImportIDParts names the schema attributes a slash-separated import ID maps
+	// onto, in order. Needed when a read cannot recover every required
+	// attribute: a parent id that lives only in the create URL never comes back
+	// in the response. Empty means the import ID is the resource ID alone.
+	ImportIDParts []string
 	// IDAccessor returns the ID value from a model instance for endpoint construction (nil for NoId).
 	IDAccessor func(model *T) any
 	// IDKey is the schema attribute name carrying the imported ID (typically "id"). Empty when NoId.
@@ -235,6 +246,10 @@ func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resourc
 		)
 		return
 	}
+	if len(r.Cfg.ImportIDParts) > 0 {
+		r.importComposite(ctx, req, resp)
+		return
+	}
 	idPath := path.Root(r.Cfg.IDKey)
 	if r.Cfg.IDIsString {
 		resource.ImportStatePassthroughID(ctx, idPath, req, resp)
@@ -251,6 +266,69 @@ func (r *GenericResource[T, B, PT]) ImportState(ctx context.Context, req resourc
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, idPath, id)...)
 }
 
+func (r *GenericResource[T, B, PT]) importComposite(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	parts := strings.Split(req.ID, "/")
+	if len(parts) != len(r.Cfg.ImportIDParts) {
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("Unable to import state for %s, invalid format.", r.name()),
+			fmt.Sprintf("requires the identifier to be set to <%s>, currently set to %s",
+				strings.Join(r.Cfg.ImportIDParts, ">/<"), req.ID),
+		)
+		return
+	}
+	for i, attr := range r.Cfg.ImportIDParts {
+		if attr == r.Cfg.IDKey && r.Cfg.IDIsString {
+			resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root(attr), parts[i])...)
+			continue
+		}
+		value, err := strconv.ParseInt(parts[i], 10, 64)
+		if err != nil {
+			resp.Diagnostics.AddError(
+				fmt.Sprintf("Unable to parse '%v' as an int64 number, please provide the %s for the %s.", parts[i], attr, r.name()),
+				err.Error(),
+			)
+			return
+		}
+		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root(attr), value)...)
+	}
+}
+
+func (r *GenericResource[T, B, PT]) buildBody(plan *T) *B {
+	bodyRequest := PT(plan).BodyRequest()
+	if r.Cfg.WriteOnlyPlanToBody != nil {
+		r.Cfg.WriteOnlyPlanToBody(plan, bodyRequest)
+	}
+	if r.Cfg.MutateBody != nil {
+		r.Cfg.MutateBody(plan, bodyRequest)
+	}
+	return bodyRequest
+}
+
+// createAtSubEndpoint POSTs to the parent-scoped create URL and returns the id
+// AWX assigned, which Create uses to address the reconciling PATCH.
+func (r *GenericResource[T, B, PT]) createAtSubEndpoint(ctx context.Context, plan *T, diags *diag.Diagnostics) (any, bool) {
+	if r.Cfg.IDAccessor == nil {
+		diags.AddError(
+			fmt.Sprintf("Cannot create %s through a separate endpoint", r.name()),
+			"CreateEndpoint needs IDAccessor, since the follow-up request against the regular endpoint is addressed by the id AWX assigned.",
+		)
+		return nil, false
+	}
+
+	data, d := CreateUpdateRequest(ctx, r.Client, http.MethodPost, r.Cfg.CreateEndpoint(plan), r.buildBody(plan), r.name(), "create")
+	if DiagnosticsHasError(diags, d...) {
+		return nil, false
+	}
+
+	var created T
+	d, err := PT(&created).UpdateFromApiData(data)
+	diags.Append(d...)
+	if err != nil || diags.HasError() {
+		return nil, false
+	}
+	return r.Cfg.IDAccessor(&created), true
+}
+
 // applyMutation is the shared spine for Create and Update: assemble the body,
 // call the API, hydrate state from the response, run write-only/extra/hook
 // wiring, and poll the wait-lifecycle. Returns ok=false (caller should bail)
@@ -262,15 +340,7 @@ func (r *GenericResource[T, B, PT]) applyMutation(
 	callee hooks.Callee,
 	diags *diag.Diagnostics,
 ) (state T, ok bool) {
-	bodyRequest := PT(plan).BodyRequest()
-	if r.Cfg.WriteOnlyPlanToBody != nil {
-		r.Cfg.WriteOnlyPlanToBody(plan, bodyRequest)
-	}
-	if r.Cfg.MutateBody != nil {
-		r.Cfg.MutateBody(plan, bodyRequest)
-	}
-
-	data, d := CreateUpdateRequest(ctx, r.Client, method, endpoint, bodyRequest, r.name(), operation)
+	data, d := CreateUpdateRequest(ctx, r.Client, method, endpoint, r.buildBody(plan), r.name(), operation)
 	if DiagnosticsHasError(diags, d...) {
 		return state, false
 	}
@@ -310,8 +380,17 @@ func (r *GenericResource[T, B, PT]) Create(ctx context.Context, request resource
 	if r.Cfg.NoId {
 		method = http.MethodPatch
 	}
+	endpoint := CleanEndpoint(r.Endpoint)
 
-	state, ok := r.applyMutation(ctx, &plan, method, CleanEndpoint(r.Endpoint), "create", hooks.CalleeCreate, &response.Diagnostics)
+	if r.Cfg.CreateEndpoint != nil {
+		id, ok := r.createAtSubEndpoint(ctx, &plan, &response.Diagnostics)
+		if !ok {
+			return
+		}
+		method, endpoint = http.MethodPatch, EndpointWithID(r.Endpoint, id)
+	}
+
+	state, ok := r.applyMutation(ctx, &plan, method, endpoint, "create", hooks.CalleeCreate, &response.Diagnostics)
 	if !ok {
 		return
 	}

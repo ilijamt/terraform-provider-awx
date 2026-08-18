@@ -49,8 +49,10 @@ Older version of AWX report incorrect API spec. So manual changes may be require
 
 Seed the instance first. AWX hides `POST` on endpoints the user has nothing to
 create against, so downloading from an empty instance strips every writable
-attribute off `hosts`, `inventory_sources` and `job_templates`. The
-`preload_data` example creates the Organization, Inventory and Project needed:
+attribute off `hosts`, `inventory_sources` and `job_templates`. Approval
+templates get no list endpoint at all, so the download describes them from an
+instance URL and one has to exist too. The `preload_data` example creates all of
+that:
 
 ```shell
 make build terraformrc

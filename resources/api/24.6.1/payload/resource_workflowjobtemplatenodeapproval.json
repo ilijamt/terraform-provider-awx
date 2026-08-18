@@ -1,0 +1,220 @@
+{
+  "actions": {
+    "GET": {
+      "created": {
+        "filterable": true,
+        "help_text": "Timestamp when this workflow approval template was created.",
+        "hidden": false,
+        "label": "Created",
+        "type": "datetime"
+      },
+      "description": {
+        "filterable": true,
+        "help_text": "Optional description of this workflow approval template.",
+        "hidden": false,
+        "label": "Description",
+        "type": "string"
+      },
+      "execution_environment": {
+        "filterable": true,
+        "help_text": "The container image to be used for execution.",
+        "hidden": false,
+        "label": "Execution environment",
+        "type": "id"
+      },
+      "id": {
+        "filterable": true,
+        "help_text": "Database ID for this workflow approval template.",
+        "hidden": false,
+        "label": "ID",
+        "type": "integer"
+      },
+      "last_job_failed": {
+        "filterable": true,
+        "hidden": false,
+        "label": "Last job failed",
+        "type": "boolean"
+      },
+      "last_job_run": {
+        "filterable": true,
+        "hidden": false,
+        "label": "Last job run",
+        "type": "datetime"
+      },
+      "modified": {
+        "filterable": true,
+        "help_text": "Timestamp when this workflow approval template was last modified.",
+        "hidden": false,
+        "label": "Modified",
+        "type": "datetime"
+      },
+      "name": {
+        "filterable": true,
+        "help_text": "Name of this workflow approval template.",
+        "hidden": false,
+        "label": "Name",
+        "type": "string"
+      },
+      "next_job_run": {
+        "filterable": true,
+        "hidden": false,
+        "label": "Next job run",
+        "type": "datetime"
+      },
+      "related": {
+        "filterable": false,
+        "help_text": "Data structure with URLs of related resources.",
+        "hidden": false,
+        "label": "Related",
+        "type": "object"
+      },
+      "status": {
+        "choices": [
+          [
+            "new",
+            "New"
+          ],
+          [
+            "pending",
+            "Pending"
+          ],
+          [
+            "waiting",
+            "Waiting"
+          ],
+          [
+            "running",
+            "Running"
+          ],
+          [
+            "successful",
+            "Successful"
+          ],
+          [
+            "failed",
+            "Failed"
+          ],
+          [
+            "error",
+            "Error"
+          ],
+          [
+            "canceled",
+            "Canceled"
+          ],
+          [
+            "never updated",
+            "Never Updated"
+          ],
+          [
+            "ok",
+            "OK"
+          ],
+          [
+            "missing",
+            "Missing"
+          ],
+          [
+            "none",
+            "No External Source"
+          ],
+          [
+            "updating",
+            "Updating"
+          ]
+        ],
+        "filterable": true,
+        "hidden": false,
+        "label": "Status",
+        "type": "choice"
+      },
+      "summary_fields": {
+        "filterable": false,
+        "help_text": "Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons.",
+        "hidden": false,
+        "label": "Summary fields",
+        "type": "object"
+      },
+      "timeout": {
+        "filterable": true,
+        "help_text": "The amount of time (in seconds) before the approval node expires and fails.",
+        "hidden": false,
+        "label": "Timeout",
+        "max_value": 2147483647,
+        "min_value": -2147483648,
+        "type": "integer"
+      },
+      "type": {
+        "choices": [
+          [
+            "workflow_approval_template",
+            "Workflow Approval Template"
+          ]
+        ],
+        "filterable": true,
+        "help_text": "Data type for this workflow approval template.",
+        "hidden": false,
+        "label": "Type",
+        "type": "choice"
+      },
+      "url": {
+        "filterable": false,
+        "help_text": "URL for this workflow approval template.",
+        "hidden": false,
+        "label": "Url",
+        "type": "string"
+      }
+    },
+    "PUT": {
+      "description": {
+        "default": "",
+        "filterable": true,
+        "help_text": "Optional description of this workflow approval template.",
+        "hidden": false,
+        "label": "Description",
+        "required": false,
+        "type": "string"
+      },
+      "execution_environment": {
+        "filterable": true,
+        "help_text": "The container image to be used for execution.",
+        "hidden": false,
+        "label": "Execution environment",
+        "required": false,
+        "type": "id"
+      },
+      "name": {
+        "filterable": true,
+        "help_text": "Name of this workflow approval template.",
+        "hidden": false,
+        "label": "Name",
+        "max_length": 512,
+        "required": true,
+        "type": "string"
+      },
+      "timeout": {
+        "default": 0,
+        "filterable": true,
+        "help_text": "The amount of time (in seconds) before the approval node expires and fails.",
+        "hidden": false,
+        "label": "Timeout",
+        "max_value": 2147483647,
+        "min_value": -2147483648,
+        "required": false,
+        "type": "integer"
+      }
+    }
+  },
+  "description": "# Retrieve a Workflow Approval Template:\n\nMake GET request to this resource to retrieve a single workflow approval template\nrecord containing the following fields:\n\n* `id`: Database ID for this workflow approval template. (integer)\n* `type`: Data type for this workflow approval template. (choice)\n* `url`: URL for this workflow approval template. (string)\n* `related`: Data structure with URLs of related resources. (object)\n* `summary_fields`: Data structure with name/description for related resources.  The output for some objects may be limited for performance reasons. (object)\n* `created`: Timestamp when this workflow approval template was created. (datetime)\n* `modified`: Timestamp when this workflow approval template was last modified. (datetime)\n* `name`: Name of this workflow approval template. (string)\n* `description`: Optional description of this workflow approval template. (string)\n* `last_job_run`:  (datetime)\n* `last_job_failed`:  (boolean)\n* `next_job_run`:  (datetime)\n* `status`:  (choice)\n    - `new`: New\n    - `pending`: Pending\n    - `waiting`: Waiting\n    - `running`: Running\n    - `successful`: Successful\n    - `failed`: Failed\n    - `error`: Error\n    - `canceled`: Canceled\n    - `never updated`: Never Updated\n    - `ok`: OK\n    - `missing`: Missing\n    - `none`: No External Source\n    - `updating`: Updating\n* `execution_environment`: The container image to be used for execution. (id)\n* `timeout`: The amount of time (in seconds) before the approval node expires and fails. (integer)\n\n\n\n\n\n# Update a Workflow Approval Template:\n\nMake a PUT or PATCH request to this resource to update this\nworkflow approval template.  The following fields may be modified:\n\n\n\n\n\n\n\n\n\n* `name`: Name of this workflow approval template. (string, required)\n* `description`: Optional description of this workflow approval template. (string, default=`\"\"`)\n\n\n\n\n* `execution_environment`: The container image to be used for execution. (id, default=``)\n* `timeout`: The amount of time (in seconds) before the approval node expires and fails. (integer, default=`0`)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Workflow Approval Template:\n\nMake a DELETE request to this resource to delete this workflow approval template.",
+  "name": "Workflow Approval Template Detail",
+  "parses": [
+    "application/json"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ],
+  "types": [
+    "workflow_approval_template"
+  ]
+}

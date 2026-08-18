@@ -198,6 +198,20 @@ resource "awx_schedule" "demo_workflow_template" {
   unified_job_template = awx_workflow_job_template.demo_workflow_template.id
 }
 
+# Downloading the API metadata for awx_workflow_job_template_node_approval needs
+# one to exist, since AWX gives approval templates no list endpoint to describe.
+resource "awx_workflow_job_template_node" "demo_approval" {
+  workflow_job_template = awx_workflow_job_template.demo_workflow_template.id
+  identifier            = "approval"
+}
+
+resource "awx_workflow_job_template_node_approval" "demo_approval" {
+  workflow_job_template_node_id = awx_workflow_job_template_node.demo_approval.id
+  name                          = "Demo Approval"
+  description                   = "Pauses the demo workflow until someone approves"
+  timeout                       = 3600
+}
+
 data "awx_workflow_job_template_object_roles" "demo_workflow_template" {
   id = awx_workflow_job_template.demo_workflow_template.id
 }

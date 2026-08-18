@@ -41,6 +41,7 @@ type ModelConfig struct {
 	DeprecatedReadProperties    []string                     `json:"deprecated_read_properties" yaml:"deprecated_read_properties"`
 	DeprecatedWriteProperties   []string                     `json:"deprecated_write_properties" yaml:"deprecated_write_properties"`
 	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
+	CreateEndpoint              *CreateEndpointConfig        `json:"create_endpoint,omitempty" yaml:"create_endpoint,omitempty"`
 }
 
 // Property represents a single property in the model
@@ -330,6 +331,7 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.UnDeletable = item.Undeletable
 	c.PreStateSetHookFunction = item.PreStateSetHookFunction
 	c.WaitLifecycle = item.WaitLifecycle
+	c.CreateEndpoint = item.CreateEndpoint
 	c.PackageName = config.PackageName("awx")
 	c.ApiVersion = config.ApiVersion
 	c.RenderApiDocs = config.RenderApiDocs

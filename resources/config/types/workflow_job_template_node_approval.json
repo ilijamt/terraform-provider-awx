@@ -1,0 +1,42 @@
+{
+  "endpoint": "/api/v2/workflow_approval_templates/",
+  "metadata_endpoint": "/api/v2/workflow_approval_templates/%d/",
+  "metadata_discovery": {
+    "endpoint": "/api/v2/workflow_job_template_nodes/?unified_job_template__polymorphic_ctype__model=workflowapprovaltemplate&page_size=1",
+    "field": "unified_job_template"
+  },
+  "create_endpoint": {
+    "endpoint": "/api/v2/workflow_job_template_nodes/%d/create_approval_template/",
+    "id_attribute": "workflow_job_template_node_id"
+  },
+  "name": "WorkflowJobTemplateNodeApproval",
+  "type_name": "workflow_job_template_node_approval",
+  "id_key": "id",
+  "enabled": true,
+  "api_property_resource_key": "PUT",
+  "api_data_override_resource": {
+    "workflow_job_template_node_id": {
+      "type": "integer",
+      "required": true,
+      "write_only": true,
+      "label": "Workflow job template node",
+      "help_text": "Database ID of the workflow job template node to convert into an approval."
+    }
+  },
+  "property_overrides": {
+    "workflow_job_template_node_id": {
+      "requires_replace": true
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+  ]
+}

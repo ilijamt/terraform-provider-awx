@@ -15,6 +15,10 @@ import (
 // the write action entirely (TOWER_URL_BASE arrives with defined_in_file true
 // and no PUT entry), which would delete the attribute from the schema. Runs
 // after the remove_fields_* pruning so the override wins.
+//
+// Item.ApiDataOverride reaches both actions; ApiDataOverrideResource only the
+// write one, for fields that go out in a request but never come back, such as
+// the parent id a create endpoint carries in its URL.
 func applyApiDataOverride(props map[string]any, overrides map[string]map[string]any) {
 	for key, override := range overrides {
 		field, ok := props[key].(map[string]any)
@@ -76,6 +80,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, ap
 			delete(props, field)
 		}
 		applyApiDataOverride(props, val.ApiDataOverride)
+		applyApiDataOverride(props, val.ApiDataOverrideResource)
 
 		for key, value := range props {
 			value.(map[string]any)["name"] = key

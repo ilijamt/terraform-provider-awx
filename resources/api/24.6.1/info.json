@@ -44,7 +44,8 @@
     "Tokens": "payload/resource_tokens.json",
     "User": "payload/resource_user.json",
     "WorkflowJobTemplate": "payload/resource_workflowjobtemplate.json",
-    "WorkflowJobTemplateNode": "payload/resource_workflowjobtemplatenode.json"
+    "WorkflowJobTemplateNode": "payload/resource_workflowjobtemplatenode.json",
+    "WorkflowJobTemplateNodeApproval": "payload/resource_workflowjobtemplatenodeapproval.json"
   },
   "credential_types": {
     "aim": "payload/credential_type_aim.json",

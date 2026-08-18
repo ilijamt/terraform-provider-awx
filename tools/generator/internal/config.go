@@ -3,6 +3,7 @@ package internal
 import (
 	"encoding/json"
 	"os"
+	"strings"
 )
 
 type PropertyOverride struct {
@@ -48,6 +49,22 @@ type PropertyOverride struct {
 	// this the PATCH returns the old value and Terraform reports "Provider
 	// produced inconsistent result after apply".
 	RequiresReplace bool `json:"requires_replace,omitempty" yaml:"requires_replace,omitempty"`
+}
+
+// MetadataDiscovery resolves the id that fills the %d in Item.MetadataEndpoint
+// by reading Field off the first result of Endpoint. Field defaults to "id".
+type MetadataDiscovery struct {
+	Endpoint string `json:"endpoint" yaml:"endpoint"`
+	Field    string `json:"field,omitempty" yaml:"field,omitempty"`
+}
+
+// CreateEndpointConfig describes a POST target that differs from Item.Endpoint.
+// Endpoint is a Sprintf pattern taking the id held by IdAttribute, a schema
+// attribute the API never reports and so has to be injected through
+// ApiDataOverrideResource.
+type CreateEndpointConfig struct {
+	Endpoint    string `json:"endpoint" yaml:"endpoint"`
+	IdAttribute string `json:"id_attribute" yaml:"id_attribute"`
 }
 
 type SearchField struct {
@@ -108,10 +125,24 @@ type Item struct {
 	ApiPropertyDataKey          string                       `json:"api_property_data_key" yaml:"api_property_data_key"`
 	PropertyNameLeaveAsIs       bool                         `json:"property_name_leave_as_is" yaml:"property_name_leave_as_is"`
 	ApiDataOverride             map[string]map[string]any    `json:"api_data_override" yaml:"api_data_override"`
+	ApiDataOverrideResource     map[string]map[string]any    `json:"api_data_override_resource" yaml:"api_data_override_resource"`
 	RemoveFieldsDataSource      []string                     `json:"remove_fields_data_source" yaml:"remove_fields_data_source"`
 	RemoveFieldsResource        []string                     `json:"remove_fields_resource" yaml:"remove_fields_resource"`
 	CredentialTypes             []CredentialTypes            `json:"credential_types" yaml:"credential_types"`
 	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
+
+	// MetadataEndpoint overrides the URL fetch-api-resources runs OPTIONS
+	// against, for a model AWX only describes from an instance URL.
+	// WorkflowApprovalTemplate has no list view, so its collection 404s and only
+	// /api/v2/workflow_approval_templates/{id}/ answers. A %d is filled from
+	// MetadataDiscovery.
+	MetadataEndpoint string `json:"metadata_endpoint,omitempty" yaml:"metadata_endpoint,omitempty"`
+
+	// MetadataDiscovery finds a live object to fill the %d in MetadataEndpoint.
+	MetadataDiscovery *MetadataDiscovery `json:"metadata_discovery,omitempty" yaml:"metadata_discovery,omitempty"`
+
+	// CreateEndpoint, when set, sends POST somewhere other than Endpoint.
+	CreateEndpoint *CreateEndpointConfig `json:"create_endpoint,omitempty" yaml:"create_endpoint,omitempty"`
 
 	// CredentialType, when non-empty, marks this item as a typed credential
 	// resource generated from resources/api/<VERSION>/payload/credential_type_<value>.json
@@ -119,6 +150,15 @@ type Item struct {
 	// AWX namespace ("aws", "ssh", "vault", ...). The generator routes these
 	// items through GenerateCredentialTypeTfDefinition.
 	CredentialType string `json:"credential_type,omitempty" yaml:"credential_type,omitempty"`
+}
+
+// MetadataUrl returns the URL OPTIONS runs against for this item, and whether an
+// id still has to be discovered to fill it.
+func (i Item) MetadataUrl() (url string, needsDiscovery bool) {
+	if i.MetadataEndpoint == "" {
+		return i.Endpoint, false
+	}
+	return i.MetadataEndpoint, strings.Contains(i.MetadataEndpoint, "%d")
 }
 
 // WaitLifecycleConfig opts a resource into post-Create/Update polling. The

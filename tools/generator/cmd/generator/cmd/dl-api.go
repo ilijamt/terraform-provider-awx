@@ -2,8 +2,10 @@ package cmd
 
 import (
 	"bytes"
+	"cmp"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -99,20 +101,30 @@ var fetchApiResourcesCmd = &cobra.Command{
 		// fetch all the defined endpoints in the config resource file
 		if err = func(cfg internal.Config) error {
 			log.Printf("Fetching %d items", len(cfg.Items))
+			// The loop tries every item before giving up, so one run names all
+			// the endpoints that need attention rather than the first.
+			var failures []error
 			for _, item := range cfg.Items {
-				req, _ = client.NewRequest(ctx, http.MethodOptions, item.Endpoint, nil)
-				log.Printf("Processing %s on the %s endpoint", item.Name, item.Endpoint)
+				endpoint, err := metadataEndpoint(ctx, client, item)
+				if err != nil {
+					failures = append(failures, fmt.Errorf("%s: %w", item.Name, err))
+					continue
+				}
+				req, _ = client.NewRequest(ctx, http.MethodOptions, endpoint, nil)
+				log.Printf("Processing %s on the %s endpoint", item.Name, endpoint)
 				payload, err := client.Do(ctx, req)
 				if err != nil {
-					return err
+					failures = append(failures, fmt.Errorf("%s on %s: %w", item.Name, endpoint, err))
+					continue
 				}
 				data.Resources[item.Name], err = internal.ResourceProcessor(item.Name, payload)
-				dataInfo.Resources[item.Name] = strings.ToLower(fmt.Sprintf("payload/resource_%s.json", item.Name))
 				if err != nil {
-					return err
+					failures = append(failures, fmt.Errorf("%s: %w", item.Name, err))
+					continue
 				}
+				dataInfo.Resources[item.Name] = strings.ToLower(fmt.Sprintf("payload/resource_%s.json", item.Name))
 			}
-			return nil
+			return errors.Join(failures...)
 		}(cfg); err != nil {
 			return err
 		}
@@ -213,4 +225,55 @@ func init() {
 	_ = fetchApiResourcesCmd.MarkFlagRequired("username")
 	_ = fetchApiResourcesCmd.MarkFlagRequired("password")
 	rootCmd.AddCommand(fetchApiResourcesCmd)
+}
+
+// metadataEndpoint resolves the URL to run OPTIONS against. An item can point it
+// away from its CRUD endpoint and have the id discovered from a live object.
+func metadataEndpoint(ctx context.Context, client c.Client, item internal.Item) (string, error) {
+	endpoint, needsDiscovery := item.MetadataUrl()
+	if !needsDiscovery {
+		return endpoint, nil
+	}
+	if item.MetadataDiscovery == nil {
+		return "", fmt.Errorf("metadata_endpoint %q needs an id but no metadata_discovery is configured", endpoint)
+	}
+
+	id, err := discoverId(ctx, client, *item.MetadataDiscovery)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf(endpoint, id), nil
+}
+
+// discoverId reads the id off the first result of a list endpoint. An empty list
+// is an error rather than a skip: with no instance to describe, the resource
+// would drop out of the download without saying so.
+func discoverId(ctx context.Context, client c.Client, discovery internal.MetadataDiscovery) (int64, error) {
+	req, err := client.NewRequest(ctx, http.MethodGet, discovery.Endpoint, nil)
+	if err != nil {
+		return 0, err
+	}
+	payload, err := client.Do(ctx, req)
+	if err != nil {
+		return 0, err
+	}
+
+	var sr internal.SearchResults
+	if err = mapstructure.Decode(payload, &sr); err != nil {
+		return 0, err
+	}
+	if len(sr.Results) == 0 {
+		return 0, fmt.Errorf("%s returned no results, seed the instance first", discovery.Endpoint)
+	}
+
+	field := cmp.Or(discovery.Field, "id")
+	id, ok := sr.Results[0][field]
+	if !ok {
+		return 0, fmt.Errorf("%s returned no %q on its first result", discovery.Endpoint, field)
+	}
+	num, ok := id.(json.Number)
+	if !ok {
+		return 0, fmt.Errorf("%s returned %q as %T, expected a number", discovery.Endpoint, field, id)
+	}
+	return num.Int64()
 }

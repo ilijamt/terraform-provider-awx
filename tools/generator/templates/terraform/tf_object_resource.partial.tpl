@@ -175,6 +175,14 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if .NoImport }}
 			NoImport: true,
 {{- end }}
+{{- if .CreateEndpoint }}
+			CreateEndpoint: func(m *{{ .Name | lowerCamelCase }}TerraformModel) string {
+				return fmt.Sprintf("{{ .CreateEndpoint.Endpoint }}", m.{{ camelCase .CreateEndpoint.IdAttribute }}.ValueInt64())
+			},
+{{- if not .NoImport }}
+			ImportIDParts: []string{"{{ .CreateEndpoint.IdAttribute }}", "{{ $.IdKey }}"},
+{{- end }}
+{{- end }}
 {{- if .UnDeletable }}
 			UnDeletable: true,
 {{- end }}
