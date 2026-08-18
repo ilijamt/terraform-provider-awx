@@ -15,6 +15,8 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - *(awx)* Typed resources for all 30 managed credential types
+- *(awx)* Settings resources for bulk, debug, RADIUS and TACACS+
+- *(awx)* Awx_config and awx_ping data sources
 
 ## [24.6.104] - 2026-08-18
 
