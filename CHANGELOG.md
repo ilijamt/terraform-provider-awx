@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Bug Fixes
 
 - *(schedule)* Omit unset diff_mode and unpin recomputed fields 
+- *(framework)* Recreate deleted resources instead of failing the plan
 
 ### Build
 
@@ -34,6 +35,7 @@ All notable changes to this project will be documented in this file.
 - Updated API resources and attributes
 - *(tools/generator)* Override AWX metadata that describes the instance
 - *(awx)* Add workflow job template nodes
+- *(tools/generator)* Generate resources whose create endpoint differs
 
 ### Testing
 
