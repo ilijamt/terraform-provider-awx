@@ -198,6 +198,18 @@ func tfElementType(t string) string {
 	return cmp.Or(tfAttributeType(t), "String")
 }
 
+func goLiteral(in any) string {
+	switch v := in.(type) {
+	case nil:
+		return "nil"
+	case string:
+		return strconv.Quote(v)
+	case json.Number:
+		return v.String()
+	}
+	return fmt.Sprintf("%#v", in)
+}
+
 func tfGoPrimitiveValue(t string, postWrap bool) string {
 	switch t {
 	case "integer", "id":
@@ -296,6 +308,7 @@ var FuncMap = template.FuncMap{
 	"quote": func(in any) string {
 		return fmt.Sprintf("%q", in)
 	},
+	"go_literal": goLiteral,
 	"toJson": func(in any) string {
 		payload, _ := json.MarshalIndent(in, "", "  ")
 		return string(payload)

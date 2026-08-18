@@ -185,7 +185,7 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if .SoftDelete }}
 			SoftDelete: map[string]any{
 {{- range $k, $v := .SoftDelete }}
-				{{ $k | quote }}: {{ $v | quote }},
+				{{ $k | quote }}: {{ $v | go_literal }},
 {{- end }}
 			},
 {{- end }}
