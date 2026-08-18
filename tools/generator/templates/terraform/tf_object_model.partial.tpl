@@ -30,7 +30,11 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() *{{ .Name | l
 {{- range $key, $value := .WriteProperties }}
 {{- if not $value.IsWriteOnly }}
 {{- if eq $value.Generated.AwxGoType "types.List" }}
+{{- if eq $value.Generated.BodyRequestModelType "[]int64" }}
+    req.{{ $value.Generated.PropertyName }} = helpers.ListAsInt64Slice(o.{{ $value.Generated.PropertyName }})
+{{- else }}
     req.{{ $value.Generated.PropertyName }} = helpers.ListAsStringSlice(o.{{ $value.Generated.PropertyName }}, {{ or .Trim false }})
+{{- end }}
 {{- else }}
     req.{{ $value.Generated.PropertyName }} = {{ $value.Generated.ModelBodyRequestValue }}
 {{- end }}

@@ -42,6 +42,7 @@ type ModelConfig struct {
 	DeprecatedWriteProperties   []string                     `json:"deprecated_write_properties" yaml:"deprecated_write_properties"`
 	WaitLifecycle               *WaitLifecycleConfig         `json:"wait_lifecycle,omitempty" yaml:"wait_lifecycle,omitempty"`
 	CreateEndpoint              *CreateEndpointConfig        `json:"create_endpoint,omitempty" yaml:"create_endpoint,omitempty"`
+	SoftDelete                  map[string]any               `json:"soft_delete,omitempty" yaml:"soft_delete,omitempty"`
 }
 
 // Property represents a single property in the model
@@ -109,8 +110,16 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	}
 	p.Nullable = override.Nullable != nil && *override.Nullable
 	p.UseStateForUnknown = true
+	if item.UseStateForUnknown != nil {
+		p.UseStateForUnknown = *item.UseStateForUnknown
+	}
 	if override.UseStateForUnknown != nil {
 		p.UseStateForUnknown = *override.UseStateForUnknown
+	}
+	// Update addresses the resource by the id off the plan, so the id attribute
+	// has to keep its state value even when the item switches the modifier off.
+	if p.Name == item.IdKey {
+		p.UseStateForUnknown = true
 	}
 	p.RequiresReplace = override.RequiresReplace
 	p.Validators = make([]string, 0)
@@ -191,7 +200,7 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 		p.Generated.BodyRequestModelType = "json.RawMessage"
 		p.Generated.ModelBodyRequestValue = fmt.Sprintf("json.RawMessage(o.%s.%s())", p.Generated.PropertyName, p.Generated.TfGoPrimitiveValue)
 	} else {
-		p.Generated.BodyRequestModelType = awxPrimitiveType(p.Type)
+		p.Generated.BodyRequestModelType = awxPrimitiveType(p.Type, p.ElementType)
 		p.Generated.ModelBodyRequestValue = fmt.Sprintf("o.%s.%s()", p.Generated.PropertyName, p.Generated.TfGoPrimitiveValue)
 	}
 
@@ -332,6 +341,7 @@ func (c *ModelConfig) Update(config Config, item Item) error {
 	c.PreStateSetHookFunction = item.PreStateSetHookFunction
 	c.WaitLifecycle = item.WaitLifecycle
 	c.CreateEndpoint = item.CreateEndpoint
+	c.SoftDelete = item.SoftDelete
 	c.PackageName = config.PackageName("awx")
 	c.ApiVersion = config.ApiVersion
 	c.RenderApiDocs = config.RenderApiDocs

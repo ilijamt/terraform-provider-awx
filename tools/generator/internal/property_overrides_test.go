@@ -86,16 +86,9 @@ func TestPropertyRequiresReplace(t *testing.T) {
 	}).RequiresReplace)
 }
 
-func TestPropertyUseStateForUnknown(t *testing.T) {
-	require.True(t, updateProperty(t, "next_run", "datetime", PropertyOverride{}).UseStateForUnknown)
-	require.False(t, updateProperty(t, "next_run", "datetime", PropertyOverride{
-		UseStateForUnknown: boolPtr(false),
-	}).UseStateForUnknown)
-}
-
-// AWX reports bool defaults (host enabled, schedule enabled) and they used to be
-// dropped, so an unset attribute went out as an explicit false and flipped the
-// server's own default.
+// AWX reports bool defaults (host enabled, instance managed_by_policy) and they
+// used to be dropped, so an unset attribute went out as an explicit false and
+// flipped the server's own default.
 func TestPropertyBoolDefault(t *testing.T) {
 	for _, tc := range []struct {
 		name     string
@@ -111,6 +104,42 @@ func TestPropertyBoolDefault(t *testing.T) {
 			values := map[string]any{"type": "boolean", "label": "Enabled", "default": tc.awxValue}
 			require.NoError(t, p.Update(TypeWrite, PropertyOverride{}, values, Item{Name: "Host"}))
 			require.Equal(t, tc.expected, p.DefaultValue)
+		})
+	}
+}
+
+func TestPropertyUseStateForUnknown(t *testing.T) {
+	off := boolPtr(false)
+	for _, tc := range []struct {
+		name     string
+		field    string
+		item     Item
+		override PropertyOverride
+		expected bool
+	}{
+		{name: "on by default", field: "capacity", item: Item{IdKey: "id"}, expected: true},
+		{name: "item switches it off", field: "capacity", item: Item{IdKey: "id", UseStateForUnknown: off}},
+		{
+			name:     "property override wins over the item",
+			field:    "capacity",
+			item:     Item{IdKey: "id", UseStateForUnknown: off},
+			override: PropertyOverride{UseStateForUnknown: boolPtr(true)},
+			expected: true,
+		},
+		{
+			// Update addresses the resource by this value, so it cannot go unknown.
+			name:     "the id keeps it whatever the item says",
+			field:    "id",
+			item:     Item{IdKey: "id", UseStateForUnknown: off},
+			expected: true,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var p Property
+			p.Name = tc.field
+			values := map[string]any{"type": "integer", "label": tc.field}
+			require.NoError(t, p.Update(TypeRead, tc.override, values, tc.item))
+			require.Equal(t, tc.expected, p.UseStateForUnknown)
 		})
 	}
 }

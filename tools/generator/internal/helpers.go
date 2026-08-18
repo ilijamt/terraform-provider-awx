@@ -151,7 +151,7 @@ func awxPropertyCase(in string, config Item) string {
 	return strcase.ToCamel(in)
 }
 
-func awxPrimitiveType(t string) string {
+func awxPrimitiveType(t, elementType string) string {
 	switch t {
 	case "integer", "id":
 		return "int64"
@@ -162,6 +162,9 @@ func awxPrimitiveType(t string) string {
 	case "boolean", "bool":
 		return "bool"
 	case "list":
+		if tfAttributeType(elementType) == "Int64" {
+			return "[]int64"
+		}
 		return "[]string"
 	case "nested object":
 		return "map[string]any"

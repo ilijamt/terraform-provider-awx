@@ -186,6 +186,13 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if .UnDeletable }}
 			UnDeletable: true,
 {{- end }}
+{{- if .SoftDelete }}
+			SoftDelete: map[string]any{
+{{- range $k, $v := .SoftDelete }}
+				{{ $k | quote }}: {{ $v | quote }},
+{{- end }}
+			},
+{{- end }}
 {{- if .PreStateSetHookFunction }}
 {{- if eq .PreStateSetHookFunction "hooks.RequireResourceStateOrOrig" }}
 			Hook: func(ctx context.Context, apiVersion string, source hooks.Source, callee hooks.Callee, orig, state *{{ .Name | lowerCamelCase }}TerraformModel) error {

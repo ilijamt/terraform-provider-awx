@@ -1,0 +1,63 @@
+{
+  "endpoint": "/api/v2/instances/",
+  "name": "Instance",
+  "type_name": "instance",
+  "id_key": "id",
+  "enabled": true,
+  "use_state_for_unknown": false,
+  "soft_delete": {
+    "node_state": "deprovisioning"
+  },
+  "property_overrides": {
+    "consumed_capacity": {
+      "type": "integer"
+    },
+    "health_check_pending": {
+      "type": "boolean"
+    },
+    "hostname": {
+      "requires_replace": true
+    },
+    "node_state": {
+      "no_default": true
+    },
+    "node_type": {
+      "requires_replace": true
+    },
+    "peers": {
+      "type": "list",
+      "element_type": "integer"
+    },
+    "percent_capacity_remaining": {
+      "type": "float"
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "reverse_peers": {
+      "type": "list",
+      "element_type": "integer"
+    }
+  },
+  "search_fields": [
+    {
+      "url_suffix": "%d/",
+      "name": "by_id",
+      "fields": [
+        {
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "url_suffix": "?hostname=%s",
+      "name": "by_hostname",
+      "fields": [
+        {
+          "name": "hostname",
+          "url_escape_value": true
+        }
+      ]
+    }
+  ]
+}

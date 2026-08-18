@@ -11,6 +11,7 @@
     "ExecutionEnvironment": "payload/resource_executionenvironment.json",
     "Group": "payload/resource_group.json",
     "Host": "payload/resource_host.json",
+    "Instance": "payload/resource_instance.json",
     "InstanceGroup": "payload/resource_instancegroup.json",
     "Inventory": "payload/resource_inventory.json",
     "InventorySource": "payload/resource_inventorysource.json",

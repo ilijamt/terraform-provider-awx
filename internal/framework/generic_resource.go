@@ -115,6 +115,10 @@ type ResourceCfg[T any, B any] struct {
 	NoId bool
 	// NoImport disables terraform import for this resource. Attempts return an error diagnostic.
 	NoImport bool
+	// SoftDelete replaces the DELETE call with a PATCH carrying this body, for
+	// objects AWX retires through a state field. DELETE on an instance answers
+	// 405; moving node_state to "deprovisioning" is what removes it.
+	SoftDelete map[string]any
 	// UnDeletable means Delete is a no-op.
 	UnDeletable bool
 	// ApiVersion is passed to hook functions.
@@ -456,6 +460,11 @@ func (r *GenericResource[T, B, PT]) Delete(ctx context.Context, request resource
 	}
 
 	endpoint := r.endpointForModel(&state)
+	if r.Cfg.SoftDelete != nil {
+		_, d := CreateUpdateRequest(ctx, r.Client, http.MethodPatch, endpoint, r.Cfg.SoftDelete, r.name(), "delete")
+		response.Diagnostics.Append(d...)
+		return
+	}
 	if DiagnosticsHasError(&response.Diagnostics, DeleteRequest(ctx, r.Client, endpoint, r.name())...) {
 		return
 	}

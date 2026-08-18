@@ -1,0 +1,1292 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 124
+        host: awx.local
+        body: |
+            {"enabled":true,"hostname":"hop-1.example.com","managed_by_policy":true,"node_type":"hop","peers_from_control_nodes":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1111
+        body: '{"id":10,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/10/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/10/receptor_addresses/","jobs":"/api/v2/instances/10/jobs/","peers":"/api/v2/instances/10/peers/","instance_groups":"/api/v2/instances/10/instance_groups/","install_bundle":"/api/v2/instances/10/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.723490Z","modified":"2026-08-18T13:05:06.723539Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1111"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:06 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instances/10/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f9e6117fe0e64f0cb82b6af49c916121
+            X-Api-Time:
+                - 0.072s
+            X-Api-Total-Time:
+                - 0.158s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.193027959s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 158
+        host: awx.local
+        body: |
+            {"enabled":true,"hostname":"execution-1.example.com","listener_port":27199,"managed_by_policy":true,"node_type":"execution","peers_from_control_nodes":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1185
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1185"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:06 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instances/11/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ffc653c386764bdba55159d08412b0bf
+            X-Api-Time:
+                - 0.139s
+            X-Api-Total-Time:
+                - 0.231s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.266137333s
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1180
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1180"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 07dc653c72c246f79cd588282de79715
+            X-Api-Time:
+                - 0.095s
+            X-Api-Total-Time:
+                - 0.155s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 168.692916ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1180
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1180"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:12 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 53028bd91fac44ca8eeb03dbc1ade794
+            X-Api-Time:
+                - 0.102s
+            X-Api-Total-Time:
+                - 0.162s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 178.292834ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/10/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1122
+        body: '{"id":10,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/10/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/10/receptor_addresses/","jobs":"/api/v2/instances/10/jobs/","peers":"/api/v2/instances/10/peers/","instance_groups":"/api/v2/instances/10/instance_groups/","install_bundle":"/api/v2/instances/10/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.723490Z","modified":"2026-08-18T13:05:06.723539Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1122"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3d2393b86da1499da6739bebb2a613da
+            X-Api-Time:
+                - 0.050s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.296708ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1196
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1196"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0e26484ffe71424ab5fe11914ffaa51e
+            X-Api-Time:
+                - 0.092s
+            X-Api-Total-Time:
+                - 0.147s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 161.30325ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1180
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1180"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f7faff3ce7054870adfad02f7accfa39
+            X-Api-Time:
+                - 0.112s
+            X-Api-Total-Time:
+                - 0.170s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 179.997583ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/10/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1122
+        body: '{"id":10,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/10/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/10/receptor_addresses/","jobs":"/api/v2/instances/10/jobs/","peers":"/api/v2/instances/10/peers/","instance_groups":"/api/v2/instances/10/instance_groups/","install_bundle":"/api/v2/instances/10/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.723490Z","modified":"2026-08-18T13:05:06.723539Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1122"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:13 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 8d5c0002a46049568d7943118c8ce788
+            X-Api-Time:
+                - 0.064s
+            X-Api-Total-Time:
+                - 0.118s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 133.200667ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1196
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:06.741945Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1196"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:14 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 714efd0fbe8a4a3e8b0b2873750734c1
+            X-Api-Time:
+                - 0.105s
+            X-Api-Total-Time:
+                - 0.174s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 190.535375ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 185
+        host: awx.local
+        body: |
+            {"capacity_adjustment":0.5,"enabled":false,"hostname":"execution-1.example.com","listener_port":27199,"managed_by_policy":true,"node_type":"execution","peers_from_control_nodes":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1193
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1193"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:14 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f1694bd2d71f47f286c0563b3e85de7f
+            X-Api-Time:
+                - 0.172s
+            X-Api-Total-Time:
+                - 0.243s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 291.524625ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1177
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1177"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:15 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 79dbed24b3f44ae3866b71e51e68b84c
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.119s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 133.448333ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1177
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1177"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:15 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 4a0a6651c05b488f8a423e8a28e869b2
+            X-Api-Time:
+                - 0.082s
+            X-Api-Total-Time:
+                - 0.132s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 146.365209ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1193
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1193"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:15 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ee0e1137c374450281ca24422da0e94b
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.108s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 116.954209ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/10/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1122
+        body: '{"id":10,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/10/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/10/receptor_addresses/","jobs":"/api/v2/instances/10/jobs/","peers":"/api/v2/instances/10/peers/","instance_groups":"/api/v2/instances/10/instance_groups/","install_bundle":"/api/v2/instances/10/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.723490Z","modified":"2026-08-18T13:05:06.723539Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1122"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:15 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - c878435f8e8c4cb4ad33dbcb7dd48ea0
+            X-Api-Time:
+                - 0.073s
+            X-Api-Total-Time:
+                - 0.117s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 125.188417ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1177
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1177"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:16 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 9a44c21085cb4aa5887c16b6039e3fae
+            X-Api-Time:
+                - 0.053s
+            X-Api-Total-Time:
+                - 0.107s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.466042ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1193
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1193"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:16 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - def2ba6e0811456bbaa016ef6ae1a8ad
+            X-Api-Time:
+                - 0.068s
+            X-Api-Total-Time:
+                - 0.116s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 129.587583ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            hostname:
+                - execution-1.example.com
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/?hostname=execution-1.example.com
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1177
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:14.456409Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1177"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:16 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - bd900dfb6f8a4f7597c6e2c47f18bb1b
+            X-Api-Time:
+                - 0.084s
+            X-Api-Total-Time:
+                - 0.134s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 145.138041ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 32
+        host: awx.local
+        body: |
+            {"node_state":"deprovisioning"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/10/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1123
+        body: '{"id":10,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/10/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/10/receptor_addresses/","jobs":"/api/v2/instances/10/jobs/","peers":"/api/v2/instances/10/peers/","instance_groups":"/api/v2/instances/10/instance_groups/","install_bundle":"/api/v2/instances/10/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.723490Z","modified":"2026-08-18T13:05:17.167757Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1123"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:17 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b4aef2f6c0e34dcd851eadaab039c9b4
+            X-Api-Time:
+                - 0.130s
+            X-Api-Total-Time:
+                - 0.206s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 217.241291ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 32
+        host: awx.local
+        body: |
+            {"node_state":"deprovisioning"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/11/
+        method: PATCH
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1198
+        body: '{"id":11,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/11/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/11/receptor_addresses/","jobs":"/api/v2/instances/11/jobs/","peers":"/api/v2/instances/11/peers/","instance_groups":"/api/v2/instances/11/instance_groups/","install_bundle":"/api/v2/instances/11/install_bundle/","health_check":"/api/v2/instances/11/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:05:06.741798Z","modified":"2026-08-18T13:05:17.159743Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.50","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1198"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:05:17 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6d6ae01f797948379f4043b858f11728
+            X-Api-Time:
+                - 0.137s
+            X-Api-Total-Time:
+                - 0.206s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 221.801542ms

@@ -142,6 +142,17 @@ type Item struct {
 
 	CreateEndpoint *CreateEndpointConfig `json:"create_endpoint,omitempty" yaml:"create_endpoint,omitempty"`
 
+	// UseStateForUnknown sets the default for every property on this item, and
+	// defaults to true. Turn it off for a resource whose reads are live
+	// telemetry: an instance recomputes capacity on any change, so promising the
+	// prior value fails the apply.
+	UseStateForUnknown *bool `json:"use_state_for_unknown,omitempty" yaml:"use_state_for_unknown,omitempty"`
+
+	// SoftDelete replaces DELETE with a PATCH carrying this body. AWX retires a
+	// few objects through a state field rather than removing them: DELETE on an
+	// instance answers 405, and node_state "deprovisioning" is what takes it out.
+	SoftDelete map[string]any `json:"soft_delete,omitempty" yaml:"soft_delete,omitempty"`
+
 	// CredentialType, when non-empty, marks this item as a typed credential
 	// resource generated from resources/api/<VERSION>/payload/credential_type_<value>.json
 	// rather than from the regular API actions metadata. The value is the
