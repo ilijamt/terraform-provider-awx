@@ -33,6 +33,7 @@ All notable changes to this project will be documented in this file.
 
 - Add skip rule for CHANGELOG regeneration
 - Updated instructions for seeding AWX instance
+- Removed Go Report Card badge from README
 
 ### Features
 
