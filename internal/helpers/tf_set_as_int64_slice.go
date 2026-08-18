@@ -4,6 +4,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func ListAsInt64Slice(list types.List) []int64 {
-	return asInt64Slice(list)
+func SetAsInt64Slice(set types.Set) []int64 {
+	return asInt64Slice(set)
 }

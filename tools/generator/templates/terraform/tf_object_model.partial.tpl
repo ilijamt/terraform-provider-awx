@@ -30,7 +30,11 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) BodyRequest() *{{ .Name | l
 {{- range $key, $value := .WriteProperties }}
 {{- if not $value.IsWriteOnly }}
 {{- if eq $value.Generated.AwxGoType "types.Set" }}
+{{- if eq $value.Generated.BodyRequestModelType "[]int64" }}
+    req.{{ $value.Generated.PropertyName }} = helpers.SetAsInt64Slice(o.{{ $value.Generated.PropertyName }})
+{{- else }}
     req.{{ $value.Generated.PropertyName }} = helpers.SetAsStringSlice(o.{{ $value.Generated.PropertyName }}, {{ or .Trim false }})
+{{- end }}
 {{- else if eq $value.Generated.AwxGoType "types.List" }}
 {{- if eq $value.Generated.BodyRequestModelType "[]int64" }}
     req.{{ $value.Generated.PropertyName }} = helpers.ListAsInt64Slice(o.{{ $value.Generated.PropertyName }})
@@ -60,6 +64,8 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) UpdateFromApiData(data map[
     collect(helpers.AttrValueSetBool(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
 {{- else if eq $value.Generated.AwxGoValue "types.SetValueMust(types.StringType, val.Elements())" }}
     collect(helpers.AttrValueSetSetString(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"], {{ or .Trim false }}))
+{{- else if eq $value.Generated.AwxGoValue "types.SetValueMust(types.Int64Type, val.Elements())" }}
+    collect(helpers.AttrValueSetSetInt64(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
 {{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.Int64Type, val.Elements())" }}
     collect(helpers.AttrValueSetListInt64(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
 {{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())" }}

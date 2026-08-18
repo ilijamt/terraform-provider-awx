@@ -153,3 +153,61 @@ func TestGenerateApiTfDefinitionListElementType(t *testing.T) {
 	assert.Equal(t, 2, strings.Count(out, "ElementType: types.Int64Type,"), "resource and data source schemas")
 	assert.Equal(t, 2, strings.Count(out, "ElementType: types.StringType,"), "resource and data source schemas")
 }
+
+// A set of integers has to reach the same helpers a list of integers does. Get
+// the write side wrong and a []string lands in a []int64 field, which at least
+// fails to compile; get the read side wrong and the attribute gets no reader at
+// all and quietly stays null.
+func TestGenerateApiTfDefinitionSetElementType(t *testing.T) {
+	tpl, err := template.New("").Funcs(FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
+	require.NoError(t, err)
+
+	apiResourcePath := t.TempDir()
+	resourcePath := t.TempDir()
+	require.NoError(t, os.Mkdir(filepath.Join(apiResourcePath, "docs"), os.ModePerm))
+
+	item := Item{
+		Name:                   "Widget",
+		TypeName:               "widget",
+		Endpoint:               "/api/v2/widgets/",
+		IdKey:                  "id",
+		Enabled:                true,
+		ApiPropertyResourceKey: "POST",
+		ApiPropertyDataKey:     "GET",
+		PropertyOverrides: map[string]PropertyOverride{
+			"gadgets": {Type: "set", ElementType: "integer"},
+			"tags":    {Type: "set", ElementType: "string"},
+		},
+	}
+	// both actions, so the one field exercises the reader and the body request
+	objmap := map[string]any{
+		"description": "Widgets",
+		"actions": map[string]any{
+			"GET": map[string]any{
+				"id":      map[string]any{"type": "integer", "label": "ID"},
+				"gadgets": map[string]any{"type": "field", "label": "Gadgets"},
+				"tags":    map[string]any{"type": "field", "label": "Tags"},
+			},
+			"POST": map[string]any{
+				"name":    map[string]any{"type": "string", "label": "Name", "required": true},
+				"gadgets": map[string]any{"type": "field", "label": "Gadgets"},
+				"tags":    map[string]any{"type": "field", "label": "Tags"},
+			},
+		},
+	}
+
+	_, _, _, err = GenerateApiTfDefinition(tpl, Config{ApiVersion: "24.6.1"}, item, apiResourcePath, resourcePath, item.Name, objmap)
+	require.NoError(t, err)
+
+	generated, err := os.ReadFile(filepath.Join(resourcePath, "gen_obj_widget.go"))
+	require.NoError(t, err)
+	out := string(generated)
+
+	assert.Contains(t, out, "Gadgets []int64 `json:\"gadgets")
+	assert.Contains(t, out, `req.Gadgets = helpers.SetAsInt64Slice(o.Gadgets)`)
+	assert.Contains(t, out, "Tags []string `json:\"tags")
+	assert.Contains(t, out, `req.Tags = helpers.SetAsStringSlice(o.Tags, false)`)
+
+	assert.Contains(t, out, `collect(helpers.AttrValueSetSetInt64(&o.Gadgets, data["gadgets"]))`)
+	assert.Contains(t, out, `collect(helpers.AttrValueSetSetString(&o.Tags, data["tags"], false))`)
+}
