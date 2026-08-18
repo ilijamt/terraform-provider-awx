@@ -124,6 +124,8 @@ func awxGoValue(t, elementType string) string {
 		return "types.BoolValue"
 	case "list":
 		return fmt.Sprintf("types.ListValueMust(types.%sType, val.Elements())", cmp.Or(tfAttributeType(elementType), "String"))
+	case "set":
+		return fmt.Sprintf("types.SetValueMust(types.%sType, val.Elements())", cmp.Or(tfAttributeType(elementType), "String"))
 	}
 	return t
 }
@@ -140,6 +142,8 @@ func awxGoType(t string) string {
 		return "types.Bool"
 	case "list":
 		return "types.List"
+	case "set":
+		return "types.Set"
 	}
 	return t
 }
@@ -161,7 +165,7 @@ func awxPrimitiveType(t, elementType string) string {
 		return "string"
 	case "boolean", "bool":
 		return "bool"
-	case "list":
+	case "list", "set":
 		if tfAttributeType(elementType) == "Int64" {
 			return "[]int64"
 		}
@@ -184,6 +188,8 @@ func tfAttributeType(t string) string {
 		return "Bool"
 	case "list":
 		return "List"
+	case "set":
+		return "Set"
 	}
 	return t
 }
@@ -201,7 +207,7 @@ func tfGoPrimitiveValue(t string, postWrap bool) string {
 		return "ValueString"
 	case "boolean", "bool":
 		return "ValueBool"
-	case "list":
+	case "list", "set":
 		return "Elements"
 	}
 	return t

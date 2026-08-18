@@ -100,6 +100,7 @@ func Resources() []func() resource.Resource {
 		NewOrganizationAssociateDisassociateGalaxyCredentialResource,
 		NewOrganizationAssociateDisassociateInstanceGroupResource,
 		NewProjectResource,
+		NewRoleDefinitionResource,
 		NewRoleTeamAssignmentResource,
 		NewRoleUserAssignmentResource,
 		NewScheduleResource,

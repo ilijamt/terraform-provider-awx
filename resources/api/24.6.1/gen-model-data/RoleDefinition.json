@@ -8,7 +8,7 @@
   "has_survey_spec": false,
   "render_api_docs": true,
   "no_terraform_data_source": false,
-  "no_terraform_resource": true,
+  "no_terraform_resource": false,
   "has_search_fields": true,
   "search_fields": [
     {
@@ -412,7 +412,7 @@
       "name": "permissions",
       "label": "Permissions",
       "description": "",
-      "type": "list",
+      "type": "set",
       "has_default_value": false,
       "default_value": "",
       "element_type": "choice",
@@ -426,8 +426,7 @@
       "is_in_read_property": false,
       "is_in_write_property": true,
       "validators": [
-        "listvalidator.SizeAtLeast(1)",
-        "listvalidator.UniqueValues()"
+        "setvalidator.SizeAtLeast(1)"
       ],
       "is_hidden": false,
       "post_wrap": false,
@@ -438,14 +437,14 @@
       "use_state_for_unknown": true,
       "requires_replace": false,
       "generated": {
-        "awx_go_type": "types.List",
-        "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
+        "awx_go_type": "types.Set",
+        "awx_go_value": "types.SetValueMust(types.StringType, val.Elements())",
         "property_name": "Permissions",
         "property_case": "Permissions",
         "body_request_model_type": "[]string",
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.Permissions.Elements()",
-        "attribute_type": "List",
+        "attribute_type": "Set",
         "validation_available_choice_data": [
           "awx.add_credential",
           "awx.add_executionenvironment",
@@ -901,7 +900,7 @@
       "name": "permissions",
       "label": "Permissions",
       "description": "",
-      "type": "list",
+      "type": "set",
       "has_default_value": false,
       "default_value": "",
       "element_type": "choice",
@@ -915,8 +914,7 @@
       "is_in_read_property": true,
       "is_in_write_property": false,
       "validators": [
-        "listvalidator.SizeAtLeast(1)",
-        "listvalidator.UniqueValues()"
+        "setvalidator.SizeAtLeast(1)"
       ],
       "is_hidden": false,
       "post_wrap": false,
@@ -927,14 +925,14 @@
       "use_state_for_unknown": true,
       "requires_replace": false,
       "generated": {
-        "awx_go_type": "types.List",
-        "awx_go_value": "types.ListValueMust(types.StringType, val.Elements())",
+        "awx_go_type": "types.Set",
+        "awx_go_value": "types.SetValueMust(types.StringType, val.Elements())",
         "property_name": "Permissions",
         "property_case": "Permissions",
         "body_request_model_type": "[]string",
         "tf_go_primitive_value": "Elements",
         "model_body_request_value": "o.Permissions.Elements()",
-        "attribute_type": "List",
+        "attribute_type": "Set",
         "validation_available_choice_data": [
           "awx.add_credential",
           "awx.add_executionenvironment",

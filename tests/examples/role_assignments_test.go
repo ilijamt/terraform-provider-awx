@@ -35,6 +35,11 @@ func TestIntegration_RoleAssignments(t *testing.T) {
 				Config: providerHeader(t) + cfg,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("data.awx_role_definition.inventory", "content_type", "awx.inventory"),
+					// AWX returns permissions alphabetically whatever order they
+					// go out in, which only a set survives.
+					resource.TestCheckResourceAttr("awx_role_definition.inventory_reader", "permissions.#", "2"),
+					resource.TestCheckTypeSetElemAttr("awx_role_definition.inventory_reader", "permissions.*", "awx.adhoc_inventory"),
+					resource.TestCheckTypeSetElemAttr("awx_role_definition.inventory_reader", "permissions.*", "awx.view_inventory"),
 					resource.TestCheckResourceAttrPair(
 						"awx_role_user_assignment.reader_inventory", "role_definition",
 						"data.awx_role_definition.inventory", "id"),
@@ -53,6 +58,8 @@ func TestIntegration_RoleAssignments(t *testing.T) {
 					resource.TestCheckResourceAttrPair(
 						"awx_role_user_assignment.reader_inventory", "role_definition",
 						"data.awx_role_definition.inventory", "id"),
+					resource.TestCheckResourceAttr("awx_role_definition.inventory_reader", "permissions.#", "1"),
+					resource.TestCheckTypeSetElemAttr("awx_role_definition.inventory_reader", "permissions.*", "awx.view_inventory"),
 				),
 			},
 			{

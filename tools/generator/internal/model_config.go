@@ -212,7 +212,7 @@ func (p *Property) setGenerated(values map[string]any, override PropertyOverride
 	}
 
 	switch p.Type {
-	case "choice", "list":
+	case "choice", "list", "set":
 		if v, ok := p.ValidatorData["choices"].([]any); ok {
 			p.Generated.ValidationAvailableChoiceData = availableChoicesData(v)
 		}

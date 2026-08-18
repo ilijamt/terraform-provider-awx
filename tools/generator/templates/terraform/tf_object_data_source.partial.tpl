@@ -23,7 +23,7 @@ func New{{ .Name }}DataSource() datasource.DataSource {
 {{- if $value.Deprecated }}
                         DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
                         ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
                         Description: {{ escape_quotes (or .Description .Label) }},
@@ -50,7 +50,7 @@ func New{{ .Name }}DataSource() datasource.DataSource {
 {{- range $key, $value := $.WriteProperties }}
 {{- if $value.IsWriteOnly }}
                     "{{ $key | lowerCase }}": dschema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
                         ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}

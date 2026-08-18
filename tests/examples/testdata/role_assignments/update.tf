@@ -18,8 +18,16 @@ resource "awx_team" "readers" {
   organization = awx_organization.roles.id
 }
 
-# Built-in role definitions ship with AWX, so they are looked up rather than
-# created. object_id is a string because the role can point at any content type.
+resource "awx_role_definition" "inventory_reader" {
+  name         = "Inventory Reader"
+  description  = "Read-only access to an inventory"
+  content_type = "awx.inventory"
+  permissions = [
+    "awx.view_inventory",
+  ]
+}
+
+# object_id is a string because a role can point at any content type.
 data "awx_role_definition" "inventory" {
   name = "Inventory Use"
 }

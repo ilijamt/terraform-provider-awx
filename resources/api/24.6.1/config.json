@@ -870,10 +870,9 @@
           "type": "choice"
         },
         "permissions": {
-          "type": "list",
+          "type": "set",
           "validators": [
-            "listvalidator.SizeAtLeast(1)",
-            "listvalidator.UniqueValues()"
+            "setvalidator.SizeAtLeast(1)"
           ]
         }
       },
@@ -898,8 +897,7 @@
             }
           ]
         }
-      ],
-      "no_terraform_resource": true
+      ]
     },
     {
       "endpoint": "/api/v2/role_team_assignments/",

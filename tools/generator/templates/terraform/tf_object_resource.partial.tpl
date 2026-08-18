@@ -6,7 +6,7 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- define "attrSchema" -}}
 {{- $key := .Key }}{{ $value := .Value -}}
 "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
 	ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}
@@ -66,12 +66,12 @@ omitted when empty. Used for both regular and write-only attributes.
 		{{ .Constraint }}({{ range $k := .Fields }}path.MatchRoot("{{ $k }}"), {{ end }}),
 {{- end }}
 	},
-{{- else if and (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq $value.Type "list") (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
+{{- else if and (or (eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())") (eq $value.Generated.AwxGoValue "types.SetValueMust(types.StringType, val.Elements())")) (or (eq $value.Type "list") (eq $value.Type "set")) (or $value.Generated.ValidationAvailableChoiceData $value.Validators) }}
 	Validators: []validator.{{ $value.Generated.AttributeType }}{
 {{- range $item := $value.Validators }}
 		{{ $item }},
 {{- end }}
-		listvalidator.ValueStringsAre(stringvalidator.OneOf(
+		{{ $value.Generated.AttributeType | lowerCase }}validator.ValueStringsAre(stringvalidator.OneOf(
 {{- range $item := $value.Generated.ValidationAvailableChoiceData }}
 			{{ $item | quote }},
 {{- end }}
@@ -115,7 +115,7 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- range $key, $value := .ReadProperties }}
 {{- if not $value.IsInWriteProperty }}
 					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if eq $value.Generated.AttributeType "List" }}
+{{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
 						ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}
