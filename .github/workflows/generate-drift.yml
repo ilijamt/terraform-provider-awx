@@ -22,13 +22,6 @@ jobs:
         uses: actions/setup-go@v7
         with:
           go-version-file: 'go.mod'
-      - name: Setup Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
-      - name: Install npm dependencies
-        run: npm ci
       - name: Install goimports
         run: go install golang.org/x/tools/cmd/goimports@latest
       - name: Install tfplugindocs

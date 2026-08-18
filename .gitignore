@@ -73,7 +73,6 @@ fabric.properties
 /.envrc*
 /resources/run.sh
 /.terraformrc
-/node_modules/
 
 # VCR test bootstrap artifacts
 /tests/.bootstrap-token

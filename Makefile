@@ -17,7 +17,7 @@ STAMP := -X $(MODULE)/version.Version=$(GIT_VERSION)
 
 .PHONY: generate-config
 generate-config:
-	node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/resources/api/$(VERSION)
+	go run ./tools/generator/cmd/generator/main.go generate-config resources/config resources/api/$(VERSION)
 
 .PHONY: download-api
 download-api: generate-config
@@ -28,7 +28,7 @@ download-api: generate-config
 .PHONY: generate-configs
 generate-configs: resources/api/*
 	@for file in $^ ; do \
-		node tools/config-merge.js $(shell pwd)/resources/config $(shell pwd)/$${file} ; \
+		go run ./tools/generator/cmd/generator/main.go generate-config resources/config $${file} ; \
 	done
 
 .PHONY: generate-awx
