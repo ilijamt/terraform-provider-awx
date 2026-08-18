@@ -125,3 +125,129 @@ func TestBuildCredentialTypeTplData_RequiresInputs(t *testing.T) {
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "no inputs object")
 }
+
+func TestBuildCredentialTypeTplData_TypedFields(t *testing.T) {
+	cfg := Config{ApiVersion: "24.6.1"}
+
+	for _, tc := range []struct {
+		namespace string
+		field     string
+		assert    func(t *testing.T, f CredentialTypeField)
+	}{
+		{"registry", "verify_ssl", func(t *testing.T, f CredentialTypeField) {
+			assert.True(t, f.IsBool())
+			assert.Contains(t, f.Description, `AWX defaults this to "true" when unset.`)
+		}},
+		{"registry", "host", func(t *testing.T, f CredentialTypeField) {
+			assert.False(t, f.IsBool())
+			assert.Contains(t, f.Description, `AWX defaults this to "quay.io" when unset.`)
+		}},
+		{"azure_kv", "cloud_name", func(t *testing.T, f CredentialTypeField) {
+			assert.Equal(t, []string{"AzureChinaCloud", "AzureCloud", "AzureGermanCloud", "AzureUSGovernment"}, f.Choices)
+		}},
+		{"hashivault_kv", "api_version", func(t *testing.T, f CredentialTypeField) {
+			assert.Equal(t, []string{"v1", "v2"}, f.Choices)
+			assert.True(t, f.Required)
+		}},
+		{"aws", "username", func(t *testing.T, f CredentialTypeField) {
+			assert.Empty(t, f.Choices)
+			assert.NotContains(t, f.Description, "AWX defaults this")
+		}},
+	} {
+		t.Run(tc.namespace+"/"+tc.field, func(t *testing.T) {
+			item := Item{Name: "X", TypeName: "x", CredentialType: tc.namespace, Enabled: true}
+			data, err := buildCredentialTypeTplData(cfg, item, loadCredentialTypePayload(t, tc.namespace))
+			require.NoError(t, err)
+			for _, f := range data.Fields {
+				if f.ID == tc.field {
+					tc.assert(t, f)
+					return
+				}
+			}
+			t.Fatalf("field %q not found", tc.field)
+		})
+	}
+}
+
+func TestBuildCredentialTypeTplData_RequiresReplace(t *testing.T) {
+	cfg := Config{ApiVersion: "24.6.1"}
+	item := Item{
+		Name:                      "CredentialVault",
+		TypeName:                  "credential_vault",
+		CredentialType:            "vault",
+		Enabled:                   true,
+		CredentialRequiresReplace: []string{"vault_id"},
+	}
+
+	data, err := buildCredentialTypeTplData(cfg, item, loadCredentialTypePayload(t, "vault"))
+	require.NoError(t, err)
+
+	byID := map[string]CredentialTypeField{}
+	for _, f := range data.Fields {
+		byID[f.ID] = f
+	}
+	assert.True(t, byID["vault_id"].RequiresReplace)
+	assert.False(t, byID["vault_password"].RequiresReplace)
+}
+
+func TestDataSourceFieldsDropsSecrets(t *testing.T) {
+	cfg := Config{ApiVersion: "24.6.1"}
+	item := Item{Name: "CredentialSsh", TypeName: "credential_ssh", CredentialType: "ssh", Enabled: true}
+
+	data, err := buildCredentialTypeTplData(cfg, item, loadCredentialTypePayload(t, "ssh"))
+	require.NoError(t, err)
+
+	var ids []string
+	for _, f := range data.DataSourceFields() {
+		assert.False(t, f.Secret)
+		ids = append(ids, f.ID)
+	}
+	assert.Equal(t, []string{"become_method", "become_username", "username"}, ids)
+}
+
+func TestCredentialFieldDescription(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		field CredentialTypeField
+		def   any
+		want  string
+	}{
+		{
+			name:  "help text only",
+			field: CredentialTypeField{HelpText: "Access Key"},
+			want:  "Access Key.",
+		},
+		{
+			name:  "falls back to label",
+			field: CredentialTypeField{Label: "Verify SSL"},
+			want:  "Verify SSL.",
+		},
+		{
+			name:  "bool default",
+			field: CredentialTypeField{Label: "Verify SSL"},
+			def:   true,
+			want:  `Verify SSL. AWX defaults this to "true" when unset.`,
+		},
+		{
+			name:  "empty string default is not a default",
+			field: CredentialTypeField{Label: "Region"},
+			def:   "",
+			want:  "Region.",
+		},
+		{
+			name:  "choices and default",
+			field: CredentialTypeField{HelpText: "API version.", Choices: []string{"v1", "v2"}},
+			def:   "v1",
+			want:  `API version. Allowed values: "v1", "v2". AWX defaults this to "v1" when unset.`,
+		},
+		{
+			name:  "requires replace",
+			field: CredentialTypeField{Label: "Vault ID", RequiresReplace: true},
+			want:  "Vault ID. Changing this forces a new credential to be created.",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			assert.Equal(t, tc.want, credentialFieldDescription(tc.field, tc.def))
+		})
+	}
+}

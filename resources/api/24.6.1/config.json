@@ -264,10 +264,130 @@
     },
     {
       "endpoint": "/api/v2/credentials/",
+      "name": "CredentialAim",
+      "type_name": "credential_aim",
+      "id_key": "id",
+      "credential_type": "aim",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
       "name": "CredentialAws",
       "type_name": "credential_aws",
       "id_key": "id",
       "credential_type": "aws",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialAwsSecretsmanagerCredential",
+      "type_name": "credential_aws_secretsmanager_credential",
+      "id_key": "id",
+      "credential_type": "aws_secretsmanager_credential",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialAzureKv",
+      "type_name": "credential_azure_kv",
+      "id_key": "id",
+      "credential_type": "azure_kv",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialAzureRm",
+      "type_name": "credential_azure_rm",
+      "id_key": "id",
+      "credential_type": "azure_rm",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialBitbucketDcToken",
+      "type_name": "credential_bitbucket_dc_token",
+      "id_key": "id",
+      "credential_type": "bitbucket_dc_token",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialCentrifyVaultKv",
+      "type_name": "credential_centrify_vault_kv",
+      "id_key": "id",
+      "credential_type": "centrify_vault_kv",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialConjur",
+      "type_name": "credential_conjur",
+      "id_key": "id",
+      "credential_type": "conjur",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialController",
+      "type_name": "credential_controller",
+      "id_key": "id",
+      "credential_type": "controller",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialGalaxyApiToken",
+      "type_name": "credential_galaxy_api_token",
+      "id_key": "id",
+      "credential_type": "galaxy_api_token",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialGce",
+      "type_name": "credential_gce",
+      "id_key": "id",
+      "credential_type": "gce",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialGithubToken",
+      "type_name": "credential_github_token",
+      "id_key": "id",
+      "credential_type": "github_token",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialGitlabToken",
+      "type_name": "credential_gitlab_token",
+      "id_key": "id",
+      "credential_type": "gitlab_token",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialGpgPublicKey",
+      "type_name": "credential_gpg_public_key",
+      "id_key": "id",
+      "credential_type": "gpg_public_key",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialHashivaultKv",
+      "type_name": "credential_hashivault_kv",
+      "id_key": "id",
+      "credential_type": "hashivault_kv",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialHashivaultSsh",
+      "type_name": "credential_hashivault_ssh",
+      "id_key": "id",
+      "credential_type": "hashivault_ssh",
       "enabled": true
     },
     {
@@ -287,6 +407,102 @@
           ]
         }
       ]
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialInsights",
+      "type_name": "credential_insights",
+      "id_key": "id",
+      "credential_type": "insights",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialKubernetesBearerToken",
+      "type_name": "credential_kubernetes_bearer_token",
+      "id_key": "id",
+      "credential_type": "kubernetes_bearer_token",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialNet",
+      "type_name": "credential_net",
+      "id_key": "id",
+      "credential_type": "net",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialOpenstack",
+      "type_name": "credential_openstack",
+      "id_key": "id",
+      "credential_type": "openstack",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialRegistry",
+      "type_name": "credential_registry",
+      "id_key": "id",
+      "credential_type": "registry",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialRhv",
+      "type_name": "credential_rhv",
+      "id_key": "id",
+      "credential_type": "rhv",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialSatellite6",
+      "type_name": "credential_satellite6",
+      "id_key": "id",
+      "credential_type": "satellite6",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialScm",
+      "type_name": "credential_scm",
+      "id_key": "id",
+      "credential_type": "scm",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialSsh",
+      "type_name": "credential_ssh",
+      "id_key": "id",
+      "credential_type": "ssh",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialTerraform",
+      "type_name": "credential_terraform",
+      "id_key": "id",
+      "credential_type": "terraform",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialThycoticDsv",
+      "type_name": "credential_thycotic_dsv",
+      "id_key": "id",
+      "credential_type": "thycotic_dsv",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialThycoticTss",
+      "type_name": "credential_thycotic_tss",
+      "id_key": "id",
+      "credential_type": "thycotic_tss",
+      "enabled": true
     },
     {
       "endpoint": "/api/v2/credential_types/",
@@ -327,6 +543,25 @@
           ]
         }
       ]
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialVault",
+      "type_name": "credential_vault",
+      "id_key": "id",
+      "credential_type": "vault",
+      "enabled": true,
+      "credential_requires_replace": [
+        "vault_id"
+      ]
+    },
+    {
+      "endpoint": "/api/v2/credentials/",
+      "name": "CredentialVmware",
+      "type_name": "credential_vmware",
+      "id_key": "id",
+      "credential_type": "vmware",
+      "enabled": true
     },
     {
       "endpoint": "/api/v2/execution_environments/",

@@ -5,6 +5,7 @@ import (
 	"log"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -13,15 +14,23 @@ import (
 
 // CredentialTypeField describes a single input field on a credential type.
 type CredentialTypeField struct {
-	ID           string // raw AWX id, e.g. "security_token"
-	PropertyName string // Go field name, e.g. "SecurityToken"
-	Label        string
-	HelpText     string
-	Secret       bool
-	Required     bool
-	Multiline    bool
-	Format       string // e.g. "ssh_private_key"
+	ID              string // raw AWX id, e.g. "security_token"
+	PropertyName    string // Go field name, e.g. "SecurityToken"
+	Label           string
+	HelpText        string
+	Description     string
+	Type            string // "string" or "boolean"
+	Secret          bool
+	Required        bool
+	Multiline       bool
+	Format          string // e.g. "ssh_private_key"
+	Choices         []string
+	RequiresReplace bool
 }
+
+func (f CredentialTypeField) IsBool() bool { return f.Type == credentialFieldTypeBoolean }
+
+const credentialFieldTypeBoolean = "boolean"
 
 // CredentialTypeTplData is the template payload for generated typed credential
 // resources/data sources/models.
@@ -37,6 +46,18 @@ type CredentialTypeTplData struct {
 	Fields      []CredentialTypeField // typed inputs from credential_type spec
 	HasSecrets  bool
 	Enabled     bool
+}
+
+// DataSourceFields drops the secret inputs. AWX answers those with the literal
+// "$encrypted$", so a read-only attribute for one returns nothing usable.
+func (d CredentialTypeTplData) DataSourceFields() []CredentialTypeField {
+	out := make([]CredentialTypeField, 0, len(d.Fields))
+	for _, f := range d.Fields {
+		if !f.Secret {
+			out = append(out, f)
+		}
+	}
+	return out
 }
 
 // GenerateCredentialTypeTfDefinition emits the model/resource/data source
@@ -115,9 +136,14 @@ func buildCredentialTypeTplData(config Config, item Item, payload map[string]any
 		}
 
 		ft := CredentialTypeField{
-			ID:           id,
-			PropertyName: strcase.ToCamel(id),
-			Required:     requiredSet[id],
+			ID:              id,
+			PropertyName:    strcase.ToCamel(id),
+			Required:        requiredSet[id],
+			Type:            "string",
+			RequiresReplace: slices.Contains(item.CredentialRequiresReplace, id),
+		}
+		if v, ok := fm["type"].(string); ok && v != "" {
+			ft.Type = v
 		}
 		if v, ok := fm["label"].(string); ok {
 			ft.Label = v
@@ -134,6 +160,14 @@ func buildCredentialTypeTplData(config Config, item Item, payload map[string]any
 		if v, ok := fm["format"].(string); ok {
 			ft.Format = v
 		}
+		if choices, ok := fm["choices"].([]any); ok {
+			for _, c := range choices {
+				if s, ok := c.(string); ok {
+					ft.Choices = append(ft.Choices, s)
+				}
+			}
+		}
+		ft.Description = credentialFieldDescription(ft, fm["default"])
 		if ft.Secret {
 			out.HasSecrets = true
 		}
@@ -146,6 +180,41 @@ func buildCredentialTypeTplData(config Config, item Item, payload map[string]any
 	out.Fields = fields
 
 	return out, nil
+}
+
+// credentialFieldDescription records the AWX default rather than applying it,
+// because AWX never echoes a field it wasn't sent. It also records choices and
+// replace-on-change, which tfplugindocs cannot read off the validator and plan
+// modifier that enforce them.
+func credentialFieldDescription(f CredentialTypeField, def any) string {
+	lead := f.HelpText
+	if lead == "" {
+		lead = f.Label
+	}
+	if lead != "" && !strings.HasSuffix(lead, ".") {
+		lead += "."
+	}
+
+	parts := []string{lead}
+	if len(f.Choices) > 0 {
+		quoted := make([]string, 0, len(f.Choices))
+		for _, c := range f.Choices {
+			quoted = append(quoted, strconv.Quote(c))
+		}
+		parts = append(parts, fmt.Sprintf("Allowed values: %s.", strings.Join(quoted, ", ")))
+	}
+	switch v := def.(type) {
+	case string:
+		if v != "" {
+			parts = append(parts, fmt.Sprintf("AWX defaults this to %q when unset.", v))
+		}
+	case bool:
+		parts = append(parts, fmt.Sprintf("AWX defaults this to %q when unset.", strconv.FormatBool(v)))
+	}
+	if f.RequiresReplace {
+		parts = append(parts, "Changing this forces a new credential to be created.")
+	}
+	return strings.TrimSpace(strings.Join(parts, " "))
 }
 
 // IsCredentialTypeItem reports whether an item should be routed through

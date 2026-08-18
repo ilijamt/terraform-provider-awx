@@ -162,6 +162,11 @@ type Item struct {
 	// instance answers 405, and node_state "deprovisioning" is what takes it out.
 	SoftDelete map[string]any `json:"soft_delete,omitempty" yaml:"soft_delete,omitempty"`
 
+	// CredentialRequiresReplace lists input field ids AWX refuses to change
+	// after create. A vault credential answers a changed vault_id with "Vault
+	// IDs cannot be changed once they have been created."
+	CredentialRequiresReplace []string `json:"credential_requires_replace,omitempty" yaml:"credential_requires_replace,omitempty"`
+
 	// CredentialType, when non-empty, marks this item as a typed credential
 	// resource generated from resources/api/<VERSION>/payload/credential_type_<value>.json
 	// rather than from the regular API actions metadata. The value is the

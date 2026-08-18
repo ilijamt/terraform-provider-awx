@@ -18,8 +18,8 @@ Manages the AWX `Amazon Web Services` (aws) credential type with first-class typ
 ### Required
 
 - `name` (String) Name of this credential.
-- `password` (String, Sensitive) Secret Key
-- `username` (String) Access Key
+- `password` (String, Sensitive) Secret Key.
+- `username` (String) Access Key.
 
 ### Optional
 

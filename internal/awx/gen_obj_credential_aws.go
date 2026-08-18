@@ -104,9 +104,9 @@ func (o *credentialAwsTerraformModel) UpdateFromApiData(data map[string]any) (di
 	return diags, nil
 }
 
-// hookCredentialAws reconciles `$encrypted$` placeholders that AWX returns for
+// hookCredentialAws reconciles the `$encrypted$` placeholders AWX returns for
 // secret fields against the prior plan state, so Terraform doesn't see drift
-// every plan. Data-source reads have orig==nil and skip reconciliation.
+// every plan.
 func hookCredentialAws(_ context.Context, _ string, source hooks.Source, callee hooks.Callee, orig, state *credentialAwsTerraformModel) error {
 	if source != hooks.SourceResource {
 		return nil
@@ -139,6 +139,46 @@ func hookCredentialAws(_ context.Context, _ string, source hooks.Source, callee 
 	return nil
 }
 
+// credentialAwsDataSourceTerraformModel mirrors the resource
+// model without the secret inputs, which AWX only ever answers with the
+// literal "$encrypted$".
+type credentialAwsDataSourceTerraformModel struct {
+	ID             types.Int64  `tfsdk:"id" json:"id"`
+	Name           types.String `tfsdk:"name" json:"name"`
+	Description    types.String `tfsdk:"description" json:"description"`
+	Organization   types.Int64  `tfsdk:"organization" json:"organization"`
+	Team           types.Int64  `tfsdk:"team" json:"team"`
+	User           types.Int64  `tfsdk:"user" json:"user"`
+	Kind           types.String `tfsdk:"kind" json:"kind"`
+	Managed        types.Bool   `tfsdk:"managed" json:"managed"`
+	CredentialType types.Int64  `tfsdk:"credential_type" json:"credential_type"`
+	Username       types.String `tfsdk:"username" json:"-"`
+}
+
+func (o *credentialAwsDataSourceTerraformModel) Clone() credentialAwsDataSourceTerraformModel {
+	return *o
+}
+
+func (o *credentialAwsDataSourceTerraformModel) UpdateFromApiData(data map[string]any) (diag.Diagnostics, error) {
+	diags := diag.Diagnostics{}
+	if data == nil {
+		return diags, fmt.Errorf("no data passed")
+	}
+	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
+	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
+	collect(helpers.AttrValueSetString(&o.Name, data["name"], false))
+	collect(helpers.AttrValueSetString(&o.Description, data["description"], false))
+	collect(helpers.AttrValueSetInt64(&o.Organization, data["organization"]))
+	collect(helpers.AttrValueSetString(&o.Kind, data["kind"], false))
+	collect(helpers.AttrValueSetBool(&o.Managed, data["managed"]))
+	collect(helpers.AttrValueSetInt64(&o.CredentialType, data["credential_type"]))
+
+	if inputs, ok := data["inputs"].(map[string]any); ok {
+		collect(helpers.AttrValueSetString(&o.Username, inputs["username"], false))
+	}
+	return diags, nil
+}
+
 // credentialAwsTypeLookup is shared between the resource and
 // data source so a single namespace lookup at Configure time covers both.
 var credentialAwsTypeLookup = framework.NewCredentialTypeLookup()
@@ -152,7 +192,7 @@ type credentialAwsResource = framework.GenericResource[credentialAwsTerraformMod
 func NewCredentialAwsResource() resource.Resource {
 	attrs := framework.CredentialBaseResourceAttrs()
 	attrs["password"] = schema.StringAttribute{
-		Description: "Secret Key",
+		Description: "Secret Key.",
 		Required:    true,
 		Sensitive:   true,
 	}
@@ -166,7 +206,7 @@ func NewCredentialAwsResource() resource.Resource {
 		Sensitive: true,
 	}
 	attrs["username"] = schema.StringAttribute{
-		Description: "Access Key",
+		Description: "Access Key.",
 		Required:    true,
 	}
 	return &credentialAwsResource{
@@ -188,8 +228,11 @@ func NewCredentialAwsResource() resource.Resource {
 				body.User = plan.User.ValueInt64()
 			},
 			WriteOnlyPlanToState: func(plan, state *credentialAwsTerraformModel) {
-				state.Team = types.Int64Value(plan.Team.ValueInt64())
-				state.User = types.Int64Value(plan.User.ValueInt64())
+				// AWX never echoes team/user back. An unset owner has to stay
+				// null: an imported credential plans it as null, and writing 0
+				// there fails the apply.
+				state.Team = helpers.KnownOrNullInt64(plan.Team)
+				state.User = helpers.KnownOrNullInt64(plan.User)
 				if state.CredentialType.IsNull() || state.CredentialType.IsUnknown() {
 					state.CredentialType = types.Int64Value(credentialAwsTypeLookup.Load())
 				}
@@ -200,28 +243,18 @@ func NewCredentialAwsResource() resource.Resource {
 	}
 }
 
-type credentialAwsDataSource = framework.GenericDataSource[credentialAwsTerraformModel, *credentialAwsTerraformModel]
+type credentialAwsDataSource = framework.GenericDataSource[credentialAwsDataSourceTerraformModel, *credentialAwsDataSourceTerraformModel]
 
 // NewCredentialAwsDataSource constructs the typed Amazon Web Services credential data source.
 func NewCredentialAwsDataSource() datasource.DataSource {
 	attrs := framework.CredentialBaseDataSourceAttrs()
-	attrs["password"] = dschema.StringAttribute{
-		Description: "Secret Key",
-		Computed:    true,
-		Sensitive:   true,
-	}
-	attrs["security_token"] = dschema.StringAttribute{
-		Description: "Security Token Service (STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users.",
-		Computed:    true,
-		Sensitive:   true,
-	}
 	attrs["username"] = dschema.StringAttribute{
-		Description: "Access Key",
+		Description: "Access Key.",
 		Computed:    true,
 	}
 	return &credentialAwsDataSource{
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential_aws", Endpoint: "/api/v2/credentials/"}},
-		Cfg: framework.DataSourceCfg[credentialAwsTerraformModel]{
+		Cfg: framework.DataSourceCfg[credentialAwsDataSourceTerraformModel]{
 			Schema: dschema.Schema{
 				MarkdownDescription: "Reads an AWX `Amazon Web Services` (aws) credential by ID or name.",
 				Attributes:          attrs,
@@ -235,7 +268,6 @@ func NewCredentialAwsDataSource() datasource.DataSource {
 				}},
 			},
 			OnConfigure:  credentialAwsTypeLookup.OnConfigure("aws"),
-			Hook:         hookCredentialAws,
 			ApiVersion:   ApiVersion,
 			ResourceName: "CredentialAws",
 		},

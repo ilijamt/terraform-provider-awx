@@ -27,8 +27,6 @@ Reads an AWX `Amazon Web Services` (aws) credential by ID or name.
 - `kind` (String) AWX credential kind — the namespace of the credential type (e.g. aws / ssh / vault).
 - `managed` (Boolean) Whether AWX considers this a managed credential.
 - `organization` (Number) Owning organization ID.
-- `password` (String, Sensitive) Secret Key
-- `security_token` (String, Sensitive) Security Token Service (STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users.
 - `team` (Number) Owning team ID (write-only on create).
 - `user` (Number) Owning user ID (write-only on create).
-- `username` (String) Access Key
+- `username` (String) Access Key.
