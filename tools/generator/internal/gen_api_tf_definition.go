@@ -28,7 +28,7 @@ func applyApiDataOverride(props map[string]any, overrides map[string]map[string]
 	}
 }
 
-func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, dr Deprecated, err error) {
+func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, apiResourcePath, resourcePath, name string, objmap map[string]any) (data map[string]any, p *ModelConfig, dr Deprecated, err error) {
 	log.Printf("Generating resources for %s", name)
 
 	if _, ok := objmap["actions"]; !ok {
@@ -145,7 +145,7 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, re
 			IsNew:    true,
 		},
 		{
-			Filename: fmt.Sprintf("resources/api/%s/docs/%s.md", config.ApiVersion, strings.ToLower(val.TypeName)),
+			Filename: fmt.Sprintf("%s/docs/%s.md", apiResourcePath, strings.ToLower(val.TypeName)),
 			Template: "tf_api_description.md.tpl",
 			Render:   item.RenderApiDocs,
 			IsNew:    true,

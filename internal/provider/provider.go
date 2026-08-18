@@ -131,8 +131,8 @@ func configureDefaults(ctx context.Context, data *Model) {
 	tflog.Debug(ctx, "Defaults configured for provider", defaults)
 }
 
-// describeCredential reports whether a credential slot is filled without
-// printing it, so the diagnostic can name the conflict without leaking secrets.
+// describeCredential deliberately reports presence rather than the value, so a
+// diagnostic can name the conflict without leaking secrets.
 func describeCredential(v types.String) string {
 	switch {
 	case v.IsUnknown():
@@ -176,9 +176,9 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 				"TOWER_USERNAME/AWX_USERNAME together with TOWER_PASSWORD/AWX_PASSWORD.",
 		)
 	case !noTokenAuth && !noBasicAuth:
-		// Credentials inherited from the environment land in config the same way
-		// configured ones do, so a shell exporting TOWER_USERNAME/AWX_USERNAME
-		// collides with a token set only in the configuration.
+		// Environment credentials land in config the same way configured ones do,
+		// so a shell exporting TOWER_USERNAME collides with a token set only in
+		// the provider block.
 		resp.Diagnostics.AddError(
 			fmt.Sprintf("cannot provide both [%q, %q] and %q.", "username", "password", "token"),
 			fmt.Sprintf(

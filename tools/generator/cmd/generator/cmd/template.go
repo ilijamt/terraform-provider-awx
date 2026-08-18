@@ -96,7 +96,7 @@ var templateCmd = &cobra.Command{
 					// var data map[string]any
 					var p *internal.ModelConfig
 					var dr internal.Deprecated
-					_, p, dr, err = internal.GenerateApiTfDefinition(tpl, cfg, item, resourcePath, item.Name, objmap)
+					_, p, dr, err = internal.GenerateApiTfDefinition(tpl, cfg, item, apiResourcePath, resourcePath, item.Name, objmap)
 					if err != nil {
 						return err
 					}
