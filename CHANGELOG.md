@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 ### Documentation
 
 - Add skip rule for CHANGELOG regeneration
+- Updated instructions for seeding AWX instance
 
 ### Features
 
@@ -37,6 +38,7 @@ All notable changes to this project will be documented in this file.
 ### Testing
 
 - Remove internal/awx from ignore
+- Added unit test for GenerateApiTfDefinition path handling
 
 ### Config
 
