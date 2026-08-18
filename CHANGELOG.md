@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 - *(schedule)* Omit unset diff_mode and unpin recomputed fields 
 - *(framework)* Recreate deleted resources instead of failing the plan
 - *(awx)* Stop overwriting AWX bool and decimal defaults
+- *(awx)* Send AWX float defaults instead of the Go zero
+- *(awx)* Send zero where AWX treats it as a value
+- *(awx)* Stop promising values AWX recomputes
+- *(awx)* Replace resources AWX will not update in place
 
 ### Build
 
@@ -17,6 +21,7 @@ All notable changes to this project will be documented in this file.
 ### CI/CD
 
 - Run the remaining integration tests
+- *(workflows)* Added integration test for role assignments
 
 ### Dependencies
 
@@ -34,6 +39,7 @@ All notable changes to this project will be documented in this file.
 - Add skip rule for CHANGELOG regeneration
 - Updated instructions for seeding AWX instance
 - Removed Go Report Card badge from README
+- Updated README with upgrading information for v24.6.103
 
 ### Features
 
@@ -44,15 +50,28 @@ All notable changes to this project will be documented in this file.
 - *(tools/generator)* Generate resources whose create endpoint differs
 - *(awx)* Read workflow node links off the node and its data source
 - *(awx)* Add awx_instance for mesh node registration
+- *(awx)* Manage role definitions as a resource
+- *(tools/generator)* Warn about overrides that do nothing
+- Added commit information to provider configuration logs
+
+### Refactor
+
+- Collapse collection helpers and drop no-op plan modifiers
 
 ### Testing
 
 - Remove internal/awx from ignore
 - Added unit test for GenerateApiTfDefinition path handling
+- Added latency control feature to VCR tests
+- Added environment variable setup in providerHeader
 
 ### Config
 
 - *(resources)* Added workflow job template node configuration
+
+### Style
+
+- Gofmt test files
 
 ## [24.6.1-2] - 2026-04-29
 
