@@ -2,7 +2,7 @@ package internal
 
 import (
 	"fmt"
-	"sort"
+	"slices"
 )
 
 // ValidateOverrides reports config that cannot affect the output: an override
@@ -58,7 +58,7 @@ func ValidateOverrides(val Item, objmap map[string]any) []string {
 
 		required := isRequired(write, key)
 		if override.Nullable != nil && *override.Nullable && writeType != "boolean" {
-			problems = append(problems, fmt.Sprintf("property_overrides %q sets nullable on a %s; only a bool becomes a pointer", key, cmpType(writeType, inWrite)))
+			problems = append(problems, fmt.Sprintf("property_overrides %q sets nullable on a %s; only a bool becomes a pointer", key, describeFieldType(writeType, inWrite)))
 		}
 		if override.OmitEmpty != nil && !*override.OmitEmpty && (required || writeType == "boolean") {
 			problems = append(problems, fmt.Sprintf("property_overrides %q sets omit_empty on a field that never carries it", key))
@@ -79,11 +79,11 @@ func ValidateOverrides(val Item, objmap map[string]any) []string {
 		}
 	}
 
-	sort.Strings(problems)
+	slices.Sort(problems)
 	return problems
 }
 
-func cmpType(t string, known bool) string {
+func describeFieldType(t string, known bool) string {
 	if !known || t == "" {
 		return "read-only field"
 	}

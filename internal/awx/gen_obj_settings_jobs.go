@@ -11,13 +11,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -172,9 +169,6 @@ func NewSettingsJobsResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`template`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"always",
@@ -188,9 +182,6 @@ func NewSettingsJobsResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_ansible_callback_plugins": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -206,18 +197,12 @@ func NewSettingsJobsResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_isolation_base_path": schema.StringAttribute{
 						Description: "The directory in which the service will create new temporary directories for job execution and isolation (such as credential files).",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`/tmp`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_isolation_show_paths": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -233,45 +218,30 @@ func NewSettingsJobsResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_roles_enabled": schema.BoolAttribute{
 						Description: "Allows roles to be dynamically downloaded from a requirements.yml file for SCM projects.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_runner_keepalive_seconds": schema.Int64Attribute{
 						Description: "Only applies to jobs running in a Container Group. If not 0, send a message every so-many seconds to keep connection open.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_show_playbook_links": schema.BoolAttribute{
 						Description: "Follow symbolic links when scanning for playbooks. Be aware that setting this to True can lead to infinite recursion if a link points to a parent directory of itself.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"awx_task_env": schema.StringAttribute{
 						Description: "Additional environment variables set for playbook runs, inventory updates, project updates, and notification sending.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"default_container_run_options": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -287,108 +257,72 @@ func NewSettingsJobsResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"default_job_idle_timeout": schema.Int64Attribute{
 						Description: "If no output is detected from ansible in this number of seconds the execution will be terminated. Use value of 0 to indicate that no idle timeout should be imposed.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"default_job_timeout": schema.Int64Attribute{
 						Description: "Maximum time in seconds to allow jobs to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual job template will override this.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"default_project_update_timeout": schema.Int64Attribute{
 						Description: "Maximum time in seconds to allow project updates to run. Use value of 0 to indicate that no timeout should be imposed. A timeout set on an individual project will override this.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"event_stdout_max_bytes_display": schema.Int64Attribute{
 						Description: "Maximum Size of Standard Output in bytes to display for a single job or ad hoc command event. `stdout` will end with `…` when truncated.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(1024),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"galaxy_ignore_certs": schema.BoolAttribute{
 						Description: "If set to true, certificate validation will not be done when installing content from any Galaxy server.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"galaxy_task_env": schema.StringAttribute{
 						Description: "Additional environment variables set for invocations of ansible-galaxy within project updates. Useful if you must use a proxy server for ansible-galaxy but not git.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"max_forks": schema.Int64Attribute{
 						Description: "Saving a Job Template with more than this number of forks will result in an error. When set to 0, no limit is applied.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(200),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"max_websocket_event_rate": schema.Int64Attribute{
 						Description: "Maximum number of messages to update the UI live job output with per second. Value of 0 means no limit.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(30),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"project_update_vvv": schema.BoolAttribute{
 						Description: "Adds the CLI -vvv flag to ansible-playbook runs of project_update.yml used for project updates.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"schedule_max_jobs": schema.Int64Attribute{
 						Description: "Maximum number of the same job template that can be waiting to run when launching from a schedule before no more are created.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(10),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"stdout_max_bytes_display": schema.Int64Attribute{
 						Description: "Maximum Size of Standard Output in bytes to display before requiring the output be downloaded.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(1.048576e+06),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

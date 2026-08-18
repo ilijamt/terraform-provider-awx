@@ -86,27 +86,18 @@ func NewSettingsAuthGithubEnterpriseOrgResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_enterprise_org_key": schema.StringAttribute{
 						Description: "The OAuth2 key (Client ID) from your GitHub Enterprise organization application.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_enterprise_org_name": schema.StringAttribute{
 						Description: "The name of your GitHub Enterprise organization, as used in your organization's URL: https://github.com/<yourorg>/.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_enterprise_org_organization_map": schema.StringAttribute{
 						Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
@@ -122,9 +113,6 @@ func NewSettingsAuthGithubEnterpriseOrgResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_enterprise_org_team_map": schema.StringAttribute{
 						Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",
@@ -139,9 +127,6 @@ func NewSettingsAuthGithubEnterpriseOrgResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_enterprise_org_callback_url": schema.StringAttribute{
 						Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.",

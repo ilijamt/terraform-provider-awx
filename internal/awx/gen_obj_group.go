@@ -15,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -79,9 +78,6 @@ func NewGroupResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
@@ -102,9 +98,6 @@ func NewGroupResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this group.",

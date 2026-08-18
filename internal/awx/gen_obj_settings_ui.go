@@ -10,12 +10,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -79,36 +75,24 @@ func NewSettingsUIResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"custom_logo": schema.StringAttribute{
 						Description: "To set up a custom logo, provide a file that you create. For the custom logo to look its best, use a .png file with a transparent background. GIF, PNG and JPEG formats are supported.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"max_ui_job_events": schema.Int64Attribute{
 						Description: "Maximum number of job events for the UI to retrieve within a single request.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(4000),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"ui_live_updates_enabled": schema.BoolAttribute{
 						Description: "If disabled, the page will not refresh when events are received. Reloading the page will be required to get the latest details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"pendo_tracking_state": schema.StringAttribute{
 						Description: "Enable or Disable User Analytics Tracking.",

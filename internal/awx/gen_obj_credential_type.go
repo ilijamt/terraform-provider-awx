@@ -88,27 +88,18 @@ func NewCredentialTypeResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"injectors": schema.StringAttribute{
 						Description: "Enter injectors using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"inputs": schema.StringAttribute{
 						Description: "Enter inputs using either JSON or YAML syntax. Refer to the documentation for example syntax.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"kind": schema.StringAttribute{
 						Description: "The credential type",

@@ -11,7 +11,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
@@ -445,9 +444,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -455,18 +451,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -490,9 +480,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -515,18 +502,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -541,36 +522,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -585,9 +554,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_1_user_search": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -603,9 +569,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -613,18 +576,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -648,9 +605,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -673,18 +627,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -699,36 +647,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -743,9 +679,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_2_user_search": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -761,9 +694,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -771,18 +701,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -806,9 +730,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -831,18 +752,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -857,36 +772,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -901,9 +804,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_3_user_search": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -919,9 +819,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -929,18 +826,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -964,9 +855,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -989,18 +877,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -1015,36 +897,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -1059,9 +929,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_4_user_search": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -1077,9 +944,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -1087,18 +951,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -1122,9 +980,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -1147,18 +1002,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -1173,36 +1022,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -1217,9 +1054,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_5_user_search": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -1235,9 +1069,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_bind_password": schema.StringAttribute{
 						Description: "Password used to bind LDAP user account.",
@@ -1245,18 +1076,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_connection_options": schema.StringAttribute{
 						Description: "Additional options to set for the LDAP connection.  LDAP referrals are disabled by default (to prevent certain LDAP queries from hanging with AD). Option names should be strings (e.g. \"OPT_REFERRALS\"). Refer to https://www.python-ldap.org/doc/html/ldap.html#options for possible options and values that can be set.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"OPT_NETWORK_TIMEOUT":30,"OPT_REFERRALS":0}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_deny_group": schema.StringAttribute{
 						Description: "Group DN denied from login. If specified, user will not be allowed to login if a member of this group.  Only one deny group is supported.",
@@ -1280,9 +1105,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`MemberDNGroupType`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"PosixGroupType",
@@ -1305,18 +1127,12 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{"member_attr":"member","name_attr":"cn"}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_organization_map": schema.StringAttribute{
 						Description: "Mapping between organization admins/users and LDAP groups. This controls which users are placed into which organizations relative to their LDAP group memberships. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_require_group": schema.StringAttribute{
 						Description: "Group DN required to login. If specified, user must be a member of this group to login via LDAP. If not set, everyone in LDAP that matches the user search will be able to login to the service. Only one require group is supported.",
@@ -1331,36 +1147,24 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_start_tls": schema.BoolAttribute{
 						Description: "Whether to enable TLS when the LDAP connection is not using SSL.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_team_map": schema.StringAttribute{
 						Description: "Mapping between team members (users) and LDAP groups. Configuration details are available in the documentation.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_user_attr_map": schema.StringAttribute{
 						Description: "Mapping of LDAP user schema to API user attributes. The default setting is valid for ActiveDirectory but users with other LDAP configurations may need to change the values. Refer to the documentation for additional details.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_user_dn_template": schema.StringAttribute{
 						Description: "Alternative to user search, if user DNs are all of the same format. This approach is more efficient for user lookups than searching if it is usable in your organizational environment. If this setting has a value it will be used instead of AUTH_LDAP_USER_SEARCH.",
@@ -1375,9 +1179,6 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"auth_ldap_user_search": schema.ListAttribute{
 						ElementType: types.StringType,

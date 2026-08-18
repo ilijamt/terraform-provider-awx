@@ -147,9 +147,6 @@ func NewScheduleResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"diff_mode": schema.BoolAttribute{
 						Description: "Diff mode",
@@ -164,9 +161,6 @@ func NewScheduleResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"execution_environment": schema.Int64Attribute{
 						Description: "The container image to be used for execution.",
@@ -181,9 +175,6 @@ func NewScheduleResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"forks": schema.Int64Attribute{
 						Description: "Forks",

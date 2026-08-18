@@ -13,7 +13,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
@@ -119,9 +118,6 @@ func NewConstructedInventoriesResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"limit": schema.StringAttribute{
 						Description: "The limit to restrict the returned hosts for the related auto-created inventory source, special to constructed inventory.",
@@ -147,9 +143,6 @@ func NewConstructedInventoriesResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"source_vars": schema.StringAttribute{
 						Description: "The source_vars for the related auto-created inventory source, special to constructed inventory.",
@@ -172,9 +165,6 @@ func NewConstructedInventoriesResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"verbosity": schema.Int64Attribute{
 						Description: "The verbosity level for the related auto-created inventory source, special to constructed inventory",

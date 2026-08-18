@@ -157,45 +157,30 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"activity_stream_enabled_for_inventory_sync": schema.BoolAttribute{
 						Description: "Enable capturing activity for the activity stream when running inventory sync.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"automation_analytics_gather_interval": schema.Int64Attribute{
 						Description: "Interval (in seconds) between data gathering.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(14400),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"automation_analytics_last_entries": schema.StringAttribute{
 						Description: "Last gathered entries from the data collection service of Automation Analytics",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"automation_analytics_url": schema.StringAttribute{
 						Description: "This setting is used to to configure the upload URL for data collection for Automation Analytics.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`https://example.com`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"csrf_trusted_origins": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -219,27 +204,18 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"manage_organization_auth": schema.BoolAttribute{
 						Description: "Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"org_admins_can_see_all_users": schema.BoolAttribute{
 						Description: "Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"proxy_ip_allowed_list": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -255,18 +231,12 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"redhat_username": schema.StringAttribute{
 						Description: "This username is used to send data to Automation Analytics",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"remote_host_headers": schema.ListAttribute{
 						ElementType: types.StringType,
@@ -282,27 +252,18 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"subscriptions_username": schema.StringAttribute{
 						Description: "This username is used to retrieve subscription and content information",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"subscription_usage_model": schema.StringAttribute{
 						Description: "Defines subscription usage model and shows Host Metrics",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"",
@@ -315,18 +276,12 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`https://localhost:8043`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"ui_next": schema.BoolAttribute{
 						Description: "Enable preview of new user interface.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(true),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"automation_analytics_last_gather": schema.StringAttribute{
 						Description: "Last gather date for Automation Analytics.",

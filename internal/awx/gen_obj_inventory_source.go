@@ -14,7 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -156,27 +155,18 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"enabled_value": schema.StringAttribute{
 						Description: "Only used when enabled_var is set. Value when the host is considered enabled. For example if enabled_var=\"status.power_state\"and enabled_value=\"powered_on\" with host variables:{   \"status\": {     \"power_state\": \"powered_on\",     \"created\": \"2020-08-04T18:13:04+00:00\",     \"healthy\": true    },    \"name\": \"foobar\",    \"ip_address\": \"192.168.2.1\"}The host would be marked enabled. If power_state where any value other than powered_on then the host would be disabled when imported. If the key is not found then the host will be enabled",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"enabled_var": schema.StringAttribute{
 						Description: "Retrieve the enabled state from the given dict of host variables. The enabled variable may be specified as \"foo.bar\", in which case the lookup will traverse into nested dicts, equivalent to: from_dict.get(\"foo\", {}).get(\"bar\", default)",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"execution_environment": schema.Int64Attribute{
 						Description: "The container image to be used for execution.",
@@ -192,9 +182,6 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:           true,
 						Computed:           true,
 						Default:            stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
@@ -208,9 +195,6 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this inventory source.",
@@ -224,27 +208,18 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"overwrite_vars": schema.BoolAttribute{
 						Description: "Overwrite local variables from remote inventory source.",
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"scm_branch": schema.StringAttribute{
 						Description: "Inventory source SCM branch. Project default used if blank. Only allowed if project allow_override field is set to true.",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(1024),
 						},
@@ -280,9 +255,6 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.LengthAtMost(1024),
 						},
@@ -300,18 +272,12 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"timeout": schema.Int64Attribute{
 						Description: "The amount of time (in seconds) to run before the task is canceled.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.Int64{
 							int64validator.Between(-2147483648, 2147483647),
 						},
@@ -321,9 +287,6 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.Int64{
 							int64validator.Between(0, 2147483647),
 						},
@@ -333,18 +296,12 @@ func NewInventorySourceResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"verbosity": schema.StringAttribute{
 						Description: "Verbosity",
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`1`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"0",

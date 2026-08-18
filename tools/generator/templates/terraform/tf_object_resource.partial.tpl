@@ -27,7 +27,10 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- if $value.HasDefaultValue }}
 	Default:     {{ $value.DefaultValue }},
 {{- end }}
-{{- $useState := and (not $value.IsRequired) $value.UseStateForUnknown }}
+{{- /* A Default fills a null config at plan time, so the value never goes
+unknown and UseStateForUnknown cannot fire. The read-only attributes further
+down get no Default, which is why they keep theirs. */ -}}
+{{- $useState := and (not $value.IsRequired) (not $value.HasDefaultValue) $value.UseStateForUnknown }}
 {{- if or $useState $value.RequiresReplace }}
 	PlanModifiers: []planmodifier.{{ $value.Generated.AttributeType }}{
 {{- if $useState }}
@@ -149,9 +152,6 @@ func New{{ .Name }}Resource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 {{- end }}
 				},

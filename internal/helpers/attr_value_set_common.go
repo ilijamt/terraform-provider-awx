@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 // nilObjErr is the shared error path for AttrValueSet* helpers when the caller
@@ -51,4 +53,118 @@ func coerceFloat64(data any) (val float64, ok bool, err error) {
 		return val, true, err
 	}
 	return 0, false, nil
+}
+
+// ok=false means the element's Go type was not one this decoder accepts.
+type elementDecoder func(v any) (val attr.Value, ok bool, err error)
+
+func stringElement(trim bool) elementDecoder {
+	return func(v any) (attr.Value, bool, error) {
+		s, ok := v.(string)
+		if !ok {
+			return nil, false, nil
+		}
+		if trim {
+			s = TrimAwxString(s)
+		}
+		return types.StringValue(s), true, nil
+	}
+}
+
+func int64Element(v any) (attr.Value, bool, error) {
+	n, ok, err := coerceInt64(v)
+	if !ok || err != nil {
+		return nil, ok, err
+	}
+	return types.Int64Value(n), true, nil
+}
+
+func decodeElements(data any, container string, decode elementDecoder) ([]attr.Value, diag.Diagnostics, error) {
+	var d diag.Diagnostics
+
+	var raw []any
+	switch data := data.(type) {
+	case []any:
+		raw = data
+	case []string:
+		raw = make([]any, len(data))
+		for i, v := range data {
+			raw[i] = v
+		}
+	case []int64:
+		raw = make([]any, len(data))
+		for i, v := range data {
+			raw[i] = v
+		}
+	default:
+		err := fmt.Errorf("failed to decode and set %v of %T type", data, data)
+		d.AddError(fmt.Sprintf("failed to decode value of type %T for %s", data, container), err.Error())
+		return nil, d, err
+	}
+
+	out := make([]attr.Value, 0, len(raw))
+	for _, v := range raw {
+		val, ok, convErr := decode(v)
+		if !ok || convErr != nil {
+			err := fmt.Errorf("failed to decode %v of %T type for %s", v, v, container)
+			d.AddError(fmt.Sprintf("failed to decode element of type %T for %s", v, container), err.Error())
+			return nil, d, err
+		}
+		out = append(out, val)
+	}
+	return out, d, nil
+}
+
+// setSetValue below is this function with the Set constructors. A generic over
+// both costs more than the twenty lines it saves.
+func setListValue(obj *types.List, data any, elemType attr.Type, decode elementDecoder) (diag.Diagnostics, error) {
+	if obj == nil {
+		return nilObjErr()
+	}
+	if data == nil {
+		*obj = types.ListValueMust(elemType, []attr.Value{})
+		return nil, nil
+	}
+	// Not ListValueMust: the caller can still hand over the wrong element type,
+	// and a mismatch there belongs in a diagnostic rather than a panic.
+	if v, ok := data.(types.List); ok {
+		val, d := types.ListValue(elemType, v.Elements())
+		if d.HasError() {
+			return d, fmt.Errorf("failed to set %v as types.List", data)
+		}
+		*obj = val
+		return d, nil
+	}
+
+	vals, d, err := decodeElements(data, "types.List", decode)
+	if err != nil {
+		return d, err
+	}
+	*obj = types.ListValueMust(elemType, vals)
+	return d, nil
+}
+
+func setSetValue(obj *types.Set, data any, elemType attr.Type, decode elementDecoder) (diag.Diagnostics, error) {
+	if obj == nil {
+		return nilObjErr()
+	}
+	if data == nil {
+		*obj = types.SetValueMust(elemType, []attr.Value{})
+		return nil, nil
+	}
+	if v, ok := data.(types.Set); ok {
+		val, d := types.SetValue(elemType, v.Elements())
+		if d.HasError() {
+			return d, fmt.Errorf("failed to set %v as types.Set", data)
+		}
+		*obj = val
+		return d, nil
+	}
+
+	vals, d, err := decodeElements(data, "types.Set", decode)
+	if err != nil {
+		return d, err
+	}
+	*obj = types.SetValueMust(elemType, vals)
+	return d, nil
 }

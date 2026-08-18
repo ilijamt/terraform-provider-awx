@@ -74,9 +74,6 @@ func NewSettingsAuthGithubResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_organization_map": schema.StringAttribute{
 						Description: "Mapping to organization admins/users from social auth accounts. This setting\ncontrols which users are placed into which organizations based on their\nusername and email address. Configuration details are available in the\ndocumentation.",
@@ -92,9 +89,6 @@ func NewSettingsAuthGithubResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_github_team_map": schema.StringAttribute{
 						Description: "Mapping of team members (users) from social auth accounts. Configuration\ndetails are available in the documentation.",

@@ -15,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -83,9 +82,6 @@ func NewWorkflowJobTemplateNodeApprovalResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"execution_environment": schema.Int64Attribute{
 						Description: "The container image to be used for execution.",
@@ -107,9 +103,6 @@ func NewWorkflowJobTemplateNodeApprovalResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.Int64{
 							int64validator.Between(-2147483648, 2147483647),
 						},

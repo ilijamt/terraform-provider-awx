@@ -143,7 +143,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
 							boolplanmodifier.RequiresReplace(),
 						},
 					},
@@ -162,7 +161,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
 							boolplanmodifier.RequiresReplace(),
 						},
 					},
@@ -181,7 +179,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 					},
@@ -191,7 +188,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
 						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
 							int64planmodifier.RequiresReplace(),
 						},
 						Validators: []validator.Int64{
@@ -213,7 +209,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(`run`),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{
@@ -229,7 +224,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 					},
@@ -239,7 +233,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 					},
@@ -249,7 +242,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(`command`),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{
@@ -282,7 +274,6 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						Default:     stringdefault.StaticString(`0`),
 						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
 							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{

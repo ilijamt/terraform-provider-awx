@@ -128,18 +128,12 @@ func NewInstanceGroupResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"max_forks": schema.Int64Attribute{
 						Description: "Maximum number of forks to execute concurrently on a group. When set to zero, no maximum is enforced.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this instance group.",
@@ -169,18 +163,12 @@ func NewInstanceGroupResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"policy_instance_percentage": schema.Int64Attribute{
 						Description: "Minimum percentage of all instances that will be automatically assigned to this group when new instances come online.",
 						Optional:    true,
 						Computed:    true,
 						Default:     int64default.StaticInt64(0),
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.Int64{
 							int64validator.Between(0, 100),
 						},

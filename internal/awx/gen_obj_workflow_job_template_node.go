@@ -139,9 +139,6 @@ func NewWorkflowJobTemplateNodeResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     booldefault.StaticBool(false),
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"diff_mode": schema.BoolAttribute{
 						Description: "Diff mode",
@@ -164,9 +161,6 @@ func NewWorkflowJobTemplateNodeResource() resource.Resource {
 						Optional:    true,
 						Computed:    true,
 						Default:     stringdefault.StaticString(`{}`),
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"forks": schema.Int64Attribute{
 						Description: "Forks",

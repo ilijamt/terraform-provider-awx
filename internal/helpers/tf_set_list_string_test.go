@@ -1,6 +1,7 @@
 package helpers_test
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -89,4 +90,31 @@ func TestAttrValueSetListString(t *testing.T) {
 		require.True(t, d.HasError())
 	})
 
+}
+
+// A bad element has to come back as a diagnostic. An unchecked type assertion
+// here takes the whole provider down instead of failing the one field.
+func TestAttrValueSetListStringRejectsNonStringElement(t *testing.T) {
+	type model struct {
+		Value types.List `tfsdk:"value"`
+	}
+
+	for _, tc := range []struct {
+		name string
+		data any
+	}{
+		{"number in the list", []any{json.Number("7")}},
+		{"bool in the list", []any{true}},
+		{"string then number", []any{"ok", json.Number("7")}},
+		{"wrong typed slice", []int64{1, 2}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var state model
+			require.NotPanics(t, func() {
+				d, err := helpers.AttrValueSetListString(&state.Value, tc.data, false)
+				require.Error(t, err)
+				require.True(t, d.HasError())
+			})
+		})
+	}
 }
