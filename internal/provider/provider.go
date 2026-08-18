@@ -13,6 +13,7 @@ import (
 
 	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/helpers"
+	"github.com/ilijamt/terraform-provider-awx/version"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -146,7 +147,10 @@ func describeCredential(v types.String) string {
 
 func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	var config Model
-	tflog.Debug(ctx, "Provider configuration started")
+	tflog.Debug(ctx, "Provider configuration started", map[string]any{
+		"version": p.version,
+		"commit":  version.Commit,
+	})
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &config)...)
 	if resp.Diagnostics.HasError() {

@@ -14,6 +14,7 @@ builds:
   ldflags:
   - '-s -w'
   - '-X "github.com/ilijamt/terraform-provider-awx/version.Version={{.Version}}"'
+  - '-X "github.com/ilijamt/terraform-provider-awx/version.Commit={{.Commit}}"'
   goos:
   - freebsd
   - windows
