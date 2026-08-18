@@ -3,6 +3,7 @@
   "resources": {
     "AdHocCommand": "payload/resource_adhoccommand.json",
     "Application": "payload/resource_application.json",
+    "Config": "payload/resource_config.json",
     "ConstructedInventories": "payload/resource_constructedinventories.json",
     "Credential": "payload/resource_credential.json",
     "CredentialInputSource": "payload/resource_credentialinputsource.json",
@@ -19,6 +20,7 @@
     "Me": "payload/resource_me.json",
     "NotificationTemplate": "payload/resource_notificationtemplate.json",
     "Organization": "payload/resource_organization.json",
+    "Ping": "payload/resource_ping.json",
     "Project": "payload/resource_project.json",
     "RoleDefinition": "payload/resource_roledefinition.json",
     "RoleTeamAssignment": "payload/resource_roleteamassignment.json",

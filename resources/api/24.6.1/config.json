@@ -141,6 +141,96 @@
       ]
     },
     {
+      "endpoint": "/api/v2/config/",
+      "name": "Config",
+      "type_name": "config",
+      "enabled": true,
+      "no_id": true,
+      "undeletable": true,
+      "no_terraform_resource": true,
+      "api_data_override": {
+        "analytics_collectors": {
+          "type": "json",
+          "label": "Analytics collectors",
+          "help_text": "The analytics collectors registered on this installation, keyed by collector name.",
+          "required": false,
+          "hidden": false
+        },
+        "analytics_status": {
+          "type": "string",
+          "label": "Analytics status",
+          "help_text": "Whether analytics gathering is turned on.",
+          "required": false,
+          "hidden": false
+        },
+        "become_methods": {
+          "type": "json",
+          "label": "Become methods",
+          "help_text": "The privilege escalation methods AWX accepts, as value and label pairs.",
+          "required": false,
+          "hidden": false
+        },
+        "custom_virtualenvs": {
+          "type": "list",
+          "element_type": "string",
+          "label": "Custom virtualenvs",
+          "help_text": "Paths of the virtual environments left over from before execution environments. AWX treats these as deprecated.",
+          "required": false,
+          "hidden": false
+        },
+        "eula": {
+          "type": "string",
+          "label": "EULA",
+          "help_text": "The end user license agreement text. Empty on an open installation.",
+          "required": false,
+          "hidden": false
+        },
+        "license_info": {
+          "type": "json",
+          "label": "License info",
+          "help_text": "Subscription details, including license type, expiry and the host counts it permits.",
+          "required": false,
+          "hidden": false
+        },
+        "project_base_dir": {
+          "type": "string",
+          "label": "Project base dir",
+          "help_text": "Filesystem path the installation stores project checkouts under.",
+          "required": false,
+          "hidden": false
+        },
+        "project_local_paths": {
+          "type": "list",
+          "element_type": "string",
+          "label": "Project local paths",
+          "help_text": "Directories under the project base dir that a manual project can be pointed at.",
+          "required": false,
+          "hidden": false
+        },
+        "time_zone": {
+          "type": "string",
+          "label": "Time zone",
+          "help_text": "The time zone the installation runs in, which schedules are evaluated against.",
+          "required": false,
+          "hidden": false
+        },
+        "ui_next": {
+          "type": "boolean",
+          "label": "UI next",
+          "help_text": "Whether this installation serves the next generation user interface.",
+          "required": false,
+          "hidden": false
+        },
+        "version": {
+          "type": "string",
+          "label": "Version",
+          "help_text": "The AWX version this installation runs, which is not necessarily the version the provider was generated against.",
+          "required": false,
+          "hidden": false
+        }
+      }
+    },
+    {
       "endpoint": "/api/v2/constructed_inventories/",
       "name": "ConstructedInventories",
       "type_name": "constructed_inventories",
@@ -1125,6 +1215,59 @@
       "property_overrides": {
         "max_hosts": {
           "omit_empty": false
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/ping/",
+      "name": "Ping",
+      "type_name": "ping",
+      "enabled": true,
+      "no_id": true,
+      "undeletable": true,
+      "no_terraform_resource": true,
+      "api_data_override": {
+        "active_node": {
+          "type": "string",
+          "label": "Active node",
+          "help_text": "Hostname of the node that answered this request.",
+          "required": false,
+          "hidden": false
+        },
+        "ha": {
+          "type": "boolean",
+          "label": "HA",
+          "help_text": "Whether the installation runs more than one node.",
+          "required": false,
+          "hidden": false
+        },
+        "install_uuid": {
+          "type": "string",
+          "label": "Install UUID",
+          "help_text": "Identifier unique to this installation, stable across restarts.",
+          "required": false,
+          "hidden": false
+        },
+        "instance_groups": {
+          "type": "json",
+          "label": "Instance groups",
+          "help_text": "The instance groups in the mesh, each with its capacity and member nodes. Capacity shifts as jobs run, so a config that reads this diffs on every plan.",
+          "required": false,
+          "hidden": false
+        },
+        "instances": {
+          "type": "json",
+          "label": "Instances",
+          "help_text": "The nodes in the mesh, each with its type, capacity and last heartbeat. Heartbeats move on their own, so a config that reads this diffs on every plan.",
+          "required": false,
+          "hidden": false
+        },
+        "version": {
+          "type": "string",
+          "label": "Version",
+          "help_text": "The AWX version this installation runs, which is not necessarily the version the provider was generated against.",
+          "required": false,
+          "hidden": false
         }
       }
     },

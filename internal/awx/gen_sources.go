@@ -14,6 +14,7 @@ func DataSources() []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewAdHocCommandDataSource,
 		NewApplicationDataSource,
+		NewConfigDataSource,
 		NewConstructedInventoriesDataSource,
 		NewConstructedInventoriesObjectRolesDataSource,
 		NewCredentialDataSource,
@@ -67,6 +68,7 @@ func DataSources() []func() datasource.DataSource {
 		NewNotificationTemplateDataSource,
 		NewOrganizationDataSource,
 		NewOrganizationObjectRolesDataSource,
+		NewPingDataSource,
 		NewProjectDataSource,
 		NewProjectObjectRolesDataSource,
 		NewRoleDefinitionDataSource,

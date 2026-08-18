@@ -1,0 +1,90 @@
+{
+  "endpoint": "/api/v2/config/",
+  "name": "Config",
+  "type_name": "config",
+  "enabled": true,
+  "no_id": true,
+  "undeletable": true,
+  "no_terraform_resource": true,
+  "api_data_override": {
+    "analytics_collectors": {
+      "type": "json",
+      "label": "Analytics collectors",
+      "help_text": "The analytics collectors registered on this installation, keyed by collector name.",
+      "required": false,
+      "hidden": false
+    },
+    "analytics_status": {
+      "type": "string",
+      "label": "Analytics status",
+      "help_text": "Whether analytics gathering is turned on.",
+      "required": false,
+      "hidden": false
+    },
+    "become_methods": {
+      "type": "json",
+      "label": "Become methods",
+      "help_text": "The privilege escalation methods AWX accepts, as value and label pairs.",
+      "required": false,
+      "hidden": false
+    },
+    "custom_virtualenvs": {
+      "type": "list",
+      "element_type": "string",
+      "label": "Custom virtualenvs",
+      "help_text": "Paths of the virtual environments left over from before execution environments. AWX treats these as deprecated.",
+      "required": false,
+      "hidden": false
+    },
+    "eula": {
+      "type": "string",
+      "label": "EULA",
+      "help_text": "The end user license agreement text. Empty on an open installation.",
+      "required": false,
+      "hidden": false
+    },
+    "license_info": {
+      "type": "json",
+      "label": "License info",
+      "help_text": "Subscription details, including license type, expiry and the host counts it permits.",
+      "required": false,
+      "hidden": false
+    },
+    "project_base_dir": {
+      "type": "string",
+      "label": "Project base dir",
+      "help_text": "Filesystem path the installation stores project checkouts under.",
+      "required": false,
+      "hidden": false
+    },
+    "project_local_paths": {
+      "type": "list",
+      "element_type": "string",
+      "label": "Project local paths",
+      "help_text": "Directories under the project base dir that a manual project can be pointed at.",
+      "required": false,
+      "hidden": false
+    },
+    "time_zone": {
+      "type": "string",
+      "label": "Time zone",
+      "help_text": "The time zone the installation runs in, which schedules are evaluated against.",
+      "required": false,
+      "hidden": false
+    },
+    "ui_next": {
+      "type": "boolean",
+      "label": "UI next",
+      "help_text": "Whether this installation serves the next generation user interface.",
+      "required": false,
+      "hidden": false
+    },
+    "version": {
+      "type": "string",
+      "label": "Version",
+      "help_text": "The AWX version this installation runs, which is not necessarily the version the provider was generated against.",
+      "required": false,
+      "hidden": false
+    }
+  }
+}

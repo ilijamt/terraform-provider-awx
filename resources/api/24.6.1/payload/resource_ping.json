@@ -1,0 +1,14 @@
+{
+  "actions": {
+    "GET": {}
+  },
+  "description": "A simple view that reports very basic information about this\ninstance, which is acceptable to be public information.",
+  "name": "Ping",
+  "parses": [
+    "application/json"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ]
+}

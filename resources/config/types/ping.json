@@ -1,0 +1,53 @@
+{
+  "endpoint": "/api/v2/ping/",
+  "name": "Ping",
+  "type_name": "ping",
+  "enabled": true,
+  "no_id": true,
+  "undeletable": true,
+  "no_terraform_resource": true,
+  "api_data_override": {
+    "active_node": {
+      "type": "string",
+      "label": "Active node",
+      "help_text": "Hostname of the node that answered this request.",
+      "required": false,
+      "hidden": false
+    },
+    "ha": {
+      "type": "boolean",
+      "label": "HA",
+      "help_text": "Whether the installation runs more than one node.",
+      "required": false,
+      "hidden": false
+    },
+    "install_uuid": {
+      "type": "string",
+      "label": "Install UUID",
+      "help_text": "Identifier unique to this installation, stable across restarts.",
+      "required": false,
+      "hidden": false
+    },
+    "instance_groups": {
+      "type": "json",
+      "label": "Instance groups",
+      "help_text": "The instance groups in the mesh, each with its capacity and member nodes. Capacity shifts as jobs run, so a config that reads this diffs on every plan.",
+      "required": false,
+      "hidden": false
+    },
+    "instances": {
+      "type": "json",
+      "label": "Instances",
+      "help_text": "The nodes in the mesh, each with its type, capacity and last heartbeat. Heartbeats move on their own, so a config that reads this diffs on every plan.",
+      "required": false,
+      "hidden": false
+    },
+    "version": {
+      "type": "string",
+      "label": "Version",
+      "help_text": "The AWX version this installation runs, which is not necessarily the version the provider was generated against.",
+      "required": false,
+      "hidden": false
+    }
+  }
+}
