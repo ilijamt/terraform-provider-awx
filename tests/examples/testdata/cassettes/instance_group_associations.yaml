@@ -1,0 +1,3195 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 157
+        host: awx.local
+        body: |
+            {"is_container_group":false,"max_concurrent_jobs":0,"max_forks":0,"name":"Association Group One","policy_instance_minimum":0,"policy_instance_percentage":0}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"named_url":"/api/v2/instance_groups/Association Group One/","jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instance_groups/6/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a9d4d1397d2248c688399b7c05038c3a
+            X-Api-Time:
+                - 0.119s
+            X-Api-Total-Time:
+                - 0.194s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.225135125s
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 157
+        host: awx.local
+        body: |
+            {"is_container_group":false,"max_concurrent_jobs":0,"max_forks":0,"name":"Association Group Two","policy_instance_minimum":0,"policy_instance_percentage":0}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"named_url":"/api/v2/instance_groups/Association Group Two/","jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instance_groups/7/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 13f9fa14e4f847e4939ab351e91461bd
+            X-Api-Time:
+                - 0.170s
+            X-Api-Total-Time:
+                - 0.248s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.278490875s
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 65
+        host: awx.local
+        body: |
+            {"max_hosts":0,"name":"Instance Group Association Organization"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3707
+        body: '{"id":45,"type":"organization","url":"/api/v2/organizations/45/","related":{"named_url":"/api/v2/organizations/Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/45/execution_environments/","projects":"/api/v2/organizations/45/projects/","inventories":"/api/v2/organizations/45/inventories/","job_templates":"/api/v2/organizations/45/job_templates/","workflow_job_templates":"/api/v2/organizations/45/workflow_job_templates/","users":"/api/v2/organizations/45/users/","admins":"/api/v2/organizations/45/admins/","teams":"/api/v2/organizations/45/teams/","credentials":"/api/v2/organizations/45/credentials/","applications":"/api/v2/organizations/45/applications/","activity_stream":"/api/v2/organizations/45/activity_stream/","notification_templates":"/api/v2/organizations/45/notification_templates/","notification_templates_started":"/api/v2/organizations/45/notification_templates_started/","notification_templates_success":"/api/v2/organizations/45/notification_templates_success/","notification_templates_error":"/api/v2/organizations/45/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/45/notification_templates_approvals/","object_roles":"/api/v2/organizations/45/object_roles/","access_list":"/api/v2/organizations/45/access_list/","instance_groups":"/api/v2/organizations/45/instance_groups/","galaxy_credentials":"/api/v2/organizations/45/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"13999896-5a61-4219-8ad9-ec775ce7e5db","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1061,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1062},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1063},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1064},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1065},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1066},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1067},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1068},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1069},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1070},"member_role":{"description":"User is a member of the organization","name":"Member","id":1071,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1072},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1073}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T17:06:53.139885Z","modified":"2026-08-18T17:06:53.139907Z","name":"Instance Group Association Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3707"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/organizations/45/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1c15e931927e4489bf3b8835f951fead
+            X-Api-Time:
+                - 0.237s
+            X-Api-Total-Time:
+                - 0.298s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 5.331048666s
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 9
+        host: awx.local
+        body: |
+            {"id":6}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6240a4f5900541a29e8a1b97231f3ef0
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.119s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 129.125084ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 123
+        host: awx.local
+        body: |
+            {"name":"Instance Group Association Inventory","organization":45,"prevent_instance_group_fallback":false,"variables":"{}"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2424
+        body: '{"id":29,"type":"inventory","url":"/api/v2/inventories/29/","related":{"named_url":"/api/v2/inventories/Instance Group Association Inventory++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/29/hosts/","variable_data":"/api/v2/inventories/29/variable_data/","script":"/api/v2/inventories/29/script/","activity_stream":"/api/v2/inventories/29/activity_stream/","job_templates":"/api/v2/inventories/29/job_templates/","ad_hoc_commands":"/api/v2/inventories/29/ad_hoc_commands/","access_list":"/api/v2/inventories/29/access_list/","object_roles":"/api/v2/inventories/29/object_roles/","instance_groups":"/api/v2/inventories/29/instance_groups/","copy":"/api/v2/inventories/29/copy/","labels":"/api/v2/inventories/29/labels/","groups":"/api/v2/inventories/29/groups/","root_groups":"/api/v2/inventories/29/root_groups/","update_inventory_sources":"/api/v2/inventories/29/update_inventory_sources/","inventory_sources":"/api/v2/inventories/29/inventory_sources/","tree":"/api/v2/inventories/29/tree/","organization":"/api/v2/organizations/45/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1080},"update_role":{"description":"May update the inventory","name":"Update","id":1081},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1082},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1083},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1084}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T17:06:53.459982Z","modified":"2026-08-18T17:06:53.459999Z","name":"Instance Group Association Inventory","description":"","organization":45,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2424"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/inventories/29/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0fbd71472fee4e2a9b92ebc4df23ad12
+            X-Api-Time:
+                - 0.185s
+            X-Api-Total-Time:
+                - 0.254s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 261.916917ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 311
+        host: awx.local
+        body: |
+            {"allow_override":false,"name":"Instance Group Association Project","organization":45,"scm_clean":false,"scm_delete_on_update":false,"scm_track_submodules":false,"scm_type":"git","scm_update_cache_timeout":0,"scm_update_on_launch":false,"scm_url":"https://github.com/ansible/ansible-tower-samples","timeout":0}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2875
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","current_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"current_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"pending","failed":false},"current_job":{"id":15,"name":"Instance Group Association Project","description":"","status":"pending","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"pending","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2875"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/projects/84/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 5d563b2e3b78469aa8645644566e1e12
+            X-Api-Time:
+                - 0.247s
+            X-Api-Total-Time:
+                - 0.313s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 454.4685ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2989
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","current_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"current_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"pending","failed":false},"current_job":{"id":15,"name":"Instance Group Association Project","description":"","status":"pending","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"pending","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2989"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 3ba368172502460aaf752bda11a3384b
+            X-Api-Time:
+                - 0.063s
+            X-Api-Total-Time:
+                - 0.106s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 115.821416ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3117
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","last_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"last_job":{"id":15,"name":"Instance Group Association Project","description":"","finished":"2026-08-18T17:06:58.629140Z","status":"successful","failed":false},"last_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T17:06:58.629140Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T17:06:58.629140Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3117"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 62a915daf41245979ad90fd16d84d368
+            X-Api-Time:
+                - 0.059s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.712875ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 895
+        host: awx.local
+        body: |
+            {"allow_simultaneous":false,"ask_credential_on_launch":false,"ask_diff_mode_on_launch":false,"ask_execution_environment_on_launch":false,"ask_forks_on_launch":false,"ask_instance_groups_on_launch":false,"ask_inventory_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_job_type_on_launch":false,"ask_labels_on_launch":false,"ask_limit_on_launch":false,"ask_scm_branch_on_launch":false,"ask_skip_tags_on_launch":false,"ask_tags_on_launch":false,"ask_timeout_on_launch":false,"ask_variables_on_launch":false,"ask_verbosity_on_launch":false,"become_enabled":false,"diff_mode":false,"extra_vars":"","force_handlers":false,"forks":0,"inventory":29,"job_slice_count":1,"job_type":"run","name":"Instance Group Association Job Template","playbook":"hello_world.yml","prevent_instance_group_fallback":false,"project":84,"survey_enabled":false,"timeout":0,"use_fact_cache":false,"verbosity":"0"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3796
+        body: '{"id":85,"type":"job_template","url":"/api/v2/job_templates/85/","related":{"named_url":"/api/v2/job_templates/Instance Group Association Job Template++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/85/labels/","inventory":"/api/v2/inventories/29/","project":"/api/v2/projects/84/","organization":"/api/v2/organizations/45/","credentials":"/api/v2/job_templates/85/credentials/","jobs":"/api/v2/job_templates/85/jobs/","schedules":"/api/v2/job_templates/85/schedules/","activity_stream":"/api/v2/job_templates/85/activity_stream/","launch":"/api/v2/job_templates/85/launch/","webhook_key":"/api/v2/job_templates/85/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/85/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/85/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/85/notification_templates_error/","access_list":"/api/v2/job_templates/85/access_list/","survey_spec":"/api/v2/job_templates/85/survey_spec/","object_roles":"/api/v2/job_templates/85/object_roles/","instance_groups":"/api/v2/job_templates/85/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/85/slice_workflow_jobs/","copy":"/api/v2/job_templates/85/copy/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"inventory":{"id":29,"name":"Instance Group Association Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":45,"kind":""},"project":{"id":84,"name":"Instance Group Association Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1089},"execute_role":{"description":"May run the job template","name":"Execute","id":1090},"read_role":{"description":"May view settings for the job template","name":"Read","id":1091}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T17:06:59.181703Z","modified":"2026-08-18T17:06:59.181725Z","name":"Instance Group Association Job Template","description":"","job_type":"run","inventory":29,"project":84,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":45,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":false,"custom_virtualenv":null,"job_slice_count":1,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3796"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/job_templates/85/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6ba287c5975e45d7a01c6f81018eb820
+            X-Api-Time:
+                - 0.222s
+            X-Api-Total-Time:
+                - 0.287s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 299.416166ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 9
+        host: awx.local
+        body: |
+            {"id":6}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 943029d279214d43881dc4142cdf7fa5
+            X-Api-Time:
+                - 0.064s
+            X-Api-Total-Time:
+                - 0.133s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 141.451167ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"named_url":"/api/v2/instance_groups/Association Group One/","jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e32f80ff91f4404990a619d35ad490f6
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.109s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 119.425083ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3717
+        body: '{"id":45,"type":"organization","url":"/api/v2/organizations/45/","related":{"named_url":"/api/v2/organizations/Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/45/execution_environments/","projects":"/api/v2/organizations/45/projects/","inventories":"/api/v2/organizations/45/inventories/","job_templates":"/api/v2/organizations/45/job_templates/","workflow_job_templates":"/api/v2/organizations/45/workflow_job_templates/","users":"/api/v2/organizations/45/users/","admins":"/api/v2/organizations/45/admins/","teams":"/api/v2/organizations/45/teams/","credentials":"/api/v2/organizations/45/credentials/","applications":"/api/v2/organizations/45/applications/","activity_stream":"/api/v2/organizations/45/activity_stream/","notification_templates":"/api/v2/organizations/45/notification_templates/","notification_templates_started":"/api/v2/organizations/45/notification_templates_started/","notification_templates_success":"/api/v2/organizations/45/notification_templates_success/","notification_templates_error":"/api/v2/organizations/45/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/45/notification_templates_approvals/","object_roles":"/api/v2/organizations/45/object_roles/","access_list":"/api/v2/organizations/45/access_list/","instance_groups":"/api/v2/organizations/45/instance_groups/","galaxy_credentials":"/api/v2/organizations/45/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"13999896-5a61-4219-8ad9-ec775ce7e5db","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1061,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1062},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1063},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1064},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1065},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1066},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1067},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1068},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1069},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1070},"member_role":{"description":"User is a member of the organization","name":"Member","id":1071,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1072},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1073}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T17:06:53.139885Z","modified":"2026-08-18T17:06:53.139907Z","name":"Instance Group Association Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3717"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 06aa2174e3b045dd8fd2e2983020d51d
+            X-Api-Time:
+                - 0.124s
+            X-Api-Total-Time:
+                - 0.187s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 207.1505ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/7/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"named_url":"/api/v2/instance_groups/Association Group Two/","jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:06:59 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - f675b6b64f9743e595b6f8bad3da3bde
+            X-Api-Time:
+                - 0.065s
+            X-Api-Total-Time:
+                - 0.125s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 254.966708ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "6"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/?id=6
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 121b08aeb93543f49d50e86107698878
+            X-Api-Time:
+                - 0.059s
+            X-Api-Total-Time:
+                - 0.105s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 114.3265ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/29/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2424
+        body: '{"id":29,"type":"inventory","url":"/api/v2/inventories/29/","related":{"named_url":"/api/v2/inventories/Instance Group Association Inventory++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/29/hosts/","variable_data":"/api/v2/inventories/29/variable_data/","script":"/api/v2/inventories/29/script/","activity_stream":"/api/v2/inventories/29/activity_stream/","job_templates":"/api/v2/inventories/29/job_templates/","ad_hoc_commands":"/api/v2/inventories/29/ad_hoc_commands/","access_list":"/api/v2/inventories/29/access_list/","object_roles":"/api/v2/inventories/29/object_roles/","instance_groups":"/api/v2/inventories/29/instance_groups/","copy":"/api/v2/inventories/29/copy/","labels":"/api/v2/inventories/29/labels/","groups":"/api/v2/inventories/29/groups/","root_groups":"/api/v2/inventories/29/root_groups/","update_inventory_sources":"/api/v2/inventories/29/update_inventory_sources/","inventory_sources":"/api/v2/inventories/29/inventory_sources/","tree":"/api/v2/inventories/29/tree/","organization":"/api/v2/organizations/45/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1080},"update_role":{"description":"May update the inventory","name":"Update","id":1081},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1082},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1083},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1084}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T17:06:53.459982Z","modified":"2026-08-18T17:06:53.459999Z","name":"Instance Group Association Inventory","description":"","organization":45,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2424"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - cd564cd48cce42309cb8916975df94bf
+            X-Api-Time:
+                - 0.040s
+            X-Api-Total-Time:
+                - 0.078s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 134.79225ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3117
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","last_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"last_job":{"id":15,"name":"Instance Group Association Project","description":"","finished":"2026-08-18T17:06:58.629140Z","status":"successful","failed":false},"last_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T17:06:58.629140Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T17:06:58.629140Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3117"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - eadcc1261359440a8483fa478fd16b8c
+            X-Api-Time:
+                - 0.054s
+            X-Api-Total-Time:
+                - 0.086s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 206.861583ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3910
+        body: '{"id":85,"type":"job_template","url":"/api/v2/job_templates/85/","related":{"named_url":"/api/v2/job_templates/Instance Group Association Job Template++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/85/labels/","inventory":"/api/v2/inventories/29/","project":"/api/v2/projects/84/","organization":"/api/v2/organizations/45/","credentials":"/api/v2/job_templates/85/credentials/","jobs":"/api/v2/job_templates/85/jobs/","schedules":"/api/v2/job_templates/85/schedules/","activity_stream":"/api/v2/job_templates/85/activity_stream/","launch":"/api/v2/job_templates/85/launch/","webhook_key":"/api/v2/job_templates/85/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/85/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/85/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/85/notification_templates_error/","access_list":"/api/v2/job_templates/85/access_list/","survey_spec":"/api/v2/job_templates/85/survey_spec/","object_roles":"/api/v2/job_templates/85/object_roles/","instance_groups":"/api/v2/job_templates/85/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/85/slice_workflow_jobs/","copy":"/api/v2/job_templates/85/copy/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"inventory":{"id":29,"name":"Instance Group Association Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":45,"kind":""},"project":{"id":84,"name":"Instance Group Association Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1089},"execute_role":{"description":"May run the job template","name":"Execute","id":1090},"read_role":{"description":"May view settings for the job template","name":"Read","id":1091}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T17:06:59.181703Z","modified":"2026-08-18T17:06:59.181725Z","name":"Instance Group Association Job Template","description":"","job_type":"run","inventory":29,"project":84,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":45,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":false,"custom_virtualenv":null,"job_slice_count":1,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3910"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1c36fa95018d43d0a5a6f55a3dc57275
+            X-Api-Time:
+                - 0.084s
+            X-Api-Total-Time:
+                - 0.120s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 129.63225ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "6"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/?id=6
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 0300401441ce4a5d9bf39b5e1c0a14dc
+            X-Api-Time:
+                - 0.057s
+            X-Api-Total-Time:
+                - 0.095s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 102.339541ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/7/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"named_url":"/api/v2/instance_groups/Association Group Two/","jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 031a7ccf1c81461cb164a08478a70bdb
+            X-Api-Time:
+                - 0.107s
+            X-Api-Total-Time:
+                - 0.178s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 189.824917ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3717
+        body: '{"id":45,"type":"organization","url":"/api/v2/organizations/45/","related":{"named_url":"/api/v2/organizations/Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/45/execution_environments/","projects":"/api/v2/organizations/45/projects/","inventories":"/api/v2/organizations/45/inventories/","job_templates":"/api/v2/organizations/45/job_templates/","workflow_job_templates":"/api/v2/organizations/45/workflow_job_templates/","users":"/api/v2/organizations/45/users/","admins":"/api/v2/organizations/45/admins/","teams":"/api/v2/organizations/45/teams/","credentials":"/api/v2/organizations/45/credentials/","applications":"/api/v2/organizations/45/applications/","activity_stream":"/api/v2/organizations/45/activity_stream/","notification_templates":"/api/v2/organizations/45/notification_templates/","notification_templates_started":"/api/v2/organizations/45/notification_templates_started/","notification_templates_success":"/api/v2/organizations/45/notification_templates_success/","notification_templates_error":"/api/v2/organizations/45/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/45/notification_templates_approvals/","object_roles":"/api/v2/organizations/45/object_roles/","access_list":"/api/v2/organizations/45/access_list/","instance_groups":"/api/v2/organizations/45/instance_groups/","galaxy_credentials":"/api/v2/organizations/45/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"13999896-5a61-4219-8ad9-ec775ce7e5db","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1061,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1062},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1063},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1064},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1065},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1066},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1067},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1068},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1069},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1070},"member_role":{"description":"User is a member of the organization","name":"Member","id":1071,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1072},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1073}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T17:06:53.139885Z","modified":"2026-08-18T17:06:53.139907Z","name":"Instance Group Association Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3717"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2098a6db94104d7f8db4eae832706f61
+            X-Api-Time:
+                - 0.064s
+            X-Api-Total-Time:
+                - 0.118s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 189.918542ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"named_url":"/api/v2/instance_groups/Association Group One/","jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 7f3dedeb80ea4509902ab9368c9ece8c
+            X-Api-Time:
+                - 0.049s
+            X-Api-Total-Time:
+                - 0.090s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 291.745583ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "6"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/?id=6
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 7fe4eb1ff3dd4cc6ae61b8446d027d35
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.110s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 118.012833ms
+    - id: 22
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/29/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2424
+        body: '{"id":29,"type":"inventory","url":"/api/v2/inventories/29/","related":{"named_url":"/api/v2/inventories/Instance Group Association Inventory++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/29/hosts/","variable_data":"/api/v2/inventories/29/variable_data/","script":"/api/v2/inventories/29/script/","activity_stream":"/api/v2/inventories/29/activity_stream/","job_templates":"/api/v2/inventories/29/job_templates/","ad_hoc_commands":"/api/v2/inventories/29/ad_hoc_commands/","access_list":"/api/v2/inventories/29/access_list/","object_roles":"/api/v2/inventories/29/object_roles/","instance_groups":"/api/v2/inventories/29/instance_groups/","copy":"/api/v2/inventories/29/copy/","labels":"/api/v2/inventories/29/labels/","groups":"/api/v2/inventories/29/groups/","root_groups":"/api/v2/inventories/29/root_groups/","update_inventory_sources":"/api/v2/inventories/29/update_inventory_sources/","inventory_sources":"/api/v2/inventories/29/inventory_sources/","tree":"/api/v2/inventories/29/tree/","organization":"/api/v2/organizations/45/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1080},"update_role":{"description":"May update the inventory","name":"Update","id":1081},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1082},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1083},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1084}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T17:06:53.459982Z","modified":"2026-08-18T17:06:53.459999Z","name":"Instance Group Association Inventory","description":"","organization":45,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2424"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - da53d9b151b94f048c9aee5b7a0cc706
+            X-Api-Time:
+                - 0.029s
+            X-Api-Total-Time:
+                - 0.056s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 160.395334ms
+    - id: 23
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3117
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","last_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"last_job":{"id":15,"name":"Instance Group Association Project","description":"","finished":"2026-08-18T17:06:58.629140Z","status":"successful","failed":false},"last_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T17:06:58.629140Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T17:06:58.629140Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3117"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 8acd3a2cfcde4b59a86faf1d44eb31b3
+            X-Api-Time:
+                - 0.056s
+            X-Api-Total-Time:
+                - 0.089s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 222.3115ms
+    - id: 24
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3910
+        body: '{"id":85,"type":"job_template","url":"/api/v2/job_templates/85/","related":{"named_url":"/api/v2/job_templates/Instance Group Association Job Template++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/85/labels/","inventory":"/api/v2/inventories/29/","project":"/api/v2/projects/84/","organization":"/api/v2/organizations/45/","credentials":"/api/v2/job_templates/85/credentials/","jobs":"/api/v2/job_templates/85/jobs/","schedules":"/api/v2/job_templates/85/schedules/","activity_stream":"/api/v2/job_templates/85/activity_stream/","launch":"/api/v2/job_templates/85/launch/","webhook_key":"/api/v2/job_templates/85/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/85/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/85/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/85/notification_templates_error/","access_list":"/api/v2/job_templates/85/access_list/","survey_spec":"/api/v2/job_templates/85/survey_spec/","object_roles":"/api/v2/job_templates/85/object_roles/","instance_groups":"/api/v2/job_templates/85/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/85/slice_workflow_jobs/","copy":"/api/v2/job_templates/85/copy/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"inventory":{"id":29,"name":"Instance Group Association Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":45,"kind":""},"project":{"id":84,"name":"Instance Group Association Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1089},"execute_role":{"description":"May run the job template","name":"Execute","id":1090},"read_role":{"description":"May view settings for the job template","name":"Read","id":1091}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T17:06:59.181703Z","modified":"2026-08-18T17:06:59.181725Z","name":"Instance Group Association Job Template","description":"","job_type":"run","inventory":29,"project":84,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":45,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":false,"custom_virtualenv":null,"job_slice_count":1,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3910"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b645203db7814c22abe57e1ff1e847c3
+            X-Api-Time:
+                - 0.095s
+            X-Api-Total-Time:
+                - 0.129s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 155.086333ms
+    - id: 25
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "6"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/?id=6
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - bc9ffaa014be4263bd060d8cad0a1977
+            X-Api-Time:
+                - 0.056s
+            X-Api-Total-Time:
+                - 0.105s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 115.442834ms
+    - id: 26
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 29
+        host: awx.local
+        body: |
+            {"id":6,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a5584d55455743bcaa30659abdbc903a
+            X-Api-Time:
+                - 0.036s
+            X-Api-Total-Time:
+                - 0.095s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 104.819875ms
+    - id: 27
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 29
+        host: awx.local
+        body: |
+            {"id":6,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 72bc14d5568a4d4ba530f36576569dd3
+            X-Api-Time:
+                - 0.075s
+            X-Api-Total-Time:
+                - 0.151s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 158.544167ms
+    - id: 28
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 9
+        host: awx.local
+        body: |
+            {"id":7}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 34ee14b1b55a4c2cb069275cba7459eb
+            X-Api-Time:
+                - 0.055s
+            X-Api-Total-Time:
+                - 0.104s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 113.812834ms
+    - id: 29
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 9
+        host: awx.local
+        body: |
+            {"id":7}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - a31cdba179a74226acde0354745a121e
+            X-Api-Time:
+                - 0.053s
+            X-Api-Total-Time:
+                - 0.102s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 110.401125ms
+    - id: 30
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/7/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"named_url":"/api/v2/instance_groups/Association Group Two/","jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 962d95835f0c4c039f7a3c7cb2b845c8
+            X-Api-Time:
+                - 0.056s
+            X-Api-Total-Time:
+                - 0.096s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 105.30775ms
+    - id: 31
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3717
+        body: '{"id":45,"type":"organization","url":"/api/v2/organizations/45/","related":{"named_url":"/api/v2/organizations/Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/45/execution_environments/","projects":"/api/v2/organizations/45/projects/","inventories":"/api/v2/organizations/45/inventories/","job_templates":"/api/v2/organizations/45/job_templates/","workflow_job_templates":"/api/v2/organizations/45/workflow_job_templates/","users":"/api/v2/organizations/45/users/","admins":"/api/v2/organizations/45/admins/","teams":"/api/v2/organizations/45/teams/","credentials":"/api/v2/organizations/45/credentials/","applications":"/api/v2/organizations/45/applications/","activity_stream":"/api/v2/organizations/45/activity_stream/","notification_templates":"/api/v2/organizations/45/notification_templates/","notification_templates_started":"/api/v2/organizations/45/notification_templates_started/","notification_templates_success":"/api/v2/organizations/45/notification_templates_success/","notification_templates_error":"/api/v2/organizations/45/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/45/notification_templates_approvals/","object_roles":"/api/v2/organizations/45/object_roles/","access_list":"/api/v2/organizations/45/access_list/","instance_groups":"/api/v2/organizations/45/instance_groups/","galaxy_credentials":"/api/v2/organizations/45/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"13999896-5a61-4219-8ad9-ec775ce7e5db","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1061,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1062},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1063},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1064},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1065},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1066},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1067},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1068},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1069},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1070},"member_role":{"description":"User is a member of the organization","name":"Member","id":1071,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1072},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1073}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T17:06:53.139885Z","modified":"2026-08-18T17:06:53.139907Z","name":"Instance Group Association Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3717"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e5fd371a21ca43ada09db379e63e91f9
+            X-Api-Time:
+                - 0.089s
+            X-Api-Total-Time:
+                - 0.147s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 155.543542ms
+    - id: 32
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/6/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1138
+        body: '{"id":6,"type":"instance_group","url":"/api/v2/instance_groups/6/","related":{"named_url":"/api/v2/instance_groups/Association Group One/","jobs":"/api/v2/instance_groups/6/jobs/","instances":"/api/v2/instance_groups/6/instances/","access_list":"/api/v2/instance_groups/6/access_list/","object_roles":"/api/v2/instance_groups/6/object_roles/"},"name":"Association Group One","created":"2026-08-18T17:06:53.148898Z","modified":"2026-08-18T17:06:53.148981Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1074},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1075},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1076}},"user_capabilities":{"edit":true,"delete":true}}}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1138"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - af28d9780b424edbb4446906bc9a191f
+            X-Api-Time:
+                - 0.047s
+            X-Api-Total-Time:
+                - 0.080s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 196.165166ms
+    - id: 33
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "7"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/?id=7
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 79a56b5e499a4bd78e92b97f19b47f8f
+            X-Api-Time:
+                - 0.063s
+            X-Api-Total-Time:
+                - 0.105s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 112.547959ms
+    - id: 34
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/29/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 2424
+        body: '{"id":29,"type":"inventory","url":"/api/v2/inventories/29/","related":{"named_url":"/api/v2/inventories/Instance Group Association Inventory++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/29/hosts/","variable_data":"/api/v2/inventories/29/variable_data/","script":"/api/v2/inventories/29/script/","activity_stream":"/api/v2/inventories/29/activity_stream/","job_templates":"/api/v2/inventories/29/job_templates/","ad_hoc_commands":"/api/v2/inventories/29/ad_hoc_commands/","access_list":"/api/v2/inventories/29/access_list/","object_roles":"/api/v2/inventories/29/object_roles/","instance_groups":"/api/v2/inventories/29/instance_groups/","copy":"/api/v2/inventories/29/copy/","labels":"/api/v2/inventories/29/labels/","groups":"/api/v2/inventories/29/groups/","root_groups":"/api/v2/inventories/29/root_groups/","update_inventory_sources":"/api/v2/inventories/29/update_inventory_sources/","inventory_sources":"/api/v2/inventories/29/inventory_sources/","tree":"/api/v2/inventories/29/tree/","organization":"/api/v2/organizations/45/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1080},"update_role":{"description":"May update the inventory","name":"Update","id":1081},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1082},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1083},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1084}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T17:06:53.459982Z","modified":"2026-08-18T17:06:53.459999Z","name":"Instance Group Association Inventory","description":"","organization":45,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "2424"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ac364b3de6c94bed908486d8e56b01ae
+            X-Api-Time:
+                - 0.058s
+            X-Api-Total-Time:
+                - 0.096s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 145.116625ms
+    - id: 35
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3117
+        body: '{"id":84,"type":"project","url":"/api/v2/projects/84/","related":{"named_url":"/api/v2/projects/Instance Group Association Project++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/15/","teams":"/api/v2/projects/84/teams/","playbooks":"/api/v2/projects/84/playbooks/","inventory_files":"/api/v2/projects/84/inventories/","update":"/api/v2/projects/84/update/","project_updates":"/api/v2/projects/84/project_updates/","scm_inventory_sources":"/api/v2/projects/84/scm_inventory_sources/","schedules":"/api/v2/projects/84/schedules/","activity_stream":"/api/v2/projects/84/activity_stream/","notification_templates_started":"/api/v2/projects/84/notification_templates_started/","notification_templates_success":"/api/v2/projects/84/notification_templates_success/","notification_templates_error":"/api/v2/projects/84/notification_templates_error/","access_list":"/api/v2/projects/84/access_list/","object_roles":"/api/v2/projects/84/object_roles/","copy":"/api/v2/projects/84/copy/","organization":"/api/v2/organizations/45/","last_update":"/api/v2/project_updates/15/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"last_job":{"id":15,"name":"Instance Group Association Project","description":"","finished":"2026-08-18T17:06:58.629140Z","status":"successful","failed":false},"last_update":{"id":15,"name":"Instance Group Association Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1085},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1086},"update_role":{"description":"May update the project","name":"Update","id":1087},"read_role":{"description":"May view settings for the project","name":"Read","id":1088}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T17:06:53.583725Z","modified":"2026-08-18T17:06:53.583742Z","name":"Instance Group Association Project","description":"","local_path":"_84__instance_group_association_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T17:06:58.629140Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":45,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T17:06:58.629140Z"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3117"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6c03870ef2504267987526891b8e4adc
+            X-Api-Time:
+                - 0.057s
+            X-Api-Total-Time:
+                - 0.091s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 214.225042ms
+    - id: 36
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3910
+        body: '{"id":85,"type":"job_template","url":"/api/v2/job_templates/85/","related":{"named_url":"/api/v2/job_templates/Instance Group Association Job Template++Instance Group Association Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/85/labels/","inventory":"/api/v2/inventories/29/","project":"/api/v2/projects/84/","organization":"/api/v2/organizations/45/","credentials":"/api/v2/job_templates/85/credentials/","jobs":"/api/v2/job_templates/85/jobs/","schedules":"/api/v2/job_templates/85/schedules/","activity_stream":"/api/v2/job_templates/85/activity_stream/","launch":"/api/v2/job_templates/85/launch/","webhook_key":"/api/v2/job_templates/85/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/85/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/85/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/85/notification_templates_error/","access_list":"/api/v2/job_templates/85/access_list/","survey_spec":"/api/v2/job_templates/85/survey_spec/","object_roles":"/api/v2/job_templates/85/object_roles/","instance_groups":"/api/v2/job_templates/85/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/85/slice_workflow_jobs/","copy":"/api/v2/job_templates/85/copy/"},"summary_fields":{"organization":{"id":45,"name":"Instance Group Association Organization","description":""},"inventory":{"id":29,"name":"Instance Group Association Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":45,"kind":""},"project":{"id":84,"name":"Instance Group Association Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1089},"execute_role":{"description":"May run the job template","name":"Execute","id":1090},"read_role":{"description":"May view settings for the job template","name":"Read","id":1091}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T17:06:59.181703Z","modified":"2026-08-18T17:06:59.181725Z","name":"Instance Group Association Job Template","description":"","job_type":"run","inventory":29,"project":84,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":45,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":false,"custom_virtualenv":null,"job_slice_count":1,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3910"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 65740b5d73864066873d6e6064e186bf
+            X-Api-Time:
+                - 0.074s
+            X-Api-Total-Time:
+                - 0.108s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.374292ms
+    - id: 37
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "7"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/?id=7
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2cfeaf2d3d174f959377b0d8c481be3c
+            X-Api-Time:
+                - 0.053s
+            X-Api-Total-Time:
+                - 0.088s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 97.765291ms
+    - id: 38
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "7"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/?id=7
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:02 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ef8f71143c454c5a951bca13197bb2d4
+            X-Api-Time:
+                - 0.104s
+            X-Api-Total-Time:
+                - 0.170s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 181.162666ms
+    - id: 39
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        form:
+            id:
+                - "7"
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/?id=7
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1129
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":7,"type":"instance_group","url":"/api/v2/instance_groups/7/","related":{"jobs":"/api/v2/instance_groups/7/jobs/","instances":"/api/v2/instance_groups/7/instances/","access_list":"/api/v2/instance_groups/7/access_list/","object_roles":"/api/v2/instance_groups/7/object_roles/"},"name":"Association Group Two","created":"2026-08-18T17:06:53.181523Z","modified":"2026-08-18T17:06:53.181676Z","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"max_concurrent_jobs":0,"max_forks":0,"jobs_total":0,"instances":0,"is_container_group":false,"credential":null,"policy_instance_percentage":0,"policy_instance_minimum":0,"policy_instance_list":[],"pod_spec_override":"","summary_fields":{"object_roles":{"admin_role":{"description":"Can manage all aspects of the instance group","name":"Admin","id":1077},"use_role":{"description":"Can use the instance group in a job template","name":"Use","id":1078},"read_role":{"description":"May view settings for the instance group","name":"Read","id":1079}},"user_capabilities":{"edit":true,"delete":true}}}]}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1129"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 96ec03dc3805480fb7c83d56b1b67c34
+            X-Api-Time:
+                - 0.078s
+            X-Api-Total-Time:
+                - 0.141s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 149.457542ms
+    - id: 40
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 29
+        host: awx.local
+        body: |
+            {"id":7,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ea4bf7219c3b4c3390d843fff11c2e5a
+            X-Api-Time:
+                - 0.053s
+            X-Api-Total-Time:
+                - 0.121s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 132.646458ms
+    - id: 41
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 29
+        host: awx.local
+        body: |
+            {"id":7,"disassociate":true}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/instance_groups/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 31a95041ce65478ba1e55480f2b3a577
+            X-Api-Time:
+                - 0.054s
+            X-Api-Total-Time:
+                - 0.131s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 141.158833ms
+    - id: 42
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/job_templates/85/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2b0c3f779cc1429d9f0f0b88aec4d3bc
+            X-Api-Time:
+                - 0.217s
+            X-Api-Total-Time:
+                - 0.274s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 325.693ms
+    - id: 43
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/6/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b7bb8b94e12a496dae92f0385c8efa99
+            X-Api-Time:
+                - 0.193s
+            X-Api-Total-Time:
+                - 0.260s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 467.0395ms
+    - id: 44
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instance_groups/7/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:03 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 6e27895530a24fd89ce5c592d14f0fc5
+            X-Api-Time:
+                - 0.228s
+            X-Api-Total-Time:
+                - 0.314s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 646.861667ms
+    - id: 45
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/projects/84/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - c3cf506df9e4439480ff39ed12b8a08a
+            X-Api-Time:
+                - 0.358s
+            X-Api-Total-Time:
+                - 0.436s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 444.990125ms
+    - id: 46
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/inventories/29/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:04 GMT
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b694947b3bd144d2b0e76d31d964640a
+            X-Api-Time:
+                - 0.093s
+            X-Api-Total-Time:
+                - 0.139s
+        status: 202 Accepted
+        code: 202
+        duration: 462.085041ms
+    - id: 47
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/45/
+        method: DELETE
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        body: ""
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "0"
+            Date:
+                - Tue, 18 Aug 2026 17:07:04 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1626dfe76ed04d9a97f1c8142935f142
+            X-Api-Time:
+                - 0.220s
+            X-Api-Total-Time:
+                - 0.320s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 204 No Content
+        code: 204
+        duration: 441.928042ms

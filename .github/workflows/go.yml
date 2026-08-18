@@ -78,6 +78,8 @@ jobs:
             test: TestIntegration_Instance
           - name: Role Assignments
             test: TestIntegration_RoleAssignments
+          - name: Instance Group Associations
+            test: TestIntegration_InstanceGroupAssociations
     steps:
       - uses: actions/checkout@v7
       - name: Setup Go
