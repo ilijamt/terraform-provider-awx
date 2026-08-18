@@ -114,8 +114,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 			return err
 		}
 
-		var fetchFailures error
-		fetchFailures = func(cfg internal.Config) error {
+		fetchFailures := func(cfg internal.Config) error {
 			log.Printf("Fetching %d items", len(cfg.Items))
 			// The loop tries every item before giving up, so one run names all
 			// the endpoints that need attention rather than the first.
