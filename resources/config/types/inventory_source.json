@@ -21,10 +21,6 @@
     "custom_virtualenv",
     "status"
   ],
-  "remove_fields_resource": [
-    "custom_virtualenv",
-    "status"
-  ],
   "search_fields": [
     {
       "url_suffix": "%d/",

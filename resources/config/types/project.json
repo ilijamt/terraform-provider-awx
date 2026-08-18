@@ -10,11 +10,6 @@
     "status",
     "scm_revision"
   ],
-  "remove_fields_resource": [
-    "custom_virtualenv",
-    "status",
-    "scm_revision"
-  ],
   "search_fields": [
     {
       "url_suffix": "%d/",

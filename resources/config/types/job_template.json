@@ -29,10 +29,6 @@
     "custom_virtualenv",
     "status"
   ],
-  "remove_fields_resource": [
-    "custom_virtualenv",
-    "status"
-  ],
   "property_overrides": {
     "extra_vars": {
       "type": "json",

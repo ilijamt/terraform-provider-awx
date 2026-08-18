@@ -45,6 +45,10 @@ func GenerateApiTfDefinition(tpl *template.Template, config Config, val Item, ap
 		description = v
 	}
 
+	for _, problem := range ValidateOverrides(val, objmap) {
+		log.Printf("WARNING %s: %s", name, problem)
+	}
+
 	var item = &ModelConfig{
 		Name:        name,
 		Description: description,

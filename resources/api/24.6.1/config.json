@@ -411,11 +411,6 @@
         "has_active_failures",
         "has_inventory_sources"
       ],
-      "remove_fields_resource": [
-        "ansible_facts_modified",
-        "last_job",
-        "last_job_host_summary"
-      ],
       "search_fields": [
         {
           "url_suffix": "%d/",
@@ -660,10 +655,6 @@
         "custom_virtualenv",
         "status"
       ],
-      "remove_fields_resource": [
-        "custom_virtualenv",
-        "status"
-      ],
       "search_fields": [
         {
           "url_suffix": "%d/",
@@ -715,10 +706,6 @@
         }
       ],
       "remove_fields_data_source": [
-        "custom_virtualenv",
-        "status"
-      ],
-      "remove_fields_resource": [
         "custom_virtualenv",
         "status"
       ],
@@ -866,17 +853,7 @@
         }
       ],
       "remove_fields_data_source": [
-        "custom_virtualenv",
-        "has_active_failures",
-        "hosts_with_active_failures",
-        "total_groups",
-        "total_hosts"
-      ],
-      "remove_fields_resource": [
-        "has_active_failures",
-        "hosts_with_active_failures",
-        "total_groups",
-        "total_hosts"
+        "custom_virtualenv"
       ],
       "search_fields": [
         {
@@ -914,11 +891,6 @@
       "enabled": true,
       "has_object_roles": true,
       "remove_fields_data_source": [
-        "custom_virtualenv",
-        "status",
-        "scm_revision"
-      ],
-      "remove_fields_resource": [
         "custom_virtualenv",
         "status",
         "scm_revision"
@@ -1860,11 +1832,6 @@
         }
       ],
       "remove_fields_data_source": [
-        "custom_virtualenv",
-        "status"
-      ],
-      "remove_fields_resource": [
-        "custom_virtualenv",
         "status"
       ]
     },
