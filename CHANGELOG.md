@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - *(schedule)* Omit unset diff_mode and unpin recomputed fields 
 
+### Build
+
+- Updated goreleaser and makefile for improved build process
+
 ### Dependencies
 
 - *(deps)* Bump the actions group across 1 directory with 2 updates (#183)
@@ -23,9 +27,20 @@ All notable changes to this project will be documented in this file.
 
 - Add skip rule for CHANGELOG regeneration
 
+### Features
+
+- *(tools/generator)* Added normalization for resource payloads
+- Updated API resources and attributes
+- *(tools/generator)* Override AWX metadata that describes the instance
+- *(awx)* Add workflow job template nodes
+
 ### Testing
 
 - Remove internal/awx from ignore
+
+### Config
+
+- *(resources)* Added workflow job template node configuration
 
 ## [24.6.1-2] - 2026-04-29
 
