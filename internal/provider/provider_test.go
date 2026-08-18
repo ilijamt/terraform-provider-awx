@@ -230,7 +230,7 @@ func TestProviderConfiguration(t *testing.T) {
 					"token":      tftypes.NewValue(tftypes.String, "token"),
 				},
 				errLen:     1,
-				errSummary: []string{`must provide one of ["username", "password"] or "token".`},
+				errSummary: []string{`cannot provide both ["username", "password"] and "token".`},
 			},
 		}
 

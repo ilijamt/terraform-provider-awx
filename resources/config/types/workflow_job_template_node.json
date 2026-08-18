@@ -3,7 +3,7 @@
   "name": "WorkflowJobTemplateNode",
   "type_name": "workflow_job_template_node",
   "id_key": "id",
-  "enabled": false,
+  "enabled": true,
   "property_overrides": {
     "identifier": {
       "no_default": true
@@ -26,12 +26,24 @@
       ]
     }
   ],
-  "remove_fields_data_source": [
-    "success_nodes",
-    "failure_nodes",
-    "always_nodes"
+  "associate_disassociate_groups": [
+    {
+      "name": "WorkflowJobTemplateNode",
+      "type": "SuccessNode",
+      "endpoint": "/api/v2/workflow_job_template_nodes/%d/success_nodes/"
+    },
+    {
+      "name": "WorkflowJobTemplateNode",
+      "type": "FailureNode",
+      "endpoint": "/api/v2/workflow_job_template_nodes/%d/failure_nodes/"
+    },
+    {
+      "name": "WorkflowJobTemplateNode",
+      "type": "AlwaysNode",
+      "endpoint": "/api/v2/workflow_job_template_nodes/%d/always_nodes/"
+    }
   ],
-  "remove_fields_resource": [
+  "remove_fields_data_source": [
     "success_nodes",
     "failure_nodes",
     "always_nodes"

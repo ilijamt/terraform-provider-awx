@@ -131,6 +131,19 @@ func configureDefaults(ctx context.Context, data *Model) {
 	tflog.Debug(ctx, "Defaults configured for provider", defaults)
 }
 
+// describeCredential reports whether a credential slot is filled without
+// printing it, so the diagnostic can name the conflict without leaking secrets.
+func describeCredential(v types.String) string {
+	switch {
+	case v.IsUnknown():
+		return "unknown"
+	case v.ValueString() == "":
+		return "unset"
+	default:
+		return "set"
+	}
+}
+
 func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	var config Model
 	tflog.Debug(ctx, "Provider configuration started")
@@ -154,30 +167,40 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 			"If either is already set, ensure the value is not empty.")
 	}
 
-	if (noTokenAuth && noBasicAuth) || (!noTokenAuth && !noBasicAuth) {
+	switch {
+	case noTokenAuth && noBasicAuth:
 		resp.Diagnostics.AddError(
 			fmt.Sprintf("must provide one of [%q, %q] or %q.", "username", "password", "token"),
-			fmt.Sprintf("must provide one of [%q, %q] or %q.", "username", "password", "token"),
+			"The provider found no credentials. Set token, or username and password, in the "+
+				"provider configuration, or use TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN, or "+
+				"TOWER_USERNAME/AWX_USERNAME together with TOWER_PASSWORD/AWX_PASSWORD.",
 		)
-	} else {
-		if !noBasicAuth && noTokenAuth {
-			if config.Username.ValueString() == "" || config.Username.IsUnknown() {
-				resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
-					"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
-					"If either is already set, ensure the value is not empty.")
-			}
+	case !noTokenAuth && !noBasicAuth:
+		// Credentials inherited from the environment land in config the same way
+		// configured ones do, so a shell exporting TOWER_USERNAME/AWX_USERNAME
+		// collides with a token set only in the configuration.
+		resp.Diagnostics.AddError(
+			fmt.Sprintf("cannot provide both [%q, %q] and %q.", "username", "password", "token"),
+			fmt.Sprintf(
+				"The provider found both a token and username/password and cannot choose between them. "+
+					"Resolved from configuration and environment: username=%s, password=%s, token=%s. "+
+					"Values picked up from TOWER_USERNAME/AWX_USERNAME, TOWER_PASSWORD/AWX_PASSWORD or "+
+					"TOWER_AUTH_TOKEN/AWX_AUTH_TOKEN count here even when the configuration does not set them. "+
+					"Unset the ones you do not want.",
+				describeCredential(config.Username), describeCredential(config.Password), describeCredential(config.Token),
+			),
+		)
+	case !noBasicAuth && noTokenAuth:
+		if config.Username.ValueString() == "" || config.Username.IsUnknown() {
+			resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
+				"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
+				"If either is already set, ensure the value is not empty.")
+		}
 
-			if config.Password.ValueString() == "" || config.Password.IsUnknown() {
-				resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-					"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
-					"If either is already set, ensure the value is not empty.")
-			}
-			// } else {
-			// 	if "" == config.Token.ValueString() || config.Token.IsUnknown() {
-			// 		resp.Diagnostics.AddAttributeError(path.Root("token"), "Unknown AWX Auth Token", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX auth token. "+
-			// 			"Set the token value in the configuration or use the TOWER_AUTH_TOKEN or AWX_AUTH_TOKEN environment variable."+
-			// 			"If either is already set, ensure the value is not empty.")
-			// 	}
+		if config.Password.ValueString() == "" || config.Password.IsUnknown() {
+			resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
+				"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
+				"If either is already set, ensure the value is not empty.")
 		}
 	}
 

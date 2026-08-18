@@ -18,11 +18,12 @@ func DataSources() []func() datasource.DataSource {
 	}
 }
 
-// Resources is a helper function to return all defined resources
+// Resources is a helper function to return all defined resources, generated
+// ones plus the hand-written entries in additionalResources.
 func Resources() []func() resource.Resource {
-	return []func() resource.Resource{
+	return append([]func() resource.Resource{
 {{- range $org := .Resources }}
 		New{{ $org }}Resource,
 {{- end }}
-	}
+	}, additionalResources()...)
 }
