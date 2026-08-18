@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Refactor
+
+- *(tools/generator)* Simplified error assignment
+
+## [24.6.105] - 2026-08-18
+
 ### CI/CD
 
 - Improved release workflow
