@@ -1,0 +1,159 @@
+{
+  "actions": {
+    "GET": {
+      "TACACSPLUS_AUTH_PROTOCOL": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "choices": [
+          [
+            "ascii",
+            "ascii"
+          ],
+          [
+            "pap",
+            "pap"
+          ]
+        ],
+        "defined_in_file": false,
+        "help_text": "Choose the authentication protocol used by TACACS+ client.",
+        "hidden": false,
+        "label": "TACACS+ Authentication Protocol",
+        "type": "choice"
+      },
+      "TACACSPLUS_HOST": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "defined_in_file": false,
+        "help_text": "Hostname of TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Server",
+        "type": "string"
+      },
+      "TACACSPLUS_PORT": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "defined_in_file": false,
+        "help_text": "Port number of TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Port",
+        "max_value": 65535,
+        "min_value": 1,
+        "type": "integer"
+      },
+      "TACACSPLUS_REM_ADDR": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "defined_in_file": false,
+        "help_text": "Enable the client address sending by TACACS+ client.",
+        "hidden": false,
+        "label": "TACACS+ client address sending enabled",
+        "type": "boolean"
+      },
+      "TACACSPLUS_SECRET": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "defined_in_file": false,
+        "help_text": "Shared secret for authenticating to TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Secret",
+        "type": "string"
+      },
+      "TACACSPLUS_SESSION_TIMEOUT": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "defined_in_file": false,
+        "help_text": "TACACS+ session timeout value in seconds, 0 disables timeout.",
+        "hidden": false,
+        "label": "TACACS+ Auth Session Timeout",
+        "min_value": 0,
+        "type": "integer",
+        "unit": "seconds"
+      }
+    },
+    "PUT": {
+      "TACACSPLUS_AUTH_PROTOCOL": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "choices": [
+          [
+            "ascii",
+            "ascii"
+          ],
+          [
+            "pap",
+            "pap"
+          ]
+        ],
+        "default": "ascii",
+        "help_text": "Choose the authentication protocol used by TACACS+ client.",
+        "hidden": false,
+        "label": "TACACS+ Authentication Protocol",
+        "required": false,
+        "type": "choice"
+      },
+      "TACACSPLUS_HOST": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "default": "",
+        "help_text": "Hostname of TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Server",
+        "required": false,
+        "type": "string"
+      },
+      "TACACSPLUS_PORT": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "default": 49,
+        "help_text": "Port number of TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Port",
+        "max_value": 65535,
+        "min_value": 1,
+        "required": false,
+        "type": "integer"
+      },
+      "TACACSPLUS_REM_ADDR": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "default": false,
+        "help_text": "Enable the client address sending by TACACS+ client.",
+        "hidden": false,
+        "label": "TACACS+ client address sending enabled",
+        "required": false,
+        "type": "boolean"
+      },
+      "TACACSPLUS_SECRET": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "default": "",
+        "help_text": "Shared secret for authenticating to TACACS+ server.",
+        "hidden": false,
+        "label": "TACACS+ Secret",
+        "required": false,
+        "type": "string"
+      },
+      "TACACSPLUS_SESSION_TIMEOUT": {
+        "category": "TACACS+",
+        "category_slug": "tacacsplus",
+        "default": 5,
+        "help_text": "TACACS+ session timeout value in seconds, 0 disables timeout.",
+        "hidden": false,
+        "label": "TACACS+ Auth Session Timeout",
+        "min_value": 0,
+        "required": false,
+        "type": "integer",
+        "unit": "seconds"
+      }
+    }
+  },
+  "description": "# Retrieve a Setting:\n\nMake GET request to this resource to retrieve a single setting\nrecord containing the following fields:\n\n* `TACACSPLUS_HOST`: Hostname of TACACS+ server. (string)\n* `TACACSPLUS_PORT`: Port number of TACACS+ server. (integer)\n* `TACACSPLUS_SECRET`: Shared secret for authenticating to TACACS+ server. (string)\n* `TACACSPLUS_SESSION_TIMEOUT`: TACACS+ session timeout value in seconds, 0 disables timeout. (integer)\n* `TACACSPLUS_AUTH_PROTOCOL`: Choose the authentication protocol used by TACACS+ client. (choice)\n    - `ascii`\n    - `pap`\n* `TACACSPLUS_REM_ADDR`: Enable the client address sending by TACACS+ client. (boolean)\n\n\n\n\n\n# Update a Setting:\n\nMake a PUT or PATCH request to this resource to update this\nsetting.  The following fields may be modified:\n\n\n* `TACACSPLUS_HOST`: Hostname of TACACS+ server. (string, default=`\"\"`)\n* `TACACSPLUS_PORT`: Port number of TACACS+ server. (integer, default=`49`)\n* `TACACSPLUS_SECRET`: Shared secret for authenticating to TACACS+ server. (string, default=`\"\"`)\n* `TACACSPLUS_SESSION_TIMEOUT`: TACACS+ session timeout value in seconds, 0 disables timeout. (integer, default=`5`)\n* `TACACSPLUS_AUTH_PROTOCOL`: Choose the authentication protocol used by TACACS+ client. (choice)\n    - `ascii` (default)\n    - `pap`\n* `TACACSPLUS_REM_ADDR`: Enable the client address sending by TACACS+ client. (boolean, default=`False`)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Setting:\n\nMake a DELETE request to this resource to delete this setting.",
+  "name": "Setting Detail",
+  "parses": [
+    "application/json"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ]
+}

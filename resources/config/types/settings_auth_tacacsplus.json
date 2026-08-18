@@ -1,0 +1,20 @@
+{
+  "endpoint": "/api/v2/settings/tacacsplus/",
+  "name": "SettingsAuthTACACSPlus",
+  "type_name": "settings_auth_tacacsplus",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "pre_state_set_hook_function": "hookSettingsAuthTacacsPlus",
+  "undeletable": true,
+  "property_overrides": {
+    "TACACSPLUS_SECRET": {
+      "sensitive": true
+    },
+    "TACACSPLUS_SESSION_TIMEOUT": {
+      "omit_empty": false
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "actions": {
+    "GET": {
+      "RADIUS_PORT": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "defined_in_file": false,
+        "help_text": "Port of RADIUS server.",
+        "hidden": false,
+        "label": "RADIUS Port",
+        "max_value": 65535,
+        "min_value": 1,
+        "type": "integer"
+      },
+      "RADIUS_SECRET": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "defined_in_file": false,
+        "help_text": "Shared secret for authenticating to RADIUS server.",
+        "hidden": false,
+        "label": "RADIUS Secret",
+        "type": "string"
+      },
+      "RADIUS_SERVER": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "defined_in_file": false,
+        "help_text": "Hostname/IP of RADIUS server. RADIUS authentication is disabled if this setting is empty.",
+        "hidden": false,
+        "label": "RADIUS Server",
+        "type": "string"
+      }
+    },
+    "PUT": {
+      "RADIUS_PORT": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "default": 1812,
+        "help_text": "Port of RADIUS server.",
+        "hidden": false,
+        "label": "RADIUS Port",
+        "max_value": 65535,
+        "min_value": 1,
+        "required": false,
+        "type": "integer"
+      },
+      "RADIUS_SECRET": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "default": "",
+        "help_text": "Shared secret for authenticating to RADIUS server.",
+        "hidden": false,
+        "label": "RADIUS Secret",
+        "required": false,
+        "type": "string"
+      },
+      "RADIUS_SERVER": {
+        "category": "RADIUS",
+        "category_slug": "radius",
+        "default": "",
+        "help_text": "Hostname/IP of RADIUS server. RADIUS authentication is disabled if this setting is empty.",
+        "hidden": false,
+        "label": "RADIUS Server",
+        "placeholder": "radius.example.com",
+        "required": false,
+        "type": "string"
+      }
+    }
+  },
+  "description": "# Retrieve a Setting:\n\nMake GET request to this resource to retrieve a single setting\nrecord containing the following fields:\n\n* `RADIUS_SERVER`: Hostname/IP of RADIUS server. RADIUS authentication is disabled if this setting is empty. (string)\n* `RADIUS_PORT`: Port of RADIUS server. (integer)\n* `RADIUS_SECRET`: Shared secret for authenticating to RADIUS server. (string)\n\n\n\n\n\n# Update a Setting:\n\nMake a PUT or PATCH request to this resource to update this\nsetting.  The following fields may be modified:\n\n\n* `RADIUS_SERVER`: Hostname/IP of RADIUS server. RADIUS authentication is disabled if this setting is empty. (string, default=`\"\"`)\n* `RADIUS_PORT`: Port of RADIUS server. (integer, default=`1812`)\n* `RADIUS_SECRET`: Shared secret for authenticating to RADIUS server. (string, default=`\"\"`)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Setting:\n\nMake a DELETE request to this resource to delete this setting.",
+  "name": "Setting Detail",
+  "parses": [
+    "application/json"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ]
+}

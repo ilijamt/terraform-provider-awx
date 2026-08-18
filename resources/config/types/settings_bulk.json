@@ -1,0 +1,22 @@
+{
+  "endpoint": "/api/v2/settings/bulk/",
+  "name": "SettingsBulk",
+  "type_name": "settings_bulk",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "undeletable": true,
+  "property_overrides": {
+    "BULK_HOST_MAX_CREATE": {
+      "omit_empty": false
+    },
+    "BULK_HOST_MAX_DELETE": {
+      "omit_empty": false
+    },
+    "BULK_JOB_MAX_LAUNCH": {
+      "omit_empty": false
+    }
+  }
+}

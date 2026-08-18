@@ -1,0 +1,74 @@
+{
+  "actions": {
+    "GET": {
+      "AWX_CLEANUP_PATHS": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "defined_in_file": false,
+        "help_text": "Enable or Disable TMP Dir cleanup",
+        "hidden": false,
+        "label": "Enable or Disable tmp dir cleanup",
+        "type": "boolean"
+      },
+      "AWX_REQUEST_PROFILE": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "defined_in_file": false,
+        "help_text": "Debug web request python timing",
+        "hidden": false,
+        "label": "Debug Web Requests",
+        "type": "boolean"
+      },
+      "RECEPTOR_RELEASE_WORK": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "defined_in_file": false,
+        "help_text": "Release receptor work",
+        "hidden": false,
+        "label": "Release Receptor Work",
+        "type": "boolean"
+      }
+    },
+    "PUT": {
+      "AWX_CLEANUP_PATHS": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "default": true,
+        "help_text": "Enable or Disable TMP Dir cleanup",
+        "hidden": false,
+        "label": "Enable or Disable tmp dir cleanup",
+        "required": false,
+        "type": "boolean"
+      },
+      "AWX_REQUEST_PROFILE": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "default": false,
+        "help_text": "Debug web request python timing",
+        "hidden": false,
+        "label": "Debug Web Requests",
+        "required": false,
+        "type": "boolean"
+      },
+      "RECEPTOR_RELEASE_WORK": {
+        "category": "Debug",
+        "category_slug": "debug",
+        "default": true,
+        "help_text": "Release receptor work",
+        "hidden": false,
+        "label": "Release Receptor Work",
+        "required": false,
+        "type": "boolean"
+      }
+    }
+  },
+  "description": "# Retrieve a Setting:\n\nMake GET request to this resource to retrieve a single setting\nrecord containing the following fields:\n\n* `AWX_CLEANUP_PATHS`: Enable or Disable TMP Dir cleanup (boolean)\n* `AWX_REQUEST_PROFILE`: Debug web request python timing (boolean)\n* `RECEPTOR_RELEASE_WORK`: Release receptor work (boolean)\n\n\n\n\n\n# Update a Setting:\n\nMake a PUT or PATCH request to this resource to update this\nsetting.  The following fields may be modified:\n\n\n* `AWX_CLEANUP_PATHS`: Enable or Disable TMP Dir cleanup (boolean, default=`True`)\n* `AWX_REQUEST_PROFILE`: Debug web request python timing (boolean, default=`False`)\n* `RECEPTOR_RELEASE_WORK`: Release receptor work (boolean, default=`True`)\n\n\n\n\n\n\nFor a PUT request, include **all** fields in the request.\n\n\n\nFor a PATCH request, include only the fields that are being modified.\n\n\n\n# Delete a Setting:\n\nMake a DELETE request to this resource to delete this setting.",
+  "name": "Setting Detail",
+  "parses": [
+    "application/json"
+  ],
+  "renders": [
+    "application/json",
+    "text/html"
+  ]
+}

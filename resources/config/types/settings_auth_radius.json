@@ -1,0 +1,17 @@
+{
+  "endpoint": "/api/v2/settings/radius/",
+  "name": "SettingsAuthRADIUS",
+  "type_name": "settings_auth_radius",
+  "id_key": "id",
+  "enabled": true,
+  "no_id": true,
+  "api_property_resource_key": "PUT",
+  "property_name_leave_as_is": true,
+  "pre_state_set_hook_function": "hookSettingsAuthRadius",
+  "undeletable": true,
+  "property_overrides": {
+    "RADIUS_SECRET": {
+      "sensitive": true
+    }
+  }
+}

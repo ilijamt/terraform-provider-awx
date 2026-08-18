@@ -1658,6 +1658,23 @@
       }
     },
     {
+      "endpoint": "/api/v2/settings/radius/",
+      "name": "SettingsAuthRADIUS",
+      "type_name": "settings_auth_radius",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthRadius",
+      "undeletable": true,
+      "property_overrides": {
+        "RADIUS_SECRET": {
+          "sensitive": true
+        }
+      }
+    },
+    {
       "endpoint": "/api/v2/settings/saml/",
       "name": "SettingsAuthSAML",
       "type_name": "settings_auth_saml",
@@ -1716,6 +1733,59 @@
           "type": "json"
         }
       }
+    },
+    {
+      "endpoint": "/api/v2/settings/tacacsplus/",
+      "name": "SettingsAuthTACACSPlus",
+      "type_name": "settings_auth_tacacsplus",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "pre_state_set_hook_function": "hookSettingsAuthTacacsPlus",
+      "undeletable": true,
+      "property_overrides": {
+        "TACACSPLUS_SECRET": {
+          "sensitive": true
+        },
+        "TACACSPLUS_SESSION_TIMEOUT": {
+          "omit_empty": false
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/bulk/",
+      "name": "SettingsBulk",
+      "type_name": "settings_bulk",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true,
+      "property_overrides": {
+        "BULK_HOST_MAX_CREATE": {
+          "omit_empty": false
+        },
+        "BULK_HOST_MAX_DELETE": {
+          "omit_empty": false
+        },
+        "BULK_JOB_MAX_LAUNCH": {
+          "omit_empty": false
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v2/settings/debug/",
+      "name": "SettingsDebug",
+      "type_name": "settings_debug",
+      "id_key": "id",
+      "enabled": true,
+      "no_id": true,
+      "api_property_resource_key": "PUT",
+      "property_name_leave_as_is": true,
+      "undeletable": true
     },
     {
       "endpoint": "/api/v2/settings/jobs/",

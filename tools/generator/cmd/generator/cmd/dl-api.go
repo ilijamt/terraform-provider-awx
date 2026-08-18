@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"slices"
 	"strings"
 
 	"github.com/mitchellh/mapstructure"
@@ -98,13 +99,32 @@ var fetchApiResourcesCmd = &cobra.Command{
 
 		log.Printf("Found %d api endpoints", len(api))
 
-		// fetch all the defined endpoints in the config resource file
-		if err = func(cfg internal.Config) error {
+		if err = func() error {
+			var prev internal.ApiResourcesInfo
+			if err := prev.Load(fmt.Sprintf("%s/info.json", outApiResourceDir)); err != nil {
+				return nil
+			}
+			for _, item := range cfg.Items {
+				if path, ok := prev.Resources[item.Name]; ok {
+					dataInfo.Resources[item.Name] = path
+				}
+			}
+			return nil
+		}(); err != nil {
+			return err
+		}
+
+		var fetchFailures error
+		fetchFailures = func(cfg internal.Config) error {
 			log.Printf("Fetching %d items", len(cfg.Items))
 			// The loop tries every item before giving up, so one run names all
 			// the endpoints that need attention rather than the first.
 			var failures []error
 			for _, item := range cfg.Items {
+				if item.CredentialType != "" {
+					delete(dataInfo.Resources, item.Name)
+					continue
+				}
 				endpoint, err := metadataEndpoint(ctx, client, item)
 				if err != nil {
 					failures = append(failures, fmt.Errorf("%s: %w", item.Name, err))
@@ -117,17 +137,21 @@ var fetchApiResourcesCmd = &cobra.Command{
 					failures = append(failures, fmt.Errorf("%s on %s: %w", item.Name, endpoint, err))
 					continue
 				}
-				data.Resources[item.Name], err = internal.ResourceProcessor(item.Name, payload)
+				processed, err := internal.ResourceProcessor(item.Name, payload)
 				if err != nil {
 					failures = append(failures, fmt.Errorf("%s: %w", item.Name, err))
 					continue
 				}
+				if missing := missingActions(item, processed); len(missing) > 0 {
+					failures = append(failures, fmt.Errorf("%s on %s: OPTIONS returned no %s block, seed the instance first",
+						item.Name, endpoint, strings.Join(missing, "/")))
+					continue
+				}
+				data.Resources[item.Name] = processed
 				dataInfo.Resources[item.Name] = strings.ToLower(fmt.Sprintf("payload/resource_%s.json", item.Name))
 			}
 			return errors.Join(failures...)
-		}(cfg); err != nil {
-			return err
-		}
+		}(cfg)
 
 		// fetch all the defined credential types
 		if err = func(cfg internal.Config) error {
@@ -176,9 +200,10 @@ var fetchApiResourcesCmd = &cobra.Command{
 			return err
 		}
 
-		// store all the data regarding the resources
-		for k, v := range dataInfo.Resources {
-			var infoFile = fmt.Sprintf("%s/%s", outApiResourceDir, v)
+		// store all the data regarding the resources; keyed off what was actually
+		// fetched so a carried-over mapping never overwrites its payload with null
+		for k := range data.Resources {
+			var infoFile = fmt.Sprintf("%s/%s", outApiResourceDir, dataInfo.Resources[k])
 			log.Printf("Storing resources payload data for %s in %s", k, infoFile)
 
 			buf.Reset()
@@ -204,7 +229,7 @@ var fetchApiResourcesCmd = &cobra.Command{
 			}
 		}
 
-		return nil
+		return fetchFailures
 
 	},
 }
@@ -276,4 +301,26 @@ func discoverId(ctx context.Context, client c.Client, discovery internal.Metadat
 		return 0, fmt.Errorf("%s returned %q as %T, expected a number", discovery.Endpoint, field, id)
 	}
 	return num.Int64()
+}
+
+func missingActions(item internal.Item, payload map[string]any) []string {
+	var required []string
+	if !item.NoTerraformResource {
+		required = append(required, item.ApiPropertyResourceKey)
+	}
+	if !item.NoTerraformDataSource {
+		required = append(required, item.ApiPropertyDataKey)
+	}
+
+	actions, _ := payload["actions"].(map[string]any)
+	var missing []string
+	for _, key := range required {
+		if key == "" || slices.Contains(missing, key) {
+			continue
+		}
+		if _, ok := actions[key]; !ok {
+			missing = append(missing, key)
+		}
+	}
+	return missing
 }

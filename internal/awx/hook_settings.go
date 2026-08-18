@@ -231,3 +231,33 @@ func hookSettingsAuthLdap(ctx context.Context, apiVersion string, source hooks.S
 
 	return nil
 }
+
+func hookSettingsAuthRadius(ctx context.Context, apiVersion string, source hooks.Source, callee hooks.Callee, orig, state *settingsAuthRadiusTerraformModel) (err error) {
+	if source == hooks.SourceResource && (state == nil || orig == nil) && (callee == hooks.CalleeUpdate || callee == hooks.CalleeCreate || callee == hooks.CalleeRead) {
+		return fmt.Errorf("state and orig required for resource")
+	}
+
+	if source == hooks.SourceResource && callee == hooks.CalleeCreate ||
+		(state.RADIUS_SECRET.Equal(types.StringValue("$encrypted$")) &&
+			(source == hooks.SourceResource && (callee == hooks.CalleeUpdate || callee == hooks.CalleeRead)) &&
+			!orig.RADIUS_SECRET.IsNull()) {
+		state.RADIUS_SECRET = orig.RADIUS_SECRET
+	}
+
+	return nil
+}
+
+func hookSettingsAuthTacacsPlus(ctx context.Context, apiVersion string, source hooks.Source, callee hooks.Callee, orig, state *settingsAuthTacacsplusTerraformModel) (err error) {
+	if source == hooks.SourceResource && (state == nil || orig == nil) && (callee == hooks.CalleeUpdate || callee == hooks.CalleeCreate || callee == hooks.CalleeRead) {
+		return fmt.Errorf("state and orig required for resource")
+	}
+
+	if source == hooks.SourceResource && callee == hooks.CalleeCreate ||
+		(state.TACACSPLUS_SECRET.Equal(types.StringValue("$encrypted$")) &&
+			(source == hooks.SourceResource && (callee == hooks.CalleeUpdate || callee == hooks.CalleeRead)) &&
+			!orig.TACACSPLUS_SECRET.IsNull()) {
+		state.TACACSPLUS_SECRET = orig.TACACSPLUS_SECRET
+	}
+
+	return nil
+}
