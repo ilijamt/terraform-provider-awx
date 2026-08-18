@@ -59,8 +59,8 @@ func (o *settingsUiTerraformModel) UpdateFromApiData(data map[string]any) (diags
 }
 
 type settingsUiBodyRequestModel struct {
-	CUSTOM_LOGIN_INFO       string `json:"CUSTOM_LOGIN_INFO,omitempty"`
-	CUSTOM_LOGO             string `json:"CUSTOM_LOGO,omitempty"`
+	CUSTOM_LOGIN_INFO       string `json:"CUSTOM_LOGIN_INFO"`
+	CUSTOM_LOGO             string `json:"CUSTOM_LOGO"`
 	MAX_UI_JOB_EVENTS       int64  `json:"MAX_UI_JOB_EVENTS,omitempty"`
 	UI_LIVE_UPDATES_ENABLED bool   `json:"UI_LIVE_UPDATES_ENABLED"`
 }

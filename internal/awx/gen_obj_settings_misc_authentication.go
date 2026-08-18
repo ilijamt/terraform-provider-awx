@@ -101,13 +101,13 @@ type settingsMiscAuthenticationBodyRequestModel struct {
 	ALLOW_OAUTH2_FOR_EXTERNAL_USERS    bool            `json:"ALLOW_OAUTH2_FOR_EXTERNAL_USERS"`
 	AUTH_BASIC_ENABLED                 bool            `json:"AUTH_BASIC_ENABLED"`
 	DISABLE_LOCAL_AUTH                 bool            `json:"DISABLE_LOCAL_AUTH"`
-	LOCAL_PASSWORD_MIN_DIGITS          int64           `json:"LOCAL_PASSWORD_MIN_DIGITS,omitempty"`
-	LOCAL_PASSWORD_MIN_LENGTH          int64           `json:"LOCAL_PASSWORD_MIN_LENGTH,omitempty"`
-	LOCAL_PASSWORD_MIN_SPECIAL         int64           `json:"LOCAL_PASSWORD_MIN_SPECIAL,omitempty"`
-	LOCAL_PASSWORD_MIN_UPPER           int64           `json:"LOCAL_PASSWORD_MIN_UPPER,omitempty"`
+	LOCAL_PASSWORD_MIN_DIGITS          int64           `json:"LOCAL_PASSWORD_MIN_DIGITS"`
+	LOCAL_PASSWORD_MIN_LENGTH          int64           `json:"LOCAL_PASSWORD_MIN_LENGTH"`
+	LOCAL_PASSWORD_MIN_SPECIAL         int64           `json:"LOCAL_PASSWORD_MIN_SPECIAL"`
+	LOCAL_PASSWORD_MIN_UPPER           int64           `json:"LOCAL_PASSWORD_MIN_UPPER"`
 	LOGIN_REDIRECT_OVERRIDE            string          `json:"LOGIN_REDIRECT_OVERRIDE,omitempty"`
 	OAUTH2_PROVIDER                    json.RawMessage `json:"OAUTH2_PROVIDER,omitempty"`
-	SESSIONS_PER_USER                  int64           `json:"SESSIONS_PER_USER,omitempty"`
+	SESSIONS_PER_USER                  int64           `json:"SESSIONS_PER_USER"`
 	SESSION_COOKIE_AGE                 int64           `json:"SESSION_COOKIE_AGE,omitempty"`
 	SOCIAL_AUTH_ORGANIZATION_MAP       json.RawMessage `json:"SOCIAL_AUTH_ORGANIZATION_MAP,omitempty"`
 	SOCIAL_AUTH_TEAM_MAP               json.RawMessage `json:"SOCIAL_AUTH_TEAM_MAP,omitempty"`

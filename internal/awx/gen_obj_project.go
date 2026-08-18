@@ -123,11 +123,11 @@ type projectBodyRequestModel struct {
 	ScmRefspec                    string `json:"scm_refspec,omitempty"`
 	ScmTrackSubmodules            bool   `json:"scm_track_submodules"`
 	ScmType                       string `json:"scm_type,omitempty"`
-	ScmUpdateCacheTimeout         int64  `json:"scm_update_cache_timeout,omitempty"`
+	ScmUpdateCacheTimeout         int64  `json:"scm_update_cache_timeout"`
 	ScmUpdateOnLaunch             bool   `json:"scm_update_on_launch"`
 	ScmUrl                        string `json:"scm_url,omitempty"`
 	SignatureValidationCredential int64  `json:"signature_validation_credential,omitempty"`
-	Timeout                       int64  `json:"timeout,omitempty"`
+	Timeout                       int64  `json:"timeout"`
 }
 
 type projectResource = framework.GenericResource[projectTerraformModel, projectBodyRequestModel, *projectTerraformModel]

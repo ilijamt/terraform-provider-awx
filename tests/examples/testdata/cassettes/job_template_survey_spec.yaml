@@ -6,10 +6,10 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 37
+        content_length: 51
         host: awx.local
         body: |
-            {"name":"Job Template Organization"}
+            {"max_hosts":0,"name":"Job Template Organization"}
         headers:
             Authorization:
                 - REDACTED
@@ -23,8 +23,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3679
-        body: '{"id":43,"type":"organization","url":"/api/v2/organizations/43/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/43/execution_environments/","projects":"/api/v2/organizations/43/projects/","inventories":"/api/v2/organizations/43/inventories/","job_templates":"/api/v2/organizations/43/job_templates/","workflow_job_templates":"/api/v2/organizations/43/workflow_job_templates/","users":"/api/v2/organizations/43/users/","admins":"/api/v2/organizations/43/admins/","teams":"/api/v2/organizations/43/teams/","credentials":"/api/v2/organizations/43/credentials/","applications":"/api/v2/organizations/43/applications/","activity_stream":"/api/v2/organizations/43/activity_stream/","notification_templates":"/api/v2/organizations/43/notification_templates/","notification_templates_started":"/api/v2/organizations/43/notification_templates_started/","notification_templates_success":"/api/v2/organizations/43/notification_templates_success/","notification_templates_error":"/api/v2/organizations/43/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/43/notification_templates_approvals/","object_roles":"/api/v2/organizations/43/object_roles/","access_list":"/api/v2/organizations/43/access_list/","instance_groups":"/api/v2/organizations/43/instance_groups/","galaxy_credentials":"/api/v2/organizations/43/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"f3f88745-ad60-40a0-8df6-401cb38be62a","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1003,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1004},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1005},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1006},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1007},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1008},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1009},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1010},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1011},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1012},"member_role":{"description":"User is a member of the organization","name":"Member","id":1013,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1014},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1015}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-04-27T07:33:52.186234Z","modified":"2026-04-27T07:33:52.186300Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3666
+        body: '{"id":30,"type":"organization","url":"/api/v2/organizations/30/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/30/execution_environments/","projects":"/api/v2/organizations/30/projects/","inventories":"/api/v2/organizations/30/inventories/","job_templates":"/api/v2/organizations/30/job_templates/","workflow_job_templates":"/api/v2/organizations/30/workflow_job_templates/","users":"/api/v2/organizations/30/users/","admins":"/api/v2/organizations/30/admins/","teams":"/api/v2/organizations/30/teams/","credentials":"/api/v2/organizations/30/credentials/","applications":"/api/v2/organizations/30/applications/","activity_stream":"/api/v2/organizations/30/activity_stream/","notification_templates":"/api/v2/organizations/30/notification_templates/","notification_templates_started":"/api/v2/organizations/30/notification_templates_started/","notification_templates_success":"/api/v2/organizations/30/notification_templates_success/","notification_templates_error":"/api/v2/organizations/30/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/30/notification_templates_approvals/","object_roles":"/api/v2/organizations/30/object_roles/","access_list":"/api/v2/organizations/30/access_list/","instance_groups":"/api/v2/organizations/30/instance_groups/","galaxy_credentials":"/api/v2/organizations/30/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"02b730e3-2f36-485f-b18c-17067853bfa2","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":717,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":718},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":719},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":720},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":721},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":722},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":723},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":724},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":725},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":726},"member_role":{"description":"User is a member of the organization","name":"Member","id":727,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":728},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":729}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T13:52:57.744642Z","modified":"2026-08-18T13:52:57.744707Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -37,15 +37,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3679"
+                - "3666"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:33:52 GMT
+                - Tue, 18 Aug 2026 13:52:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/organizations/43/
+                - /api/v2/organizations/30/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -53,24 +53,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - b2064eb1b6944676b734ccffa89429d0
+                - 757ef59f35914f9694d1f4fd0f2c20f9
             X-Api-Time:
-                - 0.341s
+                - 0.307s
             X-Api-Total-Time:
-                - 0.406s
+                - 0.384s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 5.478426167s
+        duration: 408.493917ms
     - id: 1
       request:
         proto: HTTP/1.1
@@ -79,7 +79,7 @@ interactions:
         content_length: 105
         host: awx.local
         body: |
-            {"name":"Job Demo Inventory","organization":43,"prevent_instance_group_fallback":false,"variables":"{}"}
+            {"name":"Job Demo Inventory","organization":30,"prevent_instance_group_fallback":false,"variables":"{}"}
         headers:
             Authorization:
                 - REDACTED
@@ -93,8 +93,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2360
-        body: '{"id":19,"type":"inventory","url":"/api/v2/inventories/19/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/19/hosts/","variable_data":"/api/v2/inventories/19/variable_data/","script":"/api/v2/inventories/19/script/","activity_stream":"/api/v2/inventories/19/activity_stream/","job_templates":"/api/v2/inventories/19/job_templates/","ad_hoc_commands":"/api/v2/inventories/19/ad_hoc_commands/","access_list":"/api/v2/inventories/19/access_list/","object_roles":"/api/v2/inventories/19/object_roles/","instance_groups":"/api/v2/inventories/19/instance_groups/","copy":"/api/v2/inventories/19/copy/","labels":"/api/v2/inventories/19/labels/","groups":"/api/v2/inventories/19/groups/","root_groups":"/api/v2/inventories/19/root_groups/","update_inventory_sources":"/api/v2/inventories/19/update_inventory_sources/","inventory_sources":"/api/v2/inventories/19/inventory_sources/","tree":"/api/v2/inventories/19/tree/","organization":"/api/v2/organizations/43/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1016},"update_role":{"description":"May update the inventory","name":"Update","id":1017},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1018},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1019},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1020}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-27T07:33:58.148239Z","modified":"2026-04-27T07:33:58.148260Z","name":"Job Demo Inventory","description":"","organization":43,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2355
+        body: '{"id":18,"type":"inventory","url":"/api/v2/inventories/18/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/18/hosts/","variable_data":"/api/v2/inventories/18/variable_data/","script":"/api/v2/inventories/18/script/","activity_stream":"/api/v2/inventories/18/activity_stream/","job_templates":"/api/v2/inventories/18/job_templates/","ad_hoc_commands":"/api/v2/inventories/18/ad_hoc_commands/","access_list":"/api/v2/inventories/18/access_list/","object_roles":"/api/v2/inventories/18/object_roles/","instance_groups":"/api/v2/inventories/18/instance_groups/","copy":"/api/v2/inventories/18/copy/","labels":"/api/v2/inventories/18/labels/","groups":"/api/v2/inventories/18/groups/","root_groups":"/api/v2/inventories/18/root_groups/","update_inventory_sources":"/api/v2/inventories/18/update_inventory_sources/","inventory_sources":"/api/v2/inventories/18/inventory_sources/","tree":"/api/v2/inventories/18/tree/","organization":"/api/v2/organizations/30/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":730},"update_role":{"description":"May update the inventory","name":"Update","id":731},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":732},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":733},"read_role":{"description":"May view settings for the inventory","name":"Read","id":734}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:52:58.563746Z","modified":"2026-08-18T13:52:58.563769Z","name":"Job Demo Inventory","description":"","organization":30,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -107,15 +107,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2360"
+                - "2355"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:33:58 GMT
+                - Tue, 18 Aug 2026 13:52:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/inventories/19/
+                - /api/v2/inventories/18/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -123,33 +123,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - af1efc8a16aa453f97859cd31a9a44a2
+                - ce207c2d6b9d447daa0656ba7ec9d345
             X-Api-Time:
-                - 0.231s
+                - 0.134s
             X-Api-Total-Time:
-                - 0.322s
+                - 0.197s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 442.958167ms
+        duration: 255.912417ms
     - id: 2
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 252
+        content_length: 293
         host: awx.local
         body: |
-            {"allow_override":false,"name":"Job Demo Project","organization":43,"scm_clean":false,"scm_delete_on_update":false,"scm_track_submodules":false,"scm_type":"git","scm_update_on_launch":false,"scm_url":"https://github.com/ansible/ansible-tower-samples"}
+            {"allow_override":false,"name":"Job Demo Project","organization":30,"scm_clean":false,"scm_delete_on_update":false,"scm_track_submodules":false,"scm_type":"git","scm_update_cache_timeout":0,"scm_update_on_launch":false,"scm_url":"https://github.com/ansible/ansible-tower-samples","timeout":0}
         headers:
             Authorization:
                 - REDACTED
@@ -163,8 +163,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2757
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","current_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"current_update":{"id":11,"name":"Job Demo Project","description":"","status":"pending","failed":false},"current_job":{"id":11,"name":"Job Demo Project","description":"","status":"pending","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"pending","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
+        content_length: 2749
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","current_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"current_update":{"id":9,"name":"Job Demo Project","description":"","status":"pending","failed":false},"current_job":{"id":9,"name":"Job Demo Project","description":"","status":"pending","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"pending","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -177,15 +177,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2757"
+                - "2749"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:33:58 GMT
+                - Tue, 18 Aug 2026 13:52:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/projects/28/
+                - /api/v2/projects/65/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -193,24 +193,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ccb5ca1bc54a47f3b0919d989fe9ffaa
+                - cc0a462912f842d39eaea988b6774dd5
             X-Api-Time:
                 - 0.302s
             X-Api-Total-Time:
-                - 0.380s
+                - 0.378s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 856.395125ms
+        duration: 452.327375ms
     - id: 3
       request:
         proto: HTTP/1.1
@@ -225,14 +225,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/projects/65/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2871
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","current_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"current_update":{"id":11,"name":"Job Demo Project","description":"","status":"running","failed":false},"current_job":{"id":11,"name":"Job Demo Project","description":"","status":"running","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"running","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
+        content_length: 2863
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","current_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","current_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"current_update":{"id":9,"name":"Job Demo Project","description":"","status":"running","failed":false},"current_job":{"id":9,"name":"Job Demo Project","description":"","status":"running","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"running","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -245,11 +245,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2871"
+                - "2863"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:33:59 GMT
+                - Tue, 18 Aug 2026 13:52:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -259,24 +259,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 4d95c01cf82b486daa4cd7dc12d08e30
+                - a74c0e8bec164518918192611efae3f3
             X-Api-Time:
-                - 0.124s
+                - 0.044s
             X-Api-Total-Time:
-                - 0.178s
+                - 0.087s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 193.736166ms
+        duration: 103.44425ms
     - id: 4
       request:
         proto: HTTP/1.1
@@ -291,14 +291,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/projects/65/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2999
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","last_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"last_job":{"id":11,"name":"Job Demo Project","description":"","finished":"2026-04-27T07:34:03.691792Z","status":"successful","failed":false},"last_update":{"id":11,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-04-27T07:34:03.691792Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-04-27T07:34:03.691792Z"}'
+        content_length: 2991
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","last_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"last_job":{"id":9,"name":"Job Demo Project","description":"","finished":"2026-08-18T13:53:03.743147Z","status":"successful","failed":false},"last_update":{"id":9,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T13:53:03.743147Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T13:53:03.743147Z"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -311,11 +311,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2999"
+                - "2991"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:05 GMT
+                - Tue, 18 Aug 2026 13:53:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -325,33 +325,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - e5095b0289824cc9b632d5c233b9b40a
+                - 0a81b7b29ca043b7b74e71c49d0a37e8
             X-Api-Time:
-                - 0.069s
+                - 0.114s
             X-Api-Total-Time:
-                - 0.147s
+                - 0.168s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 162.086292ms
+        duration: 189.529625ms
     - id: 5
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 854
+        content_length: 876
         host: awx.local
         body: |
-            {"allow_simultaneous":true,"ask_credential_on_launch":false,"ask_diff_mode_on_launch":false,"ask_execution_environment_on_launch":false,"ask_forks_on_launch":false,"ask_instance_groups_on_launch":false,"ask_inventory_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_job_type_on_launch":false,"ask_labels_on_launch":false,"ask_limit_on_launch":false,"ask_scm_branch_on_launch":false,"ask_skip_tags_on_launch":false,"ask_tags_on_launch":false,"ask_timeout_on_launch":false,"ask_variables_on_launch":false,"ask_verbosity_on_launch":false,"become_enabled":false,"diff_mode":false,"extra_vars":"","force_handlers":false,"inventory":19,"job_slice_count":2,"job_type":"run","name":"Job Demo Job Template","playbook":"hello_world.yml","prevent_instance_group_fallback":false,"project":28,"survey_enabled":false,"use_fact_cache":false,"verbosity":"0"}
+            {"allow_simultaneous":true,"ask_credential_on_launch":false,"ask_diff_mode_on_launch":false,"ask_execution_environment_on_launch":false,"ask_forks_on_launch":false,"ask_instance_groups_on_launch":false,"ask_inventory_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_job_type_on_launch":false,"ask_labels_on_launch":false,"ask_limit_on_launch":false,"ask_scm_branch_on_launch":false,"ask_skip_tags_on_launch":false,"ask_tags_on_launch":false,"ask_timeout_on_launch":false,"ask_variables_on_launch":false,"ask_verbosity_on_launch":false,"become_enabled":false,"diff_mode":false,"extra_vars":"","force_handlers":false,"forks":0,"inventory":18,"job_slice_count":2,"job_type":"run","name":"Job Demo Job Template","playbook":"hello_world.yml","prevent_instance_group_fallback":false,"project":65,"survey_enabled":false,"timeout":0,"use_fact_cache":false,"verbosity":"0"}
         headers:
             Authorization:
                 - REDACTED
@@ -365,8 +365,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3695
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:05.573006Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3692
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:05.074552Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -379,15 +379,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3695"
+                - "3692"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:05 GMT
+                - Tue, 18 Aug 2026 13:53:05 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/job_templates/29/
+                - /api/v2/job_templates/66/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -395,24 +395,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0813715556d946069961b4e1dafad0a3
+                - b6519a7be4a2450cb8605a268c5061bf
             X-Api-Time:
-                - 0.212s
+                - 0.167s
             X-Api-Total-Time:
-                - 0.289s
+                - 0.232s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 362.012584ms
+        duration: 244.83825ms
     - id: 6
       request:
         proto: HTTP/1.1
@@ -429,7 +429,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: POST
       response:
         proto: HTTP/1.1
@@ -451,7 +451,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:06 GMT
+                - Tue, 18 Aug 2026 13:53:05 GMT
             Expires:
                 - "0"
             Pragma:
@@ -461,24 +461,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - e7b5c4bbfa0048a49ba116f9b5b8111e
+                - 39efe5c458e543bda24c0b20c10827d5
             X-Api-Time:
-                - 0.099s
+                - 0.127s
             X-Api-Total-Time:
-                - 0.157s
+                - 0.190s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 172.6045ms
+        duration: 202.090667ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -493,14 +493,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/43/
+        url: http://awx.local/api/v2/organizations/30/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3689
-        body: '{"id":43,"type":"organization","url":"/api/v2/organizations/43/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/43/execution_environments/","projects":"/api/v2/organizations/43/projects/","inventories":"/api/v2/organizations/43/inventories/","job_templates":"/api/v2/organizations/43/job_templates/","workflow_job_templates":"/api/v2/organizations/43/workflow_job_templates/","users":"/api/v2/organizations/43/users/","admins":"/api/v2/organizations/43/admins/","teams":"/api/v2/organizations/43/teams/","credentials":"/api/v2/organizations/43/credentials/","applications":"/api/v2/organizations/43/applications/","activity_stream":"/api/v2/organizations/43/activity_stream/","notification_templates":"/api/v2/organizations/43/notification_templates/","notification_templates_started":"/api/v2/organizations/43/notification_templates_started/","notification_templates_success":"/api/v2/organizations/43/notification_templates_success/","notification_templates_error":"/api/v2/organizations/43/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/43/notification_templates_approvals/","object_roles":"/api/v2/organizations/43/object_roles/","access_list":"/api/v2/organizations/43/access_list/","instance_groups":"/api/v2/organizations/43/instance_groups/","galaxy_credentials":"/api/v2/organizations/43/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"f3f88745-ad60-40a0-8df6-401cb38be62a","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1003,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1004},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1005},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1006},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1007},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1008},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1009},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1010},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1011},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1012},"member_role":{"description":"User is a member of the organization","name":"Member","id":1013,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1014},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1015}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-04-27T07:33:52.186234Z","modified":"2026-04-27T07:33:52.186300Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3676
+        body: '{"id":30,"type":"organization","url":"/api/v2/organizations/30/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/30/execution_environments/","projects":"/api/v2/organizations/30/projects/","inventories":"/api/v2/organizations/30/inventories/","job_templates":"/api/v2/organizations/30/job_templates/","workflow_job_templates":"/api/v2/organizations/30/workflow_job_templates/","users":"/api/v2/organizations/30/users/","admins":"/api/v2/organizations/30/admins/","teams":"/api/v2/organizations/30/teams/","credentials":"/api/v2/organizations/30/credentials/","applications":"/api/v2/organizations/30/applications/","activity_stream":"/api/v2/organizations/30/activity_stream/","notification_templates":"/api/v2/organizations/30/notification_templates/","notification_templates_started":"/api/v2/organizations/30/notification_templates_started/","notification_templates_success":"/api/v2/organizations/30/notification_templates_success/","notification_templates_error":"/api/v2/organizations/30/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/30/notification_templates_approvals/","object_roles":"/api/v2/organizations/30/object_roles/","access_list":"/api/v2/organizations/30/access_list/","instance_groups":"/api/v2/organizations/30/instance_groups/","galaxy_credentials":"/api/v2/organizations/30/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"02b730e3-2f36-485f-b18c-17067853bfa2","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":717,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":718},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":719},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":720},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":721},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":722},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":723},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":724},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":725},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":726},"member_role":{"description":"User is a member of the organization","name":"Member","id":727,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":728},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":729}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T13:52:57.744642Z","modified":"2026-08-18T13:52:57.744707Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -513,11 +513,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3689"
+                - "3676"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:06 GMT
+                - Tue, 18 Aug 2026 13:53:06 GMT
             Expires:
                 - "0"
             Pragma:
@@ -527,24 +527,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 6008faa107a744b6afddbfbfe86be284
+                - 7722417da4db4570aefecf9c97487c31
             X-Api-Time:
-                - 0.057s
+                - 0.135s
             X-Api-Total-Time:
-                - 0.099s
+                - 0.188s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 116.472458ms
+        duration: 218.857542ms
     - id: 8
       request:
         proto: HTTP/1.1
@@ -559,14 +559,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/19/
+        url: http://awx.local/api/v2/projects/65/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2360
-        body: '{"id":19,"type":"inventory","url":"/api/v2/inventories/19/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/19/hosts/","variable_data":"/api/v2/inventories/19/variable_data/","script":"/api/v2/inventories/19/script/","activity_stream":"/api/v2/inventories/19/activity_stream/","job_templates":"/api/v2/inventories/19/job_templates/","ad_hoc_commands":"/api/v2/inventories/19/ad_hoc_commands/","access_list":"/api/v2/inventories/19/access_list/","object_roles":"/api/v2/inventories/19/object_roles/","instance_groups":"/api/v2/inventories/19/instance_groups/","copy":"/api/v2/inventories/19/copy/","labels":"/api/v2/inventories/19/labels/","groups":"/api/v2/inventories/19/groups/","root_groups":"/api/v2/inventories/19/root_groups/","update_inventory_sources":"/api/v2/inventories/19/update_inventory_sources/","inventory_sources":"/api/v2/inventories/19/inventory_sources/","tree":"/api/v2/inventories/19/tree/","organization":"/api/v2/organizations/43/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1016},"update_role":{"description":"May update the inventory","name":"Update","id":1017},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1018},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1019},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1020}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-27T07:33:58.148239Z","modified":"2026-04-27T07:33:58.148260Z","name":"Job Demo Inventory","description":"","organization":43,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2991
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","last_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"last_job":{"id":9,"name":"Job Demo Project","description":"","finished":"2026-08-18T13:53:03.743147Z","status":"successful","failed":false},"last_update":{"id":9,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T13:53:03.743147Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T13:53:03.743147Z"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -579,11 +579,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2360"
+                - "2991"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:07 GMT
+                - Tue, 18 Aug 2026 13:53:06 GMT
             Expires:
                 - "0"
             Pragma:
@@ -593,24 +593,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 5a86addfea2349549cfd7ec58e7e60b5
+                - 79043f92ea034ef9aea9ad7c0eb458ab
             X-Api-Time:
-                - 0.038s
+                - 0.053s
             X-Api-Total-Time:
-                - 0.082s
+                - 0.100s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 94.654ms
+        duration: 116.06875ms
     - id: 9
       request:
         proto: HTTP/1.1
@@ -625,14 +625,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/inventories/18/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2999
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","last_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"last_job":{"id":11,"name":"Job Demo Project","description":"","finished":"2026-04-27T07:34:03.691792Z","status":"successful","failed":false},"last_update":{"id":11,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-04-27T07:34:03.691792Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-04-27T07:34:03.691792Z"}'
+        content_length: 2355
+        body: '{"id":18,"type":"inventory","url":"/api/v2/inventories/18/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/18/hosts/","variable_data":"/api/v2/inventories/18/variable_data/","script":"/api/v2/inventories/18/script/","activity_stream":"/api/v2/inventories/18/activity_stream/","job_templates":"/api/v2/inventories/18/job_templates/","ad_hoc_commands":"/api/v2/inventories/18/ad_hoc_commands/","access_list":"/api/v2/inventories/18/access_list/","object_roles":"/api/v2/inventories/18/object_roles/","instance_groups":"/api/v2/inventories/18/instance_groups/","copy":"/api/v2/inventories/18/copy/","labels":"/api/v2/inventories/18/labels/","groups":"/api/v2/inventories/18/groups/","root_groups":"/api/v2/inventories/18/root_groups/","update_inventory_sources":"/api/v2/inventories/18/update_inventory_sources/","inventory_sources":"/api/v2/inventories/18/inventory_sources/","tree":"/api/v2/inventories/18/tree/","organization":"/api/v2/organizations/30/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":730},"update_role":{"description":"May update the inventory","name":"Update","id":731},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":732},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":733},"read_role":{"description":"May view settings for the inventory","name":"Read","id":734}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:52:58.563746Z","modified":"2026-08-18T13:52:58.563769Z","name":"Job Demo Inventory","description":"","organization":30,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -645,11 +645,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2999"
+                - "2355"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:07 GMT
+                - Tue, 18 Aug 2026 13:53:06 GMT
             Expires:
                 - "0"
             Pragma:
@@ -659,24 +659,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 972683c92903499ca030fc961fa3c306
+                - 3ff8e76ac934475c973ea3d0f2290428
             X-Api-Time:
-                - 0.091s
+                - 0.096s
             X-Api-Total-Time:
-                - 0.138s
+                - 0.150s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 149.533375ms
+        duration: 165.360375ms
     - id: 10
       request:
         proto: HTTP/1.1
@@ -691,14 +691,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3848
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:05.573006Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3845
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:05.074552Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -711,11 +711,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3848"
+                - "3845"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:07 GMT
+                - Tue, 18 Aug 2026 13:53:07 GMT
             Expires:
                 - "0"
             Pragma:
@@ -725,24 +725,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - d3fc645e5584424a96cc1344594f3a56
+                - cf7e9749acc544cb8d443b04fc74d588
             X-Api-Time:
-                - 0.085s
+                - 0.082s
             X-Api-Total-Time:
-                - 0.134s
+                - 0.129s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 145.150667ms
+        duration: 147.564959ms
     - id: 11
       request:
         proto: HTTP/1.1
@@ -757,7 +757,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: GET
       response:
         proto: HTTP/1.1
@@ -781,7 +781,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:07 GMT
+                - Tue, 18 Aug 2026 13:53:07 GMT
             Expires:
                 - "0"
             Pragma:
@@ -791,24 +791,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 09a3fd85f619486eab398f5926bfd737
+                - 2a54631ee12049a1b7accfa9ad38d889
             X-Api-Time:
-                - 0.049s
+                - 0.092s
             X-Api-Total-Time:
-                - 0.090s
+                - 0.140s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 99.475875ms
+        duration: 152.303625ms
     - id: 12
       request:
         proto: HTTP/1.1
@@ -823,14 +823,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/43/
+        url: http://awx.local/api/v2/organizations/30/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3689
-        body: '{"id":43,"type":"organization","url":"/api/v2/organizations/43/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/43/execution_environments/","projects":"/api/v2/organizations/43/projects/","inventories":"/api/v2/organizations/43/inventories/","job_templates":"/api/v2/organizations/43/job_templates/","workflow_job_templates":"/api/v2/organizations/43/workflow_job_templates/","users":"/api/v2/organizations/43/users/","admins":"/api/v2/organizations/43/admins/","teams":"/api/v2/organizations/43/teams/","credentials":"/api/v2/organizations/43/credentials/","applications":"/api/v2/organizations/43/applications/","activity_stream":"/api/v2/organizations/43/activity_stream/","notification_templates":"/api/v2/organizations/43/notification_templates/","notification_templates_started":"/api/v2/organizations/43/notification_templates_started/","notification_templates_success":"/api/v2/organizations/43/notification_templates_success/","notification_templates_error":"/api/v2/organizations/43/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/43/notification_templates_approvals/","object_roles":"/api/v2/organizations/43/object_roles/","access_list":"/api/v2/organizations/43/access_list/","instance_groups":"/api/v2/organizations/43/instance_groups/","galaxy_credentials":"/api/v2/organizations/43/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"f3f88745-ad60-40a0-8df6-401cb38be62a","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1003,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1004},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1005},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1006},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1007},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1008},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1009},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1010},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1011},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1012},"member_role":{"description":"User is a member of the organization","name":"Member","id":1013,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1014},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1015}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-04-27T07:33:52.186234Z","modified":"2026-04-27T07:33:52.186300Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3676
+        body: '{"id":30,"type":"organization","url":"/api/v2/organizations/30/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/30/execution_environments/","projects":"/api/v2/organizations/30/projects/","inventories":"/api/v2/organizations/30/inventories/","job_templates":"/api/v2/organizations/30/job_templates/","workflow_job_templates":"/api/v2/organizations/30/workflow_job_templates/","users":"/api/v2/organizations/30/users/","admins":"/api/v2/organizations/30/admins/","teams":"/api/v2/organizations/30/teams/","credentials":"/api/v2/organizations/30/credentials/","applications":"/api/v2/organizations/30/applications/","activity_stream":"/api/v2/organizations/30/activity_stream/","notification_templates":"/api/v2/organizations/30/notification_templates/","notification_templates_started":"/api/v2/organizations/30/notification_templates_started/","notification_templates_success":"/api/v2/organizations/30/notification_templates_success/","notification_templates_error":"/api/v2/organizations/30/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/30/notification_templates_approvals/","object_roles":"/api/v2/organizations/30/object_roles/","access_list":"/api/v2/organizations/30/access_list/","instance_groups":"/api/v2/organizations/30/instance_groups/","galaxy_credentials":"/api/v2/organizations/30/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"02b730e3-2f36-485f-b18c-17067853bfa2","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":717,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":718},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":719},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":720},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":721},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":722},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":723},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":724},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":725},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":726},"member_role":{"description":"User is a member of the organization","name":"Member","id":727,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":728},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":729}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T13:52:57.744642Z","modified":"2026-08-18T13:52:57.744707Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -843,11 +843,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3689"
+                - "3676"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:08 GMT
+                - Tue, 18 Aug 2026 13:53:07 GMT
             Expires:
                 - "0"
             Pragma:
@@ -857,24 +857,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 7b6f3981609d4c89b666d376addf03f7
+                - a0afc4b115114465aa34bd1b436ad3c0
             X-Api-Time:
-                - 0.101s
+                - 0.062s
             X-Api-Total-Time:
-                - 0.156s
+                - 0.103s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 166.752791ms
+        duration: 113.417ms
     - id: 13
       request:
         proto: HTTP/1.1
@@ -889,14 +889,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/projects/65/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2999
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","last_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"last_job":{"id":11,"name":"Job Demo Project","description":"","finished":"2026-04-27T07:34:03.691792Z","status":"successful","failed":false},"last_update":{"id":11,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-04-27T07:34:03.691792Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-04-27T07:34:03.691792Z"}'
+        content_length: 2991
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","last_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"last_job":{"id":9,"name":"Job Demo Project","description":"","finished":"2026-08-18T13:53:03.743147Z","status":"successful","failed":false},"last_update":{"id":9,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T13:53:03.743147Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T13:53:03.743147Z"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -909,11 +909,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2999"
+                - "2991"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:08 GMT
+                - Tue, 18 Aug 2026 13:53:08 GMT
             Expires:
                 - "0"
             Pragma:
@@ -923,24 +923,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - bc269539a287416eba6699e888dbc5f8
+                - 7551093b654c4fb3871e90fb5d43ac1b
             X-Api-Time:
-                - 0.075s
+                - 0.113s
             X-Api-Total-Time:
-                - 0.132s
+                - 0.172s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 140.912459ms
+        duration: 181.753292ms
     - id: 14
       request:
         proto: HTTP/1.1
@@ -955,14 +955,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/19/
+        url: http://awx.local/api/v2/inventories/18/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2360
-        body: '{"id":19,"type":"inventory","url":"/api/v2/inventories/19/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/19/hosts/","variable_data":"/api/v2/inventories/19/variable_data/","script":"/api/v2/inventories/19/script/","activity_stream":"/api/v2/inventories/19/activity_stream/","job_templates":"/api/v2/inventories/19/job_templates/","ad_hoc_commands":"/api/v2/inventories/19/ad_hoc_commands/","access_list":"/api/v2/inventories/19/access_list/","object_roles":"/api/v2/inventories/19/object_roles/","instance_groups":"/api/v2/inventories/19/instance_groups/","copy":"/api/v2/inventories/19/copy/","labels":"/api/v2/inventories/19/labels/","groups":"/api/v2/inventories/19/groups/","root_groups":"/api/v2/inventories/19/root_groups/","update_inventory_sources":"/api/v2/inventories/19/update_inventory_sources/","inventory_sources":"/api/v2/inventories/19/inventory_sources/","tree":"/api/v2/inventories/19/tree/","organization":"/api/v2/organizations/43/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1016},"update_role":{"description":"May update the inventory","name":"Update","id":1017},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1018},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1019},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1020}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-27T07:33:58.148239Z","modified":"2026-04-27T07:33:58.148260Z","name":"Job Demo Inventory","description":"","organization":43,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2355
+        body: '{"id":18,"type":"inventory","url":"/api/v2/inventories/18/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/18/hosts/","variable_data":"/api/v2/inventories/18/variable_data/","script":"/api/v2/inventories/18/script/","activity_stream":"/api/v2/inventories/18/activity_stream/","job_templates":"/api/v2/inventories/18/job_templates/","ad_hoc_commands":"/api/v2/inventories/18/ad_hoc_commands/","access_list":"/api/v2/inventories/18/access_list/","object_roles":"/api/v2/inventories/18/object_roles/","instance_groups":"/api/v2/inventories/18/instance_groups/","copy":"/api/v2/inventories/18/copy/","labels":"/api/v2/inventories/18/labels/","groups":"/api/v2/inventories/18/groups/","root_groups":"/api/v2/inventories/18/root_groups/","update_inventory_sources":"/api/v2/inventories/18/update_inventory_sources/","inventory_sources":"/api/v2/inventories/18/inventory_sources/","tree":"/api/v2/inventories/18/tree/","organization":"/api/v2/organizations/30/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":730},"update_role":{"description":"May update the inventory","name":"Update","id":731},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":732},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":733},"read_role":{"description":"May view settings for the inventory","name":"Read","id":734}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:52:58.563746Z","modified":"2026-08-18T13:52:58.563769Z","name":"Job Demo Inventory","description":"","organization":30,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -975,11 +975,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2360"
+                - "2355"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:08 GMT
+                - Tue, 18 Aug 2026 13:53:08 GMT
             Expires:
                 - "0"
             Pragma:
@@ -989,24 +989,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3d0c2704d4a54a77974246c1d03461f3
+                - 320cf72a9fbc40c99f6936d604223d30
             X-Api-Time:
-                - 0.071s
+                - 0.112s
             X-Api-Total-Time:
-                - 0.136s
+                - 0.174s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 147.757625ms
+        duration: 184.466791ms
     - id: 15
       request:
         proto: HTTP/1.1
@@ -1021,14 +1021,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3848
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:05.573006Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3845
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:05.074552Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":0,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1041,11 +1041,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3848"
+                - "3845"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:08 GMT
+                - Tue, 18 Aug 2026 13:53:08 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1055,24 +1055,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 703278c0f4e44798b6088293662212c4
+                - 2e0acacc6493419fa659e9ee5819b913
             X-Api-Time:
-                - 0.115s
+                - 0.165s
             X-Api-Total-Time:
-                - 0.171s
+                - 0.221s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 185.516208ms
+        duration: 234.640292ms
     - id: 16
       request:
         proto: HTTP/1.1
@@ -1087,7 +1087,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: GET
       response:
         proto: HTTP/1.1
@@ -1111,7 +1111,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:09 GMT
+                - Tue, 18 Aug 2026 13:53:08 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1121,33 +1121,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 621dff97c8204e1f94dac992a528d6ab
+                - 6cb634e409e94c9a8ab77629900708ec
             X-Api-Time:
-                - 0.082s
+                - 0.092s
             X-Api-Total-Time:
-                - 0.140s
+                - 0.141s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 160.319333ms
+        duration: 150.850125ms
     - id: 17
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 854
+        content_length: 876
         host: awx.local
         body: |
-            {"allow_simultaneous":true,"ask_credential_on_launch":false,"ask_diff_mode_on_launch":false,"ask_execution_environment_on_launch":false,"ask_forks_on_launch":false,"ask_instance_groups_on_launch":false,"ask_inventory_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_job_type_on_launch":false,"ask_labels_on_launch":false,"ask_limit_on_launch":false,"ask_scm_branch_on_launch":false,"ask_skip_tags_on_launch":false,"ask_tags_on_launch":false,"ask_timeout_on_launch":false,"ask_variables_on_launch":false,"ask_verbosity_on_launch":false,"become_enabled":false,"diff_mode":false,"extra_vars":"","force_handlers":false,"inventory":19,"job_slice_count":2,"job_type":"run","name":"Job Demo Job Template","playbook":"hello_world.yml","prevent_instance_group_fallback":false,"project":28,"survey_enabled":false,"use_fact_cache":false,"verbosity":"1"}
+            {"allow_simultaneous":true,"ask_credential_on_launch":false,"ask_diff_mode_on_launch":false,"ask_execution_environment_on_launch":false,"ask_forks_on_launch":false,"ask_instance_groups_on_launch":false,"ask_inventory_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_job_type_on_launch":false,"ask_labels_on_launch":false,"ask_limit_on_launch":false,"ask_scm_branch_on_launch":false,"ask_skip_tags_on_launch":false,"ask_tags_on_launch":false,"ask_timeout_on_launch":false,"ask_variables_on_launch":false,"ask_verbosity_on_launch":false,"become_enabled":false,"diff_mode":false,"extra_vars":"","force_handlers":false,"forks":0,"inventory":18,"job_slice_count":2,"job_type":"run","name":"Job Demo Job Template","playbook":"hello_world.yml","prevent_instance_group_fallback":false,"project":65,"survey_enabled":false,"timeout":0,"use_fact_cache":false,"verbosity":"1"}
         headers:
             Authorization:
                 - REDACTED
@@ -1155,14 +1155,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3848
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:09.470174Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3845
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:09.282159Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1175,11 +1175,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3848"
+                - "3845"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:09 GMT
+                - Tue, 18 Aug 2026 13:53:09 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1189,24 +1189,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ff63f695ab65402baf28d2c2f356fb39
+                - 265350f1759849a69cddebebbe22328a
             X-Api-Time:
-                - 0.185s
+                - 0.206s
             X-Api-Total-Time:
-                - 0.244s
+                - 0.262s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 296.203625ms
+        duration: 277.13975ms
     - id: 18
       request:
         proto: HTTP/1.1
@@ -1223,7 +1223,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: POST
       response:
         proto: HTTP/1.1
@@ -1245,7 +1245,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:10 GMT
+                - Tue, 18 Aug 2026 13:53:09 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1255,24 +1255,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 107f574f18244c00ac17b0a0ffd365a5
+                - 4f808766aecd4e37a3b20fb967c916a8
             X-Api-Time:
-                - 0.123s
+                - 0.113s
             X-Api-Total-Time:
-                - 0.190s
+                - 0.181s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 199.68875ms
+        duration: 192.242417ms
     - id: 19
       request:
         proto: HTTP/1.1
@@ -1287,14 +1287,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/43/
+        url: http://awx.local/api/v2/organizations/30/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3689
-        body: '{"id":43,"type":"organization","url":"/api/v2/organizations/43/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/43/execution_environments/","projects":"/api/v2/organizations/43/projects/","inventories":"/api/v2/organizations/43/inventories/","job_templates":"/api/v2/organizations/43/job_templates/","workflow_job_templates":"/api/v2/organizations/43/workflow_job_templates/","users":"/api/v2/organizations/43/users/","admins":"/api/v2/organizations/43/admins/","teams":"/api/v2/organizations/43/teams/","credentials":"/api/v2/organizations/43/credentials/","applications":"/api/v2/organizations/43/applications/","activity_stream":"/api/v2/organizations/43/activity_stream/","notification_templates":"/api/v2/organizations/43/notification_templates/","notification_templates_started":"/api/v2/organizations/43/notification_templates_started/","notification_templates_success":"/api/v2/organizations/43/notification_templates_success/","notification_templates_error":"/api/v2/organizations/43/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/43/notification_templates_approvals/","object_roles":"/api/v2/organizations/43/object_roles/","access_list":"/api/v2/organizations/43/access_list/","instance_groups":"/api/v2/organizations/43/instance_groups/","galaxy_credentials":"/api/v2/organizations/43/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"f3f88745-ad60-40a0-8df6-401cb38be62a","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1003,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1004},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1005},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1006},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1007},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1008},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1009},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1010},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1011},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1012},"member_role":{"description":"User is a member of the organization","name":"Member","id":1013,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1014},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1015}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-04-27T07:33:52.186234Z","modified":"2026-04-27T07:33:52.186300Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3676
+        body: '{"id":30,"type":"organization","url":"/api/v2/organizations/30/","related":{"named_url":"/api/v2/organizations/Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/30/execution_environments/","projects":"/api/v2/organizations/30/projects/","inventories":"/api/v2/organizations/30/inventories/","job_templates":"/api/v2/organizations/30/job_templates/","workflow_job_templates":"/api/v2/organizations/30/workflow_job_templates/","users":"/api/v2/organizations/30/users/","admins":"/api/v2/organizations/30/admins/","teams":"/api/v2/organizations/30/teams/","credentials":"/api/v2/organizations/30/credentials/","applications":"/api/v2/organizations/30/applications/","activity_stream":"/api/v2/organizations/30/activity_stream/","notification_templates":"/api/v2/organizations/30/notification_templates/","notification_templates_started":"/api/v2/organizations/30/notification_templates_started/","notification_templates_success":"/api/v2/organizations/30/notification_templates_success/","notification_templates_error":"/api/v2/organizations/30/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/30/notification_templates_approvals/","object_roles":"/api/v2/organizations/30/object_roles/","access_list":"/api/v2/organizations/30/access_list/","instance_groups":"/api/v2/organizations/30/instance_groups/","galaxy_credentials":"/api/v2/organizations/30/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"02b730e3-2f36-485f-b18c-17067853bfa2","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":717,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":718},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":719},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":720},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":721},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":722},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":723},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":724},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":725},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":726},"member_role":{"description":"User is a member of the organization","name":"Member","id":727,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":728},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":729}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":1,"job_templates":1,"hosts":0}},"created":"2026-08-18T13:52:57.744642Z","modified":"2026-08-18T13:52:57.744707Z","name":"Job Template Organization","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1307,11 +1307,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3689"
+                - "3676"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:10 GMT
+                - Tue, 18 Aug 2026 13:53:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1321,24 +1321,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a2a41b7340e947a1b08dd98cdd9a05f2
+                - 994fde6e561e4351b65bf924fb546011
             X-Api-Time:
-                - 0.139s
+                - 0.100s
             X-Api-Total-Time:
-                - 0.194s
+                - 0.147s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 212.843084ms
+        duration: 164.660625ms
     - id: 20
       request:
         proto: HTTP/1.1
@@ -1353,14 +1353,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/projects/65/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2999
-        body: '{"id":28,"type":"project","url":"/api/v2/projects/28/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/11/","teams":"/api/v2/projects/28/teams/","playbooks":"/api/v2/projects/28/playbooks/","inventory_files":"/api/v2/projects/28/inventories/","update":"/api/v2/projects/28/update/","project_updates":"/api/v2/projects/28/project_updates/","scm_inventory_sources":"/api/v2/projects/28/scm_inventory_sources/","schedules":"/api/v2/projects/28/schedules/","activity_stream":"/api/v2/projects/28/activity_stream/","notification_templates_started":"/api/v2/projects/28/notification_templates_started/","notification_templates_success":"/api/v2/projects/28/notification_templates_success/","notification_templates_error":"/api/v2/projects/28/notification_templates_error/","access_list":"/api/v2/projects/28/access_list/","object_roles":"/api/v2/projects/28/object_roles/","copy":"/api/v2/projects/28/copy/","organization":"/api/v2/organizations/43/","last_update":"/api/v2/project_updates/11/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"last_job":{"id":11,"name":"Job Demo Project","description":"","finished":"2026-04-27T07:34:03.691792Z","status":"successful","failed":false},"last_update":{"id":11,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":1021},"use_role":{"description":"Can use the project in a job template","name":"Use","id":1022},"update_role":{"description":"May update the project","name":"Update","id":1023},"read_role":{"description":"May view settings for the project","name":"Read","id":1024}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-04-27T07:33:58.575091Z","modified":"2026-04-27T07:33:58.575113Z","name":"Job Demo Project","description":"","local_path":"_28__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-04-27T07:34:03.691792Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":43,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-04-27T07:34:03.691792Z"}'
+        content_length: 2991
+        body: '{"id":65,"type":"project","url":"/api/v2/projects/65/","related":{"named_url":"/api/v2/projects/Job Demo Project++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","last_job":"/api/v2/project_updates/9/","teams":"/api/v2/projects/65/teams/","playbooks":"/api/v2/projects/65/playbooks/","inventory_files":"/api/v2/projects/65/inventories/","update":"/api/v2/projects/65/update/","project_updates":"/api/v2/projects/65/project_updates/","scm_inventory_sources":"/api/v2/projects/65/scm_inventory_sources/","schedules":"/api/v2/projects/65/schedules/","activity_stream":"/api/v2/projects/65/activity_stream/","notification_templates_started":"/api/v2/projects/65/notification_templates_started/","notification_templates_success":"/api/v2/projects/65/notification_templates_success/","notification_templates_error":"/api/v2/projects/65/notification_templates_error/","access_list":"/api/v2/projects/65/access_list/","object_roles":"/api/v2/projects/65/object_roles/","copy":"/api/v2/projects/65/copy/","organization":"/api/v2/organizations/30/","last_update":"/api/v2/project_updates/9/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"last_job":{"id":9,"name":"Job Demo Project","description":"","finished":"2026-08-18T13:53:03.743147Z","status":"successful","failed":false},"last_update":{"id":9,"name":"Job Demo Project","description":"","status":"successful","failed":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the project","name":"Admin","id":735},"use_role":{"description":"Can use the project in a job template","name":"Use","id":736},"update_role":{"description":"May update the project","name":"Update","id":737},"read_role":{"description":"May view settings for the project","name":"Read","id":738}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:52:58.606134Z","modified":"2026-08-18T13:52:58.606189Z","name":"Job Demo Project","description":"","local_path":"_65__job_demo_project","scm_type":"git","scm_url":"https://github.com/ansible/ansible-tower-samples","scm_branch":"","scm_refspec":"","scm_clean":false,"scm_track_submodules":false,"scm_delete_on_update":false,"credential":null,"timeout":0,"scm_revision":"347e44fea036c94d5f60e544de006453ee5c71ad","last_job_run":"2026-08-18T13:53:03.743147Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":30,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"allow_override":false,"custom_virtualenv":null,"default_environment":null,"signature_validation_credential":null,"last_update_failed":false,"last_updated":"2026-08-18T13:53:03.743147Z"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1373,11 +1373,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2999"
+                - "2991"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:11 GMT
+                - Tue, 18 Aug 2026 13:53:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1387,24 +1387,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 8110e5b6ddd94ce792f91b5d802dd116
+                - 716110592c324ea0a510d418bf4f48e6
             X-Api-Time:
-                - 0.089s
+                - 0.065s
             X-Api-Total-Time:
-                - 0.144s
+                - 0.126s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 158.600208ms
+        duration: 138.884916ms
     - id: 21
       request:
         proto: HTTP/1.1
@@ -1419,14 +1419,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/19/
+        url: http://awx.local/api/v2/inventories/18/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2360
-        body: '{"id":19,"type":"inventory","url":"/api/v2/inventories/19/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/19/hosts/","variable_data":"/api/v2/inventories/19/variable_data/","script":"/api/v2/inventories/19/script/","activity_stream":"/api/v2/inventories/19/activity_stream/","job_templates":"/api/v2/inventories/19/job_templates/","ad_hoc_commands":"/api/v2/inventories/19/ad_hoc_commands/","access_list":"/api/v2/inventories/19/access_list/","object_roles":"/api/v2/inventories/19/object_roles/","instance_groups":"/api/v2/inventories/19/instance_groups/","copy":"/api/v2/inventories/19/copy/","labels":"/api/v2/inventories/19/labels/","groups":"/api/v2/inventories/19/groups/","root_groups":"/api/v2/inventories/19/root_groups/","update_inventory_sources":"/api/v2/inventories/19/update_inventory_sources/","inventory_sources":"/api/v2/inventories/19/inventory_sources/","tree":"/api/v2/inventories/19/tree/","organization":"/api/v2/organizations/43/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1016},"update_role":{"description":"May update the inventory","name":"Update","id":1017},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1018},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1019},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1020}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-04-27T07:33:58.148239Z","modified":"2026-04-27T07:33:58.148260Z","name":"Job Demo Inventory","description":"","organization":43,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2355
+        body: '{"id":18,"type":"inventory","url":"/api/v2/inventories/18/","related":{"named_url":"/api/v2/inventories/Job Demo Inventory++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/18/hosts/","variable_data":"/api/v2/inventories/18/variable_data/","script":"/api/v2/inventories/18/script/","activity_stream":"/api/v2/inventories/18/activity_stream/","job_templates":"/api/v2/inventories/18/job_templates/","ad_hoc_commands":"/api/v2/inventories/18/ad_hoc_commands/","access_list":"/api/v2/inventories/18/access_list/","object_roles":"/api/v2/inventories/18/object_roles/","instance_groups":"/api/v2/inventories/18/instance_groups/","copy":"/api/v2/inventories/18/copy/","labels":"/api/v2/inventories/18/labels/","groups":"/api/v2/inventories/18/groups/","root_groups":"/api/v2/inventories/18/root_groups/","update_inventory_sources":"/api/v2/inventories/18/update_inventory_sources/","inventory_sources":"/api/v2/inventories/18/inventory_sources/","tree":"/api/v2/inventories/18/tree/","organization":"/api/v2/organizations/30/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":730},"update_role":{"description":"May update the inventory","name":"Update","id":731},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":732},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":733},"read_role":{"description":"May view settings for the inventory","name":"Read","id":734}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:52:58.563746Z","modified":"2026-08-18T13:52:58.563769Z","name":"Job Demo Inventory","description":"","organization":30,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1439,11 +1439,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2360"
+                - "2355"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:11 GMT
+                - Tue, 18 Aug 2026 13:53:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1453,24 +1453,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 8f79835836474b22bdb78e26dbce4115
+                - 5a897c1ac3d84cc2affd74820189a7e6
             X-Api-Time:
-                - 0.106s
+                - 0.096s
             X-Api-Total-Time:
-                - 0.160s
+                - 0.155s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 176.002083ms
+        duration: 169.401333ms
     - id: 22
       request:
         proto: HTTP/1.1
@@ -1485,14 +1485,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3848
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:09.470174Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3845
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:09.282159Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1505,11 +1505,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3848"
+                - "3845"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:11 GMT
+                - Tue, 18 Aug 2026 13:53:11 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1519,24 +1519,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - b7b4d9867bbb4ad49405843094f4d845
+                - 346f5e60d31142b5956f37db7af3a814
             X-Api-Time:
-                - 0.107s
+                - 0.108s
             X-Api-Total-Time:
-                - 0.157s
+                - 0.152s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 166.929458ms
+        duration: 170.893458ms
     - id: 23
       request:
         proto: HTTP/1.1
@@ -1551,7 +1551,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: GET
       response:
         proto: HTTP/1.1
@@ -1575,7 +1575,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:11 GMT
+                - Tue, 18 Aug 2026 13:53:11 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1585,24 +1585,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - cb18ef99db904cbaafe504dd33d08b8e
+                - 46dc276969114f91bb287200cb4a9ebf
             X-Api-Time:
-                - 0.049s
+                - 0.084s
             X-Api-Total-Time:
-                - 0.091s
+                - 0.119s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 99.665125ms
+        duration: 134.652417ms
     - id: 24
       request:
         proto: HTTP/1.1
@@ -1617,14 +1617,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3848
-        body: '{"id":29,"type":"job_template","url":"/api/v2/job_templates/29/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/29/labels/","inventory":"/api/v2/inventories/19/","project":"/api/v2/projects/28/","organization":"/api/v2/organizations/43/","credentials":"/api/v2/job_templates/29/credentials/","jobs":"/api/v2/job_templates/29/jobs/","schedules":"/api/v2/job_templates/29/schedules/","activity_stream":"/api/v2/job_templates/29/activity_stream/","launch":"/api/v2/job_templates/29/launch/","webhook_key":"/api/v2/job_templates/29/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/29/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/29/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/29/notification_templates_error/","access_list":"/api/v2/job_templates/29/access_list/","survey_spec":"/api/v2/job_templates/29/survey_spec/","object_roles":"/api/v2/job_templates/29/object_roles/","instance_groups":"/api/v2/job_templates/29/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/29/slice_workflow_jobs/","copy":"/api/v2/job_templates/29/copy/"},"summary_fields":{"organization":{"id":43,"name":"Job Template Organization","description":""},"inventory":{"id":19,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":43,"kind":""},"project":{"id":28,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":1025},"execute_role":{"description":"May run the job template","name":"Execute","id":1026},"read_role":{"description":"May view settings for the job template","name":"Read","id":1027}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-04-27T07:34:05.572986Z","modified":"2026-04-27T07:34:09.470174Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":19,"project":28,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":43,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
+        content_length: 3845
+        body: '{"id":66,"type":"job_template","url":"/api/v2/job_templates/66/","related":{"named_url":"/api/v2/job_templates/Job Demo Job Template++Job Template Organization/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/job_templates/66/labels/","inventory":"/api/v2/inventories/18/","project":"/api/v2/projects/65/","organization":"/api/v2/organizations/30/","credentials":"/api/v2/job_templates/66/credentials/","jobs":"/api/v2/job_templates/66/jobs/","schedules":"/api/v2/job_templates/66/schedules/","activity_stream":"/api/v2/job_templates/66/activity_stream/","launch":"/api/v2/job_templates/66/launch/","webhook_key":"/api/v2/job_templates/66/webhook_key/","webhook_receiver":"","notification_templates_started":"/api/v2/job_templates/66/notification_templates_started/","notification_templates_success":"/api/v2/job_templates/66/notification_templates_success/","notification_templates_error":"/api/v2/job_templates/66/notification_templates_error/","access_list":"/api/v2/job_templates/66/access_list/","survey_spec":"/api/v2/job_templates/66/survey_spec/","object_roles":"/api/v2/job_templates/66/object_roles/","instance_groups":"/api/v2/job_templates/66/instance_groups/","slice_workflow_jobs":"/api/v2/job_templates/66/slice_workflow_jobs/","copy":"/api/v2/job_templates/66/copy/"},"summary_fields":{"organization":{"id":30,"name":"Job Template Organization","description":""},"inventory":{"id":18,"name":"Job Demo Inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":30,"kind":""},"project":{"id":65,"name":"Job Demo Project","description":"","status":"successful","scm_type":"git","allow_override":false},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the job template","name":"Admin","id":739},"execute_role":{"description":"May run the job template","name":"Execute","id":740},"read_role":{"description":"May view settings for the job template","name":"Read","id":741}},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true,"copy":true},"labels":{"count":0,"results":[]},"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"},"survey":{"title":"","description":""},"recent_jobs":[],"credentials":[]},"created":"2026-08-18T13:53:05.074530Z","modified":"2026-08-18T13:53:09.282159Z","name":"Job Demo Job Template","description":"","job_type":"run","inventory":18,"project":65,"playbook":"hello_world.yml","scm_branch":"","forks":0,"limit":"","verbosity":1,"extra_vars":"","job_tags":"","force_handlers":false,"skip_tags":"","start_at_task":"","timeout":0,"use_fact_cache":false,"organization":30,"last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"host_config_key":"","ask_scm_branch_on_launch":false,"ask_diff_mode_on_launch":false,"ask_variables_on_launch":false,"ask_limit_on_launch":false,"ask_tags_on_launch":false,"ask_skip_tags_on_launch":false,"ask_job_type_on_launch":false,"ask_verbosity_on_launch":false,"ask_inventory_on_launch":false,"ask_credential_on_launch":false,"ask_execution_environment_on_launch":false,"ask_labels_on_launch":false,"ask_forks_on_launch":false,"ask_job_slice_count_on_launch":false,"ask_timeout_on_launch":false,"ask_instance_groups_on_launch":false,"survey_enabled":false,"become_enabled":false,"diff_mode":false,"allow_simultaneous":true,"custom_virtualenv":null,"job_slice_count":2,"webhook_service":"","webhook_credential":null,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1637,11 +1637,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3848"
+                - "3845"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:34:12 GMT
+                - Tue, 18 Aug 2026 13:53:11 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1651,24 +1651,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ce9d9635d4754cc1b849c7d50ea42e37
+                - 48567e2c45194c1e8240f6160aec27cf
             X-Api-Time:
-                - 0.081s
+                - 0.104s
             X-Api-Total-Time:
-                - 0.135s
+                - 0.159s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 149.492916ms
+        duration: 176.653ms
     - id: 25
       request:
         proto: HTTP/1.1
@@ -1683,7 +1683,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/survey_spec/
+        url: http://awx.local/api/v2/job_templates/66/survey_spec/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1705,7 +1705,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:12 GMT
+                - Tue, 18 Aug 2026 13:53:12 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1715,24 +1715,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0e81b2f1724f4f88a46f6a4e1179f4e4
+                - 9630750558d647b6b8b3affe434d02f8
             X-Api-Time:
-                - 0.126s
+                - 0.135s
             X-Api-Total-Time:
-                - 0.184s
+                - 0.195s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 197.854583ms
+        duration: 205.451958ms
     - id: 26
       request:
         proto: HTTP/1.1
@@ -1747,7 +1747,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/job_templates/29/
+        url: http://awx.local/api/v2/job_templates/66/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1769,7 +1769,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:13 GMT
+                - Tue, 18 Aug 2026 13:53:12 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1779,24 +1779,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 836b849394304e9984118e300e4d64e6
+                - 36f9b298396b4210af59d26229a558f9
             X-Api-Time:
-                - 0.180s
+                - 0.225s
             X-Api-Total-Time:
-                - 0.244s
+                - 0.318s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 326.57125ms
+        duration: 339.256583ms
     - id: 27
       request:
         proto: HTTP/1.1
@@ -1811,7 +1811,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/19/
+        url: http://awx.local/api/v2/inventories/18/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1831,24 +1831,24 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:13 GMT
+                - Tue, 18 Aug 2026 13:53:13 GMT
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 5f2933188555467eb58dc1a58dc81720
+                - ae50f49c136f403bb6b2b791d07e34d4
             X-Api-Time:
-                - 0.176s
+                - 0.108s
             X-Api-Total-Time:
-                - 0.253s
+                - 0.203s
         status: 202 Accepted
         code: 202
-        duration: 375.345083ms
+        duration: 214.549916ms
     - id: 28
       request:
         proto: HTTP/1.1
@@ -1863,7 +1863,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/projects/28/
+        url: http://awx.local/api/v2/projects/65/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1885,7 +1885,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:13 GMT
+                - Tue, 18 Aug 2026 13:53:13 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1895,24 +1895,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a63f0adb5e1f4be8aed98e795f8a2ac7
+                - b10cd94c27354719903aa0ea391442d8
             X-Api-Time:
-                - 0.300s
+                - 0.308s
             X-Api-Total-Time:
-                - 0.389s
+                - 0.427s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 403.604333ms
+        duration: 440.197125ms
     - id: 29
       request:
         proto: HTTP/1.1
@@ -1927,7 +1927,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/43/
+        url: http://awx.local/api/v2/organizations/30/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1949,7 +1949,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:34:14 GMT
+                - Tue, 18 Aug 2026 13:53:14 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1959,21 +1959,21 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 5a39f163006d4ac786f4ce6a9b8ae15a
+                - 00ec9e4d72014015a825c28d80b1f93e
             X-Api-Time:
-                - 0.226s
+                - 0.238s
             X-Api-Total-Time:
-                - 0.335s
+                - 0.342s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 376.582375ms
+        duration: 353.1915ms

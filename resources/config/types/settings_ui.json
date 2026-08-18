@@ -7,5 +7,13 @@
   "no_id": true,
   "api_property_resource_key": "PUT",
   "property_name_leave_as_is": true,
-  "undeletable": true
+  "undeletable": true,
+  "property_overrides": {
+    "CUSTOM_LOGIN_INFO": {
+      "omit_empty": false
+    },
+    "CUSTOM_LOGO": {
+      "omit_empty": false
+    }
+  }
 }

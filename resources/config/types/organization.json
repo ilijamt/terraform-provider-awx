@@ -51,5 +51,10 @@
         }
       ]
     }
-  ]
+  ],
+  "property_overrides": {
+    "max_hosts": {
+      "omit_empty": false
+    }
+  }
 }

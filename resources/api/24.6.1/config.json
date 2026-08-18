@@ -33,12 +33,15 @@
       "enabled": true,
       "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "property_overrides": {
-        "launched_by": {
-          "type": "id"
-        },
         "extra_vars": {
           "type": "json",
           "post_wrap": true
+        },
+        "forks": {
+          "omit_empty": false
+        },
+        "launched_by": {
+          "type": "id"
         }
       },
       "search_fields": [
@@ -130,7 +133,15 @@
             }
           ]
         }
-      ]
+      ],
+      "property_overrides": {
+        "update_cache_timeout": {
+          "omit_empty": false
+        },
+        "verbosity": {
+          "omit_empty": false
+        }
+      }
     },
     {
       "endpoint": "/api/v2/credentials/",
@@ -434,16 +445,10 @@
       "id_key": "id",
       "has_object_roles": true,
       "property_overrides": {
-        "pod_spec_override": {
-          "no_default": true
-        },
         "capacity": {
           "type": "integer"
         },
         "consumed_capacity": {
-          "type": "float"
-        },
-        "percent_capacity_remaining": {
           "type": "float"
         },
         "instances": {
@@ -451,6 +456,24 @@
         },
         "jobs_running": {
           "type": "integer"
+        },
+        "max_concurrent_jobs": {
+          "omit_empty": false
+        },
+        "max_forks": {
+          "omit_empty": false
+        },
+        "percent_capacity_remaining": {
+          "type": "float"
+        },
+        "pod_spec_override": {
+          "no_default": true
+        },
+        "policy_instance_minimum": {
+          "omit_empty": false
+        },
+        "policy_instance_percentage": {
+          "omit_empty": false
         }
       },
       "enabled": true,
@@ -526,6 +549,12 @@
         "source_vars": {
           "post_wrap": true,
           "type": "json"
+        },
+        "timeout": {
+          "omit_empty": false
+        },
+        "update_cache_timeout": {
+          "omit_empty": false
         }
       },
       "remove_fields_data_source": [
@@ -595,12 +624,21 @@
         "status"
       ],
       "property_overrides": {
-        "name": {
-          "required": true
-        },
         "extra_vars": {
           "type": "json",
           "post_wrap": true
+        },
+        "forks": {
+          "omit_empty": false
+        },
+        "job_slice_count": {
+          "omit_empty": false
+        },
+        "name": {
+          "required": true
+        },
+        "timeout": {
+          "omit_empty": false
         }
       },
       "search_fields": [
@@ -759,7 +797,12 @@
             }
           ]
         }
-      ]
+      ],
+      "property_overrides": {
+        "max_hosts": {
+          "omit_empty": false
+        }
+      }
     },
     {
       "endpoint": "/api/v2/projects/",
@@ -806,6 +849,14 @@
         ],
         "default_timeout": "5m",
         "poll_interval": "5s"
+      },
+      "property_overrides": {
+        "scm_update_cache_timeout": {
+          "omit_empty": false
+        },
+        "timeout": {
+          "omit_empty": false
+        }
       }
     },
     {
@@ -1330,13 +1381,34 @@
       "property_name_leave_as_is": true,
       "undeletable": true,
       "property_overrides": {
+        "ANSIBLE_FACT_CACHE_TIMEOUT": {
+          "omit_empty": false
+        },
+        "AWX_RUNNER_KEEPALIVE_SECONDS": {
+          "omit_empty": false
+        },
         "AWX_TASK_ENV": {
           "type": "json"
+        },
+        "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
+          "omit_empty": false
+        },
+        "DEFAULT_JOB_IDLE_TIMEOUT": {
+          "omit_empty": false
+        },
+        "DEFAULT_JOB_TIMEOUT": {
+          "omit_empty": false
+        },
+        "DEFAULT_PROJECT_UPDATE_TIMEOUT": {
+          "omit_empty": false
+        },
+        "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
+          "omit_empty": false
         },
         "GALAXY_TASK_ENV": {
           "type": "json"
         },
-        "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
+        "MAX_FORKS": {
           "omit_empty": false
         },
         "MAX_WEBSOCKET_EVENT_RATE": {
@@ -1358,8 +1430,23 @@
       "property_name_leave_as_is": true,
       "undeletable": true,
       "property_overrides": {
+        "LOCAL_PASSWORD_MIN_DIGITS": {
+          "omit_empty": false
+        },
+        "LOCAL_PASSWORD_MIN_LENGTH": {
+          "omit_empty": false
+        },
+        "LOCAL_PASSWORD_MIN_SPECIAL": {
+          "omit_empty": false
+        },
+        "LOCAL_PASSWORD_MIN_UPPER": {
+          "omit_empty": false
+        },
         "OAUTH2_PROVIDER": {
           "type": "json"
+        },
+        "SESSIONS_PER_USER": {
+          "omit_empty": false
         },
         "SOCIAL_AUTH_ORGANIZATION_MAP": {
           "type": "json"
@@ -1378,7 +1465,12 @@
       "no_id": true,
       "api_property_resource_key": "PUT",
       "property_name_leave_as_is": true,
-      "undeletable": true
+      "undeletable": true,
+      "property_overrides": {
+        "LOG_AGGREGATOR_TCP_TIMEOUT": {
+          "omit_empty": false
+        }
+      }
     },
     {
       "endpoint": "/api/v2/settings/system/",
@@ -1446,7 +1538,15 @@
       "no_id": true,
       "api_property_resource_key": "PUT",
       "property_name_leave_as_is": true,
-      "undeletable": true
+      "undeletable": true,
+      "property_overrides": {
+        "CUSTOM_LOGIN_INFO": {
+          "omit_empty": false
+        },
+        "CUSTOM_LOGO": {
+          "omit_empty": false
+        }
+      }
     },
     {
       "endpoint": "/api/v2/teams/",
@@ -1696,6 +1796,9 @@
         }
       },
       "property_overrides": {
+        "timeout": {
+          "omit_empty": false
+        },
         "workflow_job_template_node_id": {
           "requires_replace": true
         }

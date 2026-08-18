@@ -65,7 +65,7 @@ type workflowJobTemplateNodeApprovalBodyRequestModel struct {
 	Description               string `json:"description,omitempty"`
 	ExecutionEnvironment      int64  `json:"execution_environment,omitempty"`
 	Name                      string `json:"name"`
-	Timeout                   int64  `json:"timeout,omitempty"`
+	Timeout                   int64  `json:"timeout"`
 	WorkflowJobTemplateNodeId int64  `json:"workflow_job_template_node_id"`
 }
 

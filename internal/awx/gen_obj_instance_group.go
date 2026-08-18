@@ -90,13 +90,13 @@ func (o *instanceGroupTerraformModel) UpdateFromApiData(data map[string]any) (di
 type instanceGroupBodyRequestModel struct {
 	Credential               int64           `json:"credential,omitempty"`
 	IsContainerGroup         bool            `json:"is_container_group"`
-	MaxConcurrentJobs        int64           `json:"max_concurrent_jobs,omitempty"`
-	MaxForks                 int64           `json:"max_forks,omitempty"`
+	MaxConcurrentJobs        int64           `json:"max_concurrent_jobs"`
+	MaxForks                 int64           `json:"max_forks"`
 	Name                     string          `json:"name"`
 	PodSpecOverride          string          `json:"pod_spec_override,omitempty"`
 	PolicyInstanceList       json.RawMessage `json:"policy_instance_list,omitempty"`
-	PolicyInstanceMinimum    int64           `json:"policy_instance_minimum,omitempty"`
-	PolicyInstancePercentage int64           `json:"policy_instance_percentage,omitempty"`
+	PolicyInstanceMinimum    int64           `json:"policy_instance_minimum"`
+	PolicyInstancePercentage int64           `json:"policy_instance_percentage"`
 }
 
 type instanceGroupResource = framework.GenericResource[instanceGroupTerraformModel, instanceGroupBodyRequestModel, *instanceGroupTerraformModel]

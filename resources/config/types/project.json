@@ -43,5 +43,13 @@
     ],
     "default_timeout": "5m",
     "poll_interval": "5s"
+  },
+  "property_overrides": {
+    "scm_update_cache_timeout": {
+      "omit_empty": false
+    },
+    "timeout": {
+      "omit_empty": false
+    }
   }
 }

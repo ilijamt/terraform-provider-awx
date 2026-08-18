@@ -124,25 +124,25 @@ func (o *settingsJobsTerraformModel) UpdateFromApiData(data map[string]any) (dia
 type settingsJobsBodyRequestModel struct {
 	AD_HOC_COMMANDS                  []string        `json:"AD_HOC_COMMANDS,omitempty"`
 	ALLOW_JINJA_IN_EXTRA_VARS        string          `json:"ALLOW_JINJA_IN_EXTRA_VARS,omitempty"`
-	ANSIBLE_FACT_CACHE_TIMEOUT       int64           `json:"ANSIBLE_FACT_CACHE_TIMEOUT,omitempty"`
+	ANSIBLE_FACT_CACHE_TIMEOUT       int64           `json:"ANSIBLE_FACT_CACHE_TIMEOUT"`
 	AWX_ANSIBLE_CALLBACK_PLUGINS     []string        `json:"AWX_ANSIBLE_CALLBACK_PLUGINS,omitempty"`
 	AWX_COLLECTIONS_ENABLED          bool            `json:"AWX_COLLECTIONS_ENABLED"`
 	AWX_ISOLATION_BASE_PATH          string          `json:"AWX_ISOLATION_BASE_PATH,omitempty"`
 	AWX_ISOLATION_SHOW_PATHS         []string        `json:"AWX_ISOLATION_SHOW_PATHS,omitempty"`
 	AWX_MOUNT_ISOLATED_PATHS_ON_K8S  bool            `json:"AWX_MOUNT_ISOLATED_PATHS_ON_K8S"`
 	AWX_ROLES_ENABLED                bool            `json:"AWX_ROLES_ENABLED"`
-	AWX_RUNNER_KEEPALIVE_SECONDS     int64           `json:"AWX_RUNNER_KEEPALIVE_SECONDS,omitempty"`
+	AWX_RUNNER_KEEPALIVE_SECONDS     int64           `json:"AWX_RUNNER_KEEPALIVE_SECONDS"`
 	AWX_SHOW_PLAYBOOK_LINKS          bool            `json:"AWX_SHOW_PLAYBOOK_LINKS"`
 	AWX_TASK_ENV                     json.RawMessage `json:"AWX_TASK_ENV,omitempty"`
 	DEFAULT_CONTAINER_RUN_OPTIONS    []string        `json:"DEFAULT_CONTAINER_RUN_OPTIONS,omitempty"`
-	DEFAULT_INVENTORY_UPDATE_TIMEOUT int64           `json:"DEFAULT_INVENTORY_UPDATE_TIMEOUT,omitempty"`
-	DEFAULT_JOB_IDLE_TIMEOUT         int64           `json:"DEFAULT_JOB_IDLE_TIMEOUT,omitempty"`
-	DEFAULT_JOB_TIMEOUT              int64           `json:"DEFAULT_JOB_TIMEOUT,omitempty"`
-	DEFAULT_PROJECT_UPDATE_TIMEOUT   int64           `json:"DEFAULT_PROJECT_UPDATE_TIMEOUT,omitempty"`
+	DEFAULT_INVENTORY_UPDATE_TIMEOUT int64           `json:"DEFAULT_INVENTORY_UPDATE_TIMEOUT"`
+	DEFAULT_JOB_IDLE_TIMEOUT         int64           `json:"DEFAULT_JOB_IDLE_TIMEOUT"`
+	DEFAULT_JOB_TIMEOUT              int64           `json:"DEFAULT_JOB_TIMEOUT"`
+	DEFAULT_PROJECT_UPDATE_TIMEOUT   int64           `json:"DEFAULT_PROJECT_UPDATE_TIMEOUT"`
 	EVENT_STDOUT_MAX_BYTES_DISPLAY   int64           `json:"EVENT_STDOUT_MAX_BYTES_DISPLAY"`
 	GALAXY_IGNORE_CERTS              bool            `json:"GALAXY_IGNORE_CERTS"`
 	GALAXY_TASK_ENV                  json.RawMessage `json:"GALAXY_TASK_ENV,omitempty"`
-	MAX_FORKS                        int64           `json:"MAX_FORKS,omitempty"`
+	MAX_FORKS                        int64           `json:"MAX_FORKS"`
 	MAX_WEBSOCKET_EVENT_RATE         int64           `json:"MAX_WEBSOCKET_EVENT_RATE"`
 	PROJECT_UPDATE_VVV               bool            `json:"PROJECT_UPDATE_VVV"`
 	SCHEDULE_MAX_JOBS                int64           `json:"SCHEDULE_MAX_JOBS,omitempty"`

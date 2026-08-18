@@ -100,9 +100,9 @@ type constructedInventoriesBodyRequestModel struct {
 	Organization                 int64           `json:"organization"`
 	PreventInstanceGroupFallback bool            `json:"prevent_instance_group_fallback"`
 	SourceVars                   string          `json:"source_vars,omitempty"`
-	UpdateCacheTimeout           int64           `json:"update_cache_timeout,omitempty"`
+	UpdateCacheTimeout           int64           `json:"update_cache_timeout"`
 	Variables                    json.RawMessage `json:"variables,omitempty"`
-	Verbosity                    int64           `json:"verbosity,omitempty"`
+	Verbosity                    int64           `json:"verbosity"`
 }
 
 type constructedInventoriesResource = framework.GenericResource[constructedInventoriesTerraformModel, constructedInventoriesBodyRequestModel, *constructedInventoriesTerraformModel]

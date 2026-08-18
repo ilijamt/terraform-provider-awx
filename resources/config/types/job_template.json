@@ -34,12 +34,21 @@
     "status"
   ],
   "property_overrides": {
-    "name": {
-      "required": true
-    },
     "extra_vars": {
       "type": "json",
       "post_wrap": true
+    },
+    "forks": {
+      "omit_empty": false
+    },
+    "job_slice_count": {
+      "omit_empty": false
+    },
+    "name": {
+      "required": true
+    },
+    "timeout": {
+      "omit_empty": false
     }
   },
   "search_fields": [

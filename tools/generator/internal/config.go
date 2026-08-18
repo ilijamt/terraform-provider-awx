@@ -20,9 +20,13 @@ type PropertyOverride struct {
 	// `,omitempty` JSON tag. Default is the legacy behavior (omit on zero
 	// for non-required, non-bool fields). Set to false on int64/float64
 	// fields where 0 is a meaningful value (e.g. AWX "0 = no limit"
-	// settings) — otherwise the zero gets stripped from the PATCH body and
-	// the server keeps its existing default, causing "Provider produced
-	// inconsistent result after apply".
+	// settings), otherwise the zero gets stripped from the body and the
+	// server keeps whatever it held, causing "Provider produced inconsistent
+	// result after apply".
+	//
+	// Launch prompts are the exception: forks, job_slice_count and timeout on
+	// schedule and workflow_job_template_node have to drop out of the body
+	// when unset, for the same reason diff_mode is Nullable there.
 	OmitEmpty *bool `json:"omit_empty,omitempty" yaml:"omit_empty,omitempty"`
 	// Nullable makes the body-request field a pointer so an unset attribute is
 	// dropped rather than sent as its zero value. Set on bool launch prompts

@@ -24,6 +24,9 @@
     }
   },
   "property_overrides": {
+    "timeout": {
+      "omit_empty": false
+    },
     "workflow_job_template_node_id": {
       "requires_replace": true
     }

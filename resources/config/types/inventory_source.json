@@ -9,6 +9,12 @@
     "source_vars": {
       "post_wrap": true,
       "type": "json"
+    },
+    "timeout": {
+      "omit_empty": false
+    },
+    "update_cache_timeout": {
+      "omit_empty": false
     }
   },
   "remove_fields_data_source": [

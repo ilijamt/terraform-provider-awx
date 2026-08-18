@@ -42,7 +42,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:16 GMT
+                - Tue, 18 Aug 2026 13:53:57 GMT
             Expires:
                 - "0"
             Pragma:
@@ -58,19 +58,89 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 06f29c34e9124d27a53cfed9e7a18ada
+                - 5274c4226499463daa4027946606da90
             X-Api-Time:
-                - 0.061s
+                - 0.066s
             X-Api-Total-Time:
-                - 0.136s
+                - 0.146s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 5.1679s
+        duration: 158.23225ms
     - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 42
+        host: awx.local
+        body: |
+            {"max_hosts":0,"name":"Role assignments"}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3648
+        body: '{"id":33,"type":"organization","url":"/api/v2/organizations/33/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/33/execution_environments/","projects":"/api/v2/organizations/33/projects/","inventories":"/api/v2/organizations/33/inventories/","job_templates":"/api/v2/organizations/33/job_templates/","workflow_job_templates":"/api/v2/organizations/33/workflow_job_templates/","users":"/api/v2/organizations/33/users/","admins":"/api/v2/organizations/33/admins/","teams":"/api/v2/organizations/33/teams/","credentials":"/api/v2/organizations/33/credentials/","applications":"/api/v2/organizations/33/applications/","activity_stream":"/api/v2/organizations/33/activity_stream/","notification_templates":"/api/v2/organizations/33/notification_templates/","notification_templates_started":"/api/v2/organizations/33/notification_templates_started/","notification_templates_success":"/api/v2/organizations/33/notification_templates_success/","notification_templates_error":"/api/v2/organizations/33/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/33/notification_templates_approvals/","object_roles":"/api/v2/organizations/33/object_roles/","access_list":"/api/v2/organizations/33/access_list/","instance_groups":"/api/v2/organizations/33/instance_groups/","galaxy_credentials":"/api/v2/organizations/33/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d015e81e-8bc5-443b-9224-528814dcf389","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":799,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":800},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":801},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":802},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":803},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":804},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":805},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":806},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":807},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":808},"member_role":{"description":"User is a member of the organization","name":"Member","id":809,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":810},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":811}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T13:53:57.664117Z","modified":"2026-08-18T13:53:57.664183Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3648"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:53:57 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/organizations/33/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - fe801716fb454b77af868d3202c272cc
+            X-Api-Time:
+                - 0.326s
+            X-Api-Total-Time:
+                - 0.407s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 518.582ms
+    - id: 2
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -93,7 +163,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1067
-        body: '{"id":11,"type":"user","url":"/api/v2/users/11/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/11/teams/","organizations":"/api/v2/users/11/organizations/","admin_of_organizations":"/api/v2/users/11/admin_of_organizations/","projects":"/api/v2/users/11/projects/","credentials":"/api/v2/users/11/credentials/","roles":"/api/v2/users/11/roles/","activity_stream":"/api/v2/users/11/activity_stream/","access_list":"/api/v2/users/11/access_list/","tokens":"/api/v2/users/11/tokens/","authorized_tokens":"/api/v2/users/11/authorized_tokens/","personal_tokens":"/api/v2/users/11/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"00da0245-92fd-4cf5-94e8-968071e5ebb8","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:22.204532Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
+        body: '{"id":15,"type":"user","url":"/api/v2/users/15/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/15/teams/","organizations":"/api/v2/users/15/organizations/","admin_of_organizations":"/api/v2/users/15/admin_of_organizations/","projects":"/api/v2/users/15/projects/","credentials":"/api/v2/users/15/credentials/","roles":"/api/v2/users/15/roles/","activity_stream":"/api/v2/users/15/activity_stream/","access_list":"/api/v2/users/15/access_list/","tokens":"/api/v2/users/15/tokens/","authorized_tokens":"/api/v2/users/15/authorized_tokens/","personal_tokens":"/api/v2/users/15/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"54f6ac53-65b3-4b8e-ba88-cb9a024c569e","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:57.595753Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -110,11 +180,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:22 GMT
+                - Tue, 18 Aug 2026 13:53:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/users/11/
+                - /api/v2/users/15/
             Pragma:
                 - no-cache
             Session-Timeout:
@@ -132,159 +202,19 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 898c78436b68487682c30896db86b848
+                - 49d0306516dc4d60a48bcc5a5085016d
             X-Api-Time:
-                - 0.411s
+                - 0.410s
             X-Api-Total-Time:
-                - 0.502s
+                - 0.492s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 514.9865ms
-    - id: 2
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 28
-        host: awx.local
-        body: |
-            {"name":"Role assignments"}
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/
-        method: POST
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 3648
-        body: '{"id":24,"type":"organization","url":"/api/v2/organizations/24/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/24/execution_environments/","projects":"/api/v2/organizations/24/projects/","inventories":"/api/v2/organizations/24/inventories/","job_templates":"/api/v2/organizations/24/job_templates/","workflow_job_templates":"/api/v2/organizations/24/workflow_job_templates/","users":"/api/v2/organizations/24/users/","admins":"/api/v2/organizations/24/admins/","teams":"/api/v2/organizations/24/teams/","credentials":"/api/v2/organizations/24/credentials/","applications":"/api/v2/organizations/24/applications/","activity_stream":"/api/v2/organizations/24/activity_stream/","notification_templates":"/api/v2/organizations/24/notification_templates/","notification_templates_started":"/api/v2/organizations/24/notification_templates_started/","notification_templates_success":"/api/v2/organizations/24/notification_templates_success/","notification_templates_error":"/api/v2/organizations/24/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/24/notification_templates_approvals/","object_roles":"/api/v2/organizations/24/object_roles/","access_list":"/api/v2/organizations/24/access_list/","instance_groups":"/api/v2/organizations/24/instance_groups/","galaxy_credentials":"/api/v2/organizations/24/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"e0a5d497-7669-4d5a-a775-e16ed6b23ca5","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":587,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":588},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":589},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":590},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":591},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":592},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":593},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":594},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":595},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":596},"member_role":{"description":"User is a member of the organization","name":"Member","id":597,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":598},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":599}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T13:32:22.694128Z","modified":"2026-08-18T13:32:22.694148Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, POST, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "3648"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:22 GMT
-            Expires:
-                - "0"
-            Location:
-                - /api/v2/organizations/24/
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 802a2bca76594e51b5b7452141117c38
-            X-Api-Time:
-                - 0.259s
-            X-Api-Total-Time:
-                - 0.327s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 201 Created
-        code: 201
-        duration: 857.289667ms
+        duration: 518.533875ms
     - id: 3
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 42
-        host: awx.local
-        body: |
-            {"name":"Role readers","organization":24}
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/teams/
-        method: POST
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 1312
-        body: '{"id":8,"type":"team","url":"/api/v2/teams/8/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/8/projects/","users":"/api/v2/teams/8/users/","credentials":"/api/v2/teams/8/credentials/","roles":"/api/v2/teams/8/roles/","object_roles":"/api/v2/teams/8/object_roles/","activity_stream":"/api/v2/teams/8/activity_stream/","access_list":"/api/v2/teams/8/access_list/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"resource":{"ansible_id":"b02173e6-381d-4864-a664-aecb6b4c5964","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":600},"member_role":{"description":"User is a member of the team","name":"Member","id":601},"read_role":{"description":"May view settings for the team","name":"Read","id":602}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:23.910116Z","modified":"2026-08-18T13:32:23.910169Z","name":"Role readers","description":"","organization":24}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, POST, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "1312"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:24 GMT
-            Expires:
-                - "0"
-            Location:
-                - /api/v2/teams/8/
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 428e72f4f4944f1faedc7bbbc39ee758
-            X-Api-Time:
-                - 0.218s
-            X-Api-Total-Time:
-                - 0.282s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 201 Created
-        code: 201
-        duration: 291.844083ms
-    - id: 4
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -292,7 +222,7 @@ interactions:
         content_length: 112
         host: awx.local
         body: |
-            {"name":"Role assignment inventory","organization":24,"prevent_instance_group_fallback":false,"variables":"{}"}
+            {"name":"Role assignment inventory","organization":33,"prevent_instance_group_fallback":false,"variables":"{}"}
         headers:
             Authorization:
                 - REDACTED
@@ -307,7 +237,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 2351
-        body: '{"id":15,"type":"inventory","url":"/api/v2/inventories/15/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/15/hosts/","variable_data":"/api/v2/inventories/15/variable_data/","script":"/api/v2/inventories/15/script/","activity_stream":"/api/v2/inventories/15/activity_stream/","job_templates":"/api/v2/inventories/15/job_templates/","ad_hoc_commands":"/api/v2/inventories/15/ad_hoc_commands/","access_list":"/api/v2/inventories/15/access_list/","object_roles":"/api/v2/inventories/15/object_roles/","instance_groups":"/api/v2/inventories/15/instance_groups/","copy":"/api/v2/inventories/15/copy/","labels":"/api/v2/inventories/15/labels/","groups":"/api/v2/inventories/15/groups/","root_groups":"/api/v2/inventories/15/root_groups/","update_inventory_sources":"/api/v2/inventories/15/update_inventory_sources/","inventory_sources":"/api/v2/inventories/15/inventory_sources/","tree":"/api/v2/inventories/15/tree/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":603},"update_role":{"description":"May update the inventory","name":"Update","id":604},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":605},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":606},"read_role":{"description":"May view settings for the inventory","name":"Read","id":607}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:32:24.199908Z","modified":"2026-08-18T13:32:24.199928Z","name":"Role assignment inventory","description":"","organization":24,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        body: '{"id":20,"type":"inventory","url":"/api/v2/inventories/20/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/20/hosts/","variable_data":"/api/v2/inventories/20/variable_data/","script":"/api/v2/inventories/20/script/","activity_stream":"/api/v2/inventories/20/activity_stream/","job_templates":"/api/v2/inventories/20/job_templates/","ad_hoc_commands":"/api/v2/inventories/20/ad_hoc_commands/","access_list":"/api/v2/inventories/20/access_list/","object_roles":"/api/v2/inventories/20/object_roles/","instance_groups":"/api/v2/inventories/20/instance_groups/","copy":"/api/v2/inventories/20/copy/","labels":"/api/v2/inventories/20/labels/","groups":"/api/v2/inventories/20/groups/","root_groups":"/api/v2/inventories/20/root_groups/","update_inventory_sources":"/api/v2/inventories/20/update_inventory_sources/","inventory_sources":"/api/v2/inventories/20/inventory_sources/","tree":"/api/v2/inventories/20/tree/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":812},"update_role":{"description":"May update the inventory","name":"Update","id":813},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":814},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":815},"read_role":{"description":"May view settings for the inventory","name":"Read","id":816}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:53:58.620379Z","modified":"2026-08-18T13:53:58.620396Z","name":"Role assignment inventory","description":"","organization":33,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -324,11 +254,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:24 GMT
+                - Tue, 18 Aug 2026 13:53:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/inventories/15/
+                - /api/v2/inventories/20/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -342,27 +272,27 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - dfc4b4aecd204ba2a87f1bfca7673a3e
+                - 7de4958ceea545cf977641e96c912dc8
             X-Api-Time:
-                - 0.172s
+                - 0.134s
             X-Api-Total-Time:
-                - 0.229s
+                - 0.206s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 539.465625ms
-    - id: 5
+        duration: 216.704625ms
+    - id: 4
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 48
+        content_length: 42
         host: awx.local
         body: |
-            {"object_id":"15","role_definition":8,"team":8}
+            {"name":"Role readers","organization":33}
         headers:
             Authorization:
                 - REDACTED
@@ -370,14 +300,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/
+        url: http://awx.local/api/v2/teams/
         method: POST
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 936
-        body: '{"id":24,"url":"/api/v2/role_team_assignments/24/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/8/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":8,"name":"Role readers","description":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.068882Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"team":8}'
+        content_length: 1321
+        body: '{"id":12,"type":"team","url":"/api/v2/teams/12/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/12/projects/","users":"/api/v2/teams/12/users/","credentials":"/api/v2/teams/12/credentials/","roles":"/api/v2/teams/12/roles/","object_roles":"/api/v2/teams/12/object_roles/","activity_stream":"/api/v2/teams/12/activity_stream/","access_list":"/api/v2/teams/12/access_list/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"resource":{"ansible_id":"ea83c3b6-ec4c-4759-a834-fa0cee2cab34","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":817},"member_role":{"description":"User is a member of the team","name":"Member","id":818},"read_role":{"description":"May view settings for the team","name":"Read","id":819}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:58.634130Z","modified":"2026-08-18T13:53:58.634187Z","name":"Role readers","description":"","organization":33}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -390,15 +320,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "936"
+                - "1321"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:25 GMT
+                - Tue, 18 Aug 2026 13:53:58 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/role_team_assignments/24/
+                - /api/v2/teams/12/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -412,19 +342,19 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - f28de4386ae8436ca6e4eb396e38cb2b
+                - 6d410be39bde4e8b9d0d27308f9bba45
             X-Api-Time:
-                - 0.123s
+                - 0.190s
             X-Api-Total-Time:
-                - 0.199s
+                - 0.241s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 207.969333ms
-    - id: 6
+        duration: 253.745125ms
+    - id: 5
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -432,7 +362,7 @@ interactions:
         content_length: 49
         host: awx.local
         body: |
-            {"object_id":"15","role_definition":8,"user":11}
+            {"object_id":"20","role_definition":8,"user":15}
         headers:
             Authorization:
                 - REDACTED
@@ -447,7 +377,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 979
-        body: '{"id":11,"url":"/api/v2/role_user_assignments/11/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.237079Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"user":11,"user_ansible_id":null}'
+        body: '{"id":17,"url":"/api/v2/role_user_assignments/17/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.064606Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -464,11 +394,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:25 GMT
+                - Tue, 18 Aug 2026 13:53:59 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/role_user_assignments/11/
+                - /api/v2/role_user_assignments/17/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -482,18 +412,88 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 59b3d34162ad47b283d3bb803d360ff1
+                - c3114cd8d63c4808ae72ab4a89dfa535
             X-Api-Time:
-                - 0.097s
+                - 0.078s
             X-Api-Total-Time:
-                - 0.140s
+                - 0.130s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 358.115625ms
+        duration: 141.631334ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 49
+        host: awx.local
+        body: |
+            {"object_id":"20","role_definition":8,"team":12}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/role_team_assignments/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 939
+        body: '{"id":35,"url":"/api/v2/role_team_assignments/35/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/12/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":12,"name":"Role readers","description":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.217349Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"team":12}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "939"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:53:59 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/role_team_assignments/35/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 81b0f5d79f0b47909903a9d7367ddc4d
+            X-Api-Time:
+                - 0.154s
+            X-Api-Total-Time:
+                - 0.215s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 233.064416ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -535,7 +535,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:25 GMT
+                - Tue, 18 Aug 2026 13:53:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -551,19 +551,85 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0268db4969cd434383acc81e8251231c
+                - b6cac1554227408d9b311e6e42b93ecf
             X-Api-Time:
-                - 0.035s
+                - 0.079s
             X-Api-Total-Time:
-                - 0.086s
+                - 0.148s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 96.297208ms
+        duration: 158.226792ms
     - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/33/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3658
+        body: '{"id":33,"type":"organization","url":"/api/v2/organizations/33/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/33/execution_environments/","projects":"/api/v2/organizations/33/projects/","inventories":"/api/v2/organizations/33/inventories/","job_templates":"/api/v2/organizations/33/job_templates/","workflow_job_templates":"/api/v2/organizations/33/workflow_job_templates/","users":"/api/v2/organizations/33/users/","admins":"/api/v2/organizations/33/admins/","teams":"/api/v2/organizations/33/teams/","credentials":"/api/v2/organizations/33/credentials/","applications":"/api/v2/organizations/33/applications/","activity_stream":"/api/v2/organizations/33/activity_stream/","notification_templates":"/api/v2/organizations/33/notification_templates/","notification_templates_started":"/api/v2/organizations/33/notification_templates_started/","notification_templates_success":"/api/v2/organizations/33/notification_templates_success/","notification_templates_error":"/api/v2/organizations/33/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/33/notification_templates_approvals/","object_roles":"/api/v2/organizations/33/object_roles/","access_list":"/api/v2/organizations/33/access_list/","instance_groups":"/api/v2/organizations/33/instance_groups/","galaxy_credentials":"/api/v2/organizations/33/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d015e81e-8bc5-443b-9224-528814dcf389","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":799,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":800},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":801},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":802},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":803},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":804},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":805},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":806},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":807},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":808},"member_role":{"description":"User is a member of the organization","name":"Member","id":809,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":810},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":811}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:53:57.664117Z","modified":"2026-08-18T13:53:57.664183Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3658"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:54:00 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 2f7f0fa879124e6d824ad8590715c4e4
+            X-Api-Time:
+                - 0.066s
+            X-Api-Total-Time:
+                - 0.111s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 122.959667ms
+    - id: 9
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -604,7 +670,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:26 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -620,84 +686,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 58079ed82d2245e79974c0134e0e4e45
+                - 9d0a4ff014a346b5a5753874e7eb2b37
             X-Api-Time:
-                - 0.029s
+                - 0.072s
             X-Api-Total-Time:
-                - 0.074s
+                - 0.138s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 84.412542ms
-    - id: 9
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/24/
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 3658
-        body: '{"id":24,"type":"organization","url":"/api/v2/organizations/24/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/24/execution_environments/","projects":"/api/v2/organizations/24/projects/","inventories":"/api/v2/organizations/24/inventories/","job_templates":"/api/v2/organizations/24/job_templates/","workflow_job_templates":"/api/v2/organizations/24/workflow_job_templates/","users":"/api/v2/organizations/24/users/","admins":"/api/v2/organizations/24/admins/","teams":"/api/v2/organizations/24/teams/","credentials":"/api/v2/organizations/24/credentials/","applications":"/api/v2/organizations/24/applications/","activity_stream":"/api/v2/organizations/24/activity_stream/","notification_templates":"/api/v2/organizations/24/notification_templates/","notification_templates_started":"/api/v2/organizations/24/notification_templates_started/","notification_templates_success":"/api/v2/organizations/24/notification_templates_success/","notification_templates_error":"/api/v2/organizations/24/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/24/notification_templates_approvals/","object_roles":"/api/v2/organizations/24/object_roles/","access_list":"/api/v2/organizations/24/access_list/","instance_groups":"/api/v2/organizations/24/instance_groups/","galaxy_credentials":"/api/v2/organizations/24/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"e0a5d497-7669-4d5a-a775-e16ed6b23ca5","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":587,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":588},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":589},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":590},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":591},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":592},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":593},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":594},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":595},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":596},"member_role":{"description":"User is a member of the organization","name":"Member","id":597,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":598},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":599}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:32:22.694128Z","modified":"2026-08-18T13:32:22.694148Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "3658"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:26 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 33de7bfaaf2946308e531c1304126fef
-            X-Api-Time:
-                - 0.087s
-            X-Api-Total-Time:
-                - 0.139s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 234.946833ms
+        duration: 150.179334ms
     - id: 10
       request:
         proto: HTTP/1.1
@@ -712,14 +712,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/users/11/
+        url: http://awx.local/api/v2/users/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1067
-        body: '{"id":11,"type":"user","url":"/api/v2/users/11/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/11/teams/","organizations":"/api/v2/users/11/organizations/","admin_of_organizations":"/api/v2/users/11/admin_of_organizations/","projects":"/api/v2/users/11/projects/","credentials":"/api/v2/users/11/credentials/","roles":"/api/v2/users/11/roles/","activity_stream":"/api/v2/users/11/activity_stream/","access_list":"/api/v2/users/11/access_list/","tokens":"/api/v2/users/11/tokens/","authorized_tokens":"/api/v2/users/11/authorized_tokens/","personal_tokens":"/api/v2/users/11/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"00da0245-92fd-4cf5-94e8-968071e5ebb8","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:22.204532Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
+        body: '{"id":15,"type":"user","url":"/api/v2/users/15/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/15/teams/","organizations":"/api/v2/users/15/organizations/","admin_of_organizations":"/api/v2/users/15/admin_of_organizations/","projects":"/api/v2/users/15/projects/","credentials":"/api/v2/users/15/credentials/","roles":"/api/v2/users/15/roles/","activity_stream":"/api/v2/users/15/activity_stream/","access_list":"/api/v2/users/15/access_list/","tokens":"/api/v2/users/15/tokens/","authorized_tokens":"/api/v2/users/15/authorized_tokens/","personal_tokens":"/api/v2/users/15/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"54f6ac53-65b3-4b8e-ba88-cb9a024c569e","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:57.595753Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -736,7 +736,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:26 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -752,18 +752,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 921d63a31f564938942c55ea601045ac
+                - 2e94a7e292f94016b02144a258417e0f
             X-Api-Time:
-                - 0.055s
+                - 0.044s
             X-Api-Total-Time:
-                - 0.125s
+                - 0.081s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 370.558292ms
+        duration: 214.24775ms
     - id: 11
       request:
         proto: HTTP/1.1
@@ -778,14 +778,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/teams/8/
+        url: http://awx.local/api/v2/teams/12/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1312
-        body: '{"id":8,"type":"team","url":"/api/v2/teams/8/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/8/projects/","users":"/api/v2/teams/8/users/","credentials":"/api/v2/teams/8/credentials/","roles":"/api/v2/teams/8/roles/","object_roles":"/api/v2/teams/8/object_roles/","activity_stream":"/api/v2/teams/8/activity_stream/","access_list":"/api/v2/teams/8/access_list/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"resource":{"ansible_id":"b02173e6-381d-4864-a664-aecb6b4c5964","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":600},"member_role":{"description":"User is a member of the team","name":"Member","id":601},"read_role":{"description":"May view settings for the team","name":"Read","id":602}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:23.910116Z","modified":"2026-08-18T13:32:23.910169Z","name":"Role readers","description":"","organization":24}'
+        content_length: 1321
+        body: '{"id":12,"type":"team","url":"/api/v2/teams/12/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/12/projects/","users":"/api/v2/teams/12/users/","credentials":"/api/v2/teams/12/credentials/","roles":"/api/v2/teams/12/roles/","object_roles":"/api/v2/teams/12/object_roles/","activity_stream":"/api/v2/teams/12/activity_stream/","access_list":"/api/v2/teams/12/access_list/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"resource":{"ansible_id":"ea83c3b6-ec4c-4759-a834-fa0cee2cab34","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":817},"member_role":{"description":"User is a member of the team","name":"Member","id":818},"read_role":{"description":"May view settings for the team","name":"Read","id":819}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:58.634130Z","modified":"2026-08-18T13:53:58.634187Z","name":"Role readers","description":"","organization":33}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -798,11 +798,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1312"
+                - "1321"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:26 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -818,18 +818,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3ee8081fb1024c6fb0da33d8d880720d
+                - 635f9331ef3b445fb798170eb0cc11a9
             X-Api-Time:
-                - 0.069s
+                - 0.036s
             X-Api-Total-Time:
-                - 0.121s
+                - 0.070s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 134.998542ms
+        duration: 84.815542ms
     - id: 12
       request:
         proto: HTTP/1.1
@@ -844,14 +844,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/15/
+        url: http://awx.local/api/v2/inventories/20/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2351
-        body: '{"id":15,"type":"inventory","url":"/api/v2/inventories/15/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/15/hosts/","variable_data":"/api/v2/inventories/15/variable_data/","script":"/api/v2/inventories/15/script/","activity_stream":"/api/v2/inventories/15/activity_stream/","job_templates":"/api/v2/inventories/15/job_templates/","ad_hoc_commands":"/api/v2/inventories/15/ad_hoc_commands/","access_list":"/api/v2/inventories/15/access_list/","object_roles":"/api/v2/inventories/15/object_roles/","instance_groups":"/api/v2/inventories/15/instance_groups/","copy":"/api/v2/inventories/15/copy/","labels":"/api/v2/inventories/15/labels/","groups":"/api/v2/inventories/15/groups/","root_groups":"/api/v2/inventories/15/root_groups/","update_inventory_sources":"/api/v2/inventories/15/update_inventory_sources/","inventory_sources":"/api/v2/inventories/15/inventory_sources/","tree":"/api/v2/inventories/15/tree/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":603},"update_role":{"description":"May update the inventory","name":"Update","id":604},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":605},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":606},"read_role":{"description":"May view settings for the inventory","name":"Read","id":607}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:32:24.199908Z","modified":"2026-08-18T13:32:24.199928Z","name":"Role assignment inventory","description":"","organization":24,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        body: '{"id":20,"type":"inventory","url":"/api/v2/inventories/20/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/20/hosts/","variable_data":"/api/v2/inventories/20/variable_data/","script":"/api/v2/inventories/20/script/","activity_stream":"/api/v2/inventories/20/activity_stream/","job_templates":"/api/v2/inventories/20/job_templates/","ad_hoc_commands":"/api/v2/inventories/20/ad_hoc_commands/","access_list":"/api/v2/inventories/20/access_list/","object_roles":"/api/v2/inventories/20/object_roles/","instance_groups":"/api/v2/inventories/20/instance_groups/","copy":"/api/v2/inventories/20/copy/","labels":"/api/v2/inventories/20/labels/","groups":"/api/v2/inventories/20/groups/","root_groups":"/api/v2/inventories/20/root_groups/","update_inventory_sources":"/api/v2/inventories/20/update_inventory_sources/","inventory_sources":"/api/v2/inventories/20/inventory_sources/","tree":"/api/v2/inventories/20/tree/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":812},"update_role":{"description":"May update the inventory","name":"Update","id":813},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":814},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":815},"read_role":{"description":"May view settings for the inventory","name":"Read","id":816}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:53:58.620379Z","modified":"2026-08-18T13:53:58.620396Z","name":"Role assignment inventory","description":"","organization":33,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -868,7 +868,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:26 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -884,18 +884,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 6204772050424a6383d7e81f828aca6e
+                - 5035ba496d30410bb7d95e440cdad9af
             X-Api-Time:
-                - 0.060s
+                - 0.056s
             X-Api-Total-Time:
-                - 0.110s
+                - 0.092s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 254.328125ms
+        duration: 105.975542ms
     - id: 13
       request:
         proto: HTTP/1.1
@@ -910,14 +910,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/11/
+        url: http://awx.local/api/v2/role_user_assignments/17/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 979
-        body: '{"id":11,"url":"/api/v2/role_user_assignments/11/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.237079Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"user":11,"user_ansible_id":null}'
+        body: '{"id":17,"url":"/api/v2/role_user_assignments/17/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.064606Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -934,7 +934,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -950,18 +950,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 86de1d428e4545b18d0260901a263573
+                - 0451e343775a4bcbae2137b65529d5d5
             X-Api-Time:
-                - 0.062s
+                - 0.054s
             X-Api-Total-Time:
-                - 0.117s
+                - 0.105s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 128.271375ms
+        duration: 118.623ms
     - id: 14
       request:
         proto: HTTP/1.1
@@ -976,14 +976,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/24/
+        url: http://awx.local/api/v2/role_team_assignments/35/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 936
-        body: '{"id":24,"url":"/api/v2/role_team_assignments/24/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/8/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":8,"name":"Role readers","description":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.068882Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"team":8}'
+        content_length: 939
+        body: '{"id":35,"url":"/api/v2/role_team_assignments/35/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/12/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":12,"name":"Role readers","description":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.217349Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"team":12}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -996,11 +996,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "936"
+                - "939"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1016,85 +1016,19 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 85e616622bed4844b76663cb466a8c56
+                - 1ac005a4b4ee45c5bc50ac8263b2b225
             X-Api-Time:
-                - 0.078s
+                - 0.099s
             X-Api-Total-Time:
-                - 0.130s
+                - 0.139s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 237.179ms
+        duration: 150.301917ms
     - id: 15
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/24/
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 3658
-        body: '{"id":24,"type":"organization","url":"/api/v2/organizations/24/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/24/execution_environments/","projects":"/api/v2/organizations/24/projects/","inventories":"/api/v2/organizations/24/inventories/","job_templates":"/api/v2/organizations/24/job_templates/","workflow_job_templates":"/api/v2/organizations/24/workflow_job_templates/","users":"/api/v2/organizations/24/users/","admins":"/api/v2/organizations/24/admins/","teams":"/api/v2/organizations/24/teams/","credentials":"/api/v2/organizations/24/credentials/","applications":"/api/v2/organizations/24/applications/","activity_stream":"/api/v2/organizations/24/activity_stream/","notification_templates":"/api/v2/organizations/24/notification_templates/","notification_templates_started":"/api/v2/organizations/24/notification_templates_started/","notification_templates_success":"/api/v2/organizations/24/notification_templates_success/","notification_templates_error":"/api/v2/organizations/24/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/24/notification_templates_approvals/","object_roles":"/api/v2/organizations/24/object_roles/","access_list":"/api/v2/organizations/24/access_list/","instance_groups":"/api/v2/organizations/24/instance_groups/","galaxy_credentials":"/api/v2/organizations/24/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"e0a5d497-7669-4d5a-a775-e16ed6b23ca5","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":587,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":588},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":589},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":590},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":591},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":592},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":593},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":594},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":595},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":596},"member_role":{"description":"User is a member of the organization","name":"Member","id":597,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":598},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":599}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:32:22.694128Z","modified":"2026-08-18T13:32:22.694148Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "3658"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 6d9d69d339334dad8002614af2f30def
-            X-Api-Time:
-                - 0.061s
-            X-Api-Total-Time:
-                - 0.108s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 121.101625ms
-    - id: 16
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -1135,7 +1069,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
+                - Tue, 18 Aug 2026 13:54:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1151,18 +1085,84 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 24563258e0b04b64be513135da5e5cf5
+                - 90cd4308f8d5449294237818bb43c7ea
             X-Api-Time:
-                - 0.074s
+                - 0.042s
             X-Api-Total-Time:
-                - 0.136s
+                - 0.086s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 146.74475ms
+        duration: 94.978709ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/organizations/33/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 3658
+        body: '{"id":33,"type":"organization","url":"/api/v2/organizations/33/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/33/execution_environments/","projects":"/api/v2/organizations/33/projects/","inventories":"/api/v2/organizations/33/inventories/","job_templates":"/api/v2/organizations/33/job_templates/","workflow_job_templates":"/api/v2/organizations/33/workflow_job_templates/","users":"/api/v2/organizations/33/users/","admins":"/api/v2/organizations/33/admins/","teams":"/api/v2/organizations/33/teams/","credentials":"/api/v2/organizations/33/credentials/","applications":"/api/v2/organizations/33/applications/","activity_stream":"/api/v2/organizations/33/activity_stream/","notification_templates":"/api/v2/organizations/33/notification_templates/","notification_templates_started":"/api/v2/organizations/33/notification_templates_started/","notification_templates_success":"/api/v2/organizations/33/notification_templates_success/","notification_templates_error":"/api/v2/organizations/33/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/33/notification_templates_approvals/","object_roles":"/api/v2/organizations/33/object_roles/","access_list":"/api/v2/organizations/33/access_list/","instance_groups":"/api/v2/organizations/33/instance_groups/","galaxy_credentials":"/api/v2/organizations/33/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d015e81e-8bc5-443b-9224-528814dcf389","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":799,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":800},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":801},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":802},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":803},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":804},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":805},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":806},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":807},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":808},"member_role":{"description":"User is a member of the organization","name":"Member","id":809,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":810},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":811}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:53:57.664117Z","modified":"2026-08-18T13:53:57.664183Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "3658"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:54:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - ed383ed1917a41d39403d809e87fd398
+            X-Api-Time:
+                - 0.067s
+            X-Api-Total-Time:
+                - 0.109s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 120.532917ms
     - id: 17
       request:
         proto: HTTP/1.1
@@ -1177,14 +1177,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/users/11/
+        url: http://awx.local/api/v2/users/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1067
-        body: '{"id":11,"type":"user","url":"/api/v2/users/11/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/11/teams/","organizations":"/api/v2/users/11/organizations/","admin_of_organizations":"/api/v2/users/11/admin_of_organizations/","projects":"/api/v2/users/11/projects/","credentials":"/api/v2/users/11/credentials/","roles":"/api/v2/users/11/roles/","activity_stream":"/api/v2/users/11/activity_stream/","access_list":"/api/v2/users/11/access_list/","tokens":"/api/v2/users/11/tokens/","authorized_tokens":"/api/v2/users/11/authorized_tokens/","personal_tokens":"/api/v2/users/11/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"00da0245-92fd-4cf5-94e8-968071e5ebb8","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:22.204532Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
+        body: '{"id":15,"type":"user","url":"/api/v2/users/15/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/15/teams/","organizations":"/api/v2/users/15/organizations/","admin_of_organizations":"/api/v2/users/15/admin_of_organizations/","projects":"/api/v2/users/15/projects/","credentials":"/api/v2/users/15/credentials/","roles":"/api/v2/users/15/roles/","activity_stream":"/api/v2/users/15/activity_stream/","access_list":"/api/v2/users/15/access_list/","tokens":"/api/v2/users/15/tokens/","authorized_tokens":"/api/v2/users/15/authorized_tokens/","personal_tokens":"/api/v2/users/15/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"54f6ac53-65b3-4b8e-ba88-cb9a024c569e","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:57.595753Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1201,7 +1201,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
+                - Tue, 18 Aug 2026 13:54:01 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1217,18 +1217,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 11b567b866204163b8c18645bf3ca655
+                - 38132ee0aa964d39b56560d9461fab96
             X-Api-Time:
-                - 0.078s
+                - 0.053s
             X-Api-Total-Time:
-                - 0.130s
+                - 0.098s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 263.630042ms
+        duration: 199.859ms
     - id: 18
       request:
         proto: HTTP/1.1
@@ -1243,14 +1243,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/teams/8/
+        url: http://awx.local/api/v2/teams/12/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1312
-        body: '{"id":8,"type":"team","url":"/api/v2/teams/8/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/8/projects/","users":"/api/v2/teams/8/users/","credentials":"/api/v2/teams/8/credentials/","roles":"/api/v2/teams/8/roles/","object_roles":"/api/v2/teams/8/object_roles/","activity_stream":"/api/v2/teams/8/activity_stream/","access_list":"/api/v2/teams/8/access_list/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"resource":{"ansible_id":"b02173e6-381d-4864-a664-aecb6b4c5964","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":600},"member_role":{"description":"User is a member of the team","name":"Member","id":601},"read_role":{"description":"May view settings for the team","name":"Read","id":602}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:23.910116Z","modified":"2026-08-18T13:32:23.910169Z","name":"Role readers","description":"","organization":24}'
+        content_length: 1321
+        body: '{"id":12,"type":"team","url":"/api/v2/teams/12/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/12/projects/","users":"/api/v2/teams/12/users/","credentials":"/api/v2/teams/12/credentials/","roles":"/api/v2/teams/12/roles/","object_roles":"/api/v2/teams/12/object_roles/","activity_stream":"/api/v2/teams/12/activity_stream/","access_list":"/api/v2/teams/12/access_list/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"resource":{"ansible_id":"ea83c3b6-ec4c-4759-a834-fa0cee2cab34","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":817},"member_role":{"description":"User is a member of the team","name":"Member","id":818},"read_role":{"description":"May view settings for the team","name":"Read","id":819}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:58.634130Z","modified":"2026-08-18T13:53:58.634187Z","name":"Role readers","description":"","organization":33}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1263,11 +1263,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1312"
+                - "1321"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:28 GMT
+                - Tue, 18 Aug 2026 13:54:01 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1283,18 +1283,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - af443dceb9554108b41b029e4e6d7c37
+                - 5611e8b6b8ca43e286992f9242abb10c
             X-Api-Time:
-                - 0.074s
+                - 0.042s
             X-Api-Total-Time:
-                - 0.145s
+                - 0.087s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 199.504208ms
+        duration: 101.063625ms
     - id: 19
       request:
         proto: HTTP/1.1
@@ -1309,14 +1309,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/15/
+        url: http://awx.local/api/v2/inventories/20/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2351
-        body: '{"id":15,"type":"inventory","url":"/api/v2/inventories/15/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/15/hosts/","variable_data":"/api/v2/inventories/15/variable_data/","script":"/api/v2/inventories/15/script/","activity_stream":"/api/v2/inventories/15/activity_stream/","job_templates":"/api/v2/inventories/15/job_templates/","ad_hoc_commands":"/api/v2/inventories/15/ad_hoc_commands/","access_list":"/api/v2/inventories/15/access_list/","object_roles":"/api/v2/inventories/15/object_roles/","instance_groups":"/api/v2/inventories/15/instance_groups/","copy":"/api/v2/inventories/15/copy/","labels":"/api/v2/inventories/15/labels/","groups":"/api/v2/inventories/15/groups/","root_groups":"/api/v2/inventories/15/root_groups/","update_inventory_sources":"/api/v2/inventories/15/update_inventory_sources/","inventory_sources":"/api/v2/inventories/15/inventory_sources/","tree":"/api/v2/inventories/15/tree/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":603},"update_role":{"description":"May update the inventory","name":"Update","id":604},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":605},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":606},"read_role":{"description":"May view settings for the inventory","name":"Read","id":607}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:32:24.199908Z","modified":"2026-08-18T13:32:24.199928Z","name":"Role assignment inventory","description":"","organization":24,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        body: '{"id":20,"type":"inventory","url":"/api/v2/inventories/20/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/20/hosts/","variable_data":"/api/v2/inventories/20/variable_data/","script":"/api/v2/inventories/20/script/","activity_stream":"/api/v2/inventories/20/activity_stream/","job_templates":"/api/v2/inventories/20/job_templates/","ad_hoc_commands":"/api/v2/inventories/20/ad_hoc_commands/","access_list":"/api/v2/inventories/20/access_list/","object_roles":"/api/v2/inventories/20/object_roles/","instance_groups":"/api/v2/inventories/20/instance_groups/","copy":"/api/v2/inventories/20/copy/","labels":"/api/v2/inventories/20/labels/","groups":"/api/v2/inventories/20/groups/","root_groups":"/api/v2/inventories/20/root_groups/","update_inventory_sources":"/api/v2/inventories/20/update_inventory_sources/","inventory_sources":"/api/v2/inventories/20/inventory_sources/","tree":"/api/v2/inventories/20/tree/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":812},"update_role":{"description":"May update the inventory","name":"Update","id":813},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":814},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":815},"read_role":{"description":"May view settings for the inventory","name":"Read","id":816}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:53:58.620379Z","modified":"2026-08-18T13:53:58.620396Z","name":"Role assignment inventory","description":"","organization":33,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1333,7 +1333,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:27 GMT
+                - Tue, 18 Aug 2026 13:54:01 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1349,18 +1349,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - f9bb99db0c794fb9b1bd6caf4ccab706
+                - 5311eda6476d45eda0f638134eeacedc
             X-Api-Time:
-                - 0.055s
+                - 0.049s
             X-Api-Total-Time:
-                - 0.104s
+                - 0.089s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 199.191208ms
+        duration: 105.393875ms
     - id: 20
       request:
         proto: HTTP/1.1
@@ -1375,80 +1375,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/24/
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 936
-        body: '{"id":24,"url":"/api/v2/role_team_assignments/24/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/8/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":8,"name":"Role readers","description":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.068882Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"team":8}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, HEAD, OPTIONS, DELETE
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "936"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:28 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 5bd50de6fa014bf48d88c29f703f4119
-            X-Api-Time:
-                - 0.037s
-            X-Api-Total-Time:
-                - 0.088s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 98.809709ms
-    - id: 21
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/11/
+        url: http://awx.local/api/v2/role_user_assignments/17/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 979
-        body: '{"id":11,"url":"/api/v2/role_user_assignments/11/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:25.237079Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":8,"user":11,"user_ansible_id":null}'
+        body: '{"id":17,"url":"/api/v2/role_user_assignments/17/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.064606Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1465,7 +1399,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:28 GMT
+                - Tue, 18 Aug 2026 13:54:01 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1481,18 +1415,84 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 35642a763d6348a3ba0011d53e8c4319
+                - c5228ddc6150462e8dd8218cce6428a1
             X-Api-Time:
-                - 0.088s
+                - 0.059s
             X-Api-Total-Time:
-                - 0.155s
+                - 0.100s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 166.895375ms
+        duration: 117.698375ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/role_team_assignments/35/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 939
+        body: '{"id":35,"url":"/api/v2/role_team_assignments/35/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/8/","team":"/api/v2/teams/12/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":8,"name":"Inventory Admin","description":"Has all permissions to a single inventory","managed":true},"team":{"id":12,"name":"Role readers","description":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:53:59.217349Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":8,"team":12}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, HEAD, OPTIONS, DELETE
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "939"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:54:01 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - e65fd58d8c7645ddb162692522592101
+            X-Api-Time:
+                - 0.067s
+            X-Api-Total-Time:
+                - 0.105s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 117.878458ms
     - id: 22
       request:
         proto: HTTP/1.1
@@ -1507,7 +1507,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/24/
+        url: http://awx.local/api/v2/role_user_assignments/17/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1529,7 +1529,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:28 GMT
+                - Tue, 18 Aug 2026 13:54:02 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1545,18 +1545,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 27db08d8f9484cb3be5796fcc13a38b1
+                - d49be7a9ad2c4958b11ab9d79e0b3bb9
             X-Api-Time:
-                - 0.082s
+                - 0.119s
             X-Api-Total-Time:
-                - 0.132s
+                - 0.200s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 145.369708ms
+        duration: 299.929542ms
     - id: 23
       request:
         proto: HTTP/1.1
@@ -1571,7 +1571,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/11/
+        url: http://awx.local/api/v2/role_team_assignments/35/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1593,7 +1593,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:28 GMT
+                - Tue, 18 Aug 2026 13:54:02 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1609,89 +1609,19 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2e3addc3c7a74311baf973ce004025f9
+                - 60ec781eb58b46188865267085abaf46
             X-Api-Time:
-                - 0.120s
+                - 0.206s
             X-Api-Total-Time:
-                - 0.188s
+                - 0.268s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 202.84825ms
+        duration: 367.841958ms
     - id: 24
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 49
-        host: awx.local
-        body: |
-            {"object_id":"15","role_definition":10,"team":8}
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/
-        method: POST
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 937
-        body: '{"id":25,"url":"/api/v2/role_team_assignments/25/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","team":"/api/v2/teams/8/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"team":{"id":8,"name":"Role readers","description":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:29.088654Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":10,"team":8}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, POST, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "937"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:32:29 GMT
-            Expires:
-                - "0"
-            Location:
-                - /api/v2/role_team_assignments/25/
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 4bdc152956704298b51d82bbca178ca2
-            X-Api-Time:
-                - 0.082s
-            X-Api-Total-Time:
-                - 0.140s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 201 Created
-        code: 201
-        duration: 157.730208ms
-    - id: 25
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -1699,7 +1629,7 @@ interactions:
         content_length: 50
         host: awx.local
         body: |
-            {"object_id":"15","role_definition":10,"user":11}
+            {"object_id":"20","role_definition":10,"user":15}
         headers:
             Authorization:
                 - REDACTED
@@ -1714,7 +1644,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 980
-        body: '{"id":12,"url":"/api/v2/role_user_assignments/12/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:29.210727Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":10,"user":11,"user_ansible_id":null}'
+        body: '{"id":18,"url":"/api/v2/role_user_assignments/18/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:54:02.441079Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":10,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1731,11 +1661,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:29 GMT
+                - Tue, 18 Aug 2026 13:54:02 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/role_user_assignments/12/
+                - /api/v2/role_user_assignments/18/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -1749,18 +1679,88 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 4beddc11c0fd4fae85f961ad64d5998a
+                - 3f1ce3b3bf2f4ce299673577904cee53
             X-Api-Time:
-                - 0.116s
+                - 0.312s
             X-Api-Total-Time:
-                - 0.175s
+                - 0.378s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 186.919958ms
+        duration: 412.2585ms
+    - id: 25
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 50
+        host: awx.local
+        body: |
+            {"object_id":"20","role_definition":10,"team":12}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/role_team_assignments/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 940
+        body: '{"id":36,"url":"/api/v2/role_team_assignments/36/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","team":"/api/v2/teams/12/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"team":{"id":12,"name":"Role readers","description":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:54:02.726670Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":10,"team":12}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "940"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:54:02 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/role_team_assignments/36/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 391dbf9adee64ea9bf0cc72d46daf3f1
+            X-Api-Time:
+                - 0.310s
+            X-Api-Total-Time:
+                - 0.369s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 381.071958ms
     - id: 26
       request:
         proto: HTTP/1.1
@@ -1802,7 +1802,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:29 GMT
+                - Tue, 18 Aug 2026 13:54:03 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1818,18 +1818,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 24f1b8c09fc14e219e707b870daa44d2
+                - 1e098f0a90554371b6651c9af02ac9cb
             X-Api-Time:
-                - 0.061s
+                - 0.071s
             X-Api-Total-Time:
-                - 0.121s
+                - 0.125s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 130.551125ms
+        duration: 137.950875ms
     - id: 27
       request:
         proto: HTTP/1.1
@@ -1871,7 +1871,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:03 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1887,18 +1887,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 356555d4addc4f52a2346e1da267031b
+                - aa05938fcd1a41899ce0607fc42b6553
             X-Api-Time:
-                - 0.048s
+                - 0.029s
             X-Api-Total-Time:
-                - 0.110s
+                - 0.074s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 124.010125ms
+        duration: 86.040916ms
     - id: 28
       request:
         proto: HTTP/1.1
@@ -1913,14 +1913,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/24/
+        url: http://awx.local/api/v2/organizations/33/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 3658
-        body: '{"id":24,"type":"organization","url":"/api/v2/organizations/24/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/24/execution_environments/","projects":"/api/v2/organizations/24/projects/","inventories":"/api/v2/organizations/24/inventories/","job_templates":"/api/v2/organizations/24/job_templates/","workflow_job_templates":"/api/v2/organizations/24/workflow_job_templates/","users":"/api/v2/organizations/24/users/","admins":"/api/v2/organizations/24/admins/","teams":"/api/v2/organizations/24/teams/","credentials":"/api/v2/organizations/24/credentials/","applications":"/api/v2/organizations/24/applications/","activity_stream":"/api/v2/organizations/24/activity_stream/","notification_templates":"/api/v2/organizations/24/notification_templates/","notification_templates_started":"/api/v2/organizations/24/notification_templates_started/","notification_templates_success":"/api/v2/organizations/24/notification_templates_success/","notification_templates_error":"/api/v2/organizations/24/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/24/notification_templates_approvals/","object_roles":"/api/v2/organizations/24/object_roles/","access_list":"/api/v2/organizations/24/access_list/","instance_groups":"/api/v2/organizations/24/instance_groups/","galaxy_credentials":"/api/v2/organizations/24/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"e0a5d497-7669-4d5a-a775-e16ed6b23ca5","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":587,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":588},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":589},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":590},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":591},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":592},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":593},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":594},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":595},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":596},"member_role":{"description":"User is a member of the organization","name":"Member","id":597,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":598},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":599}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:32:22.694128Z","modified":"2026-08-18T13:32:22.694148Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        body: '{"id":33,"type":"organization","url":"/api/v2/organizations/33/","related":{"named_url":"/api/v2/organizations/Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/33/execution_environments/","projects":"/api/v2/organizations/33/projects/","inventories":"/api/v2/organizations/33/inventories/","job_templates":"/api/v2/organizations/33/job_templates/","workflow_job_templates":"/api/v2/organizations/33/workflow_job_templates/","users":"/api/v2/organizations/33/users/","admins":"/api/v2/organizations/33/admins/","teams":"/api/v2/organizations/33/teams/","credentials":"/api/v2/organizations/33/credentials/","applications":"/api/v2/organizations/33/applications/","activity_stream":"/api/v2/organizations/33/activity_stream/","notification_templates":"/api/v2/organizations/33/notification_templates/","notification_templates_started":"/api/v2/organizations/33/notification_templates_started/","notification_templates_success":"/api/v2/organizations/33/notification_templates_success/","notification_templates_error":"/api/v2/organizations/33/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/33/notification_templates_approvals/","object_roles":"/api/v2/organizations/33/object_roles/","access_list":"/api/v2/organizations/33/access_list/","instance_groups":"/api/v2/organizations/33/instance_groups/","galaxy_credentials":"/api/v2/organizations/33/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d015e81e-8bc5-443b-9224-528814dcf389","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":799,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":800},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":801},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":802},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":803},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":804},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":805},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":806},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":807},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":808},"member_role":{"description":"User is a member of the organization","name":"Member","id":809,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":810},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":811}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":1,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:53:57.664117Z","modified":"2026-08-18T13:53:57.664183Z","name":"Role assignments","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1937,7 +1937,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:03 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1953,18 +1953,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - aba727b7105b4ed183d6b089cc612a89
+                - a6afc399187e4360b93da977504a4646
             X-Api-Time:
-                - 0.088s
+                - 0.108s
             X-Api-Total-Time:
-                - 0.136s
+                - 0.154s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 150.619583ms
+        duration: 169.162541ms
     - id: 29
       request:
         proto: HTTP/1.1
@@ -1979,14 +1979,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/users/11/
+        url: http://awx.local/api/v2/users/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1067
-        body: '{"id":11,"type":"user","url":"/api/v2/users/11/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/11/teams/","organizations":"/api/v2/users/11/organizations/","admin_of_organizations":"/api/v2/users/11/admin_of_organizations/","projects":"/api/v2/users/11/projects/","credentials":"/api/v2/users/11/credentials/","roles":"/api/v2/users/11/roles/","activity_stream":"/api/v2/users/11/activity_stream/","access_list":"/api/v2/users/11/access_list/","tokens":"/api/v2/users/11/tokens/","authorized_tokens":"/api/v2/users/11/authorized_tokens/","personal_tokens":"/api/v2/users/11/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"00da0245-92fd-4cf5-94e8-968071e5ebb8","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:22.204532Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
+        body: '{"id":15,"type":"user","url":"/api/v2/users/15/","related":{"named_url":"/api/v2/users/role-reader/","teams":"/api/v2/users/15/teams/","organizations":"/api/v2/users/15/organizations/","admin_of_organizations":"/api/v2/users/15/admin_of_organizations/","projects":"/api/v2/users/15/projects/","credentials":"/api/v2/users/15/credentials/","roles":"/api/v2/users/15/roles/","activity_stream":"/api/v2/users/15/activity_stream/","access_list":"/api/v2/users/15/access_list/","tokens":"/api/v2/users/15/tokens/","authorized_tokens":"/api/v2/users/15/authorized_tokens/","personal_tokens":"/api/v2/users/15/personal_tokens/"},"summary_fields":{"resource":{"ansible_id":"54f6ac53-65b3-4b8e-ba88-cb9a024c569e","resource_type":"shared.user"},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:57.595753Z","modified":null,"username":"role-reader","first_name":"","last_name":"","email":"role-reader@example.com","is_superuser":false,"is_system_auditor":false,"password":"$encrypted$","ldap_dn":"","last_login":null,"external_account":null,"auth":[]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2003,7 +2003,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:03 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2019,18 +2019,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0414350799ef42f18b8d10bf7c13dc56
+                - 818d8189516c4aba996380e90de69642
             X-Api-Time:
-                - 0.039s
+                - 0.063s
             X-Api-Total-Time:
-                - 0.071s
+                - 0.106s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 203.889958ms
+        duration: 202.053666ms
     - id: 30
       request:
         proto: HTTP/1.1
@@ -2045,14 +2045,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/teams/8/
+        url: http://awx.local/api/v2/teams/12/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1312
-        body: '{"id":8,"type":"team","url":"/api/v2/teams/8/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/8/projects/","users":"/api/v2/teams/8/users/","credentials":"/api/v2/teams/8/credentials/","roles":"/api/v2/teams/8/roles/","object_roles":"/api/v2/teams/8/object_roles/","activity_stream":"/api/v2/teams/8/activity_stream/","access_list":"/api/v2/teams/8/access_list/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"resource":{"ansible_id":"b02173e6-381d-4864-a664-aecb6b4c5964","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":600},"member_role":{"description":"User is a member of the team","name":"Member","id":601},"read_role":{"description":"May view settings for the team","name":"Read","id":602}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:32:23.910116Z","modified":"2026-08-18T13:32:23.910169Z","name":"Role readers","description":"","organization":24}'
+        content_length: 1321
+        body: '{"id":12,"type":"team","url":"/api/v2/teams/12/","related":{"named_url":"/api/v2/teams/Role readers++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","projects":"/api/v2/teams/12/projects/","users":"/api/v2/teams/12/users/","credentials":"/api/v2/teams/12/credentials/","roles":"/api/v2/teams/12/roles/","object_roles":"/api/v2/teams/12/object_roles/","activity_stream":"/api/v2/teams/12/activity_stream/","access_list":"/api/v2/teams/12/access_list/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"resource":{"ansible_id":"ea83c3b6-ec4c-4759-a834-fa0cee2cab34","resource_type":"shared.team"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the team","name":"Admin","id":817},"member_role":{"description":"User is a member of the team","name":"Member","id":818},"read_role":{"description":"May view settings for the team","name":"Read","id":819}},"user_capabilities":{"edit":true,"delete":true}},"created":"2026-08-18T13:53:58.634130Z","modified":"2026-08-18T13:53:58.634187Z","name":"Role readers","description":"","organization":33}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2065,11 +2065,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1312"
+                - "1321"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2085,9 +2085,9 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - b2e1afdaf37b48cab736932d871bb9c9
+                - bf28ce3de12448709e1116c4c40bde64
             X-Api-Time:
-                - 0.035s
+                - 0.036s
             X-Api-Total-Time:
                 - 0.078s
             X-Content-Type-Options:
@@ -2096,7 +2096,7 @@ interactions:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 91.271541ms
+        duration: 87.725167ms
     - id: 31
       request:
         proto: HTTP/1.1
@@ -2111,14 +2111,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/15/
+        url: http://awx.local/api/v2/inventories/20/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2351
-        body: '{"id":15,"type":"inventory","url":"/api/v2/inventories/15/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/15/hosts/","variable_data":"/api/v2/inventories/15/variable_data/","script":"/api/v2/inventories/15/script/","activity_stream":"/api/v2/inventories/15/activity_stream/","job_templates":"/api/v2/inventories/15/job_templates/","ad_hoc_commands":"/api/v2/inventories/15/ad_hoc_commands/","access_list":"/api/v2/inventories/15/access_list/","object_roles":"/api/v2/inventories/15/object_roles/","instance_groups":"/api/v2/inventories/15/instance_groups/","copy":"/api/v2/inventories/15/copy/","labels":"/api/v2/inventories/15/labels/","groups":"/api/v2/inventories/15/groups/","root_groups":"/api/v2/inventories/15/root_groups/","update_inventory_sources":"/api/v2/inventories/15/update_inventory_sources/","inventory_sources":"/api/v2/inventories/15/inventory_sources/","tree":"/api/v2/inventories/15/tree/","organization":"/api/v2/organizations/24/"},"summary_fields":{"organization":{"id":24,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":603},"update_role":{"description":"May update the inventory","name":"Update","id":604},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":605},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":606},"read_role":{"description":"May view settings for the inventory","name":"Read","id":607}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:32:24.199908Z","modified":"2026-08-18T13:32:24.199928Z","name":"Role assignment inventory","description":"","organization":24,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        body: '{"id":20,"type":"inventory","url":"/api/v2/inventories/20/","related":{"named_url":"/api/v2/inventories/Role assignment inventory++Role assignments/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/20/hosts/","variable_data":"/api/v2/inventories/20/variable_data/","script":"/api/v2/inventories/20/script/","activity_stream":"/api/v2/inventories/20/activity_stream/","job_templates":"/api/v2/inventories/20/job_templates/","ad_hoc_commands":"/api/v2/inventories/20/ad_hoc_commands/","access_list":"/api/v2/inventories/20/access_list/","object_roles":"/api/v2/inventories/20/object_roles/","instance_groups":"/api/v2/inventories/20/instance_groups/","copy":"/api/v2/inventories/20/copy/","labels":"/api/v2/inventories/20/labels/","groups":"/api/v2/inventories/20/groups/","root_groups":"/api/v2/inventories/20/root_groups/","update_inventory_sources":"/api/v2/inventories/20/update_inventory_sources/","inventory_sources":"/api/v2/inventories/20/inventory_sources/","tree":"/api/v2/inventories/20/tree/","organization":"/api/v2/organizations/33/"},"summary_fields":{"organization":{"id":33,"name":"Role assignments","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":812},"update_role":{"description":"May update the inventory","name":"Update","id":813},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":814},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":815},"read_role":{"description":"May view settings for the inventory","name":"Read","id":816}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:53:58.620379Z","modified":"2026-08-18T13:53:58.620396Z","name":"Role assignment inventory","description":"","organization":33,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2135,7 +2135,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2151,18 +2151,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 17ad2374f2f34439a4d07461228ff22d
+                - 3038d849af4e4daa80030e2c18b9b107
             X-Api-Time:
-                - 0.078s
+                - 0.053s
             X-Api-Total-Time:
-                - 0.129s
+                - 0.104s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 143.656833ms
+        duration: 113.030583ms
     - id: 32
       request:
         proto: HTTP/1.1
@@ -2177,14 +2177,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/12/
+        url: http://awx.local/api/v2/role_user_assignments/18/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 980
-        body: '{"id":12,"url":"/api/v2/role_user_assignments/12/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:29.210727Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":10,"user":11,"user_ansible_id":null}'
+        body: '{"id":18,"url":"/api/v2/role_user_assignments/18/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:54:02.441079Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":10,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2201,7 +2201,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2217,18 +2217,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 42af5379961f4824ab59ddb6bdf4f6f6
+                - 0f3fa8ce842541aba5a0c803c5357a4b
             X-Api-Time:
-                - 0.072s
+                - 0.036s
             X-Api-Total-Time:
-                - 0.139s
+                - 0.081s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 149.961291ms
+        duration: 89.184084ms
     - id: 33
       request:
         proto: HTTP/1.1
@@ -2243,14 +2243,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/25/
+        url: http://awx.local/api/v2/role_team_assignments/36/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 937
-        body: '{"id":25,"url":"/api/v2/role_team_assignments/25/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","team":"/api/v2/teams/8/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"team":{"id":8,"name":"Role readers","description":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:29.088654Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":10,"team":8}'
+        content_length: 940
+        body: '{"id":36,"url":"/api/v2/role_team_assignments/36/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","team":"/api/v2/teams/12/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"team":{"id":12,"name":"Role readers","description":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:54:02.726670Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":10,"team":12}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2263,11 +2263,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "937"
+                - "940"
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:30 GMT
+                - Tue, 18 Aug 2026 13:54:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2283,18 +2283,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - bd8312e403a94d4296978b9cd8da25fb
+                - 19f5a5f319f045c0a5a3920004cb7e83
             X-Api-Time:
-                - 0.106s
+                - 0.075s
             X-Api-Total-Time:
-                - 0.161s
+                - 0.122s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 173.000542ms
+        duration: 130.845166ms
     - id: 34
       request:
         proto: HTTP/1.1
@@ -2336,7 +2336,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:31 GMT
+                - Tue, 18 Aug 2026 13:54:04 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2352,18 +2352,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 4dd437938ef14e2f936b08479d9c828d
+                - f0b9d19dadae438089cb1c0234fc8385
             X-Api-Time:
-                - 0.065s
+                - 0.055s
             X-Api-Total-Time:
-                - 0.129s
+                - 0.112s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 164.283042ms
+        duration: 124.129334ms
     - id: 35
       request:
         proto: HTTP/1.1
@@ -2378,14 +2378,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/12/
+        url: http://awx.local/api/v2/role_user_assignments/18/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 980
-        body: '{"id":12,"url":"/api/v2/role_user_assignments/12/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/11/","content_object":"/api/v2/inventories/15/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":11,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":15,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":24,"kind":""}},"created":"2026-08-18T13:32:29.210727Z","created_by":1,"content_type":"awx.inventory","object_id":"15","object_ansible_id":null,"role_definition":10,"user":11,"user_ansible_id":null}'
+        body: '{"id":18,"url":"/api/v2/role_user_assignments/18/","related":{"created_by":"/api/v2/users/1/","role_definition":"/api/v2/role_definitions/10/","user":"/api/v2/users/15/","content_object":"/api/v2/inventories/20/"},"summary_fields":{"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"role_definition":{"id":10,"name":"Inventory Use","description":"Has use permissions to a single inventory","managed":true},"user":{"id":15,"username":"role-reader","first_name":"","last_name":""},"content_object":{"id":20,"name":"Role assignment inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"organization_id":33,"kind":""}},"created":"2026-08-18T13:54:02.441079Z","created_by":1,"content_type":"awx.inventory","object_id":"20","object_ansible_id":null,"role_definition":10,"user":15,"user_ansible_id":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -2402,7 +2402,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:32:31 GMT
+                - Tue, 18 Aug 2026 13:54:05 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2418,18 +2418,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 51d2b97c629e427a84564296f25df9d4
+                - 0caad4e2b1a74c31a8b3db3d641e38a3
             X-Api-Time:
-                - 0.040s
+                - 0.041s
             X-Api-Total-Time:
-                - 0.084s
+                - 0.097s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 94.150125ms
+        duration: 105.994709ms
     - id: 36
       request:
         proto: HTTP/1.1
@@ -2444,7 +2444,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_user_assignments/12/
+        url: http://awx.local/api/v2/role_team_assignments/36/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2466,7 +2466,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:31 GMT
+                - Tue, 18 Aug 2026 13:54:05 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2482,18 +2482,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3e9511335f164decb7d404b298163b5c
+                - 3177fa5a4afa4606a7d8d207862af6b2
             X-Api-Time:
-                - 0.091s
+                - 0.079s
             X-Api-Total-Time:
-                - 0.153s
+                - 0.150s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 163.405459ms
+        duration: 159.723458ms
     - id: 37
       request:
         proto: HTTP/1.1
@@ -2508,7 +2508,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/role_team_assignments/25/
+        url: http://awx.local/api/v2/role_user_assignments/18/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2530,7 +2530,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:31 GMT
+                - Tue, 18 Aug 2026 13:54:05 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2546,18 +2546,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ac458999c79a41e9b06c7af6a2e79c87
+                - b41b507bb19b4a6199a8853148014efc
             X-Api-Time:
-                - 0.129s
+                - 0.082s
             X-Api-Total-Time:
-                - 0.187s
+                - 0.160s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 196.7095ms
+        duration: 175.167208ms
     - id: 38
       request:
         proto: HTTP/1.1
@@ -2572,7 +2572,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/users/11/
+        url: http://awx.local/api/v2/teams/12/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2594,7 +2594,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:32 GMT
+                - Tue, 18 Aug 2026 13:54:05 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2610,18 +2610,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 475bab6147a24868947572f14dc86119
+                - fc16c8724eca45ccbd61554ed3775ad0
             X-Api-Time:
-                - 0.151s
+                - 0.202s
             X-Api-Total-Time:
-                - 0.222s
+                - 0.304s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 232.789708ms
+        duration: 312.957417ms
     - id: 39
       request:
         proto: HTTP/1.1
@@ -2636,7 +2636,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/teams/8/
+        url: http://awx.local/api/v2/users/15/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2658,7 +2658,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:32 GMT
+                - Tue, 18 Aug 2026 13:54:06 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2674,18 +2674,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 01c91b76f2024431bc8a8e52c9cf6ef6
+                - 6fb010c464874e838df1da84c8af01b2
             X-Api-Time:
-                - 0.221s
+                - 0.213s
             X-Api-Total-Time:
-                - 0.316s
+                - 0.333s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 327.304166ms
+        duration: 346.5235ms
     - id: 40
       request:
         proto: HTTP/1.1
@@ -2700,7 +2700,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/15/
+        url: http://awx.local/api/v2/inventories/20/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2720,7 +2720,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:32 GMT
+                - Tue, 18 Aug 2026 13:54:06 GMT
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
@@ -2730,14 +2730,14 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - e65ee6f9bdd041f7ae59454c2eb7bbec
+                - 7d03c28e20a547ff95930a2a1fae4f73
             X-Api-Time:
-                - 0.148s
+                - 0.097s
             X-Api-Total-Time:
-                - 0.212s
+                - 0.174s
         status: 202 Accepted
         code: 202
-        duration: 385.4635ms
+        duration: 466.414916ms
     - id: 41
       request:
         proto: HTTP/1.1
@@ -2752,7 +2752,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/24/
+        url: http://awx.local/api/v2/organizations/33/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -2774,7 +2774,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Tue, 18 Aug 2026 13:32:33 GMT
+                - Tue, 18 Aug 2026 13:54:06 GMT
             Expires:
                 - "0"
             Pragma:
@@ -2790,15 +2790,15 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a5bca2618f1746babcf8dbb37748bc4b
+                - dfe6b7e6891249a1ac80b60c7c292f50
             X-Api-Time:
-                - 0.235s
+                - 0.171s
             X-Api-Total-Time:
-                - 0.342s
+                - 0.257s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 353.152292ms
+        duration: 269.900292ms

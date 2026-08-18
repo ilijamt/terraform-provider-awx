@@ -61,7 +61,7 @@ func (o *organizationTerraformModel) UpdateFromApiData(data map[string]any) (dia
 type organizationBodyRequestModel struct {
 	DefaultEnvironment int64  `json:"default_environment,omitempty"`
 	Description        string `json:"description,omitempty"`
-	MaxHosts           int64  `json:"max_hosts,omitempty"`
+	MaxHosts           int64  `json:"max_hosts"`
 	Name               string `json:"name"`
 }
 

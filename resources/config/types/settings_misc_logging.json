@@ -7,5 +7,10 @@
   "no_id": true,
   "api_property_resource_key": "PUT",
   "property_name_leave_as_is": true,
-  "undeletable": true
+  "undeletable": true,
+  "property_overrides": {
+    "LOG_AGGREGATOR_TCP_TIMEOUT": {
+      "omit_empty": false
+    }
+  }
 }

@@ -6,10 +6,10 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 23
+        content_length: 37
         host: awx.local
         body: |
-            {"name":"Application"}
+            {"max_hosts":0,"name":"Application"}
         headers:
             Authorization:
                 - REDACTED
@@ -24,7 +24,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 3638
-        body: '{"id":40,"type":"organization","url":"/api/v2/organizations/40/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/40/execution_environments/","projects":"/api/v2/organizations/40/projects/","inventories":"/api/v2/organizations/40/inventories/","job_templates":"/api/v2/organizations/40/job_templates/","workflow_job_templates":"/api/v2/organizations/40/workflow_job_templates/","users":"/api/v2/organizations/40/users/","admins":"/api/v2/organizations/40/admins/","teams":"/api/v2/organizations/40/teams/","credentials":"/api/v2/organizations/40/credentials/","applications":"/api/v2/organizations/40/applications/","activity_stream":"/api/v2/organizations/40/activity_stream/","notification_templates":"/api/v2/organizations/40/notification_templates/","notification_templates_started":"/api/v2/organizations/40/notification_templates_started/","notification_templates_success":"/api/v2/organizations/40/notification_templates_success/","notification_templates_error":"/api/v2/organizations/40/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/40/notification_templates_approvals/","object_roles":"/api/v2/organizations/40/object_roles/","access_list":"/api/v2/organizations/40/access_list/","instance_groups":"/api/v2/organizations/40/instance_groups/","galaxy_credentials":"/api/v2/organizations/40/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"78437518-6118-47b0-a843-371b60a4de10","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":943,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":944},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":945},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":946},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":947},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":948},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":949},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":950},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":951},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":952},"member_role":{"description":"User is a member of the organization","name":"Member","id":953,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":954},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":955}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-04-27T07:29:57.065472Z","modified":"2026-04-27T07:29:57.065531Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        body: '{"id":26,"type":"organization","url":"/api/v2/organizations/26/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/26/execution_environments/","projects":"/api/v2/organizations/26/projects/","inventories":"/api/v2/organizations/26/inventories/","job_templates":"/api/v2/organizations/26/job_templates/","workflow_job_templates":"/api/v2/organizations/26/workflow_job_templates/","users":"/api/v2/organizations/26/users/","admins":"/api/v2/organizations/26/admins/","teams":"/api/v2/organizations/26/teams/","credentials":"/api/v2/organizations/26/credentials/","applications":"/api/v2/organizations/26/applications/","activity_stream":"/api/v2/organizations/26/activity_stream/","notification_templates":"/api/v2/organizations/26/notification_templates/","notification_templates_started":"/api/v2/organizations/26/notification_templates_started/","notification_templates_success":"/api/v2/organizations/26/notification_templates_success/","notification_templates_error":"/api/v2/organizations/26/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/26/notification_templates_approvals/","object_roles":"/api/v2/organizations/26/object_roles/","access_list":"/api/v2/organizations/26/access_list/","instance_groups":"/api/v2/organizations/26/instance_groups/","galaxy_credentials":"/api/v2/organizations/26/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"0be582f6-d8b8-4580-9ed3-c62c33bdd4cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":636,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":637},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":638},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":639},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":640},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":641},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":642},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":643},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":644},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":645},"member_role":{"description":"User is a member of the organization","name":"Member","id":646,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":647},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":648}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T13:51:46.788330Z","modified":"2026-08-18T13:51:46.788351Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -41,11 +41,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:29:57 GMT
+                - Tue, 18 Aug 2026 13:51:47 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/organizations/40/
+                - /api/v2/organizations/26/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -53,24 +53,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - f0dffb2614af4388895084fbca2d7e6d
+                - 6f13855cb08b42bd871d663b85f40b69
             X-Api-Time:
-                - 0.348s
+                - 0.365s
             X-Api-Total-Time:
-                - 0.424s
+                - 0.434s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 5.457295s
+        duration: 5.459011542s
     - id: 1
       request:
         proto: HTTP/1.1
@@ -79,7 +79,7 @@ interactions:
         content_length: 255
         host: awx.local
         body: |
-            {"authorization_grant_type":"authorization-code","client_type":"confidential","description":"OAuth2 application created by TestIntegration_Application","name":"Application","organization":40,"redirect_uris":"https://localhost","skip_authorization":false}
+            {"authorization_grant_type":"authorization-code","client_type":"confidential","description":"OAuth2 application created by TestIntegration_Application","name":"Application","organization":26,"redirect_uris":"https://localhost","skip_authorization":false}
         headers:
             Authorization:
                 - REDACTED
@@ -94,7 +94,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 987
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"SdvyaoIKmtIuxQrKRKLR6EXyKXoubZVL1dORNRoRrEeZZi6Qk9NXaTNwzwKFkra9d1r3G0oeimuJgS5cs7rJw8d6nY8Uyl3fRJMhjdfJ7uAOUWHrGnp8YLfeGBR3Sfgl","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"V6WgIYtgze23AMr7XgVNFJZMCnh3OwYqevzFlAnbz0ir8Xh4iTm9QKgHy7QuvGuL12M7Hoic7kydbw7yDvNrI2lNnnaTTu8rnOcECHqCcbHAsOh5KduTptG0u5KIZv7U","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -111,11 +111,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:03 GMT
+                - Tue, 18 Aug 2026 13:51:52 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/applications/3/
+                - /api/v2/applications/1/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -123,91 +123,25 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 839939b57d7f4e03b2eeff7e56b7ac80
+                - c94c15f857b645809bc9ae992494de2a
             X-Api-Time:
-                - 0.081s
+                - 0.109s
             X-Api-Total-Time:
-                - 0.135s
+                - 0.210s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 145.368833ms
+        duration: 224.983042ms
     - id: 2
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 871
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "871"
-            Content-Type:
-                - application/json
-            Date:
-                - Mon, 27 Apr 2026 07:30:03 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - a034966e95be4becbef7558d5e6c0c37
-            X-Api-Time:
-                - 0.055s
-            X-Api-Total-Time:
-                - 0.112s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 121.691792ms
-    - id: 3
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -218,7 +152,7 @@ interactions:
             name__exact:
                 - Application
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -226,14 +160,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 862
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -250,7 +184,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:03 GMT
+                - Tue, 18 Aug 2026 13:51:53 GMT
             Expires:
                 - "0"
             Pragma:
@@ -260,15 +194,147 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ced31ffefb9b47989c130714735c0c58
+                - 31437e5b19d54fbc937cf7209e13f1ac
             X-Api-Time:
-                - 0.072s
+                - 0.069s
+            X-Api-Total-Time:
+                - 0.122s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 142.42225ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/applications/1
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 871
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "871"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:51:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 5af25f8b0493459db0ee92c37b461416
+            X-Api-Time:
+                - 0.042s
+            X-Api-Total-Time:
+                - 0.089s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 244.363625ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/applications/1
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 871
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "871"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:51:53 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 759956e942c14455b91cc309a7aac5fd
+            X-Api-Time:
+                - 0.060s
             X-Api-Total-Time:
                 - 0.124s
             X-Content-Type-Options:
@@ -277,8 +343,8 @@ interactions:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 255.53575ms
-    - id: 4
+        duration: 137.835542ms
+    - id: 5
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -289,7 +355,7 @@ interactions:
             name__exact:
                 - Application
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -297,14 +363,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 862
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -321,7 +387,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:03 GMT
+                - Tue, 18 Aug 2026 13:51:53 GMT
             Expires:
                 - "0"
             Pragma:
@@ -331,90 +397,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 5107792b12d6493bbc3c18fc0e3accf2
+                - 69a207aeae95459d8a204b560f4ecf73
             X-Api-Time:
-                - 0.082s
+                - 0.050s
             X-Api-Total-Time:
-                - 0.135s
+                - 0.098s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 148.153875ms
-    - id: 5
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 871
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "871"
-            Content-Type:
-                - application/json
-            Date:
-                - Mon, 27 Apr 2026 07:30:04 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 8fd4af6574f54c0d8d050e37b6f6ac93
-            X-Api-Time:
-                - 0.042s
-            X-Api-Total-Time:
-                - 0.090s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 247.539ms
+        duration: 251.247708ms
     - id: 6
       request:
         proto: HTTP/1.1
@@ -429,14 +429,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/40/
+        url: http://awx.local/api/v2/organizations/26/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 3648
-        body: '{"id":40,"type":"organization","url":"/api/v2/organizations/40/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/40/execution_environments/","projects":"/api/v2/organizations/40/projects/","inventories":"/api/v2/organizations/40/inventories/","job_templates":"/api/v2/organizations/40/job_templates/","workflow_job_templates":"/api/v2/organizations/40/workflow_job_templates/","users":"/api/v2/organizations/40/users/","admins":"/api/v2/organizations/40/admins/","teams":"/api/v2/organizations/40/teams/","credentials":"/api/v2/organizations/40/credentials/","applications":"/api/v2/organizations/40/applications/","activity_stream":"/api/v2/organizations/40/activity_stream/","notification_templates":"/api/v2/organizations/40/notification_templates/","notification_templates_started":"/api/v2/organizations/40/notification_templates_started/","notification_templates_success":"/api/v2/organizations/40/notification_templates_success/","notification_templates_error":"/api/v2/organizations/40/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/40/notification_templates_approvals/","object_roles":"/api/v2/organizations/40/object_roles/","access_list":"/api/v2/organizations/40/access_list/","instance_groups":"/api/v2/organizations/40/instance_groups/","galaxy_credentials":"/api/v2/organizations/40/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"78437518-6118-47b0-a843-371b60a4de10","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":943,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":944},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":945},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":946},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":947},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":948},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":949},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":950},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":951},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":952},"member_role":{"description":"User is a member of the organization","name":"Member","id":953,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":954},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":955}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-04-27T07:29:57.065472Z","modified":"2026-04-27T07:29:57.065531Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        body: '{"id":26,"type":"organization","url":"/api/v2/organizations/26/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/26/execution_environments/","projects":"/api/v2/organizations/26/projects/","inventories":"/api/v2/organizations/26/inventories/","job_templates":"/api/v2/organizations/26/job_templates/","workflow_job_templates":"/api/v2/organizations/26/workflow_job_templates/","users":"/api/v2/organizations/26/users/","admins":"/api/v2/organizations/26/admins/","teams":"/api/v2/organizations/26/teams/","credentials":"/api/v2/organizations/26/credentials/","applications":"/api/v2/organizations/26/applications/","activity_stream":"/api/v2/organizations/26/activity_stream/","notification_templates":"/api/v2/organizations/26/notification_templates/","notification_templates_started":"/api/v2/organizations/26/notification_templates_started/","notification_templates_success":"/api/v2/organizations/26/notification_templates_success/","notification_templates_error":"/api/v2/organizations/26/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/26/notification_templates_approvals/","object_roles":"/api/v2/organizations/26/object_roles/","access_list":"/api/v2/organizations/26/access_list/","instance_groups":"/api/v2/organizations/26/instance_groups/","galaxy_credentials":"/api/v2/organizations/26/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"0be582f6-d8b8-4580-9ed3-c62c33bdd4cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":636,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":637},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":638},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":639},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":640},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":641},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":642},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":643},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":644},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":645},"member_role":{"description":"User is a member of the organization","name":"Member","id":646,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":647},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":648}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:51:46.788330Z","modified":"2026-08-18T13:51:46.788351Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -453,7 +453,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:04 GMT
+                - Tue, 18 Aug 2026 13:51:54 GMT
             Expires:
                 - "0"
             Pragma:
@@ -463,24 +463,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - d368a01cf2d9481c83a921ec1a87ccb9
+                - 08ac3138dfcc4facb57f908397603847
             X-Api-Time:
-                - 0.142s
+                - 0.129s
             X-Api-Total-Time:
-                - 0.204s
+                - 0.186s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 222.187584ms
+        duration: 280.053917ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -495,14 +495,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 871
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -519,7 +519,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:04 GMT
+                - Tue, 18 Aug 2026 13:51:54 GMT
             Expires:
                 - "0"
             Pragma:
@@ -529,24 +529,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 1d185e72cb1544c497c02aece8b2ff75
+                - 78d18f99fa344c6f8c778127bf0ffdca
             X-Api-Time:
-                - 0.076s
+                - 0.074s
             X-Api-Total-Time:
-                - 0.135s
+                - 0.147s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 151.345375ms
+        duration: 160.984458ms
     - id: 8
       request:
         proto: HTTP/1.1
@@ -558,7 +558,7 @@ interactions:
             name__exact:
                 - Application
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -566,14 +566,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 862
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -590,7 +590,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:05 GMT
+                - Tue, 18 Aug 2026 13:51:55 GMT
             Expires:
                 - "0"
             Pragma:
@@ -600,24 +600,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 88727d36140943a49632ce2bbd98479d
+                - a2badf6e5d5b4b2f84829065b4bc25e0
             X-Api-Time:
-                - 0.075s
+                - 0.083s
             X-Api-Total-Time:
-                - 0.136s
+                - 0.150s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 150.76425ms
+        duration: 160.769ms
     - id: 9
       request:
         proto: HTTP/1.1
@@ -632,14 +632,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
+        url: http://awx.local/api/v2/applications/1
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 871
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -656,7 +656,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:05 GMT
+                - Tue, 18 Aug 2026 13:51:55 GMT
             Expires:
                 - "0"
             Pragma:
@@ -666,24 +666,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3f3d49f7b1514be0b8656a1fb0779558
+                - a6c16ab8d5264787b3926ea172b32e14
             X-Api-Time:
-                - 0.044s
+                - 0.041s
             X-Api-Total-Time:
-                - 0.093s
+                - 0.087s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 256.590458ms
+        duration: 261.191958ms
     - id: 10
       request:
         proto: HTTP/1.1
@@ -698,14 +698,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/40/
+        url: http://awx.local/api/v2/organizations/26/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 3648
-        body: '{"id":40,"type":"organization","url":"/api/v2/organizations/40/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/40/execution_environments/","projects":"/api/v2/organizations/40/projects/","inventories":"/api/v2/organizations/40/inventories/","job_templates":"/api/v2/organizations/40/job_templates/","workflow_job_templates":"/api/v2/organizations/40/workflow_job_templates/","users":"/api/v2/organizations/40/users/","admins":"/api/v2/organizations/40/admins/","teams":"/api/v2/organizations/40/teams/","credentials":"/api/v2/organizations/40/credentials/","applications":"/api/v2/organizations/40/applications/","activity_stream":"/api/v2/organizations/40/activity_stream/","notification_templates":"/api/v2/organizations/40/notification_templates/","notification_templates_started":"/api/v2/organizations/40/notification_templates_started/","notification_templates_success":"/api/v2/organizations/40/notification_templates_success/","notification_templates_error":"/api/v2/organizations/40/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/40/notification_templates_approvals/","object_roles":"/api/v2/organizations/40/object_roles/","access_list":"/api/v2/organizations/40/access_list/","instance_groups":"/api/v2/organizations/40/instance_groups/","galaxy_credentials":"/api/v2/organizations/40/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"78437518-6118-47b0-a843-371b60a4de10","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":943,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":944},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":945},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":946},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":947},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":948},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":949},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":950},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":951},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":952},"member_role":{"description":"User is a member of the organization","name":"Member","id":953,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":954},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":955}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-04-27T07:29:57.065472Z","modified":"2026-04-27T07:29:57.065531Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        body: '{"id":26,"type":"organization","url":"/api/v2/organizations/26/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/26/execution_environments/","projects":"/api/v2/organizations/26/projects/","inventories":"/api/v2/organizations/26/inventories/","job_templates":"/api/v2/organizations/26/job_templates/","workflow_job_templates":"/api/v2/organizations/26/workflow_job_templates/","users":"/api/v2/organizations/26/users/","admins":"/api/v2/organizations/26/admins/","teams":"/api/v2/organizations/26/teams/","credentials":"/api/v2/organizations/26/credentials/","applications":"/api/v2/organizations/26/applications/","activity_stream":"/api/v2/organizations/26/activity_stream/","notification_templates":"/api/v2/organizations/26/notification_templates/","notification_templates_started":"/api/v2/organizations/26/notification_templates_started/","notification_templates_success":"/api/v2/organizations/26/notification_templates_success/","notification_templates_error":"/api/v2/organizations/26/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/26/notification_templates_approvals/","object_roles":"/api/v2/organizations/26/object_roles/","access_list":"/api/v2/organizations/26/access_list/","instance_groups":"/api/v2/organizations/26/instance_groups/","galaxy_credentials":"/api/v2/organizations/26/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"0be582f6-d8b8-4580-9ed3-c62c33bdd4cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":636,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":637},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":638},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":639},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":640},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":641},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":642},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":643},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":644},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":645},"member_role":{"description":"User is a member of the organization","name":"Member","id":646,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":647},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":648}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:51:46.788330Z","modified":"2026-08-18T13:51:46.788351Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -722,7 +722,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:05 GMT
+                - Tue, 18 Aug 2026 13:51:55 GMT
             Expires:
                 - "0"
             Pragma:
@@ -732,15 +732,15 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - c3392ab9304244c2b326af683c962827
+                - 57ee1fcb42be42ff81b4574d5b9f230f
             X-Api-Time:
-                - 0.077s
+                - 0.096s
             X-Api-Total-Time:
                 - 0.140s
             X-Content-Type-Options:
@@ -749,7 +749,7 @@ interactions:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 156.35025ms
+        duration: 151.513458ms
     - id: 11
       request:
         proto: HTTP/1.1
@@ -764,14 +764,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 871
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:02.973959Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:52.735499Z","name":"Application","description":"OAuth2 application created by TestIntegration_Application","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -788,7 +788,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:06 GMT
+                - Tue, 18 Aug 2026 13:51:56 GMT
             Expires:
                 - "0"
             Pragma:
@@ -798,24 +798,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a02b5ade7530452ab7251ad1e2fd19cb
+                - a3ff8c9199b6466dabc7f6d618084c36
             X-Api-Time:
-                - 0.069s
+                - 0.048s
             X-Api-Total-Time:
-                - 0.129s
+                - 0.093s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 137.361291ms
+        duration: 105.095167ms
     - id: 12
       request:
         proto: HTTP/1.1
@@ -824,7 +824,7 @@ interactions:
         content_length: 302
         host: awx.local
         body: |
-            {"authorization_grant_type":"authorization-code","client_type":"confidential","description":"OAuth2 application created by TestIntegration_Application (updated)","name":"Application (updated)","organization":40,"redirect_uris":"https://localhost https://localhost/callback","skip_authorization":false}
+            {"authorization_grant_type":"authorization-code","client_type":"confidential","description":"OAuth2 application created by TestIntegration_Application (updated)","name":"Application (updated)","organization":26,"redirect_uris":"https://localhost https://localhost/callback","skip_authorization":false}
         headers:
             Authorization:
                 - REDACTED
@@ -832,14 +832,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -856,7 +856,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:06 GMT
+                - Tue, 18 Aug 2026 13:51:56 GMT
             Expires:
                 - "0"
             Pragma:
@@ -866,25 +866,91 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 6216a071788444948cd5240783fba9cd
+                - e9450dc2953d451a8fff50cd6b085fa3
             X-Api-Time:
-                - 0.117s
+                - 0.077s
             X-Api-Total-Time:
-                - 0.192s
+                - 0.139s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 203.261292ms
+        duration: 148.942291ms
     - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/applications/1
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 928
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "928"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:51:56 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 1d7e8a9998ae4e4989a9e7ebc49e2c1e
+            X-Api-Time:
+                - 0.077s
+            X-Api-Total-Time:
+                - 0.141s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 152.409458ms
+    - id: 14
       request:
         proto: HTTP/1.1
         proto_major: 1
@@ -895,7 +961,7 @@ interactions:
             name__exact:
                 - Application (updated)
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -903,14 +969,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 909
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -927,7 +993,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:06 GMT
+                - Tue, 18 Aug 2026 13:51:56 GMT
             Expires:
                 - "0"
             Pragma:
@@ -937,90 +1003,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a2f30e3b1d50434390f2ad90285e5fd8
+                - f376eae9d1a24673b337ca81d3046770
             X-Api-Time:
-                - 0.081s
+                - 0.049s
             X-Api-Total-Time:
-                - 0.139s
+                - 0.097s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 151.162375ms
-    - id: 14
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "928"
-            Content-Type:
-                - application/json
-            Date:
-                - Mon, 27 Apr 2026 07:30:07 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 3fc11f9f137f49d284ed9d9f3681d63f
-            X-Api-Time:
-                - 0.041s
-            X-Api-Total-Time:
-                - 0.087s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 246.825083ms
+        duration: 259.488167ms
     - id: 15
       request:
         proto: HTTP/1.1
@@ -1035,14 +1035,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
+        url: http://awx.local/api/v2/applications/1
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1059,7 +1059,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:07 GMT
+                - Tue, 18 Aug 2026 13:51:57 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1069,24 +1069,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 92d01b64c8e04b9e8f871d6fcc756916
+                - 06f41bc1e3f74625b656869003c39459
             X-Api-Time:
-                - 0.073s
+                - 0.068s
             X-Api-Total-Time:
-                - 0.118s
+                - 0.137s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 125.849958ms
+        duration: 147.7475ms
     - id: 16
       request:
         proto: HTTP/1.1
@@ -1098,7 +1098,7 @@ interactions:
             name__exact:
                 - Application (updated)
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -1106,14 +1106,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 909
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1130,7 +1130,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:07 GMT
+                - Tue, 18 Aug 2026 13:51:57 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1140,24 +1140,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 73c7bd37a2554939b395eb73b15b47a6
+                - 2c756d0cd9af4cde9047004a0bc6895f
             X-Api-Time:
-                - 0.051s
+                - 0.038s
             X-Api-Total-Time:
-                - 0.097s
+                - 0.079s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 231.506083ms
+        duration: 238.136958ms
     - id: 17
       request:
         proto: HTTP/1.1
@@ -1172,14 +1172,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/40/
+        url: http://awx.local/api/v2/organizations/26/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 3648
-        body: '{"id":40,"type":"organization","url":"/api/v2/organizations/40/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/40/execution_environments/","projects":"/api/v2/organizations/40/projects/","inventories":"/api/v2/organizations/40/inventories/","job_templates":"/api/v2/organizations/40/job_templates/","workflow_job_templates":"/api/v2/organizations/40/workflow_job_templates/","users":"/api/v2/organizations/40/users/","admins":"/api/v2/organizations/40/admins/","teams":"/api/v2/organizations/40/teams/","credentials":"/api/v2/organizations/40/credentials/","applications":"/api/v2/organizations/40/applications/","activity_stream":"/api/v2/organizations/40/activity_stream/","notification_templates":"/api/v2/organizations/40/notification_templates/","notification_templates_started":"/api/v2/organizations/40/notification_templates_started/","notification_templates_success":"/api/v2/organizations/40/notification_templates_success/","notification_templates_error":"/api/v2/organizations/40/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/40/notification_templates_approvals/","object_roles":"/api/v2/organizations/40/object_roles/","access_list":"/api/v2/organizations/40/access_list/","instance_groups":"/api/v2/organizations/40/instance_groups/","galaxy_credentials":"/api/v2/organizations/40/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"78437518-6118-47b0-a843-371b60a4de10","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":943,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":944},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":945},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":946},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":947},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":948},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":949},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":950},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":951},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":952},"member_role":{"description":"User is a member of the organization","name":"Member","id":953,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":954},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":955}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-04-27T07:29:57.065472Z","modified":"2026-04-27T07:29:57.065531Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        body: '{"id":26,"type":"organization","url":"/api/v2/organizations/26/","related":{"named_url":"/api/v2/organizations/Application/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/26/execution_environments/","projects":"/api/v2/organizations/26/projects/","inventories":"/api/v2/organizations/26/inventories/","job_templates":"/api/v2/organizations/26/job_templates/","workflow_job_templates":"/api/v2/organizations/26/workflow_job_templates/","users":"/api/v2/organizations/26/users/","admins":"/api/v2/organizations/26/admins/","teams":"/api/v2/organizations/26/teams/","credentials":"/api/v2/organizations/26/credentials/","applications":"/api/v2/organizations/26/applications/","activity_stream":"/api/v2/organizations/26/activity_stream/","notification_templates":"/api/v2/organizations/26/notification_templates/","notification_templates_started":"/api/v2/organizations/26/notification_templates_started/","notification_templates_success":"/api/v2/organizations/26/notification_templates_success/","notification_templates_error":"/api/v2/organizations/26/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/26/notification_templates_approvals/","object_roles":"/api/v2/organizations/26/object_roles/","access_list":"/api/v2/organizations/26/access_list/","instance_groups":"/api/v2/organizations/26/instance_groups/","galaxy_credentials":"/api/v2/organizations/26/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"0be582f6-d8b8-4580-9ed3-c62c33bdd4cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":636,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":637},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":638},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":639},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":640},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":641},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":642},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":643},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":644},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":645},"member_role":{"description":"User is a member of the organization","name":"Member","id":646,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":647},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":648}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":0,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:51:46.788330Z","modified":"2026-08-18T13:51:46.788351Z","name":"Application","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1196,7 +1196,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:08 GMT
+                - Tue, 18 Aug 2026 13:51:58 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1206,24 +1206,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2f915d832b8f43eab92c166653ec28bf
+                - dd37a7d699dc461f8721f4143790cd8e
             X-Api-Time:
-                - 0.147s
+                - 0.078s
             X-Api-Total-Time:
-                - 0.199s
+                - 0.126s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 213.708916ms
+        duration: 144.985667ms
     - id: 18
       request:
         proto: HTTP/1.1
@@ -1238,14 +1238,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1262,7 +1262,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:08 GMT
+                - Tue, 18 Aug 2026 13:51:58 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1272,24 +1272,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 4058440e8dba45438e329c1450fef1e8
+                - d4803e9e19584bcaab64bbedd6894851
             X-Api-Time:
-                - 0.045s
+                - 0.057s
             X-Api-Total-Time:
-                - 0.103s
+                - 0.104s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 122.91525ms
+        duration: 114.401ms
     - id: 19
       request:
         proto: HTTP/1.1
@@ -1304,14 +1304,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
+        url: http://awx.local/api/v2/applications/1
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1328,7 +1328,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:08 GMT
+                - Tue, 18 Aug 2026 13:51:58 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1338,24 +1338,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 39efbecf31fa4212982d9e38d233fb5c
+                - 62a5718762674c53a60d87a7cb3bd5bf
             X-Api-Time:
-                - 0.064s
+                - 0.084s
             X-Api-Total-Time:
-                - 0.124s
+                - 0.156s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 132.613625ms
+        duration: 168.160709ms
     - id: 20
       request:
         proto: HTTP/1.1
@@ -1367,7 +1367,7 @@ interactions:
             name__exact:
                 - Application (updated)
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -1375,14 +1375,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 909
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1399,7 +1399,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:08 GMT
+                - Tue, 18 Aug 2026 13:51:58 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1409,24 +1409,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - ca812f98ea7e454b87d350f91adfae02
+                - da0de0ccf8d544e6828527ee74cb34bc
             X-Api-Time:
-                - 0.077s
+                - 0.103s
             X-Api-Total-Time:
-                - 0.133s
+                - 0.177s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 140.664833ms
+        duration: 188.151542ms
     - id: 21
       request:
         proto: HTTP/1.1
@@ -1441,14 +1441,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1465,7 +1465,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:09 GMT
+                - Tue, 18 Aug 2026 13:51:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1475,24 +1475,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0b75993f589c481f814ac06ebcfa26c6
+                - b15e20f90f774c47a11ecaf473b9abdc
             X-Api-Time:
-                - 0.064s
+                - 0.090s
             X-Api-Total-Time:
-                - 0.127s
+                - 0.173s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 140.913375ms
+        duration: 182.332709ms
     - id: 22
       request:
         proto: HTTP/1.1
@@ -1504,7 +1504,7 @@ interactions:
             name__exact:
                 - Application (updated)
             organization:
-                - "40"
+                - "26"
         headers:
             Authorization:
                 - REDACTED
@@ -1512,14 +1512,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=40
+        url: http://awx.local/api/v2/applications/?name__exact=Application%20%28updated%29&organization=26
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 909
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1536,7 +1536,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:09 GMT
+                - Tue, 18 Aug 2026 13:51:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1546,24 +1546,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - c95133109fc44c38875b28d05b9416c5
+                - 743b91e4b1dd43fca84a73c600c3a11a
             X-Api-Time:
-                - 0.057s
+                - 0.049s
             X-Api-Total-Time:
-                - 0.096s
+                - 0.099s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 149.92575ms
+        duration: 158.009833ms
     - id: 23
       request:
         proto: HTTP/1.1
@@ -1578,14 +1578,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3
+        url: http://awx.local/api/v2/applications/1
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 928
-        body: '{"id":3,"type":"o_auth2_application","url":"/api/v2/applications/3/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/3/tokens/","activity_stream":"/api/v2/applications/3/activity_stream/","organization":"/api/v2/organizations/40/"},"summary_fields":{"organization":{"id":40,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-04-27T07:30:02.973829Z","modified":"2026-04-27T07:30:06.561080Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"d04ZndvlQzwJ6NvaMC2CuaTMuLSGDKeIn0vIuh2M","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":40}'
+        body: '{"id":1,"type":"o_auth2_application","url":"/api/v2/applications/1/","related":{"named_url":"/api/v2/applications/Application (updated)++Application/","tokens":"/api/v2/applications/1/tokens/","activity_stream":"/api/v2/applications/1/activity_stream/","organization":"/api/v2/organizations/26/"},"summary_fields":{"organization":{"id":26,"name":"Application","description":""},"user_capabilities":{"edit":true,"delete":true},"tokens":{"count":0,"results":[]}},"created":"2026-08-18T13:51:52.735357Z","modified":"2026-08-18T13:51:56.477951Z","name":"Application (updated)","description":"OAuth2 application created by TestIntegration_Application (updated)","client_id":"ovYWC2mWIF85OGLMUx0FnJnPKUjCXWitbECNlbEm","client_secret":"************","client_type":"confidential","redirect_uris":"https://localhost https://localhost/callback","authorization_grant_type":"authorization-code","skip_authorization":false,"organization":26}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1602,7 +1602,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 27 Apr 2026 07:30:09 GMT
+                - Tue, 18 Aug 2026 13:51:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1612,24 +1612,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - cec5a60ff22c4b4eaeb3b90935b6069f
+                - 060c880258c447c78479ab82ce3bb6fd
             X-Api-Time:
-                - 0.067s
+                - 0.041s
             X-Api-Total-Time:
-                - 0.124s
+                - 0.098s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 149.969667ms
+        duration: 157.91825ms
     - id: 24
       request:
         proto: HTTP/1.1
@@ -1644,7 +1644,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/applications/3/
+        url: http://awx.local/api/v2/applications/1/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1666,7 +1666,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:30:09 GMT
+                - Tue, 18 Aug 2026 13:51:59 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1676,24 +1676,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 132ea0bcf7e646c8a3d68d0a843a7b36
+                - a5ecd3b48c764049a21f9e119127459d
             X-Api-Time:
-                - 0.094s
+                - 0.054s
             X-Api-Total-Time:
-                - 0.173s
+                - 0.110s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 184.485875ms
+        duration: 119.204458ms
     - id: 25
       request:
         proto: HTTP/1.1
@@ -1708,7 +1708,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/40/
+        url: http://awx.local/api/v2/organizations/26/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1730,7 +1730,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 27 Apr 2026 07:30:10 GMT
+                - Tue, 18 Aug 2026 13:52:00 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1740,21 +1740,21 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2e54acb32ebd4ccd96b9c5830db5897e
+                - 0058a5c792594c159bea23f897821f5e
             X-Api-Time:
-                - 0.243s
+                - 0.178s
             X-Api-Total-Time:
-                - 0.329s
+                - 0.263s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 338.255ms
+        duration: 273.09925ms

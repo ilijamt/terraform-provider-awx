@@ -26,5 +26,13 @@
         }
       ]
     }
-  ]
+  ],
+  "property_overrides": {
+    "update_cache_timeout": {
+      "omit_empty": false
+    },
+    "verbosity": {
+      "omit_empty": false
+    }
+  }
 }

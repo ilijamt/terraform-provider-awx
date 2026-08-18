@@ -6,76 +6,6 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 182
-        host: awx.local
-        body: |
-            {"capacity_adjustment":1,"enabled":true,"hostname":"execution-1.example.com","listener_port":27199,"managed_by_policy":true,"node_type":"execution","peers_from_control_nodes":false}
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/
-        method: POST
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 1185
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, POST, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "1185"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:39:51 GMT
-            Expires:
-                - "0"
-            Location:
-                - /api/v2/instances/12/
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - 78bd5bd7d0224efe9150597e0f0410c7
-            X-Api-Time:
-                - 0.098s
-            X-Api-Total-Time:
-                - 0.182s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 201 Created
-        code: 201
-        duration: 5.215284667s
-    - id: 1
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
         content_length: 148
         host: awx.local
         body: |
@@ -94,7 +24,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1111
-        body: '{"id":13,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/13/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/13/receptor_addresses/","jobs":"/api/v2/instances/13/jobs/","peers":"/api/v2/instances/13/peers/","instance_groups":"/api/v2/instances/13/instance_groups/","install_bundle":"/api/v2/instances/13/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.704928Z","modified":"2026-08-18T13:39:51.705071Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        body: '{"id":14,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/14/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/14/receptor_addresses/","jobs":"/api/v2/instances/14/jobs/","peers":"/api/v2/instances/14/peers/","instance_groups":"/api/v2/instances/14/instance_groups/","install_bundle":"/api/v2/instances/14/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.950551Z","modified":"2026-08-18T13:52:36.950598Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -111,11 +41,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:51 GMT
+                - Tue, 18 Aug 2026 13:52:37 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/instances/13/
+                - /api/v2/instances/14/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -129,18 +59,88 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 39abc917ffdd45fdacfe3ab90ec5370f
+                - 8755917fad26468ab71399eae928b415
             X-Api-Time:
-                - 0.092s
+                - 0.112s
             X-Api-Total-Time:
-                - 0.187s
+                - 0.175s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 5.221433375s
+        duration: 186.529958ms
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 182
+        host: awx.local
+        body: |
+            {"capacity_adjustment":1,"enabled":true,"hostname":"execution-1.example.com","listener_port":27199,"managed_by_policy":true,"node_type":"execution","peers_from_control_nodes":false}
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1185
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, POST, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1185"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:52:37 GMT
+            Expires:
+                - "0"
+            Location:
+                - /api/v2/instances/15/
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - 5aae2ea8dab44b5bb045d0f7d204f84d
+            X-Api-Time:
+                - 0.130s
+            X-Api-Total-Time:
+                - 0.195s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 201 Created
+        code: 201
+        duration: 206.224834ms
     - id: 2
       request:
         proto: HTTP/1.1
@@ -165,7 +165,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1180
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -182,7 +182,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:57 GMT
+                - Tue, 18 Aug 2026 13:52:37 GMT
             Expires:
                 - "0"
             Pragma:
@@ -198,18 +198,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 5f1e95a9314b4a2b9c114aed031dd112
+                - e2a89ffb29cf441696acf511ce8889fc
             X-Api-Time:
-                - 0.066s
+                - 0.052s
             X-Api-Total-Time:
-                - 0.113s
+                - 0.100s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 140.378208ms
+        duration: 109.558333ms
     - id: 3
       request:
         proto: HTTP/1.1
@@ -234,7 +234,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1180
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -251,7 +251,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:57 GMT
+                - Tue, 18 Aug 2026 13:52:37 GMT
             Expires:
                 - "0"
             Pragma:
@@ -267,18 +267,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3c5e77b11efa48d0987d14776f5daee2
+                - 1fe096e2dd974b3f824250ee4c2c53bd
             X-Api-Time:
-                - 0.093s
+                - 0.096s
             X-Api-Total-Time:
-                - 0.143s
+                - 0.155s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 168.340208ms
+        duration: 164.487542ms
     - id: 4
       request:
         proto: HTTP/1.1
@@ -293,80 +293,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/13/
-        method: GET
-      response:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 1122
-        body: '{"id":13,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/13/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/13/receptor_addresses/","jobs":"/api/v2/instances/13/jobs/","peers":"/api/v2/instances/13/peers/","instance_groups":"/api/v2/instances/13/instance_groups/","install_bundle":"/api/v2/instances/13/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.704928Z","modified":"2026-08-18T13:39:51.705071Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
-        headers:
-            Access-Control-Expose-Headers:
-                - X-API-Request-Id
-            Allow:
-                - GET, PUT, PATCH, HEAD, OPTIONS
-            Cache-Control:
-                - no-cache, no-store, must-revalidate
-            Connection:
-                - keep-alive
-            Content-Language:
-                - en
-            Content-Length:
-                - "1122"
-            Content-Type:
-                - application/json
-            Date:
-                - Tue, 18 Aug 2026 13:39:58 GMT
-            Expires:
-                - "0"
-            Pragma:
-                - no-cache
-            Strict-Transport-Security:
-                - max-age=15768000
-            Vary:
-                - Accept, Accept-Language, origin
-            X-Api-Node:
-                - awx-web-6795fdffc8-djk8s
-            X-Api-Product-Name:
-                - AWX
-            X-Api-Product-Version:
-                - 24.6.1
-            X-Api-Request-Id:
-                - b0af2c37a2be4471bea130ccc633e9b9
-            X-Api-Time:
-                - 0.091s
-            X-Api-Total-Time:
-                - 0.169s
-            X-Content-Type-Options:
-                - nosniff
-            X-Frame-Options:
-                - DENY
-        status: 200 OK
-        code: 200
-        duration: 204.4925ms
-    - id: 5
-      request:
-        proto: HTTP/1.1
-        proto_major: 1
-        proto_minor: 1
-        content_length: 0
-        host: awx.local
-        headers:
-            Authorization:
-                - REDACTED
-            Content-Type:
-                - application/json
-            User-Agent:
-                - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1196
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -383,7 +317,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:58 GMT
+                - Tue, 18 Aug 2026 13:52:38 GMT
             Expires:
                 - "0"
             Pragma:
@@ -399,18 +333,84 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 048544b8e5e84e1588bab92d8f440bb8
+                - 8320b1d5f4a94c338bc39e31f1e10066
             X-Api-Time:
-                - 0.092s
+                - 0.048s
             X-Api-Total-Time:
-                - 0.180s
+                - 0.096s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 204.612042ms
+        duration: 110.226041ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        host: awx.local
+        headers:
+            Authorization:
+                - REDACTED
+            Content-Type:
+                - application/json
+            User-Agent:
+                - terraform-provider-awx/dev
+        url: http://awx.local/api/v2/instances/14/
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 1122
+        body: '{"id":14,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/14/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/14/receptor_addresses/","jobs":"/api/v2/instances/14/jobs/","peers":"/api/v2/instances/14/peers/","instance_groups":"/api/v2/instances/14/instance_groups/","install_bundle":"/api/v2/instances/14/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.950551Z","modified":"2026-08-18T13:52:36.950598Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        headers:
+            Access-Control-Expose-Headers:
+                - X-API-Request-Id
+            Allow:
+                - GET, PUT, PATCH, HEAD, OPTIONS
+            Cache-Control:
+                - no-cache, no-store, must-revalidate
+            Connection:
+                - keep-alive
+            Content-Language:
+                - en
+            Content-Length:
+                - "1122"
+            Content-Type:
+                - application/json
+            Date:
+                - Tue, 18 Aug 2026 13:52:38 GMT
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+            Strict-Transport-Security:
+                - max-age=15768000
+            Vary:
+                - Accept, Accept-Language, origin
+            X-Api-Node:
+                - awx-web-6795fdffc8-djk8s
+            X-Api-Product-Name:
+                - AWX
+            X-Api-Product-Version:
+                - 24.6.1
+            X-Api-Request-Id:
+                - b80250bf0dd64ade85d04b563b96d6b7
+            X-Api-Time:
+                - 0.084s
+            X-Api-Total-Time:
+                - 0.134s
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - DENY
+        status: 200 OK
+        code: 200
+        duration: 150.202541ms
     - id: 6
       request:
         proto: HTTP/1.1
@@ -435,7 +435,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1180
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -452,7 +452,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:58 GMT
+                - Tue, 18 Aug 2026 13:52:38 GMT
             Expires:
                 - "0"
             Pragma:
@@ -468,18 +468,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 7ef6ef91577e42ba80c7bf74b82ca107
+                - 98e30011d0ae47d4a6d0cb2e465c3d0e
             X-Api-Time:
-                - 0.047s
+                - 0.109s
             X-Api-Total-Time:
-                - 0.090s
+                - 0.179s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 135.270125ms
+        duration: 188.582167ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -494,14 +494,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/13/
+        url: http://awx.local/api/v2/instances/14/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1122
-        body: '{"id":13,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/13/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/13/receptor_addresses/","jobs":"/api/v2/instances/13/jobs/","peers":"/api/v2/instances/13/peers/","instance_groups":"/api/v2/instances/13/instance_groups/","install_bundle":"/api/v2/instances/13/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.704928Z","modified":"2026-08-18T13:39:51.705071Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        body: '{"id":14,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/14/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/14/receptor_addresses/","jobs":"/api/v2/instances/14/jobs/","peers":"/api/v2/instances/14/peers/","instance_groups":"/api/v2/instances/14/instance_groups/","install_bundle":"/api/v2/instances/14/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.950551Z","modified":"2026-08-18T13:52:36.950598Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -518,7 +518,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:58 GMT
+                - Tue, 18 Aug 2026 13:52:38 GMT
             Expires:
                 - "0"
             Pragma:
@@ -534,18 +534,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a3d81e0d9a3a4431a518616ffcd8d624
+                - 9b5f646bae084db9a34c2ee17ac083f3
             X-Api-Time:
-                - 0.047s
+                - 0.053s
             X-Api-Total-Time:
-                - 0.102s
+                - 0.107s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 133.258875ms
+        duration: 121.876584ms
     - id: 8
       request:
         proto: HTTP/1.1
@@ -560,14 +560,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1196
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:51.683095Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:36.967299Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -584,7 +584,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:58 GMT
+                - Tue, 18 Aug 2026 13:52:38 GMT
             Expires:
                 - "0"
             Pragma:
@@ -600,18 +600,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 1d94a3244f7f4cfcb933b1efb360d3f9
+                - fef1efcb357045ed94f0146dfb868e2c
             X-Api-Time:
-                - 0.117s
+                - 0.120s
             X-Api-Total-Time:
-                - 0.179s
+                - 0.189s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 209.798917ms
+        duration: 202.530583ms
     - id: 9
       request:
         proto: HTTP/1.1
@@ -628,14 +628,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1193
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -652,7 +652,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:59 GMT
+                - Tue, 18 Aug 2026 13:52:39 GMT
             Expires:
                 - "0"
             Pragma:
@@ -668,18 +668,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 073c71b846b348739972d7c6a47d7e5b
+                - 667a2e76ced3410cb60bc031847de710
             X-Api-Time:
-                - 0.179s
+                - 0.173s
             X-Api-Total-Time:
-                - 0.250s
+                - 0.238s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 330.404958ms
+        duration: 251.295292ms
     - id: 10
       request:
         proto: HTTP/1.1
@@ -704,7 +704,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1177
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -721,7 +721,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:39:59 GMT
+                - Tue, 18 Aug 2026 13:52:39 GMT
             Expires:
                 - "0"
             Pragma:
@@ -737,18 +737,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 98e4b70158324e2b8ae84ca2ce9a17bb
+                - f926a20f803742ec943028232ec3feac
             X-Api-Time:
-                - 0.088s
+                - 0.102s
             X-Api-Total-Time:
-                - 0.144s
+                - 0.171s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 189.158292ms
+        duration: 181.225583ms
     - id: 11
       request:
         proto: HTTP/1.1
@@ -773,7 +773,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1177
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -790,7 +790,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:00 GMT
+                - Tue, 18 Aug 2026 13:52:40 GMT
             Expires:
                 - "0"
             Pragma:
@@ -806,18 +806,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - cc2842fcf1f24869a36ec7f4541ee805
+                - 0bc2f99133c94a5389bddc9b5944569c
             X-Api-Time:
-                - 0.110s
+                - 0.101s
             X-Api-Total-Time:
-                - 0.183s
+                - 0.174s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 207.021167ms
+        duration: 187.040375ms
     - id: 12
       request:
         proto: HTTP/1.1
@@ -832,14 +832,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/13/
+        url: http://awx.local/api/v2/instances/14/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1122
-        body: '{"id":13,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/13/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/13/receptor_addresses/","jobs":"/api/v2/instances/13/jobs/","peers":"/api/v2/instances/13/peers/","instance_groups":"/api/v2/instances/13/instance_groups/","install_bundle":"/api/v2/instances/13/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.704928Z","modified":"2026-08-18T13:39:51.705071Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        body: '{"id":14,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/14/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/14/receptor_addresses/","jobs":"/api/v2/instances/14/jobs/","peers":"/api/v2/instances/14/peers/","instance_groups":"/api/v2/instances/14/instance_groups/","install_bundle":"/api/v2/instances/14/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.950551Z","modified":"2026-08-18T13:52:36.950598Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":100,"consumed_capacity":0,"percent_capacity_remaining":100.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -856,7 +856,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:00 GMT
+                - Tue, 18 Aug 2026 13:52:40 GMT
             Expires:
                 - "0"
             Pragma:
@@ -872,18 +872,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 67e8e70346a14d74b25494e05e541411
+                - 8b64c5f306ce4e57ae04214322daaa7c
             X-Api-Time:
-                - 0.050s
+                - 0.088s
             X-Api-Total-Time:
-                - 0.107s
+                - 0.136s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 126.517958ms
+        duration: 146.479959ms
     - id: 13
       request:
         proto: HTTP/1.1
@@ -898,14 +898,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1193
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -922,7 +922,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:00 GMT
+                - Tue, 18 Aug 2026 13:52:40 GMT
             Expires:
                 - "0"
             Pragma:
@@ -938,18 +938,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - d071133cb4f046348adb32aa0b3314d8
+                - bd9979a3c7344ecab67846ff310af7d9
             X-Api-Time:
-                - 0.063s
+                - 0.094s
             X-Api-Total-Time:
-                - 0.111s
+                - 0.139s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 126.5365ms
+        duration: 147.879833ms
     - id: 14
       request:
         proto: HTTP/1.1
@@ -974,7 +974,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1177
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -991,7 +991,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:01 GMT
+                - Tue, 18 Aug 2026 13:52:41 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1007,18 +1007,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - e5458b6bacc44ae5ba6f37d3bb372974
+                - 69a2c3262e184b14b121e7f8964256c3
             X-Api-Time:
-                - 0.048s
+                - 0.049s
             X-Api-Total-Time:
-                - 0.096s
+                - 0.099s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 110.611542ms
+        duration: 108.686125ms
     - id: 15
       request:
         proto: HTTP/1.1
@@ -1033,14 +1033,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1193
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1057,7 +1057,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:01 GMT
+                - Tue, 18 Aug 2026 13:52:41 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1073,18 +1073,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 1bf3495af4444a85b7783afb9735262c
+                - d68a4c5f647d4ed99ecc8c7b2ab6f1c5
             X-Api-Time:
-                - 0.101s
+                - 0.032s
             X-Api-Total-Time:
-                - 0.160s
+                - 0.084s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 201.004791ms
+        duration: 97.003708ms
     - id: 16
       request:
         proto: HTTP/1.1
@@ -1109,7 +1109,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1177
-        body: '{"count":1,"next":null,"previous":null,"results":[{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:39:59.260523Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
+        body: '{"count":1,"next":null,"previous":null,"results":[{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false}},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:39.319530Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"installed","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1126,7 +1126,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:02 GMT
+                - Tue, 18 Aug 2026 13:52:41 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1142,18 +1142,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 1e58431bb8864a4497ef6eaf77b4f372
+                - d54c78db23564e579298f58f0b6b0abd
             X-Api-Time:
-                - 0.081s
+                - 0.066s
             X-Api-Total-Time:
-                - 0.150s
+                - 0.122s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 178.75325ms
+        duration: 133.836667ms
     - id: 17
       request:
         proto: HTTP/1.1
@@ -1170,14 +1170,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/12/
+        url: http://awx.local/api/v2/instances/15/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1198
-        body: '{"id":12,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/12/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/12/receptor_addresses/","jobs":"/api/v2/instances/12/jobs/","peers":"/api/v2/instances/12/peers/","instance_groups":"/api/v2/instances/12/instance_groups/","install_bundle":"/api/v2/instances/12/install_bundle/","health_check":"/api/v2/instances/12/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.682961Z","modified":"2026-08-18T13:40:02.415792Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
+        body: '{"id":15,"hostname":"execution-1.example.com","type":"instance","url":"/api/v2/instances/15/","related":{"named_url":"/api/v2/instances/execution-1.example.com/","receptor_addresses":"/api/v2/instances/15/receptor_addresses/","jobs":"/api/v2/instances/15/jobs/","peers":"/api/v2/instances/15/peers/","instance_groups":"/api/v2/instances/15/instance_groups/","install_bundle":"/api/v2/instances/15/install_bundle/","health_check":"/api/v2/instances/15/health_check/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.967252Z","modified":"2026-08-18T13:52:42.000747Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"0.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":false,"managed_by_policy":true,"node_type":"execution","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":27199,"peers_from_control_nodes":false,"protocol":"tcp"}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1194,7 +1194,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:02 GMT
+                - Tue, 18 Aug 2026 13:52:42 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1210,18 +1210,18 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2d8751005eec4b8fa962450edbe445ba
+                - c7841f6117db411c8dde10e51cdbf9ea
             X-Api-Time:
-                - 0.106s
+                - 0.102s
             X-Api-Total-Time:
-                - 0.171s
+                - 0.155s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 197.196541ms
+        duration: 168.020834ms
     - id: 18
       request:
         proto: HTTP/1.1
@@ -1238,14 +1238,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/instances/13/
+        url: http://awx.local/api/v2/instances/14/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1123
-        body: '{"id":13,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/13/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/13/receptor_addresses/","jobs":"/api/v2/instances/13/jobs/","peers":"/api/v2/instances/13/peers/","instance_groups":"/api/v2/instances/13/instance_groups/","install_bundle":"/api/v2/instances/13/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:39:51.704928Z","modified":"2026-08-18T13:40:02.452306Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
+        body: '{"id":14,"hostname":"hop-1.example.com","type":"instance","url":"/api/v2/instances/14/","related":{"named_url":"/api/v2/instances/hop-1.example.com/","receptor_addresses":"/api/v2/instances/14/receptor_addresses/","jobs":"/api/v2/instances/14/jobs/","peers":"/api/v2/instances/14/peers/","instance_groups":"/api/v2/instances/14/instance_groups/","install_bundle":"/api/v2/instances/14/install_bundle/"},"summary_fields":{"user_capabilities":{"edit":false},"links":[]},"uuid":"00000000-0000-0000-0000-000000000000","created":"2026-08-18T13:52:36.950551Z","modified":"2026-08-18T13:52:42.011250Z","last_seen":null,"health_check_started":null,"health_check_pending":false,"last_health_check":null,"errors":"","capacity_adjustment":"1.00","version":"","capacity":0,"consumed_capacity":0,"percent_capacity_remaining":0.0,"jobs_running":0,"jobs_total":0,"cpu":"0.0","memory":0,"cpu_capacity":0,"mem_capacity":0,"enabled":true,"managed_by_policy":true,"node_type":"hop","node_state":"deprovisioning","managed":false,"ip_address":"","peers":[],"reverse_peers":[],"listener_port":null,"peers_from_control_nodes":false,"protocol":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1262,7 +1262,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Tue, 18 Aug 2026 13:40:02 GMT
+                - Tue, 18 Aug 2026 13:52:42 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1278,15 +1278,15 @@ interactions:
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a7726325aa424a7cb7bdf7cffea8a7fb
+                - ec7dea8cbac54450906a091e8286f5c9
             X-Api-Time:
-                - 0.144s
+                - 0.120s
             X-Api-Total-Time:
-                - 0.204s
+                - 0.167s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 230.765792ms
+        duration: 179.326875ms

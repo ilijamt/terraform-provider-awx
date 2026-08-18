@@ -6,12 +6,15 @@
   "enabled": true,
   "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
   "property_overrides": {
-    "launched_by": {
-      "type": "id"
-    },
     "extra_vars": {
       "type": "json",
       "post_wrap": true
+    },
+    "forks": {
+      "omit_empty": false
+    },
+    "launched_by": {
+      "type": "id"
     }
   },
   "search_fields": [

@@ -6,10 +6,10 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 20
+        content_length: 34
         host: awx.local
         body: |
-            {"name":"Schedule"}
+            {"max_hosts":0,"name":"Schedule"}
         headers:
             Authorization:
                 - REDACTED
@@ -23,8 +23,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3645
-        body: '{"id":46,"type":"organization","url":"/api/v2/organizations/46/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/46/execution_environments/","projects":"/api/v2/organizations/46/projects/","inventories":"/api/v2/organizations/46/inventories/","job_templates":"/api/v2/organizations/46/job_templates/","workflow_job_templates":"/api/v2/organizations/46/workflow_job_templates/","users":"/api/v2/organizations/46/users/","admins":"/api/v2/organizations/46/admins/","teams":"/api/v2/organizations/46/teams/","credentials":"/api/v2/organizations/46/credentials/","applications":"/api/v2/organizations/46/applications/","activity_stream":"/api/v2/organizations/46/activity_stream/","notification_templates":"/api/v2/organizations/46/notification_templates/","notification_templates_started":"/api/v2/organizations/46/notification_templates_started/","notification_templates_success":"/api/v2/organizations/46/notification_templates_success/","notification_templates_error":"/api/v2/organizations/46/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/46/notification_templates_approvals/","object_roles":"/api/v2/organizations/46/object_roles/","access_list":"/api/v2/organizations/46/access_list/","instance_groups":"/api/v2/organizations/46/instance_groups/","galaxy_credentials":"/api/v2/organizations/46/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"5ae6a269-f508-4fc6-9a41-c5d6f3c6d015","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1064,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1065},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1066},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1067},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1068},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1069},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1070},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1071},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1072},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1073},"member_role":{"description":"User is a member of the organization","name":"Member","id":1074,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1075},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1076}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-17T20:42:45.490497Z","modified":"2026-08-17T20:42:45.490564Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3632
+        body: '{"id":34,"type":"organization","url":"/api/v2/organizations/34/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/34/execution_environments/","projects":"/api/v2/organizations/34/projects/","inventories":"/api/v2/organizations/34/inventories/","job_templates":"/api/v2/organizations/34/job_templates/","workflow_job_templates":"/api/v2/organizations/34/workflow_job_templates/","users":"/api/v2/organizations/34/users/","admins":"/api/v2/organizations/34/admins/","teams":"/api/v2/organizations/34/teams/","credentials":"/api/v2/organizations/34/credentials/","applications":"/api/v2/organizations/34/applications/","activity_stream":"/api/v2/organizations/34/activity_stream/","notification_templates":"/api/v2/organizations/34/notification_templates/","notification_templates_started":"/api/v2/organizations/34/notification_templates_started/","notification_templates_success":"/api/v2/organizations/34/notification_templates_success/","notification_templates_error":"/api/v2/organizations/34/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/34/notification_templates_approvals/","object_roles":"/api/v2/organizations/34/object_roles/","access_list":"/api/v2/organizations/34/access_list/","instance_groups":"/api/v2/organizations/34/instance_groups/","galaxy_credentials":"/api/v2/organizations/34/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d006a0c4-889e-4763-aef6-6b76cb7a24cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":820,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":821},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":822},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":823},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":824},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":825},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":826},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":827},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":828},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":829},"member_role":{"description":"User is a member of the organization","name":"Member","id":830,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":831},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":832}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"inventories":0,"teams":0,"users":0,"job_templates":0,"admins":0,"projects":0}},"created":"2026-08-18T13:54:07.544571Z","modified":"2026-08-18T13:54:07.544640Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -37,15 +37,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3645"
+                - "3632"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:45 GMT
+                - Tue, 18 Aug 2026 13:54:07 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/organizations/46/
+                - /api/v2/organizations/34/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -53,24 +53,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2513cc1417574ef3b337b18852d48ffd
+                - 252953cc5139425fab662e47341c449a
             X-Api-Time:
-                - 0.330s
+                - 0.353s
             X-Api-Total-Time:
-                - 0.408s
+                - 0.429s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 5.438859333s
+        duration: 455.317125ms
     - id: 1
       request:
         proto: HTTP/1.1
@@ -79,7 +79,7 @@ interactions:
         content_length: 113
         host: awx.local
         body: |
-            {"name":"Example schedule inventory","organization":46,"prevent_instance_group_fallback":false,"variables":"{}"}
+            {"name":"Example schedule inventory","organization":34,"prevent_instance_group_fallback":false,"variables":"{}"}
         headers:
             Authorization:
                 - REDACTED
@@ -93,8 +93,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2342
-        body: '{"id":22,"type":"inventory","url":"/api/v2/inventories/22/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/22/hosts/","variable_data":"/api/v2/inventories/22/variable_data/","script":"/api/v2/inventories/22/script/","activity_stream":"/api/v2/inventories/22/activity_stream/","job_templates":"/api/v2/inventories/22/job_templates/","ad_hoc_commands":"/api/v2/inventories/22/ad_hoc_commands/","access_list":"/api/v2/inventories/22/access_list/","object_roles":"/api/v2/inventories/22/object_roles/","instance_groups":"/api/v2/inventories/22/instance_groups/","copy":"/api/v2/inventories/22/copy/","labels":"/api/v2/inventories/22/labels/","groups":"/api/v2/inventories/22/groups/","root_groups":"/api/v2/inventories/22/root_groups/","update_inventory_sources":"/api/v2/inventories/22/update_inventory_sources/","inventory_sources":"/api/v2/inventories/22/inventory_sources/","tree":"/api/v2/inventories/22/tree/","organization":"/api/v2/organizations/46/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1077},"update_role":{"description":"May update the inventory","name":"Update","id":1078},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1079},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1080},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1081}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-17T20:42:51.416835Z","modified":"2026-08-17T20:42:51.416900Z","name":"Example schedule inventory","description":"","organization":46,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2337
+        body: '{"id":21,"type":"inventory","url":"/api/v2/inventories/21/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/21/hosts/","variable_data":"/api/v2/inventories/21/variable_data/","script":"/api/v2/inventories/21/script/","activity_stream":"/api/v2/inventories/21/activity_stream/","job_templates":"/api/v2/inventories/21/job_templates/","ad_hoc_commands":"/api/v2/inventories/21/ad_hoc_commands/","access_list":"/api/v2/inventories/21/access_list/","object_roles":"/api/v2/inventories/21/object_roles/","instance_groups":"/api/v2/inventories/21/instance_groups/","copy":"/api/v2/inventories/21/copy/","labels":"/api/v2/inventories/21/labels/","groups":"/api/v2/inventories/21/groups/","root_groups":"/api/v2/inventories/21/root_groups/","update_inventory_sources":"/api/v2/inventories/21/update_inventory_sources/","inventory_sources":"/api/v2/inventories/21/inventory_sources/","tree":"/api/v2/inventories/21/tree/","organization":"/api/v2/organizations/34/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":833},"update_role":{"description":"May update the inventory","name":"Update","id":834},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":835},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":836},"read_role":{"description":"May view settings for the inventory","name":"Read","id":837}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:54:08.406921Z","modified":"2026-08-18T13:54:08.406989Z","name":"Example schedule inventory","description":"","organization":34,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -107,15 +107,15 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2342"
+                - "2337"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:51 GMT
+                - Tue, 18 Aug 2026 13:54:08 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/inventories/22/
+                - /api/v2/inventories/21/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -123,33 +123,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - c6259ea7337141a3b5838500a5ddf4fc
+                - b165148705864e1289760fc80d895a1b
             X-Api-Time:
-                - 0.198s
+                - 0.240s
             X-Api-Total-Time:
-                - 0.267s
+                - 0.309s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 422.638541ms
+        duration: 327.346708ms
     - id: 2
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 174
+        content_length: 211
         host: awx.local
         body: |
-            {"inventory":22,"name":"Example schedule inventory source","overwrite":false,"overwrite_vars":false,"source":"ec2","source_vars":"","update_on_launch":false,"verbosity":"1"}
+            {"inventory":21,"name":"Example schedule inventory source","overwrite":false,"overwrite_vars":false,"source":"ec2","source_vars":"","timeout":0,"update_cache_timeout":0,"update_on_launch":false,"verbosity":"1"}
         headers:
             Authorization:
                 - REDACTED
@@ -164,7 +164,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 2216
-        body: '{"id":32,"type":"inventory_source","url":"/api/v2/inventory_sources/32/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","update":"/api/v2/inventory_sources/32/update/","inventory_updates":"/api/v2/inventory_sources/32/inventory_updates/","schedules":"/api/v2/inventory_sources/32/schedules/","activity_stream":"/api/v2/inventory_sources/32/activity_stream/","hosts":"/api/v2/inventory_sources/32/hosts/","groups":"/api/v2/inventory_sources/32/groups/","notification_templates_started":"/api/v2/inventory_sources/32/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/32/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/32/notification_templates_error/","inventory":"/api/v2/inventories/22/","credentials":"/api/v2/inventory_sources/32/credentials/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[]},"created":"2026-08-17T20:42:52.223108Z","modified":"2026-08-17T20:42:52.223123Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"inventory":22,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
+        body: '{"id":70,"type":"inventory_source","url":"/api/v2/inventory_sources/70/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","update":"/api/v2/inventory_sources/70/update/","inventory_updates":"/api/v2/inventory_sources/70/inventory_updates/","schedules":"/api/v2/inventory_sources/70/schedules/","activity_stream":"/api/v2/inventory_sources/70/activity_stream/","hosts":"/api/v2/inventory_sources/70/hosts/","groups":"/api/v2/inventory_sources/70/groups/","notification_templates_started":"/api/v2/inventory_sources/70/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/70/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/70/notification_templates_error/","inventory":"/api/v2/inventories/21/","credentials":"/api/v2/inventory_sources/70/credentials/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[]},"created":"2026-08-18T13:54:09.065356Z","modified":"2026-08-18T13:54:09.065368Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":null,"status":"never updated","execution_environment":null,"inventory":21,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -181,11 +181,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:52 GMT
+                - Tue, 18 Aug 2026 13:54:09 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/inventory_sources/32/
+                - /api/v2/inventory_sources/70/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -193,24 +193,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a6829fdd24624ef7837d142927415e1c
+                - 918e08f684de48f69ba64c7e3f693abc
             X-Api-Time:
-                - 0.117s
+                - 0.155s
             X-Api-Total-Time:
-                - 0.176s
+                - 0.224s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 277.118334ms
+        duration: 251.4305ms
     - id: 3
       request:
         proto: HTTP/1.1
@@ -219,7 +219,7 @@ interactions:
         content_length: 233
         host: awx.local
         body: |
-            {"description":"Reload the EC2 inventory on a fixed interval","enabled":true,"extra_data":{},"name":"Refresh example inventory every 6 hours","rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","unified_job_template":32}
+            {"description":"Reload the EC2 inventory on a fixed interval","enabled":true,"extra_data":{},"name":"Refresh example inventory every 6 hours","rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","unified_job_template":70}
         headers:
             Authorization:
                 - REDACTED
@@ -234,7 +234,7 @@ interactions:
         proto_major: 1
         proto_minor: 1
         content_length: 1684
-        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:52.835002Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":true,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":"2026-08-18T00:00:00Z","timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:09.596208Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":true,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":"2026-08-18T18:00:00Z","timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -251,11 +251,11 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:52 GMT
+                - Tue, 18 Aug 2026 13:54:09 GMT
             Expires:
                 - "0"
             Location:
-                - /api/v2/schedules/24/
+                - /api/v2/schedules/16/
             Pragma:
                 - no-cache
             Strict-Transport-Security:
@@ -263,24 +263,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 0426d99457c6412d8363370254a2d447
+                - 9e45e4c243ad4ba4ba925826ac806a79
             X-Api-Time:
-                - 0.139s
+                - 0.127s
             X-Api-Total-Time:
-                - 0.208s
+                - 0.211s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 201 Created
         code: 201
-        duration: 227.535083ms
+        duration: 230.271708ms
     - id: 4
       request:
         proto: HTTP/1.1
@@ -295,14 +295,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/46/
+        url: http://awx.local/api/v2/organizations/34/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3655
-        body: '{"id":46,"type":"organization","url":"/api/v2/organizations/46/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/46/execution_environments/","projects":"/api/v2/organizations/46/projects/","inventories":"/api/v2/organizations/46/inventories/","job_templates":"/api/v2/organizations/46/job_templates/","workflow_job_templates":"/api/v2/organizations/46/workflow_job_templates/","users":"/api/v2/organizations/46/users/","admins":"/api/v2/organizations/46/admins/","teams":"/api/v2/organizations/46/teams/","credentials":"/api/v2/organizations/46/credentials/","applications":"/api/v2/organizations/46/applications/","activity_stream":"/api/v2/organizations/46/activity_stream/","notification_templates":"/api/v2/organizations/46/notification_templates/","notification_templates_started":"/api/v2/organizations/46/notification_templates_started/","notification_templates_success":"/api/v2/organizations/46/notification_templates_success/","notification_templates_error":"/api/v2/organizations/46/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/46/notification_templates_approvals/","object_roles":"/api/v2/organizations/46/object_roles/","access_list":"/api/v2/organizations/46/access_list/","instance_groups":"/api/v2/organizations/46/instance_groups/","galaxy_credentials":"/api/v2/organizations/46/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"5ae6a269-f508-4fc6-9a41-c5d6f3c6d015","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1064,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1065},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1066},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1067},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1068},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1069},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1070},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1071},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1072},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1073},"member_role":{"description":"User is a member of the organization","name":"Member","id":1074,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1075},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1076}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-17T20:42:45.490497Z","modified":"2026-08-17T20:42:45.490564Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3642
+        body: '{"id":34,"type":"organization","url":"/api/v2/organizations/34/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/34/execution_environments/","projects":"/api/v2/organizations/34/projects/","inventories":"/api/v2/organizations/34/inventories/","job_templates":"/api/v2/organizations/34/job_templates/","workflow_job_templates":"/api/v2/organizations/34/workflow_job_templates/","users":"/api/v2/organizations/34/users/","admins":"/api/v2/organizations/34/admins/","teams":"/api/v2/organizations/34/teams/","credentials":"/api/v2/organizations/34/credentials/","applications":"/api/v2/organizations/34/applications/","activity_stream":"/api/v2/organizations/34/activity_stream/","notification_templates":"/api/v2/organizations/34/notification_templates/","notification_templates_started":"/api/v2/organizations/34/notification_templates_started/","notification_templates_success":"/api/v2/organizations/34/notification_templates_success/","notification_templates_error":"/api/v2/organizations/34/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/34/notification_templates_approvals/","object_roles":"/api/v2/organizations/34/object_roles/","access_list":"/api/v2/organizations/34/access_list/","instance_groups":"/api/v2/organizations/34/instance_groups/","galaxy_credentials":"/api/v2/organizations/34/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d006a0c4-889e-4763-aef6-6b76cb7a24cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":820,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":821},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":822},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":823},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":824},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":825},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":826},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":827},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":828},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":829},"member_role":{"description":"User is a member of the organization","name":"Member","id":830,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":831},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":832}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:54:07.544571Z","modified":"2026-08-18T13:54:07.544640Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -315,11 +315,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3655"
+                - "3642"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:53 GMT
+                - Tue, 18 Aug 2026 13:54:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -329,24 +329,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 8d17761eff7e48f5a696233f4d899ebd
+                - 6589314ae23a401ab2687cb9ded014b8
             X-Api-Time:
-                - 0.106s
+                - 0.136s
             X-Api-Total-Time:
-                - 0.167s
+                - 0.188s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 259.815125ms
+        duration: 208.02725ms
     - id: 5
       request:
         proto: HTTP/1.1
@@ -361,14 +361,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/22/
+        url: http://awx.local/api/v2/inventories/21/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2341
-        body: '{"id":22,"type":"inventory","url":"/api/v2/inventories/22/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/22/hosts/","variable_data":"/api/v2/inventories/22/variable_data/","script":"/api/v2/inventories/22/script/","activity_stream":"/api/v2/inventories/22/activity_stream/","job_templates":"/api/v2/inventories/22/job_templates/","ad_hoc_commands":"/api/v2/inventories/22/ad_hoc_commands/","access_list":"/api/v2/inventories/22/access_list/","object_roles":"/api/v2/inventories/22/object_roles/","instance_groups":"/api/v2/inventories/22/instance_groups/","copy":"/api/v2/inventories/22/copy/","labels":"/api/v2/inventories/22/labels/","groups":"/api/v2/inventories/22/groups/","root_groups":"/api/v2/inventories/22/root_groups/","update_inventory_sources":"/api/v2/inventories/22/update_inventory_sources/","inventory_sources":"/api/v2/inventories/22/inventory_sources/","tree":"/api/v2/inventories/22/tree/","organization":"/api/v2/organizations/46/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1077},"update_role":{"description":"May update the inventory","name":"Update","id":1078},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1079},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1080},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1081}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-17T20:42:51.416835Z","modified":"2026-08-17T20:42:51.416900Z","name":"Example schedule inventory","description":"","organization":46,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2336
+        body: '{"id":21,"type":"inventory","url":"/api/v2/inventories/21/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/21/hosts/","variable_data":"/api/v2/inventories/21/variable_data/","script":"/api/v2/inventories/21/script/","activity_stream":"/api/v2/inventories/21/activity_stream/","job_templates":"/api/v2/inventories/21/job_templates/","ad_hoc_commands":"/api/v2/inventories/21/ad_hoc_commands/","access_list":"/api/v2/inventories/21/access_list/","object_roles":"/api/v2/inventories/21/object_roles/","instance_groups":"/api/v2/inventories/21/instance_groups/","copy":"/api/v2/inventories/21/copy/","labels":"/api/v2/inventories/21/labels/","groups":"/api/v2/inventories/21/groups/","root_groups":"/api/v2/inventories/21/root_groups/","update_inventory_sources":"/api/v2/inventories/21/update_inventory_sources/","inventory_sources":"/api/v2/inventories/21/inventory_sources/","tree":"/api/v2/inventories/21/tree/","organization":"/api/v2/organizations/34/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":833},"update_role":{"description":"May update the inventory","name":"Update","id":834},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":835},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":836},"read_role":{"description":"May view settings for the inventory","name":"Read","id":837}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:54:08.406921Z","modified":"2026-08-18T13:54:08.406989Z","name":"Example schedule inventory","description":"","organization":34,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -381,11 +381,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2341"
+                - "2336"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:54 GMT
+                - Tue, 18 Aug 2026 13:54:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -395,24 +395,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - fcbdb98e01b245dead6e9cf04026869e
+                - 63a98c980aac4f939cb5e36faa4d13e4
             X-Api-Time:
-                - 0.060s
+                - 0.091s
             X-Api-Total-Time:
-                - 0.121s
+                - 0.145s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 196.467125ms
+        duration: 154.845125ms
     - id: 6
       request:
         proto: HTTP/1.1
@@ -427,14 +427,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventory_sources/32/
+        url: http://awx.local/api/v2/inventory_sources/70/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2388
-        body: '{"id":32,"type":"inventory_source","url":"/api/v2/inventory_sources/32/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/24/","update":"/api/v2/inventory_sources/32/update/","inventory_updates":"/api/v2/inventory_sources/32/inventory_updates/","schedules":"/api/v2/inventory_sources/32/schedules/","activity_stream":"/api/v2/inventory_sources/32/activity_stream/","hosts":"/api/v2/inventory_sources/32/hosts/","groups":"/api/v2/inventory_sources/32/groups/","notification_templates_started":"/api/v2/inventory_sources/32/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/32/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/32/notification_templates_error/","inventory":"/api/v2/inventories/22/","credentials":"/api/v2/inventory_sources/32/credentials/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-17T20:42:52.223108Z","modified":"2026-08-17T20:42:52.223123Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T00:00:00Z","status":"never updated","execution_environment":null,"inventory":22,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
+        body: '{"id":70,"type":"inventory_source","url":"/api/v2/inventory_sources/70/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/16/","update":"/api/v2/inventory_sources/70/update/","inventory_updates":"/api/v2/inventory_sources/70/inventory_updates/","schedules":"/api/v2/inventory_sources/70/schedules/","activity_stream":"/api/v2/inventory_sources/70/activity_stream/","hosts":"/api/v2/inventory_sources/70/hosts/","groups":"/api/v2/inventory_sources/70/groups/","notification_templates_started":"/api/v2/inventory_sources/70/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/70/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/70/notification_templates_error/","inventory":"/api/v2/inventories/21/","credentials":"/api/v2/inventory_sources/70/credentials/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:54:09.065356Z","modified":"2026-08-18T13:54:09.065368Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T18:00:00Z","status":"never updated","execution_environment":null,"inventory":21,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -451,7 +451,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:54 GMT
+                - Tue, 18 Aug 2026 13:54:10 GMT
             Expires:
                 - "0"
             Pragma:
@@ -461,24 +461,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 1fe4534cb62f43d3beb07779db1c4ff4
+                - f50c4ce64c4c4fc2a78138cc7be0b2c8
             X-Api-Time:
-                - 0.101s
+                - 0.074s
             X-Api-Total-Time:
-                - 0.162s
+                - 0.116s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 192.995458ms
+        duration: 132.659417ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -493,14 +493,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1684
-        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:52.835002Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":true,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":"2026-08-18T00:00:00Z","timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:09.596208Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":true,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":"2026-08-18T18:00:00Z","timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -517,7 +517,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:54 GMT
+                - Tue, 18 Aug 2026 13:54:11 GMT
             Expires:
                 - "0"
             Pragma:
@@ -527,24 +527,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - c4705059fdbf45a198aaca679aa4f991
+                - 9e8d9957c85446eeac6a4df73e251a91
             X-Api-Time:
-                - 0.089s
+                - 0.084s
             X-Api-Total-Time:
-                - 0.154s
+                - 0.135s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 162.247167ms
+        duration: 145.9965ms
     - id: 8
       request:
         proto: HTTP/1.1
@@ -559,14 +559,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/46/
+        url: http://awx.local/api/v2/organizations/34/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3655
-        body: '{"id":46,"type":"organization","url":"/api/v2/organizations/46/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/46/execution_environments/","projects":"/api/v2/organizations/46/projects/","inventories":"/api/v2/organizations/46/inventories/","job_templates":"/api/v2/organizations/46/job_templates/","workflow_job_templates":"/api/v2/organizations/46/workflow_job_templates/","users":"/api/v2/organizations/46/users/","admins":"/api/v2/organizations/46/admins/","teams":"/api/v2/organizations/46/teams/","credentials":"/api/v2/organizations/46/credentials/","applications":"/api/v2/organizations/46/applications/","activity_stream":"/api/v2/organizations/46/activity_stream/","notification_templates":"/api/v2/organizations/46/notification_templates/","notification_templates_started":"/api/v2/organizations/46/notification_templates_started/","notification_templates_success":"/api/v2/organizations/46/notification_templates_success/","notification_templates_error":"/api/v2/organizations/46/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/46/notification_templates_approvals/","object_roles":"/api/v2/organizations/46/object_roles/","access_list":"/api/v2/organizations/46/access_list/","instance_groups":"/api/v2/organizations/46/instance_groups/","galaxy_credentials":"/api/v2/organizations/46/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"5ae6a269-f508-4fc6-9a41-c5d6f3c6d015","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1064,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1065},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1066},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1067},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1068},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1069},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1070},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1071},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1072},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1073},"member_role":{"description":"User is a member of the organization","name":"Member","id":1074,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1075},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1076}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-17T20:42:45.490497Z","modified":"2026-08-17T20:42:45.490564Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3642
+        body: '{"id":34,"type":"organization","url":"/api/v2/organizations/34/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/34/execution_environments/","projects":"/api/v2/organizations/34/projects/","inventories":"/api/v2/organizations/34/inventories/","job_templates":"/api/v2/organizations/34/job_templates/","workflow_job_templates":"/api/v2/organizations/34/workflow_job_templates/","users":"/api/v2/organizations/34/users/","admins":"/api/v2/organizations/34/admins/","teams":"/api/v2/organizations/34/teams/","credentials":"/api/v2/organizations/34/credentials/","applications":"/api/v2/organizations/34/applications/","activity_stream":"/api/v2/organizations/34/activity_stream/","notification_templates":"/api/v2/organizations/34/notification_templates/","notification_templates_started":"/api/v2/organizations/34/notification_templates_started/","notification_templates_success":"/api/v2/organizations/34/notification_templates_success/","notification_templates_error":"/api/v2/organizations/34/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/34/notification_templates_approvals/","object_roles":"/api/v2/organizations/34/object_roles/","access_list":"/api/v2/organizations/34/access_list/","instance_groups":"/api/v2/organizations/34/instance_groups/","galaxy_credentials":"/api/v2/organizations/34/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d006a0c4-889e-4763-aef6-6b76cb7a24cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":820,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":821},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":822},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":823},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":824},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":825},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":826},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":827},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":828},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":829},"member_role":{"description":"User is a member of the organization","name":"Member","id":830,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":831},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":832}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:54:07.544571Z","modified":"2026-08-18T13:54:07.544640Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -579,11 +579,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3655"
+                - "3642"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:55 GMT
+                - Tue, 18 Aug 2026 13:54:11 GMT
             Expires:
                 - "0"
             Pragma:
@@ -593,24 +593,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 13363d2f020b4c4a95cf10d7ac063323
+                - ff20249a49a9430ca5dc58a5483fba5c
             X-Api-Time:
-                - 0.117s
+                - 0.104s
             X-Api-Total-Time:
-                - 0.169s
+                - 0.153s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 181.784208ms
+        duration: 167.095541ms
     - id: 9
       request:
         proto: HTTP/1.1
@@ -625,14 +625,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/22/
+        url: http://awx.local/api/v2/inventories/21/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2341
-        body: '{"id":22,"type":"inventory","url":"/api/v2/inventories/22/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/22/hosts/","variable_data":"/api/v2/inventories/22/variable_data/","script":"/api/v2/inventories/22/script/","activity_stream":"/api/v2/inventories/22/activity_stream/","job_templates":"/api/v2/inventories/22/job_templates/","ad_hoc_commands":"/api/v2/inventories/22/ad_hoc_commands/","access_list":"/api/v2/inventories/22/access_list/","object_roles":"/api/v2/inventories/22/object_roles/","instance_groups":"/api/v2/inventories/22/instance_groups/","copy":"/api/v2/inventories/22/copy/","labels":"/api/v2/inventories/22/labels/","groups":"/api/v2/inventories/22/groups/","root_groups":"/api/v2/inventories/22/root_groups/","update_inventory_sources":"/api/v2/inventories/22/update_inventory_sources/","inventory_sources":"/api/v2/inventories/22/inventory_sources/","tree":"/api/v2/inventories/22/tree/","organization":"/api/v2/organizations/46/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1077},"update_role":{"description":"May update the inventory","name":"Update","id":1078},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1079},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1080},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1081}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-17T20:42:51.416835Z","modified":"2026-08-17T20:42:51.416900Z","name":"Example schedule inventory","description":"","organization":46,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2336
+        body: '{"id":21,"type":"inventory","url":"/api/v2/inventories/21/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/21/hosts/","variable_data":"/api/v2/inventories/21/variable_data/","script":"/api/v2/inventories/21/script/","activity_stream":"/api/v2/inventories/21/activity_stream/","job_templates":"/api/v2/inventories/21/job_templates/","ad_hoc_commands":"/api/v2/inventories/21/ad_hoc_commands/","access_list":"/api/v2/inventories/21/access_list/","object_roles":"/api/v2/inventories/21/object_roles/","instance_groups":"/api/v2/inventories/21/instance_groups/","copy":"/api/v2/inventories/21/copy/","labels":"/api/v2/inventories/21/labels/","groups":"/api/v2/inventories/21/groups/","root_groups":"/api/v2/inventories/21/root_groups/","update_inventory_sources":"/api/v2/inventories/21/update_inventory_sources/","inventory_sources":"/api/v2/inventories/21/inventory_sources/","tree":"/api/v2/inventories/21/tree/","organization":"/api/v2/organizations/34/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":833},"update_role":{"description":"May update the inventory","name":"Update","id":834},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":835},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":836},"read_role":{"description":"May view settings for the inventory","name":"Read","id":837}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:54:08.406921Z","modified":"2026-08-18T13:54:08.406989Z","name":"Example schedule inventory","description":"","organization":34,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -645,11 +645,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2341"
+                - "2336"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:55 GMT
+                - Tue, 18 Aug 2026 13:54:12 GMT
             Expires:
                 - "0"
             Pragma:
@@ -659,24 +659,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 26b2da250e3549f5a65060aaad4331bb
+                - 2848740bf12c4ef9ab02e37548907015
             X-Api-Time:
-                - 0.091s
+                - 0.092s
             X-Api-Total-Time:
-                - 0.146s
+                - 0.152s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 224.722542ms
+        duration: 161.515916ms
     - id: 10
       request:
         proto: HTTP/1.1
@@ -691,14 +691,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventory_sources/32/
+        url: http://awx.local/api/v2/inventory_sources/70/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2388
-        body: '{"id":32,"type":"inventory_source","url":"/api/v2/inventory_sources/32/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/24/","update":"/api/v2/inventory_sources/32/update/","inventory_updates":"/api/v2/inventory_sources/32/inventory_updates/","schedules":"/api/v2/inventory_sources/32/schedules/","activity_stream":"/api/v2/inventory_sources/32/activity_stream/","hosts":"/api/v2/inventory_sources/32/hosts/","groups":"/api/v2/inventory_sources/32/groups/","notification_templates_started":"/api/v2/inventory_sources/32/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/32/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/32/notification_templates_error/","inventory":"/api/v2/inventories/22/","credentials":"/api/v2/inventory_sources/32/credentials/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-17T20:42:52.223108Z","modified":"2026-08-17T20:42:52.223123Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T00:00:00Z","status":"never updated","execution_environment":null,"inventory":22,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
+        body: '{"id":70,"type":"inventory_source","url":"/api/v2/inventory_sources/70/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/16/","update":"/api/v2/inventory_sources/70/update/","inventory_updates":"/api/v2/inventory_sources/70/inventory_updates/","schedules":"/api/v2/inventory_sources/70/schedules/","activity_stream":"/api/v2/inventory_sources/70/activity_stream/","hosts":"/api/v2/inventory_sources/70/hosts/","groups":"/api/v2/inventory_sources/70/groups/","notification_templates_started":"/api/v2/inventory_sources/70/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/70/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/70/notification_templates_error/","inventory":"/api/v2/inventories/21/","credentials":"/api/v2/inventory_sources/70/credentials/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:54:09.065356Z","modified":"2026-08-18T13:54:09.065368Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T18:00:00Z","status":"never updated","execution_environment":null,"inventory":21,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -715,7 +715,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:56 GMT
+                - Tue, 18 Aug 2026 13:54:12 GMT
             Expires:
                 - "0"
             Pragma:
@@ -725,24 +725,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2b11f28110234b57a1cf8038eb95dbd5
+                - b786989fd45c44e89241b30c2ad59223
             X-Api-Time:
-                - 0.130s
+                - 0.100s
             X-Api-Total-Time:
-                - 0.177s
+                - 0.153s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 187.349167ms
+        duration: 166.324292ms
     - id: 11
       request:
         proto: HTTP/1.1
@@ -757,14 +757,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1684
-        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:52.835002Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":true,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":"2026-08-18T00:00:00Z","timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250101T000000Z RRULE:FREQ=HOURLY;INTERVAL=6","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:09.596208Z","name":"Refresh example inventory every 6 hours","description":"Reload the EC2 inventory on a fixed interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":true,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":"2026-08-18T18:00:00Z","timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -781,7 +781,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:56 GMT
+                - Tue, 18 Aug 2026 13:54:12 GMT
             Expires:
                 - "0"
             Pragma:
@@ -791,24 +791,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - eca836d0829943f580ba0a3191cb8ef3
+                - bfde2e98f0724dcba39b2d0e69162cbf
             X-Api-Time:
-                - 0.094s
+                - 0.079s
             X-Api-Total-Time:
-                - 0.149s
+                - 0.134s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 159.984834ms
+        duration: 145.924458ms
     - id: 12
       request:
         proto: HTTP/1.1
@@ -817,7 +817,7 @@ interactions:
         content_length: 237
         host: awx.local
         body: |
-            {"description":"Reload the EC2 inventory on a slower interval","enabled":false,"extra_data":{},"name":"Refresh example inventory every 12 hours","rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","unified_job_template":32}
+            {"description":"Reload the EC2 inventory on a slower interval","enabled":false,"extra_data":{},"name":"Refresh example inventory every 12 hours","rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","unified_job_template":70}
         headers:
             Authorization:
                 - REDACTED
@@ -825,14 +825,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: PATCH
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1670
-        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:56.848564Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":false,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:13.088886Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":false,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -849,7 +849,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:56 GMT
+                - Tue, 18 Aug 2026 13:54:13 GMT
             Expires:
                 - "0"
             Pragma:
@@ -859,24 +859,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 59d1876a201e456284f0e147d6b39484
+                - 3696ef11c30f4242863d98f27b58ec1d
             X-Api-Time:
-                - 0.154s
+                - 0.157s
             X-Api-Total-Time:
-                - 0.216s
+                - 0.232s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 390.88375ms
+        duration: 341.946208ms
     - id: 13
       request:
         proto: HTTP/1.1
@@ -891,14 +891,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/46/
+        url: http://awx.local/api/v2/organizations/34/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 3655
-        body: '{"id":46,"type":"organization","url":"/api/v2/organizations/46/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/46/execution_environments/","projects":"/api/v2/organizations/46/projects/","inventories":"/api/v2/organizations/46/inventories/","job_templates":"/api/v2/organizations/46/job_templates/","workflow_job_templates":"/api/v2/organizations/46/workflow_job_templates/","users":"/api/v2/organizations/46/users/","admins":"/api/v2/organizations/46/admins/","teams":"/api/v2/organizations/46/teams/","credentials":"/api/v2/organizations/46/credentials/","applications":"/api/v2/organizations/46/applications/","activity_stream":"/api/v2/organizations/46/activity_stream/","notification_templates":"/api/v2/organizations/46/notification_templates/","notification_templates_started":"/api/v2/organizations/46/notification_templates_started/","notification_templates_success":"/api/v2/organizations/46/notification_templates_success/","notification_templates_error":"/api/v2/organizations/46/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/46/notification_templates_approvals/","object_roles":"/api/v2/organizations/46/object_roles/","access_list":"/api/v2/organizations/46/access_list/","instance_groups":"/api/v2/organizations/46/instance_groups/","galaxy_credentials":"/api/v2/organizations/46/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"5ae6a269-f508-4fc6-9a41-c5d6f3c6d015","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":1064,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":1065},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":1066},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":1067},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":1068},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":1069},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":1070},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":1071},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":1072},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":1073},"member_role":{"description":"User is a member of the organization","name":"Member","id":1074,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":1075},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":1076}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-17T20:42:45.490497Z","modified":"2026-08-17T20:42:45.490564Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
+        content_length: 3642
+        body: '{"id":34,"type":"organization","url":"/api/v2/organizations/34/","related":{"named_url":"/api/v2/organizations/Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","execution_environments":"/api/v2/organizations/34/execution_environments/","projects":"/api/v2/organizations/34/projects/","inventories":"/api/v2/organizations/34/inventories/","job_templates":"/api/v2/organizations/34/job_templates/","workflow_job_templates":"/api/v2/organizations/34/workflow_job_templates/","users":"/api/v2/organizations/34/users/","admins":"/api/v2/organizations/34/admins/","teams":"/api/v2/organizations/34/teams/","credentials":"/api/v2/organizations/34/credentials/","applications":"/api/v2/organizations/34/applications/","activity_stream":"/api/v2/organizations/34/activity_stream/","notification_templates":"/api/v2/organizations/34/notification_templates/","notification_templates_started":"/api/v2/organizations/34/notification_templates_started/","notification_templates_success":"/api/v2/organizations/34/notification_templates_success/","notification_templates_error":"/api/v2/organizations/34/notification_templates_error/","notification_templates_approvals":"/api/v2/organizations/34/notification_templates_approvals/","object_roles":"/api/v2/organizations/34/object_roles/","access_list":"/api/v2/organizations/34/access_list/","instance_groups":"/api/v2/organizations/34/instance_groups/","galaxy_credentials":"/api/v2/organizations/34/galaxy_credentials/"},"summary_fields":{"resource":{"ansible_id":"d006a0c4-889e-4763-aef6-6b76cb7a24cc","resource_type":"shared.organization"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the organization","name":"Admin","id":820,"user_only":true},"execute_role":{"description":"May run any executable resources in the organization","name":"Execute","id":821},"project_admin_role":{"description":"Can manage all projects of the organization","name":"Project Admin","id":822},"inventory_admin_role":{"description":"Can manage all inventories of the organization","name":"Inventory Admin","id":823},"credential_admin_role":{"description":"Can manage all credentials of the organization","name":"Credential Admin","id":824},"workflow_admin_role":{"description":"Can manage all workflows of the organization","name":"Workflow Admin","id":825},"notification_admin_role":{"description":"Can manage all notifications of the organization","name":"Notification Admin","id":826},"job_template_admin_role":{"description":"Can manage all job templates of the organization","name":"Job Template Admin","id":827},"execution_environment_admin_role":{"description":"Can manage all execution environments of the organization","name":"Execution Environment Admin","id":828},"auditor_role":{"description":"Can view all aspects of the organization","name":"Auditor","id":829},"member_role":{"description":"User is a member of the organization","name":"Member","id":830,"user_only":true},"read_role":{"description":"May view settings for the organization","name":"Read","id":831},"approval_role":{"description":"Can approve or deny a workflow approval node","name":"Approve","id":832}},"user_capabilities":{"edit":true,"delete":true},"related_field_counts":{"users":0,"admins":0,"inventories":1,"teams":0,"projects":0,"job_templates":0,"hosts":0}},"created":"2026-08-18T13:54:07.544571Z","modified":"2026-08-18T13:54:07.544640Z","name":"Schedule","description":"","max_hosts":0,"custom_virtualenv":null,"default_environment":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -911,11 +911,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "3655"
+                - "3642"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:57 GMT
+                - Tue, 18 Aug 2026 13:54:14 GMT
             Expires:
                 - "0"
             Pragma:
@@ -925,24 +925,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - a5d138706a7340dd8ab59accf44a7f01
+                - 701b4ee0de02432faedba76a470ad37c
             X-Api-Time:
-                - 0.074s
+                - 0.124s
             X-Api-Total-Time:
-                - 0.123s
+                - 0.199s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 136.696708ms
+        duration: 215.104792ms
     - id: 14
       request:
         proto: HTTP/1.1
@@ -957,14 +957,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/22/
+        url: http://awx.local/api/v2/inventories/21/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 2341
-        body: '{"id":22,"type":"inventory","url":"/api/v2/inventories/22/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/22/hosts/","variable_data":"/api/v2/inventories/22/variable_data/","script":"/api/v2/inventories/22/script/","activity_stream":"/api/v2/inventories/22/activity_stream/","job_templates":"/api/v2/inventories/22/job_templates/","ad_hoc_commands":"/api/v2/inventories/22/ad_hoc_commands/","access_list":"/api/v2/inventories/22/access_list/","object_roles":"/api/v2/inventories/22/object_roles/","instance_groups":"/api/v2/inventories/22/instance_groups/","copy":"/api/v2/inventories/22/copy/","labels":"/api/v2/inventories/22/labels/","groups":"/api/v2/inventories/22/groups/","root_groups":"/api/v2/inventories/22/root_groups/","update_inventory_sources":"/api/v2/inventories/22/update_inventory_sources/","inventory_sources":"/api/v2/inventories/22/inventory_sources/","tree":"/api/v2/inventories/22/tree/","organization":"/api/v2/organizations/46/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":1077},"update_role":{"description":"May update the inventory","name":"Update","id":1078},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":1079},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":1080},"read_role":{"description":"May view settings for the inventory","name":"Read","id":1081}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-17T20:42:51.416835Z","modified":"2026-08-17T20:42:51.416900Z","name":"Example schedule inventory","description":"","organization":46,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
+        content_length: 2336
+        body: '{"id":21,"type":"inventory","url":"/api/v2/inventories/21/","related":{"named_url":"/api/v2/inventories/Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","hosts":"/api/v2/inventories/21/hosts/","variable_data":"/api/v2/inventories/21/variable_data/","script":"/api/v2/inventories/21/script/","activity_stream":"/api/v2/inventories/21/activity_stream/","job_templates":"/api/v2/inventories/21/job_templates/","ad_hoc_commands":"/api/v2/inventories/21/ad_hoc_commands/","access_list":"/api/v2/inventories/21/access_list/","object_roles":"/api/v2/inventories/21/object_roles/","instance_groups":"/api/v2/inventories/21/instance_groups/","copy":"/api/v2/inventories/21/copy/","labels":"/api/v2/inventories/21/labels/","groups":"/api/v2/inventories/21/groups/","root_groups":"/api/v2/inventories/21/root_groups/","update_inventory_sources":"/api/v2/inventories/21/update_inventory_sources/","inventory_sources":"/api/v2/inventories/21/inventory_sources/","tree":"/api/v2/inventories/21/tree/","organization":"/api/v2/organizations/34/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can manage all aspects of the inventory","name":"Admin","id":833},"update_role":{"description":"May update the inventory","name":"Update","id":834},"adhoc_role":{"description":"May run ad hoc commands on the inventory","name":"Ad Hoc","id":835},"use_role":{"description":"Can use the inventory in a job template","name":"Use","id":836},"read_role":{"description":"May view settings for the inventory","name":"Read","id":837}},"user_capabilities":{"edit":true,"delete":true,"copy":true,"adhoc":true},"labels":{"count":0,"results":[]}},"created":"2026-08-18T13:54:08.406921Z","modified":"2026-08-18T13:54:08.406989Z","name":"Example schedule inventory","description":"","organization":34,"kind":"","host_filter":null,"variables":"{}","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"pending_deletion":false,"prevent_instance_group_fallback":false}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -977,11 +977,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "2341"
+                - "2336"
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:58 GMT
+                - Tue, 18 Aug 2026 13:54:14 GMT
             Expires:
                 - "0"
             Pragma:
@@ -991,24 +991,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 545d18e65389444b9826a10ed575a0de
+                - 05269c53c8de4ed795046be18219039d
             X-Api-Time:
-                - 0.071s
+                - 0.094s
             X-Api-Total-Time:
-                - 0.131s
+                - 0.147s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 202.222792ms
+        duration: 161.517084ms
     - id: 15
       request:
         proto: HTTP/1.1
@@ -1023,14 +1023,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventory_sources/32/
+        url: http://awx.local/api/v2/inventory_sources/70/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 2388
-        body: '{"id":32,"type":"inventory_source","url":"/api/v2/inventory_sources/32/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/24/","update":"/api/v2/inventory_sources/32/update/","inventory_updates":"/api/v2/inventory_sources/32/inventory_updates/","schedules":"/api/v2/inventory_sources/32/schedules/","activity_stream":"/api/v2/inventory_sources/32/activity_stream/","hosts":"/api/v2/inventory_sources/32/hosts/","groups":"/api/v2/inventory_sources/32/groups/","notification_templates_started":"/api/v2/inventory_sources/32/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/32/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/32/notification_templates_error/","inventory":"/api/v2/inventories/22/","credentials":"/api/v2/inventory_sources/32/credentials/"},"summary_fields":{"organization":{"id":46,"name":"Schedule","description":""},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-17T20:42:52.223108Z","modified":"2026-08-17T20:42:52.223123Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T00:00:00Z","status":"never updated","execution_environment":null,"inventory":22,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
+        body: '{"id":70,"type":"inventory_source","url":"/api/v2/inventory_sources/70/","related":{"named_url":"/api/v2/inventory_sources/Example schedule inventory source++Example schedule inventory++Schedule/","created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","next_schedule":"/api/v2/schedules/16/","update":"/api/v2/inventory_sources/70/update/","inventory_updates":"/api/v2/inventory_sources/70/inventory_updates/","schedules":"/api/v2/inventory_sources/70/schedules/","activity_stream":"/api/v2/inventory_sources/70/activity_stream/","hosts":"/api/v2/inventory_sources/70/hosts/","groups":"/api/v2/inventory_sources/70/groups/","notification_templates_started":"/api/v2/inventory_sources/70/notification_templates_started/","notification_templates_success":"/api/v2/inventory_sources/70/notification_templates_success/","notification_templates_error":"/api/v2/inventory_sources/70/notification_templates_error/","inventory":"/api/v2/inventories/21/","credentials":"/api/v2/inventory_sources/70/credentials/"},"summary_fields":{"organization":{"id":34,"name":"Schedule","description":""},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true,"start":true,"schedule":true},"credentials":[],"resolved_environment":{"id":1,"name":"AWX EE (latest)","description":"","image":"quay.io/ansible/awx-ee:latest"}},"created":"2026-08-18T13:54:09.065356Z","modified":"2026-08-18T13:54:09.065368Z","name":"Example schedule inventory source","description":"","source":"ec2","source_path":"","source_vars":"","scm_branch":"","credential":null,"enabled_var":"","enabled_value":"","host_filter":"","overwrite":false,"overwrite_vars":false,"custom_virtualenv":null,"timeout":0,"verbosity":1,"limit":"","last_job_run":null,"last_job_failed":false,"next_job_run":"2026-08-18T18:00:00Z","status":"never updated","execution_environment":null,"inventory":21,"update_on_launch":false,"update_cache_timeout":0,"source_project":null,"last_update_failed":false,"last_updated":null}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1047,7 +1047,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:58 GMT
+                - Tue, 18 Aug 2026 13:54:14 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1057,24 +1057,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 2761ff7113474ac1ab8971ddd9160b9b
+                - 433c8e5d39c5426aa863c8df4feeb645
             X-Api-Time:
-                - 0.090s
+                - 0.124s
             X-Api-Total-Time:
-                - 0.154s
+                - 0.180s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 169.163333ms
+        duration: 190.410542ms
     - id: 16
       request:
         proto: HTTP/1.1
@@ -1089,14 +1089,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1670
-        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:56.848564Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":false,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:13.088886Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":false,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1113,7 +1113,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:58 GMT
+                - Tue, 18 Aug 2026 13:54:15 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1123,24 +1123,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 8a6319e6ce4b4f1fb90b9128e41ce1d8
+                - 81b7a42a475443dd93c0938a77e6e7f6
             X-Api-Time:
-                - 0.048s
+                - 0.066s
             X-Api-Total-Time:
-                - 0.092s
+                - 0.120s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 102.355042ms
+        duration: 129.729417ms
     - id: 17
       request:
         proto: HTTP/1.1
@@ -1155,14 +1155,14 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: GET
       response:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
         content_length: 1670
-        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":24,"type":"schedule","url":"/api/v2/schedules/24/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/24/labels/","credentials":"/api/v2/schedules/24/credentials/","instance_groups":"/api/v2/schedules/24/instance_groups/","unified_jobs":"/api/v2/schedules/24/jobs/","unified_job_template":"/api/v2/inventory_sources/32/","inventory":"/api/v2/inventories/22/"},"summary_fields":{"unified_job_template":{"id":32,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":22,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":46,"kind":""}},"created":"2026-08-17T20:42:52.834953Z","modified":"2026-08-17T20:42:56.848564Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":32,"enabled":false,"dtstart":"2026-08-10T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
+        body: '{"rrule":"DTSTART:20250201T000000Z RRULE:FREQ=HOURLY;INTERVAL=12","id":16,"type":"schedule","url":"/api/v2/schedules/16/","related":{"created_by":"/api/v2/users/1/","modified_by":"/api/v2/users/1/","labels":"/api/v2/schedules/16/labels/","credentials":"/api/v2/schedules/16/credentials/","instance_groups":"/api/v2/schedules/16/instance_groups/","unified_jobs":"/api/v2/schedules/16/jobs/","unified_job_template":"/api/v2/inventory_sources/70/","inventory":"/api/v2/inventories/21/"},"summary_fields":{"unified_job_template":{"id":70,"name":"Example schedule inventory source","description":"","unified_job_type":"inventory_update"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"edit":true,"delete":true},"inventory":{"id":21,"name":"Example schedule inventory","description":"","has_active_failures":false,"total_hosts":0,"hosts_with_active_failures":0,"total_groups":0,"has_inventory_sources":true,"total_inventory_sources":1,"inventory_sources_with_failures":0,"organization_id":34,"kind":""}},"created":"2026-08-18T13:54:09.596197Z","modified":"2026-08-18T13:54:13.088886Z","name":"Refresh example inventory every 12 hours","description":"Reload the EC2 inventory on a slower interval","extra_data":{},"inventory":null,"scm_branch":null,"job_type":null,"job_tags":null,"skip_tags":null,"limit":null,"diff_mode":null,"verbosity":null,"execution_environment":null,"forks":null,"job_slice_count":null,"timeout":null,"unified_job_template":70,"enabled":false,"dtstart":"2026-08-11T00:00:00Z","dtend":null,"next_run":null,"timezone":"UTC","until":""}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -1179,7 +1179,7 @@ interactions:
             Content-Type:
                 - application/json
             Date:
-                - Mon, 17 Aug 2026 20:42:59 GMT
+                - Tue, 18 Aug 2026 13:54:15 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1189,24 +1189,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - c4874ad17b1449b59661ddec0f3ef67e
+                - 389dd8c3810d4e3895c31b09034cf9f6
             X-Api-Time:
-                - 0.089s
+                - 0.095s
             X-Api-Total-Time:
-                - 0.141s
+                - 0.145s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 154.561625ms
+        duration: 157.52275ms
     - id: 18
       request:
         proto: HTTP/1.1
@@ -1221,7 +1221,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/schedules/24/
+        url: http://awx.local/api/v2/schedules/16/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1243,7 +1243,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 17 Aug 2026 20:42:59 GMT
+                - Tue, 18 Aug 2026 13:54:15 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1253,24 +1253,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - e42d391b098d44bd8d8692764645d50b
+                - 65233d9dc0f84ccd8b5ad3ddc80adc9a
             X-Api-Time:
-                - 0.150s
+                - 0.043s
             X-Api-Total-Time:
-                - 0.220s
+                - 0.075s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 231.176ms
+        duration: 90.373959ms
     - id: 19
       request:
         proto: HTTP/1.1
@@ -1285,7 +1285,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventory_sources/32/
+        url: http://awx.local/api/v2/inventory_sources/70/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1307,7 +1307,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 17 Aug 2026 20:43:00 GMT
+                - Tue, 18 Aug 2026 13:54:16 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1317,24 +1317,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3515eddb606246bb88aa34a7c06c0b19
+                - 5216f6d856e042058489f0a5ebb2a0fb
             X-Api-Time:
-                - 0.067s
-            X-Api-Total-Time:
                 - 0.114s
+            X-Api-Total-Time:
+                - 0.173s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 123.229375ms
+        duration: 184.023416ms
     - id: 20
       request:
         proto: HTTP/1.1
@@ -1349,7 +1349,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/inventories/22/
+        url: http://awx.local/api/v2/inventories/21/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1369,24 +1369,24 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 17 Aug 2026 20:43:00 GMT
+                - Tue, 18 Aug 2026 13:54:16 GMT
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - f542e10e255a40e4b1da8a02961f18dc
+                - 3fa8ab719fc3442e92c30f0baf55184d
             X-Api-Time:
-                - 0.147s
+                - 0.164s
             X-Api-Total-Time:
-                - 0.199s
+                - 0.240s
         status: 202 Accepted
         code: 202
-        duration: 213.10575ms
+        duration: 250.749708ms
     - id: 21
       request:
         proto: HTTP/1.1
@@ -1401,7 +1401,7 @@ interactions:
                 - application/json
             User-Agent:
                 - terraform-provider-awx/dev
-        url: http://awx.local/api/v2/organizations/46/
+        url: http://awx.local/api/v2/organizations/34/
         method: DELETE
       response:
         proto: HTTP/1.1
@@ -1423,7 +1423,7 @@ interactions:
             Content-Length:
                 - "0"
             Date:
-                - Mon, 17 Aug 2026 20:43:00 GMT
+                - Tue, 18 Aug 2026 13:54:17 GMT
             Expires:
                 - "0"
             Pragma:
@@ -1433,21 +1433,21 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-69dc4f7b45-94wvj
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 4ac5678bd6cb48f3abf6882531648903
+                - fb3bf027e638498eb7044cbb92a23424
             X-Api-Time:
-                - 0.126s
+                - 0.234s
             X-Api-Total-Time:
-                - 0.202s
+                - 0.325s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 204 No Content
         code: 204
-        duration: 268.948833ms
+        duration: 336.669333ms

@@ -206,10 +206,10 @@ type jobTemplateBodyRequestModel struct {
 	ExecutionEnvironment            int64           `json:"execution_environment,omitempty"`
 	ExtraVars                       json.RawMessage `json:"extra_vars,omitempty"`
 	ForceHandlers                   bool            `json:"force_handlers"`
-	Forks                           int64           `json:"forks,omitempty"`
+	Forks                           int64           `json:"forks"`
 	HostConfigKey                   string          `json:"host_config_key,omitempty"`
 	Inventory                       int64           `json:"inventory,omitempty"`
-	JobSliceCount                   int64           `json:"job_slice_count,omitempty"`
+	JobSliceCount                   int64           `json:"job_slice_count"`
 	JobTags                         string          `json:"job_tags,omitempty"`
 	JobType                         string          `json:"job_type,omitempty"`
 	Limit                           string          `json:"limit,omitempty"`
@@ -221,7 +221,7 @@ type jobTemplateBodyRequestModel struct {
 	SkipTags                        string          `json:"skip_tags,omitempty"`
 	StartAtTask                     string          `json:"start_at_task,omitempty"`
 	SurveyEnabled                   bool            `json:"survey_enabled"`
-	Timeout                         int64           `json:"timeout,omitempty"`
+	Timeout                         int64           `json:"timeout"`
 	UseFactCache                    bool            `json:"use_fact_cache"`
 	Verbosity                       string          `json:"verbosity,omitempty"`
 	WebhookCredential               int64           `json:"webhook_credential,omitempty"`

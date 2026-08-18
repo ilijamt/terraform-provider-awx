@@ -128,8 +128,8 @@ type inventorySourceBodyRequestModel struct {
 	SourcePath           string          `json:"source_path,omitempty"`
 	SourceProject        int64           `json:"source_project,omitempty"`
 	SourceVars           json.RawMessage `json:"source_vars,omitempty"`
-	Timeout              int64           `json:"timeout,omitempty"`
-	UpdateCacheTimeout   int64           `json:"update_cache_timeout,omitempty"`
+	Timeout              int64           `json:"timeout"`
+	UpdateCacheTimeout   int64           `json:"update_cache_timeout"`
 	UpdateOnLaunch       bool            `json:"update_on_launch"`
 	Verbosity            string          `json:"verbosity,omitempty"`
 }

@@ -73,6 +73,9 @@ but cassettes only ever contain `awx.local` so they stay portable.
 - VCR tests live behind the `integration` build tag so plain `make test`
   never invokes them. Use `make test-integration` (or pass
   `-tags=integration` manually).
+- Replay skips the latency recorded for each interaction, so a run is not
+  as slow as the original AWX round-trips were. Set `AWX_VCR_LATENCY=1` to
+  replay in real time instead.
 - `Authorization`, `Cookie`, `Set-Cookie`, and `X-Csrftoken` headers are
   redacted before save.
 - AWX assigns sequential IDs. Record from a clean instance to keep

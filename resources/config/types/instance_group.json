@@ -5,16 +5,10 @@
   "id_key": "id",
   "has_object_roles": true,
   "property_overrides": {
-    "pod_spec_override": {
-      "no_default": true
-    },
     "capacity": {
       "type": "integer"
     },
     "consumed_capacity": {
-      "type": "float"
-    },
-    "percent_capacity_remaining": {
       "type": "float"
     },
     "instances": {
@@ -22,6 +16,24 @@
     },
     "jobs_running": {
       "type": "integer"
+    },
+    "max_concurrent_jobs": {
+      "omit_empty": false
+    },
+    "max_forks": {
+      "omit_empty": false
+    },
+    "percent_capacity_remaining": {
+      "type": "float"
+    },
+    "pod_spec_override": {
+      "no_default": true
+    },
+    "policy_instance_minimum": {
+      "omit_empty": false
+    },
+    "policy_instance_percentage": {
+      "omit_empty": false
     }
   },
   "enabled": true,

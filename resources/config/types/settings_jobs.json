@@ -9,13 +9,34 @@
   "property_name_leave_as_is": true,
   "undeletable": true,
   "property_overrides": {
+    "ANSIBLE_FACT_CACHE_TIMEOUT": {
+      "omit_empty": false
+    },
+    "AWX_RUNNER_KEEPALIVE_SECONDS": {
+      "omit_empty": false
+    },
     "AWX_TASK_ENV": {
       "type": "json"
+    },
+    "DEFAULT_INVENTORY_UPDATE_TIMEOUT": {
+      "omit_empty": false
+    },
+    "DEFAULT_JOB_IDLE_TIMEOUT": {
+      "omit_empty": false
+    },
+    "DEFAULT_JOB_TIMEOUT": {
+      "omit_empty": false
+    },
+    "DEFAULT_PROJECT_UPDATE_TIMEOUT": {
+      "omit_empty": false
+    },
+    "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
+      "omit_empty": false
     },
     "GALAXY_TASK_ENV": {
       "type": "json"
     },
-    "EVENT_STDOUT_MAX_BYTES_DISPLAY": {
+    "MAX_FORKS": {
       "omit_empty": false
     },
     "MAX_WEBSOCKET_EVENT_RATE": {

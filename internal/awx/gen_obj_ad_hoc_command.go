@@ -120,7 +120,7 @@ type adHocCommandBodyRequestModel struct {
 	DiffMode             bool            `json:"diff_mode"`
 	ExecutionEnvironment int64           `json:"execution_environment,omitempty"`
 	ExtraVars            json.RawMessage `json:"extra_vars,omitempty"`
-	Forks                int64           `json:"forks,omitempty"`
+	Forks                int64           `json:"forks"`
 	Inventory            int64           `json:"inventory,omitempty"`
 	JobType              string          `json:"job_type,omitempty"`
 	Limit                string          `json:"limit,omitempty"`

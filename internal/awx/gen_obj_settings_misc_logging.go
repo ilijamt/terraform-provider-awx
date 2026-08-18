@@ -113,7 +113,7 @@ type settingsMiscLoggingBodyRequestModel struct {
 	LOG_AGGREGATOR_PORT                     int64    `json:"LOG_AGGREGATOR_PORT,omitempty"`
 	LOG_AGGREGATOR_PROTOCOL                 string   `json:"LOG_AGGREGATOR_PROTOCOL,omitempty"`
 	LOG_AGGREGATOR_RSYSLOGD_DEBUG           bool     `json:"LOG_AGGREGATOR_RSYSLOGD_DEBUG"`
-	LOG_AGGREGATOR_TCP_TIMEOUT              int64    `json:"LOG_AGGREGATOR_TCP_TIMEOUT,omitempty"`
+	LOG_AGGREGATOR_TCP_TIMEOUT              int64    `json:"LOG_AGGREGATOR_TCP_TIMEOUT"`
 	LOG_AGGREGATOR_TOWER_UUID               string   `json:"LOG_AGGREGATOR_TOWER_UUID,omitempty"`
 	LOG_AGGREGATOR_TYPE                     string   `json:"LOG_AGGREGATOR_TYPE,omitempty"`
 	LOG_AGGREGATOR_USERNAME                 string   `json:"LOG_AGGREGATOR_USERNAME,omitempty"`

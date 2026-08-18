@@ -9,8 +9,23 @@
   "property_name_leave_as_is": true,
   "undeletable": true,
   "property_overrides": {
+    "LOCAL_PASSWORD_MIN_DIGITS": {
+      "omit_empty": false
+    },
+    "LOCAL_PASSWORD_MIN_LENGTH": {
+      "omit_empty": false
+    },
+    "LOCAL_PASSWORD_MIN_SPECIAL": {
+      "omit_empty": false
+    },
+    "LOCAL_PASSWORD_MIN_UPPER": {
+      "omit_empty": false
+    },
     "OAUTH2_PROVIDER": {
       "type": "json"
+    },
+    "SESSIONS_PER_USER": {
+      "omit_empty": false
     },
     "SOCIAL_AUTH_ORGANIZATION_MAP": {
       "type": "json"
