@@ -72,6 +72,14 @@ func TestIntegration_Inventory(t *testing.T) {
 // In replay mode the token is a placeholder. In record mode the
 // bootstrap-generated token is loaded from disk.
 func providerHeader(t *testing.T) string {
+	for _, k := range []string{
+		"TOWER_USERNAME", "AWX_USERNAME",
+		"TOWER_PASSWORD", "AWX_PASSWORD",
+		"TOWER_AUTH_TOKEN", "AWX_AUTH_TOKEN",
+	} {
+		t.Setenv(k, "")
+	}
+
 	token := FakeToken
 	if IsRecording() {
 		token = LoadBootstrapToken(t)
