@@ -8,6 +8,14 @@ All notable changes to this project will be documented in this file.
 
 - Improved release workflow
 
+### Documentation
+
+- Removed OpenTofu release signatures note
+
+### Features
+
+- *(awx)* Typed resources for all 30 managed credential types
+
 ## [24.6.104] - 2026-08-18
 
 ### Bug Fixes
