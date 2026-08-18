@@ -11,11 +11,11 @@ import (
 
 func TestMergeEncryptedField(t *testing.T) {
 	tests := []struct {
-		name        string
-		orig        types.String
-		cur         types.String
-		wantValue   types.String
-		wantSubbed  bool
+		name       string
+		orig       types.String
+		cur        types.String
+		wantValue  types.String
+		wantSubbed bool
 	}{
 		{
 			name:       "plain value passes through",

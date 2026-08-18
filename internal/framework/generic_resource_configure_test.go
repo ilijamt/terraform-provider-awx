@@ -18,9 +18,9 @@ import (
 // these tests — we only need Configure to wire up.
 type modelStub struct{}
 
-func (m *modelStub) Clone() modelStub                                                   { return *m }
-func (m *modelStub) BodyRequest() *bodyStub                                             { return &bodyStub{} }
-func (m *modelStub) UpdateFromApiData(map[string]any) (diag.Diagnostics, error)         { return nil, nil }
+func (m *modelStub) Clone() modelStub                                           { return *m }
+func (m *modelStub) BodyRequest() *bodyStub                                     { return &bodyStub{} }
+func (m *modelStub) UpdateFromApiData(map[string]any) (diag.Diagnostics, error) { return nil, nil }
 
 type bodyStub struct{}
 
