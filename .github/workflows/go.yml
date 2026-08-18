@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+env:
+  TERRAFORM_VERSION: 1.15.8
+  TOFU_VERSION: 1.12.5
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -25,7 +29,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.14.9
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
           terraform_wrapper: false
       - name: Display Go version
         run: go version
@@ -42,44 +46,8 @@ jobs:
           if-no-files-found: error
 
   integration:
-    name: Integration / ${{ matrix.name }}
+    name: Integration / Terraform
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        # Keep in sync with TestIntegration_* functions under tests/examples/.
-        # Adding a new integration test? Add an entry here.
-        include:
-          - name: Inventory
-            test: TestIntegration_Inventory
-          - name: Credentials
-            test: TestIntegration_Credentials
-          - name: Object Roles
-            test: TestIntegration_ObjectRoles
-          - name: Preload Data
-            test: TestIntegration_PreloadData
-          - name: Settings Jobs Zero Defaults
-            test: TestIntegration_SettingsJobsZeroDefaults
-          - name: Application
-            test: TestIntegration_Application
-          - name: Instance Groups
-            test: TestIntegration_InstanceGroups
-          - name: Settings/Misc
-            test: TestIntegration_SettingsMisc
-          - name: Job Template Survey Spec
-            test: TestIntegration_JobTemplateSurveySpec
-          - name: Credential AWS
-            test: TestIntegration_CredentialAws
-          - name: Schedule
-            test: TestIntegration_Schedule
-          - name: Workflow Job Template Node
-            test: TestIntegration_WorkflowJobTemplateNode
-          - name: Instance
-            test: TestIntegration_Instance
-          - name: Role Assignments
-            test: TestIntegration_RoleAssignments
-          - name: Instance Group Associations
-            test: TestIntegration_InstanceGroupAssociations
     steps:
       - uses: actions/checkout@v7
       - name: Setup Go
@@ -89,24 +57,42 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.14.9
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
           terraform_wrapper: false
-      - name: Run ${{ matrix.test }} (replay)
-        run: |
-          mkdir -p covdata/${{ matrix.test }}
-          TF_ACC=1 go test -tags=integration ./tests/examples/... \
-            -run "^${{ matrix.test }}$" -count=1 -v \
-            -cover -coverpkg=./internal/... \
-            -args -test.gocoverdir=$PWD/covdata/${{ matrix.test }}
+      - name: Run integration suite (replay)
+        run: make test-integration-cover COVERDIR=covdata/terraform
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v7
         with:
-          name: covdata-${{ matrix.test }}
-          path: covdata/${{ matrix.test }}
+          name: covdata-integration-terraform
+          path: covdata/terraform
+          if-no-files-found: error
+
+  integration-opentofu:
+    name: Integration / OpenTofu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v2
+        with:
+          tofu_version: ${{ env.TOFU_VERSION }}
+          tofu_wrapper: false
+      - name: Run integration suite (replay)
+        run: make test-integration-cover TF=tofu COVERDIR=covdata/opentofu
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: covdata-integration-opentofu
+          path: covdata/opentofu
           if-no-files-found: error
 
   coverage:
-    needs: [unit, integration]
+    needs: [unit, integration, integration-opentofu]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

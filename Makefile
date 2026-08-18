@@ -12,6 +12,17 @@ TOWER_PASSWORD ?= admin
 BIN := ./build/terraform-provider-awx
 MODULE := github.com/ilijamt/terraform-provider-awx
 
+TF ?= terraform
+
+# TF_ACC_PROVIDER_HOST has to change along with TF_ACC_TERRAFORM_PATH. The
+# harness registers its reattach providers under the legacy "-" namespace, and
+# OpenTofu accepts that namespace only beneath registry.opentofu.org.
+ifeq ($(notdir $(TF)),tofu)
+TF_ACC_ENV := TF_ACC_TERRAFORM_PATH=$(shell command -v $(TF)) TF_ACC_PROVIDER_HOST=registry.opentofu.org
+else
+TF_ACC_ENV :=
+endif
+
 GIT_VERSION ?= $(patsubst v%,%,$(shell git describe --tags --always --dirty 2>/dev/null || echo dev))
 STAMP := -X $(MODULE)/version.Version=$(GIT_VERSION)
 
@@ -76,7 +87,7 @@ test-all:
 	mkdir -p build/covdata-internal build/covdata-tests build/covdata-merged
 	go test ./internal/... -count=1 -parallel=4 -cover -coverpkg=./internal/... \
 		-args -test.gocoverdir=$(shell pwd)/build/covdata-internal
-	TF_ACC=1 go test -tags=integration ./tests/... -run '^TestIntegration_' -count=1 \
+	$(TF_ACC_ENV) TF_ACC=1 go test -tags=integration ./tests/... -run '^TestIntegration_' -count=1 \
 		-cover -coverpkg=./internal/... \
 		-args -test.gocoverdir=$(shell pwd)/build/covdata-tests
 	go tool covdata merge \
@@ -87,7 +98,7 @@ test-all:
 
 .PHONY: testacc
 testacc:
-	TF_ACC=1 go test -count=1 -parallel=4 -timeout 10m -v ./...
+	$(TF_ACC_ENV) TF_ACC=1 go test -count=1 -parallel=4 -timeout 10m -v ./...
 
 # Generate .terraformrc with dev_overrides pointing at the local provider
 # binary. Path must be absolute, so we derive it from $(shell pwd).
@@ -102,20 +113,30 @@ terraformrc:
 .PHONY: bootstrap-awx
 bootstrap-awx: build terraformrc
 	cd tests/bootstrap && \
-		TF_CLI_CONFIG_FILE=$(shell pwd)/.terraformrc terraform init && \
+		TF_CLI_CONFIG_FILE=$(shell pwd)/.terraformrc $(TF) init && \
 		TF_ACC=1 \
 		TF_CLI_CONFIG_FILE=$(shell pwd)/.terraformrc \
 		TOWER_HOST=$(TOWER_HOST) \
 		TOWER_USERNAME=$(TOWER_USERNAME) \
 		TOWER_PASSWORD=$(TOWER_PASSWORD) \
-		terraform apply -auto-approve
+		$(TF) apply -auto-approve
 
 # Replay VCR cassettes — no AWX needed.
 .PHONY: test-integration
 test-integration:
-	TF_ACC=1 go test -tags=integration ./tests/examples/... -run '^TestIntegration_' -count=1 -v
+	$(TF_ACC_ENV) TF_ACC=1 go test -tags=integration ./tests/examples/... -run '^TestIntegration_' -count=1 -v
+
+# Same replay, but writes coverage data for CI to collect and merge across CLIs.
+COVERDIR ?= build/covdata-integration
+
+.PHONY: test-integration-cover
+test-integration-cover:
+	@mkdir -p $(COVERDIR)
+	$(TF_ACC_ENV) TF_ACC=1 go test -tags=integration ./tests/examples/... -run '^TestIntegration_' -count=1 -v \
+		-cover -coverpkg=./internal/... \
+		-args -test.gocoverdir=$(abspath $(COVERDIR))
 
 # Re-record VCR cassettes against the local AWX. Requires bootstrap-awx first.
 .PHONY: test-integration-record
 test-integration-record:
-	TF_ACC=1 AWX_VCR_RECORD=1 TOWER_HOST=$(TOWER_HOST) go test -tags=integration ./tests/examples/... -run '^TestIntegration_' -count=1 -v
+	$(TF_ACC_ENV) TF_ACC=1 AWX_VCR_RECORD=1 TOWER_HOST=$(TOWER_HOST) go test -tags=integration ./tests/examples/... -run '^TestIntegration_' -count=1 -v

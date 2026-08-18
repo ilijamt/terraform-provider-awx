@@ -68,6 +68,27 @@ but cassettes only ever contain `awx.local` so they stay portable.
    function mirroring `inventory_test.go`.
 3. Re-record (`make test-integration-record`) to generate the cassette.
 
+## Running against OpenTofu
+
+```sh
+make test-integration TF=tofu
+```
+
+`TF=tofu` sets `TF_ACC_TERRAFORM_PATH` and `TF_ACC_PROVIDER_HOST` together.
+Both matter. The harness registers its reattach providers under the legacy `-`
+namespace, and OpenTofu accepts that namespace only beneath
+`registry.opentofu.org`. Point `TF_ACC_TERRAFORM_PATH` at `tofu` on its own and
+`init` fails with `Invalid provider namespace`. The same cassettes replay under
+either CLI.
+
+CI runs the suite as one job per CLI through `make test-integration-cover`,
+which writes coverage into `COVERDIR` for the merge step. The same target works
+locally:
+
+```sh
+make test-integration-cover TF=tofu COVERDIR=build/covdata-tofu
+```
+
 ## Notes
 
 - VCR tests live behind the `integration` build tag so plain `make test`
