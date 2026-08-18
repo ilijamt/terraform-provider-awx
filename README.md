@@ -66,22 +66,6 @@ Writing the source as `registry.terraform.io/ilijamt/awx` pins it to
 HashiCorp's registry and fails under `tofu`, which is why the examples here use
 the short form.
 
-OpenTofu does not verify release signatures for this provider. Its registry
-holds no GPG key, so `tofu init` says:
-
-```
-Installed ilijamt/awx v24.6.1-2. Signature validation was skipped due to the
-registry not containing GPG keys for this provider
-```
-
-Fixing that takes a single [provider signing key
-submission](https://github.com/opentofu/registry/issues/new?template=provider_key.yml):
-namespace `ilijamt`, provider `awx`, and the armoured public block for key
-`0CF037AEA5ED29FC`. That is the key the Terraform registry already holds. Only
-the provider author can submit it, and only through the GitHub issue form. The
-automation reads the form fields and ignores an issue opened through the API or
-`gh`.
-
 Pass `TF=tofu` to the make targets that drive a CLI:
 
 ```shell
