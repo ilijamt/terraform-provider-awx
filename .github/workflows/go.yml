@@ -76,6 +76,8 @@ jobs:
             test: TestIntegration_WorkflowJobTemplateNode
           - name: Instance
             test: TestIntegration_Instance
+          - name: Role Assignments
+            test: TestIntegration_RoleAssignments
     steps:
       - uses: actions/checkout@v7
       - name: Setup Go
