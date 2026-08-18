@@ -68,6 +68,14 @@ jobs:
             test: TestIntegration_SettingsMisc
           - name: Job Template Survey Spec
             test: TestIntegration_JobTemplateSurveySpec
+          - name: Credential AWS
+            test: TestIntegration_CredentialAws
+          - name: Schedule
+            test: TestIntegration_Schedule
+          - name: Workflow Job Template Node
+            test: TestIntegration_WorkflowJobTemplateNode
+          - name: Instance
+            test: TestIntegration_Instance
     steps:
       - uses: actions/checkout@v7
       - name: Setup Go
