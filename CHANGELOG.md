@@ -54,6 +54,10 @@ All notable changes to this project will be documented in this file.
 - *(tools/generator)* Warn about overrides that do nothing
 - Added commit information to provider configuration logs
 
+### Miscellaneous
+
+- Updated versions.yaml
+
 ### Refactor
 
 - Collapse collection helpers and drop no-op plan modifiers
