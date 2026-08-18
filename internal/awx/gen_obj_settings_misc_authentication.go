@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -127,6 +128,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						Description: "If true, anonymous users are allowed to poll metrics.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -135,6 +137,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						Description: "For security reasons, users from external auth providers (LDAP, SAML, SSO, Radius, and others) are not allowed to create OAuth2 tokens. To change this behavior, enable this setting. Existing tokens will not be deleted when this setting is toggled off.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -143,6 +146,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						Description: "Enable HTTP Basic Auth for the API Browser.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -151,6 +155,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						Description: "Controls whether users are prevented from using the built-in authentication system. You probably want to do this if you are using an LDAP or SAML integration.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -250,6 +255,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						Description: "Enabling this setting will tell social auth to use the full Email as username instead of the full name",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

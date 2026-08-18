@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -145,6 +146,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Allow simultaneous",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -153,6 +155,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask inventory on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -161,6 +164,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask labels on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -169,6 +173,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask limit on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -177,6 +182,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask scm branch on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -185,6 +191,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask skip tags on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -193,6 +200,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask tags on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -201,6 +209,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Ask variables on launch",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -282,6 +291,7 @@ func NewWorkflowJobTemplateResource() resource.Resource {
 						Description: "Survey enabled",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

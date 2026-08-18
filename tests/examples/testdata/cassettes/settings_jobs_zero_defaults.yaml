@@ -6,10 +6,10 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 511
+        content_length: 509
         host: awx.local
         body: |
-            {"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
+            {"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":true,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
         headers:
             Authorization:
                 - REDACTED
@@ -23,8 +23,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1120
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1118
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -37,11 +37,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1120"
+                - "1118"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:53 GMT
+                - Tue, 18 Aug 2026 13:05:32 GMT
             Expires:
                 - "0"
             Pragma:
@@ -51,24 +51,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 997924e754574e5c934e296aea5bf8ed
+                - dddd4f57054f4f9cac806926e7ba6b37
             X-Api-Time:
-                - 0.093s
+                - 0.285s
             X-Api-Total-Time:
-                - 0.160s
+                - 0.359s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 5.188563167s
+        duration: 369.57925ms
     - id: 1
       request:
         proto: HTTP/1.1
@@ -89,8 +89,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1120
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1118
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -103,11 +103,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1120"
+                - "1118"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:53 GMT
+                - Tue, 18 Aug 2026 13:05:32 GMT
             Expires:
                 - "0"
             Pragma:
@@ -117,24 +117,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - eaeea5c9161141a6b5fc5c51fe58f6cb
+                - 039e9da3f8804249ac61e98a6bd6f0d9
             X-Api-Time:
                 - 0.062s
             X-Api-Total-Time:
-                - 0.123s
+                - 0.137s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 133.620834ms
+        duration: 150.4805ms
     - id: 2
       request:
         proto: HTTP/1.1
@@ -155,8 +155,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1120
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1118
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -169,11 +169,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1120"
+                - "1118"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:54 GMT
+                - Tue, 18 Aug 2026 13:05:33 GMT
             Expires:
                 - "0"
             Pragma:
@@ -183,33 +183,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 497afa242fd248f5935c188e568870da
+                - aa07534a1229473799891d11f7fc606c
             X-Api-Time:
-                - 0.063s
+                - 0.058s
             X-Api-Total-Time:
-                - 0.128s
+                - 0.115s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 139.275917ms
+        duration: 125.727334ms
     - id: 3
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 907
+        content_length: 905
         host: awx.local
         body: |
-            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":100,"MAX_WEBSOCKET_EVENT_RATE":60,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":25,"STDOUT_MAX_BYTES_DISPLAY":524288}
+            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":true,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":100,"MAX_WEBSOCKET_EVENT_RATE":60,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":25,"STDOUT_MAX_BYTES_DISPLAY":524288}
         headers:
             Authorization:
                 - REDACTED
@@ -223,8 +223,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1129
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1127
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -237,11 +237,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1129"
+                - "1127"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:54 GMT
+                - Tue, 18 Aug 2026 13:05:33 GMT
             Expires:
                 - "0"
             Pragma:
@@ -251,24 +251,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 328be224627c436292c852b4695b64b3
+                - 0dc0b4e5a13f4350b4d1f2c081023632
             X-Api-Time:
-                - 0.220s
+                - 0.221s
             X-Api-Total-Time:
-                - 0.294s
+                - 0.285s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 361.443541ms
+        duration: 302.053041ms
     - id: 4
       request:
         proto: HTTP/1.1
@@ -289,8 +289,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1129
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1127
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -303,11 +303,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1129"
+                - "1127"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:54 GMT
+                - Tue, 18 Aug 2026 13:05:34 GMT
             Expires:
                 - "0"
             Pragma:
@@ -317,24 +317,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - 3839ecb8706c42d5a93ff911ffd34732
+                - 4c8209bf2ae348a3bb37f363f73126fd
             X-Api-Time:
-                - 0.026s
+                - 0.050s
             X-Api-Total-Time:
-                - 0.084s
+                - 0.104s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 94.878083ms
+        duration: 112.823834ms
     - id: 5
       request:
         proto: HTTP/1.1
@@ -355,8 +355,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1129
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1127
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":524288,"EVENT_STDOUT_MAX_BYTES_DISPLAY":2048,"MAX_WEBSOCKET_EVENT_RATE":60,"SCHEDULE_MAX_JOBS":25,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":100,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -369,11 +369,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1129"
+                - "1127"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:55 GMT
+                - Tue, 18 Aug 2026 13:05:34 GMT
             Expires:
                 - "0"
             Pragma:
@@ -383,33 +383,33 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - d5ecde2ccac14977a012431564294568
+                - 2e45d6889f5c4f3184ef23b73c010a6f
             X-Api-Time:
-                - 0.047s
+                - 0.059s
             X-Api-Total-Time:
-                - 0.104s
+                - 0.127s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 114.916209ms
+        duration: 135.365625ms
     - id: 6
       request:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 898
+        content_length: 896
         host: awx.local
         body: |
-            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":false,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
+            {"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_COLLECTIONS_ENABLED":true,"AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"AWX_ROLES_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_TASK_ENV":{},"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"],"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"GALAXY_IGNORE_CERTS":false,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"MAX_FORKS":200,"MAX_WEBSOCKET_EVENT_RATE":0,"PROJECT_UPDATE_VVV":false,"SCHEDULE_MAX_JOBS":10,"STDOUT_MAX_BYTES_DISPLAY":0}
         headers:
             Authorization:
                 - REDACTED
@@ -423,8 +423,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1120
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1118
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"ANSIBLE_FORCE_COLOR":"false","GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -437,11 +437,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1120"
+                - "1118"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:55 GMT
+                - Tue, 18 Aug 2026 13:05:35 GMT
             Expires:
                 - "0"
             Pragma:
@@ -451,24 +451,24 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - b126afbb6a7344d989903c6572b2944b
+                - 99cef81b8b0748d5b71cfbc678fade59
             X-Api-Time:
-                - 0.174s
+                - 0.204s
             X-Api-Total-Time:
-                - 0.236s
+                - 0.272s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 282.558666ms
+        duration: 286.004583ms
     - id: 7
       request:
         proto: HTTP/1.1
@@ -489,8 +489,8 @@ interactions:
         proto: HTTP/1.1
         proto_major: 1
         proto_minor: 1
-        content_length: 1120
-        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":false,"AWX_COLLECTIONS_ENABLED":false,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
+        content_length: 1118
+        body: '{"AD_HOC_COMMANDS":["command","shell","yum","apt","apt_key","apt_repository","apt_rpm","service","group","user","mount","ping","selinux","setup","win_ping","win_service","win_updates","win_group","win_user"],"ALLOW_JINJA_IN_EXTRA_VARS":"template","AWX_ISOLATION_BASE_PATH":"/tmp","AWX_ISOLATION_SHOW_PATHS":["/etc/pki/ca-trust:/etc/pki/ca-trust:O","/usr/share/pki:/usr/share/pki:O"],"AWX_TASK_ENV":{},"AWX_RUNNER_KEEPALIVE_SECONDS":0,"GALAXY_TASK_ENV":{"GIT_SSH_COMMAND":"ssh -o StrictHostKeyChecking=no","ANSIBLE_FORCE_COLOR":"false"},"PROJECT_UPDATE_VVV":false,"AWX_ROLES_ENABLED":true,"AWX_COLLECTIONS_ENABLED":true,"AWX_SHOW_PLAYBOOK_LINKS":false,"AWX_MOUNT_ISOLATED_PATHS_ON_K8S":false,"GALAXY_IGNORE_CERTS":false,"STDOUT_MAX_BYTES_DISPLAY":0,"EVENT_STDOUT_MAX_BYTES_DISPLAY":0,"MAX_WEBSOCKET_EVENT_RATE":0,"SCHEDULE_MAX_JOBS":10,"AWX_ANSIBLE_CALLBACK_PLUGINS":[],"DEFAULT_JOB_TIMEOUT":0,"DEFAULT_JOB_IDLE_TIMEOUT":0,"DEFAULT_INVENTORY_UPDATE_TIMEOUT":0,"DEFAULT_PROJECT_UPDATE_TIMEOUT":0,"ANSIBLE_FACT_CACHE_TIMEOUT":0,"MAX_FORKS":200,"DEFAULT_CONTAINER_RUN_OPTIONS":["--network","slirp4netns:enable_ipv6=true"]}'
         headers:
             Access-Control-Expose-Headers:
                 - X-API-Request-Id
@@ -503,11 +503,11 @@ interactions:
             Content-Language:
                 - en
             Content-Length:
-                - "1120"
+                - "1118"
             Content-Type:
                 - application/json
             Date:
-                - Sun, 26 Apr 2026 16:40:55 GMT
+                - Tue, 18 Aug 2026 13:05:35 GMT
             Expires:
                 - "0"
             Pragma:
@@ -517,21 +517,21 @@ interactions:
             Vary:
                 - Accept, Accept-Language, origin
             X-Api-Node:
-                - awx-web-6557b8c559-8gvmk
+                - awx-web-6795fdffc8-djk8s
             X-Api-Product-Name:
                 - AWX
             X-Api-Product-Version:
                 - 24.6.1
             X-Api-Request-Id:
-                - f2b1ce8ea1eb4b2db2a2a6233035da3e
+                - fdc7500ac30d426c9c41ebb1250ac97e
             X-Api-Time:
-                - 0.045s
+                - 0.049s
             X-Api-Total-Time:
-                - 0.107s
+                - 0.115s
             X-Content-Type-Options:
                 - nosniff
             X-Frame-Options:
                 - DENY
         status: 200 OK
         code: 200
-        duration: 117.524541ms
+        duration: 132.783417ms

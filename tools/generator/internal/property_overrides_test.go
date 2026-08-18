@@ -92,3 +92,25 @@ func TestPropertyUseStateForUnknown(t *testing.T) {
 		UseStateForUnknown: boolPtr(false),
 	}).UseStateForUnknown)
 }
+
+// AWX reports bool defaults (host enabled, schedule enabled) and they used to be
+// dropped, so an unset attribute went out as an explicit false and flipped the
+// server's own default.
+func TestPropertyBoolDefault(t *testing.T) {
+	for _, tc := range []struct {
+		name     string
+		awxValue any
+		expected string
+	}{
+		{name: "true reaches the schema", awxValue: true, expected: "booldefault.StaticBool(true)"},
+		{name: "false reaches the schema", awxValue: false, expected: "booldefault.StaticBool(false)"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var p Property
+			p.Name = "enabled"
+			values := map[string]any{"type": "boolean", "label": "Enabled", "default": tc.awxValue}
+			require.NoError(t, p.Update(TypeWrite, PropertyOverride{}, values, Item{Name: "Host"}))
+			require.Equal(t, tc.expected, p.DefaultValue)
+		})
+	}
+}

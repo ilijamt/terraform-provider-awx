@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -204,6 +205,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "Allows collections to be dynamically downloaded from a requirements.yml file for SCM projects.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -230,6 +232,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "Expose paths via hostPath for the Pods created by a Container Group. HostPath volumes present many security risks, and it is a best practice to avoid the use of HostPaths when possible. ",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -238,6 +241,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "Allows roles to be dynamically downloaded from a requirements.yml file for SCM projects.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -255,6 +259,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "Follow symbolic links when scanning for playbooks. Be aware that setting this to True can lead to infinite recursion if a link points to a parent directory of itself.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -326,6 +331,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "If set to true, certificate validation will not be done when installing content from any Galaxy server.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -361,6 +367,7 @@ func NewSettingsJobsResource() resource.Resource {
 						Description: "Adds the CLI -vvv flag to ansible-playbook runs of project_update.yml used for project updates.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

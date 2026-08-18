@@ -143,6 +143,7 @@ func NewProjectResource() resource.Resource {
 						Description: "Allow changing the SCM branch or revision in a job template that uses this project.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -214,6 +215,7 @@ func NewProjectResource() resource.Resource {
 						Description: "Discard any local changes before syncing the project.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -222,6 +224,7 @@ func NewProjectResource() resource.Resource {
 						Description: "Delete the project before syncing.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -242,6 +245,7 @@ func NewProjectResource() resource.Resource {
 						Description: "Track submodules latest commits on defined branch.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -280,6 +284,7 @@ func NewProjectResource() resource.Resource {
 						Description: "Update the project when a job is launched that uses the project.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

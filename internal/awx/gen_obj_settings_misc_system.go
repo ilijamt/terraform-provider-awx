@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
@@ -155,6 +156,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Enable capturing activity for the activity stream.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -163,6 +165,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Enable capturing activity for the activity stream when running inventory sync.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -215,6 +218,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Enables the service to gather data on automation and send it to Automation Analytics.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -223,6 +227,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Controls whether any Organization Admin has the privileges to create and manage users and teams. You may want to disable this ability if you are using an LDAP or SAML integration.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -231,6 +236,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Controls whether any Organization Admin can view all users and teams, even those not associated with their Organization.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},
@@ -317,6 +323,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 						Description: "Enable preview of new user interface.",
 						Optional:    true,
 						Computed:    true,
+						Default:     booldefault.StaticBool(true),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
 						},

@@ -256,7 +256,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)
 			p.HasDefaultValue = true
-		case "types.Int64Value":
+		case "types.Int64Value", "types.BoolValue":
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(%v)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)
 			p.HasDefaultValue = true
