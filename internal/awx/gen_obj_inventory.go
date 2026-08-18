@@ -170,25 +170,16 @@ func NewInventoryResource() resource.Resource {
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Flag indicating whether any hosts in this inventory have failed.",
 						Computed:           true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"has_inventory_sources": schema.BoolAttribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Flag indicating whether this inventory has any external inventory sources.",
 						Computed:           true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"hosts_with_active_failures": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Number of hosts in this inventory with active failures.",
 						Computed:           true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this inventory.",
@@ -200,39 +191,24 @@ func NewInventoryResource() resource.Resource {
 					"inventory_sources_with_failures": schema.Int64Attribute{
 						Description: "Number of external inventory sources in this inventory with failures.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"pending_deletion": schema.BoolAttribute{
 						Description: "Flag indicating the inventory is being deleted.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"total_groups": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Total number of groups in this inventory.",
 						Computed:           true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"total_hosts": schema.Int64Attribute{
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 						Description:        "Total number of hosts in this inventory.",
 						Computed:           true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"total_inventory_sources": schema.Int64Attribute{
 						Description: "Total number of external inventory sources configured within this inventory.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

@@ -148,16 +148,10 @@ func NewHostResource() resource.Resource {
 					"last_job": schema.Int64Attribute{
 						Description: "Last job",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"last_job_host_summary": schema.Int64Attribute{
 						Description: "Last job host summary",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

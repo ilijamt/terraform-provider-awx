@@ -10,20 +10,22 @@
   "pre_state_set_hook_function": "hookSettingsSaml",
   "undeletable": true,
   "property_overrides": {
-    "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
-      "sensitive": true,
-      "trim": true
-    },
-    "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
-      "trim": true
-    },
-    "SOCIAL_AUTH_SAML_ORG_INFO": {
-      "type": "json"
-    },
-    "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
-      "type": "json"
+    "SOCIAL_AUTH_SAML_CALLBACK_URL": {
+      "use_state_for_unknown": false
     },
     "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_SAML_METADATA_URL": {
+      "use_state_for_unknown": false
+    },
+    "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_SAML_ORG_INFO": {
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -32,22 +34,26 @@
     "SOCIAL_AUTH_SAML_SP_EXTRA": {
       "type": "json"
     },
-    "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
-      "type": "json"
+    "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
+      "sensitive": true,
+      "trim": true
     },
-    "SOCIAL_AUTH_SAML_TEAM_MAP": {
-      "type": "json"
+    "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
+      "trim": true
     },
-    "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
+    "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TEAM_ATTR": {
       "type": "json"
     },
-    "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
+    "SOCIAL_AUTH_SAML_TEAM_MAP": {
       "type": "json"
     },
     "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
+      "type": "json"
+    },
+    "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
       "type": "json"
     }
   }

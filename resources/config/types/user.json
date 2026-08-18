@@ -17,6 +17,9 @@
     "external_account": {
       "type": "string"
     },
+    "last_login": {
+      "use_state_for_unknown": false
+    },
     "password": {
       "sensitive": true,
       "required": true

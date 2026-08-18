@@ -13,7 +13,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -189,16 +188,10 @@ func NewInstanceGroupResource() resource.Resource {
 					"capacity": schema.Int64Attribute{
 						Description: "Capacity",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"consumed_capacity": schema.Float64Attribute{
 						Description: "Consumed capacity",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Float64{
-							float64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this instance group.",
@@ -210,30 +203,18 @@ func NewInstanceGroupResource() resource.Resource {
 					"instances": schema.Int64Attribute{
 						Description: "Instances",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"jobs_running": schema.Int64Attribute{
 						Description: "Jobs running",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"jobs_total": schema.Int64Attribute{
 						Description: "Count of all jobs that target this instance group",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"percent_capacity_remaining": schema.Float64Attribute{
 						Description: "Percent capacity remaining",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Float64{
-							float64planmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

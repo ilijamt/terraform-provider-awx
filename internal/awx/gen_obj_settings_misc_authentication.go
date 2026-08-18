@@ -273,9 +273,6 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 						ElementType: types.StringType,
 						Description: "List of authentication backends that are enabled based on license features and other authentication settings.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.List{
-							listplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

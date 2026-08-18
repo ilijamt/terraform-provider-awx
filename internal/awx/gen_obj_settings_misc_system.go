@@ -331,24 +331,15 @@ func NewSettingsMiscSystemResource() resource.Resource {
 					"automation_analytics_last_gather": schema.StringAttribute{
 						Description: "Last gather date for Automation Analytics.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"cleanup_host_metrics_last_ts": schema.StringAttribute{
 						Description: "Last cleanup date for HostMetrics",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"custom_venv_paths": schema.ListAttribute{
 						ElementType: types.StringType,
 						Description: "Paths where Tower will look for custom virtual environments (in addition to /var/lib/awx/venv/). Enter one path per line.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.List{
-							listplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"default_control_plane_queue_name": schema.StringAttribute{
 						Description: "The instance group where control plane tasks run",
@@ -367,9 +358,6 @@ func NewSettingsMiscSystemResource() resource.Resource {
 					"host_metric_summary_task_last_ts": schema.StringAttribute{
 						Description: "Last computing date of HostMetricSummaryMonthly",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"install_uuid": schema.StringAttribute{
 						Description: "Unique identifier for an installation",
@@ -388,9 +376,6 @@ func NewSettingsMiscSystemResource() resource.Resource {
 					"license": schema.StringAttribute{
 						Description: "The license controls which features and functionality are enabled. Use /api/v2/config/ to update or change the license.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

@@ -15,7 +15,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -288,44 +287,26 @@ func NewAdHocCommandResource() resource.Resource {
 					"canceled_on": schema.StringAttribute{
 						Description: "The date and time when the cancel request was sent.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"controller_node": schema.StringAttribute{
 						Description: "The instance that managed the execution environment.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"elapsed": schema.Float64Attribute{
 						Description: "Elapsed time in seconds that the job ran.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Float64{
-							float64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"execution_node": schema.StringAttribute{
 						Description: "The node the job executed on.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"failed": schema.BoolAttribute{
 						Description: "Failed",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"finished": schema.StringAttribute{
 						Description: "The date and time the job finished execution.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this ad hoc command.",
@@ -337,16 +318,10 @@ func NewAdHocCommandResource() resource.Resource {
 					"job_explanation": schema.StringAttribute{
 						Description: "A status field to indicate the state of the job if it wasn't able to run and capture stdout",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"launch_type": schema.StringAttribute{
 						Description: "Launch type",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"manual",
@@ -364,9 +339,6 @@ func NewAdHocCommandResource() resource.Resource {
 					"launched_by": schema.Int64Attribute{
 						Description: "Launched by",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this ad hoc command.",
@@ -378,16 +350,10 @@ func NewAdHocCommandResource() resource.Resource {
 					"started": schema.StringAttribute{
 						Description: "The date and time the job was queued for starting.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"status": schema.StringAttribute{
 						Description: "Status",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"new",
@@ -404,9 +370,6 @@ func NewAdHocCommandResource() resource.Resource {
 					"work_unit_id": schema.StringAttribute{
 						Description: "The Receptor work unit ID associated with this job.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

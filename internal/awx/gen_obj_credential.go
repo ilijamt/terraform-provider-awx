@@ -159,9 +159,6 @@ func NewCredentialResource() resource.Resource {
 					"cloud": schema.BoolAttribute{
 						Description: "Cloud",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this credential.",
@@ -173,16 +170,10 @@ func NewCredentialResource() resource.Resource {
 					"kind": schema.StringAttribute{
 						Description: "Kind",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"kubernetes": schema.BoolAttribute{
 						Description: "Kubernetes",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Bool{
-							boolplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"managed": schema.BoolAttribute{
 						Description: "Managed",

@@ -6,16 +6,23 @@
   "has_object_roles": true,
   "property_overrides": {
     "capacity": {
-      "type": "integer"
+      "type": "integer",
+      "use_state_for_unknown": false
     },
     "consumed_capacity": {
-      "type": "float"
+      "type": "float",
+      "use_state_for_unknown": false
     },
     "instances": {
-      "type": "integer"
+      "type": "integer",
+      "use_state_for_unknown": false
     },
     "jobs_running": {
-      "type": "integer"
+      "type": "integer",
+      "use_state_for_unknown": false
+    },
+    "jobs_total": {
+      "use_state_for_unknown": false
     },
     "max_concurrent_jobs": {
       "omit_empty": false
@@ -24,7 +31,8 @@
       "omit_empty": false
     },
     "percent_capacity_remaining": {
-      "type": "float"
+      "type": "float",
+      "use_state_for_unknown": false
     },
     "pod_spec_override": {
       "no_default": true

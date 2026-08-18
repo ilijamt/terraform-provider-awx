@@ -47,6 +47,9 @@
     "name": {
       "required": true
     },
+    "organization": {
+      "use_state_for_unknown": false
+    },
     "timeout": {
       "omit_empty": false
     }

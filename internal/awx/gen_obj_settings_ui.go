@@ -113,9 +113,6 @@ func NewSettingsUIResource() resource.Resource {
 					"pendo_tracking_state": schema.StringAttribute{
 						Description: "Enable or Disable User Analytics Tracking.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"off",

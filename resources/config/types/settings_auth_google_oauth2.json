@@ -10,14 +10,17 @@
   "pre_state_set_hook_function": "hookSettingsAuthGoogleOauth2",
   "undeletable": true,
   "property_overrides": {
-    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
-      "sensitive": true
-    },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS": {
       "type": "json"
     },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL": {
+      "use_state_for_unknown": false
+    },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
       "type": "json"
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+      "sensitive": true
     },
     "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
       "type": "json"

@@ -6,15 +6,49 @@
   "enabled": true,
   "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
   "property_overrides": {
+    "canceled_on": {
+      "use_state_for_unknown": false
+    },
+    "controller_node": {
+      "use_state_for_unknown": false
+    },
+    "elapsed": {
+      "use_state_for_unknown": false
+    },
+    "execution_node": {
+      "use_state_for_unknown": false
+    },
     "extra_vars": {
       "type": "json",
       "post_wrap": true
     },
+    "failed": {
+      "use_state_for_unknown": false
+    },
+    "finished": {
+      "use_state_for_unknown": false
+    },
     "forks": {
       "omit_empty": false
     },
+    "job_explanation": {
+      "use_state_for_unknown": false
+    },
+    "launch_type": {
+      "use_state_for_unknown": false
+    },
     "launched_by": {
-      "type": "id"
+      "type": "id",
+      "use_state_for_unknown": false
+    },
+    "started": {
+      "use_state_for_unknown": false
+    },
+    "status": {
+      "use_state_for_unknown": false
+    },
+    "work_unit_id": {
+      "use_state_for_unknown": false
     }
   },
   "search_fields": [

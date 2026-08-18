@@ -14,6 +14,9 @@
     },
     "CUSTOM_LOGO": {
       "omit_empty": false
+    },
+    "PENDO_TRACKING_STATE": {
+      "use_state_for_unknown": false
     }
   }
 }

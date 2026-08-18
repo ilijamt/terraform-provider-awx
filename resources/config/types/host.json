@@ -13,6 +13,12 @@
     }
   ],
   "property_overrides": {
+    "last_job": {
+      "use_state_for_unknown": false
+    },
+    "last_job_host_summary": {
+      "use_state_for_unknown": false
+    },
     "variables": {
       "post_wrap": true,
       "default_value": "{}"

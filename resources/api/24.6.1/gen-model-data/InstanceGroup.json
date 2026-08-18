@@ -63,7 +63,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
@@ -106,7 +106,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Float64",
@@ -240,7 +240,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
@@ -326,7 +326,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
@@ -369,7 +369,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Int64",
@@ -550,7 +550,7 @@
       "is_searchable": false,
       "omit_empty": true,
       "nullable": false,
-      "use_state_for_unknown": true,
+      "use_state_for_unknown": false,
       "requires_replace": false,
       "generated": {
         "awx_go_type": "types.Float64",

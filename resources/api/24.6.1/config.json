@@ -33,15 +33,49 @@
       "enabled": true,
       "pre_state_set_hook_function": "hooks.RequireResourceStateOrOrig",
       "property_overrides": {
+        "canceled_on": {
+          "use_state_for_unknown": false
+        },
+        "controller_node": {
+          "use_state_for_unknown": false
+        },
+        "elapsed": {
+          "use_state_for_unknown": false
+        },
+        "execution_node": {
+          "use_state_for_unknown": false
+        },
         "extra_vars": {
           "type": "json",
           "post_wrap": true
         },
+        "failed": {
+          "use_state_for_unknown": false
+        },
+        "finished": {
+          "use_state_for_unknown": false
+        },
         "forks": {
           "omit_empty": false
         },
+        "job_explanation": {
+          "use_state_for_unknown": false
+        },
+        "launch_type": {
+          "use_state_for_unknown": false
+        },
         "launched_by": {
-          "type": "id"
+          "type": "id",
+          "use_state_for_unknown": false
+        },
+        "started": {
+          "use_state_for_unknown": false
+        },
+        "status": {
+          "use_state_for_unknown": false
+        },
+        "work_unit_id": {
+          "use_state_for_unknown": false
         }
       },
       "search_fields": [
@@ -135,6 +169,30 @@
         }
       ],
       "property_overrides": {
+        "has_active_failures": {
+          "use_state_for_unknown": false
+        },
+        "has_inventory_sources": {
+          "use_state_for_unknown": false
+        },
+        "hosts_with_active_failures": {
+          "use_state_for_unknown": false
+        },
+        "inventory_sources_with_failures": {
+          "use_state_for_unknown": false
+        },
+        "pending_deletion": {
+          "use_state_for_unknown": false
+        },
+        "total_groups": {
+          "use_state_for_unknown": false
+        },
+        "total_hosts": {
+          "use_state_for_unknown": false
+        },
+        "total_inventory_sources": {
+          "use_state_for_unknown": false
+        },
         "update_cache_timeout": {
           "omit_empty": false
         },
@@ -164,17 +222,20 @@
       ],
       "pre_state_set_hook_function": "hookCredential",
       "property_overrides": {
-        "kind": {
-          "type": "string"
-        },
         "cloud": {
-          "type": "boolean"
-        },
-        "kubernetes": {
-          "type": "boolean"
+          "type": "boolean",
+          "use_state_for_unknown": false
         },
         "inputs": {
           "type": "json"
+        },
+        "kind": {
+          "type": "string",
+          "use_state_for_unknown": false
+        },
+        "kubernetes": {
+          "type": "boolean",
+          "use_state_for_unknown": false
         }
       },
       "search_fields": [
@@ -334,6 +395,12 @@
         }
       ],
       "property_overrides": {
+        "last_job": {
+          "use_state_for_unknown": false
+        },
+        "last_job_host_summary": {
+          "use_state_for_unknown": false
+        },
         "variables": {
           "post_wrap": true,
           "default_value": "{}"
@@ -446,16 +513,23 @@
       "has_object_roles": true,
       "property_overrides": {
         "capacity": {
-          "type": "integer"
+          "type": "integer",
+          "use_state_for_unknown": false
         },
         "consumed_capacity": {
-          "type": "float"
+          "type": "float",
+          "use_state_for_unknown": false
         },
         "instances": {
-          "type": "integer"
+          "type": "integer",
+          "use_state_for_unknown": false
         },
         "jobs_running": {
-          "type": "integer"
+          "type": "integer",
+          "use_state_for_unknown": false
+        },
+        "jobs_total": {
+          "use_state_for_unknown": false
         },
         "max_concurrent_jobs": {
           "omit_empty": false
@@ -464,7 +538,8 @@
           "omit_empty": false
         },
         "percent_capacity_remaining": {
-          "type": "float"
+          "type": "float",
+          "use_state_for_unknown": false
         },
         "pod_spec_override": {
           "no_default": true
@@ -530,6 +605,30 @@
         }
       ],
       "property_overrides": {
+        "has_active_failures": {
+          "use_state_for_unknown": false
+        },
+        "has_inventory_sources": {
+          "use_state_for_unknown": false
+        },
+        "hosts_with_active_failures": {
+          "use_state_for_unknown": false
+        },
+        "inventory_sources_with_failures": {
+          "use_state_for_unknown": false
+        },
+        "pending_deletion": {
+          "use_state_for_unknown": false
+        },
+        "total_groups": {
+          "use_state_for_unknown": false
+        },
+        "total_hosts": {
+          "use_state_for_unknown": false
+        },
+        "total_inventory_sources": {
+          "use_state_for_unknown": false
+        },
         "variables": {
           "type": "json-yaml",
           "default_value": "{}",
@@ -636,6 +735,9 @@
         },
         "name": {
           "required": true
+        },
+        "organization": {
+          "use_state_for_unknown": false
         },
         "timeout": {
           "omit_empty": false
@@ -999,11 +1101,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthAzureADOauth2",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_AZUREAD_OAUTH2_TEAM_MAP": {
           "type": "json"
@@ -1022,11 +1127,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithub",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
           "type": "json"
@@ -1045,11 +1153,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithubEnterprise",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP": {
           "type": "json"
@@ -1068,11 +1179,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithubEnterpriseOrg",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_ORG_TEAM_MAP": {
           "type": "json"
@@ -1091,11 +1205,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithubEnterpriseTeam",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_TEAM_MAP": {
           "type": "json"
@@ -1114,11 +1231,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithubOrg",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_ORG_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_ORG_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_ORG_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_ORG_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_ORG_TEAM_MAP": {
           "type": "json"
@@ -1137,11 +1257,14 @@
       "pre_state_set_hook_function": "hookSettingsAuthGithubTeam",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
-          "sensitive": true
+        "SOCIAL_AUTH_GITHUB_TEAM_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_GITHUB_TEAM_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GITHUB_TEAM_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GITHUB_TEAM_TEAM_MAP": {
           "type": "json"
@@ -1160,14 +1283,17 @@
       "pre_state_set_hook_function": "hookSettingsAuthGoogleOauth2",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
-          "sensitive": true
-        },
         "SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS": {
           "type": "json"
         },
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_CALLBACK_URL": {
+          "use_state_for_unknown": false
+        },
         "SOCIAL_AUTH_GOOGLE_OAUTH2_ORGANIZATION_MAP": {
           "type": "json"
+        },
+        "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+          "sensitive": true
         },
         "SOCIAL_AUTH_GOOGLE_OAUTH2_TEAM_MAP": {
           "type": "json"
@@ -1326,20 +1452,22 @@
       "pre_state_set_hook_function": "hookSettingsSaml",
       "undeletable": true,
       "property_overrides": {
-        "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
-          "sensitive": true,
-          "trim": true
-        },
-        "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
-          "trim": true
-        },
-        "SOCIAL_AUTH_SAML_ORG_INFO": {
-          "type": "json"
-        },
-        "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
-          "type": "json"
+        "SOCIAL_AUTH_SAML_CALLBACK_URL": {
+          "use_state_for_unknown": false
         },
         "SOCIAL_AUTH_SAML_ENABLED_IDPS": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_METADATA_URL": {
+          "use_state_for_unknown": false
+        },
+        "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_ORG_INFO": {
           "type": "json"
         },
         "SOCIAL_AUTH_SAML_SECURITY_CONFIG": {
@@ -1348,22 +1476,26 @@
         "SOCIAL_AUTH_SAML_SP_EXTRA": {
           "type": "json"
         },
-        "SOCIAL_AUTH_SAML_ORGANIZATION_MAP": {
-          "type": "json"
+        "SOCIAL_AUTH_SAML_SP_PRIVATE_KEY": {
+          "sensitive": true,
+          "trim": true
         },
-        "SOCIAL_AUTH_SAML_TEAM_MAP": {
-          "type": "json"
+        "SOCIAL_AUTH_SAML_SP_PUBLIC_CERT": {
+          "trim": true
         },
-        "SOCIAL_AUTH_SAML_ORGANIZATION_ATTR": {
+        "SOCIAL_AUTH_SAML_SUPPORT_CONTACT": {
           "type": "json"
         },
         "SOCIAL_AUTH_SAML_TEAM_ATTR": {
           "type": "json"
         },
-        "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
+        "SOCIAL_AUTH_SAML_TEAM_MAP": {
           "type": "json"
         },
         "SOCIAL_AUTH_SAML_TECHNICAL_CONTACT": {
+          "type": "json"
+        },
+        "SOCIAL_AUTH_SAML_USER_FLAGS_BY_ATTR": {
           "type": "json"
         }
       }
@@ -1428,6 +1560,9 @@
       "property_name_leave_as_is": true,
       "undeletable": true,
       "property_overrides": {
+        "AUTHENTICATION_BACKENDS": {
+          "use_state_for_unknown": false
+        },
         "LOCAL_PASSWORD_MIN_DIGITS": {
           "omit_empty": false
         },
@@ -1499,14 +1634,27 @@
         }
       },
       "property_overrides": {
-        "LICENSE": {
-          "type": "json"
-        },
         "AUTOMATION_ANALYTICS_LAST_ENTRIES": {
           "type": "json"
         },
+        "AUTOMATION_ANALYTICS_LAST_GATHER": {
+          "use_state_for_unknown": false
+        },
+        "CLEANUP_HOST_METRICS_LAST_TS": {
+          "use_state_for_unknown": false
+        },
+        "CUSTOM_VENV_PATHS": {
+          "use_state_for_unknown": false
+        },
         "DEFAULT_EXECUTION_ENVIRONMENT": {
           "type": "id"
+        },
+        "HOST_METRIC_SUMMARY_TASK_LAST_TS": {
+          "use_state_for_unknown": false
+        },
+        "LICENSE": {
+          "type": "json",
+          "use_state_for_unknown": false
         }
       }
     },
@@ -1543,6 +1691,9 @@
         },
         "CUSTOM_LOGO": {
           "omit_empty": false
+        },
+        "PENDO_TRACKING_STATE": {
+          "use_state_for_unknown": false
         }
       }
     },
@@ -1601,8 +1752,15 @@
         }
       ],
       "property_overrides": {
+        "expires": {
+          "use_state_for_unknown": false
+        },
         "refresh_token": {
-          "type": "string"
+          "type": "string",
+          "use_state_for_unknown": false
+        },
+        "token": {
+          "use_state_for_unknown": false
         }
       }
     },
@@ -1624,6 +1782,9 @@
       "property_overrides": {
         "external_account": {
           "type": "string"
+        },
+        "last_login": {
+          "use_state_for_unknown": false
         },
         "password": {
           "sensitive": true,
@@ -1794,6 +1955,9 @@
         }
       },
       "property_overrides": {
+        "status": {
+          "use_state_for_unknown": false
+        },
         "timeout": {
           "omit_empty": false
         },

@@ -267,16 +267,10 @@ func NewSettingsAuthSAMLResource() resource.Resource {
 					"social_auth_saml_callback_url": schema.StringAttribute{
 						Description: "Register the service as a service provider (SP) with each identity provider (IdP) you have configured. Provide your SP Entity ID and this ACS URL for your application.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"social_auth_saml_metadata_url": schema.StringAttribute{
 						Description: "If your identity provider (IdP) allows uploading an XML metadata file, you can download one from this URL.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

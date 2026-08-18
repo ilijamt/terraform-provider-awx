@@ -131,9 +131,6 @@ func NewWorkflowJobTemplateNodeApprovalResource() resource.Resource {
 					"status": schema.StringAttribute{
 						Description: "Status",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
 								"new",

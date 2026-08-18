@@ -105,9 +105,6 @@ func NewTokensResource() resource.Resource {
 					"expires": schema.StringAttribute{
 						Description: "Expires",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this access token.",
@@ -119,16 +116,10 @@ func NewTokensResource() resource.Resource {
 					"refresh_token": schema.StringAttribute{
 						Description: "Refresh token",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"token": schema.StringAttribute{
 						Description: "Token",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"user": schema.Int64Attribute{
 						Description: "The user representing the token owner",

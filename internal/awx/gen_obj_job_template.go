@@ -675,9 +675,6 @@ func NewJobTemplateResource() resource.Resource {
 					"organization": schema.Int64Attribute{
 						Description: "The organization used to determine access to this template.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.Int64{
-							int64planmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

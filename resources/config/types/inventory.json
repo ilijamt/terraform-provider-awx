@@ -28,6 +28,30 @@
     }
   ],
   "property_overrides": {
+    "has_active_failures": {
+      "use_state_for_unknown": false
+    },
+    "has_inventory_sources": {
+      "use_state_for_unknown": false
+    },
+    "hosts_with_active_failures": {
+      "use_state_for_unknown": false
+    },
+    "inventory_sources_with_failures": {
+      "use_state_for_unknown": false
+    },
+    "pending_deletion": {
+      "use_state_for_unknown": false
+    },
+    "total_groups": {
+      "use_state_for_unknown": false
+    },
+    "total_hosts": {
+      "use_state_for_unknown": false
+    },
+    "total_inventory_sources": {
+      "use_state_for_unknown": false
+    },
     "variables": {
       "type": "json-yaml",
       "default_value": "{}",

@@ -133,9 +133,6 @@ func NewSettingsAuthGithubEnterpriseResource() resource.Resource {
 					"social_auth_github_enterprise_callback_url": schema.StringAttribute{
 						Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

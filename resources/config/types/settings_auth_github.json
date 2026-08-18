@@ -10,11 +10,14 @@
   "pre_state_set_hook_function": "hookSettingsAuthGithub",
   "undeletable": true,
   "property_overrides": {
-    "SOCIAL_AUTH_GITHUB_SECRET": {
-      "sensitive": true
+    "SOCIAL_AUTH_GITHUB_CALLBACK_URL": {
+      "use_state_for_unknown": false
     },
     "SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP": {
       "type": "json"
+    },
+    "SOCIAL_AUTH_GITHUB_SECRET": {
+      "sensitive": true
     },
     "SOCIAL_AUTH_GITHUB_TEAM_MAP": {
       "type": "json"

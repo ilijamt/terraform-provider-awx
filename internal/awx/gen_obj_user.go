@@ -178,9 +178,6 @@ func NewUserResource() resource.Resource {
 					"last_login": schema.StringAttribute{
 						Description: "Last login",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 					"ldap_dn": schema.StringAttribute{
 						Description: "Ldap dn",

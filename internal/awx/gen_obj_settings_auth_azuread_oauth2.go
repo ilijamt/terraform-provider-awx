@@ -107,9 +107,6 @@ func NewSettingsAuthAzureADOauth2Resource() resource.Resource {
 					"social_auth_azuread_oauth2_callback_url": schema.StringAttribute{
 						Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail. ",
 						Computed:    true,
-						PlanModifiers: []planmodifier.String{
-							stringplanmodifier.UseStateForUnknown(),
-						},
 					},
 				},
 			},

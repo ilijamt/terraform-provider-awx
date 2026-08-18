@@ -27,14 +27,27 @@
     }
   },
   "property_overrides": {
-    "LICENSE": {
-      "type": "json"
-    },
     "AUTOMATION_ANALYTICS_LAST_ENTRIES": {
       "type": "json"
     },
+    "AUTOMATION_ANALYTICS_LAST_GATHER": {
+      "use_state_for_unknown": false
+    },
+    "CLEANUP_HOST_METRICS_LAST_TS": {
+      "use_state_for_unknown": false
+    },
+    "CUSTOM_VENV_PATHS": {
+      "use_state_for_unknown": false
+    },
     "DEFAULT_EXECUTION_ENVIRONMENT": {
       "type": "id"
+    },
+    "HOST_METRIC_SUMMARY_TASK_LAST_TS": {
+      "use_state_for_unknown": false
+    },
+    "LICENSE": {
+      "type": "json",
+      "use_state_for_unknown": false
     }
   }
 }
