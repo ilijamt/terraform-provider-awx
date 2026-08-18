@@ -30,6 +30,14 @@ jobs:
         uses: actions/setup-go@v7
         with:
           go-version-file: 'go.mod'
+      # RELEASE_NOTES.md is gitignored; GoReleaser refuses to run on a dirty tree.
+      - name: Generate release notes
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: --latest --strip header
+        env:
+          OUTPUT: RELEASE_NOTES.md
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v7
         id: import_gpg
@@ -40,7 +48,28 @@ jobs:
         uses: goreleaser/goreleaser-action@v7.2.3
         with:
           version: '~> v2'
-          args: release --clean
+          args: release --clean --release-notes=RELEASE_NOTES.md
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # GoReleaser publishes a draft so this is the only `release.published`
+      # webhook GitHub sends: the Terraform Registry scans once, after every
+      # platform zip, SHA256SUMS and .sig is already attached. Publishing
+      # earlier makes the registry report "no valid platform assets found".
+      # Drafts are not addressable by tag via the releases API, so resolve
+      # the id by listing.
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          set -euo pipefail
+          id="$(gh api "repos/${GITHUB_REPOSITORY}/releases" --paginate \
+            --jq ".[] | select(.tag_name == \"${TAG}\") | .id" | head -n1)"
+          if [ -z "$id" ]; then
+            echo "No release found for tag ${TAG}" >&2
+            exit 1
+          fi
+          gh api -X PATCH "repos/${GITHUB_REPOSITORY}/releases/${id}" \
+            -F draft=false -f make_latest=true >/dev/null
+          echo "Published ${TAG} (release id ${id})"

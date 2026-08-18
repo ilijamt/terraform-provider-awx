@@ -49,6 +49,11 @@ signs:
   - "--detach-sign"
   - "${artifact}"
 release:
+  # Published by the release workflow only after every asset is uploaded, so the
+  # Terraform Registry sees a complete release on its single webhook scan.
+  draft: true
+  # A failed run leaves the draft behind; let a re-run of the same tag reclaim it.
+  replace_existing_draft: true
   extra_files:
   - glob: 'terraform-registry-manifest.json'
     name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
