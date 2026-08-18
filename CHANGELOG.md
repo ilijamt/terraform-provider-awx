@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [24.6.104] - 2026-08-18
 
 ### Bug Fixes
 
@@ -53,15 +53,18 @@ All notable changes to this project will be documented in this file.
 - *(awx)* Manage role definitions as a resource
 - *(tools/generator)* Warn about overrides that do nothing
 - Added commit information to provider configuration logs
+- Added OpenTofu compatibility
 
 ### Miscellaneous
 
+- Updated versions.yaml
 - Updated versions.yaml
 
 ### Refactor
 
 - Collapse collection helpers and drop no-op plan modifiers
 - *(helpers)* Extracted common slice operations to utility functions
+- *(tools/generator)* Ported the config merge from node to go
 
 ### Testing
 
