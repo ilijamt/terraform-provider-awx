@@ -57,6 +57,7 @@ All notable changes to this project will be documented in this file.
 ### Refactor
 
 - Collapse collection helpers and drop no-op plan modifiers
+- *(helpers)* Extracted common slice operations to utility functions
 
 ### Testing
 
@@ -64,6 +65,9 @@ All notable changes to this project will be documented in this file.
 - Added unit test for GenerateApiTfDefinition path handling
 - Added latency control feature to VCR tests
 - Added environment variable setup in providerHeader
+- *(tools/generator)* Added tests for element type functionality
+- *(tools/generator)* Added go_literal test cases
+- Added integration tests for instance group associations
 
 ### Config
 
