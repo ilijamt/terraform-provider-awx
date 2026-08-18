@@ -136,8 +136,23 @@ resource "awx_workflow_job_template_node_associate_success_node" "gate_to_build"
 
 data "awx_workflow_job_template_node" "build" {
   id = awx_workflow_job_template_node.build.id
+
+  depends_on = [
+    awx_workflow_job_template_node_associate_success_node.build_to_test,
+    awx_workflow_job_template_node_associate_failure_node.build_to_notify,
+  ]
 }
 
 output "build_node_identifier" {
   value = data.awx_workflow_job_template_node.build.identifier
+}
+
+# Read-only on the node. Without depends_on the data source can read it before
+# the link resources have run.
+output "build_node_links" {
+  value = {
+    success = data.awx_workflow_job_template_node.build.success_nodes
+    failure = data.awx_workflow_job_template_node.build.failure_nodes
+    always  = data.awx_workflow_job_template_node.build.always_nodes
+  }
 }

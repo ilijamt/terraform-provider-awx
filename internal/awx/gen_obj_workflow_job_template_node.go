@@ -26,9 +26,11 @@ import (
 
 type workflowJobTemplateNodeTerraformModel struct {
 	AllParentsMustConverge types.Bool   `tfsdk:"all_parents_must_converge" json:"all_parents_must_converge"`
+	AlwaysNodes            types.List   `tfsdk:"always_nodes" json:"always_nodes"`
 	DiffMode               types.Bool   `tfsdk:"diff_mode" json:"diff_mode"`
 	ExecutionEnvironment   types.Int64  `tfsdk:"execution_environment" json:"execution_environment"`
 	ExtraData              types.String `tfsdk:"extra_data" json:"extra_data"`
+	FailureNodes           types.List   `tfsdk:"failure_nodes" json:"failure_nodes"`
 	Forks                  types.Int64  `tfsdk:"forks" json:"forks"`
 	ID                     types.Int64  `tfsdk:"id" json:"id"`
 	Identifier             types.String `tfsdk:"identifier" json:"identifier"`
@@ -39,6 +41,7 @@ type workflowJobTemplateNodeTerraformModel struct {
 	Limit                  types.String `tfsdk:"limit" json:"limit"`
 	ScmBranch              types.String `tfsdk:"scm_branch" json:"scm_branch"`
 	SkipTags               types.String `tfsdk:"skip_tags" json:"skip_tags"`
+	SuccessNodes           types.List   `tfsdk:"success_nodes" json:"success_nodes"`
 	Timeout                types.Int64  `tfsdk:"timeout" json:"timeout"`
 	UnifiedJobTemplate     types.Int64  `tfsdk:"unified_job_template" json:"unified_job_template"`
 	Verbosity              types.String `tfsdk:"verbosity" json:"verbosity"`
@@ -78,9 +81,11 @@ func (o *workflowJobTemplateNodeTerraformModel) UpdateFromApiData(data map[strin
 	}
 	collect := func(d diag.Diagnostics, _ error) { diags.Append(d...) }
 	collect(helpers.AttrValueSetBool(&o.AllParentsMustConverge, data["all_parents_must_converge"]))
+	collect(helpers.AttrValueSetListInt64(&o.AlwaysNodes, data["always_nodes"]))
 	collect(helpers.AttrValueSetBool(&o.DiffMode, data["diff_mode"]))
 	collect(helpers.AttrValueSetInt64(&o.ExecutionEnvironment, data["execution_environment"]))
 	collect(helpers.AttrValueSetJsonString(&o.ExtraData, data["extra_data"], false))
+	collect(helpers.AttrValueSetListInt64(&o.FailureNodes, data["failure_nodes"]))
 	collect(helpers.AttrValueSetInt64(&o.Forks, data["forks"]))
 	collect(helpers.AttrValueSetInt64(&o.ID, data["id"]))
 	collect(helpers.AttrValueSetString(&o.Identifier, data["identifier"], false))
@@ -91,6 +96,7 @@ func (o *workflowJobTemplateNodeTerraformModel) UpdateFromApiData(data map[strin
 	collect(helpers.AttrValueSetString(&o.Limit, data["limit"], false))
 	collect(helpers.AttrValueSetString(&o.ScmBranch, data["scm_branch"], false))
 	collect(helpers.AttrValueSetString(&o.SkipTags, data["skip_tags"], false))
+	collect(helpers.AttrValueSetListInt64(&o.SuccessNodes, data["success_nodes"]))
 	collect(helpers.AttrValueSetInt64(&o.Timeout, data["timeout"]))
 	collect(helpers.AttrValueSetInt64(&o.UnifiedJobTemplate, data["unified_job_template"]))
 	collect(helpers.AttrValueSetString(&o.Verbosity, data["verbosity"], false))
@@ -283,12 +289,27 @@ func NewWorkflowJobTemplateNodeResource() resource.Resource {
 							int64planmodifier.RequiresReplace(),
 						},
 					},
+					"always_nodes": schema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Always nodes",
+						Computed:    true,
+					},
+					"failure_nodes": schema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Failure nodes",
+						Computed:    true,
+					},
 					"id": schema.Int64Attribute{
 						Description: "Database ID for this workflow job template node.",
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
 						},
+					},
+					"success_nodes": schema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Success nodes",
+						Computed:    true,
 					},
 				},
 			},
@@ -313,6 +334,11 @@ func NewWorkflowJobTemplateNodeDataSource() datasource.DataSource {
 						Description: "If enabled then the node will only run if all of the parent nodes have met the criteria to reach this node",
 						Computed:    true,
 					},
+					"always_nodes": dschema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Always nodes",
+						Computed:    true,
+					},
 					"diff_mode": dschema.BoolAttribute{
 						Description: "Diff mode",
 						Computed:    true,
@@ -323,6 +349,11 @@ func NewWorkflowJobTemplateNodeDataSource() datasource.DataSource {
 					},
 					"extra_data": dschema.StringAttribute{
 						Description: "Extra data",
+						Computed:    true,
+					},
+					"failure_nodes": dschema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Failure nodes",
 						Computed:    true,
 					},
 					"forks": dschema.Int64Attribute{
@@ -369,6 +400,11 @@ func NewWorkflowJobTemplateNodeDataSource() datasource.DataSource {
 					},
 					"skip_tags": dschema.StringAttribute{
 						Description: "Skip tags",
+						Computed:    true,
+					},
+					"success_nodes": dschema.ListAttribute{
+						ElementType: types.Int64Type,
+						Description: "Success nodes",
 						Computed:    true,
 					},
 					"timeout": dschema.Int64Attribute{

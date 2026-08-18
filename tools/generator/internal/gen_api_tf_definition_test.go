@@ -105,3 +105,51 @@ func TestGenerateApiTfDefinitionSplitCreateEndpoint(t *testing.T) {
 	require.True(t, found)
 	assert.NotContains(t, reader, "GadgetId")
 }
+
+// The data source used to hardcode types.StringType for every list, which
+// mismatched a model of int64.
+func TestGenerateApiTfDefinitionListElementType(t *testing.T) {
+	tpl, err := template.New("").Funcs(FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
+	require.NoError(t, err)
+
+	apiResourcePath := t.TempDir()
+	resourcePath := t.TempDir()
+	require.NoError(t, os.Mkdir(filepath.Join(apiResourcePath, "docs"), os.ModePerm))
+
+	item := Item{
+		Name:                   "Widget",
+		TypeName:               "widget",
+		Endpoint:               "/api/v2/widgets/",
+		IdKey:                  "id",
+		Enabled:                true,
+		ApiPropertyResourceKey: "POST",
+		ApiPropertyDataKey:     "GET",
+		PropertyOverrides: map[string]PropertyOverride{
+			"gadgets": {Type: "list", ElementType: "integer"},
+			"tags":    {Type: "list", ElementType: "string"},
+		},
+	}
+	objmap := map[string]any{
+		"description": "Widgets",
+		"actions": map[string]any{
+			"GET": map[string]any{
+				"id":      map[string]any{"type": "integer", "label": "ID"},
+				"gadgets": map[string]any{"type": "field", "label": "Gadgets"},
+				"tags":    map[string]any{"type": "field", "label": "Tags"},
+			},
+			"POST": map[string]any{"name": map[string]any{"type": "string", "label": "Name", "required": true}},
+		},
+	}
+
+	_, _, _, err = GenerateApiTfDefinition(tpl, Config{ApiVersion: "24.6.1"}, item, apiResourcePath, resourcePath, item.Name, objmap)
+	require.NoError(t, err)
+
+	generated, err := os.ReadFile(filepath.Join(resourcePath, "gen_obj_widget.go"))
+	require.NoError(t, err)
+	out := string(generated)
+
+	assert.Contains(t, out, `collect(helpers.AttrValueSetListInt64(&o.Gadgets, data["gadgets"]))`)
+	assert.Contains(t, out, `collect(helpers.AttrValueSetListString(&o.Tags, data["tags"], false))`)
+	assert.Equal(t, 2, strings.Count(out, "ElementType: types.Int64Type,"), "resource and data source schemas")
+	assert.Equal(t, 2, strings.Count(out, "ElementType: types.StringType,"), "resource and data source schemas")
+}

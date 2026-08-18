@@ -13,6 +13,21 @@
     },
     "diff_mode": {
       "nullable": true
+    },
+    "success_nodes": {
+      "type": "list",
+      "element_type": "integer",
+      "use_state_for_unknown": false
+    },
+    "failure_nodes": {
+      "type": "list",
+      "element_type": "integer",
+      "use_state_for_unknown": false
+    },
+    "always_nodes": {
+      "type": "list",
+      "element_type": "integer",
+      "use_state_for_unknown": false
     }
   },
   "search_fields": [
@@ -42,10 +57,5 @@
       "type": "AlwaysNode",
       "endpoint": "/api/v2/workflow_job_template_nodes/%d/always_nodes/"
     }
-  ],
-  "remove_fields_data_source": [
-    "success_nodes",
-    "failure_nodes",
-    "always_nodes"
   ]
 }

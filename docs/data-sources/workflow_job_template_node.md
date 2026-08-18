@@ -22,9 +22,11 @@ description: |-
 ### Read-Only
 
 - `all_parents_must_converge` (Boolean) If enabled then the node will only run if all of the parent nodes have met the criteria to reach this node
+- `always_nodes` (List of Number) Always nodes
 - `diff_mode` (Boolean) Diff mode
 - `execution_environment` (Number) The container image to be used for execution.
 - `extra_data` (String) Extra data
+- `failure_nodes` (List of Number) Failure nodes
 - `forks` (Number) Forks
 - `identifier` (String) An identifier for this node that is unique within its workflow. It is copied to workflow job nodes corresponding to this node.
 - `inventory` (Number) Inventory applied as a prompt, assuming job template prompts for inventory
@@ -34,6 +36,7 @@ description: |-
 - `limit` (String) Limit
 - `scm_branch` (String) Scm branch
 - `skip_tags` (String) Skip tags
+- `success_nodes` (List of Number) Success nodes
 - `timeout` (Number) Timeout
 - `unified_job_template` (Number) Unified job template
 - `verbosity` (String) Verbosity

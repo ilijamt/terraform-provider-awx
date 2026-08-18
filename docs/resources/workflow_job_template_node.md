@@ -40,4 +40,7 @@ description: |-
 
 ### Read-Only
 
+- `always_nodes` (List of Number) Always nodes
+- `failure_nodes` (List of Number) Failure nodes
 - `id` (Number) Database ID for this workflow job template node.
+- `success_nodes` (List of Number) Success nodes

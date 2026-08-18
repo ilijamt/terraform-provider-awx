@@ -138,10 +138,8 @@ type Item struct {
 	// MetadataDiscovery.
 	MetadataEndpoint string `json:"metadata_endpoint,omitempty" yaml:"metadata_endpoint,omitempty"`
 
-	// MetadataDiscovery finds a live object to fill the %d in MetadataEndpoint.
 	MetadataDiscovery *MetadataDiscovery `json:"metadata_discovery,omitempty" yaml:"metadata_discovery,omitempty"`
 
-	// CreateEndpoint, when set, sends POST somewhere other than Endpoint.
 	CreateEndpoint *CreateEndpointConfig `json:"create_endpoint,omitempty" yaml:"create_endpoint,omitempty"`
 
 	// CredentialType, when non-empty, marks this item as a typed credential

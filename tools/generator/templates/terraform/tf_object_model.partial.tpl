@@ -52,6 +52,8 @@ func (o *{{ .Name | lowerCamelCase }}TerraformModel) UpdateFromApiData(data map[
     collect(helpers.AttrValueSetFloat64(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
 {{- else if eq $value.Generated.AwxGoValue "types.BoolValue" }}
     collect(helpers.AttrValueSetBool(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
+{{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.Int64Type, val.Elements())" }}
+    collect(helpers.AttrValueSetListInt64(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"]))
 {{- else if eq $value.Generated.AwxGoValue "types.ListValueMust(types.StringType, val.Elements())" }}
     collect(helpers.AttrValueSetListString(&o.{{ $value.Generated.PropertyName }}, data["{{ $key }}"], {{ or .Trim false }}))
 {{- else if and (eq $value.Generated.AwxGoValue "types.StringValue") (eq .Type "json") }}

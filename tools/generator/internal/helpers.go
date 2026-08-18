@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"cmp"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -111,7 +112,7 @@ func getItemElementListType(value map[string]any) (any, error) {
 	return "", fmt.Errorf("no list element type found")
 }
 
-func awxGoValue(t string) string {
+func awxGoValue(t, elementType string) string {
 	switch t {
 	case "integer", "id":
 		return "types.Int64Value"
@@ -122,7 +123,7 @@ func awxGoValue(t string) string {
 	case "boolean", "bool":
 		return "types.BoolValue"
 	case "list":
-		return "types.ListValueMust(types.StringType, val.Elements())"
+		return fmt.Sprintf("types.ListValueMust(types.%sType, val.Elements())", cmp.Or(tfAttributeType(elementType), "String"))
 	}
 	return t
 }
@@ -256,6 +257,7 @@ var FuncMap = template.FuncMap{
 	"escape_quotes": func(in string) string {
 		return fmt.Sprintf("%q", in)
 	},
+	"tf_type":        tfAttributeType,
 	"snakeCase":      strcase.ToSnake,
 	"camelCase":      strcase.ToCamel,
 	"lowerCase":      lowerCase,

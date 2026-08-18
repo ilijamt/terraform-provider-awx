@@ -181,7 +181,7 @@ func (p *Property) setConstraints(constraints []FieldConstraint) {
 
 func (p *Property) setGenerated(values map[string]any, override PropertyOverride, item Item) {
 	p.Generated.AwxGoType = awxGoType(p.Type)
-	p.Generated.AwxGoValue = awxGoValue(p.Type)
+	p.Generated.AwxGoValue = awxGoValue(p.Type, p.ElementType)
 	p.Generated.PropertyName = awxPropertyCase(p.Name, item)
 	p.Generated.PropertyCase = setPropertyCase(p.Name)
 	p.Generated.TfGoPrimitiveValue = tfGoPrimitiveValue(p.Type, p.PostWrap)
@@ -251,7 +251,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 
 		attrType := tfAttributeType(p.Type)
 		defValue := convertDefaultValue(values["default"])
-		switch awxGoValue(p.Type) {
+		switch awxGoValue(p.Type, p.ElementType) {
 		case "types.StringValue":
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)

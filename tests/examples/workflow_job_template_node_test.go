@@ -66,6 +66,18 @@ func TestIntegration_WorkflowJobTemplateNode(t *testing.T) {
 						"awx_workflow_job_template_node.notify", "id"),
 					resource.TestCheckResourceAttr("awx_workflow_job_template_node_approval.gate", "name", "Approve deploy (updated)"),
 					resource.TestCheckResourceAttr("awx_workflow_job_template_node_approval.gate", "timeout", "7200"),
+					// Step 1 creates the node before the association and never
+					// re-reads it, so links only show from step 2 on.
+					resource.TestCheckResourceAttr("awx_workflow_job_template_node.build", "success_nodes.#", "1"),
+					resource.TestCheckResourceAttrPair(
+						"awx_workflow_job_template_node.build", "success_nodes.0",
+						"awx_workflow_job_template_node.test", "id"),
+					resource.TestCheckResourceAttrPair(
+						"awx_workflow_job_template_node.build", "failure_nodes.0",
+						"awx_workflow_job_template_node.notify", "id"),
+					resource.TestCheckResourceAttrPair(
+						"data.awx_workflow_job_template_node.build", "success_nodes.0",
+						"awx_workflow_job_template_node.test", "id"),
 				),
 			},
 			{
