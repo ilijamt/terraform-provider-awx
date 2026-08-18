@@ -9,8 +9,6 @@ type elementer interface {
 	Elements() []attr.Value
 }
 
-// A non-string element falls back to its String() form rather than failing, so
-// a mistyped schema reaches AWX as odd values instead of an error.
 func asStringSlice(c elementer, trim bool) []string {
 	out := []string{}
 	for _, val := range c.Elements() {

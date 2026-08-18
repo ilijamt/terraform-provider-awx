@@ -55,7 +55,6 @@ func coerceFloat64(data any) (val float64, ok bool, err error) {
 	return 0, false, nil
 }
 
-// ok=false means the element's Go type was not one this decoder accepts.
 type elementDecoder func(v any) (val attr.Value, ok bool, err error)
 
 func stringElement(trim bool) elementDecoder {
@@ -115,8 +114,6 @@ func decodeElements(data any, container string, decode elementDecoder) ([]attr.V
 	return out, d, nil
 }
 
-// setSetValue below is this function with the Set constructors. A generic over
-// both costs more than the twenty lines it saves.
 func setListValue(obj *types.List, data any, elemType attr.Type, decode elementDecoder) (diag.Diagnostics, error) {
 	if obj == nil {
 		return nilObjErr()
@@ -125,8 +122,8 @@ func setListValue(obj *types.List, data any, elemType attr.Type, decode elementD
 		*obj = types.ListValueMust(elemType, []attr.Value{})
 		return nil, nil
 	}
-	// Not ListValueMust: the caller can still hand over the wrong element type,
-	// and a mismatch there belongs in a diagnostic rather than a panic.
+	// Not ListValueMust: a caller can still pass the wrong element type, and that
+	// belongs in a diagnostic rather than a panic.
 	if v, ok := data.(types.List); ok {
 		val, d := types.ListValue(elemType, v.Elements())
 		if d.HasError() {

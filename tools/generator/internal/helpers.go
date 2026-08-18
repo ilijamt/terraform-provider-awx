@@ -123,9 +123,9 @@ func awxGoValue(t, elementType string) string {
 	case "boolean", "bool":
 		return "types.BoolValue"
 	case "list":
-		return fmt.Sprintf("types.ListValueMust(types.%sType, val.Elements())", cmp.Or(tfAttributeType(elementType), "String"))
+		return fmt.Sprintf("types.ListValueMust(types.%sType, val.Elements())", tfElementType(elementType))
 	case "set":
-		return fmt.Sprintf("types.SetValueMust(types.%sType, val.Elements())", cmp.Or(tfAttributeType(elementType), "String"))
+		return fmt.Sprintf("types.SetValueMust(types.%sType, val.Elements())", tfElementType(elementType))
 	}
 	return t
 }
@@ -166,7 +166,7 @@ func awxPrimitiveType(t, elementType string) string {
 	case "boolean", "bool":
 		return "bool"
 	case "list", "set":
-		if tfAttributeType(elementType) == "Int64" {
+		if tfElementType(elementType) == "Int64" {
 			return "[]int64"
 		}
 		return "[]string"
@@ -192,6 +192,10 @@ func tfAttributeType(t string) string {
 		return "Set"
 	}
 	return t
+}
+
+func tfElementType(t string) string {
+	return cmp.Or(tfAttributeType(t), "String")
 }
 
 func tfGoPrimitiveValue(t string, postWrap bool) string {
@@ -266,11 +270,11 @@ var FuncMap = template.FuncMap{
 	"escape_quotes": func(in string) string {
 		return fmt.Sprintf("%q", in)
 	},
-	"tf_type":        tfAttributeType,
-	"snakeCase":      strcase.ToSnake,
-	"camelCase":      strcase.ToCamel,
-	"lowerCase":      lowerCase,
-	"lowerCamelCase": strcase.ToLowerCamel,
+	"tf_element_type": tfElementType,
+	"snakeCase":       strcase.ToSnake,
+	"camelCase":       strcase.ToCamel,
+	"lowerCase":       lowerCase,
+	"lowerCamelCase":  strcase.ToLowerCamel,
 	"hasKey": func(d map[string]any, key string) bool {
 		_, ok := d[key]
 		return ok

@@ -7,7 +7,7 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- $key := .Key }}{{ $value := .Value -}}
 "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
 {{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
-	ElementType: types.{{ tf_type $value.ElementType }}Type,
+	ElementType: types.{{ tf_element_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}
 	DeprecationMessage: "This field is deprecated and will be removed in a future release.",
@@ -119,7 +119,7 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if not $value.IsInWriteProperty }}
 					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
 {{- if or (eq $value.Generated.AttributeType "List") (eq $value.Generated.AttributeType "Set") }}
-						ElementType: types.{{ tf_type $value.ElementType }}Type,
+						ElementType: types.{{ tf_element_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}
 						DeprecationMessage: "This field is deprecated and will be removed in a future release.",

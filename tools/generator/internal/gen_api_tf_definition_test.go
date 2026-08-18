@@ -154,10 +154,9 @@ func TestGenerateApiTfDefinitionListElementType(t *testing.T) {
 	assert.Equal(t, 2, strings.Count(out, "ElementType: types.StringType,"), "resource and data source schemas")
 }
 
-// A set of integers has to reach the same helpers a list of integers does. Get
-// the write side wrong and a []string lands in a []int64 field, which at least
-// fails to compile; get the read side wrong and the attribute gets no reader at
-// all and quietly stays null.
+// Get the write side wrong and a []string lands in a []int64 field, which at
+// least fails to compile. Get the read side wrong and the attribute gets no
+// reader at all and stays null.
 func TestGenerateApiTfDefinitionSetElementType(t *testing.T) {
 	tpl, err := template.New("").Funcs(FuncMap).ParseFS(generator.Fs(), "templates/*.tpl", "templates/terraform/*.tpl")
 	require.NoError(t, err)
