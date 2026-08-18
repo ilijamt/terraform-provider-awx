@@ -33,9 +33,20 @@ const FakeToken = "replay-token"
 // RecordEnvVar toggles record mode. Any non-empty value enables recording.
 const RecordEnvVar = "AWX_VCR_RECORD"
 
+// LatencyEnvVar re-enables real-time replay. Any non-empty value makes the
+// recorder sleep for each interaction's recorded duration; by default that
+// latency is skipped so a replay run is not as slow as the original AWX
+// round-trips were.
+const LatencyEnvVar = "AWX_VCR_LATENCY"
+
 // IsRecording reports whether the test should record new interactions.
 func IsRecording() bool {
 	return os.Getenv(RecordEnvVar) != ""
+}
+
+// ReplaysLatency reports whether replay should reproduce recorded timings.
+func ReplaysLatency() bool {
+	return os.Getenv(LatencyEnvVar) != ""
 }
 
 func realHost(t *testing.T) string {
@@ -51,9 +62,9 @@ func realHost(t *testing.T) string {
 
 // NewVCRClient returns an *http.Client wired to a cassette named
 // tests/examples/testdata/cassettes/<cassetteName>.yaml. In replay mode
-// (default) the cassette must exist. In record mode (AWX_VCR_RECORD=1)
-// requests are forwarded to the real AWX and the cassette is overwritten on
-// Stop.
+// (default) the cassette must exist and recorded latency is skipped unless
+// AWX_VCR_LATENCY is set. In record mode (AWX_VCR_RECORD=1) requests are
+// forwarded to the real AWX and the cassette is overwritten on Stop.
 func NewVCRClient(t *testing.T, cassetteName string) *http.Client {
 	t.Helper()
 
@@ -65,7 +76,7 @@ func NewVCRClient(t *testing.T, cassetteName string) *http.Client {
 	}
 
 	opts := []recorder.Option{
-		recorder.WithSkipRequestLatency(false),
+		recorder.WithSkipRequestLatency(!ReplaysLatency()),
 		recorder.WithMode(mode),
 		recorder.WithMatcher(matcher),
 		recorder.WithHook(redactHook, recorder.AfterCaptureHook),
