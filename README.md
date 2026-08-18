@@ -47,6 +47,17 @@ Download a new version of the API
 You need to spin up a version of AWX you want to download the API spec from.
 Older version of AWX report incorrect API spec. So manual changes may be required to fix them.
 
+Seed the instance first. AWX hides `POST` on endpoints the user has nothing to
+create against, so downloading from an empty instance strips every writable
+attribute off `hosts`, `inventory_sources` and `job_templates`. The
+`preload_data` example creates the Organization, Inventory and Project needed:
+
+```shell
+make build terraformrc
+export TF_CLI_CONFIG_FILE=$PWD/.terraformrc
+cd examples/preload_data && terraform init && terraform apply
+```
+
 ```shell
 export AWX_VERSION=24.6.1
 mkdir -p resources/api/$AWX_VERSION/config resources/api/$AWX_VERSION/gen-data
