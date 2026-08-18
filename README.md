@@ -40,6 +40,39 @@ constraint, so those versions are only reachable by pinning them exactly:
 version = "~> 24.6.103"
 ```
 
+Upgrading to v24.6.103
+----------------------
+
+Boolean attributes you never set in configuration used to be sent to AWX as
+`false`. The schema carried no default, so an unset optional bool read as the Go
+zero and went out on every create and update. For the 15 attributes AWX itself
+defaults to `true`, that quietly turned them off: creating a host without naming
+`enabled` produced a disabled host.
+
+The schema now carries the default AWX reports, so leaving one of these alone
+sends `true`.
+
+If you already manage any of them without setting them, your state holds the
+`false` the old provider wrote. The first plan after upgrading shows
+`false -> true`, and applying it changes AWX:
+
+| Resource | Attributes |
+|---|---|
+| `awx_host` | `enabled` |
+| `awx_instance` | `enabled`, `managed_by_policy` |
+| `awx_schedule` | `enabled` |
+| `awx_settings_auth_saml` | `saml_auto_create_objects` |
+| `awx_settings_jobs` | `awx_collections_enabled`, `awx_roles_enabled` |
+| `awx_settings_misc_authentication` | `auth_basic_enabled` |
+| `awx_settings_misc_logging` | `log_aggregator_verify_cert` |
+| `awx_settings_misc_system` | `activity_stream_enabled`, `manage_organization_auth`, `org_admins_can_see_all_users`, `ui_next` |
+| `awx_settings_oidc` | `social_auth_oidc_verify_ssl` |
+| `awx_settings_ui` | `ui_live_updates_enabled` |
+
+Read that plan before applying it, particularly for the settings resources,
+where it re-enables basic authentication and the activity stream. Anywhere you
+want `false`, say so explicitly and the plan goes quiet.
+
 Download a new version of the API
 ---------------------------------
 
