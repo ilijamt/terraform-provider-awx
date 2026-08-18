@@ -8,10 +8,15 @@ All notable changes to this project will be documented in this file.
 
 - *(schedule)* Omit unset diff_mode and unpin recomputed fields 
 - *(framework)* Recreate deleted resources instead of failing the plan
+- *(awx)* Stop overwriting AWX bool and decimal defaults
 
 ### Build
 
 - Updated goreleaser and makefile for improved build process
+
+### CI/CD
+
+- Run the remaining integration tests
 
 ### Dependencies
 
@@ -36,6 +41,8 @@ All notable changes to this project will be documented in this file.
 - *(tools/generator)* Override AWX metadata that describes the instance
 - *(awx)* Add workflow job template nodes
 - *(tools/generator)* Generate resources whose create endpoint differs
+- *(awx)* Read workflow node links off the node and its data source
+- *(awx)* Add awx_instance for mesh node registration
 
 ### Testing
 
