@@ -3,14 +3,17 @@
   "name": "RoleDefinition",
   "type_name": "role_definition",
   "id_key": "id",
-  "enabled": false,
+  "enabled": true,
   "property_overrides": {
     "content_type": {
       "type": "choice"
     },
     "permissions": {
       "type": "list",
-      "validators": ["listvalidator.SizeAtLeast(1)", "listvalidator.UniqueValues()"]
+      "validators": [
+        "listvalidator.SizeAtLeast(1)",
+        "listvalidator.UniqueValues()"
+      ]
     }
   },
   "search_fields": [
@@ -34,5 +37,6 @@
         }
       ]
     }
-  ]
+  ],
+  "no_terraform_resource": true
 }

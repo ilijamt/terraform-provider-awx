@@ -121,7 +121,7 @@ func (p *Property) Update(vt AwxKeyValueType, override PropertyOverride, values 
 	if p.Name == item.IdKey {
 		p.UseStateForUnknown = true
 	}
-	p.RequiresReplace = override.RequiresReplace
+	p.RequiresReplace = override.RequiresReplace || item.RequiresReplace
 	p.Validators = make([]string, 0)
 	p.Generated.ValidationAvailableChoiceData = make([]string, 0)
 	p.Generated.AttributeValidationData = make(map[string][]string)
@@ -265,7 +265,7 @@ func (p *Property) setDefaultValue(values map[string]any, override PropertyOverr
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(`%v`)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)
 			p.HasDefaultValue = true
-		case "types.Int64Value", "types.BoolValue":
+		case "types.Int64Value", "types.BoolValue", "types.Float64Value":
 			values["default_value"] = fmt.Sprintf("%sdefault.Static%s(%v)", lowerCase(attrType), attrType, defValue)
 			p.DefaultValue = values["default_value"].(string)
 			p.HasDefaultValue = true

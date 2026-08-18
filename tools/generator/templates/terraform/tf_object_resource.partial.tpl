@@ -6,9 +6,7 @@ omitted when empty. Used for both regular and write-only attributes.
 {{- define "attrSchema" -}}
 {{- $key := .Key }}{{ $value := .Value -}}
 "{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
-	ElementType: types.ListType{ElemType: types.StringType},
-{{- else if eq $value.Generated.AttributeType "List" }}
+{{- if eq $value.Generated.AttributeType "List" }}
 	ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}
@@ -117,9 +115,7 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- range $key, $value := .ReadProperties }}
 {{- if not $value.IsInWriteProperty }}
 					"{{ $key | lowerCase }}": schema.{{ $value.Generated.AttributeType }}Attribute{
-{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
-						ElementType: types.ListType{ElemType: types.StringType},
-{{- else if eq $value.Generated.AttributeType "List" }}
+{{- if eq $value.Generated.AttributeType "List" }}
 						ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
 {{- if $value.Deprecated }}

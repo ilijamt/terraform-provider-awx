@@ -148,6 +148,11 @@ type Item struct {
 	// prior value fails the apply.
 	UseStateForUnknown *bool `json:"use_state_for_unknown,omitempty" yaml:"use_state_for_unknown,omitempty"`
 
+	// RequiresReplace marks every write property on this item, for an object AWX
+	// creates and deletes but never updates. A role assignment detail answers
+	// only GET and DELETE, so any change has to recreate.
+	RequiresReplace bool `json:"requires_replace,omitempty" yaml:"requires_replace,omitempty"`
+
 	// SoftDelete replaces DELETE with a PATCH carrying this body. AWX retires a
 	// few objects through a state field rather than removing them: DELETE on an
 	// instance answers 405, and node_state "deprovisioning" is what takes it out.

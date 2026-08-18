@@ -50,7 +50,9 @@ func TestIntegration_Instance(t *testing.T) {
 				Config: providerHeader(t) + updated,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("awx_instance.execution", "enabled", "false"),
-					resource.TestCheckResourceAttr("awx_instance.execution", "capacity_adjustment", "0.5"),
+					// 0 is a value AWX accepts, so `,omitempty` must not
+					// strip it from the body.
+					resource.TestCheckResourceAttr("awx_instance.execution", "capacity_adjustment", "0"),
 				),
 			},
 			{

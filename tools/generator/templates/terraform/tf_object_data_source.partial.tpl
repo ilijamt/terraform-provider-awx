@@ -23,9 +23,7 @@ func New{{ .Name }}DataSource() datasource.DataSource {
 {{- if $value.Deprecated }}
                         DeprecationMessage: "This field is deprecated and will be removed in a future release.",
 {{- end }}
-{{- if and (eq $value.Generated.AttributeType "List") (eq $value.ElementType "choice") }}
-                        ElementType: types.ListType{ElemType: types.StringType},
-{{- else if eq $value.Generated.AttributeType "List" }}
+{{- if eq $value.Generated.AttributeType "List" }}
                         ElementType: types.{{ tf_type $value.ElementType }}Type,
 {{- end }}
                         Description: {{ escape_quotes (or .Description .Label) }},

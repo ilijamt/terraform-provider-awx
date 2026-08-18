@@ -9,6 +9,9 @@
     "node_state": "deprovisioning"
   },
   "property_overrides": {
+    "capacity_adjustment": {
+      "omit_empty": false
+    },
     "consumed_capacity": {
       "type": "integer"
     },

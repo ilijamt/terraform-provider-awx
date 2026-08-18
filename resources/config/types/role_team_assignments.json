@@ -3,7 +3,7 @@
   "name": "RoleTeamAssignment",
   "type_name": "role_team_assignment",
   "id_key": "id",
-  "enabled": false,
+  "enabled": true,
   "search_fields": [
     {
       "url_suffix": "%d/",
@@ -14,6 +14,11 @@
         }
       ]
     }
-  ]
-
+  ],
+  "requires_replace": true,
+  "property_overrides": {
+    "content_type": {
+      "type": "choice"
+    }
+  }
 }

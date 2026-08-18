@@ -3,7 +3,7 @@ resource "awx_instance" "execution" {
   node_type           = "execution"
   listener_port       = 27199
   enabled             = false
-  capacity_adjustment = 0.5
+  capacity_adjustment = 0
 }
 
 resource "awx_instance" "hop" {

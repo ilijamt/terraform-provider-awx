@@ -86,23 +86,27 @@ func TestPropertyRequiresReplace(t *testing.T) {
 	}).RequiresReplace)
 }
 
-// AWX reports bool defaults (host enabled, instance managed_by_policy) and they
-// used to be dropped, so an unset attribute went out as an explicit false and
-// flipped the server's own default.
-func TestPropertyBoolDefault(t *testing.T) {
+// Defaults used to be dropped for every type but string and integer, so an unset
+// attribute went out as its Go zero and overwrote the server's own value.
+func TestPropertyScalarDefault(t *testing.T) {
 	for _, tc := range []struct {
 		name     string
+		awxType  string
 		awxValue any
 		expected string
 	}{
-		{name: "true reaches the schema", awxValue: true, expected: "booldefault.StaticBool(true)"},
-		{name: "false reaches the schema", awxValue: false, expected: "booldefault.StaticBool(false)"},
+		{name: "bool true", awxType: "boolean", awxValue: true, expected: "booldefault.StaticBool(true)"},
+		{name: "bool false", awxType: "boolean", awxValue: false, expected: "booldefault.StaticBool(false)"},
+		{name: "decimal", awxType: "decimal", awxValue: 1.0, expected: "float64default.StaticFloat64(1)"},
+		{name: "float", awxType: "float", awxValue: 0.5, expected: "float64default.StaticFloat64(0.5)"},
+		{name: "integer", awxType: "integer", awxValue: 7, expected: "int64default.StaticInt64(7)"},
+		{name: "string", awxType: "string", awxValue: "x", expected: "stringdefault.StaticString(`x`)"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			var p Property
-			p.Name = "enabled"
-			values := map[string]any{"type": "boolean", "label": "Enabled", "default": tc.awxValue}
-			require.NoError(t, p.Update(TypeWrite, PropertyOverride{}, values, Item{Name: "Host"}))
+			p.Name = "field"
+			values := map[string]any{"type": tc.awxType, "label": "Field", "default": tc.awxValue}
+			require.NoError(t, p.Update(TypeWrite, PropertyOverride{}, values, Item{Name: "Instance"}))
 			require.Equal(t, tc.expected, p.DefaultValue)
 		})
 	}

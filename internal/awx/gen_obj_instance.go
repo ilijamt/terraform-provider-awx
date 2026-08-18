@@ -12,6 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
@@ -114,7 +115,7 @@ func (o *instanceTerraformModel) UpdateFromApiData(data map[string]any) (diags d
 }
 
 type instanceBodyRequestModel struct {
-	CapacityAdjustment    float64 `json:"capacity_adjustment,omitempty"`
+	CapacityAdjustment    float64 `json:"capacity_adjustment"`
 	Enabled               bool    `json:"enabled"`
 	Hostname              string  `json:"hostname"`
 	ListenerPort          int64   `json:"listener_port,omitempty"`
@@ -138,6 +139,7 @@ func NewInstanceResource() resource.Resource {
 						Description: "Capacity adjustment",
 						Optional:    true,
 						Computed:    true,
+						Default:     float64default.StaticFloat64(1),
 					},
 					"enabled": schema.BoolAttribute{
 						Description: "Enabled",
