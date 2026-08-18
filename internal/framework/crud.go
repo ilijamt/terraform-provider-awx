@@ -10,6 +10,8 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 )
 
 func doRequest(ctx context.Context, r Requester, method string, endpoint string, body io.Reader, resourceName string, operation string) (map[string]any, diag.Diagnostics) {
@@ -63,6 +65,37 @@ func CreateUpdateRequest(ctx context.Context, r Requester, method string, endpoi
 
 func ReadRequest(ctx context.Context, r Requester, endpoint string, resourceName string) (map[string]any, diag.Diagnostics) {
 	return doRequest(ctx, r, http.MethodGet, endpoint, nil, resourceName, "read")
+}
+
+// ReadRequestAllowMissing reports a 404 as found=false rather than an error.
+func ReadRequestAllowMissing(ctx context.Context, r Requester, endpoint string, resourceName string) (map[string]any, bool, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	req, err := r.NewRequest(ctx, http.MethodGet, endpoint, nil)
+	if err != nil {
+		diags.AddError(
+			fmt.Sprintf("Unable to create a new request for %s on %s for read", resourceName, endpoint),
+			err.Error(),
+		)
+		return nil, false, diags
+	}
+
+	data, err := r.Do(ctx, req)
+	if err != nil {
+		if c.IsNotFound(err) {
+			tflog.Debug(ctx, fmt.Sprintf("[%s/read] gone from AWX, dropping from state", resourceName), map[string]any{
+				"endpoint": endpoint,
+			})
+			return nil, false, diags
+		}
+		diags.AddError(
+			fmt.Sprintf("Unable to read resource for %s on %s", resourceName, endpoint),
+			err.Error(),
+		)
+		return nil, false, diags
+	}
+
+	return data, true, diags
 }
 
 func DeleteRequest(ctx context.Context, r Requester, endpoint string, resourceName string) diag.Diagnostics {

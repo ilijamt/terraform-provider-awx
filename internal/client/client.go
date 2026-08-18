@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -12,6 +13,26 @@ var (
 	ErrInvalidStatusCode = errors.New("invalid status code")
 	ErrJsonDecode        = errors.New("json decode")
 )
+
+// StatusError carries the HTTP status so callers can tell a deleted object from
+// a real failure. It unwraps to ErrInvalidStatusCode and reproduces the original
+// message, so existing errors.Is checks still match.
+type StatusError struct {
+	StatusCode int
+	URI        string
+	Body       string
+}
+
+func (e *StatusError) Error() string {
+	return fmt.Sprintf("%s: %d, on %s with %s", ErrInvalidStatusCode, e.StatusCode, e.URI, e.Body)
+}
+
+func (e *StatusError) Unwrap() error { return ErrInvalidStatusCode }
+
+func IsNotFound(err error) bool {
+	var se *StatusError
+	return errors.As(err, &se) && se.StatusCode == http.StatusNotFound
+}
 
 type Client interface {
 	NewRequest(ctx context.Context, method string, endpoint string, body io.Reader) (*http.Request, error)

@@ -330,8 +330,12 @@ func (r *GenericResource[T, B, PT]) Read(ctx context.Context, request resource.R
 		orig = &o
 	}
 
-	data, d := ReadRequest(ctx, r.Client, r.endpointForModel(&state), r.name())
+	data, found, d := ReadRequestAllowMissing(ctx, r.Client, r.endpointForModel(&state), r.name())
 	if DiagnosticsHasError(&response.Diagnostics, d...) {
+		return
+	}
+	if !found {
+		response.State.RemoveResource(ctx)
 		return
 	}
 

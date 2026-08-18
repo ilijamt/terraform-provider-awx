@@ -2,12 +2,14 @@ package framework_test
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	c "github.com/ilijamt/terraform-provider-awx/internal/client"
 	"github.com/ilijamt/terraform-provider-awx/internal/framework"
 )
 
@@ -162,6 +164,35 @@ func TestDeleteRequest(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			diags := framework.DeleteRequest(ctx, tt.requester, "/api/v2/test/1/", "TestResource")
 			assert.Equal(t, tt.expectError, diags.HasError())
+		})
+	}
+}
+
+func TestReadRequestAllowMissing(t *testing.T) {
+	notFound := &mockRequester{
+		newRequestFunc: func(context.Context, string, string, io.Reader) (*http.Request, error) {
+			return &http.Request{}, nil
+		},
+		doFunc: func(context.Context, *http.Request) (map[string]any, error) {
+			return nil, &c.StatusError{StatusCode: http.StatusNotFound, URI: "/api/v2/test/1/", Body: "gone"}
+		},
+	}
+
+	for _, tt := range []struct {
+		name      string
+		requester *mockRequester
+		wantFound bool
+		wantError bool
+	}{
+		{name: "present", requester: successRequester(map[string]any{"id": 1}), wantFound: true},
+		{name: "404 is not an error", requester: notFound},
+		{name: "other failures still error", requester: failDo(), wantError: true},
+		{name: "request construction failure errors", requester: failNewRequest(), wantError: true},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			_, found, diags := framework.ReadRequestAllowMissing(context.Background(), tt.requester, "/api/v2/test/1/", "TestResource")
+			assert.Equal(t, tt.wantFound, found)
+			assert.Equal(t, tt.wantError, diags.HasError())
 		})
 	}
 }

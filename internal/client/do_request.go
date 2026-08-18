@@ -38,14 +38,14 @@ func doRequest(client *http.Client, ctx context.Context, req *http.Request) (dat
 		"redirect_applied": req.URL.String() != resp.Request.URL.String() || req.Method != resp.Request.Method,
 	})
 
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return data, &StatusError{StatusCode: resp.StatusCode, URI: req.URL.RequestURI(), Body: string(payload)}
+	}
+
 	dec := json.NewDecoder(bytes.NewReader(payload))
 	dec.UseNumber()
 	if err = dec.Decode(&data); err != nil && !errors.Is(err, io.EOF) {
 		return data, fmt.Errorf("%w: failed to decode data", err)
-	}
-
-	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		return data, fmt.Errorf("%w: %d, on %s with %s", ErrInvalidStatusCode, resp.StatusCode, req.URL.RequestURI(), string(payload))
 	}
 
 	return data, nil

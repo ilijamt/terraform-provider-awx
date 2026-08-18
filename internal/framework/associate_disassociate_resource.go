@@ -2,6 +2,7 @@ package framework
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	p "path"
@@ -214,8 +215,42 @@ func (o *AssociateDisassociateResource) Delete(ctx context.Context, request reso
 	o.sendAssoc(ctx, parentID, childID, option, true, &response.Diagnostics)
 }
 
-// Read is a no-op — these resources hold no AWX-side state worth refreshing.
-func (o *AssociateDisassociateResource) Read(_ context.Context, _ resource.ReadRequest, _ *resource.ReadResponse) {
+// Read drops the resource when AWX no longer holds the association. Without it an
+// association removed outside Terraform stays in state forever, because the plan
+// sees no diff and apply never repairs it.
+func (o *AssociateDisassociateResource) Read(ctx context.Context, request resource.ReadRequest, response *resource.ReadResponse) {
+	parentID, childID, option, ok := o.readIDs(ctx, &request.State, &response.Diagnostics)
+	if !ok {
+		return
+	}
+
+	// A missing parent takes the association with it, so found=false covers both
+	// a removed link and a deleted parent.
+	endpoint := fmt.Sprintf("%s?id=%d", o.assocEndpoint(parentID, option), childID)
+	data, found, d := ReadRequestAllowMissing(ctx, o.Client, endpoint, o.cfg.ParentName)
+	if DiagnosticsHasError(&response.Diagnostics, d...) {
+		return
+	}
+
+	if !found || resultCount(data) == 0 {
+		response.State.RemoveResource(ctx)
+	}
+}
+
+// resultCount exists because the client decodes with UseNumber: a float64
+// assertion would miss and read every response as zero.
+func resultCount(data map[string]any) int64 {
+	switch v := data["count"].(type) {
+	case json.Number:
+		n, err := v.Int64()
+		if err != nil {
+			return 0
+		}
+		return n
+	case float64:
+		return int64(v)
+	}
+	return 0
 }
 
 // Update is a no-op — every attribute uses RequiresReplace.
@@ -248,13 +283,17 @@ func (o *AssociateDisassociateResource) readIDs(ctx context.Context, src attribu
 	return parentID.ValueInt64(), childID.ValueInt64(), option, true
 }
 
-// sendAssoc builds and sends the associate/disassociate POST.
-func (o *AssociateDisassociateResource) sendAssoc(ctx context.Context, parentID, childID int64, option string, disassociate bool, diags *diag.Diagnostics) bool {
+func (o *AssociateDisassociateResource) assocEndpoint(parentID int64, option string) string {
 	args := []any{parentID}
 	if o.cfg.hasOption() {
 		args = append(args, option)
 	}
-	endpoint := p.Clean(fmt.Sprintf(o.Endpoint, args...)) + "/"
+	return p.Clean(fmt.Sprintf(o.Endpoint, args...)) + "/"
+}
+
+// sendAssoc builds and sends the associate/disassociate POST.
+func (o *AssociateDisassociateResource) sendAssoc(ctx context.Context, parentID, childID int64, option string, disassociate bool, diags *diag.Diagnostics) bool {
+	endpoint := o.assocEndpoint(parentID, option)
 
 	op := "associate"
 	if disassociate {

@@ -180,8 +180,13 @@ func (o *workflowJobTemplateNodeApprovalResource) Read(ctx context.Context, requ
 		return
 	}
 
-	data, d := framework.ReadRequest(ctx, o.Client, framework.EndpointWithID(approvalManageEndpoint, state.ID.ValueInt64()), "WorkflowJobTemplateNodeApproval")
+	data, found, d := framework.ReadRequestAllowMissing(ctx, o.Client,
+		framework.EndpointWithID(approvalManageEndpoint, state.ID.ValueInt64()), "WorkflowJobTemplateNodeApproval")
 	if framework.DiagnosticsHasError(&response.Diagnostics, d...) {
+		return
+	}
+	if !found {
+		response.State.RemoveResource(ctx)
 		return
 	}
 	if framework.DiagnosticsHasError(&response.Diagnostics, state.fromApiData(data)...) {
