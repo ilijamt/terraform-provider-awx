@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### CI/CD
+
+- Improved release workflow
+
 ## [24.6.104] - 2026-08-18
 
 ### Bug Fixes
