@@ -18,6 +18,10 @@ All notable changes to this project will be documented in this file.
 - *(awx)* Settings resources for bulk, debug, RADIUS and TACACS+
 - *(awx)* Awx_config and awx_ping data sources
 
+### Miscellaneous
+
+- Updated versions.yaml
+
 ## [24.6.104] - 2026-08-18
 
 ### Bug Fixes
