@@ -82,6 +82,7 @@ func NewTokensResource() resource.Resource {
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
+							int64planmodifier.RequiresReplace(),
 						},
 					},
 					"description": schema.StringAttribute{

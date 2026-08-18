@@ -99,7 +99,8 @@
             }
           ]
         }
-      ]
+      ],
+      "requires_replace": true
     },
     {
       "endpoint": "/api/v2/applications/",
@@ -363,6 +364,9 @@
       "id_key": "id",
       "enabled": true,
       "property_overrides": {
+        "inventory": {
+          "requires_replace": true
+        },
         "variables": {
           "post_wrap": true,
           "default_value": "{}"
@@ -395,6 +399,9 @@
         }
       ],
       "property_overrides": {
+        "inventory": {
+          "requires_replace": true
+        },
         "last_job": {
           "use_state_for_unknown": false
         },
@@ -640,6 +647,9 @@
       "id_key": "id",
       "enabled": true,
       "property_overrides": {
+        "inventory": {
+          "requires_replace": true
+        },
         "source_vars": {
           "post_wrap": true,
           "type": "json"
@@ -1724,6 +1734,9 @@
         }
       ],
       "property_overrides": {
+        "application": {
+          "requires_replace": true
+        },
         "expires": {
           "use_state_for_unknown": false
         },

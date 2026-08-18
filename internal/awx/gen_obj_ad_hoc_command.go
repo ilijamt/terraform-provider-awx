@@ -144,6 +144,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
+							boolplanmodifier.RequiresReplace(),
 						},
 					},
 					"credential": schema.Int64Attribute{
@@ -152,6 +153,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
+							int64planmodifier.RequiresReplace(),
 						},
 					},
 					"diff_mode": schema.BoolAttribute{
@@ -161,6 +163,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     booldefault.StaticBool(false),
 						PlanModifiers: []planmodifier.Bool{
 							boolplanmodifier.UseStateForUnknown(),
+							boolplanmodifier.RequiresReplace(),
 						},
 					},
 					"execution_environment": schema.Int64Attribute{
@@ -169,6 +172,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
+							int64planmodifier.RequiresReplace(),
 						},
 					},
 					"extra_vars": schema.StringAttribute{
@@ -178,6 +182,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 					},
 					"forks": schema.Int64Attribute{
@@ -187,6 +192,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     int64default.StaticInt64(0),
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
+							int64planmodifier.RequiresReplace(),
 						},
 						Validators: []validator.Int64{
 							int64validator.Between(0, 2147483647),
@@ -198,6 +204,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Computed:    true,
 						PlanModifiers: []planmodifier.Int64{
 							int64planmodifier.UseStateForUnknown(),
+							int64planmodifier.RequiresReplace(),
 						},
 					},
 					"job_type": schema.StringAttribute{
@@ -207,6 +214,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(`run`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
@@ -222,6 +230,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 					},
 					"module_args": schema.StringAttribute{
@@ -231,6 +240,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(``),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 					},
 					"module_name": schema.StringAttribute{
@@ -240,6 +250,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(`command`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(
@@ -272,6 +283,7 @@ func NewAdHocCommandResource() resource.Resource {
 						Default:     stringdefault.StaticString(`0`),
 						PlanModifiers: []planmodifier.String{
 							stringplanmodifier.UseStateForUnknown(),
+							stringplanmodifier.RequiresReplace(),
 						},
 						Validators: []validator.String{
 							stringvalidator.OneOf(

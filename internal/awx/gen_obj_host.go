@@ -121,6 +121,9 @@ func NewHostResource() resource.Resource {
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
 						Required:    true,
+						PlanModifiers: []planmodifier.Int64{
+							int64planmodifier.RequiresReplace(),
+						},
 					},
 					"name": schema.StringAttribute{
 						Description: "Name of this host.",

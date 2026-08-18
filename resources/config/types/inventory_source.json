@@ -6,6 +6,9 @@
   "id_key": "id",
   "enabled": true,
   "property_overrides": {
+    "inventory": {
+      "requires_replace": true
+    },
     "source_vars": {
       "post_wrap": true,
       "type": "json"

@@ -199,6 +199,9 @@ func NewInventorySourceResource() resource.Resource {
 					"inventory": schema.Int64Attribute{
 						Description: "Inventory",
 						Required:    true,
+						PlanModifiers: []planmodifier.Int64{
+							int64planmodifier.RequiresReplace(),
+						},
 					},
 					"limit": schema.StringAttribute{
 						Description: "Enter host, group or pattern match",

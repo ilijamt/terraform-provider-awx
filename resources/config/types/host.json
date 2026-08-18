@@ -13,6 +13,9 @@
     }
   ],
   "property_overrides": {
+    "inventory": {
+      "requires_replace": true
+    },
     "last_job": {
       "use_state_for_unknown": false
     },
