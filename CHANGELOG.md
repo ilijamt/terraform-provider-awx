@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Dependencies
+
+- *(deps)* Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#192)
+
 ### Refactor
 
 - *(tools/generator)* Simplified error assignment
