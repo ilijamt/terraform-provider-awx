@@ -12,6 +12,10 @@ All notable changes to this project will be documented in this file.
 
 - *(awx)* Typed resources for all 10 notification template types
 
+### Miscellaneous
+
+- Updated versions.yaml
+
 ### Refactor
 
 - *(tools/generator)* Simplified error assignment
