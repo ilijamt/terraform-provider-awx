@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - *(deps)* Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#192)
 
+### Features
+
+- *(awx)* Typed resources for all 10 notification template types
+
 ### Refactor
 
 - *(tools/generator)* Simplified error assignment
