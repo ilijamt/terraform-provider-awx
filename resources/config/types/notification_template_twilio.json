@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateTwilio",
+  "type_name": "notification_template_twilio",
+  "id_key": "id",
+  "notification_type": "twilio",
+  "enabled": true
+}

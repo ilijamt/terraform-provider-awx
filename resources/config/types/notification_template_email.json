@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateEmail",
+  "type_name": "notification_template_email",
+  "id_key": "id",
+  "notification_type": "email",
+  "enabled": true
+}

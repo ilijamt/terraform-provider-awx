@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateGrafana",
+  "type_name": "notification_template_grafana",
+  "id_key": "id",
+  "notification_type": "grafana",
+  "enabled": true
+}

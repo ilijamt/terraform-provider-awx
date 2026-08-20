@@ -120,7 +120,8 @@ var fetchApiResourcesCmd = &cobra.Command{
 			// the endpoints that need attention rather than the first.
 			var failures []error
 			for _, item := range cfg.Items {
-				if item.CredentialType != "" {
+				// Generated from a payload another item already fetched.
+				if item.CredentialType != "" || item.NotificationType != "" {
 					delete(dataInfo.Resources, item.Name)
 					continue
 				}

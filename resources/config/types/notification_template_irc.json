@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateIrc",
+  "type_name": "notification_template_irc",
+  "id_key": "id",
+  "notification_type": "irc",
+  "enabled": true
+}

@@ -173,6 +173,13 @@ type Item struct {
 	// AWX namespace ("aws", "ssh", "vault", ...). The generator routes these
 	// items through GenerateCredentialTypeTfDefinition.
 	CredentialType string `json:"credential_type,omitempty" yaml:"credential_type,omitempty"`
+
+	// NotificationType, when non-empty, marks this item as a typed notification
+	// template generated from the per-type schema AWX embeds in the
+	// NotificationTemplate OPTIONS payload under
+	// actions.POST.notification_configuration.<value>, rather than from this
+	// item's own actions metadata.
+	NotificationType string `json:"notification_type,omitempty" yaml:"notification_type,omitempty"`
 }
 
 // MetadataUrl returns the URL OPTIONS runs against for this item, and whether an

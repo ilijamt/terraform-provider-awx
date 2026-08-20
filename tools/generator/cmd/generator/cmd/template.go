@@ -75,6 +75,26 @@ var templateCmd = &cobra.Command{
 					continue
 				}
 
+				// These read the per-type schemas embedded in the one
+				// NotificationTemplate payload, not an actions block of their own.
+				if internal.IsNotificationTypeItem(item) {
+					if !item.NoTerraformResource {
+						cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
+					}
+					if !item.NoTerraformDataSource {
+						cfg.GeneratedDataSourceResources = append(cfg.GeneratedDataSourceResources, item.Name)
+					}
+					payload, ok := apiResource.Resources[internal.NotificationTemplateResourceName]
+					if !ok {
+						log.Printf("Missing %s payload for notification type %q, skipping ...", internal.NotificationTemplateResourceName, item.NotificationType)
+						continue
+					}
+					if err = internal.GenerateNotificationTypeTfDefinition(tpl, cfg, item, resourcePath, payload); err != nil {
+						return err
+					}
+					continue
+				}
+
 				if !item.NoTerraformResource {
 					cfg.GeneratedApiResources = append(cfg.GeneratedApiResources, item.Name)
 					for _, adg := range item.AssociateDisassociateGroups {

@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateMattermost",
+  "type_name": "notification_template_mattermost",
+  "id_key": "id",
+  "notification_type": "mattermost",
+  "enabled": true
+}

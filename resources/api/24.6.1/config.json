@@ -1169,6 +1169,86 @@
       "pre_state_set_hook_function": "hookNotificationTemplate"
     },
     {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateAwssns",
+      "type_name": "notification_template_awssns",
+      "id_key": "id",
+      "notification_type": "awssns",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateEmail",
+      "type_name": "notification_template_email",
+      "id_key": "id",
+      "notification_type": "email",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateGrafana",
+      "type_name": "notification_template_grafana",
+      "id_key": "id",
+      "notification_type": "grafana",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateIrc",
+      "type_name": "notification_template_irc",
+      "id_key": "id",
+      "notification_type": "irc",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateMattermost",
+      "type_name": "notification_template_mattermost",
+      "id_key": "id",
+      "notification_type": "mattermost",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplatePagerduty",
+      "type_name": "notification_template_pagerduty",
+      "id_key": "id",
+      "notification_type": "pagerduty",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateRocketchat",
+      "type_name": "notification_template_rocketchat",
+      "id_key": "id",
+      "notification_type": "rocketchat",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateSlack",
+      "type_name": "notification_template_slack",
+      "id_key": "id",
+      "notification_type": "slack",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateTwilio",
+      "type_name": "notification_template_twilio",
+      "id_key": "id",
+      "notification_type": "twilio",
+      "enabled": true
+    },
+    {
+      "endpoint": "/api/v2/notification_templates/",
+      "name": "NotificationTemplateWebhook",
+      "type_name": "notification_template_webhook",
+      "id_key": "id",
+      "notification_type": "webhook",
+      "enabled": true
+    },
+    {
       "endpoint": "/api/v2/organizations/",
       "name": "Organization",
       "type_name": "organization",

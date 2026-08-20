@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateRocketchat",
+  "type_name": "notification_template_rocketchat",
+  "id_key": "id",
+  "notification_type": "rocketchat",
+  "enabled": true
+}

@@ -1,0 +1,8 @@
+{
+  "endpoint": "/api/v2/notification_templates/",
+  "name": "NotificationTemplateSlack",
+  "type_name": "notification_template_slack",
+  "id_key": "id",
+  "notification_type": "slack",
+  "enabled": true
+}
