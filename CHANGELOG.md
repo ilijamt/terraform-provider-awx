@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Dependencies
 
+- *(deps)* Bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#193)
+
+## [24.6.106] - 2026-08-20
+
+### Dependencies
+
 - *(deps)* Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#192)
 
 ### Features
