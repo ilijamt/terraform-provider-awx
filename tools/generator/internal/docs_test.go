@@ -106,3 +106,44 @@ func TestGenerateProviderDocs(t *testing.T) {
 	assert.Contains(t, string(index), "{{ .SchemaMarkdown | trimspace }}")
 	assert.FileExists(t, filepath.Join(dir, "examples", "provider", "provider.tf"))
 }
+
+func TestGenerateUsageExamples(t *testing.T) {
+	dir := t.TempDir()
+	write := func(name, content string) {
+		require.NoError(t, os.MkdirAll(filepath.Join(dir, filepath.Dir(name)), 0o755))
+		require.NoError(t, os.WriteFile(filepath.Join(dir, name), []byte(content), 0o644))
+	}
+	write("general/main.tf", `
+resource "awx_inventory" "general" {
+  name = "from general"
+}
+resource "awx_organization" "org" {
+  name = "org"
+}
+resource "awx_settings_auth_saml" "saml" {
+  key = "-----BEGIN PRIVATE KEY-----"
+}
+resource "null_resource" "skip" {}
+`)
+	write("inventory/main.tf", `
+data "awx_organization" "org" {
+  name = "Default"
+}
+resource "awx_inventory" "own" {
+  name = "from inventory"
+}
+`)
+
+	require.NoError(t, GenerateUsageExamples(dir))
+
+	read := func(name string) string {
+		content, err := os.ReadFile(filepath.Join(dir, name))
+		require.NoError(t, err)
+		return string(content)
+	}
+	assert.Contains(t, read("resources/awx_inventory/resource.tf"), "from inventory", "the directory named after the type wins")
+	assert.Contains(t, read("resources/awx_organization/resource.tf"), `resource "awx_organization" "org"`)
+	assert.Contains(t, read("data-sources/awx_organization/data-source.tf"), `data "awx_organization" "org"`)
+	assert.NoDirExists(t, filepath.Join(dir, "resources", "awx_settings_auth_saml"))
+	assert.NoDirExists(t, filepath.Join(dir, "resources", "null_resource"))
+}

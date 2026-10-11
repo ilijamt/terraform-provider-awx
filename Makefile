@@ -45,7 +45,7 @@ generate-configs: resources/api/*
 .PHONY: generate-awx
 generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
-	rm -rf cmd/provider/docs/* cmd/provider/templates examples/resources examples/provider
+	rm -rf cmd/provider/docs/* cmd/provider/templates examples/resources examples/data-sources examples/provider
 	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx --examples-dir examples
 	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go

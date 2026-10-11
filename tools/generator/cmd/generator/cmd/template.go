@@ -165,6 +165,9 @@ var templateCmd = &cobra.Command{
 			if err = internal.GenerateProviderDocs(tpl, cfg, tCfg.examplesDir, tCfg.docsTemplatesDir); err != nil {
 				return err
 			}
+			if err = internal.GenerateUsageExamples(tCfg.examplesDir); err != nil {
+				return err
+			}
 		}
 
 		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources)

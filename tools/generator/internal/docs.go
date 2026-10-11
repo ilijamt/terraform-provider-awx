@@ -8,6 +8,9 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
+	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/iancoleman/strcase"
 )
 
@@ -159,4 +162,85 @@ func GenerateProviderDocs(tpl *template.Template, config Config, examplesDir, te
 		return err
 	}
 	return renderTemplate(tpl, filepath.Join(templatesDir, "index.md.tmpl"), "index.md.tmpl.tpl", config)
+}
+
+// usageExample is one resource or data source block lifted from the
+// hand-written configurations under the examples directory.
+type usageExample struct {
+	kind     string // "resources" or "data-sources"
+	typeName string
+	source   []byte
+	fromOwn  bool
+}
+
+// GenerateUsageExamples turns the hand-written example configurations in
+// <examplesDir>/<name>/*.tf into the per-type example files tfplugindocs
+// renders as Example Usage. The block from the directory named after the type
+// wins, otherwise the first one in path order. Blocks holding a private key
+// are skipped so test keys do not end up on the docs pages.
+func GenerateUsageExamples(examplesDir string) error {
+	files, err := filepath.Glob(filepath.Join(examplesDir, "*", "*.tf"))
+	if err != nil {
+		return err
+	}
+	chosen := map[string]usageExample{}
+	for _, file := range files {
+		dir := filepath.Base(filepath.Dir(file))
+		if dir == "resources" || dir == "data-sources" || dir == "provider" {
+			continue
+		}
+		examples, err := usageExamplesFrom(file)
+		if err != nil {
+			return err
+		}
+		for _, e := range examples {
+			e.fromOwn = strings.TrimPrefix(e.typeName, "awx_") == dir
+			key := e.kind + "/" + e.typeName
+			if current, ok := chosen[key]; !ok || (e.fromOwn && !current.fromOwn) {
+				chosen[key] = e
+			}
+		}
+	}
+
+	for _, e := range chosen {
+		filename := "resource.tf"
+		if e.kind == "data-sources" {
+			filename = "data-source.tf"
+		}
+		dir := filepath.Join(examplesDir, e.kind, e.typeName)
+		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
+			return err
+		}
+		if err := os.WriteFile(filepath.Join(dir, filename), hclwrite.Format(e.source), 0o644); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func usageExamplesFrom(file string) ([]usageExample, error) {
+	src, err := os.ReadFile(file)
+	if err != nil {
+		return nil, err
+	}
+	f, diags := hclsyntax.ParseConfig(src, file, hcl.InitialPos)
+	if diags.HasErrors() {
+		return nil, diags
+	}
+	var examples []usageExample
+	for _, block := range f.Body.(*hclsyntax.Body).Blocks {
+		if len(block.Labels) != 2 || !strings.HasPrefix(block.Labels[0], "awx_") {
+			continue
+		}
+		kind := map[string]string{"resource": "resources", "data": "data-sources"}[block.Type]
+		if kind == "" {
+			continue
+		}
+		source := src[block.TypeRange.Start.Byte:block.CloseBraceRange.End.Byte]
+		if strings.Contains(string(source), "PRIVATE KEY") {
+			continue
+		}
+		examples = append(examples, usageExample{kind: kind, typeName: block.Labels[0], source: append(append([]byte{}, source...), '\n')})
+	}
+	return examples, nil
 }
