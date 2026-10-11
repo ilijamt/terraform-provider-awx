@@ -4,9 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Bug Fixes
+
+- *(provider)* Attach the missing hostname error to the hostname attribute
+
 ### Dependencies
 
 - *(deps)* Bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#193)
+
+### Documentation
+
+- Added import instructions, subcategories and provider introduction 
+- Added usage examples generated from the example configurations
+- Added short descriptions to every resource and data source
+
+### Miscellaneous
+
+- Updated versions.yaml
 
 ## [24.6.106] - 2026-08-20
 
