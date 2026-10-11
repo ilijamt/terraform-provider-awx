@@ -72,6 +72,7 @@ func NewSettingsAuthGithubOrgResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github_org", Endpoint: "/api/v2/settings/github-org/"}},
 		Cfg: framework.ResourceCfg[settingsAuthGithubOrgTerraformModel, settingsAuthGithubOrgBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_github_org_key": schema.StringAttribute{
 						Description: "The OAuth2 key (Client ID) from your GitHub organization application.",

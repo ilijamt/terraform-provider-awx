@@ -66,6 +66,7 @@ func NewSettingsOpenIDConnectResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_oidc", Endpoint: "/api/v2/settings/oidc/"}},
 		Cfg: framework.ResourceCfg[settingsOpenIdconnectTerraformModel, settingsOpenIdconnectBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_oidc_key": schema.StringAttribute{
 						Description: "The OIDC key (Client ID) from your IDP.",

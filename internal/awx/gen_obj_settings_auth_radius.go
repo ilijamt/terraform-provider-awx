@@ -62,6 +62,7 @@ func NewSettingsAuthRADIUSResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_radius", Endpoint: "/api/v2/settings/radius/"}},
 		Cfg: framework.ResourceCfg[settingsAuthRadiusTerraformModel, settingsAuthRadiusBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"radius_port": schema.Int64Attribute{
 						Description: "Port of RADIUS server.",

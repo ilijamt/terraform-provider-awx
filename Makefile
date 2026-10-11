@@ -45,8 +45,8 @@ generate-configs: resources/api/*
 .PHONY: generate-awx
 generate-awx: generate-config
 	rm -f internal/awx/gen_*.go
-	rm -rf cmd/provider/docs/*
-	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx
+	rm -rf cmd/provider/docs/* cmd/provider/templates examples/resources examples/provider
+	go run ./tools/generator/cmd/generator/main.go template resources/api/$(VERSION) internal/awx --examples-dir examples
 	goimports -w internal/awx/*.go
 	gofmt -s -w internal/awx/*.go
 
@@ -54,8 +54,9 @@ generate-awx: generate-config
 generate-tfplugindocs:
 	rm -rf docs
 	mkdir -p cmd/provider/docs
-	tfplugindocs generate --examples-dir examples --provider-name awx --provider-dir ./cmd/provider
+	tfplugindocs generate --examples-dir ../../examples --provider-name awx --provider-dir ./cmd/provider
 	mv cmd/provider/docs .
+	go run ./tools/generator/cmd/generator/main.go docs-subcategory docs
 
 .PHONY: generate
 generate: generate-awx generate-tfplugindocs

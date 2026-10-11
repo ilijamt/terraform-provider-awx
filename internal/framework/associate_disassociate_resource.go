@@ -123,6 +123,9 @@ func (o *AssociateDisassociateResource) Schema(_ context.Context, _ resource.Sch
 	}
 
 	s := schema.Schema{Attributes: attrs}
+	if o.cfg.hasOption() {
+		s.MarkdownDescription = "This resource cannot be imported because the import ID has no place for its `option` attribute. Declare it instead, and the first apply creates the association."
+	}
 	if o.cfg.Deprecated {
 		s.DeprecationMessage = "This resource has been deprecated and will be removed in a future release."
 	}

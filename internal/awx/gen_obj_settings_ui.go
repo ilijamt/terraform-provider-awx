@@ -69,6 +69,7 @@ func NewSettingsUIResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_ui", Endpoint: "/api/v2/settings/ui/"}},
 		Cfg: framework.ResourceCfg[settingsUiTerraformModel, settingsUiBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"custom_login_info": schema.StringAttribute{
 						Description: "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported.",

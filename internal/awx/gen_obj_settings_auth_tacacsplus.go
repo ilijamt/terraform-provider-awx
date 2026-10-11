@@ -76,6 +76,7 @@ func NewSettingsAuthTACACSPlusResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_tacacsplus", Endpoint: "/api/v2/settings/tacacsplus/"}},
 		Cfg: framework.ResourceCfg[settingsAuthTacacsplusTerraformModel, settingsAuthTacacsplusBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"tacacsplus_auth_protocol": schema.StringAttribute{
 						Description: "Choose the authentication protocol used by TACACS+ client.",

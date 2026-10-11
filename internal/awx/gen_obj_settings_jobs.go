@@ -154,6 +154,7 @@ func NewSettingsJobsResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_jobs", Endpoint: "/api/v2/settings/jobs/"}},
 		Cfg: framework.ResourceCfg[settingsJobsTerraformModel, settingsJobsBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"ad_hoc_commands": schema.ListAttribute{
 						ElementType: types.StringType,

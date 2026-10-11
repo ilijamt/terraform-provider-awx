@@ -80,6 +80,7 @@ func TestAssociateDisassociateResource_Schema(t *testing.T) {
 
 			_, hasOption := resp.Schema.Attributes["option"]
 			assert.Equal(t, tt.wantHasOption, hasOption)
+			assert.Equal(t, tt.wantHasOption, resp.Schema.MarkdownDescription != "", "only the non-importable option flavor explains itself")
 		})
 	}
 }

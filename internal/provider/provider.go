@@ -60,7 +60,7 @@ func (p *Provider) Schema(ctx context.Context, req provider.SchemaRequest, resp 
 				Required:    false,
 			},
 			"verify_ssl": schema.BoolAttribute{
-				Description: "If you are using a self signed certificate this should be set to false (defaults to TOWER_VERIFY_SSL/VERIFY_SSL env variable if set) [default is true]",
+				Description: "If you are using a self signed certificate this should be set to false (defaults to TOWER_VERIFY_SSL/AWX_VERIFY_SSL env variable if set) [default is true]",
 				Optional:    true,
 				Required:    false,
 			},

@@ -80,6 +80,7 @@ func NewSettingsAuthGithubEnterpriseOrgResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github_enterprise_org", Endpoint: "/api/v2/settings/github-enterprise-org/"}},
 		Cfg: framework.ResourceCfg[settingsAuthGithubEnterpriseOrgTerraformModel, settingsAuthGithubEnterpriseOrgBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_github_enterprise_org_api_url": schema.StringAttribute{
 						Description: "The API URL for your GitHub Enterprise instance, e.g.: http(s)://hostname/api/v3/. Refer to Github Enterprise documentation for more details.",

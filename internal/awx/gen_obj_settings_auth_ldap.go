@@ -438,6 +438,7 @@ func NewSettingsAuthLDAPResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_ldap", Endpoint: "/api/v2/settings/ldap/"}},
 		Cfg: framework.ResourceCfg[settingsAuthLdapTerraformModel, settingsAuthLdapBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"auth_ldap_1_bind_dn": schema.StringAttribute{
 						Description: "DN (Distinguished Name) of user to bind for all search queries. This is the system user account we will use to login to query LDAP for other user information. Refer to the documentation for example syntax.",

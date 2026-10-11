@@ -111,6 +111,11 @@ func New{{ .Name }}Resource() resource.Resource {
 {{- if .Deprecated }}
 				DeprecationMessage: "This resource has been deprecated and will be removed in a future release.",
 {{- end }}
+{{- if .NoId }}
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
+{{- else if .NoImport }}
+				MarkdownDescription: "This resource cannot be imported.",
+{{- end }}
 				Attributes: map[string]schema.Attribute{
 {{- range $key, $value := .WriteProperties }}
 					{{ template "attrSchema" (dict "Key" $key "Value" $value) }}

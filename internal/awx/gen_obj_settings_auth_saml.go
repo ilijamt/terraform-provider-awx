@@ -120,6 +120,7 @@ func NewSettingsAuthSAMLResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_saml", Endpoint: "/api/v2/settings/saml/"}},
 		Cfg: framework.ResourceCfg[settingsAuthSamlTerraformModel, settingsAuthSamlBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"saml_auto_create_objects": schema.BoolAttribute{
 						Description: "When enabled (the default), mapped Organizations and Teams will be created automatically on successful SAML login.",

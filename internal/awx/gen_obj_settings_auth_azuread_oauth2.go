@@ -68,6 +68,7 @@ func NewSettingsAuthAzureADOauth2Resource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_azuread_oauth2", Endpoint: "/api/v2/settings/azuread-oauth2/"}},
 		Cfg: framework.ResourceCfg[settingsAuthAzureAdoauth2TerraformModel, settingsAuthAzureAdoauth2BodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_azuread_oauth2_key": schema.StringAttribute{
 						Description: "The OAuth2 key (Client ID) from your Azure AD application.",

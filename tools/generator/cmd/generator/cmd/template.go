@@ -23,6 +23,7 @@ var templateCmd = &cobra.Command{
 		var tpl *template.Template
 		var deprecated internal.Deprecated
 
+		var importExamples []internal.ImportExample
 		var configResource, apiResourcePath, resourcePath string
 		apiResourcePath = args[0]
 		tCfg.generatePath = args[1]
@@ -72,6 +73,7 @@ var templateCmd = &cobra.Command{
 					if err = internal.GenerateCredentialTypeTfDefinition(tpl, cfg, item, resourcePath, payload); err != nil {
 						return err
 					}
+					importExamples = append(importExamples, internal.ImportExamples(item)...)
 					continue
 				}
 
@@ -92,6 +94,7 @@ var templateCmd = &cobra.Command{
 					if err = internal.GenerateNotificationTypeTfDefinition(tpl, cfg, item, resourcePath, payload); err != nil {
 						return err
 					}
+					importExamples = append(importExamples, internal.ImportExamples(item)...)
 					continue
 				}
 
@@ -119,6 +122,9 @@ var templateCmd = &cobra.Command{
 					_, p, dr, err = internal.GenerateApiTfDefinition(tpl, cfg, item, apiResourcePath, resourcePath, item.Name, objmap)
 					if err != nil {
 						return err
+					}
+					if p != nil {
+						importExamples = append(importExamples, internal.ImportExamples(item)...)
 					}
 					deprecated.Resources = append(deprecated.Resources, dr.Resources...)
 					deprecated.DataSources = append(deprecated.DataSources, dr.DataSources...)
@@ -152,14 +158,27 @@ var templateCmd = &cobra.Command{
 			}
 		}
 
+		if tCfg.examplesDir != "" {
+			if err = internal.GenerateImportExamples(tpl, tCfg.examplesDir, importExamples); err != nil {
+				return err
+			}
+			if err = internal.GenerateProviderDocs(tpl, cfg, tCfg.examplesDir, tCfg.docsTemplatesDir); err != nil {
+				return err
+			}
+		}
+
 		return internal.GenerateApiSourcesForProvider(tpl, cfg, resourcePath, cfg.GeneratedApiResources, cfg.GeneratedDataSourceResources)
 	},
 }
 
 var tCfg struct {
-	generatePath string
+	generatePath     string
+	examplesDir      string
+	docsTemplatesDir string
 }
 
 func init() {
 	rootCmd.AddCommand(templateCmd)
+	templateCmd.Flags().StringVar(&tCfg.examplesDir, "examples-dir", "", "Write the examples tfplugindocs renders into the docs under this directory")
+	templateCmd.Flags().StringVar(&tCfg.docsTemplatesDir, "docs-templates-dir", "cmd/provider/templates", "Write the tfplugindocs templates into this directory, used with --examples-dir")
 }

@@ -151,6 +151,7 @@ func NewSettingsMiscSystemResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_misc_system", Endpoint: "/api/v2/settings/system/"}},
 		Cfg: framework.ResourceCfg[settingsMiscSystemTerraformModel, settingsMiscSystemBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"activity_stream_enabled": schema.BoolAttribute{
 						Description: "Enable capturing activity for the activity stream.",

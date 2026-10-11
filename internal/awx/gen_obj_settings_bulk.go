@@ -59,6 +59,7 @@ func NewSettingsBulkResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_bulk", Endpoint: "/api/v2/settings/bulk/"}},
 		Cfg: framework.ResourceCfg[settingsBulkTerraformModel, settingsBulkBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"bulk_host_max_create": schema.Int64Attribute{
 						Description: "Max number of hosts to allow to be created in a single bulk action",

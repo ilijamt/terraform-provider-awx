@@ -121,6 +121,7 @@ func NewSettingsMiscAuthenticationResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_misc_authentication", Endpoint: "/api/v2/settings/authentication/"}},
 		Cfg: framework.ResourceCfg[settingsMiscAuthenticationTerraformModel, settingsMiscAuthenticationBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"allow_metrics_for_anonymous_users": schema.BoolAttribute{
 						Description: "If true, anonymous users are allowed to poll metrics.",

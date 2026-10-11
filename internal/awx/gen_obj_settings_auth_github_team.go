@@ -72,6 +72,7 @@ func NewSettingsAuthGithubTeamResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github_team", Endpoint: "/api/v2/settings/github-team/"}},
 		Cfg: framework.ResourceCfg[settingsAuthGithubTeamTerraformModel, settingsAuthGithubTeamBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_github_team_id": schema.StringAttribute{
 						Description: "Find the numeric team ID using the Github API: http://fabian-kostadinov.github.io/2015/01/16/how-to-find-a-github-team-id/.",

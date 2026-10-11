@@ -77,6 +77,7 @@ func NewSettingsAuthGoogleOauth2Resource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_google_oauth2", Endpoint: "/api/v2/settings/google-oauth2/"}},
 		Cfg: framework.ResourceCfg[settingsAuthGoogleOauth2TerraformModel, settingsAuthGoogleOauth2BodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"social_auth_google_oauth2_auth_extra_arguments": schema.StringAttribute{
 						Description: "Extra arguments for Google OAuth2 login. You can restrict it to only allow a single domain to authenticate, even if the user is logged in with multple Google accounts. Refer to the documentation for more detail.",

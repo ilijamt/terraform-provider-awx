@@ -59,6 +59,7 @@ func NewSettingsDebugResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_debug", Endpoint: "/api/v2/settings/debug/"}},
 		Cfg: framework.ResourceCfg[settingsDebugTerraformModel, settingsDebugBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 				Attributes: map[string]schema.Attribute{
 					"awx_cleanup_paths": schema.BoolAttribute{
 						Description: "Enable or Disable TMP Dir cleanup",
