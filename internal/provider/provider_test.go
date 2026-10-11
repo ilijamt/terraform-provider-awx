@@ -107,6 +107,8 @@ func TestProviderConfiguration(t *testing.T) {
 		require.NoError(t, err)
 		require.NotNil(t, response)
 		require.Len(t, response.Diagnostics, 2)
+		require.Equal(t, "Unknown AWX API Host", response.Diagnostics[0].Summary)
+		require.Equal(t, tftypes.NewAttributePath().WithAttributeName("hostname"), response.Diagnostics[0].Attribute)
 	})
 
 	t.Run("configuration", func(t *testing.T) {

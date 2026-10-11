@@ -166,9 +166,9 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		(config.Password.ValueString() == "" || config.Password.IsUnknown())
 
 	if missingHostname {
-		resp.Diagnostics.AddAttributeError(path.Root("host"), "Unknown AWX API Host", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API host. "+
-			"Set the host value in the configuration or use the TOWER_HOST or AWX_HOST environment variable."+
-			"If either is already set, ensure the value is not empty.")
+		resp.Diagnostics.AddAttributeError(path.Root("hostname"), "Unknown AWX API Host", "The provider needs the AWX hostname to create its API client, but the value is missing or unknown. "+
+			"Set hostname in the provider configuration, or set the TOWER_HOST or AWX_HOST environment variable. "+
+			"If one of them is already set, check that it is not empty.")
 	}
 
 	switch {
@@ -196,15 +196,15 @@ func (p *Provider) Configure(ctx context.Context, req provider.ConfigureRequest,
 		)
 	case !noBasicAuth && noTokenAuth:
 		if config.Username.ValueString() == "" || config.Username.IsUnknown() {
-			resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API username. "+
-				"Set the username value in the configuration or use the TOWER_USERNAME or AWX_USERNAME environment variable."+
-				"If either is already set, ensure the value is not empty.")
+			resp.Diagnostics.AddAttributeError(path.Root("username"), "Unknown AWX API Username", "The provider needs the AWX username to create its API client, but the value is missing or unknown. "+
+				"Set username in the provider configuration, or set the TOWER_USERNAME or AWX_USERNAME environment variable. "+
+				"If one of them is already set, check that it is not empty.")
 		}
 
 		if config.Password.ValueString() == "" || config.Password.IsUnknown() {
-			resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider cannot create the AWX API client as there is an unknown configuration value for the AWX API password. "+
-				"Set the password value in the configuration or use the TOWER_PASSWORD or AWX_PASSWORD environment variable."+
-				"If either is already set, ensure the value is not empty.")
+			resp.Diagnostics.AddAttributeError(path.Root("password"), "Unknown AWX API Password", "The provider needs the AWX password to create its API client, but the value is missing or unknown. "+
+				"Set password in the provider configuration, or set the TOWER_PASSWORD or AWX_PASSWORD environment variable. "+
+				"If one of them is already set, check that it is not empty.")
 		}
 	}
 
