@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_node_approval Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX workflow job template node approval from /api/v2/workflow_approval_templates/.
 ---
 
 # awx_workflow_job_template_node_approval (Data Source)
 
-
+Reads an AWX workflow job template node approval from `/api/v2/workflow_approval_templates/`.
 
 
 

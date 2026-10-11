@@ -343,6 +343,7 @@ func NewSettingsJobsDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_jobs", Endpoint: "/api/v2/settings/jobs/"}},
 		Cfg: framework.DataSourceCfg[settingsJobsTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/jobs/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"ad_hoc_commands": dschema.ListAttribute{
 						ElementType: types.StringType,

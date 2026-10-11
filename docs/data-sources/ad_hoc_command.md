@@ -3,12 +3,12 @@
 page_title: "awx_ad_hoc_command Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX ad hoc command from /api/v2/ad_hoc_commands/.
 ---
 
 # awx_ad_hoc_command (Data Source)
 
-
+Reads an AWX ad hoc command from `/api/v2/ad_hoc_commands/`.
 
 
 

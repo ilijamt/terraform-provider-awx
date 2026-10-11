@@ -3,12 +3,12 @@
 page_title: "awx_user Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX user from /api/v2/users/.
 ---
 
 # awx_user (Data Source)
 
-
+Reads an AWX user from `/api/v2/users/`.
 
 ## Example Usage
 

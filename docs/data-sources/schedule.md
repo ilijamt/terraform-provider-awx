@@ -3,12 +3,12 @@
 page_title: "awx_schedule Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX schedule from /api/v2/schedules/.
 ---
 
 # awx_schedule (Data Source)
 
-
+Reads an AWX schedule from `/api/v2/schedules/`.
 
 
 

@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_node_associate_success_node Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Associates an AWX success node with an AWX workflow job template node.
 ---
 
 # awx_workflow_job_template_node_associate_success_node (Resource)
 
-
+Associates an AWX success node with an AWX workflow job template node.
 
 ## Example Usage
 

@@ -97,6 +97,7 @@ func NewSettingsBulkDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_bulk", Endpoint: "/api/v2/settings/bulk/"}},
 		Cfg: framework.DataSourceCfg[settingsBulkTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/bulk/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"bulk_host_max_create": dschema.Int64Attribute{
 						Description: "Max number of hosts to allow to be created in a single bulk action",

@@ -3,12 +3,12 @@
 page_title: "awx_constructed_inventories Data Source - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Reads an AWX constructed inventories from /api/v2/constructed_inventories/.
 ---
 
 # awx_constructed_inventories (Data Source)
 
-
+Reads an AWX constructed inventories from `/api/v2/constructed_inventories/`.
 
 
 

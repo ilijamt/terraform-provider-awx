@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_node_approval Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX workflow job template node approval through /api/v2/workflow_approval_templates/.
 ---
 
 # awx_workflow_job_template_node_approval (Resource)
 
-
+Manages an AWX workflow job template node approval through `/api/v2/workflow_approval_templates/`.
 
 ## Example Usage
 

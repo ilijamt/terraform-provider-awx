@@ -3,12 +3,12 @@
 page_title: "awx_role_team_assignment Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX role team assignment through /api/v2/role_team_assignments/.
 ---
 
 # awx_role_team_assignment (Resource)
 
-
+Manages an AWX role team assignment through `/api/v2/role_team_assignments/`.
 
 ## Example Usage
 

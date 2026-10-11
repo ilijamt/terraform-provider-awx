@@ -3,12 +3,12 @@
 page_title: "awx_user Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX user through /api/v2/users/.
 ---
 
 # awx_user (Resource)
 
-
+Manages an AWX user through `/api/v2/users/`.
 
 ## Example Usage
 

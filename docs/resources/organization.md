@@ -3,12 +3,12 @@
 page_title: "awx_organization Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX organization through /api/v2/organizations/.
 ---
 
 # awx_organization (Resource)
 
-
+Manages an AWX organization through `/api/v2/organizations/`.
 
 ## Example Usage
 

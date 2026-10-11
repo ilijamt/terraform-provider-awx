@@ -136,6 +136,7 @@ func NewAdHocCommandResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "ad_hoc_command", Endpoint: "/api/v2/ad_hoc_commands/"}},
 		Cfg: framework.ResourceCfg[adHocCommandTerraformModel, adHocCommandBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX ad hoc command through `/api/v2/ad_hoc_commands/`.",
 				Attributes: map[string]schema.Attribute{
 					"become_enabled": schema.BoolAttribute{
 						Description: "Become enabled",
@@ -395,6 +396,7 @@ func NewAdHocCommandDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "ad_hoc_command", Endpoint: "/api/v2/ad_hoc_commands/"}},
 		Cfg: framework.DataSourceCfg[adHocCommandTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX ad hoc command from `/api/v2/ad_hoc_commands/`.",
 				Attributes: map[string]dschema.Attribute{
 					"become_enabled": dschema.BoolAttribute{
 						Description: "Become enabled",

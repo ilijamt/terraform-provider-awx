@@ -3,12 +3,12 @@
 page_title: "awx_instance Resource - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Manages an AWX instance through /api/v2/instances/.
 ---
 
 # awx_instance (Resource)
 
-
+Manages an AWX instance through `/api/v2/instances/`.
 
 ## Example Usage
 

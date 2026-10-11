@@ -3,12 +3,12 @@
 page_title: "awx_organization Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX organization from /api/v2/organizations/.
 ---
 
 # awx_organization (Data Source)
 
-
+Reads an AWX organization from `/api/v2/organizations/`.
 
 
 

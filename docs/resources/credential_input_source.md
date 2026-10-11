@@ -3,12 +3,12 @@
 page_title: "awx_credential_input_source Resource - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Manages an AWX credential input source through /api/v2/credential_input_sources/.
 ---
 
 # awx_credential_input_source (Resource)
 
-
+Manages an AWX credential input source through `/api/v2/credential_input_sources/`.
 
 ## Example Usage
 

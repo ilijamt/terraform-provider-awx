@@ -3,12 +3,12 @@
 page_title: "awx_label Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX label through /api/v2/labels/.
 ---
 
 # awx_label (Resource)
 
-
+Manages an AWX label through `/api/v2/labels/`.
 
 ## Example Usage
 

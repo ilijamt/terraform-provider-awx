@@ -3,12 +3,12 @@
 page_title: "awx_organization_associate_galaxy_credential Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Associates an AWX galaxy credential with an AWX organization.
 ---
 
 # awx_organization_associate_galaxy_credential (Resource)
 
-
+Associates an AWX galaxy credential with an AWX organization.
 
 ## Example Usage
 

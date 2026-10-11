@@ -91,6 +91,7 @@ func NewUserResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "user", Endpoint: "/api/v2/users/"}},
 		Cfg: framework.ResourceCfg[userTerraformModel, userBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX user through `/api/v2/users/`.",
 				Attributes: map[string]schema.Attribute{
 					"email": schema.StringAttribute{
 						Description: "Email address",
@@ -195,6 +196,7 @@ func NewUserDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "user", Endpoint: "/api/v2/users/"}},
 		Cfg: framework.DataSourceCfg[userTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX user from `/api/v2/users/`.",
 				Attributes: map[string]dschema.Attribute{
 					"email": dschema.StringAttribute{
 						Description: "Email address",

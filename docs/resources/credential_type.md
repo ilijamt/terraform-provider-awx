@@ -3,12 +3,12 @@
 page_title: "awx_credential_type Resource - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Manages an AWX credential type through /api/v2/credential_types/.
 ---
 
 # awx_credential_type (Resource)
 
-
+Manages an AWX credential type through `/api/v2/credential_types/`.
 
 
 

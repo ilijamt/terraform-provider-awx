@@ -82,6 +82,7 @@ func NewCredentialTypeResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential_type", Endpoint: "/api/v2/credential_types/"}},
 		Cfg: framework.ResourceCfg[credentialTypeTerraformModel, credentialTypeBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX credential type through `/api/v2/credential_types/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential type.",
@@ -157,6 +158,7 @@ func NewCredentialTypeDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential_type", Endpoint: "/api/v2/credential_types/"}},
 		Cfg: framework.DataSourceCfg[credentialTypeTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX credential type from `/api/v2/credential_types/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this credential type.",

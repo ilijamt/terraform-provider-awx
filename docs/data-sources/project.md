@@ -3,12 +3,12 @@
 page_title: "awx_project Data Source - awx"
 subcategory: "Projects"
 description: |-
-  
+  Reads an AWX project from /api/v2/projects/.
 ---
 
 # awx_project (Data Source)
 
-
+Reads an AWX project from `/api/v2/projects/`.
 
 
 

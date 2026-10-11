@@ -132,6 +132,7 @@ func NewSettingsAuthGithubTeamDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github_team", Endpoint: "/api/v2/settings/github-team/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthGithubTeamTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/github-team/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_github_team_callback_url": dschema.StringAttribute{
 						Description: "Create an organization-owned application at https://github.com/organizations/<yourorg>/settings/applications and obtain an OAuth2 key (Client ID) and secret (Client Secret). Provide this URL as the callback URL for your application.",

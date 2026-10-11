@@ -3,12 +3,12 @@
 page_title: "awx_settings_auth_radius Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/radius/ endpoint.
 ---
 
 # awx_settings_auth_radius (Data Source)
 
-
+Reads the AWX `/api/v2/settings/radius/` endpoint.
 
 
 

@@ -3,12 +3,12 @@
 page_title: "awx_settings_auth_google_oauth2 Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/google-oauth2/ endpoint.
 ---
 
 # awx_settings_auth_google_oauth2 (Data Source)
 
-
+Reads the AWX `/api/v2/settings/google-oauth2/` endpoint.
 
 
 

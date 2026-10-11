@@ -122,6 +122,7 @@ func NewSettingsAuthAzureADOauth2DataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_azuread_oauth2", Endpoint: "/api/v2/settings/azuread-oauth2/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthAzureAdoauth2TerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/azuread-oauth2/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_azuread_oauth2_callback_url": dschema.StringAttribute{
 						Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail. ",

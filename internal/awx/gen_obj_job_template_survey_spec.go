@@ -65,6 +65,7 @@ func (o *jobTemplateSurvey) endpointFor(parentID int64) string {
 
 func (o *jobTemplateSurvey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		MarkdownDescription: "Manages the survey spec of an AWX job template.",
 		Attributes: map[string]schema.Attribute{
 			"job_template_id": schema.Int64Attribute{
 				Description: "Database ID for this JobTemplate.",

@@ -3,12 +3,12 @@
 page_title: "awx_credential Resource - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Manages an AWX credential through /api/v2/credentials/.
 ---
 
 # awx_credential (Resource)
 
-
+Manages an AWX credential through `/api/v2/credentials/`.
 
 ## Example Usage
 

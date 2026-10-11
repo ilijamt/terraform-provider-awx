@@ -66,6 +66,7 @@ func NewConfigDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "config", Endpoint: "/api/v2/config/"}},
 		Cfg: framework.DataSourceCfg[configTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/config/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"analytics_collectors": dschema.StringAttribute{
 						Description: "The analytics collectors registered on this installation, keyed by collector name.",

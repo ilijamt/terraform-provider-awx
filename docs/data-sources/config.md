@@ -3,12 +3,12 @@
 page_title: "awx_config Data Source - awx"
 subcategory: "System"
 description: |-
-  
+  Reads the AWX /api/v2/config/ endpoint.
 ---
 
 # awx_config (Data Source)
 
-
+Reads the AWX `/api/v2/config/` endpoint.
 
 
 

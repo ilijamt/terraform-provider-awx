@@ -143,6 +143,7 @@ func NewSettingsAuthTACACSPlusDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_tacacsplus", Endpoint: "/api/v2/settings/tacacsplus/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthTacacsplusTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/tacacsplus/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"tacacsplus_auth_protocol": dschema.StringAttribute{
 						Description: "Choose the authentication protocol used by TACACS+ client.",

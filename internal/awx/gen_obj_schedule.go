@@ -141,6 +141,7 @@ func NewScheduleResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "schedule", Endpoint: "/api/v2/schedules/"}},
 		Cfg: framework.ResourceCfg[scheduleTerraformModel, scheduleBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX schedule through `/api/v2/schedules/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this schedule.",
@@ -333,6 +334,7 @@ func NewScheduleDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "schedule", Endpoint: "/api/v2/schedules/"}},
 		Cfg: framework.DataSourceCfg[scheduleTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX schedule from `/api/v2/schedules/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this schedule.",

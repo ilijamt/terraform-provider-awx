@@ -58,6 +58,8 @@ func NewObjectRolesDataSource(typeName, endpoint, displayName string, deprecated
 // Schema defines the schema for the data source.
 func (o *ObjectRolesDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	s := schema.Schema{
+		MarkdownDescription: fmt.Sprintf("Lists the role IDs of an AWX %s, keyed by role name.",
+			strings.ReplaceAll(strings.TrimSuffix(o.TypeName, "_object_roles"), "_", " ")),
 		Attributes: map[string]schema.Attribute{
 			"id": schema.Int64Attribute{
 				Description: fmt.Sprintf("%s ID", o.DisplayName),

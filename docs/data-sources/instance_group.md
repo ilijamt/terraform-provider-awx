@@ -3,12 +3,12 @@
 page_title: "awx_instance_group Data Source - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Reads an AWX instance group from /api/v2/instance_groups/.
 ---
 
 # awx_instance_group (Data Source)
 
-
+Reads an AWX instance group from `/api/v2/instance_groups/`.
 
 ## Example Usage
 

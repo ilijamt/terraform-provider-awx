@@ -3,12 +3,12 @@
 page_title: "awx_settings_auth_ldap Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/ldap/ endpoint.
 ---
 
 # awx_settings_auth_ldap (Data Source)
 
-
+Reads the AWX `/api/v2/settings/ldap/` endpoint.
 
 
 

@@ -3,12 +3,12 @@
 page_title: "awx_team Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX team through /api/v2/teams/.
 ---
 
 # awx_team (Resource)
 
-
+Manages an AWX team through `/api/v2/teams/`.
 
 ## Example Usage
 

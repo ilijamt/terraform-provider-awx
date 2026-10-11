@@ -3,12 +3,12 @@
 page_title: "awx_application Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX application from /api/v2/applications/.
 ---
 
 # awx_application (Data Source)
 
-
+Reads an AWX application from `/api/v2/applications/`.
 
 ## Example Usage
 

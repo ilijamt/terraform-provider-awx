@@ -3,12 +3,12 @@
 page_title: "awx_settings_debug Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/debug/ endpoint.
 ---
 
 # awx_settings_debug (Data Source)
 
-
+Reads the AWX `/api/v2/settings/debug/` endpoint.
 
 
 

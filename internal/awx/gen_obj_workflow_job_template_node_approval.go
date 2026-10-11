@@ -76,6 +76,7 @@ func NewWorkflowJobTemplateNodeApprovalResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "workflow_job_template_node_approval", Endpoint: "/api/v2/workflow_approval_templates/"}},
 		Cfg: framework.ResourceCfg[workflowJobTemplateNodeApprovalTerraformModel, workflowJobTemplateNodeApprovalBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX workflow job template node approval through `/api/v2/workflow_approval_templates/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this workflow approval template.",
@@ -170,6 +171,7 @@ func NewWorkflowJobTemplateNodeApprovalDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "workflow_job_template_node_approval", Endpoint: "/api/v2/workflow_approval_templates/"}},
 		Cfg: framework.DataSourceCfg[workflowJobTemplateNodeApprovalTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX workflow job template node approval from `/api/v2/workflow_approval_templates/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this workflow approval template.",

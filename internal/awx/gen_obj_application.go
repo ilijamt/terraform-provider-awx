@@ -89,6 +89,7 @@ func NewApplicationResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "application", Endpoint: "/api/v2/applications/"}},
 		Cfg: framework.ResourceCfg[applicationTerraformModel, applicationBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX application through `/api/v2/applications/`.",
 				Attributes: map[string]schema.Attribute{
 					"authorization_grant_type": schema.StringAttribute{
 						Description: "The Grant type the user must use for acquire tokens for this application.",
@@ -182,6 +183,7 @@ func NewApplicationDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "application", Endpoint: "/api/v2/applications/"}},
 		Cfg: framework.DataSourceCfg[applicationTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX application from `/api/v2/applications/`.",
 				Attributes: map[string]dschema.Attribute{
 					"authorization_grant_type": dschema.StringAttribute{
 						Description: "The Grant type the user must use for acquire tokens for this application.",

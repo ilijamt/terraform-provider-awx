@@ -1209,6 +1209,7 @@ func NewSettingsAuthLDAPDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_ldap", Endpoint: "/api/v2/settings/ldap/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthLdapTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/ldap/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"auth_ldap_1_bind_dn": dschema.StringAttribute{
 						Description: "DN (Distinguished Name) of user to bind for all search queries. This is the system user account we will use to login to query LDAP for other user information. Refer to the documentation for example syntax.",

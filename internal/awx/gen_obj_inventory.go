@@ -102,6 +102,7 @@ func NewInventoryResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "inventory", Endpoint: "/api/v2/inventories/"}},
 		Cfg: framework.ResourceCfg[inventoryTerraformModel, inventoryBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX inventory through `/api/v2/inventories/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this inventory.",
@@ -215,6 +216,7 @@ func NewInventoryDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "inventory", Endpoint: "/api/v2/inventories/"}},
 		Cfg: framework.DataSourceCfg[inventoryTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX inventory from `/api/v2/inventories/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this inventory.",

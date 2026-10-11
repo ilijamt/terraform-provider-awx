@@ -146,6 +146,7 @@ func NewSettingsAuthGoogleOauth2DataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_google_oauth2", Endpoint: "/api/v2/settings/google-oauth2/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthGoogleOauth2TerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/google-oauth2/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_google_oauth2_auth_extra_arguments": dschema.StringAttribute{
 						Description: "Extra arguments for Google OAuth2 login. You can restrict it to only allow a single domain to authenticate, even if the user is logged in with multple Google accounts. Refer to the documentation for more detail.",

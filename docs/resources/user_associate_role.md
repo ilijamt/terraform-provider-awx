@@ -3,12 +3,12 @@
 page_title: "awx_user_associate_role Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Associates an AWX role with an AWX user.
 ---
 
 # awx_user_associate_role (Resource)
 
-
+Associates an AWX role with an AWX user.
 
 ## Example Usage
 

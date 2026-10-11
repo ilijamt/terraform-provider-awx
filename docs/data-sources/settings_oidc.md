@@ -3,12 +3,12 @@
 page_title: "awx_settings_oidc Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/oidc/ endpoint.
 ---
 
 # awx_settings_oidc (Data Source)
 
-
+Reads the AWX `/api/v2/settings/oidc/` endpoint.
 
 
 

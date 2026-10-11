@@ -3,12 +3,12 @@
 page_title: "awx_instance_group Resource - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Manages an AWX instance group through /api/v2/instance_groups/.
 ---
 
 # awx_instance_group (Resource)
 
-
+Manages an AWX instance group through `/api/v2/instance_groups/`.
 
 ## Example Usage
 

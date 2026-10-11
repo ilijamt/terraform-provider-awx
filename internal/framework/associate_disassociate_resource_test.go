@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -80,7 +81,7 @@ func TestAssociateDisassociateResource_Schema(t *testing.T) {
 
 			_, hasOption := resp.Schema.Attributes["option"]
 			assert.Equal(t, tt.wantHasOption, hasOption)
-			assert.Equal(t, tt.wantHasOption, resp.Schema.MarkdownDescription != "", "only the non-importable option flavor explains itself")
+			assert.Equal(t, tt.wantHasOption, strings.Contains(resp.Schema.MarkdownDescription, "cannot be imported"), "only the non-importable option flavor explains itself")
 		})
 	}
 }

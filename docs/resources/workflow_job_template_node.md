@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_node Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX workflow job template node through /api/v2/workflow_job_template_nodes/.
 ---
 
 # awx_workflow_job_template_node (Resource)
 
-
+Manages an AWX workflow job template node through `/api/v2/workflow_job_template_nodes/`.
 
 ## Example Usage
 

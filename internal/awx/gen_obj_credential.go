@@ -89,6 +89,7 @@ func NewCredentialResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential", Endpoint: "/api/v2/credentials/"}},
 		Cfg: framework.ResourceCfg[credentialTerraformModel, credentialBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX credential through `/api/v2/credentials/`.",
 				Attributes: map[string]schema.Attribute{
 					"credential_type": schema.Int64Attribute{
 						Description: "Specify the type of credential you want to create. Refer to the documentation for details on each type.",
@@ -202,6 +203,7 @@ func NewCredentialDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential", Endpoint: "/api/v2/credentials/"}},
 		Cfg: framework.DataSourceCfg[credentialTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX credential from `/api/v2/credentials/`.",
 				Attributes: map[string]dschema.Attribute{
 					"cloud": dschema.BoolAttribute{
 						Description: "Cloud",

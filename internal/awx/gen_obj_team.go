@@ -67,6 +67,7 @@ func NewTeamResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "team", Endpoint: "/api/v2/teams/"}},
 		Cfg: framework.ResourceCfg[teamTerraformModel, teamBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX team through `/api/v2/teams/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this team.",
@@ -110,6 +111,7 @@ func NewTeamDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "team", Endpoint: "/api/v2/teams/"}},
 		Cfg: framework.DataSourceCfg[teamTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX team from `/api/v2/teams/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this team.",

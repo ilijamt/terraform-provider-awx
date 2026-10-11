@@ -255,6 +255,7 @@ func NewSettingsAuthSAMLDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_saml", Endpoint: "/api/v2/settings/saml/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthSamlTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/saml/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"saml_auto_create_objects": dschema.BoolAttribute{
 						Description: "When enabled (the default), mapped Organizations and Teams will be created automatically on successful SAML login.",

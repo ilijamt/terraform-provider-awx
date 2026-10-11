@@ -3,12 +3,12 @@
 page_title: "awx_job_template_associate_credential Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Associates an AWX credential with an AWX job template.
 ---
 
 # awx_job_template_associate_credential (Resource)
 
-
+Associates an AWX credential with an AWX job template.
 
 ## Example Usage
 

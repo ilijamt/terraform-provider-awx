@@ -3,12 +3,12 @@
 page_title: "awx_project Resource - awx"
 subcategory: "Projects"
 description: |-
-  
+  Manages an AWX project through /api/v2/projects/.
 ---
 
 # awx_project (Resource)
 
-
+Manages an AWX project through `/api/v2/projects/`.
 
 ## Example Usage
 

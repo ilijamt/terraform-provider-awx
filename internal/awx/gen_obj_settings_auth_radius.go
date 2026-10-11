@@ -105,6 +105,7 @@ func NewSettingsAuthRADIUSDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_radius", Endpoint: "/api/v2/settings/radius/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthRadiusTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/radius/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"radius_port": dschema.Int64Attribute{
 						Description: "Port of RADIUS server.",

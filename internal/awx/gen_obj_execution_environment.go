@@ -82,6 +82,7 @@ func NewExecutionEnvironmentResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "execution_environment", Endpoint: "/api/v2/execution_environments/"}},
 		Cfg: framework.ResourceCfg[executionEnvironmentTerraformModel, executionEnvironmentBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX execution environment through `/api/v2/execution_environments/`.",
 				Attributes: map[string]schema.Attribute{
 					"credential": schema.Int64Attribute{
 						Description: "Credential",
@@ -165,6 +166,7 @@ func NewExecutionEnvironmentDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "execution_environment", Endpoint: "/api/v2/execution_environments/"}},
 		Cfg: framework.DataSourceCfg[executionEnvironmentTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX execution environment from `/api/v2/execution_environments/`.",
 				Attributes: map[string]dschema.Attribute{
 					"credential": dschema.Int64Attribute{
 						Description: "Credential",

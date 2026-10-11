@@ -3,12 +3,12 @@
 page_title: "awx_notification_template Resource - awx"
 subcategory: "Notifications"
 description: |-
-  
+  Manages an AWX notification template through /api/v2/notification_templates/.
 ---
 
 # awx_notification_template (Resource)
 
-
+Manages an AWX notification template through `/api/v2/notification_templates/`.
 
 ## Example Usage
 

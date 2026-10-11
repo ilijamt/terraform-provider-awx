@@ -3,12 +3,12 @@
 page_title: "awx_job_template_survey_spec Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages the survey spec of an AWX job template.
 ---
 
 # awx_job_template_survey_spec (Resource)
 
-
+Manages the survey spec of an AWX job template.
 
 ## Example Usage
 

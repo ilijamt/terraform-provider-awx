@@ -3,12 +3,12 @@
 page_title: "awx_job_template_associate_instance_group Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Associates an AWX instance group with an AWX job template.
 ---
 
 # awx_job_template_associate_instance_group (Resource)
 
-
+Associates an AWX instance group with an AWX job template.
 
 ## Example Usage
 

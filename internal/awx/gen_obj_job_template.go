@@ -235,6 +235,7 @@ func NewJobTemplateResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "job_template", Endpoint: "/api/v2/job_templates/"}},
 		Cfg: framework.ResourceCfg[jobTemplateTerraformModel, jobTemplateBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX job template through `/api/v2/job_templates/`.",
 				Attributes: map[string]schema.Attribute{
 					"allow_simultaneous": schema.BoolAttribute{
 						Description: "Allow simultaneous",
@@ -585,6 +586,7 @@ func NewJobTemplateDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "job_template", Endpoint: "/api/v2/job_templates/"}},
 		Cfg: framework.DataSourceCfg[jobTemplateTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX job template from `/api/v2/job_templates/`.",
 				Attributes: map[string]dschema.Attribute{
 					"allow_simultaneous": dschema.BoolAttribute{
 						Description: "Allow simultaneous",

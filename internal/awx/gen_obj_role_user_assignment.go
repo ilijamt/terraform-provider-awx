@@ -79,6 +79,7 @@ func NewRoleUserAssignmentResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_user_assignment", Endpoint: "/api/v2/role_user_assignments/"}},
 		Cfg: framework.ResourceCfg[roleUserAssignmentTerraformModel, roleUserAssignmentBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX role user assignment through `/api/v2/role_user_assignments/`.",
 				Attributes: map[string]schema.Attribute{
 					"object_ansible_id": schema.StringAttribute{
 						Description: "Resource id of the object this role applies to. Alternative to the object_id field.",
@@ -176,6 +177,7 @@ func NewRoleUserAssignmentDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_user_assignment", Endpoint: "/api/v2/role_user_assignments/"}},
 		Cfg: framework.DataSourceCfg[roleUserAssignmentTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX role user assignment from `/api/v2/role_user_assignments/`.",
 				Attributes: map[string]dschema.Attribute{
 					"content_type": dschema.StringAttribute{
 						Description: "The type of resource this applies to",

@@ -3,12 +3,12 @@
 page_title: "awx_schedule Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX schedule through /api/v2/schedules/.
 ---
 
 # awx_schedule (Resource)
 
-
+Manages an AWX schedule through `/api/v2/schedules/`.
 
 ## Example Usage
 

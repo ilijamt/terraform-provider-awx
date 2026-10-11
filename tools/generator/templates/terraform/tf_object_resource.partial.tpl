@@ -115,6 +115,8 @@ func New{{ .Name }}Resource() resource.Resource {
 				MarkdownDescription: "This resource has no ID, so it cannot be imported. It manages a singleton that always exists in AWX. Declare it, and the first apply replaces the current values with yours.",
 {{- else if .NoImport }}
 				MarkdownDescription: "This resource cannot be imported.",
+{{- else }}
+				MarkdownDescription: "Manages an AWX {{ words .TypeName }} through `{{ $.Endpoint }}`.",
 {{- end }}
 				Attributes: map[string]schema.Attribute{
 {{- range $key, $value := .WriteProperties }}

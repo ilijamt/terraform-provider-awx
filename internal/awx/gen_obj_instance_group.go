@@ -106,6 +106,7 @@ func NewInstanceGroupResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "instance_group", Endpoint: "/api/v2/instance_groups/"}},
 		Cfg: framework.ResourceCfg[instanceGroupTerraformModel, instanceGroupBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX instance group through `/api/v2/instance_groups/`.",
 				Attributes: map[string]schema.Attribute{
 					"credential": schema.Int64Attribute{
 						Description: "Credential",
@@ -222,6 +223,7 @@ func NewInstanceGroupDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "instance_group", Endpoint: "/api/v2/instance_groups/"}},
 		Cfg: framework.DataSourceCfg[instanceGroupTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX instance group from `/api/v2/instance_groups/`.",
 				Attributes: map[string]dschema.Attribute{
 					"capacity": dschema.Int64Attribute{
 						Description: "Capacity",

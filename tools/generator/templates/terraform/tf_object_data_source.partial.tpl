@@ -14,6 +14,11 @@ func New{{ .Name }}DataSource() datasource.DataSource {
         DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "{{ .TypeName }}", Endpoint: "{{ .Endpoint }}"}},
         Cfg: framework.DataSourceCfg[{{ .Name | lowerCamelCase }}TerraformModel]{
             Schema: dschema.Schema{
+{{- if .NoId }}
+                MarkdownDescription: "Reads the AWX `{{ .Endpoint }}` endpoint.",
+{{- else }}
+                MarkdownDescription: "Reads an AWX {{ words .TypeName }} from `{{ .Endpoint }}`.",
+{{- end }}
 {{- if .Deprecated }}
                 DeprecationMessage: "This data source has been deprecated and will be removed in a future release.",
 {{- end }}

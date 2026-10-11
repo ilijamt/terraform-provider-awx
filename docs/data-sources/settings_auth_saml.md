@@ -3,12 +3,12 @@
 page_title: "awx_settings_auth_saml Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/saml/ endpoint.
 ---
 
 # awx_settings_auth_saml (Data Source)
 
-
+Reads the AWX `/api/v2/settings/saml/` endpoint.
 
 
 

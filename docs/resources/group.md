@@ -3,12 +3,12 @@
 page_title: "awx_group Resource - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Manages an AWX group through /api/v2/groups/.
 ---
 
 # awx_group (Resource)
 
-
+Manages an AWX group through `/api/v2/groups/`.
 
 ## Example Usage
 

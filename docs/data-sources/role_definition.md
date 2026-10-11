@@ -3,12 +3,12 @@
 page_title: "awx_role_definition Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX role definition from /api/v2/role_definitions/.
 ---
 
 # awx_role_definition (Data Source)
 
-
+Reads an AWX role definition from `/api/v2/role_definitions/`.
 
 ## Example Usage
 

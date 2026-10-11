@@ -3,12 +3,12 @@
 page_title: "awx_ping Data Source - awx"
 subcategory: "System"
 description: |-
-  
+  Reads the AWX /api/v2/ping/ endpoint.
 ---
 
 # awx_ping (Data Source)
 
-
+Reads the AWX `/api/v2/ping/` endpoint.
 
 
 

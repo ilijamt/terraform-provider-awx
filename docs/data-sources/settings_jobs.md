@@ -3,12 +3,12 @@
 page_title: "awx_settings_jobs Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/jobs/ endpoint.
 ---
 
 # awx_settings_jobs (Data Source)
 
-
+Reads the AWX `/api/v2/settings/jobs/` endpoint.
 
 
 

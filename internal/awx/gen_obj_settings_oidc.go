@@ -114,6 +114,7 @@ func NewSettingsOpenIDConnectDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_oidc", Endpoint: "/api/v2/settings/oidc/"}},
 		Cfg: framework.DataSourceCfg[settingsOpenIdconnectTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/oidc/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_oidc_key": dschema.StringAttribute{
 						Description: "The OIDC key (Client ID) from your IDP.",

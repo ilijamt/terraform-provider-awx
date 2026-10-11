@@ -3,12 +3,12 @@
 page_title: "awx_inventory_source Resource - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Manages an AWX inventory source through /api/v2/inventory_sources/.
 ---
 
 # awx_inventory_source (Resource)
 
-
+Manages an AWX inventory source through `/api/v2/inventory_sources/`.
 
 ## Example Usage
 

@@ -3,12 +3,12 @@
 page_title: "awx_group Data Source - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Reads an AWX group from /api/v2/groups/.
 ---
 
 # awx_group (Data Source)
 
-
+Reads an AWX group from `/api/v2/groups/`.
 
 
 

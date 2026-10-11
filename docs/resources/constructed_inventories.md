@@ -3,12 +3,12 @@
 page_title: "awx_constructed_inventories Resource - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Manages an AWX constructed inventories through /api/v2/constructed_inventories/.
 ---
 
 # awx_constructed_inventories (Resource)
 
-
+Manages an AWX constructed inventories through `/api/v2/constructed_inventories/`.
 
 
 

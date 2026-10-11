@@ -3,12 +3,12 @@
 page_title: "awx_credential_object_roles Data Source - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Lists the role IDs of an AWX credential, keyed by role name.
 ---
 
 # awx_credential_object_roles (Data Source)
 
-
+Lists the role IDs of an AWX credential, keyed by role name.
 
 ## Example Usage
 

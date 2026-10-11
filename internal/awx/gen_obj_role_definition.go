@@ -79,6 +79,7 @@ func NewRoleDefinitionResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_definition", Endpoint: "/api/v2/role_definitions/"}},
 		Cfg: framework.ResourceCfg[roleDefinitionTerraformModel, roleDefinitionBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX role definition through `/api/v2/role_definitions/`.",
 				Attributes: map[string]schema.Attribute{
 					"content_type": schema.StringAttribute{
 						Description: "The type of resource this applies to",
@@ -219,6 +220,7 @@ func NewRoleDefinitionDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_definition", Endpoint: "/api/v2/role_definitions/"}},
 		Cfg: framework.DataSourceCfg[roleDefinitionTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX role definition from `/api/v2/role_definitions/`.",
 				Attributes: map[string]dschema.Attribute{
 					"content_type": dschema.StringAttribute{
 						Description: "The type of resource this applies to",

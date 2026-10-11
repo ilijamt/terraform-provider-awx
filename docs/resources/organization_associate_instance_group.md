@@ -3,12 +3,12 @@
 page_title: "awx_organization_associate_instance_group Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Associates an AWX instance group with an AWX organization.
 ---
 
 # awx_organization_associate_instance_group (Resource)
 
-
+Associates an AWX instance group with an AWX organization.
 
 
 

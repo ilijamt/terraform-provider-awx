@@ -3,12 +3,12 @@
 page_title: "awx_job_template Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX job template through /api/v2/job_templates/.
 ---
 
 # awx_job_template (Resource)
 
-
+Manages an AWX job template through `/api/v2/job_templates/`.
 
 ## Example Usage
 

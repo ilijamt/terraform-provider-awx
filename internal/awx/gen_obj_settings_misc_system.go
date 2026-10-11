@@ -351,6 +351,7 @@ func NewSettingsMiscSystemDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_misc_system", Endpoint: "/api/v2/settings/system/"}},
 		Cfg: framework.DataSourceCfg[settingsMiscSystemTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/system/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"activity_stream_enabled": dschema.BoolAttribute{
 						Description: "Enable capturing activity for the activity stream.",

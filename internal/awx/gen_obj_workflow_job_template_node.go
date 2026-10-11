@@ -133,6 +133,7 @@ func NewWorkflowJobTemplateNodeResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "workflow_job_template_node", Endpoint: "/api/v2/workflow_job_template_nodes/"}},
 		Cfg: framework.ResourceCfg[workflowJobTemplateNodeTerraformModel, workflowJobTemplateNodeBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX workflow job template node through `/api/v2/workflow_job_template_nodes/`.",
 				Attributes: map[string]schema.Attribute{
 					"all_parents_must_converge": schema.BoolAttribute{
 						Description: "If enabled then the node will only run if all of the parent nodes have met the criteria to reach this node",
@@ -325,6 +326,7 @@ func NewWorkflowJobTemplateNodeDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "workflow_job_template_node", Endpoint: "/api/v2/workflow_job_template_nodes/"}},
 		Cfg: framework.DataSourceCfg[workflowJobTemplateNodeTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX workflow job template node from `/api/v2/workflow_job_template_nodes/`.",
 				Attributes: map[string]dschema.Attribute{
 					"all_parents_must_converge": dschema.BoolAttribute{
 						Description: "If enabled then the node will only run if all of the parent nodes have met the criteria to reach this node",

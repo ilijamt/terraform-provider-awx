@@ -3,12 +3,12 @@
 page_title: "awx_job_template Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX job template from /api/v2/job_templates/.
 ---
 
 # awx_job_template (Data Source)
 
-
+Reads an AWX job template from `/api/v2/job_templates/`.
 
 
 

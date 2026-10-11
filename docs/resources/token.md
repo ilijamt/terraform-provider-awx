@@ -3,12 +3,12 @@
 page_title: "awx_token Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX token through /api/v2/tokens/.
 ---
 
 # awx_token (Resource)
 
-
+Manages an AWX token through `/api/v2/tokens/`.
 
 
 

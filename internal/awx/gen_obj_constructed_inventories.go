@@ -112,6 +112,7 @@ func NewConstructedInventoriesResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "constructed_inventories", Endpoint: "/api/v2/constructed_inventories/"}},
 		Cfg: framework.ResourceCfg[constructedInventoriesTerraformModel, constructedInventoriesBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX constructed inventories through `/api/v2/constructed_inventories/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this inventory.",
@@ -253,6 +254,7 @@ func NewConstructedInventoriesDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "constructed_inventories", Endpoint: "/api/v2/constructed_inventories/"}},
 		Cfg: framework.DataSourceCfg[constructedInventoriesTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX constructed inventories from `/api/v2/constructed_inventories/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this inventory.",

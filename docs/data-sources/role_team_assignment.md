@@ -3,12 +3,12 @@
 page_title: "awx_role_team_assignment Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX role team assignment from /api/v2/role_team_assignments/.
 ---
 
 # awx_role_team_assignment (Data Source)
 
-
+Reads an AWX role team assignment from `/api/v2/role_team_assignments/`.
 
 
 

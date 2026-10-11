@@ -3,12 +3,12 @@
 page_title: "awx_settings_misc_system Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/system/ endpoint.
 ---
 
 # awx_settings_misc_system (Data Source)
 
-
+Reads the AWX `/api/v2/settings/system/` endpoint.
 
 ## Example Usage
 

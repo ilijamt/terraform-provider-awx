@@ -3,12 +3,12 @@
 page_title: "awx_host Data Source - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Reads an AWX host from /api/v2/hosts/.
 ---
 
 # awx_host (Data Source)
 
-
+Reads an AWX host from `/api/v2/hosts/`.
 
 
 

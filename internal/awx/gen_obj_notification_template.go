@@ -80,6 +80,7 @@ func NewNotificationTemplateResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "notification_template", Endpoint: "/api/v2/notification_templates/"}},
 		Cfg: framework.ResourceCfg[notificationTemplateTerraformModel, notificationTemplateBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX notification template through `/api/v2/notification_templates/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this notification template.",
@@ -154,6 +155,7 @@ func NewNotificationTemplateDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "notification_template", Endpoint: "/api/v2/notification_templates/"}},
 		Cfg: framework.DataSourceCfg[notificationTemplateTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX notification template from `/api/v2/notification_templates/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this notification template.",

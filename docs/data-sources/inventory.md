@@ -3,12 +3,12 @@
 page_title: "awx_inventory Data Source - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Reads an AWX inventory from /api/v2/inventories/.
 ---
 
 # awx_inventory (Data Source)
 
-
+Reads an AWX inventory from `/api/v2/inventories/`.
 
 
 

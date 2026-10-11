@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_survey_spec Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages the survey spec of an AWX workflow job template.
 ---
 
 # awx_workflow_job_template_survey_spec (Resource)
 
-
+Manages the survey spec of an AWX workflow job template.
 
 
 

@@ -3,12 +3,12 @@
 page_title: "awx_application Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX application through /api/v2/applications/.
 ---
 
 # awx_application (Resource)
 
-
+Manages an AWX application through `/api/v2/applications/`.
 
 ## Example Usage
 

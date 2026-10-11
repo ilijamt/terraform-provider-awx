@@ -137,6 +137,7 @@ func NewProjectResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "project", Endpoint: "/api/v2/projects/"}},
 		Cfg: framework.ResourceCfg[projectTerraformModel, projectBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX project through `/api/v2/projects/`.",
 				Attributes: map[string]schema.Attribute{
 					"allow_override": schema.BoolAttribute{
 						Description: "Allow changing the SCM branch or revision in a job template that uses this project.",
@@ -345,6 +346,7 @@ func NewProjectDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "project", Endpoint: "/api/v2/projects/"}},
 		Cfg: framework.DataSourceCfg[projectTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX project from `/api/v2/projects/`.",
 				Attributes: map[string]dschema.Attribute{
 					"allow_override": dschema.BoolAttribute{
 						Description: "Allow changing the SCM branch or revision in a job template that uses this project.",

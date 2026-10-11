@@ -142,6 +142,7 @@ func NewSettingsAuthGithubEnterpriseDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github_enterprise", Endpoint: "/api/v2/settings/github-enterprise/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthGithubEnterpriseTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/github-enterprise/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_github_enterprise_api_url": dschema.StringAttribute{
 						Description: "The API URL for your GitHub Enterprise instance, e.g.: http(s)://hostname/api/v3/. Refer to Github Enterprise documentation for more details.",

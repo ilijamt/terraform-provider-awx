@@ -3,12 +3,12 @@
 page_title: "awx_project_object_roles Data Source - awx"
 subcategory: "Projects"
 description: |-
-  
+  Lists the role IDs of an AWX project, keyed by role name.
 ---
 
 # awx_project_object_roles (Data Source)
 
-
+Lists the role IDs of an AWX project, keyed by role name.
 
 
 

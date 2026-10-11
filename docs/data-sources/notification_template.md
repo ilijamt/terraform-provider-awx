@@ -3,12 +3,12 @@
 page_title: "awx_notification_template Data Source - awx"
 subcategory: "Notifications"
 description: |-
-  
+  Reads an AWX notification template from /api/v2/notification_templates/.
 ---
 
 # awx_notification_template (Data Source)
 
-
+Reads an AWX notification template from `/api/v2/notification_templates/`.
 
 
 

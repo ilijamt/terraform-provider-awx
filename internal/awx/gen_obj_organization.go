@@ -72,6 +72,7 @@ func NewOrganizationResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "organization", Endpoint: "/api/v2/organizations/"}},
 		Cfg: framework.ResourceCfg[organizationTerraformModel, organizationBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX organization through `/api/v2/organizations/`.",
 				Attributes: map[string]schema.Attribute{
 					"default_environment": schema.Int64Attribute{
 						Description: "The default execution environment for jobs run by this organization.",
@@ -128,6 +129,7 @@ func NewOrganizationDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "organization", Endpoint: "/api/v2/organizations/"}},
 		Cfg: framework.DataSourceCfg[organizationTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX organization from `/api/v2/organizations/`.",
 				Attributes: map[string]dschema.Attribute{
 					"default_environment": dschema.Int64Attribute{
 						Description: "The default execution environment for jobs run by this organization.",

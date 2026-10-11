@@ -3,12 +3,12 @@
 page_title: "awx_execution_environment Resource - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Manages an AWX execution environment through /api/v2/execution_environments/.
 ---
 
 # awx_execution_environment (Resource)
 
-
+Manages an AWX execution environment through `/api/v2/execution_environments/`.
 
 ## Example Usage
 

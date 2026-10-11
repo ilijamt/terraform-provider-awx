@@ -122,7 +122,12 @@ func (o *AssociateDisassociateResource) Schema(_ context.Context, _ resource.Sch
 		}
 	}
 
-	s := schema.Schema{Attributes: attrs}
+	s := schema.Schema{
+		Attributes: attrs,
+		MarkdownDescription: fmt.Sprintf("Associates an AWX %s with an AWX %s.",
+			strings.ReplaceAll(strings.TrimSuffix(o.cfg.ChildIDAttr, "_id"), "_", " "),
+			strings.ReplaceAll(strings.TrimSuffix(o.cfg.ParentIDAttr, "_id"), "_", " ")),
+	}
 	if o.cfg.hasOption() {
 		s.MarkdownDescription = "This resource cannot be imported because the import ID has no place for its `option` attribute. Declare it instead, and the first apply creates the association."
 	}

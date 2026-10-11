@@ -3,12 +3,12 @@
 page_title: "awx_team Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX team from /api/v2/teams/.
 ---
 
 # awx_team (Data Source)
 
-
+Reads an AWX team from `/api/v2/teams/`.
 
 
 

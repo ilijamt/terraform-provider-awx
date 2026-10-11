@@ -3,12 +3,12 @@
 page_title: "awx_settings_misc_logging Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/logging/ endpoint.
 ---
 
 # awx_settings_misc_logging (Data Source)
 
-
+Reads the AWX `/api/v2/settings/logging/` endpoint.
 
 
 

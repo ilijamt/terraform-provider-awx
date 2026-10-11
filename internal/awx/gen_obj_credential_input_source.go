@@ -76,6 +76,7 @@ func NewCredentialInputSourceResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential_input_source", Endpoint: "/api/v2/credential_input_sources/"}},
 		Cfg: framework.ResourceCfg[credentialInputSourceTerraformModel, credentialInputSourceBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX credential input source through `/api/v2/credential_input_sources/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this credential input source.",
@@ -129,6 +130,7 @@ func NewCredentialInputSourceDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "credential_input_source", Endpoint: "/api/v2/credential_input_sources/"}},
 		Cfg: framework.DataSourceCfg[credentialInputSourceTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX credential input source from `/api/v2/credential_input_sources/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this credential input source.",

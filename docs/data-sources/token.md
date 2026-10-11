@@ -3,12 +3,12 @@
 page_title: "awx_token Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX token from /api/v2/tokens/.
 ---
 
 # awx_token (Data Source)
 
-
+Reads an AWX token from `/api/v2/tokens/`.
 
 
 

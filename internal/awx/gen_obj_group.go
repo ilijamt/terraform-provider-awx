@@ -72,6 +72,7 @@ func NewGroupResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "group", Endpoint: "/api/v2/groups/"}},
 		Cfg: framework.ResourceCfg[groupTerraformModel, groupBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX group through `/api/v2/groups/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this group.",
@@ -124,6 +125,7 @@ func NewGroupDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "group", Endpoint: "/api/v2/groups/"}},
 		Cfg: framework.DataSourceCfg[groupTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX group from `/api/v2/groups/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this group.",

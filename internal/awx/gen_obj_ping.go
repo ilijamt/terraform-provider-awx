@@ -56,6 +56,7 @@ func NewPingDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "ping", Endpoint: "/api/v2/ping/"}},
 		Cfg: framework.DataSourceCfg[pingTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/ping/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"active_node": dschema.StringAttribute{
 						Description: "Hostname of the node that answered this request.",

@@ -141,6 +141,7 @@ func NewInventorySourceResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "inventory_source", Endpoint: "/api/v2/inventory_sources/"}},
 		Cfg: framework.ResourceCfg[inventorySourceTerraformModel, inventorySourceBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX inventory source through `/api/v2/inventory_sources/`.",
 				Attributes: map[string]schema.Attribute{
 					"credential": schema.Int64Attribute{
 						Description: "Cloud credential to use for inventory updates.",
@@ -338,6 +339,7 @@ func NewInventorySourceDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "inventory_source", Endpoint: "/api/v2/inventory_sources/"}},
 		Cfg: framework.DataSourceCfg[inventorySourceTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX inventory source from `/api/v2/inventory_sources/`.",
 				Attributes: map[string]dschema.Attribute{
 					"credential": dschema.Int64Attribute{
 						Description: "Cloud credential to use for inventory updates.",

@@ -64,6 +64,7 @@ func NewMeDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "me", Endpoint: "/api/v2/me/"}},
 		Cfg: framework.DataSourceCfg[meTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/me/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"email": dschema.StringAttribute{
 						Description: "Email address",

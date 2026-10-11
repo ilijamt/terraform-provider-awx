@@ -66,6 +66,7 @@ func (o *{{ .Name | lowerCamelCase }}Survey) endpointFor(parentID int64) string 
 
 func (o *{{ .Name | lowerCamelCase }}Survey) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
     resp.Schema = schema.Schema{
+            MarkdownDescription: "Manages the survey spec of an AWX {{ .Name | snakeCase | words }}.",
             Attributes: map[string]schema.Attribute{
 				"{{ .Name | snakeCase }}_id": schema.Int64Attribute{
 					Description: "Database ID for this {{ .Name }}.",

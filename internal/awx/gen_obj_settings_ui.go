@@ -124,6 +124,7 @@ func NewSettingsUIDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_ui", Endpoint: "/api/v2/settings/ui/"}},
 		Cfg: framework.DataSourceCfg[settingsUiTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/ui/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"custom_login_info": dschema.StringAttribute{
 						Description: "If needed, you can add specific information (such as a legal notice or a disclaimer) to a text box in the login modal using this setting. Any content added must be in plain text or an HTML fragment, as other markup languages are not supported.",

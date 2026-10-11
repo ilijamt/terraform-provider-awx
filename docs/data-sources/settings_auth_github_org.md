@@ -3,12 +3,12 @@
 page_title: "awx_settings_auth_github_org Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/github-org/ endpoint.
 ---
 
 # awx_settings_auth_github_org (Data Source)
 
-
+Reads the AWX `/api/v2/settings/github-org/` endpoint.
 
 
 

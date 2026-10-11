@@ -3,12 +3,12 @@
 page_title: "awx_host Resource - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Manages an AWX host through /api/v2/hosts/.
 ---
 
 # awx_host (Resource)
 
-
+Manages an AWX host through `/api/v2/hosts/`.
 
 ## Example Usage
 

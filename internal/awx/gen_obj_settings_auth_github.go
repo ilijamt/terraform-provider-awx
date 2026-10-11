@@ -122,6 +122,7 @@ func NewSettingsAuthGithubDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_auth_github", Endpoint: "/api/v2/settings/github/"}},
 		Cfg: framework.DataSourceCfg[settingsAuthGithubTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/github/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"social_auth_github_callback_url": dschema.StringAttribute{
 						Description: "Provide this URL as the callback URL for your application as part of your registration process. Refer to the documentation for more detail.",

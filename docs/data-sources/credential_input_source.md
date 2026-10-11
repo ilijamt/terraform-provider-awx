@@ -3,12 +3,12 @@
 page_title: "awx_credential_input_source Data Source - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Reads an AWX credential input source from /api/v2/credential_input_sources/.
 ---
 
 # awx_credential_input_source (Data Source)
 
-
+Reads an AWX credential input source from `/api/v2/credential_input_sources/`.
 
 
 

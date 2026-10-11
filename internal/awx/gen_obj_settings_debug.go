@@ -97,6 +97,7 @@ func NewSettingsDebugDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_debug", Endpoint: "/api/v2/settings/debug/"}},
 		Cfg: framework.DataSourceCfg[settingsDebugTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/debug/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"awx_cleanup_paths": dschema.BoolAttribute{
 						Description: "Enable or Disable TMP Dir cleanup",

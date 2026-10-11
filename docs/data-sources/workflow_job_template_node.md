@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_node Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX workflow job template node from /api/v2/workflow_job_template_nodes/.
 ---
 
 # awx_workflow_job_template_node (Data Source)
 
-
+Reads an AWX workflow job template node from `/api/v2/workflow_job_template_nodes/`.
 
 ## Example Usage
 

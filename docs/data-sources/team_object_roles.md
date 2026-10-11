@@ -3,12 +3,12 @@
 page_title: "awx_team_object_roles Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Lists the role IDs of an AWX team, keyed by role name.
 ---
 
 # awx_team_object_roles (Data Source)
 
-
+Lists the role IDs of an AWX team, keyed by role name.
 
 ## Example Usage
 

@@ -3,12 +3,12 @@
 page_title: "awx_execution_environment Data Source - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Reads an AWX execution environment from /api/v2/execution_environments/.
 ---
 
 # awx_execution_environment (Data Source)
 
-
+Reads an AWX execution environment from `/api/v2/execution_environments/`.
 
 ## Example Usage
 

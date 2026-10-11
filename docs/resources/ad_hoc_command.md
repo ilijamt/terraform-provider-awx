@@ -3,12 +3,12 @@
 page_title: "awx_ad_hoc_command Resource - awx"
 subcategory: "Templates"
 description: |-
-  
+  Manages an AWX ad hoc command through /api/v2/ad_hoc_commands/.
 ---
 
 # awx_ad_hoc_command (Resource)
 
-
+Manages an AWX ad hoc command through `/api/v2/ad_hoc_commands/`.
 
 
 

@@ -85,6 +85,7 @@ func NewHostResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "host", Endpoint: "/api/v2/hosts/"}},
 		Cfg: framework.ResourceCfg[hostTerraformModel, hostBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX host through `/api/v2/hosts/`.",
 				Attributes: map[string]schema.Attribute{
 					"description": schema.StringAttribute{
 						Description: "Optional description of this host.",
@@ -160,6 +161,7 @@ func NewHostDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "host", Endpoint: "/api/v2/hosts/"}},
 		Cfg: framework.DataSourceCfg[hostTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX host from `/api/v2/hosts/`.",
 				Attributes: map[string]dschema.Attribute{
 					"description": dschema.StringAttribute{
 						Description: "Optional description of this host.",

@@ -3,12 +3,12 @@
 page_title: "awx_settings_bulk Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/bulk/ endpoint.
 ---
 
 # awx_settings_bulk (Data Source)
 
-
+Reads the AWX `/api/v2/settings/bulk/` endpoint.
 
 
 

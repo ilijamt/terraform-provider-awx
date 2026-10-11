@@ -3,12 +3,12 @@
 page_title: "awx_role_user_assignment Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX role user assignment through /api/v2/role_user_assignments/.
 ---
 
 # awx_role_user_assignment (Resource)
 
-
+Manages an AWX role user assignment through `/api/v2/role_user_assignments/`.
 
 ## Example Usage
 

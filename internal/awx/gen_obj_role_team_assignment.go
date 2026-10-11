@@ -79,6 +79,7 @@ func NewRoleTeamAssignmentResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_team_assignment", Endpoint: "/api/v2/role_team_assignments/"}},
 		Cfg: framework.ResourceCfg[roleTeamAssignmentTerraformModel, roleTeamAssignmentBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX role team assignment through `/api/v2/role_team_assignments/`.",
 				Attributes: map[string]schema.Attribute{
 					"object_ansible_id": schema.StringAttribute{
 						Description: "Resource id of the object this role applies to. Alternative to the object_id field.",
@@ -176,6 +177,7 @@ func NewRoleTeamAssignmentDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "role_team_assignment", Endpoint: "/api/v2/role_team_assignments/"}},
 		Cfg: framework.DataSourceCfg[roleTeamAssignmentTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX role team assignment from `/api/v2/role_team_assignments/`.",
 				Attributes: map[string]dschema.Attribute{
 					"content_type": dschema.StringAttribute{
 						Description: "The type of resource this applies to",

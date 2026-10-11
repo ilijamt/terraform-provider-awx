@@ -74,6 +74,7 @@ func NewTokensResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "token", Endpoint: "/api/v2/tokens/"}},
 		Cfg: framework.ResourceCfg[tokensTerraformModel, tokensBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX token through `/api/v2/tokens/`.",
 				Attributes: map[string]schema.Attribute{
 					"application": schema.Int64Attribute{
 						Description: "Application",
@@ -140,6 +141,7 @@ func NewTokensDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "token", Endpoint: "/api/v2/tokens/"}},
 		Cfg: framework.DataSourceCfg[tokensTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX token from `/api/v2/tokens/`.",
 				Attributes: map[string]dschema.Attribute{
 					"application": dschema.Int64Attribute{
 						Description: "Application",

@@ -3,12 +3,12 @@
 page_title: "awx_instance Data Source - awx"
 subcategory: "Infrastructure"
 description: |-
-  
+  Reads an AWX instance from /api/v2/instances/.
 ---
 
 # awx_instance (Data Source)
 
-
+Reads an AWX instance from `/api/v2/instances/`.
 
 ## Example Usage
 

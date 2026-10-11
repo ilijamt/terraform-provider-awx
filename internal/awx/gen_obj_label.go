@@ -62,6 +62,7 @@ func NewLabelResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "label", Endpoint: "/api/v2/labels/"}},
 		Cfg: framework.ResourceCfg[labelTerraformModel, labelBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX label through `/api/v2/labels/`.",
 				Attributes: map[string]schema.Attribute{
 					"name": schema.StringAttribute{
 						Description: "Name of this label.",
@@ -100,6 +101,7 @@ func NewLabelDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "label", Endpoint: "/api/v2/labels/"}},
 		Cfg: framework.DataSourceCfg[labelTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX label from `/api/v2/labels/`.",
 				Attributes: map[string]dschema.Attribute{
 					"id": dschema.Int64Attribute{
 						Description: "Database ID for this label.",

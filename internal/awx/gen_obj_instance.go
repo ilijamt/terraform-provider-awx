@@ -134,6 +134,7 @@ func NewInstanceResource() resource.Resource {
 		ResourceBase: framework.ResourceBase{ProviderBase: framework.ProviderBase{TypeName: "instance", Endpoint: "/api/v2/instances/"}},
 		Cfg: framework.ResourceCfg[instanceTerraformModel, instanceBodyRequestModel]{
 			Schema: schema.Schema{
+				MarkdownDescription: "Manages an AWX instance through `/api/v2/instances/`.",
 				Attributes: map[string]schema.Attribute{
 					"capacity_adjustment": schema.Float64Attribute{
 						Description: "Capacity adjustment",
@@ -321,6 +322,7 @@ func NewInstanceDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "instance", Endpoint: "/api/v2/instances/"}},
 		Cfg: framework.DataSourceCfg[instanceTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads an AWX instance from `/api/v2/instances/`.",
 				Attributes: map[string]dschema.Attribute{
 					"capacity": dschema.Int64Attribute{
 						Description: "Capacity",

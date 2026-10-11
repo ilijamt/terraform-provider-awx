@@ -286,7 +286,10 @@ var FuncMap = template.FuncMap{
 	"snakeCase":       strcase.ToSnake,
 	"camelCase":       strcase.ToCamel,
 	"lowerCase":       lowerCase,
-	"lowerCamelCase":  strcase.ToLowerCamel,
+	"words": func(in string) string {
+		return strings.ReplaceAll(in, "_", " ")
+	},
+	"lowerCamelCase": strcase.ToLowerCamel,
 	"hasKey": func(d map[string]any, key string) bool {
 		_, ok := d[key]
 		return ok

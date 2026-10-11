@@ -289,6 +289,7 @@ func NewSettingsMiscLoggingDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_misc_logging", Endpoint: "/api/v2/settings/logging/"}},
 		Cfg: framework.DataSourceCfg[settingsMiscLoggingTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/logging/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"api_400_error_log_format": dschema.StringAttribute{
 						Description: "The format of logged messages when an API 4XX error occurs, the following variables will be substituted: \nstatus_code - The HTTP status code of the error\nuser_name - The user name attempting to use the API\nurl_path - The URL path to the API endpoint called\nremote_addr - The remote address seen for the user\nerror - The error set by the api endpoint\nVariables need to be in the format {<variable name>}.",

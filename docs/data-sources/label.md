@@ -3,12 +3,12 @@
 page_title: "awx_label Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Reads an AWX label from /api/v2/labels/.
 ---
 
 # awx_label (Data Source)
 
-
+Reads an AWX label from `/api/v2/labels/`.
 
 ## Example Usage
 

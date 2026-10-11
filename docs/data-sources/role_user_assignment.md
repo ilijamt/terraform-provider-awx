@@ -3,12 +3,12 @@
 page_title: "awx_role_user_assignment Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads an AWX role user assignment from /api/v2/role_user_assignments/.
 ---
 
 # awx_role_user_assignment (Data Source)
 
-
+Reads an AWX role user assignment from `/api/v2/role_user_assignments/`.
 
 
 

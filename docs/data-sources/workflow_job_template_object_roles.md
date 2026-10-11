@@ -3,12 +3,12 @@
 page_title: "awx_workflow_job_template_object_roles Data Source - awx"
 subcategory: "Templates"
 description: |-
-  
+  Lists the role IDs of an AWX workflow job template, keyed by role name.
 ---
 
 # awx_workflow_job_template_object_roles (Data Source)
 
-
+Lists the role IDs of an AWX workflow job template, keyed by role name.
 
 ## Example Usage
 

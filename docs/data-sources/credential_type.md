@@ -3,12 +3,12 @@
 page_title: "awx_credential_type Data Source - awx"
 subcategory: "Credentials"
 description: |-
-  
+  Reads an AWX credential type from /api/v2/credential_types/.
 ---
 
 # awx_credential_type (Data Source)
 
-
+Reads an AWX credential type from `/api/v2/credential_types/`.
 
 ## Example Usage
 

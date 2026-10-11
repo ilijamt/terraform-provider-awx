@@ -3,12 +3,12 @@
 page_title: "awx_me Data Source - awx"
 subcategory: "Access"
 description: |-
-  
+  Reads the AWX /api/v2/me/ endpoint.
 ---
 
 # awx_me (Data Source)
 
-
+Reads the AWX `/api/v2/me/` endpoint.
 
 
 

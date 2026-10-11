@@ -252,6 +252,7 @@ func NewSettingsMiscAuthenticationDataSource() datasource.DataSource {
 		DataSourceBase: framework.DataSourceBase{ProviderBase: framework.ProviderBase{TypeName: "settings_misc_authentication", Endpoint: "/api/v2/settings/authentication/"}},
 		Cfg: framework.DataSourceCfg[settingsMiscAuthenticationTerraformModel]{
 			Schema: dschema.Schema{
+				MarkdownDescription: "Reads the AWX `/api/v2/settings/authentication/` endpoint.",
 				Attributes: map[string]dschema.Attribute{
 					"allow_metrics_for_anonymous_users": dschema.BoolAttribute{
 						Description: "If true, anonymous users are allowed to poll metrics.",

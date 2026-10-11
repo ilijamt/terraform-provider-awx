@@ -3,12 +3,12 @@
 page_title: "awx_host_associate_group Resource - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Associates an AWX group with an AWX host.
 ---
 
 # awx_host_associate_group (Resource)
 
-
+Associates an AWX group with an AWX host.
 
 ## Example Usage
 

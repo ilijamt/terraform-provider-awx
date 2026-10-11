@@ -3,12 +3,12 @@
 page_title: "awx_settings_ui Data Source - awx"
 subcategory: "Settings"
 description: |-
-  
+  Reads the AWX /api/v2/settings/ui/ endpoint.
 ---
 
 # awx_settings_ui (Data Source)
 
-
+Reads the AWX `/api/v2/settings/ui/` endpoint.
 
 
 

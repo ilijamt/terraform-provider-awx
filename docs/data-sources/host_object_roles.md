@@ -3,12 +3,12 @@
 page_title: "awx_host_object_roles Data Source - awx"
 subcategory: "Inventories"
 description: |-
-  
+  Lists the role IDs of an AWX host, keyed by role name.
 ---
 
 # awx_host_object_roles (Data Source)
 
-
+Lists the role IDs of an AWX host, keyed by role name.
 
 
 

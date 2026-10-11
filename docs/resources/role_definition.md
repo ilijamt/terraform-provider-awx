@@ -3,12 +3,12 @@
 page_title: "awx_role_definition Resource - awx"
 subcategory: "Access"
 description: |-
-  
+  Manages an AWX role definition through /api/v2/role_definitions/.
 ---
 
 # awx_role_definition (Resource)
 
-
+Manages an AWX role definition through `/api/v2/role_definitions/`.
 
 ## Example Usage
 
