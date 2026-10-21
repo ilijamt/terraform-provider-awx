@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Dependencies
 
 - *(deps)* Bump goreleaser/goreleaser-action (#196)
+- *(deps)* Bump github.com/hashicorp/hcl/v2 from 2.24.0 to 2.25.0 (#195)
 
 ## [24.6.107] - 2026-10-11
 
