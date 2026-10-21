@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Dependencies
+
+- *(deps)* Bump goreleaser/goreleaser-action (#196)
+
+## [24.6.107] - 2026-10-11
+
 ### Bug Fixes
 
 - *(provider)* Attach the missing hostname error to the hostname attribute
