@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Bug Fixes
+
+- *(generator)* Import all framework packages in tf_object template
+
 ### Dependencies
 
 - *(deps)* Bump goreleaser/goreleaser-action (#196)
